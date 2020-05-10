@@ -170,6 +170,13 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
+
+        /*
+        *
+        * Local Service Provider
+        */
+        App\Providers\ViewServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
