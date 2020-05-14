@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MenuCreateRequest extends FormRequest
+class CategoriasCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class MenuCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class MenuCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'nombre'=>['required']
         ];
     }
 }
