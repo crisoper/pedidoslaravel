@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Exports\Usuarios;
+namespace App\Http\Controllers\Admin\Excel;
 
 use App\Http\Controllers\Controller;
 use App\Exports\Admin\UsuariosExport;
