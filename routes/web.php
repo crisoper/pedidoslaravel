@@ -22,3 +22,15 @@ Auth::routes();
 Route::get('/', 'Publico\InicioController@index')->name('inicio.index');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(
+    [
+        'prefix' => 'productos',
+        'middleware' => [
+            'auth'
+        ],
+    ], 
+    function () {
+        Route::get("productos.index", 'Admin\Productos\ProductosController@index')->name("productos.index");
+        
+    });
