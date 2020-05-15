@@ -24,8 +24,11 @@ class ProductosUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'empresa_id'=>['required'],
+            
+            'categoriaid'=>['required'],
+            'codigo' =>['required'],
             'nombre'=>['required'],
+            'descripcion'=>['required'],
             'precio'=>['required'],
             'stock'=>['required'],
 

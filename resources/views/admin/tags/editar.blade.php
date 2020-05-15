@@ -7,7 +7,7 @@
                     <h3>Crear Tags</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('tags.store')}}" method="POST">
+                    <form action="{{route('tags.update', $tag->id )}}" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <input type="text" name="nombre" id="nombre"  class="form-control" value="{{$tag->nombre}}">

@@ -7,7 +7,7 @@
                     <h3>Crear Productos</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('productos.store')}}" method="POST">
+                    <form action="{{route('productos.update', $producto->id)}}" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <input type="text" name="nombre" id="nombre"  class="form-control" value="{{$producto->nombre}}">
@@ -17,7 +17,10 @@
                                 <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="4" value="">{{$producto->descripcion}}</textarea>
                                 <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                             </div>
-
+                            <div class="form-group col-md-12">
+                            <input type="text" name="codigo" id="codigo"  class="form-control" value="{{ $producto->codigo }}">
+                                <span class="text-danger">{{ $errors->first('codigo') }}</span>
+                            </div>
                             
                             <div class="form-group col-md-12">
                                 <label for="categoriaid"> Categoría </label>
@@ -35,6 +38,7 @@
                                           </option>                                                    
                                     @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('categoriaid') }}</span>
                             </div>
                             <div class="form-group col-md-12">
                                 <input type="text" name="precio" id="precio"  class="form-control" value="{{$producto->precio}}" >

@@ -43,6 +43,7 @@ class ProductosController extends Controller
      */
     public function store(ProductosCreateRequest $request)
     {
+       
         $productos = Producto::firstOrNew(
             [
                 'empresa_id' => 1,
@@ -61,8 +62,7 @@ class ProductosController extends Controller
      
          $productos->save();
         return redirect()->route('productos.index');
-        //  return response()->json(['success' => "Datos guardados correctamente"], 200);
-         
+                
     }
 
     /**
@@ -101,10 +101,10 @@ class ProductosController extends Controller
         $productos = Producto::findOrFail($id);
         $productos->empresa_id = 1;
         $productos->categoria_id = $request->categoriaid;
+        $productos->codigo = $request->codigo;
         $productos->nombre = $request->nombre;
         $productos->descripcion =  $request->descripcion;
         $productos->precio =  $request->precio;
-        $productos->codigo = $request->codigo;
         $productos->stock = $request->stock;
         $productos->updated_by =  Auth()->user()->id;
         $productos->save();

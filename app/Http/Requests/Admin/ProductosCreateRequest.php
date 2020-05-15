@@ -24,11 +24,13 @@ class ProductosCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'empresa_id'=>['required'],
+           
+            'categoriaid'=>['required'],
             'nombre'=>['required'],
+            'descripcion'=>['required'],
             'precio'=>['required'],
             'stock'=>['required'],
-
+            'codigo' =>['required'],
 
         ];
     }

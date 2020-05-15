@@ -54,6 +54,12 @@ function() {
     
     Route::resource('menus', 'Admin\Menus\MenusController');
     
+    Route::resource('productos', 'Admin\ProductosController');
+    Route::resource('categorias', 'Admin\ProductocategoriasController');
+    Route::resource('tags', 'Admin\TagsController');
+
+
+    
     //Usuarios que pertencen a una empresa
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
     

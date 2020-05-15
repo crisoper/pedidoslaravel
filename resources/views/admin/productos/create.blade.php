@@ -15,13 +15,13 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="4" placeholder="Descripcion de producto"></textarea>
-                                <span class="text-danger">{{ $errors->first('nombre') }}</span>
+                                <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                             </div>
 
                             
                             <div class="form-group col-md-12">
-                                <label for="parent_id">Categoria:</label>
-                                <select class="form-control" name="parent_id" id="parent_id" >
+                                <label for="categoriaid">Categoria:</label>
+                                <select class="form-control" name="categoriaid" id="categoriaid" >
                                     <option value="">Seleccione categoría</option>
                                     @foreach ($categorias as $categoria)
                                         <option value="{{ $categoria->id}}">
@@ -29,6 +29,11 @@
                                         </option>
                                     @endforeach    
                                 </select>
+                                <span class="text-danger">{{ $errors->first('categoriaid') }}</span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" name="codigo" id="codigo"  class="form-control" placeholder="Código ">
+                                <span class="text-danger">{{ $errors->first('codigo') }}</span>
                             </div>
                             <div class="form-group col-md-12">
                                 <input type="text" name="precio" id="precio"  class="form-control" placeholder="Precio ">

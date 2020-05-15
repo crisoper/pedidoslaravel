@@ -18,7 +18,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Item</th>
-                                    <th>Categoria</th>
+                                    <th>Categoría</th>
+                                    <th>Código</th>                                    
                                     <th>Producto</th>                                    
                                     <th>Descripción</th>                                    
                                     <th>Precio</th>                                    
@@ -38,6 +39,7 @@
                                               @endif
                                         @endforeach                                    
                                     </td>
+                                    <td>{{$producto->codigo}}</td> 
                                     <td>{{$producto->nombre}}</td> 
                                     <td>{{$producto->descripcion}}</td> 
                                     <td>{{$producto->precio}}</td> 
