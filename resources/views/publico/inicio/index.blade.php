@@ -11,6 +11,7 @@
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <a href="{{route('productos.index')}}" class="btn btn-primary" >Productos</a>
           <a href="{{route('categorias.index')}}" class="btn btn-primary" >Categorias</a>
+          <a href="{{route('tags.index')}}" class="btn btn-primary" >TAGS</a>
         </div>
       </div>
     </div>

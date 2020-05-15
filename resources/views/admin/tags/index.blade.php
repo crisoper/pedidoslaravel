@@ -7,51 +7,38 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                        <div>
-                           Productos
+                           Tags
                        </div>
                        <div>                      
-                            <a class="btn btn-primary" href="{{route('productos.create')}}">Nueva Categoria</a>
+                            <a class="btn btn-primary" href="{{route('tags.create')}}">Nuevo Tag</a>
                        </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-light table-sm" name="tableproductos" id="tableproductos" >
+                        <table class="table table-light table-sm" name="tabletag" id="tabletag" >
                             <thead class="thead-light">
                                 <tr>
                                     <th>Item</th>
-                                    <th>Categoria</th>
-                                    <th>Producto</th>                                    
-                                    <th>Descripción</th>                                    
-                                    <th>Precio</th>                                    
-                                    <th>Stock</th>                                    
+                                    <th>Tag</th>
+                                                    
                                     <th colspan="2">Acciones</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($productos as $producto)
+                                @foreach ($tags as $tag)
                                 <tr>
-                                    <td>{{$producto->id}}</td>                                   
-                                    <td>
-                                        @foreach ($categorias as $categoria)
-                                              @if ( $categoria->id== $producto->categoria_id)
-                                                  {{$categoria->nombre}}
-                                              @endif
-                                        @endforeach                                    
-                                    </td>
-                                    <td>{{$producto->nombre}}</td> 
-                                    <td>{{$producto->descripcion}}</td> 
-                                    <td>{{$producto->precio}}</td> 
-                                    <td>{{$producto->stock}}</td> 
+                                    <td>{{$tag->id}}</td>                                
+                                    <td>{{$tag->nombre}}</td>                                   
                                    
                                     <td>
-                                    <a class="btn btn-info" href="{{route('productos.edit', $producto->id)}}">Editar</a>
+                                    <a class="btn btn-info" href="{{route('tags.edit', $tag->id)}}">Editar</a>
                                     </td>
                                     <td>
                                     <div>
-                                        <form id="form.producto.delete.{{$producto->id}}" action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                                        <form id="form.tag.delete.{{$tag->id}}" action="{{ route('tags.destroy', $tag->id) }}" method="POST">
                                             {!! method_field('DELETE') !!}
                                             {!! csrf_field() !!}
-                                            <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.producto.delete.{{$producto->id}}').submit();">Eliminar</a>
+                                            <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.tag.delete.{{$tag->id}}').submit();">Eliminar</a>
                                         </form>                                    
                                     </div>
                                 </td>

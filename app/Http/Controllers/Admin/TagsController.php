@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TagCreateRequest;
+use App\Http\Requests\Admin\TagUpdateRequest;
+use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
@@ -14,7 +17,8 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
+        $tags =Tag::get();
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -24,7 +28,8 @@ class TagsController extends Controller
      */
     public function create()
     {
-        //
+      
+        return view('admin\tags\create');
     }
 
     /**
@@ -33,9 +38,16 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagCreateRequest $request)
     {
-        //
+        $tags = Tag::firstOrNew(
+            [           
+            'nombre' => $request->nombre,           
+        ]);
+        $tags->save();
+        // return response()->json(['success' => "Datos guardados correctamente"], 200);
+      
+        return redirect()->route('tags.index');
     }
 
     /**
@@ -57,7 +69,9 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        
+        return view('admin\tags\editar', compact('tag'));
     }
 
     /**
@@ -67,9 +81,13 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagUpdateRequest $request, $id)
     {
-        //
+        $tag= Tag::findOrFail($id);
+        
+        $tag->nombre = $request->nombre;      
+        $tag->save();
+        return redirect()->route('tags.index');
     }
 
     /**
@@ -80,6 +98,10 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        // $tag->delete_at = Auth()->user()->id;
+        $tag->delete();
+
+        return redirect()->route('tags.index');
     }
 }

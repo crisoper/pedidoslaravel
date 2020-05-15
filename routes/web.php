@@ -46,4 +46,6 @@ Route::group(
         // Route::post("categorias.update", 'Admin\ProductocategoriasController@update')->name("categorias.update");
         // Route::delete("categorias.destroy/{categoriaid}", 'Admin\ProductocategoriasController@destroy')->name("categorias.destroy");
         
+        //TAGS
+        Route::resource('tags', 'Admin\TagsController');
     });

@@ -46,6 +46,7 @@
                             </div>
                             <div class="form-group col-12">
                                 @csrf
+                                {!! method_field('PUT') !!}
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                 <a href="{{route('productos.index')}}" class="btn btn-danger">Cancelar</a>
                             </div>
