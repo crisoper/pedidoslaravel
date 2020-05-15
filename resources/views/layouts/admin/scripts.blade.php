@@ -5,7 +5,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <script src="{{ asset('adminlte301/js/adminlte.js') }}"></script>
-<script src="{{ asset('adminlte301/plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
@@ -18,11 +17,14 @@
 <script src="{{ asset('Plugins\bootstrap4-toggle-3.6.1\js\bootstrap4-toggle.min.js')}}"> </script>
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" integrity="sha256-8zyeSXm+yTvzUN1VgAOinFgaVFEFTyYzWShOy9w7WoQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha256-nZaxPHA2uAaquixjSDX19TmIlbRNCOrf5HO1oHl5p70=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+{{-- <script src="{{ asset('adminlte301/plugins/select2/js/select2.min.js') }}"></script> --}}
 
 <script>
     $.widget.bridge('uibutton', $.ui.button)
