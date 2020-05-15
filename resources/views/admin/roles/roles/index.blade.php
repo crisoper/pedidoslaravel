@@ -21,7 +21,7 @@
                 </div>
                 <div class="row card-body">
                     <div class="col-12 col-md-9 mb 3">
-                        <form id="form-buscar-roles" class=" {{-- search-form --}}" action="">
+                        <form id="form-buscar-roles" class="" action="">
                             <div class="input-group">
                                 <input type="text" class="form-control rounded-1" placeholder="Buscar" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
 
