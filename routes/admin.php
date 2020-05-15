@@ -24,7 +24,7 @@ function () {
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
 
-    Route::resource('empresas', 'Encuestas\Administracion\EmpresasController');
+    // Route::resource('empresas', 'Encuestas\Administracion\EmpresasController');
 });
 
 
@@ -41,7 +41,7 @@ function() {
     Route::post("seleccionarperiodo", 'Admin\SeleccionarperiodoController@establecerperiodo')->name("config.establecer.periodo");
     
     
-    Route::resource('periodos', 'Encuestas\Administracion\PeriodosController');
+    // Route::resource('periodos', 'Encuestas\Administracion\PeriodosController');
     Route::resource('roles', 'Admin\Roles\RolesController');
     Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
