@@ -24,7 +24,7 @@ class MenuCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
         ];
     }
 }

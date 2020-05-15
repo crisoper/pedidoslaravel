@@ -9,7 +9,8 @@
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="{{route('productos.index')}}" class="btn btn-primary" >Productos</a>
+          <a href="{{route('categorias.index')}}" class="btn btn-primary" >Categorias</a>
         </div>
       </div>
     </div>
