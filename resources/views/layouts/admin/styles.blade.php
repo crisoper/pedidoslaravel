@@ -8,8 +8,6 @@
 
 <link rel="stylesheet" href="{{ asset('adminlte301/css/adminlte.min.css') }}">
 
-<link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
@@ -23,4 +21,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+{{-- <link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}"> --}}
 

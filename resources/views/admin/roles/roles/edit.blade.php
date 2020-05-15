@@ -1,5 +1,5 @@
 {{-- @extends('layouts.app') --}}
-@extends('layouts.adminlte3.adminlte3')
+@extends('layouts.admin.admin')
 
 @section('contenido')
 
