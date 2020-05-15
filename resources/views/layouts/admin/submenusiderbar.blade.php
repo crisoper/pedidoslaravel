@@ -8,7 +8,7 @@
             @if ( $submenu->submenus and count( $submenu->submenus ) > 0 )
                 <ul class="nav nav-treeview siderbar-custom">
                     @foreach ( $submenu->submenus as $submenu )
-                        @include('layouts.adminlte3.submenusiderbar', ['submenu' => $submenu])
+                        @include('layouts.admin.submenusiderbar', ['submenu' => $submenu])
                     @endforeach
                 </ul>
             @endif
@@ -23,7 +23,7 @@
             @if ( $submenu->submenus and count( $submenu->submenus ) > 0 ) 
                 <ul class="nav nav-treeview siderbar-custom">
                     @foreach ( $submenu->submenus as $submenu )
-                        @include('layouts.adminlte3.submenusiderbar', ['submenu' => $submenu])
+                        @include('layouts.admin.submenusiderbar', ['submenu' => $submenu])
                     @endforeach
                 </ul>
             @endif

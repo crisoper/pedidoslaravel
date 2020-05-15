@@ -1,6 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
-
-
+@extends('layouts.admin.admin')
 
 @can('role_has_permissions.crear')
 
@@ -101,5 +99,5 @@
 
 
 @else
-    @include('layouts.paginas.mensajes.sinpermiso')
+    @include('includes.sinpermiso')
 @endcan

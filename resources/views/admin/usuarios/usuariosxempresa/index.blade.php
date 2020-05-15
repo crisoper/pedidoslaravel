@@ -1,5 +1,5 @@
-@extends('layouts.adminlte3.adminlte3')
-{{-- @extends('layouts.app') --}}
+@extends('layouts.admin.admin')
+
 @can('userempresas.listar')
 @section('contenido')
 
@@ -107,5 +107,5 @@
 
 @endsection
 @else
-    @include('layouts.paginas.mensajes.sinpermiso')
+    @include('includes.sinpermiso')
 @endcan

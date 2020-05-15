@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Encuestas\EstablecerperiodoRequest;
-use App\Models\Encuestas\Administracion\Periodos;
+use App\Models\Admin\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -22,7 +22,7 @@ class SeleccionarperiodoController extends Controller
 
     public function seleccionarperiodo() {
     
-        $periodos = Periodos::where("inicio", '<=', now() )
+        $periodos = Periodo::where("inicio", '<=', now() )
         ->where("fin", '>=', now() )
         ->where('estado', 1)
         ->where('empresa_id', $this->empresaId() )
@@ -30,10 +30,10 @@ class SeleccionarperiodoController extends Controller
         
         if ( count($periodos)  == 0 ) {
             if ( auth()->user()->hasRole('SuperAdministrador') ) {
-                return view('layouts.paginas.mensajes.sinperiodos');                
+                return redirect()->route('periodos.index')->with('info', 'Por favor active un periodo antes de continuar');         
             }
             else{
-        		return view('encuestas.paginas.mensajes.sinperiodosactivos');
+        		return view('includes.sinperiodosactivos');
             }
 
         }
@@ -48,14 +48,14 @@ class SeleccionarperiodoController extends Controller
                 return redirect()->route('home');
             }
             else{
-        		 $tperiodos = Periodos::whereHas('usuarios', function ($query) {
+        		 $tperiodos = Periodo::whereHas('usuarios', function ($query) {
                          $query->where( 'user_id', '=', auth()->user()->id );
                      })
                      ->where( 'id', '=', $periodo->id )
                      ->count();
 
                      if( $tperiodos == 0 ){
-                        return view('encuestas.paginas.mensajes.sinperiodosactivos');
+                        return view('includes.sinperiodosactivos');
                      }else{
                         Session::put( 'periodoactual', $periodo->id );
                         Session::put( 'periododescripcion', $periodo->nombre );
@@ -70,7 +70,7 @@ class SeleccionarperiodoController extends Controller
                     return view('encuestas.paginas.formseleccionarperiodo', compact('periodos') );                     
             }
             else {
-                $periodos = Periodos::whereHas('usuarios', function ($query) {
+                $periodos = Periodo::whereHas('usuarios', function ($query) {
                     $query->where( 'user_id', '=', auth()->user()->id );
                 })->get();
 
@@ -88,7 +88,7 @@ class SeleccionarperiodoController extends Controller
                     return view('encuestas.paginas.formseleccionarperiodo', compact('periodos') );  
                 }
                 else {
-                    return view('encuestas.paginas.mensajes.sinperiodosactivos');
+                    return view('includes.sinperiodosactivos');
                 }
 
             } 
@@ -100,7 +100,7 @@ class SeleccionarperiodoController extends Controller
     public function establecerperiodo(Request $request)
     {
        
-    	$periodo = Periodos::findOrFail( $request->periodoid );
+    	$periodo = Periodo::findOrFail( $request->periodoid );
     
     	Session::put( 'periodoactual', $periodo->id );
         Session::put( 'periododescripcion', $periodo->nombre );

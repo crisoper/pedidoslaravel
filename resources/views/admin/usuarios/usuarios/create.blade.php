@@ -1,4 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
+@extends('layouts.admin.admin')
 
 @can('users.crear') 
 
@@ -55,5 +55,5 @@
 @endsection
 
 @else
-    @include('layouts.paginas.mensajes.sinpermiso')
+    @include('includes.sinpermiso')
 @endcan

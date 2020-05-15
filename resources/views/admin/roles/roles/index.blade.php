@@ -1,4 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
+@extends('layouts.admin.admin')
 
 @can('roles.listar')
 
@@ -21,7 +21,7 @@
                 </div>
                 <div class="row card-body">
                     <div class="col-12 col-md-9 mb 3">
-                        <form id="form-buscar-roles" class=" {{-- search-form --}}" action="">
+                        <form id="form-buscar-roles" class="" action="">
                             <div class="input-group">
                                 <input type="text" class="form-control rounded-1" placeholder="Buscar" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
 
@@ -142,5 +142,5 @@
 
 
 @else
-    @include('layouts.paginas.mensajes.sinpermiso')
+    @include('includes.sinpermiso')
 @endcan

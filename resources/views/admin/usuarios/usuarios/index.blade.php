@@ -1,4 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
+@extends('layouts.admin.admin')
 {{-- @extends('layouts.app') --}}
 @can('users.listar')
 
@@ -46,13 +46,13 @@
                                     <a href="{{ route('usuarios.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
                                 @endcan
                                 
-                                @can('users.exportar')
+                                {{-- @can('users.exportar')
                                     <form action="{{ route("export.usuarios.index") }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="buscar_exportar" value="{{request()->query('buscar')}}">
                                         <button type="submit" class="dropdown-item"><i class="fas fa-file-excel text-success"></i> Exportar</button>
                                     </form>
-                                @endcan
+                                @endcan --}}
                                 
                             </div>
                         </div>
@@ -133,5 +133,5 @@
 
 
 @else
-    @include('layouts.paginas.mensajes.sinpermiso')
+    @include('includes.sinpermiso')
 @endcan
