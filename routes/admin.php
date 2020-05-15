@@ -23,8 +23,10 @@ Route::group(
 function () {
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
-
-    // Route::resource('empresas', 'Encuestas\Administracion\EmpresasController');
+    
+    Route::resource('empresas', 'Admin\EmpresasController');
+    Route::resource('roles', 'Admin\Roles\RolesController');
+    
 });
 
 
@@ -40,9 +42,10 @@ function() {
     Route::get("seleccionarperiodo", 'Admin\SeleccionarperiodoController@seleccionarperiodo')->name("config.seleccionar.periodo");
     Route::post("seleccionarperiodo", 'Admin\SeleccionarperiodoController@establecerperiodo')->name("config.establecer.periodo");
     
-    
+    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
+    Route::resource("empresas", 'Admin\EmpresasController');
+
     // Route::resource('periodos', 'Encuestas\Administracion\PeriodosController');
-    Route::resource('roles', 'Admin\Roles\RolesController');
     Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);

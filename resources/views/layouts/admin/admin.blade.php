@@ -40,11 +40,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <img width="25px" height="25px" 
-                            @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
+                            {{-- @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
                             @else 
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
-                            @endif
+                            @endif --}}
                         alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -78,7 +78,7 @@
             </ul>
         </nav>
       
-        @include('layouts.adminlte3.sidebar')
+        @include('layouts.admin.sidebar')
   
         <div class="content-wrapper">
             <div class="content-header">
