@@ -26,6 +26,8 @@ function () {
     
     Route::resource('empresas', 'Admin\EmpresasController');
     Route::resource('roles', 'Admin\Roles\RolesController');
+    Route::resource('menus', 'Admin\Menus\MenusController');
+    Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
 
 });
 
@@ -39,20 +41,17 @@ Route::group([
 ], 
 function() {
 
+    Route::resource('periodos', 'Admin\PeriodosController');
     Route::get("seleccionarperiodo", 'Admin\SeleccionarperiodoController@seleccionarperiodo')->name("config.seleccionar.periodo");
     Route::post("seleccionarperiodo", 'Admin\SeleccionarperiodoController@establecerperiodo')->name("config.establecer.periodo");
     
     Route::resource("empresarubros", 'Admin\EmpresarubrosController');
-    Route::resource("empresas", 'Admin\EmpresasController');
-    Route::resource('periodos', 'Admin\PeriodosController');
-    Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
     
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
     
-    Route::resource('menus', 'Admin\Menus\MenusController');
     
     Route::resource('productos', 'Admin\ProductosController');
     Route::resource('categorias', 'Admin\ProductocategoriasController');

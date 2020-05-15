@@ -38,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+
+    public function periodos(){
+        return $this->belongsToMany('App\Models\Admin\Periodo','userperiodos', 'user_id', 'periodo_id')->withTimestamps();
+    }
+
+    public function empresas(){
+        return $this->belongsToMany('App\Models\Admin\Empresa','userempresas', 'user_id', 'empresa_id')
+        ->withPivot('estado')
+        ->withTimestamps()
+        ->wherePivot('estado', 1);
+    }
 }

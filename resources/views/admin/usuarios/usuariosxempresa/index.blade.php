@@ -12,7 +12,7 @@
                         <div class="col-11">
                             <h3>Usuarios por empresa</h3>
                             <small class="text-muted">
-                                Por favor agregue usuarios al empresa @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif
+                                Por favor agregue usuarios a la empresa: @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif
                             </small>                
                         </div>
                         <div class="mb-3 text-center col-1">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="row card-body">
                     <!-- @can('users.listar') -->
-                    <div class="col-12 col-md-9 mb-3">
+                    <div class="col-12 col-md-12 mb-3">
                         <form id="form-buscar-usuarios" action="">
                             <div class="input-group">
                                 <input type="text" class="form-control rounded-1" placeholder="Buscar" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
