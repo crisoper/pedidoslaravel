@@ -23,6 +23,17 @@ class Empresa extends Model
 
 
     /*
+    * Relacion muchos a muchos con usuarios
+    */
+    public function usuarios(){
+        return $this->belongsToMany('\App\User','userempresas', "empresa_id", "user_id")
+        ->withPivot('estado')
+        ->withTimestamps()
+        ->wherePivot('estado', 1);
+    }
+
+
+    /*
     * Usuario que ha creado el registro
     */
     public function creador()
