@@ -32,10 +32,7 @@ Route::group(
     ],
 ], 
 function () {
-    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
-    Route::resource("empresas", 'Admin\EmpresasController');
     Route::resource("productos", 'Admin\ProductosController');
-    Route::resource('productos', 'Admin\ProductosController');
     // Route::get("productos.index", 'Admin\ProductosController@index')->name("productos.index");
     // Route::get("productos.create", 'Admin\ProductosController@create')->name("productos.create");
     // Route::post("productos.store", 'Admin\ProductosController@store')->name("productos.store");
