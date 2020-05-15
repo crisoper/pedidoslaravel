@@ -18,8 +18,21 @@ class ProductocategoriasController extends Controller
      */
     public function index()
     {
+       
+
         $categorias = Productocategoria::get();
-        return view('admin\productocategorias\index', compact('categorias'));
+        if (!empty(request()->buscar)) 
+        {
+            $categorias = Productocategoria::where('nombre', 'like', '%'.request()->buscar.'%' )
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+            return view('admin.productocategorias.index', compact('categorias'));
+        }
+        else
+        {
+            $categorias = Productocategoria::orderBy('id', 'desc')->paginate(10);
+            return view('admin.productocategorias.index', compact('categorias'));
+        }
     }
     
     /**
@@ -115,6 +128,8 @@ class ProductocategoriasController extends Controller
         $categorias->delete();
 
         return redirect()->route('categorias.index');
+
+        
 
     }
 }

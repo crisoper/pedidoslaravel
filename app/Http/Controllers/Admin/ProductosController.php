@@ -19,8 +19,20 @@ class ProductosController extends Controller
     public function index()
     {
         $categorias = Productocategoria::get();
-        $productos = Producto::where('empresa_id', 1)->orWhere('stock' ,'>',0)->get();
-        return view('admin.productos.index', compact('categorias', 'productos'));
+        if (!empty(request()->buscar)) 
+        {
+            $productos = Producto::where('nombre', 'like', '%'.request()->buscar.'%' )
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+            return view('admin.productos.index', compact('productos','categorias'));
+        }
+        else
+        {
+            $productos = Producto::orderBy('id', 'desc')->paginate(10);
+            return view('admin.productos.index', compact('productos','categorias'));
+        }
+
+
     }
 
     /**

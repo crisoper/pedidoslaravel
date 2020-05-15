@@ -17,9 +17,22 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $tags =Tag::get();
-        return view('admin.tags.index', compact('tags'));
+      
+       
+        if (!empty(request()->buscar)) 
+        {
+            $tags = Tag::where('nombre', 'like', '%'.request()->buscar.'%' )
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+            return view('admin.tags.index', compact('tags'));
+        }
+        else
+        {
+            $tags = Tag::orderBy('id', 'desc')->paginate(10);
+            return view('admin.tags.index', compact('tags'));
+        }
     }
+    
 
     /**
      * Show the form for creating a new resource.
