@@ -1,4 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
+@extends('layouts.admin.admin')
 
 
 @can('periodos.listar')

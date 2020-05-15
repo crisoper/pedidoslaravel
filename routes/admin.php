@@ -26,7 +26,7 @@ function () {
     
     Route::resource('empresas', 'Admin\EmpresasController');
     Route::resource('roles', 'Admin\Roles\RolesController');
-    
+
 });
 
 
@@ -44,9 +44,9 @@ function() {
     
     Route::resource("empresarubros", 'Admin\EmpresarubrosController');
     Route::resource("empresas", 'Admin\EmpresasController');
-
-    // Route::resource('periodos', 'Encuestas\Administracion\PeriodosController');
+    Route::resource('periodos', 'Admin\PeriodosController');
     Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
+    
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');

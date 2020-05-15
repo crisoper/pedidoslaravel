@@ -1,5 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
-{{-- @extends('layouts.app') --}}
+@extends('layouts.admin.admin')
 
 @can('periodos.crear')
 

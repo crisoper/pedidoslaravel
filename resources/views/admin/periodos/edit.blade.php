@@ -1,5 +1,4 @@
-@extends('layouts.adminlte3.adminlte3')
-{{-- @extends('layouts.app') --}}
+@extends('layouts.admin.admin')
 
 @can('periodos.editar')
 
@@ -18,9 +17,10 @@
                             <div class="form-group col-md-3">
                                 <label for="nombre">Empresa ID:</label>
                                 <select name="empresa_id" id="empresa_id" class="form-control">
+                                    <option value="">Seleccionar empresa</option>
                                     @foreach ($empresas as $empresa)
                                     <option value="{{ $empresa->id }}" 
-                                        @if ( $empresa->nombre == $periodo->empresa->nombre )
+                                        @if ( $empresa->id == $periodo->empresa_id )
                                             selected
                                         @endif
                                         >{{ $empresa->nombre }}</option>
@@ -45,7 +45,10 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="estado">Estado:</label>
-                                <input type="text" name="estado" id="estado" class="form-control" value="{{ $periodo->estado }}">
+                                <select name="estado" id="estado" class="form-control">
+                                    <option value="1" @if ( $periodo->estado == "1" ) selected @endif>Activo</option>
+                                    <option value="0" @if ( $periodo->estado == "0" ) selected @endif>Inactivo</option>
+                                </select>
                                 <span class="text-danger">{{ $errors->first('estado') }}</span>
                             </div>
                             <div class="form-group col-12">
