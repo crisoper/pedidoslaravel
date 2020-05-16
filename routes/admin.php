@@ -25,6 +25,14 @@ function () {
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
     
     Route::resource('empresas', 'Admin\EmpresasController');
+    // Comprobantes tipos
+    Route::resource('comprobantetipos', 'Admin\ComprobantestiposController');
+    
+    Route::get('empresas/{empresa}/agregarcomprobantetipos', 'Admin\EmpresasController@agregarcomprobantetipos')->name('empresas.agregarcomprobantetipos');
+    Route::post('empresas/{empresa}/guardarcomprobantetipos', 'Admin\EmpresasController@guardarcomprobantetipos')->name('empresas.guardarcomprobantetipos');
+
+
+
     Route::resource('roles', 'Admin\Roles\RolesController');
     Route::resource('menus', 'Admin\Menus\MenusController');
     Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
@@ -40,12 +48,12 @@ Route::group([
     ],
 ], 
 function() {
+    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
 
     Route::resource('periodos', 'Admin\PeriodosController');
     Route::get("seleccionarperiodo", 'Admin\SeleccionarperiodoController@seleccionarperiodo')->name("config.seleccionar.periodo");
     Route::post("seleccionarperiodo", 'Admin\SeleccionarperiodoController@establecerperiodo')->name("config.establecer.periodo");
     
-    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
     
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);
@@ -61,9 +69,6 @@ function() {
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
     
 
-    // Comprobantes tipos
-    Route::resource('comprobantetipos', 'Admin\ComprobantestiposController');
-    Route::resource('comprobantetiposxempresa', 'Admin\ComprobantetiposxempresaController');
 
 
 
@@ -80,8 +85,9 @@ function() {
         Route::resource('accionpermisos', 'Admin\Permisos\AccionpermisosController');
         
         Route::get('roles/{role}/getpermisos', ['as' => 'roles.getpermisos', 'uses' => 'Admin\Roles\RolesController@getpermisos']);
-        Route::get('roles/{role}/getmenus', ['as' => 'roles.generarmenus', 'uses' => 'Admin\Roles\RolesController@getmenus']);
         Route::post('roles/{role}/savepermisos', ['as' => 'roles.savepermisos', 'uses' => 'Admin\Roles\RolesController@savepermisos']);      //Guardar permisos por rol
+        
+        Route::get('roles/{role}/getmenus', ['as' => 'roles.generarmenus', 'uses' => 'Admin\Roles\RolesController@getmenus']);
         Route::post('roles/{role}/savemenus', ['as' => 'roles.generarmenussave', 'uses' => 'Admin\Roles\RolesController@savemenus']);      //Guardar menu por rol
 
         Route::resource('permissions', 'Admin\Permisos\PermisosController');

@@ -67,7 +67,7 @@ class SeleccionarperiodoController extends Controller
         }
         else if ( count($periodos)  > 1 ) {
             if ( auth()->user()->hasRole('SuperAdministrador') ){
-                    return view('encuestas.paginas.formseleccionarperiodo', compact('periodos') );                     
+                    return view('admin.periodos.formseleccionarperiodo', compact('periodos') );                     
             }
             else {
                 $periodos = Periodo::whereHas('usuarios', function ($query) {
@@ -85,7 +85,7 @@ class SeleccionarperiodoController extends Controller
                     return redirect()->route('home');
                 }
                 else if (count( $periodos ) > 1 )  {
-                    return view('encuestas.paginas.formseleccionarperiodo', compact('periodos') );  
+                    return view('admin.periodos.formseleccionarperiodo', compact('periodos') );  
                 }
                 else {
                     return view('includes.sinperiodosactivos');

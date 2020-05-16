@@ -27,6 +27,13 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 {{-- <script src="{{ asset('adminlte301/plugins/select2/js/select2.min.js') }}"></script> --}}
 
+    {{-- Agregar Imagenes --}}
+    <script type="text/javascript" src="{{ asset('agregarImagenes/js/fileinput.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('agregarImagenes/js/locales/es.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('agregarImagenes/themes/fas/theme.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/agregarImagenes.js') }}"></script>
+
+
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>

@@ -58,7 +58,7 @@ class SeleccionarempresaController extends Controller
         }else if( count( $empresas ) > 1 ){
            
             if ( auth()->user()->hasRole('SuperAdministrador') ){
-                    return view('encuestas.paginas.formseleccionarempresa', compact('empresas') );                     
+                    return view('admin.empresas.formseleccionarempresa', compact('empresas') );                     
             }else{
                 $empresas = Empresa::whereHas('usuarios', function ($query) {
                     $query->where( 'user_id', '=', auth()->user()->id );
@@ -71,7 +71,7 @@ class SeleccionarempresaController extends Controller
                     return redirect()->route('config.seleccionar.periodo');
                 }else{
 
-                    return view('encuestas.paginas.formseleccionarempresa', compact('empresas') );  
+                    return view('admin.empresas.formseleccionarempresa', compact('empresas') );  
                 }
                 
             } 

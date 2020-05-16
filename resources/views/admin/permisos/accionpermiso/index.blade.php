@@ -35,14 +35,6 @@
                                 @can('accionpermisos.crear')
                                     <a href="{{ route('accionpermisos.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
                                 @endcan
-
-                                {{-- @can('accionpermisos.exportarexcel')
-                                    <form action="{{ route('export.accionpermisos.index') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="buscar_exportar" value="{{request()->query('buscar')}}">
-                                        <button type="submit" class="dropdown-item">Exportar</button>
-                                    </form>
-                                @endcan --}}
                             </div>
                         </div>
                     </div>

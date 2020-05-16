@@ -21,28 +21,6 @@
                     <h3>Permisos rol: {{ str_replace("menu_", "", str_replace("web_", "", $rol->name ) ) }}</h3>
                 </div>
                 <div class="card-body">
-                    {{-- <div class="row py-2">
-                        <div class="col-xs-12 col-sm-6">
-                            <form action="" id="buscar-datos-esquema">
-                                <div class="form-row">
-                                    <label for="">Seleccionar esquema</label>
-                                    <select name="esquema" id="esquema" class="form-control">
-                                        @foreach ($esquemas as $esquema)
-                                            <option 
-                                            value="{{ $esquema->schemaname }}"
-                                            @if ( $buscarEsquema == $esquema->schemaname )
-                                                selected
-                                            @endif
-                                            >
-                                            {{ ucfirst($esquema->schemaname) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
-                
                     {{-- @can('public.roles.crear') --}}
                     <form action="{{ route('roles.savepermisos', $rol->id ) }}" method="POST">
                     
