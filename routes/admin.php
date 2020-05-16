@@ -21,20 +21,15 @@ Route::group(
     ],
 ], 
 function () {
+    
+
+    //EMPRESAS
+    Route::resource('empresas', 'Admin\EmpresasController');
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
     
-    Route::resource('empresas', 'Admin\EmpresasController');
-    // Comprobantes tipos
-    Route::resource('comprobantetipos', 'Admin\ComprobantestiposController');
-    
-    Route::get('empresas/{empresa}/agregarcomprobantetipos', 'Admin\EmpresasController@agregarcomprobantetipos')->name('empresas.agregarcomprobantetipos');
-    Route::post('empresas/{empresa}/guardarcomprobantetipos', 'Admin\EmpresasController@guardarcomprobantetipos')->name('empresas.guardarcomprobantetipos');
-
-
 
     Route::resource('roles', 'Admin\Roles\RolesController');
-    Route::resource('menus', 'Admin\Menus\MenusController');
     Route::resource('usuarios', 'Admin\Usuarios\UsuariosController');
 
 });
@@ -48,12 +43,15 @@ Route::group([
     ],
 ], 
 function() {
-    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
+    
+    //MENUS
+    Route::resource('menus', 'Admin\Menus\MenusController');
 
     Route::resource('periodos', 'Admin\PeriodosController');
     Route::get("seleccionarperiodo", 'Admin\SeleccionarperiodoController@seleccionarperiodo')->name("config.seleccionar.periodo");
     Route::post("seleccionarperiodo", 'Admin\SeleccionarperiodoController@establecerperiodo')->name("config.establecer.periodo");
     
+    Route::resource('usuariosxperiodo', 'Admin\Usuarios\UsuariosxperiodoController');
     
     Route::get('miperfil', ['as' => 'usuarios.miperfil', 'uses' => 'Admin\Usuarios\UsuariosController@miperfil']);
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);
@@ -65,13 +63,21 @@ function() {
     Route::resource('categorias', 'Admin\ProductocategoriasController');
     Route::resource('tags', 'Admin\TagsController');
     
+
+
+    //EMPRESA RUBROS
+    Route::resource("empresarubros", 'Admin\EmpresarubrosController');
+
+    // COMPROBANTE TIPOS
+    Route::resource('comprobantetipos', 'Admin\ComprobantestiposController');
+    Route::get('empresas/{empresa}/agregarcomprobantetipos', 'Admin\EmpresasController@agregarcomprobantetipos')->name('empresas.agregarcomprobantetipos');
+    Route::post('empresas/{empresa}/guardarcomprobantetipos', 'Admin\EmpresasController@guardarcomprobantetipos')->name('empresas.guardarcomprobantetipos');
+
     //Usuarios que pertencen a una empresa
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
+
+
     
-
-
-
-
     //Rutas que requieren un periodo para continuar
     Route::group([
         'middleware' => [
@@ -80,7 +86,6 @@ function() {
     ],
     function() {
         
-        Route::resource('usuariosxperiodo', 'Admin\Usuarios\UsuariosxperiodoController');
         
         Route::resource('accionpermisos', 'Admin\Permisos\AccionpermisosController');
         

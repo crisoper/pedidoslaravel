@@ -2,3 +2,16 @@
 #empresaLogo {
     width: 50px;
 }
+
+.link{
+    width: 25%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-right: 2px solid black;
+}
+.link:hover{
+    background-color: rgb(0, 0, 0);
+} 

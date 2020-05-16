@@ -44,7 +44,7 @@
 @endsection
 
 
-@section('scriptspersonalizados')
+@section('scripts')
 
 <script>
 $( document ).ready( function () {

@@ -19,11 +19,10 @@
                             <a title="Ir a principal" class="" href="{{Route('home')}}"><h4><i class="fas fa-reply "></i></h4></a>
                         </div>
                     </div>
-                   
-                    
                 </div>
+
                 <div class="row card-body">
-                    <!-- @can('users.listar') -->
+                    
                     <div class="col-12 col-md-12 mb-3">
                         <form id="form-buscar-usuarios" action="">
                             <div class="input-group">
@@ -37,8 +36,7 @@
                             </div>
                         </form>
                     </div>
-
-                    <!-- @endcan -->
+                    
                     <div class="col-12">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-sm">
