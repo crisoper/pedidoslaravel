@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Usuarios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Encuestas\Administracion\Empresas;
+use App\Models\Admin\Empresa;
 use App\User;
 use Illuminate\Http\Request;
 use Session;
@@ -53,7 +53,7 @@ class UsuariosxempresaController extends Controller
 
     public function store( Request $request )
     {
-        $empresa = Empresas::find( $this->empresaId() );
+        $empresa = Empresa::find( $this->empresaId() );
         if( $empresa ) {
             $empresa->usuarios()->attach($request->usuario, ['estado' => 1]);
             
@@ -69,7 +69,7 @@ class UsuariosxempresaController extends Controller
 
     public function destroy ( $idusuario ) {
 
-        $empresa = Empresas::find( $this->empresaId() );
+        $empresa = Empresa::find( $this->empresaId() );
         
         if( $empresa ) {
             $empresa->usuarios()->detach( $idusuario );

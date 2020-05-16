@@ -14,16 +14,17 @@
                 <div class="card-body">
                     <form action="{{route('periodos.store')}}" method="POST">
                         <div class="form-row">
-                            {{--  <div class="form-group col-md-3">
+                             <div class="form-group col-md-3">
                                 <label for="empresa_id">Empresa:</label>
                                 <select name="empresa_id" id="empresa_id" class="form-control" autofocus>
+                                    <option value="">Seleccionar empresa</option>
                                     @foreach ($empresas as $empresa)
                                     <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">{{ $errors->first('empresa_id') }}</span>
-                            </div>  --}}
-                            <div class="form-group col-md-12">
+                            </div> 
+                            <div class="form-group col-md-9">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old("nombre") }}">
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
@@ -39,8 +40,11 @@
                                 <span class="text-danger">{{ $errors->first('fin') }}</span>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="estado">estado:</label>
-                                <input type="text" name="estado" id="estado" class="form-control"  value="{{ old("estado") }}">
+                                <label for="estado">Estado:</label>
+                                <select name="estado" id="estado" class="form-control">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
                                 <span class="text-danger">{{ $errors->first('estado') }}</span>
                             </div>
                             <div class="form-group col-12">

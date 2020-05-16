@@ -17,4 +17,10 @@ class Comprobantetipo extends Model
         'descripcion',
         'created_by',
     ];
+
+    
+    public function empresas(){
+        return $this->belongsToMany('App\Models\Admin\Empresa','empresacomprabantetipos', 'comprabantetipo_id', 'empresa_id')
+                    ->withTimestamps();
+    }
 }

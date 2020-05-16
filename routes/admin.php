@@ -56,12 +56,17 @@ function() {
     Route::resource('productos', 'Admin\ProductosController');
     Route::resource('categorias', 'Admin\ProductocategoriasController');
     Route::resource('tags', 'Admin\TagsController');
-
-
     
     //Usuarios que pertencen a una empresa
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
     
+
+    // Comprobantes tipos
+    Route::resource('comprobantetipos', 'Admin\ComprobantestiposController');
+    Route::resource('comprobantetiposxempresa', 'Admin\ComprobantetiposxempresaController');
+
+
+
     //Rutas que requieren un periodo para continuar
     Route::group([
         'middleware' => [

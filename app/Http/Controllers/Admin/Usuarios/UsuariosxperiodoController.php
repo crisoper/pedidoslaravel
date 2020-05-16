@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Usuarios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Encuestas\Administracion\Periodos;
+use App\Models\Admin\Periodo;
 use App\User;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class UsuariosxperiodoController extends Controller
 {
@@ -53,7 +53,7 @@ class UsuariosxperiodoController extends Controller
 
     public function store( Request $request )
     {
-        $periodo = Periodos::find( $this->periodoId() );
+        $periodo = Periodo::find( $this->periodoId() );
         
         if( $periodo ) {
             $periodo->usuarios()->attach($request->usuario);
@@ -69,7 +69,7 @@ class UsuariosxperiodoController extends Controller
 
     public function destroy ( $idusuario ) {
 
-        $periodo = Periodos::find( $this->periodoId() );
+        $periodo = Periodo::find( $this->periodoId() );
         
         if( $periodo ) {
             $periodo->usuarios()->detach( $idusuario );
