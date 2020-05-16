@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Publico;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Publico\ProductoResource;
+use App\Models\Admin\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -12,9 +14,23 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        return response()->json(["data" => []], 200);
+        $productos = Producto::where("nombre", 'like', "%");
+
+        if ( $request->has("buscar") and $request->buscar != "" ) {
+            $productos = $productos->where("nombre", "like", "%".$request->buscar."%");
+        }
+
+        $productos = $productos->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->paginate(10);
+
+        return ProductoResource::collection( $productos );
+        // return response()->json(["data" => $productos ], 200);
     }
 
     /**
