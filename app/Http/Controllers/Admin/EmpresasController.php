@@ -8,9 +8,10 @@ use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 use App\Models\Admin\Comprobantetipo;
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Empresarubro;
-use Intervention\Image\Facades\Image;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+// use Intervention\Image\Facades\Image;
+use Image;
+use Illuminate\Http\Request;
 
 class EmpresasController extends Controller
 {

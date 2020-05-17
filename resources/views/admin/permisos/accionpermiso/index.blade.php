@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app') --}}
+
 @extends('layouts.admin.admin')
 
 @section('tituloseccion', 'Admistracion')
@@ -82,12 +82,6 @@
         </div>
     </div>
 </div>
-
-@endsection
-
-
-@section('scriptspersonalizados')
-
 
 @endsection
 

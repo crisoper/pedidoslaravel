@@ -8,9 +8,8 @@ use App\Http\Requests\Admin\Permisos\PemisosUpdateRequest;
 use App\Models\Admin\Menus\Menu;
 use App\Models\Admin\Permisos\Accionpermiso;
 use App\Models\Admin\Permisos\Permission;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class PermisosController extends Controller
 {
@@ -79,31 +78,7 @@ class PermisosController extends Controller
      */
     public function store(PemisosCreateRequest $request)
     {
-        // $variables = [
-        //                 'name' => $request->esquema.'.'.$request->tabla.'.'.$request->accionpermiso,
-        //                 'esquema' => $request->esquema,
-        //                 'tabla' => $request->tabla,
-        //                 'accionpermiso' => $request->accionpermiso
-        //             ];
-
-
-        // $validator = Validator::make(
-        //     $variables,
-        //     [
-        //         'esquema' => ['required'],
-        //         'tabla' => ['required'],
-        //         'accionpermiso' => ['required'],
-        //         'name' => ['required', 'unique:permissions'],
-        //     ]
-        // );
-
-        // if ($validator->fails()) {
-        //     return redirect()->back() ->withErrors($validator);
-        // }
-
-
-        foreach( $request->acciones as $accion )
-        {
+        foreach( $request->acciones as $accion ) {
             Permission::updateOrCreate(
                 [
                     'name' => $request->input('tabla').'.'.$accion, 
@@ -124,7 +99,6 @@ class PermisosController extends Controller
     {
 
         $accionpermisos = AccionPermiso::get();
-
 
             $tablas = $this->nombretablas( 
                 DB::select("SHOW TABLES")
@@ -183,7 +157,7 @@ class PermisosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( PemissionUpdateRequest $request, $id)
+    public function update( PemisosUpdateRequest $request, $id)
     {
         $permission = Permission::findOrFail($id);
         $permission->name = $request->input('name');
