@@ -73,8 +73,8 @@ class EmpresasController extends Controller
             });
             $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
 
-            $empresa->logo =  $nuevoNombreLogo;
         }
+        $empresa->logo =  $nuevoNombreLogo;
         $empresa->created_by = Auth()->user()->id;
 
         $empresa->save();
@@ -137,10 +137,10 @@ class EmpresasController extends Controller
             });
             $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
 
-            $empresa->logo =  $nuevoNombreLogo;
         }
-        
+        $empresa->logo =  $nuevoNombreLogo;
         $empresa->updated_by = Auth()->user()->id;
+        
         $empresa->save();
 
         return redirect()->route('empresas.index')->with("info", "Registro editado");
