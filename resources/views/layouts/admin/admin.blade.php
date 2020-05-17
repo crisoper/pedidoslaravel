@@ -28,7 +28,6 @@
                     <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small>
                 </li>
             </ul>
-    
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">

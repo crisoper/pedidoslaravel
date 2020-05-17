@@ -84,12 +84,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
             @yield('contenido')
         </main>
     </div>
 </body>
-
 
 
 @include('includes.ajaxsetup')

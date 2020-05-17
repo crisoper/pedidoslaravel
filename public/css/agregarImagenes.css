@@ -1,0 +1,74 @@
+
+.file-preview {
+    border: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.file-caption-main {
+    display: none !important;
+}
+.file-preview-thumbnails {
+    margin: auto !important;
+    width: 300px !important;
+}
+.file-preview-frame {
+    width: 100% !important;
+    margin: 0px !important;
+}
+.kv-file-content {
+    width: 100% !important;
+    height: 190px !important;
+}
+.file-preview-image {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.kv-file-remove  {
+    display: none !important;
+}
+.kv-file-zoom  {
+    display: none !important;
+}
+
+.file-drag-handle, .file-upload-indicator, .file-actions {
+    display: none !important;
+}
+
+
+
+
+
+
+/* INPUT AGREGAR IMAGEN PERSONALIZADO */
+.cajaInputAgregarLogo > input {
+    display: none;
+}
+.cajaInputAgregarLogo label {
+    display: block;
+}
+.cajaNombreLogo {
+    display: inline-block;
+    margin-top: 2px;
+    width: 85%;
+    /* color: #647d8a; */
+    /* background-color: #0f263b !important; */
+    border: 1px solid #ced4da !important;
+    padding: 8px 5px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.cajaNombreLogo:hover {
+    cursor: pointer;
+}
+.cajaNombreLogo i {
+    display: block;
+    margin-bottom: 5px;
+}
+.nombreLogo i,
+.nombreLogo i:hover,
+.nombreLogo i:focus {
+    border: 1px solid #ced4da !important;
+}
+
+

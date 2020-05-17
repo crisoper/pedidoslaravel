@@ -11,4 +11,11 @@ class Tag extends Model
     protected $fillable=[
         'nombre',
     ];
+    
+    //Tags del producto
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Admin\Producto', 'productotags', 'producto_id', 'tag_id');
+    }
+    
 }

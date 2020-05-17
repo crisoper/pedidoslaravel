@@ -85,9 +85,15 @@ class EmpresarubrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmpresarubrosCreateRequest $request, $id)
     {
-        //
+        $empresarubro = Empresarubro::findOrFail($id);
+        $empresarubro->nombre = $request->nombre;
+        $empresarubro->descripcion = $request->descripcion;
+        $empresarubro->updated_by = auth()->user()->id;
+        $empresarubro->save();
+
+        return redirect()->route("empresarubros.index")->with("info", "Registro editado");
     }
 
     /**
@@ -98,6 +104,10 @@ class EmpresarubrosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empresarubro = Empresarubro::findOrFail($id);
+        $empresarubro->deleted_at = Auth()->user()->id;
+        $empresarubro->delete();
+        
+       return redirect()->route('empresarubros.index')->with("info", "Registro eliminado");
     }
 }

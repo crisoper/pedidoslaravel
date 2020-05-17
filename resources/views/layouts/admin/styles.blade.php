@@ -26,3 +26,10 @@
 {{-- <link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}"> --}}
 
+
+    {{-- Agregar Imagenes --}}
+    <link href="{{ asset('css/agregarImagenes.css') }}" rel="stylesheet">
+    <link href="{{ asset('agregarImagenes/css/fileinput.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/imagenes.css') }}" rel="stylesheet">
+
+    

@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
+use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
+use App\Models\Admin\Comprobantetipo;
 use App\Models\Admin\Empresa;
+use App\Models\Admin\Empresarubro;
+use Illuminate\Support\Facades\Storage;
+// use Intervention\Image\Facades\Image;
+use Image;
 use Illuminate\Http\Request;
 
 class EmpresasController extends Controller
@@ -13,18 +20,21 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index()
     {
-        $empresas = Empresa::query();
+        $empresas = Empresa::get();
 
-        if( $request->has("buscar") and $request->buscar != "" ) {
-            $empresas = $empresas->where("ruc", $request->buscar)
-            ->orWhere("nombre", "like", "%".$request->buscar."%" );
+        if(!empty(request()->buscar)){
+            $empresas = Empresa::where('ruc','like','%'.request()->buscar.'%')
+            ->orWhere('nombre','like','%'.request()->buscar.'%')
+            ->orderBy(request('sort','id'),'ASC')
+            ->paginate(10);
+            return view('admin.empresas.index', compact('empresas'));
+        }else{
+            $empresas = Empresa::orderBy(request('sort','id'),'ASC')
+            ->paginate(10);
+            return view('admin.empresas.index', compact('empresas'));
         }
-
-        $empresas = $empresas = $empresas->paginate(7);
-        
-        return view("admin.empresas.index", compact("empresas"));
     }
 
     /**
@@ -34,7 +44,8 @@ class EmpresasController extends Controller
      */
     public function create()
     {
-        //
+        $empresarubros = Empresarubro::get();
+        return view('admin.empresas.create', compact('empresarubros'));
     }
 
     /**
@@ -43,9 +54,32 @@ class EmpresasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpresaCreateRequest $request)
     {
-        //
+        $empresa = new Empresa();
+        $empresa->rubro_id = $request->rubro_id;
+        $empresa->ruc = $request->ruc;
+        $empresa->nombre = $request->nombre;
+        $empresa->direccion = $request->direccion;
+        $empresa->paginaweb = $request->paginaweb;
+        
+        if ($request->hasFile('logo')) {
+            $nombreOriginalLogo = $request->file('logo');
+            $nuevoNombreLogo = time().".".$nombreOriginalLogo->getClientOriginalExtension();
+            $destinationPath = storage_path('app/public/empresaslogos');
+            $dimensionLogo = Image::make($nombreOriginalLogo->path());
+            $dimensionLogo->fit(300, 200, function ($constraint) {
+                $constraint->upsize();
+            });
+            $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
+
+        }
+        $empresa->logo =  $nuevoNombreLogo;
+        $empresa->created_by = Auth()->user()->id;
+
+        $empresa->save();
+
+        return redirect()->route('empresas.index')->with("info", "Registro creado");
     }
 
     /**
@@ -67,7 +101,10 @@ class EmpresasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empresarubros = Empresarubro::get();
+        $empresa = Empresa::findOrFail($id);
+
+        return view('admin.empresas.edit', compact('empresa', 'empresarubros'));
     }
 
     /**
@@ -77,9 +114,36 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmpresaUpdateRequest $request, $id)
     {
-        //
+        $empresa = Empresa::findOrFail($id);
+        $empresa->rubro_id = $request->rubro_id;
+        $empresa->ruc = $request->ruc;
+        $empresa->nombre = $request->nombre;
+        $empresa->direccion = $request->direccion;
+        $empresa->paginaweb = $request->paginaweb;
+        
+        if (Storage::exists("/public/empresaslogos/$empresa->logo"))
+        {
+            Storage::delete("/public/empresaslogos/$empresa->logo");
+        }
+        if ($request->hasFile('logo')) {
+            $nombreOriginalLogo = $request->file('logo');
+            $nuevoNombreLogo = time().".".$nombreOriginalLogo->getClientOriginalExtension();
+            $destinationPath = storage_path('app/public/empresaslogos');
+            $dimensionLogo = Image::make($nombreOriginalLogo->path());
+            $dimensionLogo->fit(300, 200, function ($constraint) {
+                $constraint->upsize();
+            });
+            $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
+
+        }
+        $empresa->logo =  $nuevoNombreLogo;
+        $empresa->updated_by = Auth()->user()->id;
+        
+        $empresa->save();
+
+        return redirect()->route('empresas.index')->with("info", "Registro editado");
     }
 
     /**
@@ -90,6 +154,17 @@ class EmpresasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empresa = Empresa::findOrFail($id);
+        if (Storage::exists("/public/empresaslogos/$empresa->logo"))
+        {
+            Storage::delete("/public/empresaslogos/$empresa->logo");
+        }
+        $empresa->deleted_at = Auth()->user()->id;
+        $empresa->delete();
+        
+       return redirect()->route('empresas.index')->with("info", "Registro eliminado");
     }
+
+
+    
 }

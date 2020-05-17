@@ -32,6 +32,9 @@ class Empresa extends Model
         ->wherePivot('estado', 1);
     }
 
+    public function periodo(){
+        return $this->hasMany('App\Models\Encuestas\Administracion\Periodos', 'empresa_id','id');
+    }
 
     /*
     * Usuario que ha creado el registro

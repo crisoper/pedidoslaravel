@@ -11,7 +11,6 @@
                     <h3>Crear accion permiso</h3>
                 </div>
                 <div class="card-body">
-                    {{-- @can('usuarios.accionpermisos.crear') --}}
             
                     <form action="{{ route('accionpermisos.store') }}" method="POST">
                         @csrf
@@ -30,8 +29,7 @@
                             </div>
                         </div>
                     </form>
-            
-                    {{-- @endcan --}}
+                    
                 </div>
             </div>
         </div>
