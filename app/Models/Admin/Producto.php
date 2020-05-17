@@ -19,5 +19,10 @@ class Producto extends Model
         'stock',
         'created_by',
     ];
+
+    public function fotos()
+    {
+      return  $this->hasMany('App\Models\Admin\Productofoto','producto_id','id');
+    }
     
 }
