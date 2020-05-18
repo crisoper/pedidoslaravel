@@ -22,7 +22,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 
-                                <input type="text" name="nombre" id="nombre"  class="form-control">
+                                <input type="text" name="nombre" id="nombre"  class="form-control" value="{{old('nombre')}}">
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
                             </div>
                             <div class="form-group col-md-12">

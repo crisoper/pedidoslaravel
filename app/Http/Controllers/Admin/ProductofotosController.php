@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductofotosController extends Controller
 {
@@ -12,6 +13,21 @@ class ProductofotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    private function periodoId( Request $request  ) {
+        return $request->session()->get('periodoactual', 0);
+    }  
+    
+
+    private function empresaId() {
+        return Session::get( 'empresaactual', 0 );
+    }
+
     public function index()
     {
         //

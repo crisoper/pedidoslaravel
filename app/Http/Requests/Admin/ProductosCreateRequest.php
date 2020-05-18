@@ -31,7 +31,15 @@ class ProductosCreateRequest extends FormRequest
             'precio'=>['required'],
             'stock'=>['required'],
             'codigo' =>['required'],
-
+            'fotoproducto'=>['required'],
+        ];
+    }
+    public function messages()
+    {
+        return [
+            
+            'fotoproducto.required_without'  => 'El campo imagen es obligatorio',
+           
         ];
     }
 }

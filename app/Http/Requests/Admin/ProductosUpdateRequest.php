@@ -31,6 +31,7 @@ class ProductosUpdateRequest extends FormRequest
             'descripcion'=>['required'],
             'precio'=>['required'],
             'stock'=>['required'],
+            
 
         ];
     }
