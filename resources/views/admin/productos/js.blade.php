@@ -4,10 +4,12 @@
         
         $("#imagenmuestra").hide();
         $('#categoriaid').select2({
-                placeholder: "Seleccione categoría"
+                placeholder: "Seleccione categoría",
+               theme: "classic"
         });
        $('#tagid').select2({
-               placeholder: "Selccione Tag"
+               placeholder: "Selccione Tag",
+               theme: "classic"
        });
 
        $("#cargarfoto").on('click',function(){

@@ -32,7 +32,7 @@
                                         </div>
                                     
                                     
-                                        <div class="form-group ">                                        
+                                        <div class="form-group col-12">                                        
                                             <select class="form-control" name="categoriaid" id="categoriaid" >
                                                 <option value="">Seleccione categoría</option>
                                                 @foreach ($categorias as $categoria)
@@ -43,7 +43,7 @@
                                             </select>
                                             <span class="text-danger">{{ $errors->first('categoriaid') }}</span>
                                         </div>
-                                        <div class="form-group ">                                
+                                        <div class="form-group col-12">                                
                                             <select class="form-control" name="tagid" id="tagid" >
                                                 <option value=""></option>
                                                 @foreach ($tags as $tag)
