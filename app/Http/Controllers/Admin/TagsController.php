@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\TagCreateRequest;
 use App\Http\Requests\Admin\TagUpdateRequest;
 use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TagsController extends Controller
 {

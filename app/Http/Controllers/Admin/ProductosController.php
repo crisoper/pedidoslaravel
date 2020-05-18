@@ -129,7 +129,7 @@ class ProductosController extends Controller
             if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
     
                 $fotoproducto = Productofoto::firstOrNew([               
-                    'empresa_id'=>1,
+                    'empresa_id'=> $this->empresaId(),
                     'producto_id'=> $productos->id,
                     'nombre'=>  $filename,
                     'url' =>  'img_productos'.'/'.$filename,
