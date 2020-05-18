@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::post('/export/usuarios', 'Admin\Exports\Usuarios\UsuariosExportController@index')
-//     ->name('export.usuarios.index');
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/export/usuarios', 'Admin\Excel\UsuariosExportController@index')
+    ->name('export.usuarios.index');
     
-// });
+});
 

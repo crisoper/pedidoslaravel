@@ -28,12 +28,12 @@
                     
                         <div class="form-row">
                             @foreach ($comprobantetipos as $comprobantetipo)
-                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="col-12">
                                     <label class="form-check-label">
                                         <input 
                                             type="checkbox" 
-                                            nombre="comprobantetipos[]"
-                                            @if ( $comprobantetipo->nombre )
+                                            name="empresacomprobantetipos[]"
+                                            @if ( $comprobantetipo->id )
                                                 checked
                                             @endif
                                             value="{{ $comprobantetipo->nombre }}">

@@ -18,7 +18,7 @@ class Empresarubro extends Model
     */
     public function empresas()
     {
-        return $this->hasMany('App\Models\Admin\Empresarubro', 'rubro_id');
+        return $this->hasMany('App\Models\Admin\Empresa', 'rubro_id');
     }
 
 

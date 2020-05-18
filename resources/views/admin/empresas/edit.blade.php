@@ -22,9 +22,9 @@
                                             <option value="">Seleccionar Rubro</option>
                                             @foreach ($empresarubros as $empresarubro)
                                                 <option value="{{ $empresarubro->id }}" 
-                                                    {{-- @if ( $empresarubro->nombre == $empresa->empresarubro->nombre )
+                                                    @if ( $empresarubro->id == $empresa->rubro_id )
                                                         selected
-                                                    @endif --}}
+                                                    @endif
                                                     >{{ $empresarubro->nombre }}</option>
                                             @endforeach
                                             <span class="text-danger">{{ $errors->first('rubro_id') }}</span>
