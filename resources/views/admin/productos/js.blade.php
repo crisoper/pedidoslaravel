@@ -1,65 +1,114 @@
+
 <script>
-    $(document).ready(function(){
-
-        $("#btnenviarFormulario").on("click", function( event ) {
-        event.preventDefault();
-            $.ajax({
-                method: "POST",
-                dataType: "json",
-                url: $("#formularioProductos").attr("action"),
-                data : $("#formularioProductos").serialize(),
-                error: function( jqXHR, textStatus, errorThrown ) {
-                    if( jqXHR.status == 404 ) 
-                    {
-                    }
-                    else if( jqXHR.status == 422 ) 
-                    {
-                        GLOBARL_settearErroresEnCampos( jqXHR, "formularioProductos" );
-                    }
-                },
-                success: function( datos ) {
-                    console.log( datos );
-                    Confirmaregistro();
-                }
-            });
-        });
+    $(function(){   
         
-        function GLOBARL_settearErroresEnCampos( jqXHR, idElementoContenedorCampos ) {
+        $("#imagenmuestra").hide();
+        $('#categoriaid').select2({
+                placeholder: "Seleccione categoría"
+        });
+       $('#tagid').select2({
+               placeholder: "Selccione Tag"
+       });
 
-            //Mostramos errores devueltos desde Backend
-            let errorsRespuesta = jqXHR.responseJSON.errors;
-            $.each( errorsRespuesta, function( idElemento, arrayErrores ) {
-                $( "#" + idElemento ).addClass("is-invalid");
+       $("#cargarfoto").on('click',function(){
+           
+           $("#fotoproducto").trigger("click");
+           
+        //    $("#imagenmuestra").hide();
+       })
 
-                // Establecemos errores para select 2
-                // if( $( "#" + idElemento ).hasClass("select2") ) {
-                //     $( "#" + idElemento ).parent().find("span.select2-container").addClass("is-invalid");
-                //     $( "#" + idElemento ).parent().find(".select2-selection").addClass("is-invalid");
-                // }
+       //Cargo las imagenes del input y le digo que ejecute el metodo preview
+var upload = document.getElementById("fotoproducto");
+upload.addEventListener("change", preview, false);
 
-                arrayErrores.forEach( error => {
-                    MostrarNotificaciones( error , "error");
-                });
-           });
+function preview() {
+    $('#preview').html("");
+    //Obtengo las imagenes subidas
+    var fotosArray = this.files;
+    if (fotosArray.length > 5) {
+        alert("¡ATENCIÓN! Solo se permite como máximo 4 imagenes del producto. Por favor vuelva a seleccionar.");
+    } else{
+    var anyWindow = window.URL || window.webkitURL;
+    //Como puedo subir multimples archivos, hago un for para recorrer todo lo subido
+    for (var i = 0; i < fotosArray.length; i++) {
+        var objectUrl = anyWindow.createObjectURL(fotosArray[i]);
+        //Añado en una parte del form el img con la ruta de la foto
+        $("#preview").append("<div class='d-flex flex-column' col-1 id='"+fotosArray[i].name+"'><img class='uploaded_foto img-thumbnail' src='"+ objectUrl + "'width='100px' height='80px' />  <div>");
+        $('#imagenmuestra').attr('src',  objectUrl);
 
-            //Ocultamos los errores despues de 5 segundos
-            setTimeout( function() {
-                $("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
-            }, 5000);
+          $("#imagenmuestra").show();
+          $("#imgdefault").hide();
+        window.URL.revokeObjectURL(fotosArray[i]);
+    }
+    console.log(fotosArray);
+    }
+}
+// <button class='btn' type='button'><i class='fas fa-trash-alt' aria-hidden='true'></i></button>
+$('body #preview').on('mouseover', 'img', function(){
+          var src = $(this).prop('src');
+          $('#imagenmuestra').attr('src',  src);
+         
+  
+});
+    
 
-            }
-
-
-
-        function Confirmaregistro() {
-        bootbox.alert({
-            message: "Producto registrado correctamente!",
-            callback: function () {
-                window.location = $("#cancelar").attr("href");
-            }
-        })
-
-        }
-
+    $('#fotoproducto').fileinput({
+        language: 'es',
+        allowedFileExtensions: ['jpg', 'png', 'jpeg', 'svg'],
+        maxFileSize: 1000,
+        showUpload: false,
+        showClose: false,
+        initialPreviewAsData: true,
+        dropZoneEnabled: false,
+        theme: 'fas',
     });
-</script>
+
+
+
+$('#bntver').on('click',function(){
+  var i=0;
+  var fotos = fotoproducto.files;
+  var fotosArray = Array.from(fotos);
+  
+    $.each(fotosArray, function(indice, elemento) {
+        console.log( elemento.name );
+    });
+});
+
+// $("#fotoproducto").change(function() {
+//   readURL(this);   
+//   $("#imagenmuestra").show();
+//   $("#imgdefault").hide();
+
+// });
+
+function readURL(input) {
+    var fotos = fotoproducto.files;
+    var fotosArray = Array.from(fotos);
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        console.log(e);
+      // Asignamos el atributo src a la tag de imagen
+      $('#imagenmuestra').attr('src', e.target.result);
+        // $('#iconoimagen').attr('src', e.target.result);
+
+      $.each(fotosArray, function(indice, elemento) {
+        // $('#preview').attr('src', e.target.result);
+        var preview1 = "<img src='' width='100px' height='80px' data-initial-preview='#' accept='image/*'>" ;
+        $("#preview").append(preview1);
+    });
+
+    }
+    $.each(fotosArray, function(indice, elemento) {
+        reader.readAsDataURL(input.files[indice]);
+    });
+   
+  }
+}
+
+
+
+   });
+   </script>

@@ -21,18 +21,18 @@
                         <form action="{{route('productos.store')}}" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-12 d-flex flex-wrap">
-                                        <div class="col-6">
+                                        <div class="col-md-6 col-sm-12">
                                         <div class="form-group col-md-12">
-                                            <input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Producto">
+                                        <input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Producto" value="{{old('nombre')}}">
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="4" placeholder="Descripcion de producto"></textarea>
+                                            <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="4" placeholder="Descripcion de producto" >{{old('descripcion')}}</textarea>
                                             <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                                         </div>
                                     
                                     
-                                        <div class="form-group col-md-12">                                        
+                                        <div class="form-group ">                                        
                                             <select class="form-control" name="categoriaid" id="categoriaid" >
                                                 <option value="">Seleccione categoría</option>
                                                 @foreach ($categorias as $categoria)
@@ -43,7 +43,7 @@
                                             </select>
                                             <span class="text-danger">{{ $errors->first('categoriaid') }}</span>
                                         </div>
-                                        <div class="form-group col-md-12">                                
+                                        <div class="form-group ">                                
                                             <select class="form-control" name="tagid" id="tagid" >
                                                 <option value=""></option>
                                                 @foreach ($tags as $tag)
@@ -55,54 +55,52 @@
                                             <span class="text-danger">{{ $errors->first('tagid') }}</span>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <input type="text" name="codigo" id="codigo"  class="form-control" placeholder="Código ">
+                                            <input type="text" name="codigo" id="codigo"  class="form-control" placeholder="Código " value="{{old('codigo')}}">
                                             <span class="text-danger">{{ $errors->first('codigo') }}</span>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <input type="text" name="precio" id="precio"  class="form-control" placeholder="Precio ">
+                                            <input type="text" name="precio" id="precio"  class="form-control" placeholder="Precio" value="{{old('precio')}}">
                                             <span class="text-danger">{{ $errors->first('precio') }}</span>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <input type="text" name="stock" id="stock"  class="form-control" placeholder="Stock">
+                                            <input type="text" name="stock" id="stock"  class="form-control" placeholder="Stock" value="{{old('stock')}}">
                                             <span class="text-danger">{{ $errors->first('stock') }}</span>
                                         </div>
-                                        <div class="form-group col-12">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                            <a href="{{route('productos.index')}}" class="btn btn-danger">Cancelar</a>
-                                        </div>
+                                        
                                     </div>
-                                         <div class="col-6">
+                                         <div class="col-md-6 col-sm-12">
 
-                                            <div class="d-flex flex-wrap">
-                                                <div>
-                                                <img src="{{Storage::get('imgproducto.jpg') }}" width="380px" height="330px" id="">
-                                                <img src="" width="380px" height="330px" id="imagenmuestra">
+                                            <div class="form-group col-12 mb-4 ">  
+                                                
+                                                <div style="display: none " >
+                                                   <input type="file" name="fotoproducto[]" id="fotoproducto" maxlength="250" multiple class="form-control">
+                                               </div>                                              
+                                                <input class="btn btn-light border btn-block " type="button" name="cargarfoto" id="cargarfoto" value="Subir imágen">
+                                               
+                                            </div>
+
+                                            <div class="d-flex  flex-wrap text-center">
+                                                <div class="col-12">
+                                                    <img class=" img-thumbnail" src="{{ Storage::url('img_productos/imgproducto.jpg') }}" width="350px" height="300px" id="imgdefault" data-initial-preview="#" accept="image/*">
+
+                                                    <img class=" img-thumbnail" src="" width="350px" height="300px" id="imagenmuestra">
                                                 </div>
-                                                <div>
-                                                    <div  id="preview">
-                                                        <img src="" width="100px" height="80px" id="iconoimagen">
+                                                <div class="mt-2">
+                                                    <div class="border d-flex justify-content-between "  id="preview">
+                                                       
                                                     </div>
                                                 </div>
                                                 
                                             </div>
-
-                                             <div class="form-group col-12 mb-4">  
-                                                 <small>Extensiones permitidas: .JPG, .PNG, .BMP }}</small><br>
-                                                 <div style="display: none">
-                                                 <input type="file" name="fotoproducto[]" id="fotoproducto" maxlength="500" multiple class="form-control">
-                                                </div>                                              
-                                                 <input class="btn btn-success" type="button" name="cargarfoto" id="cargarfoto" value="Subir imágen">
-                                                 <br>
-                                                
-
-                                             </div>
-                                         <div class="col-1">
-
-                                         </div>
+                                            <span class="text-danger">{{ $errors->first('fotoproducto') }}</span>
                                     </div>
                                 </div>
                          </div>
+                         <div class="form-group col-12">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="{{route('productos.index')}}" class="btn btn-danger">Cancelar</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -114,66 +112,6 @@
 
 
 @section('scripts')
-<script>
-    $(function(){   
-        
-        $('#categoriaid').select2({
-                placeholder: "Seleccione categoría"
-        });
-       $('#tagid').select2({
-               placeholder: "Selccione Tag"
-       });
+    @include('admin.productos.js');
 
-       $("#cargarfoto").on('click',function(){
-           
-           $("#fotoproducto").trigger("click");
-       })
-
-// El listener va asignado al input
-
-
-$('#bntver').on('click',function(){
-  var i=0;
-  var fotos = fotoproducto.files;
-  var fotosArray = Array.from(fotos);
-  
-    $.each(fotosArray, function(indice, elemento) {
-        console.log( elemento.name );
-    });
-});
-
-$("#fotoproducto").change(function() {
-  readURL(this);   
-});
-
-function readURL(input) {
-    var fotos = fotoproducto.files;
-    var fotosArray = Array.from(fotos);
-
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        console.log(e);
-      // Asignamos el atributo src a la tag de imagen
-      $('#imagenmuestra').attr('src', e.target.result);
-        $('#iconoimagen').attr('src', e.target.result);
-
-      $.each(fotosArray, function(indice, elemento) {
-        $('#preview').attr('src', e.target.result);
-        // var preview1 = "<div><img src=' e.target.result' width='100px' height='80px' id='iconoimagen'> </div>" ;
-        // $("#preview").html(preview1);
-    });
-
-    }
-    $.each(fotosArray, function(indice, elemento) {
-        reader.readAsDataURL(input.files[indice]);
-    });
-   
-  }
-}
-
-
-
-   });
-   </script>
 @endsection

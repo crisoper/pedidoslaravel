@@ -11,6 +11,7 @@ use App\Models\Admin\Productofoto;
 use App\Models\Admin\Productotag;
 use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductosController extends Controller
 {
@@ -29,16 +30,18 @@ class ProductosController extends Controller
     }  
     
 
-    private function empresaId( Request $request ) {
-        // return $request->session()->get('empresaactual', 0);
-        return "PEDIDOS SAC";
+    private function empresaId() {
+        return Session::get( 'empresaactual', 0 );
     }
+
 
     public function index()
     {
         
        
         $categorias = Productocategoria::get();
+
+        
         if (!empty(request()->buscar)) 
         {
             $productos = Producto::where('nombre', 'like', '%'.request()->buscar.'%' )
@@ -49,8 +52,8 @@ class ProductosController extends Controller
         else
         {
             $productos = Producto::orderBy('id', 'desc')->paginate(10);
-            
-
+                      
+         
             return view('admin.productos.index', compact('productos','categorias'));
         }
 
@@ -78,10 +81,11 @@ class ProductosController extends Controller
      */
     public function store(ProductosCreateRequest $request)
     {
-       
+      
+
         $productos = Producto::firstOrNew(
             [
-                'empresa_id' => 1,
+                'empresa_id' => $this->empresaId(),
                 'categoria_id' => $request->categoriaid,
                 'nombre' => $request->nombre,
                 ],
@@ -101,13 +105,17 @@ class ProductosController extends Controller
          ]);
          $tags->save();
 
-        $productotag = new Productotag();
-        $productotag->producto_id = $productos->id;
-        $productotag->tag_id = $request->tagid;
+
+        $productotag = Productotag::firstOrNew([
+            'producto_id' => $productos->id,
+            'tag_id' => $request->tagid,
+
+        ]);
         $productotag->save();               
          
 
         $files = $request->file('fotoproducto');
+       
          if ( count($files) > 0) {
                 
         foreach($files as $file){
@@ -115,7 +123,7 @@ class ProductosController extends Controller
             $empresa = $this->empresaId( $request );
             $extension = strtolower( $file->getClientOriginalExtension() ) ;
             $filename = uniqid().'_'.$file->getClientOriginalName();
-            $path = $files->store('public');
+           
             $forder =  \Storage::disk('img_productos');
             // $file->move($destinationPath.'/' , $filename
             if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
@@ -124,7 +132,7 @@ class ProductosController extends Controller
                     'empresa_id'=>1,
                     'producto_id'=> $productos->id,
                     'nombre'=>  $filename,
-                    'url' =>  $path,//'img_productos'.'/'.$filename,
+                    'url' =>  'img_productos'.'/'.$filename,
                 ],
                 [
                     'created_at' => Auth()->user()->id,
@@ -136,7 +144,7 @@ class ProductosController extends Controller
         }      
     }  
         
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with('El producto se ha registrado satisfactoriamente...');
     }
 
    
@@ -161,7 +169,16 @@ class ProductosController extends Controller
     {
         $categorias = Productocategoria::get();
         $producto = Producto::findOrFail($id);
-        return view('admin.productos.editar', compact('categorias', 'producto'));
+
+        $fotosproducto = Productofoto::where('producto_id', $producto->id  )->get();
+        foreach ($fotosproducto as $foto) {
+          
+            $exists = \Storage::disk('img_productos')->exists( $foto->nombre ); 
+                       
+        }
+        return view('admin.productos.editar', compact('categorias', 'producto','exists'));
+
+
     }
 
     /**
@@ -173,20 +190,53 @@ class ProductosController extends Controller
      */
     public function update(ProductosUpdateRequest $request, $id)
     {
-        $productos = Producto::findOrFail($id);
-        $productos->empresa_id = 1;
-        $productos->categoria_id = $request->categoriaid;
-        $productos->codigo = $request->codigo;
-        $productos->nombre = $request->nombre;
-        $productos->descripcion =  $request->descripcion;
-        $productos->precio =  $request->precio;
-        $productos->stock = $request->stock;
-        $productos->updated_by =  Auth()->user()->id;
-        $productos->save();
-        return    redirect()->route('productos.index');  
-        //  return response()->json(['success' => "Datos guardados correctamente"], 200);
-    }
+        $producto = Producto::findOrFail($id);
+        $producto->empresa_id =  $this->empresaId();
+        $producto->categoria_id = $request->categoriaid;
+        $producto->codigo = $request->codigo;
+        $producto->nombre = $request->nombre;
+        $producto->descripcion =  $request->descripcion;
+        $producto->precio =  $request->precio;
+        $producto->stock = $request->stock;
+        $producto->updated_by =  Auth()->user()->id;
+        $producto->save();       
 
+
+        $files = $request->file('fotoproducto');       
+     
+        if ( $files != null || $files != "" ) {            
+            $fotosdelete = Productofoto::where("producto_id", $producto->id )->get();
+            foreach($fotosdelete as $foto){
+                $foto->delete();
+            }         
+               
+             foreach($files as $file){
+                 $empresa = $this->empresaId( $request );
+                 $extension = strtolower( $file->getClientOriginalExtension() ) ;
+                 $filename = uniqid().'_'.$file->getClientOriginalName();
+
+                 $forder =  \Storage::disk('img_productos');
+                if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
+                
+                     $fotoproducto = Productofoto::firstOrNew([                                  
+                         'empresa_id'=>1,
+                         'producto_id'=> $producto->id,
+                         'nombre'=>  $filename,
+                         'url' =>  'img_productos'.'/'.$filename,
+                     ],
+                     [
+                         'created_at' => Auth()->user()->id,
+                     ] );
+                     $fotoproducto->save();
+                 } 
+
+
+             }      
+            }
+            return    redirect()->route('productos.index')->with('info','Datos modificados satisfactoriamente...');  
+        //  return response()->json(['success' => "Datos guardados correctamente"], 200);
+       
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -214,5 +264,20 @@ class ProductosController extends Controller
 
         // return redirect()->route('productos.index');
     
+    }
+
+    public function getImagenes(Request $request){
+     
+        $fotosproducto = Productofoto::where('producto_id', $request->id  )->get();
+        foreach ($fotosproducto as $foto) {
+          
+            $exists = \Storage::disk('img_productos')->exists( $foto->nombre ); 
+            if ($exists) {
+                return response()->json(["data", $fotosproducto], 200);
+            }else{
+                
+                return response()->json(["data", "No existe archivo"], 422)->with('error', 'No existe imagen de este producto');
+            }
+        }
     }
 }

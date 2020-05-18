@@ -21,7 +21,7 @@
                     <form action="{{route('tags.store')}}" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Tags">
+                            <input type="text" name="nombre" id="nombre" value="{{old('nombre')}}" class="form-control" placeholder="Tags">
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
                             </div>
                                                        

@@ -64,9 +64,9 @@
                                         
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tablaProductos">
                                     @foreach ($productos as $producto)
-                                    <tr>
+                                    <tr id="{{$producto->id}}">
                                         <td>{{$producto->id}}</td>                                   
                                         <td>
                                             @foreach ($categorias as $categoria)
@@ -81,10 +81,11 @@
                                         <td>{{$producto->precio}}</td> 
                                         <td>{{$producto->stock}}</td> 
                                         <td>
-                                            @foreach ($producto->fotos as $foto)
-                                            <img src="{{asset( "img_productos/"."$foto->nombre" )}}" alt=""></td> 
+                                           
+                                            <button type="button" class="btn text-primary" data-toggle="modal" data-target="#modalimagenes" id="{{$producto->id}}" >ver</button>
+                                              
+                                            </td> 
                                                 
-                                            @endforeach
                                        
                                         <td class="text-center">
                                         <a class="" href="{{route('productos.edit', $producto->id)}}" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></a>
@@ -114,4 +115,92 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalimagenes" tabindex="-1" role="dialog" aria-labelledby="modalimagenesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalimagenesLabel">Imagenes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col-12">
+
+                
+                <div class="d-flex  flex-wrap text-center">
+                    <div class="col-12" id = "preview">
+                        
+                    </div>
+                    <div class="mt-2">
+                        <div class="border d-flex justify-content-between  flex-row"  id="iconpreview">
+                           
+                        </div>
+                    </div>
+                    
+                </div>
+
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+@endsection
+@section('scripts')
+<script>
+     
+    $(function(){       
+
+        $('#tablaProductos tr').on('click', 'button', function(){
+            $('#preview').html("");
+            $('#iconpreview').html("");
+            
+          var id = $(this).attr('id');
+          $.ajax({
+                url: "{{ route('productos.getImagenes')}}",
+                method: 'get',
+                dataType: 'json',
+                data: {id} ,
+                success: ( function(data){
+                    $('#preview').html("");
+                    $('#iconpreview').html("");
+                     
+
+                   let imgpreview = "<img class='img-thumbnail' src='{{URL::to('/') }}/storage/" + data[1][0].url +"' width='350px' height='300px' id='imgdefault' data-initial-preview='#' accept='image/*'>";
+                   $('#preview').html(imgpreview);
+                  let fotosArray = data[1];
+                 
+                   $.each(fotosArray, function(index, foto){
+                            let iconpreview = "<img class='img-thumbnail' src='{{URL::to('/') }}/storage/" + foto.url +"' width='100px' height='80px' id='"+foto.url+"' data-initial-preview='#' accept='image/*' >";
+                            $('#iconpreview').append(iconpreview);
+                   
+                   });
+               
+                }),
+                error: function(){
+                  
+                    $('#preview').html("<span> No existen imagenes de este producto.</span>");
+                    // console.log("Error, no se caragaron las imágenes");
+                }
+            });
+        });
+
+        $('body #iconpreview').on('click', 'img', function(){
+          var src = $(this).prop('id');
+          console.log(src);
+          let iconpreview = "<img class='img-thumbnail' src='{{URL::to('/') }}/storage/" + src +"' width='350px' height='300px' id='imgdefault' data-initial-preview='#' accept='image/*'>";
+          $('#preview').html(iconpreview);
+         
+  
+});
+    
+
+       
+    });
+    
+</script>
+    
 @endsection
