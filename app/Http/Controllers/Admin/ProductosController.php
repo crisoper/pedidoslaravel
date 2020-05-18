@@ -7,6 +7,9 @@ use App\Http\Requests\Admin\ProductosCreateRequest;
 use App\Http\Requests\Admin\ProductosUpdateRequest;
 use App\Models\Admin\Producto;
 use App\Models\Admin\Productocategoria;
+use App\Models\Admin\Productofoto;
+use App\Models\Admin\Productotag;
+use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -16,8 +19,25 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    private function periodoId( Request $request  ) {
+        return $request->session()->get('periodoactual', 0);
+    }  
+    
+
+    private function empresaId( Request $request ) {
+        // return $request->session()->get('empresaactual', 0);
+        return "PEDIDOS SAC";
+    }
+
     public function index()
     {
+        
+       
         $categorias = Productocategoria::get();
         if (!empty(request()->buscar)) 
         {
@@ -29,6 +49,8 @@ class ProductosController extends Controller
         else
         {
             $productos = Producto::orderBy('id', 'desc')->paginate(10);
+            
+
             return view('admin.productos.index', compact('productos','categorias'));
         }
 
@@ -43,8 +65,9 @@ class ProductosController extends Controller
     public function create()
     {
         $categorias = Productocategoria::get();
-       
-        return view('admin.productos.create', compact('categorias'));
+        $tags = Tag::get(); 
+        
+        return view('admin.productos.create', compact('categorias','tags'));
     }
 
     /**
@@ -70,13 +93,53 @@ class ProductosController extends Controller
                     'stock' => $request->stock,
                     'created_by' => Auth()->user()->id,
             ]
-         );
-     
+         );     
          $productos->save();
-        return redirect()->route('productos.index');
+
+         $tags = Tag::firstOrNew([
+            'nombre' => $request->nombre,
+         ]);
+         $tags->save();
+
+        $productotag = new Productotag();
+        $productotag->producto_id = $productos->id;
+        $productotag->tag_id = $request->tagid;
+        $productotag->save();               
+         
+
+        $files = $request->file('fotoproducto');
+         if ( count($files) > 0) {
                 
+        foreach($files as $file){
+
+            $empresa = $this->empresaId( $request );
+            $extension = strtolower( $file->getClientOriginalExtension() ) ;
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            $path = $files->store('public');
+            $forder =  \Storage::disk('img_productos');
+            // $file->move($destinationPath.'/' , $filename
+            if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
+    
+                $fotoproducto = Productofoto::firstOrNew([               
+                    'empresa_id'=>1,
+                    'producto_id'=> $productos->id,
+                    'nombre'=>  $filename,
+                    'url' =>  $path,//'img_productos'.'/'.$filename,
+                ],
+                [
+                    'created_at' => Auth()->user()->id,
+                ] );
+                $fotoproducto->save();
+            } 
+            
+            
+        }      
+    }  
+        
+        return redirect()->route('productos.index');
     }
 
+   
     /**
      * Display the specified resource.
      *
@@ -133,9 +196,23 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         $productos = Producto::findOrFail($id);
-        $productos->deleted_at = Auth()->user()->id;
-        $productos->delete();
+        $fotos = Productofoto::where("producto_id", $productos->id )->delete();
+       
         
-        return redirect()->route('productos.index');
+        if ( $productos ) {
+            $productos->deleted_at = Auth()->user()->id;
+            $fotos->deleted_at = Auth()->user()->id;
+            
+            Producto::findOrFail($id)->delete();
+            Productofoto::where("producto_id", $productos->id )->delete();
+
+            return redirect()->back()->with("info", "Se han eliminado el producto");
+        }   
+        else {
+            return redirect()->back()->with("error", "No se ha encontrado el producto");
+        }
+
+        // return redirect()->route('productos.index');
+    
     }
 }

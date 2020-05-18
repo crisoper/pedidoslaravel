@@ -58,7 +58,8 @@
                                         <th>Producto</th>                                    
                                         <th>Descripción</th>                                    
                                         <th>Precio</th>                                    
-                                        <th>Stock</th>                                    
+                                        <th>Stock</th> 
+                                        <th>Foto</th>                                   
                                         <th colspan="2">Acciones</th>
                                         
                                     </tr>
@@ -79,6 +80,11 @@
                                         <td>{{$producto->descripcion}}</td> 
                                         <td>{{$producto->precio}}</td> 
                                         <td>{{$producto->stock}}</td> 
+                                        <td>
+                                            @foreach ($producto->fotos as $foto)
+                                            <img src="{{asset( "img_productos/"."$foto->nombre" )}}" alt=""></td> 
+                                                
+                                            @endforeach
                                        
                                         <td class="text-center">
                                         <a class="" href="{{route('productos.edit', $producto->id)}}" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></a>
