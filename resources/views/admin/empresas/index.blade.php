@@ -56,19 +56,20 @@
                                         <th>Nombre</th>
                                         <th>Dirección</th>
                                         <th>Logo</th>
-                                        <th colspan="2" class="text-center">Acciones</th>
+                                        <th colspan="3" class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($empresas as $empresa)
                                     <tr>
                                         <td>{{ $empresa->id }}</td>
-                                        <td>{{ $empresa->rubro_id }}</td>
+                                        <td>{{ $empresa->rubro->nombre }}</td>
                                         <td>{{ $empresa->ruc }}</td>
                                         <td>{{ $empresa->nombre }}</td>
                                         <td>{{ $empresa->direccion }}</td>
                                         <td>
-                                            <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}">
+                                            <img id="empresaLogo" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" alt="{{$empresa->logo}}">
+                                            {{-- <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}"> --}}
                                         </td>
                                         <td class="text-center">
                                             <a href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Asignar Comprobantes</a>

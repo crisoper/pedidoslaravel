@@ -7,11 +7,10 @@ use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 use App\Models\Admin\Comprobantetipo;
 use App\Models\Admin\Empresa;
-use App\Models\Admin\Empresacomprobantetipos;
 use App\Models\Admin\Empresarubro;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-// use Image;
+// use Intervention\Image\Facades\Image;
+use Image;
 use Illuminate\Http\Request;
 
 class EmpresasController extends Controller
@@ -66,16 +65,15 @@ class EmpresasController extends Controller
         
         if ($request->hasFile('logo')) {
             $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower( $nombreOriginalLogo->getClientOriginalExtension() ) ;
-            $nuevoNombreLogo = $nombreOriginalLogo->getClientOriginalName();
-            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-            
+            $nuevoNombreLogo = time().".".$nombreOriginalLogo->getClientOriginalExtension();
+            $destinationPath = storage_path('app/public/empresaslogos');
             $dimensionLogo = Image::make($nombreOriginalLogo->path());
             $dimensionLogo->fit(300, 200, function ($constraint) {
                 $constraint->upsize();
             });
-            $dimensionLogo->save(storage_path('app/public/empresaslogos').'/'.$nuevoNombreLogo);
-            $empresa->logo = $nuevoNombreLogo;
+            $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
+
+            $empresa->logo =  $nuevoNombreLogo;
         }
         $empresa->created_by = Auth()->user()->id;
 
@@ -125,26 +123,24 @@ class EmpresasController extends Controller
         $empresa->direccion = $request->direccion;
         $empresa->paginaweb = $request->paginaweb;
         
-        
+        if (Storage::exists("/public/empresaslogos/$empresa->logo"))
+        {
+            Storage::delete("/public/empresaslogos/$empresa->logo");
+        }
         if ($request->hasFile('logo')) {
-            if (Storage::exists("/public/empresaslogos/$empresa->logo"))
-            {
-                Storage::delete("/public/empresaslogos/$empresa->logo");
-            }
             $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower( $nombreOriginalLogo->getClientOriginalExtension() ) ;
-            $nuevoNombreLogo = $nombreOriginalLogo->getClientOriginalName();
-            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-            
+            $nuevoNombreLogo = time().".".$nombreOriginalLogo->getClientOriginalExtension();
+            $destinationPath = storage_path('app/public/empresaslogos');
             $dimensionLogo = Image::make($nombreOriginalLogo->path());
             $dimensionLogo->fit(300, 200, function ($constraint) {
                 $constraint->upsize();
             });
-            $dimensionLogo->save(storage_path('app/public/empresaslogos').'/'.$nuevoNombreLogo);
-            $empresa->logo = $nuevoNombreLogo;
+            $dimensionLogo->save($destinationPath.'/'.$nuevoNombreLogo);
+
+            $empresa->logo =  $nuevoNombreLogo;
         }
-        $empresa->updated_by = Auth()->user()->id;
         
+        $empresa->updated_by = Auth()->user()->id;
         $empresa->save();
 
         return redirect()->route('empresas.index')->with("info", "Registro editado");
@@ -171,30 +167,4 @@ class EmpresasController extends Controller
 
 
     
-    //AGREGAR PERMISOS
-    public function agregarcomprobantetipos($id)
-    {
-        $empresa = Empresa::findOrFail($id);
-
-        $comprobantetipos = Comprobantetipo::get();
-        
-        $empresacomprobantetipos = Empresacomprobantetipos::get();
-
-        return view('admin.empresas.agregarcomprobantetipos', compact('empresa', 'comprobantetipos', 'empresacomprobantetipos'));
-    }
-
-    //GUARDAR PERMISOS
-    public function guardarcomprobantetipos(Request $request, $id)
-    {
-        $empresa = Empresa::findOrFail($id);
-
-        $comprobantetipos = Comprobantetipo::get()->pluck('nombre')->toArray();
-
-        // $empresa->delete($comprobantetipos);
-
-        $empresa->empresa_id = $request->input('comprobantetipos');
-        $empresa->save();
-
-        return redirect()->route('empresas.index');
-    }
 }

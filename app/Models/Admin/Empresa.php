@@ -18,7 +18,7 @@ class Empresa extends Model
     */
     public function rubro()
     {
-        return $this->belongsTo('App\Models\Admin\Empresarubro', '', 'rubro_id');
+        return $this->belongsTo('App\Models\Admin\Empresarubro', 'rubro_id', 'id');
     }
 
 
