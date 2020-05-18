@@ -30,14 +30,14 @@ class MenusController extends Controller
                             ->orWhere('url', 'like', request()->buscar.'%')
                             ->with('submenus')
                             ->orderBy('orden')
-                            ->paginate(5);
+                            ->paginate(10);
         }
         else
         {
             $menus = Menu::whereNull('parent_id')
                             ->with('submenus')
                             ->orderBy('orden')
-                            ->paginate(5);
+                            ->paginate(10);
         }
 
         return view('admin.menus.menus.index', compact('menus'));

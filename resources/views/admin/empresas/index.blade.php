@@ -47,8 +47,8 @@
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
                                         <th>Rubro</th>
@@ -72,7 +72,7 @@
                                             {{-- <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}"> --}}
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Asignar Comprobantes</a>
+                                            <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Asignar Comprobantes</a>
                                         </td>
                                         @can('empresas.editar')
                                             <td class="text-center">

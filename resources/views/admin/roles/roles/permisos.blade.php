@@ -25,10 +25,6 @@
                     <form action="{{ route('roles.savepermisos', $rol->id ) }}" method="POST">
                     
                         @csrf
-                        {{-- {!! method_field('PUT') !!} --}}
-                    
-                        {{-- <input type="hidden" name="esquema" value="{{ $buscarEsquema }}"> --}}
-                    
                         <div class="form-row">
                             Seleccionar permisos:
                         </div>
