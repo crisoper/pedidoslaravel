@@ -43,7 +43,7 @@ class ProductocategoriasController extends Controller
     public function create()
     {
         $categorias = Productocategoria::get();
-        return view('admin\productocategorias\create', compact('categorias'));
+        return view('admin.productocategorias.create', compact('categorias'));
       
     }
 
@@ -93,7 +93,7 @@ class ProductocategoriasController extends Controller
     {
         $categoria = Productocategoria::findOrFail($id);
         $categorias = Productocategoria::get();
-        return view('admin\productocategorias\editar', compact('categorias','categoria'));
+        return view('admin.productocategorias.editar', compact('categorias','categoria'));
         
     }
 
