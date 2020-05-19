@@ -1,8 +1,6 @@
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ asset('Plugins\bootstrap-switch\js\bootstrap-switch.min.js')}}"> </script>
-<script src="{{ asset('Plugins\bootstrap4-toggle-3.6.1\js\bootstrap4-toggle.min.js')}}"> </script>
 
 <script src="{{ asset('adminlte301/js/adminlte.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -25,8 +23,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha256-sfG8c9ILUB8EXQ5muswfjZsKICbRIJUG/kBogvvV5sY=" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-{{-- <script src="{{ asset('adminlte301/plugins/select2/js/select2.min.js') }}"></script> --}}
+<!-- Select2 -->
+{{-- <script src="../../plugins/select2/js/select2.full.min.js"></script> --}}
+<script src="{{ asset('adminlte301/plugins/select2/js/select2.full.min.js')}}"></script>
+
 
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> --}}

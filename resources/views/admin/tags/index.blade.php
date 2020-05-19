@@ -8,7 +8,6 @@
         <div class="col">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                   
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-11">
                             <h3>Tags</h3>                          
@@ -38,46 +37,38 @@
                                 Operaciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-
-                              
-                                    <a href="{{ route('tags.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
-                               
-
+                                <a href="{{ route('tags.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-bordered table-hover table-sm">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Item</th>
                                         <th>Tag</th>
-                                                        
                                         <th colspan="2">Acciones</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($tags as $tag)
-                                    <tr>
-                                        <td>{{$tag->id}}</td>                                
-                                        <td>{{$tag->nombre}}</td>                                   
-                                       
-                                        <td class="text-center">
-                                        <a class="" href="{{route('tags.edit', $tag->id)}}" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                        </td>
-                                        <td class="text-center">
-                                        <div>
-                                            <form id="form.tag.delete.{{$tag->id}}" action="{{ route('tags.destroy', $tag->id) }}" method="POST">
-                                                {!! method_field('DELETE') !!}
-                                                {!! csrf_field() !!}
-                                                <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.tag.delete.{{$tag->id}}').submit();" title="Eliminar"><i class="fas fa-trash-alt" aria-hidden="true"></i></a>
-                                            </form>                                    
-                                        </div>
-                                    </td>
-                                    </tr>
-                                        
+                                        <tr>
+                                            <td>{{$tag->id}}</td>
+                                            <td>{{$tag->nombre}}</td>
+                                            <td class="text-center">
+                                                <a class="" href="{{route('tags.edit', $tag->id)}}" title="Editar">
+                                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <form id="form.tag.delete.{{$tag->id}}" action="{{ route('tags.destroy', $tag->id) }}" method="POST">
+                                                    {!! method_field('DELETE') !!}
+                                                    {!! csrf_field() !!}
+                                                    <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.tag.delete.{{$tag->id}}').submit();" title="Eliminar"><i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
