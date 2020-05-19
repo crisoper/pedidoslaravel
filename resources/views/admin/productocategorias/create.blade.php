@@ -43,6 +43,7 @@
                                 <a href="{{route('categorias.index')}}" class="btn btn-danger">Cancelar</a>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

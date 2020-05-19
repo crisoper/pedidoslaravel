@@ -33,14 +33,15 @@
                                     
                                     
                                         <div class="form-group ">                                        
-                                            <select class="form-control" name="categoriaid" id="categoriaid" >
+                                            {{-- <select class="form-control" name="categoriaid" id="categoriaid" >
                                                 <option value="">Seleccione categoría</option>
                                                 @foreach ($categorias as $categoria)
                                                     <option value="{{ $categoria->id}}">
                                                         {{ $categoria->nombre}}
                                                     </option>
                                                 @endforeach    
-                                            </select>
+                                            </select> --}}
+                                            <input  class="form-control" name="categoriaid" id="categoriaid">
                                             <span class="text-danger">{{ $errors->first('categoriaid') }}</span>
                                         </div>
                                         <div class="form-group ">                                
@@ -101,6 +102,20 @@
                             <button type="submit" class="btn btn-primary">Guardar</button>
                             <a href="{{route('productos.index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
+
+                        <div class="md-form">
+
+                            <div class="ui-widget">
+                                <label for="tags">Tags: </label>
+                               
+                              </div>
+
+                        </div>
+                          
+                        
+
+
+
                     </form>
                 </div>
             </div>
@@ -114,4 +129,32 @@
 @section('scripts')
     @include('admin.productos.js');
 
+    <script>
+        $(function(){
+            var categorias = [];
+            var categoriasArray = [];
+            $.ajax({
+                url:"{{ route('categorias.getCategorias') }}",
+                dataType:"json",
+                method:"get",
+                data:{},
+                success: function(data){                  
+                    
+                    $.each(data[1], function(index, valor){
+                        categorias.push(valor);
+                        categoriasArray.push(categorias[index].nombre);
+                    });
+                    console.log(categoriasArray);
+                }
+            });
+
+      
+    $( "#categoriaid" ).autocomplete({
+      source: categoriasArray
+    });
+
+        });
+    
+    </script>
 @endsection
+

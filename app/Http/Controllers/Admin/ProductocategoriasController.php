@@ -128,8 +128,10 @@ class ProductocategoriasController extends Controller
         $categorias->delete();
 
         return redirect()->route('categorias.index');
+    }
 
-        
-
+    public function getCategorias(){
+        $categorias = Productocategoria::get();
+        return response()->json(['data',$categorias],200);
     }
 }
