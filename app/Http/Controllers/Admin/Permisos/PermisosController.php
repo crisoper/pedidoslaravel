@@ -62,7 +62,7 @@ class PermisosController extends Controller
         $ntablas = [];
         foreach( $tablas as $tabla )
         {
-            $ntablas[] = strtolower( str_replace("t_", "", $tabla->Tables_in_encuestasserver) );
+            $ntablas[] = strtolower( str_replace("t_", "", $tabla->Tables_in_pedidos) );
         }
 
         return  array_unique( $ntablas );

@@ -5,13 +5,19 @@
 
 @section('contenido')
 
-
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3>Accion permisos</h3>
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-11">
+                            <h3>Acción permisos</h3>                  
+                        </div>
+                        <div class="mb-3 text-center col-1">
+                            <a title="Ir a principal" class="" href="{{Route('permissions.index')}}"><h4><i class="fas fa-reply "></i></h4></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="row card-body">
                     <div class="col-12 col-md-9 mb-3">
@@ -40,8 +46,8 @@
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nro</th>
                                         <th>Nombre</th>

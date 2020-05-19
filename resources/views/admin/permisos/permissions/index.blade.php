@@ -45,7 +45,7 @@
                                     @can('permissions.crear')
                                         <a href="{{ route('permissions.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
                                         <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('form.permissions.generarmasivamente').submit();"><i class="fas fa-plus-square text-warning"></i> Crear masivamente</a>
-                                    <form id="form.permissions.generarmasivamente" action="{{ route('permissions.generarmasivamente') }}" method="POST" style="display: none;">{!! csrf_field() !!}</form>
+                                        <form id="form.permissions.generarmasivamente" action="{{ route('permissions.generarmasivamente') }}" method="POST" style="display: none;">{!! csrf_field() !!}</form>
                                     @endcan
 
                                     @can('permissions.exportar')
@@ -55,6 +55,9 @@
                                             <button type="submit" class="dropdown-item"><i class="fas fa-file-excel text-success"></i> Exportar</button>
                                         </form>
                                     @endcan
+                                    {{-- @can('permissions.exportar') --}}
+                                        <a href="{{ route('accionpermisos.index') }}" class="dropdown-item">Acción permisos</a>
+                                    {{-- @endcan --}}
                                     
                                 </div>
                             </div>
@@ -65,8 +68,8 @@
 
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nro</th>
                                         <th>Nombre</th>

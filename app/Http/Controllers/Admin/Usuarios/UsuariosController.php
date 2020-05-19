@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Role as Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Facades\Image;
 
 class UsuariosController extends Controller
 {

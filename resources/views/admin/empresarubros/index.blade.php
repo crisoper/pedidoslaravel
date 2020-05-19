@@ -47,8 +47,8 @@
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>

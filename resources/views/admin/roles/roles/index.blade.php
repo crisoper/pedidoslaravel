@@ -49,12 +49,12 @@
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nro</th>
-                                        <th>Tipo</th>
                                         <th>Nombre</th>
+                                        <th>Tipo</th>
                                         <th>Pagina inicio</th>
                                         <th colspan="4" class="text-center">Acciones</th>
                                     </tr>
@@ -66,22 +66,20 @@
                                         <td>
                                             {{ $loop->iteration + $roles->perPage() * ($roles->currentPage() - 1) }}
                                         </td>
-                                        <td>{{ $rol->guard_name }}</td>
-                                        
                                         <td>{{ str_replace("menu_", "", str_replace("web_", "", $rol->name ) ) }}</td>
+                                        <td>{{ $rol->guard_name }}</td>
                                         <td>
                                             @if ( Route::has( $rol->paginainicio ) )
                                                 <a href="{{ route( $rol->paginainicio ) }}" target="_blank">Ir</a>
                                             @endif
                                         </td>
-                                        
                                             
                                         @can('role_has_permissions.crear')
                                                 
                                             @if ( $rol->guard_name  == 'web')
                                                 <td class="text-center">
                                                     @if ( $rol->name != 'SuperAdministrador')
-                                                    <a href="{{ route('roles.getpermisos', $rol->id) }}">Asignar permisos</a>
+                                                    <a class="text-info" href="{{ route('roles.getpermisos', $rol->id) }}">Asignar permisos</a>
                                                     @endif
                                                 </td>
                                             @endif
@@ -90,7 +88,7 @@
                                             @if ( $rol->guard_name  == 'menu')
                                                 <td class="text-center">
                                                     @if ( $rol->name != 'SuperAdministrador')
-                                                        <a href="{{ route('roles.generarmenus', $rol->id) }}">Generar menu</a>
+                                                        <a class="text-info" href="{{ route('roles.generarmenus', $rol->id) }}">Generar menu</a>
                                                     @endif
                                                 </td>
                                             @endif
@@ -103,8 +101,8 @@
                                                     <a href="{{ route('roles.edit', $rol->id) }}"><i class="fas fa-edit"></i></a>
                                                 @endif
                                             </td>
-
                                         @endcan
+
                                         <td class="text-center">
                                             @if ( $rol->name != 'SuperAdministrador')
                                                 @can('roles.eliminar')

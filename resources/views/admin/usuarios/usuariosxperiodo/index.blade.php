@@ -41,8 +41,8 @@
                     <!-- @endcan -->
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nro</th>
                                         <th>Nombre</th>

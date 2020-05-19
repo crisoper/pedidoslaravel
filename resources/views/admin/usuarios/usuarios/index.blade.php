@@ -60,8 +60,8 @@
                     
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nro</th>
                                         <th>Nombre</th>
@@ -78,22 +78,22 @@
                                         </td>
                                         <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->email }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             @if ( !$usuario->hasRole('SuperAdministrador') )
-                                                @can('users.editar')
-                                                    <a href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i></a>
+                                                @can('model_has_roles.crear')
+                                                    <a 
+                                                    class="text-info" 
+                                                    href="{{ route('usuarios.roles', $usuario->id) }}"
+                                                    >
+                                                    Asignar roles
+                                                    </a>
                                                 @endcan
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if ( !$usuario->hasRole('SuperAdministrador') )
-                                                @can('model_has_roles.crear')
-                                                    <a 
-                                                    class="text-success" 
-                                                    href="{{ route('usuarios.roles', $usuario->id) }}"
-                                                    >
-                                                    Roles
-                                                    </a>
+                                                @can('users.editar')
+                                                    <a href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i></a>
                                                 @endcan
                                             @endif
                                         </td>
