@@ -11,7 +11,9 @@ use App\Models\Admin\Productofoto;
 use App\Models\Admin\Productotag;
 use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class ProductosController extends Controller
 {
@@ -40,7 +42,7 @@ class ProductosController extends Controller
         
        
         $categorias = Productocategoria::get();
-
+       
         
         if (!empty(request()->buscar)) 
         {
@@ -81,12 +83,30 @@ class ProductosController extends Controller
      */
     public function store(ProductosCreateRequest $request)
     {
-      
+
+        $catedoria = Productocategoria::where('id' , $request->categoriasId)->first();
+        if( $catedoria != null || $catedoria != "" ){
+            $catedoriaid = $catedoria->id;
+            
+        }else{
+            $categorias = Productocategoria::firstOrNew(
+                [
+                   'empresa_id'=> $this->empresaId(),
+                    'nombre'=> $request->nombre,
+                ],
+                [
+                    'created_by'=> Auth()->user()->id,
+                ]
+            );
+            
+            $categorias->save();
+            $catedoriaid = $categorias->id;
+        }
 
         $productos = Producto::firstOrNew(
             [
                 'empresa_id' => $this->empresaId(),
-                'categoria_id' => $request->categoriaid,
+                'categoria_id' => $catedoriaid,
                 'nombre' => $request->nombre,
                 ],
                 [
@@ -100,34 +120,37 @@ class ProductosController extends Controller
          );     
          $productos->save();
 
-         $tags = Tag::firstOrNew([
-            'nombre' => $request->nombre,
-         ]);
-         $tags->save();
 
+         $tag = Tag:: where('id', $request->tagsId )->first();
+         if( $tag != null || $tag != ""){
+             $tagid = $tag->id;
+         }else{
+
+        $tags = Tag::firstOrNew([
+                'nombre' => $request->tagName,
+             ]);
+             $tags->save();
+             $tagid = $tags->id; 
+         }
 
         $productotag = Productotag::firstOrNew([
             'producto_id' => $productos->id,
-            'tag_id' => $request->tagid,
-
+            'tag_id' => $tagid,
         ]);
-        $productotag->save();               
-         
+        $productotag->save();  
 
-        $files = $request->file('fotoproducto');
-       
-         if ( count($files) > 0) {
-                
-        foreach($files as $file){
-
-            $empresa = $this->empresaId( $request );
+        $files = $request->file('fotoproducto');       
+        if ( count($files) > 0) {                
+        foreach($files as $file){                
             $extension = strtolower( $file->getClientOriginalExtension() ) ;
-            $filename = uniqid().'_'.$file->getClientOriginalName();
-           
-            $forder =  \Storage::disk('img_productos');
-            // $file->move($destinationPath.'/' , $filename
+            $filename = uniqid().'_'.$file->getClientOriginalName();           
             if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
-    
+                $redimencionImg = Image::make($file->path());
+                $redimencionImg->fit(350, 300, function ($constraint) {
+                    $constraint->upsize();
+                });
+                $redimencionImg->save(storage_path('app/public/img_productos').'/'.$filename);
+
                 $fotoproducto = Productofoto::firstOrNew([               
                     'empresa_id'=> $this->empresaId(),
                     'producto_id'=> $productos->id,
@@ -139,8 +162,6 @@ class ProductosController extends Controller
                 ] );
                 $fotoproducto->save();
             } 
-            
-            
         }      
     }  
         
@@ -169,16 +190,14 @@ class ProductosController extends Controller
     {
         $categorias = Productocategoria::get();
         $producto = Producto::findOrFail($id);
-
+        $tag = $producto->tags->first();
         $fotosproducto = Productofoto::where('producto_id', $producto->id  )->get();
         foreach ($fotosproducto as $foto) {
           
             $exists = \Storage::disk('img_productos')->exists( $foto->nombre ); 
                        
         }
-        return view('admin.productos.editar', compact('categorias', 'producto','exists'));
-
-
+        return view('admin.productos.editar', compact('producto','exists','tag'));
     }
 
     /**
@@ -190,52 +209,88 @@ class ProductosController extends Controller
      */
     public function update(ProductosUpdateRequest $request, $id)
     {
+        $catedoria = Productocategoria::where('id' , $request->categoriasId)->first();
+        
+        if( $catedoria->id == $request->categoriasId && $catedoria->nombre ==  $request->categoriasName  ){
+            $catedoriaid = $request->categoriasId;            
+        }else{
+            $categorias = Productocategoria::firstOrNew(
+                [
+                   'empresa_id'=> $this->empresaId(),
+                    'nombre'=> $request->categoriasName,
+                ],
+                [
+                    'updated_by'=> Auth()->user()->id,
+                ]
+            );
+            
+            $categorias->save();
+            $catedoriaid = $categorias->id;
+        }
+
         $producto = Producto::findOrFail($id);
         $producto->empresa_id =  $this->empresaId();
-        $producto->categoria_id = $request->categoriaid;
+        $producto->categoria_id = $catedoriaid;
         $producto->codigo = $request->codigo;
         $producto->nombre = $request->nombre;
         $producto->descripcion =  $request->descripcion;
         $producto->precio =  $request->precio;
         $producto->stock = $request->stock;
         $producto->updated_by =  Auth()->user()->id;
-        $producto->save();       
+        $producto->save();   
 
-
-        $files = $request->file('fotoproducto');       
-     
+        $tag = Tag:: where('id', $request->tagId )->first();               
+        if(  $tag->id == $request->tagId && $tag->nombre ==  $request->tagName ){
+            $tagid = $request->tagId;
+            
+        }else{
+            
+            $tags = Tag::firstOrNew([
+                'nombre' => $request->tagName,
+                ]);
+                $tags->save();
+                $tagid = $tags->id; 
+            }
+            
+       $productotag = Productotag::where('producto_id', $producto->id )->first();
+       $productotag->tag_id = $tagid;
+       $productotag->save();  
+      
+        $files = $request->file('fotoproducto');      
+       
         if ( $files != null || $files != "" ) {            
             $fotosdelete = Productofoto::where("producto_id", $producto->id )->get();
             foreach($fotosdelete as $foto){
                 $foto->delete();
             }         
+               if($request->hasFile('fotoproducto')){
+                foreach($files as $file){                
+                    $extension = strtolower( $file->getClientOriginalExtension() ) ;
+                    $filename = uniqid().'_'.$file->getClientOriginalName();           
+                    if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
+                        $redimencionImg = Image::make($file->path());
+                        $redimencionImg->fit(350, 300, function ($constraint) {
+                            $constraint->upsize();
+                        });
+                        $redimencionImg->save(storage_path('app/public/img_productos').'/'.$filename);
+        
+                        $fotoproducto = Productofoto::firstOrNew([               
+                            'empresa_id'=> $this->empresaId(),
+                            'producto_id'=> $producto->id,
+                            'nombre'=>  $filename,
+                            'url' =>  'img_productos'.'/'.$filename,
+                        ],
+                        [
+                            'created_at' => Auth()->user()->id,
+                        ] );
+                        $fotoproducto->save();
+                    } 
+                }
+               }
+     
                
-             foreach($files as $file){
-                 $empresa = $this->empresaId( $request );
-                 $extension = strtolower( $file->getClientOriginalExtension() ) ;
-                 $filename = uniqid().'_'.$file->getClientOriginalName();
-
-                 $forder =  \Storage::disk('img_productos');
-                if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
-                
-                     $fotoproducto = Productofoto::firstOrNew([                                  
-                         'empresa_id'=>1,
-                         'producto_id'=> $producto->id,
-                         'nombre'=>  $filename,
-                         'url' =>  'img_productos'.'/'.$filename,
-                     ],
-                     [
-                         'created_at' => Auth()->user()->id,
-                     ] );
-                     $fotoproducto->save();
-                 } 
-
-
-             }      
             }
-            return    redirect()->route('productos.index')->with('info','Datos modificados satisfactoriamente...');  
-        //  return response()->json(['success' => "Datos guardados correctamente"], 200);
-       
+            return redirect()->route('productos.index')->with('info','Datos modificados satisfactoriamente...');  
     }
     /**
      * Remove the specified resource from storage.

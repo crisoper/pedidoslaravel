@@ -64,6 +64,7 @@ function() {
     Route::resource('categorias', 'Admin\ProductocategoriasController');
     Route::get('categorias.getCategorias', 'Admin\ProductocategoriasController@getCategorias')->name('categorias.getCategorias');
     Route::resource('tags', 'Admin\TagsController');
+    Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
     
 
 

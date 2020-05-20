@@ -1,4 +1,10 @@
-
+<style>
+    .ui-autocomplete {
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 0.9rem;
+  color:#141414;
+}
+</style>
 <script>
 
     $( document ).ready( function () {
@@ -16,7 +22,8 @@
 
         $("#cargarfoto").on('click',function(){
             $("#fotoproducto").trigger("click");
-            // $("#imagenmuestra").hide();
+            $("#previewImg").hide();
+
         })
 
         //Cargo las imagenes del input y le digo que ejecute el metodo preview
@@ -47,7 +54,7 @@
         }
 
         // <button class='btn' type='button'><i class='fas fa-trash-alt' aria-hidden='true'></i></button>
-        $('body #preview').on('mouseover', 'img', function(){
+        $('body #preview').on('click', 'img', function(){
             var src = $(this).prop('src');
             $('#imagenmuestra').attr('src',  src);
         });
@@ -95,6 +102,65 @@
                 });
             }
         }
+  
+
+            //cargamos categorias
+            $( "#categoriasName" ).autocomplete({
+                source: function(request, response){
+                $.ajax({
+                        url:"{{ route('categorias.getCategorias') }}",
+                        dataType:"json",
+                        method:"get",
+                        data:{name: request.term },
+                        success: function(data){         
+                            
+                            response($.map(data[1], function(item){
+                                  return {
+                                      id: item.id,
+                                      value: item.nombre,
+                                  }
+                              }))                            
+                        }
+            });               
+                                             
+            }, 
+            select: function( event, ui ){
+                $(this).val(ui.item.value);
+                $( "#categoriasId" ).val(ui.item.id);
+            },
+            minLength:1,
+            autoFocus: true,
+            });
+
+
+            //CARGAMOS TAGS        
+            $( "#tagName" ).autocomplete({
+                source: function(request, response){
+                $.ajax({
+                        url:"{{ route('tags.getTags') }}",
+                        dataType:"json",
+                        method:"get",
+                        data:{name: request.term },
+                        success: function(data){         
+                            
+                            response($.map(data[1], function(item){
+                                  return {
+                                      id: item.id,
+                                      value: item.nombre,
+                                  }
+                              }))                            
+                        }
+            });                              
+            }, 
+            select: function( event, ui ){
+                $(this).val(ui.item.value);
+                $( "#tagId" ).val(ui.item.id);
+            },
+            minLength:1,
+            autoFocus: true,                      
+            },           
+            );
+
 
     });
 
