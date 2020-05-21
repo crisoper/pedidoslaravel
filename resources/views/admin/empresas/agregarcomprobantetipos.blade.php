@@ -33,11 +33,10 @@
                                         <input 
                                             type="checkbox" 
                                             name="empresacomprobantetipos[]"
-                                            @if ( $comprobantetipo->id )
-                                                checked
-                                            @endif
-                                            value="{{ $comprobantetipo->nombre }}">
-                                        {{ $comprobantetipo->nombre }}
+                                            {{ $empresa->comprobantetipos->pluck('id')->contains( $comprobantetipo->id ) ? 'checked' : '' }}
+                                            value="{{ $comprobantetipo->id }}"
+                                            >
+                                            {{ $comprobantetipo->nombre }}
                                     </label>
                                 </div>
                             @endforeach

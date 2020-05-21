@@ -186,15 +186,9 @@ class EmpresasController extends Controller
     //GUARDAR PERMISOS
     public function guardarcomprobantetipos(Request $request, $id)
     {
-        $empresa = Empresa::findOrFail($id);
+        $empresa = Empresa::findOrFail( $id );
+        $empresa->comprobantetipos()->sync( $request->empresacomprobantetipos ); 
 
-        $comprobantetipos = Comprobantetipo::get()->pluck('nombre')->toArray();
-
-        // $empresa->delete($comprobantetipos);
-
-        $empresa->empresa_id = $request->input('comprobantetipos');
-        $empresa->save();
-
-        return redirect()->route('empresas.index');
+        return redirect()->route('empresas.index')->with("Datos guardados correctamente", "info");
     }
 }

@@ -72,7 +72,7 @@
                                             {{-- <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}"> --}}
                                         </td>
                                         <td class="text-center">
-                                            <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Asignar Comprobantes</a>
+                                            <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Comprobantes</a>
                                         </td>
                                         @can('empresas.editar')
                                             <td class="text-center">
