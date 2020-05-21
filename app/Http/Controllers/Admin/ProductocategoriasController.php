@@ -92,7 +92,8 @@ class ProductocategoriasController extends Controller
     public function edit($id)
     {
         $categoria = Productocategoria::findOrFail($id);
-        $categorias = Productocategoria::get();
+
+        $categorias = Productocategoria::where('id' ,"<>", $categoria->id )->get();
         return view('admin.productocategorias.editar', compact('categorias','categoria'));
         
     }
@@ -128,8 +129,10 @@ class ProductocategoriasController extends Controller
         $categorias->delete();
 
         return redirect()->route('categorias.index');
+    }
 
-        
-
+    public function getCategorias( Request $request){
+        $categorias = Productocategoria::where('nombre', 'like', '%'.$request->name.'%'   )->get();
+        return response()->json(['data',$categorias],200);
     }
 }

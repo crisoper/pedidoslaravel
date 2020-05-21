@@ -25,7 +25,7 @@ class ProductosCreateRequest extends FormRequest
     {
         return [
            
-            'categoriaid'=>['required'],
+            'categoriasId'=>['required'],
             'nombre'=>['required'],
             'descripcion'=>['required'],
             'precio'=>['required'],

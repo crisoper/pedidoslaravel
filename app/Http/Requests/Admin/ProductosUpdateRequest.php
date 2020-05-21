@@ -25,7 +25,7 @@ class ProductosUpdateRequest extends FormRequest
     {
         return [
             
-            'categoriaid'=>['required'],
+            'categoriasId'=>['required'],
             'codigo' =>['required'],
             'nombre'=>['required'],
             'descripcion'=>['required'],

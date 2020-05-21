@@ -132,4 +132,8 @@ class TagsController extends Controller
 
         return redirect()->route('tags.index');
     }
+    public function getTags(Request $request){
+        $tags = Tag::where('nombre', 'like', '%'.$request->name.'%'   )->get();
+        return response()->json(['data',$tags],200);
+    }
 }

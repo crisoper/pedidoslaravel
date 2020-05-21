@@ -62,7 +62,9 @@ function() {
     Route::resource('productos', 'Admin\ProductosController');
     Route::get('productosimg', 'Admin\ProductosController@getImagenes')->name('productos.getImagenes');
     Route::resource('categorias', 'Admin\ProductocategoriasController');
+    Route::get('categorias.getCategorias', 'Admin\ProductocategoriasController@getCategorias')->name('categorias.getCategorias');
     Route::resource('tags', 'Admin\TagsController');
+    Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
     
 
 
