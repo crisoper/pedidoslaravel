@@ -164,8 +164,8 @@
                         <nav class="header__menu m-0 pb-0">
                             <ul>
                                 {{-- <li class="{{! Route::is('/') ?: 'active'}}"><a href="{{route('/')}}">Home</a></li> --}}
-                                {{-- <li class="{{! Route::is('welcome2.index') ?: 'active'}}"><a href="{{route('welcome2.index')}}">Shop</a></li>
-                                <li class="{{! Route::is('carritocompras.index') ?: 'active'}}"><a href="{{route('carritocompras.index')}}">Cart</a></li> --}}
+                                {{-- <li class="{{! Route::is('welcome2.index') ?: 'active'}}"><a href="{{route('welcome2.index')}}">Shop</a></li> --}}
+                                {{-- <li class="{{! Route::is('carritocompras.index') ?: 'active'}}"><a href="{{route('carritocompras.index')}}">Cart</a></li> --}}
                                 <li><a href="#">Pages</a>
                                     <ul class="header__menu__dropdown">
                                         <li><a href="./shop-details.html">Shop Details</a></li>
