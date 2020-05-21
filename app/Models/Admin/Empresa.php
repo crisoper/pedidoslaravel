@@ -36,6 +36,14 @@ class Empresa extends Model
         return $this->hasMany('App\Models\Encuestas\Administracion\Periodos', 'empresa_id','id');
     }
 
+
+    //Relacion muchos a muchos con comprobante tipos 
+    public function comprobantetipos()
+    {
+        return $this->belongsToMany('\App\Models\Admin\Comprobantetipo', 'empresacomprabantetipos', 'comprobantetipo_id', 'empresa_id');
+    }
+
+
     /*
     * Usuario que ha creado el registro
     */
