@@ -1,0 +1,82 @@
+
+
+.shopping .shopping_item {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    padding: 20px 20px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+}
+.shopping:hover .shopping_item {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown_cart_header {
+    width: 100% !important;
+    text-align: center;
+}
+.dropdown_cart_header>span {
+    width: 50% !important;
+}
+.dropdown_cart_header>a {
+    width: 50% !important;
+}
+.dropdown_cart_header>.cart_description {
+    width: 50% !important;
+    text-align: center;
+}
+
+
+
+
+
+.shopping_item .bottom_total {
+    width: 100% !important;
+    text-align: center;
+}
+.shopping_item .total {
+    overflow: hidden;
+    display: block;
+    padding-bottom: 10px;
+}
+.shopping_item .total span {
+    text-transform: uppercase;
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    float: left;
+}
+.shopping_item .total .total_amount {
+    float: right;
+    font-size: 14px;
+}
+.shopping_item .bottom_total .btn {
+    background: #222;
+    padding: 10px 20px;
+    display: block;
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
+.shopping_item .bottom_total .btn:hover {
+    background: #7fad39;
+    color: #fff;
+}
