@@ -71,8 +71,11 @@ Route::post("administracion/register", "Auth\RegisterController@showRegistration
 
 Route::get('/', 'Publico\InicioController@index')
 ->name('inicio.index');
+
 Route::get('cart', 'Publico\CartController@index')
-->name('inicio.index');
+->name('cart.index');
+
+
 
 Route::get('/home', 'HomeController@index')
 ->name('home');
