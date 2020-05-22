@@ -301,9 +301,9 @@
                             <div class="hero__categories">
                                 <div class="hero__categories__all">
                                     <i class="fa fa-bars"></i>
-                                    <span>All departments</span>
+                                    <span>Todas las categorias</span>
                                 </div>
-                                <ul>
+                                <ul id="menuCategorias">
                                     <li><a href="#">Fresh Meat</a></li>
                                     <li><a href="#">Vegetables</a></li>
                                     <li><a href="#">Fruit & Nut Gifts</a></li>
