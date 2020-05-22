@@ -104,14 +104,14 @@
         </div>
     
         <!-- MENU WEB-->
-        <header class="header bg-dark py-0">
+        <header class="header bg-dark">
             <div class="header__top">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="header__top__titulo">
+                            <div class="header__top__titulo p-0">
                                 <div class="header__top__description">
-                                    <div>Servicio al cliente</div>
+                                    <div class="py-2">Servicio al cliente</div>
                                     <span class="arrow_carrot-down"></span>
                                     <ul>
                                         <li style="width: 100%"><a href="#">Contáctanos</a></li>
@@ -132,16 +132,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="header__top__titulo">
+                        <div class="col-md-3">
+                            <div class="header__top__titulo p-0">
                                 <div class="header__top__description">
-                                    <div><a href="#">Afilia a tu restaurante</a></div>
+                                    <div class="py-2"><a href="#">Afilia a tu restaurante</a></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="header__cart p-0">
-                                <ul>
+                                <ul class="py-2">
                                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                                     {{-- Carrito compras --}}
@@ -275,9 +275,9 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="header__top__titulo">
+                            <div class="header__top__titulo p-0">
                                 <div class="header__top__description">
-                                    <div class="py-1">Ingresar</div>
+                                    <div class="py-2">Ingresar</div>
                                     <span class="arrow_carrot-down"></span>
                                     <ul>
                                         <li style="width: 100%"><a href="#">Ingresar</a></li>
@@ -289,12 +289,26 @@
                     </div>
                 </div>
             </div>
-            <div class="container p-0">
-                <div class="row p-0">
-                    <div class="col-lg-2 py-0">
-                        <div class="header__logo py-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="header__logo pt-1 pb-0">
                             <a href="./index.html"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
                         </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <nav class="header__menu m-0 pb-0">
+                            <ul>
+                                <li><a href="#">Pages</a>
+                                    <ul class="header__menu__dropdown">
+                                        <li><a href="./shop-details.html">Shop Details</a></li>
+                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                        <li><a href="./checkout.html">Check Out</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                     <div class="col-lg-3">
                         <section class="hero hero-normal py-0">
@@ -319,20 +333,6 @@
                             </div>
                         </section>
                     </div>
-                    {{-- <div class="col-lg-7">
-                        <div class="hero__search py-0">
-                            <div class="hero__search__form">
-                                <form action="#">
-                                    <div class="hero__search__categories">
-                                        All Categories
-                                        <span class="arrow_carrot-down"></span>
-                                    </div>
-                                    <input type="text" placeholder="What do yo u need?">
-                                    <button type="submit" class="site-btn">SEARCH</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="humberger__open">
                     <i class="fa fa-bars"></i>
