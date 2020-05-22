@@ -651,4 +651,5 @@
 
 @section('scripts')
     @include('publico.inicio.indexjs')
+    @include('publico.inicio.categoriasjs')
 @endsection

@@ -22,6 +22,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get("ajax/productos/inicio", "Publico\ProductoController@index")
 ->name("ajax.productos.inicio");
 
+Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index")
+->name("ajax.categorias.inicio");
+
+
+
+
+
+
 Route::get("getpersonaxdni", "Admin\Ajax\PersonasController@getpersonaxdni")
 ->name("ajax.getpersonaxdni");
 
