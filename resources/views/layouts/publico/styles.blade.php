@@ -10,3 +10,5 @@
     <link rel="stylesheet" href="{{asset('pedidos/css/style.css')}}" type="text/css">
 
     <link rel="stylesheet" href="{{asset('pedidos/css/carritocompras.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/css/productospublic.css')}}">

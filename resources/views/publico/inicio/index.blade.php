@@ -2,71 +2,37 @@
 
 @section('contenido')
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="pedidos/img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="pedidos/img/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="pedidos/img/featured/feature-1.jpg">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li>
+                                        <button data-toggle="modal" data-target="#exampleModal" title="Quick View"><i class="fa fa-eye"></i></button>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <h5 class=""><button class="form-control">Dried Fruit</button></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="pedidos/img/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="pedidos/img/categories/cat-4.jpg">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li>
+                                        <button data-toggle="modal" data-target="#exampleModal" title="Quick View"><i class="fa fa-eye"></i></button>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <h5 class=""><button class="form-control">Dried Fruit</button></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -110,18 +76,74 @@
                 </div>
             </div>
             <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat bg-light px-0 pb-3">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="pedidos/img/featured/feature-1.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
+                        <div class="card card-raised card-carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                              <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+                              </ol>
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg.jpg"
+                                  alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                  <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg"  alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                  <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg3.jpg" alt="Third slide">
+                                </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <i class="fas fa-chevron-left"></i>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                            </div>
                         </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
+                        <div class="featured__item__text px-3">
+                            {{-- <h5>$30.00</h5> --}}
+                            <h5>Nombre del producto</h5>
+                            <small>Breve descripción del producto</small>
+                            <hr class="my-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <s><small><small>P. Normal:</small><b> S/ 20.90</b></small></s>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
+                                </div>
+                            </div>
+                            <hr class="my-1">
+                            <div class="row pl-2">
+                                <div class="col-8">
+                                    <div class="shoping__cart__quantity">
+                                        <div class="quantity">
+                                            <div class="pro-qty border">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="small">Importe:</span>
+                                    <h4 class="small"><b>S/ 15.90</b></h4>
+                                </div>
+                            </div>
+                            <hr class="mt-1">
+                            <div class="mb-3">
+                                <ul class="featured__item__pic__hover1 pb-3">
+                                    <li><a class="agregar_cart" href="#">Agregar <i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    {{-- <li>
+                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"><i class="fa fa-eye"></i></a>
+                                    </li> --}}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +192,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables mt-5">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="pedidos/img/featured/feature-5.jpg">
                             <ul class="featured__item__pic__hover">
@@ -518,6 +540,111 @@
         </div>
     </section>
     <!-- Blog Section End -->
+
+	<!-- Modal -->
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body m-0 py-0">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-12 col-lg-6 ">
+                            <div class="card card-raised card-carousel">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                                  <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+                                  </ol>
+                                  <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg.jpg"
+                                      alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg"  alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg3.jpg" alt="Third slide">
+                                    </div>
+                                  </div>
+                                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                  </a>
+                                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <i class="fas fa-chevron-right"></i>
+                                  </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 px-2" id="product_description">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Flared Shift Dress</h4>
+                                    </div>
+                                    <div class="col-8 col-sm-9 col-lg-8">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-4 col-lg-5 small">
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="col-12 col-sm-7 col-lg-7 small">
+                                                <a href="#">(1 customer review)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 col-lg-4">
+                                        <span><i class="fa fa-check-circle-o text-success"></i> in stock</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12"><h3 class="my-3">$29.00</h3></div>
+                                    <div class="col-12">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-5 col-sm-5 col-lg-5">
+                                                <div class="shoping__cart__quantity">
+                                                    <div class="quantity">
+                                                        <div class="pro-qty border">
+                                                            {{-- <span class="dec qtybtn">-</span> --}}
+                                                            <input type="text" value="1">
+                                                            {{-- <span class="inc qtybtn">+</span> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-sm-4 col-lg-5 px-0 ">
+                                                <a href="#" class="btn btn-dark form-control my-0">
+                                                    <span id="cart_name">Add to cart</span>
+                                                    <span id="cart_logo"><i class="fas fa-cart-plus"></i></span>
+                                                </a>
+                                            </div>
+                                            <div class="col-3 col-sm-3 col-lg-2 text-center">
+                                                <a href="#" class="btn btn-dark"><i class="far fa-heart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <!-- Modal end -->
 
 @endsection
 
