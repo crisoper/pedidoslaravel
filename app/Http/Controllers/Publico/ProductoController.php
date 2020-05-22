@@ -33,69 +33,16 @@ class ProductoController extends Controller
         // return response()->json(["data" => $productos ], 200);
     }
 
+    
     /**
-     * Show the form for creating a new resource.
+     * Mostrar los ultimos 9 productos registrados
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function nuevos()
     {
-        //
+        $categorias = Producto::orderBy("created_at", "desc")->take(9)->get();
+        return ProductoResource::collection( $categorias );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

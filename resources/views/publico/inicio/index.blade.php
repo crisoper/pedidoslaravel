@@ -63,15 +63,15 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
                         <h4>Latest Products</h4>
-                        <div class="latest-product__slider owl-carousel">
+                        <div class="latest-product__slider owl-carousel" id="seccionProductosNuevo">
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
+                                        <h6>Crab Pool Security 100</h6>
+                                        <span>$30.00 1000</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
@@ -79,8 +79,8 @@
                                         <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
+                                        <h6>Crab Pool Security 200</h6>
+                                        <span>$30.00 200</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
@@ -648,6 +648,9 @@
 
 
 @section('scripts')
+
+    @include('publico.inicio.nuevosjs')
     @include('publico.inicio.indexjs')
     @include('publico.inicio.categoriasjs')
+
 @endsection
