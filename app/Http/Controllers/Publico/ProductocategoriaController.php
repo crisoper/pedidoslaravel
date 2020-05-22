@@ -16,7 +16,6 @@ class ProductocategoriaController extends Controller
      */
     public function index()
     {
-        sleep(10);
         $categorias = Productocategoria::get();
         return CategoriaResource::collection( $categorias );
     }

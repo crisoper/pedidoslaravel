@@ -300,11 +300,8 @@
                         <nav class="header__menu m-0 pb-0">
                             <ul>
                                 <li><a href="#">Pages</a>
-                                    <ul class="header__menu__dropdown">
-                                        <li><a href="./shop-details.html">Shop Details</a></li>
-                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="./checkout.html">Check Out</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <ul class="header__menu__dropdown"  id="menuCategorias">
+                                        <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
                                 </li>
                             </ul>
@@ -317,18 +314,8 @@
                                     <i class="fa fa-bars"></i>
                                     <span>Todas las categorias</span>
                                 </div>
-                                <ul id="menuCategorias">
+                                <ul>
                                     <li><a href="#">Fresh Meat</a></li>
-                                    <li><a href="#">Vegetables</a></li>
-                                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                                    <li><a href="#">Fresh Berries</a></li>
-                                    <li><a href="#">Ocean Foods</a></li>
-                                    <li><a href="#">Butter & Eggs</a></li>
-                                    <li><a href="#">Fastfood</a></li>
-                                    <li><a href="#">Fresh Onion</a></li>
-                                    <li><a href="#">Papayaya & Crisps</a></li>
-                                    <li><a href="#">Oatmeal</a></li>
-                                    <li><a href="#">Fresh Bananas</a></li>
                                 </ul>
                             </div>
                         </section>

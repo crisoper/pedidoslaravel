@@ -33,14 +33,7 @@
 
             $("#menuCategorias").html( html );
 
-            
-
-
         }
-
-
-
-
 
     });
 </script>
