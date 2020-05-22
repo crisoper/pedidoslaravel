@@ -10,9 +10,8 @@
                 url: link,
                 method: 'GET',
                 data: {},
-                success: function ( data ) {
-                    console.log( data );
-                    contruirMenuCategorias( data )
+                success: function ( datos ) {
+                    contruirMenuCategorias( datos )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -21,37 +20,18 @@
 
         }
 
-        function contruirMenuCategorias( data ) {
+        function contruirMenuCategorias( datos ) {
             
             $("#menuCategorias").html("");
 
             let html = '';
-            
-            $.each( data.data, function( key, producto ) {
 
-                let tags = '';
+            $.each( datos.data, function( key, categoria ) {
 
-                $.each( producto.tags, function( key, tag ) {
-                    tags = tags + `<a href="${tag.id}" class="text-primary">${tag.nombre}</a> `;
-                });
-
-                html = html + `
-                <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                    <h5 class="card-title">${ producto.nombre }</h5>
-                    <p class="card-text">${ producto.descripcion }</p>
-                    <a href="${producto.categoria.id}" class="text-info">${ producto.categoria.nombre }</a>
-                    <br>
-                    Etiquetas:
-                    <br>
-                    ${ tags }
-                    </div>
-                </div>
-                </div>`;
+                html = html + `<li><a href="#" value="${ categoria.id }">${ categoria.nombre }</a></li>`;
             });
 
-            $("#listaproductos").append( html );
+            $("#menuCategorias").html( html );
 
             
 
