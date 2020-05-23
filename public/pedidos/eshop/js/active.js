@@ -156,7 +156,7 @@ Version:1.0
 		$('.quickview-slider-active').owlCarousel({
 			items:1,
 			autoplay:true,
-			autoplayTimeout:3000,
+			autoplayTimeout:2000,
 			smartSpeed: 400,
 			autoplayHoverPause:true,
 			nav:true,

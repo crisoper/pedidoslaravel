@@ -137,35 +137,8 @@
                     <div class="owl-carousel popular-slider">
 						<div class="single-product bg-light pb-2" id="single_product">
 							<div class="product-img pb-0">
-								{{-- <a href="#"> --}}
-                                    <div class="card card-raised card-carousel">
-                                        <div id="carouselExampleIndicators" class="carousel slide mb-0" data-ride="carousel" data-interval="3000">
-                                          <ol class="carousel-indicators mb-0">
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-                                          </ol>
-                                          <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                              <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg.jpg"
-                                              alt="First slide">
-                                            </div>
-                                            <div class="carousel-item">
-                                              <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg"  alt="Second slide">
-                                            </div>
-                                            <div class="carousel-item">
-                                              <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg3.jpg" alt="Third slide">
-                                            </div>
-                                          </div>
-                                          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                            <i class="fas fa-chevron-left"></i>
-                                          </a>
-                                          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                            <i class="fas fa-chevron-right"></i>
-                                          </a>
-                                        </div>
-                                    </div>
-								{{-- </a> --}}
+                                <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg.jpg"
+                                alt="First slide">
 							</div>
 							<div class="product-content mt-1 text-center">
                                 <h5>Nombre del producto</h5>
@@ -367,105 +340,83 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="latest-product__text">
                         <h4 class="mb-3">Productos mas pedidos</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                    <div class="col-2 pr-0 pl-1">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="mb-0">Nombre del producto</h5>
-                                        <p class="my-0 small">Breve descripción del producto</p>
-                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                        {{-- <small>Breve descripción del producto</small> --}}
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <div class="shoping__cart__quantity">
-                                            <div class="quantity">
-                                                <div class="pro-qty border">
-                                                    <input type="text" value="1">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="product-gallery">
+                                    <div class="quickview-slider-active">
+                                        <div class="single-slider">
+                                            <div class="row border mb-2 mx-2 px-0 py-1">
+                                                <div class="col-2 pr-0 pl-1">
+                                                    <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="mb-0">Nombre del producto</h5>
+                                                    <p class="my-0 small">Breve descripción del producto</p>
+                                                    <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
+                                                </div>
+                                                <div class="col-4 text-center">
+                                                    <div class="shoping__cart__quantity">
+                                                        <div class="quantity">
+                                                            <div class="pro-qty border">
+                                                                <input type="text" value="1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
+                                                    <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="row border mb-2 mx-2 px-0 py-1">
+                                                <div class="col-2 pr-0 pl-1">
+                                                    <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="mb-0">Nombre del producto</h5>
+                                                    <p class="my-0 small">Breve descripción del producto</p>
+                                                    <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
+                                                </div>
+                                                <div class="col-4 text-center">
+                                                    <div class="shoping__cart__quantity">
+                                                        <div class="quantity">
+                                                            <div class="pro-qty border">
+                                                                <input type="text" value="1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
+                                                    <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#"><i class="fa fa-heart"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
+
+                                        <div class="single-slider">
+                                            <div class="row border mb-2 mx-2 px-0 py-1">
+                                                <div class="col-2 pr-0 pl-1">
+                                                    <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="mb-0">Nombre del producto</h5>
+                                                    <p class="my-0 small">Breve descripción del producto</p>
+                                                    <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
+                                                </div>
+                                                <div class="col-4 text-center">
+                                                    <div class="shoping__cart__quantity">
+                                                        <div class="quantity">
+                                                            <div class="pro-qty border">
+                                                                <input type="text" value="1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
+                                                    <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <a href="#" class="latest-product__item border">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                     </div>
