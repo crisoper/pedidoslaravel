@@ -1,6 +1,6 @@
 
 @extends('layouts.admin.admin')
-
+@can('accionpermisos.listar')
 @section('tituloseccion', 'Admistracion')
 
 @section('contenido')
@@ -91,3 +91,6 @@
 
 @endsection
 
+@else
+    @include('includes.sinpermiso')
+@endcan

@@ -1,5 +1,5 @@
 @extends('layouts.admin.admin')
-
+@can('permissions.crear')
 @section('contenido')
 
 <div class="container">
@@ -62,3 +62,7 @@
 
 
 @endsection
+
+@else
+    @include('includes.sinpermiso')
+@endcan

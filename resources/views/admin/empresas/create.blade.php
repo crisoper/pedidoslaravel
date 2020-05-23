@@ -21,29 +21,29 @@
                                         <select name="rubro_id" id="rubro_id" class="form-control" autofocus>
                                             <option value="">Seleccionar Rubro</option>
                                             @foreach ($empresarubros as $empresarubro)
-                                                <option value="{{ $empresarubro->id }}">{{ $empresarubro->nombre }}</option>
+                                                <option value="{{ $empresarubro->id }}" {{ old('rubro_id') == $empresarubro->id ? 'selected' : '' }}>{{ $empresarubro->nombre }}</option>
                                             @endforeach
                                             <span class="text-danger">{{ $errors->first('rubro_id') }}</span>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="ruc">Ruc:</label>
-                                        <input type="text" name="ruc" id="ruc" maxlength="11" class="form-control">
+                                    <input type="text" name="ruc" id="ruc" maxlength="11" class="form-control" value="{{old('ruc')}}">
                                         <span class="text-danger">{{ $errors->first('ruc') }}</span>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="nombre">Nombre:</label>
-                                        <input type="text" name="nombre" id="nombre" class="form-control">
+                                        <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}">
                                         <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="direccion">Dirección:</label>
-                                        <input type="text" name="direccion" id="direccion" class="form-control">
+                                        <input type="text" name="direccion" id="direccion" class="form-control" value="{{old('direccion')}}">
                                         <span class="text-danger">{{ $errors->first('direccion') }}</span>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="paginaweb">Página Web:</label>
-                                        <input type="text" name="paginaweb" id="paginaweb" class="form-control">
+                                        <input type="text" name="paginaweb" id="paginaweb" class="form-control" value="{{old('paginaweb')}}">
                                         <span class="text-danger">{{ $errors->first('paginaweb') }}</span>
                                     </div>
                                 </div>

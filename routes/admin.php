@@ -25,6 +25,7 @@ function () {
 
     //EMPRESAS
     Route::resource('empresas', 'Admin\EmpresasController');
+    
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
     
@@ -78,6 +79,8 @@ function() {
 
     //Usuarios que pertencen a una empresa
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
+
+
 
 
     

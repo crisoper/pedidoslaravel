@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-{{-- @can('public.menus.crear') --}}
+@can('menus.crear')
 
 <div class="container">
     <div class="row">
@@ -91,6 +91,9 @@
 </div>
 
 
-{{-- @endcan --}}
   
 @endsection
+
+@else
+    @include('includes.sinpermiso')
+@endcan

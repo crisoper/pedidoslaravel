@@ -9,10 +9,13 @@ use App\Models\Admin\Comprobantetipo;
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Empresacomprobantetipos;
 use App\Models\Admin\Empresarubro;
+use App\Models\Admin\Periodo;
+use App\Models\Admin\Userempresa;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 // use Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmpresasController extends Controller
 {
@@ -23,17 +26,34 @@ class EmpresasController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::get();
+       
+
+        // if( $tempresas == 0 ){
+        //    return view('layouts.paginas.mensajes.sinempresas');
+        // }else{
+         
+           
+        //    return redirect()->route('config.seleccionar.periodo');
+        // }
+  
 
         if(!empty(request()->buscar)){
-            $empresas = Empresa::where('ruc','like','%'.request()->buscar.'%')
+            $empresas = Empresa::whereHas('usuarios', function ($query) {
+                $query->where( 'user_id', '=', auth()->user()->id );
+            })
+            ->where('ruc','like','%'.request()->buscar.'%')
             ->orWhere('nombre','like','%'.request()->buscar.'%')
             ->orderBy(request('sort','id'),'ASC')
             ->paginate(10);
             return view('admin.empresas.index', compact('empresas'));
         }else{
-            $empresas = Empresa::orderBy(request('sort','id'),'ASC')
+    
+            $empresas = Empresa::whereHas('usuarios', function ($query) {
+                $query->where( 'user_id', '=', auth()->user()->id );
+            })
+            ->orderBy(request('sort','id'),'ASC')
             ->paginate(10);
+       
             return view('admin.empresas.index', compact('empresas'));
         }
     }
@@ -80,6 +100,25 @@ class EmpresasController extends Controller
         $empresa->created_by = Auth()->user()->id;
 
         $empresa->save();
+
+        Userempresa::create([
+            'user_id' => Auth()->user()->id,
+            'empresa_id' => $empresa->id,
+            'estado' => 1,            
+        ]);
+        
+        $periodo = new Periodo();
+        $periodo->empresa_id = $empresa->id;
+        $periodo->nombre = 'demo'.  $empresa->ruc;
+        $fechaActual = date('Y-m-d');
+        $fechaFin = strtotime ( '+6 month' , strtotime ( $fechaActual ) ) ;
+        $fechaFin = date ( 'Y-m-d' , $fechaFin );
+        $periodo->inicio = date('Y-m-d');
+        $periodo->fin = $fechaFin;
+        $periodo->estado= 1;
+        $periodo->created_by = Auth()->user()->id;
+        $periodo->save();
+        
 
         return redirect()->route('empresas.index')->with("info", "Registro creado");
     }

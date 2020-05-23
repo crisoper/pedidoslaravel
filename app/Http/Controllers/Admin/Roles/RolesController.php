@@ -139,6 +139,7 @@ class RolesController extends Controller
     public function getpermissions($id) 
     {
         $rol = Rol::with('permissions')->findOrFail($id);
+        return $rol;
         $permissions = Permission::get();
         $namepermissions = $this->namepermissions( Permission::get()->pluck('name') );
 

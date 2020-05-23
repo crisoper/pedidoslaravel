@@ -1,6 +1,6 @@
 
 @extends('layouts.admin.admin')
-
+@can('productos.editar')
 @section('contenido')
 
 <div class="container">
@@ -82,7 +82,7 @@
 
                                         <div id="previewImg">
                                             <div class="form-group text-center col-12" >
-                                                   @if ($imgproducto != null && $exists != null )
+                                                   @if ( $imgproducto != null && $exists != null )
                                                        <img class='img-thumbnail' src='{{Storage::url('img_productos/'.$imgproducto.'')}}' width='350px' height='300px' id='imgdefault' data-initial-preview='#' accept='image/*'>
                                                    @else 
                                                        <img class='img-thumbnail' src='{{Storage::url('imgproducto.jpg')}}' width='350px' height='300px' id='imgdefault' data-initial-preview='#' accept='image/*'>
@@ -122,5 +122,8 @@
 @endsection
 @section('scripts')
     @include('admin.productos.js');
-
 @endsection
+
+@else
+    @include('includes.sinpermiso')
+@endcan

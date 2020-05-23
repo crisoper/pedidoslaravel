@@ -3,7 +3,7 @@
 
 @section('contenido')
 
-@can('public.roles.editar')
+@can('roles.editar')
 
 <div class="container">
     <div class="row">
@@ -52,6 +52,8 @@
     </div>
 </div>
 
-@endcan
 
 @endsection
+@else
+    @include('includes.sinpermiso')
+@endcan

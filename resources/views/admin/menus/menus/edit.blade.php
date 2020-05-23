@@ -1,9 +1,9 @@
 @extends('layouts.admin.admin')
 
+@can('menus.editar')
 
 @section('contenido')
 
-@can('public.menus.editar')
 
 <div class="container">
     <div class="row">
@@ -98,6 +98,8 @@
     </div>
 </div>
 
-@endcan
-  
+
 @endsection
+@else
+    @include('includes.sinpermiso')
+@endcan
