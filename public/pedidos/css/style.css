@@ -125,10 +125,10 @@ ol {
 .section-title h2:after {
 	position: absolute;
 	left: 0;
-	bottom: -15px;
+	bottom: -6px;
 	right: 0;
 	height: 4px;
-	width: 80px;
+	width: 100%;
 	background: #7fad39;
 	content: "";
 	margin: 0 auto;
@@ -722,28 +722,28 @@ ol {
 -----------------------*/
 
 .categories__item {
-	height: 270px;
+	height: 200px;
 	position: relative;
 }
 
 .categories__item h5 {
 	position: absolute;
 	left: 0;
-	width: 100%;
-	padding: 0 20px;
-	bottom: 20px;
+	width: 90%;
+	padding: 0 10px;
+	bottom: 10px;
 	text-align: center;
 }
 
 .categories__item h5 a {
-	font-size: 18px;
+	font-size: 15px;
 	color: #1c1c1c;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	padding: 12px 0 10px;
+	padding: 10px 20px;
 	background: #ffffff;
-	display: block;
+	/* display: block; */
 }
 
 .categories__slider .col-lg-3 {
@@ -982,6 +982,33 @@ ol {
 	color: #252525;
 	font-weight: 700;
 }
+
+.latest_product_border {
+	border-right: 1px solid rgba(0,0,0,.1);
+}
+
+
+.latest-product__text {
+	margin-bottom: 50px;
+}
+.latest-product__text>h4 {
+	color: #1c1c1c;
+	font-weight: 700;
+	position: relative;
+}
+
+.latest-product__text>h4:after {
+	position: absolute;
+	left: 0;
+	bottom: -5px;
+	right: 0;
+	height: 4px;
+	width: 100%;
+	background: #7fad39;
+	content: "";
+	margin: 0 auto;
+}
+
 
 /*---------------------
   Form BLog

@@ -104,14 +104,14 @@
         </div>
     
         <!-- MENU WEB-->
-        <header class="header bg-dark">
+        <header class="header bg-dark py-0">
             <div class="header__top">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="header__top__titulo p-0">
+                            <div class="header__top__titulo">
                                 <div class="header__top__description">
-                                    <div class="py-2">Servicio al cliente</div>
+                                    <div>Servicio al cliente</div>
                                     <span class="arrow_carrot-down"></span>
                                     <ul>
                                         <li style="width: 100%"><a href="#">Contáctanos</a></li>
@@ -132,18 +132,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="header__top__titulo p-0">
+                        <div class="col-md-6">
+                            <div class="header__top__titulo">
                                 <div class="header__top__description">
-                                    <div class="py-2"><a href="#">Afilia a tu restaurante</a></div>
+                                    <div><a class="text-warning" href="#">Afilia a tu restaurante</a></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="header__cart p-0">
-                                <ul class="py-2">
-                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                <ul class="">
+                                    <li><a href="#"><i class="fa fa-heart text-info"></i> <span>1</span></a></li>
                                     {{-- Carrito compras --}}
                                     <li class="carrito_compras">
                                         <a href="#">
@@ -252,7 +251,7 @@
                                                     </div>
                                                 </li>
                                             </div>
-                                            
+
                                             <hr class=" mb-1">
                                             <li class="bottom_total">
                                                 <div class="row">
@@ -275,9 +274,9 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="header__top__titulo p-0">
+                            <div class="header__top__titulo">
                                 <div class="header__top__description">
-                                    <div class="py-2">Ingresar</div>
+                                    <div>Ingresar</div>
                                     <span class="arrow_carrot-down"></span>
                                     <ul>
                                         <li style="width: 100%"><a href="#">Ingresar</a></li>
@@ -299,26 +298,18 @@
                     <div class="col-lg-7">
                         <nav class="header__menu m-0 pb-0">
                             <ul>
-                                <li><a href="#">Pages</a>
+                                <li><a href="#">Tipos de comida <i class="fas fa-angle-down"></i></a>
                                     <ul class="header__menu__dropdown"  id="menuCategorias">
+                                        <!-- li><a href="">Shop Details</a></li -->
+                                    </ul>
+                                </li>
+                                <li><a href="#">Principales lugares <i class="fas fa-angle-down"></i></a>
+                                    <ul class="header__menu__dropdown"  id="">
                                         <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
-                    </div>
-                    <div class="col-lg-3">
-                        <section class="hero hero-normal py-0">
-                            <div class="hero__categories">
-                                <div class="hero__categories__all">
-                                    <i class="fa fa-bars"></i>
-                                    <span>Todas las categorias</span>
-                                </div>
-                                <ul>
-                                    <li><a href="#">Fresh Meat</a></li>
-                                </ul>
-                            </div>
-                        </section>
                     </div>
                 </div>
                 <div class="humberger__open">
@@ -330,7 +321,7 @@
     </div>
 
 
-    <section class="content" style="margin-top: 200px">
+    <section class="content" style="margin-top: 150px">
         <main class="">
             @yield('contenido')
         </main>

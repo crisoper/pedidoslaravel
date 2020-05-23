@@ -12,3 +12,9 @@
     <link rel="stylesheet" href="{{asset('pedidos/css/carritocompras.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/css/productospublic.css')}}">
+
+
+    <!-- ESHOP -->
+    <link rel="stylesheet" href="{{asset('pedidos/eshop/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/eshop/style.css')}}">
+
