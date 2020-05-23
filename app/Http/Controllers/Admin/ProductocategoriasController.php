@@ -58,8 +58,8 @@ class ProductocategoriasController extends Controller
       
         $categorias = Productocategoria::firstOrNew(
             [
-            'empresa_id' => 1,
-            'nombre' => $request->nombre,
+            'empresa_id' => $this->empresaId(),
+            'nombre' => $request->categoriasName,
             'parent_id'=> $request->parent_id,
         ],
         [
@@ -108,8 +108,8 @@ class ProductocategoriasController extends Controller
     public function update(CategoriasUpdateRequest $request, $id)
     {
         $categoria= Productocategoria::findOrFail($id);
-        $categoria->parent_id = $request->categoriaid;
-        $categoria->nombre = $request->nombre;
+        $categoria->parent_id = $request->categoriasId;
+        $categoria->nombre = $request->categoriasName;
         $categoria->updated_by = Auth()->user()->id;
         $categoria->save();
         return redirect()->route('categorias.index');

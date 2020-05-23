@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Modelhasrole;
 use App\Providers\RouteServiceProvider;
+use Spatie\Permission\Models\Role as Rol;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +31,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -64,10 +67,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $usuario = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user= User::all();     
+        $userid = $user->last();
+        $rol = Rol::where('name', 'web_Administrador empresa')->first();
+        
+         Modelhasrole::create([
+            'role_id' => $rol->id,
+            'model_type' => 'App\User' ,
+            'model_id'=> $userid->id,
+        ]); 
+
+       return $usuario;
     }
 }

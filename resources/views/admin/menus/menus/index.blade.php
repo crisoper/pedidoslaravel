@@ -1,8 +1,8 @@
 @extends('layouts.admin.admin')
+@can('menus.listar')
 
 @section('contenido')
 
-{{-- @can('public.menus.listar') --}}
 
 <div class="container">
     <div class="row">
@@ -143,6 +143,8 @@
     </div>
 </div>
 
-{{-- @endcan --}}
 
 @endsection
+@else
+    @include('includes.sinpermiso')
+@endcan

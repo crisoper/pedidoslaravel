@@ -79,5 +79,3 @@ Route::get('cart', 'Publico\CartController@index')
 
 Route::get('/home', 'HomeController@index')
 ->name('home');
-
-

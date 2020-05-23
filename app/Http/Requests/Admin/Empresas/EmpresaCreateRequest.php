@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Empresas;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Unique;
 
 class EmpresaCreateRequest extends FormRequest
 {
@@ -25,11 +26,19 @@ class EmpresaCreateRequest extends FormRequest
     {
         return [
             "rubro_id" => ["required"],
-            "ruc" => ["required", 'max:11'],
+            "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombre" => ["required"],
             "direccion" => ["required"],
             "paginaweb" => ["nullable"],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ];
+
+    }
+    public function messages()
+    {
+        return [
+            'ruc.required' => 'El número de ruc ya esta en uso.',
+              
         ];
     }
 }

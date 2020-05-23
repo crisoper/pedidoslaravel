@@ -32,9 +32,9 @@ class SeleccionarperiodoController extends Controller
                 return redirect()->route('periodos.index')->with('info', 'Por favor active un periodo antes de continuar');         
             }
             else{
-        		return view('includes.sinperiodosactivos');
+        		return view('admin.errores.sinperiodos');
             }
-
+            
         }
         else if( count($periodos)  == 1 ){
 
@@ -54,7 +54,7 @@ class SeleccionarperiodoController extends Controller
                      ->count();
 
                      if( $tperiodos == 0 ){
-                        return view('includes.sinperiodosactivos');
+                        return view('admin.errores.sinperiodos');
                      }else{
                         Session::put( 'periodoactual', $periodo->id );
                         Session::put( 'periododescripcion', $periodo->nombre );

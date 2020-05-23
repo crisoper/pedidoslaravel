@@ -92,7 +92,7 @@ class ProductosController extends Controller
             $categorias = Productocategoria::firstOrNew(
                 [
                    'empresa_id'=> $this->empresaId(),
-                    'nombre'=> $request->nombre,
+                    'nombre'=> $request->categoriasName,
                 ],
                 [
                     'created_by'=> Auth()->user()->id,

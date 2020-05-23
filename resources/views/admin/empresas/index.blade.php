@@ -11,7 +11,8 @@
                 <div class="card-header">
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-11">
-                            <h3>Empresas</h3>                          
+                            <h3>Empresas</h3>    
+                           
                         </div>
                         <div class="mb-3 text-center col-1">
                             <a title="Ir a principal" class="" href="{{Route('home')}}"><h4><i class="fas fa-reply "></i></h4></a>
@@ -61,6 +62,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($empresas as $empresa)
+                                   
                                     <tr>
                                         <td>{{ $empresa->id }}</td>
                                         <td>{{ $empresa->rubro->nombre }}</td>

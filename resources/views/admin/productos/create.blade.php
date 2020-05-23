@@ -1,6 +1,6 @@
 
 @extends('layouts.admin.admin')
-
+@can('productos.crear')
 @section('contenido')
 <style>
   
@@ -115,3 +115,6 @@
 @section('scripts')
     @include('admin.productos.js');
 @endsection
+@else
+    @include('includes.sinpermiso')
+@endcan

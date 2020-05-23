@@ -1,6 +1,6 @@
 
 @extends('layouts.admin.admin')
-
+@can('productocategorias.crear')
 @section('contenido')
 
 <div class="container">
@@ -52,3 +52,7 @@
 </div>
 
 @endsection
+
+@else
+    @include('includes.sinpermiso')
+@endcan

@@ -1,7 +1,7 @@
 
 @extends('layouts.admin.admin')
 
-
+@can('productos.listar')
 @section('contenido')
 
 <div class="container">
@@ -184,3 +184,7 @@
 </script>
     
 @endsection
+
+@else
+    @include('includes.sinpermiso')
+@endcan
