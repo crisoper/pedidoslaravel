@@ -405,6 +405,34 @@
 
 @include('includes.ajaxsetup')
 
+<script>
+    // Script que permite guardar el codigo del cliente en local storafe
+    function obtenerLocalStorageclienteID () {
+        if(typeof(Storage) !== "undefined") {
+            if ( !localStorage.LocalStorageclienteID ) {
+                $.ajax({
+                    url: '{{ route("localstorage.index") }}',
+                    method: 'GET',
+                    data: { },
+                    success: function ( data ) {
+                        localStorage.LocalStorageclienteID = data
+                    },
+                    error: function ( jqXHR, textStatus, errorThrown ) {
+                        console.log(jqXHR.responseJSON);
+                    }
+                });
+            }
+            return localStorage.LocalStorageclienteID;
+        } 
+        else {
+            return false;
+        }
+    }
+
+    //Creamos el local Sotorge clienteID
+    obtenerLocalStorageclienteID ();
+</script>
+
 @yield("scripts")
 
 </html>
