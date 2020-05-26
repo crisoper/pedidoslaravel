@@ -17,6 +17,19 @@
     <link rel="stylesheet" href="{{asset('pedidos/css/carritocompras.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/css/productospublic.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/css/select2.min.css')}}">
+
+    
+    {{-- BUSCADOR --}}
+    <link rel="stylesheet" href="{{asset('pedidos/buscador/css/style.css')}}">
+    {{-- SLIDERS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/slider/css/style.css')}}">
+    {{-- TODOS PRODUCTOS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/todosproductos/css/core-style.css')}}">
+    {{-- IMAGENES PRODUCTOS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/productos/css/core-style.css')}}">
+    
+
+
+
 
 
