@@ -115,6 +115,12 @@
                                     <a class="nav-link" href="{{ route('register') }}"> Afilia a tu restaurante</a>
                                     
                                 </div>
+
+                        {{-- AFILIAR RESTAURANTE --}}
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-5">
+                            <div class="header__top__titulo text-center">
+                                <div>
+                                    <a class="text-primary" href="#">Afilia a tu restaurante</a>
                                 </div>
                             </div>
                         </div>
