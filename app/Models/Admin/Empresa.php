@@ -51,6 +51,10 @@ class Empresa extends Model
     {
         return $this->belongsTo('App\User', 'created_by');
     }
+    public function persona()
+    {
+        return $this->belongsTo('App\Models\Publico\Persona');
+    }
     
     /*
     * Usuario que ha modificado el registro

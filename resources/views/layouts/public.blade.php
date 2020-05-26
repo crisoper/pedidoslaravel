@@ -98,7 +98,9 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#">Afilia a tu restaurante</a></li>
+                    <li><a href="#">Afilia a tu restaurante</a>
+                    
+                    </li>
                 </ul>
             </div>
         </div>
@@ -135,7 +137,10 @@
                         <div class="col-md-6">
                             <div class="header__top__titulo">
                                 <div class="header__top__description">
-                                    <div><a class="text-warning" href="#">Afilia a tu restaurante</a></div>
+                                <div>
+                                    <a class="nav-link" href="{{ route('register') }}"> Afilia a tu restaurante</a>
+                                    
+                                </div>
                                 </div>
                             </div>
                         </div>
