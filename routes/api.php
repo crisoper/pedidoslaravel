@@ -31,6 +31,20 @@ Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index"
 
 
 
+Route::get("clientes/obtenernavegadorid", "Publico\LocalstorageController@index")
+->name("localstorage.index");
+
+
+
+Route::get("cesta/index", "Publico\CestaController@index")
+->name("cesta.index");
+Route::delete("cesta/delete", "Publico\CestaController@delete")
+->name("cesta.delete");
+
+
+
+
+
 
 
 

@@ -29,19 +29,15 @@
             <div class="humberger__menu__logo">
                 <a href="#"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
             </div>
-            <div class="humberger__menu__cart">
-                <ul>
-                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                </ul>
-                <div class="header__cart__price">item: <span>$150.00</span></div>
-            </div>
-            <div class="humberger__menu__widget">
-                <div class="header__top__right__auth mr-3">
-                    <a href="#"><i class="fa fa-user"></i> Login</a>
-                </div>
-                <div class="header__top__right__auth">
-                    <a href="#"><i class="fa fa-user"></i> Register</a>
+            
+            <div class="humberger__menu__login">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="#"><i class="fa fa-user"></i> Registrarse</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#"><i class="fa fa-user"></i> Ingresar</a>
+                    </div>
                 </div>
             </div>
 
@@ -63,28 +59,6 @@
                     <li><a href="./contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <div id="mobile-menu-wrap"></div>
-            <div class="header__top__right">
-                <div class="header__top__description">
-                    <i class="fa fa-phone"></i>
-                    <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <h5 class="text-light">+65 11.188.888</h5>
-                        <span class="text-secondary">support 24/7 time</span>
-                    </ul>
-                </div>
-                <div class="header__top__description">
-                    {{-- <img src="img/language.png" alt=""> --}}
-                    <div>Redes Sociales</div>
-                    <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                    </ul>
-                </div>
-            </div>
             
             <div class="humberger__menu__contact">
                 <ul>
@@ -110,28 +84,28 @@
             <div class="header__top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-2">
-                            <div class="header__top__titulo">
-                                <div class="header__top__description">
-                                    <div>Servicio al cliente</div>
-                                    <span class="arrow_carrot-down"></span>
-                                    <ul>
-                                        <li style="width: 100%"><a href="#">Contáctanos</a></li>
-                                        <li style="width: 100%"><a href="#">Preguntas frecuentes</a></li>
-                                        <li style="width: 100%">
-                                            <div class="header__top__right__social">
-                                                <a href="#"><i class="text-light fa fa-facebook"></i></a>
-                                                <a href="#"><i class="text-light fa fa-twitter"></i></a>
-                                                <a href="#"><i class="text-light fa fa-linkedin"></i></a>
-                                                <a href="#"><i class="text-light fa fa-pinterest-p"></i></a>
-                                            </div>
-                                        </li>
-                                        <li style="width: 100%">
-                                            <h5 class="text-light">+65 11.188.888</h5>
-                                            <span class="text-secondary">support 24/7 time</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                        {{-- SERVICIO AL CLIENTE --}}
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+                            <div class="header__top__titulo text-left">
+                                <div>Servicio al cliente <i class="fas fa-angle-down"></i></div>
+                                <ul class="header__top__titulo_service">
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="#">Escribenos</a></li>
+                                    <hr class="my-0">
+                                    <li style="width: 100%">
+                                        <p class="mb-0">+65 11.188.888</p>
+                                        <p class="my-0 small">support 24/7 time</p>
+                                    </li>
+                                    <hr class="my-0">
+                                    <li class="mt-0" style="width: 100%">
+                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                        <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                                    </li>
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="#">Preguntas frecuentes</a></li>
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -144,21 +118,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="header__cart p-0">
-                                <ul class="">
-                                    <li><a href="#"><i class="fa fa-heart text-info"></i> <span>1</span></a></li>
-                                    {{-- Carrito compras --}}
+                        
+                        {{-- BUSCADOR --}}
+                        <div class="col-2 col-sm-3 col-md-1 col-lg-0">
+                            <div class="header__search__movil">
+                                <div id="search_2"><i class="fa fa-search"></i></div>
+                            </div>
+                        </div>
+
+                        {{-- CARRITO COMPRAS --}}
+                        <div class="col-6 col-sm-5 col-md-3 col-lg-2">
+                            <div class="header__cart text-right">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     <li class="carrito_compras">
                                         <a href="#">
-                                            <i class="fas fa-cart-plus text-success"></i><span>3</span>
+                                            <i class="fas fa-cart-plus"></i><span>3</span>
                                         </a>
-                                        <ul class="compras_item">
+                                        <ul class="compras_item text-center">
                                             <small><b>Como mínimo debes comprar s/ 30.00</b></small>
                                             <hr class="mt-1">
                                             <div class="scroll_cart_header">
-                                                <li class="dropdown_cart_header row ml-0 pt-2 pr-2">
-                                                    <div class="col-12 mb-2">
+                                                <li class="dropdown_cart_header row">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -174,7 +156,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -190,7 +172,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -206,7 +188,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -222,7 +204,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -238,7 +220,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -256,7 +238,7 @@
                                                     </div>
                                                 </li>
                                             </div>
-
+    
                                             <hr class=" mb-1">
                                             <li class="bottom_total">
                                                 <div class="row">
@@ -278,16 +260,17 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="header__top__titulo">
-                                <div class="header__top__description">
-                                    <div>Ingresar</div>
-                                    <span class="arrow_carrot-down"></span>
-                                    <ul>
-                                        <li style="width: 100%"><a href="#">Ingresar</a></li>
-                                        <li style="width: 100%"><a href="#">Registrarse</a></li>
-                                    </ul>
-                                </div>
+
+                        {{-- LOGIN --}}
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-2">
+                            <div class="header__top__titulo text-right">
+                                <div>Ingresar <i class="fas fa-angle-down"></i></div>
+                                <ul class="header__top__titulo_login">
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="#">Ingresar</a></li>
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="#">Registrase</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -296,19 +279,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-                        <div class="header__logo pt-1 pb-0">
+                        <div class="header__logo">
                             <a href="./index.html"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <nav class="header__menu m-0 pb-0">
+                    <div class="col-lg-9">
+                        <nav class="header__menu">
                             <ul>
-                                <li><a href="#">Tipos de comida <i class="fas fa-angle-down"></i></a>
+                                <li>
+                                    <a href="#">Tipos de comida <i class="fas fa-angle-down"></i></a>
                                     <ul class="header__menu__dropdown"  id="menuCategorias">
                                         <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
                                 </li>
-                                <li><a href="#">Principales lugares <i class="fas fa-angle-down"></i></a>
+                                <li>
+                                    <a href="#">Principales lugares <i class="fas fa-angle-down"></i></a>
                                     <ul class="header__menu__dropdown"  id="">
                                         <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
@@ -316,17 +301,56 @@
                             </ul>
                         </nav>
                     </div>
+                    <div class="col-lg-1">
+                        <div class="header__search__web text-right">
+                            <a id="search_1" href="#"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="humberger__open">
                     <i class="fa fa-bars"></i>
                 </div>
             </div>
         </header>
-        <!-- Header Section End -->
     </div>
+    <!-- Buscador -->
+    <div class="search_input pt-3" id="search_input_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-11">
+                    <form id="form-buscar-productos" action="">
+                        <div class="form-row">
+                            <div class="col-12 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <select name="productos" id="productos" class="form-control">
+                                        <option value="0">Seleccionar todos</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-9 col-md-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control rounded-1" placeholder="Buscar" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+    
+                                    <div class="input-group-append">
+                                        <a href="#" class="btn btn-outline-secondary" onclick="event.preventDefault(); document.getElementById('form-buscar-productos').submit();">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1">
+                    <span id="close_search" title="Close Search"><i class="fas fa-times-circle"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
-
-    <section class="content" style="margin-top: 150px">
+    
+    <section class="content" style="margin-top: 130px">
         <main class="">
             @yield('contenido')
         </main>
@@ -409,6 +433,34 @@
 
 
 @include('includes.ajaxsetup')
+
+<script>
+    // Script que permite guardar el codigo del cliente en local storafe
+    function obtenerLocalStorageclienteID () {
+        if(typeof(Storage) !== "undefined") {
+            if ( !localStorage.LocalStorageclienteID ) {
+                $.ajax({
+                    url: '{{ route("localstorage.index") }}',
+                    method: 'GET',
+                    data: { },
+                    success: function ( data ) {
+                        localStorage.LocalStorageclienteID = data
+                    },
+                    error: function ( jqXHR, textStatus, errorThrown ) {
+                        console.log(jqXHR.responseJSON);
+                    }
+                });
+            }
+            return localStorage.LocalStorageclienteID;
+        } 
+        else {
+            return false;
+        }
+    }
+
+    //Creamos el local Sotorge clienteID
+    obtenerLocalStorageclienteID ();
+</script>
 
 @yield("scripts")
 
