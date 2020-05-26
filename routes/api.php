@@ -30,10 +30,8 @@ Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index"
 ->name("ajax.categorias.inicio");
 
 
-
 Route::get("clientes/obtenernavegadorid", "Publico\LocalstorageController@index")
 ->name("localstorage.index");
-
 
 
 Route::get("cesta/index", "Publico\CestaController@index")
