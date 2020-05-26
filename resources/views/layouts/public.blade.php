@@ -114,8 +114,6 @@
                             <div class="header__top__titulo text-center">
                                 <div>
                                     <a class="text-primary" href="{{ route('register') }}">Afilia a tu restaurante</a>
-                                    
-                                    
                                 </div>
                             </div>
                         </div>
@@ -189,9 +187,9 @@
                                 <div>Ingresar <i class="fas fa-angle-down"></i></div>
                                 <ul class="header__top__titulo_login">
                                     <hr class="my-0">
-                                    <li style="width: 100%"><a href="#">Ingresar</a></li>
+                                    <li style="width: 100%"><a href="{{ route('login') }}">Ingresar</a></li>
                                     <hr class="my-0">
-                                    <li style="width: 100%"><a href="#">Registrase</a></li>
+                                    <li style="width: 100%"><a href="{{ route('register') }}">Registrase</a></li>
                                 </ul>
                             </div>
                         </div>
