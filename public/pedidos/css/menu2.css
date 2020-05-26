@@ -1,0 +1,102 @@
+
+
+/*---------------------
+  MENU 2
+-----------------------*/
+
+.header__logo {
+    padding: 0px 0;
+}
+
+.header__logo a {
+	display: inline-block;
+}
+
+.header__menu {
+    padding: 0 0 !important;
+}
+
+.header__menu ul li {
+	list-style: none;
+	display: inline-block;
+	margin: 0px;
+	position: relative;
+	background-color: #343a40 !important;
+}
+.header__menu ul li a {
+	padding: 14.5px 10px !important;
+}
+
+.header__menu ul li .header__menu__dropdown {
+	position: absolute;
+	top: 50px !important;
+	background: #222222;
+	width: 180px;
+	z-index: 9;
+	padding: 0;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.header__menu ul li .header__menu__dropdown li {
+	margin-right: 0;
+	display: block;
+}
+
+.header__menu ul li .header__menu__dropdown li:hover>a {
+	color: #ffffff;
+}
+
+.header__menu ul li .header__menu__dropdown li a {
+	text-transform: capitalize;
+	color: #ffffff;
+	font-weight: 400;
+}
+
+.header__menu ul li.active a {
+	background-color: #7fad39;
+}
+
+.header__menu ul li:hover .header__menu__dropdown {
+	top: 30px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.header__menu ul li:hover>a {
+	background-color: #7fad39;
+}
+
+.header__menu ul li:last-child {
+	margin-right: 0;
+}
+
+.header__menu ul li a {
+	font-size: 14px;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+	display: block;
+}
+
+
+/* Tablet Device = 991px */
+
+@media (max-width: 991px) {	
+	.header__logo {
+		padding: 5px 0;
+	}
+}
+
+
