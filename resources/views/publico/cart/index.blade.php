@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTablaCarritoCompras">
-                                <tr>
+                                {{-- <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-1.jpg" alt="">
                                         <h5>Vegetable’s Package</h5>
@@ -45,7 +45,7 @@
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>

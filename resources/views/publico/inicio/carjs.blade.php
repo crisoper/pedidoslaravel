@@ -1,7 +1,15 @@
 <script>
+
+    $("#mostrarProductosCestaMenuFlotante").on("click", function() {
+        obtenerProductosCesta( );
+    });
+    
+    $("#mostrarProductosCestaMenuFlotante").on("hover", function() {
+        obtenerProductosCesta( );
+    });
+
     
     //Obtenemos los productos de la cesta
-    obtenerProductosCesta( );
 
 
     function obtenerProductosCesta( tipo = "cesta" ) {
@@ -16,7 +24,7 @@
                     tipo: tipo,
                 },
                 success: function ( data ) {
-                    mostrarProductosPaginaCarrito( data )
+                    mostrarProductosCestaMenuFlotante( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -28,43 +36,39 @@
     }
 
 
-    function mostrarProductosPaginaCarrito( cestas ) {
-        $("#cuerpoTablaCarritoCompras").html();
+    function mostrarProductosCestaMenuFlotante( cestas ) {
+
+
+        $("#mostrarProductosCestaMenuFlotanteItems").html();
 
         let carHTML = "";
 
         $.each( cestas.data, function( key, cesta ) {
             carHTML = carHTML + `
-                <tr>
-                    <td class="shoping__cart__item">
-                        <img src="img/cart/cart-1.jpg" alt="">
-                        <h5>${ cesta.producto.nombre }</h5>
-                    </td>
-                    <td class="shoping__cart__price">
-                        ${ cesta.producto.precio }
-                    </td>
-                    <td class="shoping__cart__quantity">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="${ cesta.cantidad }">
-                            </div>
+                <div class="col-12 mt-2">
+                    <div class="row border_caja_product">
+                        <div class="col-2 p-0">
+                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
                         </div>
-                    </td>
-                    <td class="shoping__cart__total">
-                        ${ cesta.cantidad * cesta.producto.precio }
-                    </td>
-                    <td class="shoping__cart__item__close">
-                        <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" >x</span>
-                    </td>
-                </tr>
+                        <div class="col-6 p-0">
+                            <p class="cart_product_description small mb-0">${ cesta.producto.nombre }</p>
+                        </div>
+                        <div class="col-4 p-0">
+                            <p class="cart_product_precio small text-success mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
+                            <small class="mt-0 mb-0">x${ cesta.cantidad }</small>
+                        </div>
+                        <div class="eliminar_compra p-0 eliminarProductoCestaMenu" producto_id="${ cesta.producto.id }">x
+                        </div>
+                    </div>
+                </div>
             `;
         });
 
-        $("#cuerpoTablaCarritoCompras").html( carHTML);
+        $("#mostrarProductosCestaMenuFlotanteItems").html( carHTML);
     } 
 
 
-    $("#cuerpoTablaCarritoCompras").on("click", ".eliminarProductoCesta", function() {
+    $("#mostrarProductosCestaMenuFlotanteItems").on("click", ".eliminarProductoCestaMenu", function() {
 
         let spanEliminar = $( this );
 

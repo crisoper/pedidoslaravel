@@ -131,15 +131,15 @@
                                 <ul>
                                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     <li class="carrito_compras">
-                                        <a href="#">
+                                        <a href="#" id="mostrarProductosCestaMenuFlotante">
                                             <i class="fas fa-cart-plus"></i><span>3</span>
                                         </a>
                                         <ul class="compras_item text-center">
                                             <small><b>Como mínimo debes comprar s/ 30.00</b></small>
                                             <hr class="mt-1">
                                             <div class="scroll_cart_header">
-                                                <li class="dropdown_cart_header row">
-                                                    <div class="col-12 mt-2">
+                                                <li class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
+                                                    {{-- <div class="col-12 mt-2">
                                                         <div class="row border_caja_product">
                                                             <div class="col-2 p-0">
                                                                 <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -154,87 +154,8 @@
                                                             <div class="eliminar_compra p-0">x
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    </div> --}}
+
                                                 </li>
                                             </div>
     
