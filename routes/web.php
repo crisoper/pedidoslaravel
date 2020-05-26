@@ -75,7 +75,11 @@ Route::get('/', 'Publico\InicioController@index')
 Route::get('cart', 'Publico\CartController@index')
 ->name('cart.index');
 
-
+Route::get('registrartuempresa','Admin\EmpresasController@registrarTuEmpresa')->name('registrartuempresa');
+Route::post('tuempresa.store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
 
 Route::get('/home', 'HomeController@index')
 ->name('home');
+
+//CONSULTA RUC
+Route::get('consultar.ruc', 'Admin\EmpresasController@consultaRuc')->name('consultar.ruc');

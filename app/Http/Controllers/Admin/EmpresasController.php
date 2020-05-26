@@ -5,17 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
+use App\Http\Requests\Publico\CreatuempresaCreateRequest;
 use App\Models\Admin\Comprobantetipo;
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Empresacomprobantetipos;
 use App\Models\Admin\Empresarubro;
+use App\Models\Admin\Modelhasrole;
 use App\Models\Admin\Periodo;
 use App\Models\Admin\Userempresa;
+use App\Models\publico\Departamento;
+use App\Models\publico\Distrito;
+use App\Models\publico\Horario;
+use App\Models\Publico\Persona;
+use App\Models\publico\Provincia;
+use Spatie\Permission\Models\Role as rol;
+
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 // use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class EmpresasController extends Controller
 {
@@ -101,24 +111,7 @@ class EmpresasController extends Controller
 
         $empresa->save();
 
-        Userempresa::create([
-            'user_id' => Auth()->user()->id,
-            'empresa_id' => $empresa->id,
-            'estado' => 1,            
-        ]);
-        
-        $periodo = new Periodo();
-        $periodo->empresa_id = $empresa->id;
-        $periodo->nombre = 'demo'.  $empresa->ruc;
-        $fechaActual = date('Y-m-d');
-        $fechaFin = strtotime ( '+6 month' , strtotime ( $fechaActual ) ) ;
-        $fechaFin = date ( 'Y-m-d' , $fechaFin );
-        $periodo->inicio = date('Y-m-d');
-        $periodo->fin = $fechaFin;
-        $periodo->estado= 1;
-        $periodo->created_by = Auth()->user()->id;
-        $periodo->save();
-        
+       
 
         return redirect()->route('empresas.index')->with("info", "Registro creado");
     }
@@ -229,5 +222,132 @@ class EmpresasController extends Controller
         $empresa->comprobantetipos()->sync( $request->empresacomprobantetipos ); 
 
         return redirect()->route('empresas.index')->with("Datos guardados correctamente", "info");
+    }
+
+
+ 
+    //REGISTRA TU EMPRESA
+    public function registrarTuEmpresa(){
+        $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
+        $empresarubros  = Empresarubro::get();
+        $departamentos = Departamento::get();
+        $provincias = Provincia::get();
+        $distritos = Distrito::get();
+        $usuario = Auth()->user()->email;
+        return view('publico.empresa.create', compact('empresarubros','departamentos','provincias','distritos','usuario','dias'));
+
+        
+    }
+    public function tuempresastore(Request $request){
+        // CreatuempresaCreateRequest
+        // <a class="text-warning" href="{{route('registrarTuEmpresa')}}">Afilia tu restaurante</a>
+    //     $user= User::all();     
+    //     $userid = $user->last();  
+    
+
+        $persona = Persona::firstOrNew([
+            'nombre' => $request->nombre,
+            'paterno' => $request->paterno,
+            'materno' => $request->materno,
+            'dni' => $request->dni,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            
+        ],
+        [
+            'created_by' => Auth()->user()->id,
+        ]);
+        $persona->save();
+
+        $empresa = new Empresa();
+        $empresa->rubro_id = $request->rubro_id;
+        $empresa->ruc = $request->ruc;
+        $empresa->nombre = $request->nombre;
+        $empresa->direccion = $request->direccion;
+        $empresa->paginaweb = $request->facebook;
+        $empresa->nombrecomercial = $request->nombrecomercial;
+        $empresa->departamento_id = $request->departamentoid;
+        $empresa->provincia_id = $request->procinciaid;
+        $empresa->distrito_id = $request->distritoid;
+        $empresa->persona_id = $persona->id;
+                
+        if ($request->hasFile('logo')) {
+            $nombreOriginalLogo = $request->file('logo');
+            $extension = strtolower( $nombreOriginalLogo->getClientOriginalExtension() ) ;
+            $nuevoNombreLogo = $nombreOriginalLogo->getClientOriginalName();
+            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
+            
+            $dimensionLogo = Image::make($nombreOriginalLogo->path());
+            $dimensionLogo->fit(300, 200, function ($constraint) {
+                $constraint->upsize();
+            });
+            $dimensionLogo->save(storage_path('app/public/empresaslogos').'/'.$nuevoNombreLogo);
+            $empresa->logo = $nuevoNombreLogo;
+        }
+        $empresa->created_by = Auth()->user()->id;
+
+        $empresa->save();
+
+        Userempresa::create([
+            'user_id' => Auth()->user()->id,
+            'empresa_id' => $empresa->id,
+            'estado' => 1,            
+        ]);
+        
+        $periodo = new Periodo();
+        $periodo->empresa_id = $empresa->id;
+        $periodo->nombre = 'demo'.  $empresa->ruc;
+        $fechaActual = date('Y-m-d');
+        $fechaFin = strtotime ( '+6 month' , strtotime ( $fechaActual ) ) ;
+        $fechaFin = date ( 'Y-m-d' , $fechaFin );
+        $periodo->inicio = date('Y-m-d');
+        $periodo->fin = $fechaFin;
+        $periodo->estado= 1;
+        $periodo->created_by = Auth()->user()->id;
+        $periodo->save();
+        
+        $rol = rol::where('name', 'web_Administrador empresa')->first();
+        
+         Modelhasrole::create([
+            'role_id' => $rol->id,
+            'model_type' => 'App\User' ,
+            'model_id'=> Auth()->user()->id,
+        ]); 
+     
+  
+       
+      
+        $dias = [];
+        foreach ($request->dia as $dia) {
+            if( $dia != null ){
+                array_push($dias, $dia);    
+            }
+        }
+        $horainicio = [];
+        foreach ($request->horainicio as $inicio) {
+            if( $inicio != null ){
+                array_push($horainicio, $inicio);    
+            }
+        }
+        $horafin = [];
+        foreach ($request->horafin as $fin) {
+            if( $fin != null ){
+                array_push($horafin, $fin);    
+            }
+        }
+
+        for ($i = 0; $i < count($dias) ; $i++) { 
+            $horario = new Horario();
+            $horario->empresa_id =  $empresa->id;
+            $horario->dia =  $dias[$i];
+            $horario->horainicio = $horainicio[$i];
+            $horario->horafin =  $horafin[$i];
+            $horario->created_by = Auth()->user()->id;        
+            $horario->save();
+
+        }
+
+        return redirect()->route('home')->with("info", "Registro creado");
+    
     }
 }

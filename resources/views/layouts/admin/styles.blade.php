@@ -22,7 +22,6 @@
 <link rel="stylesheet" href="{{ asset('agregarImagenes/css/fileinput.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/imagenes.css') }}">
 <link rel="stylesheet" href="{{ asset('Plugins/custom/custom.css') }}">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
 
 

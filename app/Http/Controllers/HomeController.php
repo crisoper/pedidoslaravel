@@ -33,8 +33,8 @@ class HomeController extends Controller
     {
         $idempresa = session()->get('empresaactual');      
         // $periodos = Periodo::where('empresa_id', $idempresa )->first();  
-
         $userEmpresa = Auth()->user()->empresas;
+        
         $empresas = $userEmpresa;
         $empresa = $userEmpresa->first();
        
@@ -75,8 +75,10 @@ class HomeController extends Controller
             }
             else
             {
-                
-                return view("admin.errores.registreempresas");
+                return redirect()->route('registrartuempresa');
+                // return view("admin.errores.registreempresas");
+
+
             }
     }
 }
