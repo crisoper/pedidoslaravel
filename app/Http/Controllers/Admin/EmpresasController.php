@@ -13,11 +13,11 @@ use App\Models\Admin\Empresarubro;
 use App\Models\Admin\Modelhasrole;
 use App\Models\Admin\Periodo;
 use App\Models\Admin\Userempresa;
-use App\Models\publico\Departamento;
-use App\Models\publico\Distrito;
-use App\Models\publico\Horario;
+use App\Models\Publico\Departamento;
+use App\Models\Publico\Distrito;
+use App\Models\Publico\Horario;
 use App\Models\Publico\Persona;
-use App\Models\publico\Provincia;
+use App\Models\Publico\Provincia;
 use Spatie\Permission\Models\Role as rol;
 
 use Illuminate\Support\Facades\Storage;
