@@ -113,7 +113,7 @@
                         <div class="col-6 col-sm-6 col-md-3 col-lg-5">
                             <div class="header__top__titulo text-center">
                                 <div>
-                                    <a class="text-primary" href="{{ route('register') }}">Afilia a tu restaurante</a>
+                                    <a class="text-primary" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                                 </div>
                             </div>
                         </div>

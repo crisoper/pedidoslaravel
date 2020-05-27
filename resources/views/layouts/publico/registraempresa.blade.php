@@ -28,20 +28,16 @@
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    {{-- <a class="nav-link" data-toggle="dropdown" href="#">
                         <img width="25px" height="25px" 
-                            {{-- @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
-                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
-                            @else 
-                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
-                            @endif --}}
+                         
                         alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
-                    </a>
+                    </a> --}}
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">
                             @guest
-                            @else
-                            {{ Auth::user()->name }}
+                            {{-- @else
+                            {{ Auth::user()->name }} --}}
                             @endguest
                         </span>
                         <div class="dropdown-divider"></div>
@@ -74,7 +70,9 @@
             {{-- CONTENIDO --}}
             <section class="content">
                 <div class="row">
+
                     @yield('contenido')
+
                 </div>
             </section>
         </div>

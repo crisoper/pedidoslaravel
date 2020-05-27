@@ -161,48 +161,84 @@
                                     <span>Datos del Representante</span>
                                 </div>
                                 <div class="card-body">
-                                    <div class="form-group col-md-12">
-                                        <input type="text" name="nombre" id="nombre"
-                                            class="form-control form-control-sm" value="{{old('nombre')}}"
-                                            placeholder="Nombre del representante">
-                                        <span class="text-danger">{{ $errors->first('nombre') }}</span>
-                                    </div>
+                                    
 
                                     <div class="d-flex">
                                         <div class="form-group col-md-4">
+                                            <input id="name" type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Nombres" >
+
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+
+                                            {{-- <span class="text-danger">{{ $errors->first('nombre') }}</span> --}}
+                                        </div>
+                                        <div class="form-group col-md-4">
                                             <input type="text" name="paterno" id="paterno"
-                                                class="form-control form-control-sm" value="{{old('paterno')}}"
-                                                placeholder="Apellido paterno">
-                                            <span class="text-danger">{{ $errors->first('paterno') }}</span>
+                                                class="form-control form-control-sm  @error('paterno') is-invalid @enderror" value="{{old('paterno')}}" placeholder="Apellido paterno"  required autocomplete="paterno">
+
+                                                @error('paterno')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            {{-- <span class="text-danger">{{ $errors->first('paterno') }}</span> --}}
                                         </div>
 
                                         <div class="form-group col-md-4">
                                             <input type="text" name="materno" id="materno"
-                                                class="form-control form-control-sm" value="{{old('materno')}}"
-                                                placeholder="Apellido materno">
-                                            <span class="text-danger">{{ $errors->first('materno') }}</span>
+                                                class="form-control form-control-sm @error('materno') is-invalid @enderror" value="{{old('materno')}}" placeholder="Apellido materno" required autocomplete="materno">
+                                            {{-- <span class="text-danger">{{ $errors->first('materno') }}</span> --}}
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" name="dni" id="dni" class="form-control form-control-sm"
-                                                value="{{old('dni')}}" placeholder="DNI">
-                                            <span class="text-danger">{{ $errors->first('dni') }}</span>
-                                        </div>
+                                        @error('materno')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                     </div>
 
                                     <div class="d-flex">
-                                        <div class="form-group col-md-8">
-                                            <input type="text" name="correo" id="correo"
-                                                class="form-control form-control-sm" value="{{$usuario}}"
-                                                placeholder="Correo de representante" readonly>
-                                            <span class="text-danger">{{ $errors->first('correo') }}</span>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" name="dni" id="dni" class="form-control form-control-sm"
+                                                value="{{old('dni')}}" placeholder="DNI" maxlength="8">
+                                            <span class="text-danger">{{ $errors->first('dni') }}</span>
                                         </div>
-
+               
                                         <div class="form-group col-md-4">
                                             <input type="text" name="telefono" id="telefono"
                                                 class="form-control form-control-sm" value="{{old('telefono')}}"
-                                                placeholder="Teléfono">
+                                                placeholder="Teléfono" minlength="9" maxlength="9">
                                             <span class="text-danger">{{ $errors->first('telefono') }}</span>
                                         </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 col-md-12">
+                                            <input id="email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Dirección de correo electrónico">
+            
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                            <div class="col-sm-12 col-md-6">
+                                                <input id="password" type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Contraseña" minlength="8">
+
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                     
+                                            <div class="col-sm-12 col-md-6">
+                                                <input id="password-confirm" type="password" class="form-control form-control-sm" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar la contraseña">
+                                            </div>
+               
                                     </div>
                                 </div>
                             </div>
