@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
-use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
-use App\Http\Requests\Publico\CreatuempresaCreateRequest;
-use App\Models\Admin\Comprobantetipo;
+use App\User;
+use Illuminate\Http\Request;
 use App\Models\Admin\Empresa;
-use App\Models\Admin\Empresacomprobantetipos;
-use App\Models\Admin\Empresarubro;
-use App\Models\Admin\Modelhasrole;
 use App\Models\Admin\Periodo;
-use App\Models\Admin\Userempresa;
-use App\Models\Publico\Departamento;
-use App\Models\Publico\Distrito;
 use App\Models\Publico\Horario;
 use App\Models\Publico\Persona;
+use App\Models\Publico\Distrito;
+use App\Models\Admin\Userempresa;
 use App\Models\Publico\Provincia;
-use Spatie\Permission\Models\Role as rol;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-// use Image;
-use Illuminate\Http\Request;
+use App\Models\Admin\Empresarubro;
+use App\Models\Admin\Modelhasrole;
+use App\Http\Controllers\Controller;
+use App\Models\Publico\Departamento;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Admin\Comprobantetipo;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role as rol;
+// use Image;
+use App\Models\Admin\Empresacomprobantetipos;
+use App\Mail\Publico\ActivarcuentaempresaMail;
+use App\Http\Requests\Publico\CreatuempresaCreateRequest;
+use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
+use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 
 class EmpresasController extends Controller
 {
@@ -243,16 +246,17 @@ class EmpresasController extends Controller
 
         // CreatuempresaCreateRequest
         // <a class="text-warning" href="{{route('registrarTuEmpresa')}}">Afilia tu restaurante</a>
-    //     $user= User::all();     
-    //     $userid = $user->last();  
-    
-    //REGISTRAMOS USUARIO
+        //     $user= User::all();     
+        //     $userid = $user->last();  
+        
+        //REGISTRAMOS USUARIO
         $user = User::firstOrNew([
-        'name' => $request->name ." ". $request->paterno ." ". $request->materno,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-    ]);
-    $user->save();
+            'name' => $request->name ." ". $request->paterno ." ". $request->materno,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->remember_token = Hash::make( time() );
+        $user->save();
 
         $persona = Persona::firstOrNew([
             'nombre' => $request->name,
@@ -356,8 +360,18 @@ class EmpresasController extends Controller
             
         }
 
+        //Enviamos correo para activar cuenta
+        $this->enviarCorreoActivarCuentaEmpresa( $user );
+
         return redirect()->route('confirmarcuenta', compact('user'))->with("info", "Registro creado correctamente");
     
+    }
+
+    private function enviarCorreoActivarCuentaEmpresa( $user ) {
+
+        Mail::to( $user->email )
+        ->cc("crisoper@gmail.com")
+        ->send( new  ActivarcuentaempresaMail( $user ) );
     }
 
     public function confirmarcuenta($user){
@@ -365,10 +379,32 @@ class EmpresasController extends Controller
         return view('includes.confirmarcuenta', compact('user'));
        
     }
+    
     public function cambiaremail(Request $request, $user_id ){
        return $user_id;
         $user = User::findOrFail($user_id);
         $user->email =  $request->email;
         $user->save();
     }
+
+
+    public function activarcuentatoken( Request $request ) {
+
+        if ( $request->has("tokenactivation") ) {
+            
+            $usuario = User::where("remember_token", $request->tokenactivation ) ->first();
+
+            if( $usuario ) {
+                $usuario->email_verified_at = now();
+                $usuario->save();
+                
+                return "Cuenta activada";
+            }
+
+        }
+
+        return "El token enviado no es valido";
+
+    }
+
 }
