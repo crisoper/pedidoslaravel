@@ -85,7 +85,7 @@
                 <div class="container">
                     <div class="row">
                         {{-- SERVICIO AL CLIENTE --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-2 px-0 padding_menu_1">
                             <div class="header__top__titulo text-left">
                                 <div>Servicio al cliente <i class="fas fa-angle-down"></i></div>
                                 <ul class="header__top__titulo_service">
@@ -109,8 +109,21 @@
                             </div>
                         </div>
 
+                        {{-- LOGIN --}}
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-2 px-0 padding_menu_1" id="ingresar_1">
+                            <div class="header__top__titulo text-right">
+                                <div>Ingresar <i class="fas fa-angle-down"></i></div>
+                                <ul class="header__top__titulo_login">
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="{{ route('login') }}">Ingresar</a></li>
+                                    <hr class="my-0">
+                                    <li style="width: 100%"><a href="{{ route('register') }}">Registrase</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
                         {{-- AFILIAR RESTAURANTE --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-5">
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-5 px-0 padding_menu_1">
                             <div class="header__top__titulo text-center">
                                 <div>
                                     <a class="text-primary" href="{{ route('register') }}">Afilia a tu restaurante</a>
@@ -119,22 +132,23 @@
                         </div>
                         
                         {{-- BUSCADOR --}}
-                        <div class="col-2 col-sm-3 col-md-1 col-lg-0">
+                        <div class="col-1 col-sm-2 col-md-1 col-lg-0 px-0 padding_menu_1">
                             <div class="header__search__movil">
                                 <div id="search_2"><i class="fa fa-search"></i></div>
                             </div>
                         </div>
 
                         {{-- CARRITO COMPRAS --}}
-                        <div class="col-6 col-sm-5 col-md-3 col-lg-2">
-                            <div class="header__cart text-right">
+                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 px-0 padding_menu_1">
+
+                             <div class="header__cart text-right">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     <li class="carrito_compras">
                                         <a href="#" id="mostrarProductosCestaMenuFlotante">
-                                            <i class="fas fa-cart-plus"></i><span>3</span>
+                                            <i class="fas fa-shopping-basket"></i><span>3</span>
                                         </a>
-                                        <ul class="compras_item text-center">
+                                        <ul class="compras_item header-dropdown text-center">
                                             <small><b>Como mínimo debes comprar s/ 30.00</b></small>
                                             <hr class="mt-1">
                                             <div class="scroll_cart_header">
@@ -155,7 +169,6 @@
                                                             </div>
                                                         </div>
                                                     </div> --}}
-
                                                 </li>
                                             </div>
     
@@ -182,7 +195,7 @@
                         </div>
 
                         {{-- LOGIN --}}
-                        <div class="col-4 col-sm-4 col-md-2 col-lg-2">
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 px-0 padding_menu_1 py-1" id="ingresar_2">
                             <div class="header__top__titulo text-right">
                                 <div>Ingresar <i class="fas fa-angle-down"></i></div>
                                 <ul class="header__top__titulo_login">
@@ -209,13 +222,11 @@
                                 <li>
                                     <a href="#">Tipos de comida <i class="fas fa-angle-down"></i></a>
                                     <ul class="header__menu__dropdown"  id="menuCategorias">
-                                        <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Principales lugares <i class="fas fa-angle-down"></i></a>
                                     <ul class="header__menu__dropdown"  id="">
-                                        <!-- li><a href="">Shop Details</a></li -->
                                     </ul>
                                 </li>
                             </ul>

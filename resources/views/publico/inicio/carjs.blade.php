@@ -1,14 +1,14 @@
 <script>
-
+    
+    $("#mostrarProductosCestaMenuFlotante").on("mouseover", function() {
+        obtenerProductosCesta( );
+    });
+    
     $("#mostrarProductosCestaMenuFlotante").on("click", function() {
         obtenerProductosCesta( );
     });
     
-    $("#mostrarProductosCestaMenuFlotante").on("hover", function() {
-        obtenerProductosCesta( );
-    });
 
-    
     //Obtenemos los productos de la cesta
 
 
