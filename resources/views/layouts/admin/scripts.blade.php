@@ -9,7 +9,7 @@
 
 <script src="{{ asset('adminlte301/plugins/bootbox/bootbox.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/messeger/js/messenger.min.js') }}"></script>
-<script src="{{ asset('adminlte301/plugins/messeger/js/messenger-theme-flat.js') }}"></script>
+
 
 
 {{-- Agregar Imagenes --}}
@@ -26,7 +26,11 @@
 <!-- Select2 -->
 {{-- <script src="../../plugins/select2/js/select2.full.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{{ asset('adminlte301/plugins/messeger/js/messenger-theme-flat.js') }}"></script>
 
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> --}}
