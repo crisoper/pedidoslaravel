@@ -77,6 +77,12 @@ Route::get('cart', 'Publico\CartController@index')
 
 Route::get('registrartuempresa','Admin\EmpresasController@registrarTuEmpresa')->name('registrartuempresa');
 Route::post('tuempresa.store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
+Route::get('confirmarcuenta/{user}','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
+Route::post('cambiaremail/{userid}','Admin\EmpresasController@cambiaremail')->name('cambiaremail');
+
+
+Route::get('activarcuentaempresa/cuentas','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+
 
 Route::get('/home', 'HomeController@index')
 ->name('home');

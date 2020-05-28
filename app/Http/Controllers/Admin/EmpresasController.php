@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
-use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
-use App\Http\Requests\Publico\CreatuempresaCreateRequest;
-use App\Models\Admin\Comprobantetipo;
+use App\User;
+use Illuminate\Http\Request;
 use App\Models\Admin\Empresa;
-use App\Models\Admin\Empresacomprobantetipos;
-use App\Models\Admin\Empresarubro;
-use App\Models\Admin\Modelhasrole;
 use App\Models\Admin\Periodo;
-use App\Models\Admin\Userempresa;
-use App\Models\Publico\Departamento;
-use App\Models\Publico\Distrito;
 use App\Models\Publico\Horario;
 use App\Models\Publico\Persona;
+use App\Models\Publico\Distrito;
+use App\Models\Admin\Userempresa;
 use App\Models\Publico\Provincia;
-use Spatie\Permission\Models\Role as rol;
-
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-// use Image;
-use Illuminate\Http\Request;
+use App\Models\Admin\Empresarubro;
+use App\Models\Admin\Modelhasrole;
+use App\Http\Controllers\Controller;
+use App\Models\Publico\Departamento;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Admin\Comprobantetipo;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role as rol;
+// use Image;
+use App\Models\Admin\Empresacomprobantetipos;
+use App\Mail\Publico\ActivarcuentaempresaMail;
+use App\Http\Requests\Publico\CreatuempresaCreateRequest;
+use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
+use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 
 class EmpresasController extends Controller
 {
@@ -233,29 +236,39 @@ class EmpresasController extends Controller
         $departamentos = Departamento::get();
         $provincias = Provincia::get();
         $distritos = Distrito::get();
-        $usuario = Auth()->user()->email;
-        return view('publico.empresa.create', compact('empresarubros','departamentos','provincias','distritos','usuario','dias'));
+
+        return view('publico.empresa.create', compact('empresarubros','departamentos','provincias','distritos','dias'));
 
         
     }
-    public function tuempresastore(Request $request){
+    public function tuempresastore( Request $request){
+       
+
         // CreatuempresaCreateRequest
         // <a class="text-warning" href="{{route('registrarTuEmpresa')}}">Afilia tu restaurante</a>
-    //     $user= User::all();     
-    //     $userid = $user->last();  
-    
+        //     $user= User::all();     
+        //     $userid = $user->last();  
+        
+        //REGISTRAMOS USUARIO
+        $user = User::firstOrNew([
+            'name' => $request->name ." ". $request->paterno ." ". $request->materno,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->remember_token = Hash::make( time() );
+        $user->save();
 
         $persona = Persona::firstOrNew([
-            'nombre' => $request->nombre,
+            'nombre' => $request->name,
             'paterno' => $request->paterno,
             'materno' => $request->materno,
             'dni' => $request->dni,
             'telefono' => $request->telefono,
-            'correo' => $request->correo,
+            'correo' => $request->email,
             
         ],
         [
-            'created_by' => Auth()->user()->id,
+            'created_by' => $user->id,
         ]);
         $persona->save();
 
@@ -284,12 +297,12 @@ class EmpresasController extends Controller
             $dimensionLogo->save(storage_path('app/public/empresaslogos').'/'.$nuevoNombreLogo);
             $empresa->logo = $nuevoNombreLogo;
         }
-        $empresa->created_by = Auth()->user()->id;
+        $empresa->created_by = $user->id;
 
         $empresa->save();
 
         Userempresa::create([
-            'user_id' => Auth()->user()->id,
+            'user_id' => $user->id,
             'empresa_id' => $empresa->id,
             'estado' => 1,            
         ]);
@@ -303,7 +316,7 @@ class EmpresasController extends Controller
         $periodo->inicio = date('Y-m-d');
         $periodo->fin = $fechaFin;
         $periodo->estado= 1;
-        $periodo->created_by = Auth()->user()->id;
+        $periodo->created_by = $user->id;
         $periodo->save();
         
         $rol = rol::where('name', 'web_Administrador empresa')->first();
@@ -311,7 +324,7 @@ class EmpresasController extends Controller
          Modelhasrole::create([
             'role_id' => $rol->id,
             'model_type' => 'App\User' ,
-            'model_id'=> Auth()->user()->id,
+            'model_id'=> $user->id,
         ]); 
      
   
@@ -320,7 +333,7 @@ class EmpresasController extends Controller
         $dias = [];
         foreach ($request->dia as $dia) {
             if( $dia != null ){
-                array_push($dias, $dia);    
+                array_push($dias, $dia);                  
             }
         }
         $horainicio = [];
@@ -338,16 +351,60 @@ class EmpresasController extends Controller
 
         for ($i = 0; $i < count($dias) ; $i++) { 
             $horario = new Horario();
-            $horario->empresa_id =  $empresa->id;
+            $horario->empresa_id =  1;//$empresa->id;
             $horario->dia =  $dias[$i];
             $horario->horainicio = $horainicio[$i];
             $horario->horafin =  $horafin[$i];
-            $horario->created_by = Auth()->user()->id;        
+            $horario->created_by = $user->id;        
             $horario->save();
+            
+        }
+
+        //Enviamos correo para activar cuenta
+        $this->enviarCorreoActivarCuentaEmpresa( $user );
+
+        return redirect()->route('confirmarcuenta', compact('user'))->with("info", "Registro creado correctamente");
+    
+    }
+
+    private function enviarCorreoActivarCuentaEmpresa( $user ) {
+
+        Mail::to( $user->email )
+        ->cc("crisoper@gmail.com")
+        ->send( new  ActivarcuentaempresaMail( $user ) );
+    }
+
+    public function confirmarcuenta($user){
+
+        return view('includes.confirmarcuenta', compact('user'));
+       
+    }
+    
+    public function cambiaremail(Request $request, $user_id ){
+       return $user_id;
+        $user = User::findOrFail($user_id);
+        $user->email =  $request->email;
+        $user->save();
+    }
+
+
+    public function activarcuentatoken( Request $request ) {
+
+        if ( $request->has("tokenactivation") ) {
+            
+            $usuario = User::where("remember_token", $request->tokenactivation ) ->first();
+
+            if( $usuario ) {
+                $usuario->email_verified_at = now();
+                $usuario->save();
+                
+                return "Cuenta activada";
+            }
 
         }
 
-        return redirect()->route('home')->with("info", "Registro creado");
-    
+        return "El token enviado no es valido";
+
     }
+
 }

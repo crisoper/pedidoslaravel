@@ -24,6 +24,13 @@ class CreatuempresaCreateRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => ['required', 'string', 'max:255'],
+            'paterno' => ['required', 'string', 'max:255'],
+            'materno' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+            
             "rubro_id" => ["required"],
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombre" => ["required"],
@@ -35,13 +42,10 @@ class CreatuempresaCreateRequest extends FormRequest
             "provinciaid" => ["required"],
             "distritoid" => ["required"],
 
-            "nombre" => ["required"],
-            "paterno" => ["required"],
-            "materno" => ["required"],
+          
             "dni" => ["required"],
             "telefono" => ["required"],
-            "correo" => ["required"],
-
+           
       
         ];
 

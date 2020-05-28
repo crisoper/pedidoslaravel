@@ -124,7 +124,7 @@
                         <div class="col-6 col-sm-6 col-md-3 col-lg-5 px-0" id="afiliar_empresa">
                             <ul class="header_top_empresa text-center">
                                 <li class="header_empresa_description pt-1">
-                                    <a href="{{ route('register') }}">Afilia a tu restaurante</a>
+                                    <a href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                                 </li>
                             </ul>
                         </div>
