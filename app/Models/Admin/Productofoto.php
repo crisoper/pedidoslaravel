@@ -24,6 +24,6 @@ class Productofoto extends Model
     }
     public function producto()
     {
-        return  $this->belongsTo('App\Models\Admin\Producto');
+        return  $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
     }
 }

@@ -164,6 +164,7 @@
                                 <div class="product-img">
 
                                     @foreach ($productooferta->fotos as $foto)
+                                    {{$productooferta}}
                                         <img 
                                         nombre="{{ $productooferta->nombre }}"
                                         src="{{ asset( Storage::disk('img_productos')->url('/').$foto->url ) }}" 
@@ -188,7 +189,7 @@
                                 </div>
                                 <!-- Product Description -->
                                 <div class="featured__item__text px-3">
-                                    <h6 class="mb-0"><b>Nombre del producto</b></h6>
+                                    <h6 class="mb-0"><b>{{$productooferta->nombre}}</b></h6>
                                     <p class="small my-0">Breve descripción del producto</p>
                                     <hr class="my-0">
                                     <div class="row">
@@ -238,8 +239,25 @@
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
                                 <div class="single_product_wrapper">
                                     <div class="product-img">
-                                        <img src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$producto->fotos )}}" alt="">
-                                        <img class="hover-img" src="pedidos/img/featured/feature-3.jpg" alt="">
+                                        @foreach ($producto->fotos as $foto)
+                                        {{-- {{$producto}} --}}
+                                            <img 
+                                            nombre="{{ $producto->nombre }}"
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $producto->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
+                                        @endforeach
+                                        
+                                        {{-- @if ( count( $productooferta->fotos ) == 0 )
+                                            <img src="{{ Storage::url("img_productos/".$foto->nombre)}}" alt="">
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @elseif ( count( $productooferta->fotos ) == 1 )   
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @endif --}}
+
                                         <!-- Product Badge -->
                                         <div class="product-badge new-badge">
                                             <span>Nuevo</span>
