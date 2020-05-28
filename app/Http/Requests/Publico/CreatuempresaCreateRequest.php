@@ -27,21 +27,20 @@ class CreatuempresaCreateRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'paterno' => ['required', 'string', 'max:255'],
             'materno' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.request()->get('email')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
             
-            "rubro_id" => ["required"],
+            "rubro_id" => 'required|not_in:0',//["required"],
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombre" => ["required"],
             "direccion" => ["required"],
             "facebook" => ["nullable"],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             "nombrecomercial" => ["required"],
-            "departamentoid" => ["required"],
-            "provinciaid" => ["required"],
-            "distritoid" => ["required"],
-
+            // "departamentoid" => ["required"],
+            // "provinciaid" => ["required"],
+            // "distritoid" => ["required"],
           
             "dni" => ["required"],
             "telefono" => ["required"],

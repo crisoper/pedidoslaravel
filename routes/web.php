@@ -76,7 +76,7 @@ Route::get('cart', 'Publico\CartController@index')
 ->name('cart.index');
 
 Route::get('registrartuempresa','Admin\EmpresasController@registrarTuEmpresa')->name('registrartuempresa');
-Route::post('tuempresa.store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
+Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
 Route::get('confirmarcuenta/{user}','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
 Route::post('cambiaremail/{userid}','Admin\EmpresasController@cambiaremail')->name('cambiaremail');
 
@@ -89,3 +89,16 @@ Route::get('/home', 'HomeController@index')
 
 //CONSULTA RUC
 Route::get('consultar.ruc', 'Admin\EmpresasController@consultaRuc')->name('consultar.ruc');
+
+
+//departamentos
+Route::get("getdepartamento", "Publico\DepartamentosController@getBuscarDepartamento")
+->name("ajax.getBuscarDepartamento");
+
+
+Route::get("getprovincias/pordepartamento", "Publico\ProvinciasController@getprovinciaByDepartamentoId")
+->name("ajax.getprovinciaByDepartamentoId");
+
+//Distritos
+Route::get("getdistritos/porprovincia", "Publico\DistritosController@getdistritosByProvinciaId")
+->name("ajax.getdistritosByProvinciaId");

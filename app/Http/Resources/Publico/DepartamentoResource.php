@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Admin;
+namespace App\Http\Resources\Publico;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DistritoResource extends JsonResource
+class DepartamentoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,10 @@ class DistritoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'provincia_id' => $this->provincia_id,
             'nombre' => $this->nombre,
             'codigo' => $this->codigo,
         ];
     }
+        // return parent::toArray($request);
+    
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Admin;
+namespace App\Http\Resources\Publico;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +14,7 @@ class ProvinciaResource extends JsonResource
      */
     public function toArray($request)
     {
+        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'departamento_id' => $this->departamento_id,
