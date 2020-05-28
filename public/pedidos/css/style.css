@@ -5,6 +5,7 @@ body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
+	background-color: #fafafa;
 }
 
 
@@ -288,42 +289,6 @@ ol {
 
 
 
-
-
-/*---------------------
-  SUMAR O RESTAR UNIDADES DE PRODUCTO
------------------------*/
-.input_group_unit_product {
-	width: 100%;
-	height: 36px;
-	padding: 0 !important;
-}
-.input_group_unit_product > .minus {
-	width: 27%; 
-	height: 100%;
-	padding: 0px 1px 1px 0px !important;
-	margin: 0 !important;
-	border: none;
-	text-align: center;
-}
-.input_group_unit_product > .more {
-	width: 27%; 
-	height: 100%;
-	padding: 0px 1px 0px 0px !important;
-	margin: 0 !important;
-	border: none;
-	text-align: center;
-}
-
-
-.input_group_unit_product > input {
-	width: 45%;
-	height: 100%;
-	padding: 0 !important;
-	margin: 0 -4px 0 -3px !important;
-	border: none;
-	/* background-color: chartreuse; */
-}
 
 
 

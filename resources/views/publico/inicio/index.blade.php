@@ -636,10 +636,9 @@
                 </div>
                 <div class="col-12">
                     <div class="row karl-new-arrivals mb-5">
-                        
                         <!-- Single gallery Item Start -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-3" data-wow-delay="0.2s">
-                            <div class="single_product_wrapper bg-light">
+                            <div class="single_product_wrapper">
                                 <div class="product-img">
                                     <img src="pedidos/img/featured/feature-2.jpg" alt="">
                                     <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
@@ -655,7 +654,7 @@
                                     <hr class="my-0">
                                     <div class="row">
                                         <div class="col-12">
-                                            <p class="small my-0"><s>P. Normal: <b> S/ 20.90</b></s></p>
+                                            <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
                                             {{-- <p></p> --}}
                                             <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
                                         </div>
@@ -667,7 +666,7 @@
                                                 <input type="text" class="text-center" value="1">
                                             </div>
                                         </div>
-                                        <div class="col-5 text-center">
+                                        <div class="col-5 text-center text-muted">
                                             <p class="small py-0 my-0">Importe:</p>
                                             <h4 class="small"><b>S/ 15.90</b></h4>
                                         </div>
@@ -694,62 +693,66 @@
                             </div>
                         </div>
         
-                        <!-- Single gallery Item Start -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
-                            <div class="single_product_wrapper bg-light">
-                                <div class="product-img">
-                                    <img src="pedidos/img/featured/feature-1.jpg" alt="">
-                                    <img class="hover-img" src="pedidos/img/featured/feature-3.jpg" alt="">
-                                    <!-- Product Badge -->
-                                    <div class="product-badge new-badge">
-                                        <span>Nuevo</span>
-                                    </div>
-                                </div>
-                                <!-- Product Description -->
-                                <div class="featured__item__text px-3">
-                                    <h6 class="mb-0"><b>Nombre del producto</b></h6>
-                                    <p class="small my-0">Breve descripción del producto</p>
-                                    <hr class="my-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="small my-0"><s>P. Normal: <b> S/ 20.90</b></s></p>
-                                            {{-- <p></p> --}}
-                                            <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                        </div>
-                                    </div>
-                                    <hr class="my-1">
-                                    <div class="row px-1">
-                                        <div class="col-7 py-0">
-                                            <div class="input_group_unit_product border m-0">
-                                                <input type="text" class="text-center" value="1">
+                        @foreach ($productos as $producto)
+                            @if ($producto->created_at->format('Y-m-d') == date('Y-m-d'))
+                                <!-- Single gallery Item Start -->
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
+                                    <div class="single_product_wrapper">
+                                        <div class="product-img">
+                                            <img src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$producto->fotos )}}" alt="">
+                                            <img class="hover-img" src="pedidos/img/featured/feature-3.jpg" alt="">
+                                            <!-- Product Badge -->
+                                            <div class="product-badge new-badge">
+                                                <span>Nuevo</span>
                                             </div>
                                         </div>
-                                        <div class="col-5 text-center">
-                                            <p class="small py-0 my-0">Importe:</p>
-                                            <h4 class="small"><b>S/ 15.90</b></h4>
-                                        </div>
-                                    </div>
-                                    <hr class="mt-0 mb-1">
-                                    <div class="row mb-2 px-3">
-                                        <div class="col-8 p-0">
-                                            <button class="agregar_cart">Agregar 
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
+                                        <!-- Product Description -->
+                                        <div class="featured__item__text px-3">
+                                            <h6 class="mb-0"><b>{{$producto->nombre}}</b></h6>
+                                            <p class="small my-0">{{$producto->descripcion}}</p>
+                                            <hr class="my-0">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
+                                                    {{-- <p></p> --}}
+                                                    <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$producto->precio}}</span></h5>
+                                                </div>
+                                            </div>
+                                            <hr class="my-1">
+                                            <div class="row px-1">
+                                                <div class="col-7 py-0">
+                                                    <div class="input_group_unit_product border m-0">
+                                                        <input type="text" class="text-center" value="1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-5 text-center text-muted">
+                                                    <p class="small py-0 my-0">Importe:</p>
+                                                    <h4 class="small"><b>S/ 15.90</b></h4>
+                                                </div>
+                                            </div>
+                                            <hr class="mt-0 mb-1">
+                                            <div class="row mb-2 px-3">
+                                                <div class="col-8 p-0">
+                                                    <button class="agregar_cart">Agregar 
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-2 p-0">
+                                                    <button class="agregar_favoritos">
+                                                        <i class="fa fa-heart"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-2 p-0">
+                                                    <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
         
                         <!-- Single gallery Item Start -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-3" data-wow-delay="0.4s">
@@ -824,10 +827,14 @@
                         </div> --}}
                     </div>
                 </div>
+                {{-- <div>
+                    {!! $productos->appends(request()->query() )->links('pagination::bootstrap-4') !!}
+                </div> --}}
             </div>
         </div>
     </section>
     <!-- End Todos los productos -->
+
 
 
     <!-- Banner Begin -->
