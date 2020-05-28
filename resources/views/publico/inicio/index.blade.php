@@ -165,9 +165,10 @@
 
                                     @foreach ($productooferta->fotos as $foto)
                                         <img 
+                                        nombre="{{ $productooferta->nombre }}"
                                         src="{{ asset( Storage::disk('img_productos')->url('/').$foto->url ) }}" 
                                         alt="{{ $productooferta->nombre }}"
-                                        @if ( $loop->last )
+                                        @if ( $loop->iteration == 2 )
                                             class="hover-img"
                                         @endif
                                         >
