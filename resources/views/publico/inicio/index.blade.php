@@ -130,487 +130,6 @@
     </div>
 	<!-- End Empresas recomendadas  -->
 
-	<!-- Productos en oferta -->
-	{{-- <div class="product-area most-popular_section_mb-5">
-        <div class="container">
-            <div class="row">
-				<div class="col-12">
-					<div class="section-title mb-0">
-						<h2>Productos en oferta</h2>
-					</div>
-				</div>
-                <div class="col-12">
-                    <div class="owl-carousel popular-slider">
-						<div class="single-product bg-light" id="single_product">
-                            <div class="single-product-wrapper bg-light">
-                                <div class="product-img">
-                                    <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                    <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    <div class="product-favourite">
-                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <!-- Product Description -->
-                                <div class="featured__item__text px-3">
-                                    <h5 class="mb-0">Nombre del producto</h5>
-                                    <p class="small my-0">Breve descripción del producto</p>
-                                    <hr class="my-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <s><small><small>P. Normal:</small><b> S/ 20.90</b></small></s>
-                                            <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                        </div>
-                                    </div>
-                                    <hr class="my-1">
-                                    <div class="row pl-2">
-                                        <div class="col-8">
-                                            <div class="shoping__cart__quantity">
-                                                <div class="quantity">
-                                                    <div class="pro-qty border">
-                                                        <input type="text" value="1">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 text-center">
-                                            <span class="small">Importe:</span>
-                                            <h4 class="small"><b>S/ 15.90</b></h4>
-                                        </div>
-                                    </div>
-                                    <hr class="mt-0 mb-1">
-                                    <div class="row mb-2">
-                                        <div class="col-6 mx-auto">
-                                            <a class="agregar_cart" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                        </div>
-                                        <div class="col-3 mx-auto">
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                        </div>
-                                        <div class="col-3 mx-auto">
-                                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View"><i class="fa fa-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-						
-						<div class="single-product">
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="#">productosOfertas Hot Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-						</div>
-						
-						<div class="single-product">
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-									<span class="new">New</span>
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="#">Awesome Pink Show</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-						</div>
-						
-						<div class="single-product">
-                            <div class="product-img">
-                                <a href="#">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="#">Awesome Bags Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-	<!-- End Prodcutos en oferta -->
-    
-
-    <!-- Productos nuevo y productos mas pedidos -->
-    {{-- <section class="latest_prod_ct spad_pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 latest_product_border1">
-                    <div class="latest_product__text mb-0 pb-0">
-                        <h4 class="mb-3">Productos Nuevos</h4>
-                        <div class="latest-product__slider owl-carousel" id="seccionProductosNuevo">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security 100</h6>
-                                        <span>$30.00 1000</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security 200</h6>
-                                        <span>$30.00 200</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6latest_product_border2">
-                    <div class="latest_product__text mb-0 pb-0">
-                        <h4 class="mb-3">Productos mas pedidos</h4>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card card-raised card-carousel pt-2">
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-                                      <ol class="carousel-indicators" id="carousel_indicators">
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-                                      </ol>
-                                      <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <div class="single-slider">
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-2.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-3.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/featured/feature-4.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="single-slider">
-                                                <div class="single-product-wrapper border row mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 product-img">
-                                                        <img src="pedidos/img/featured/feature-4.jpg" alt="">
-                                                        <img class="hover-img" src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"><i class="fa fa-eye"></i></a>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="single-slider">
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="row border mb-2 mx-2 px-0 py-1">
-                                                    <div class="col-2 pr-0 pl-1">
-                                                        <img src="pedidos/img/latest-product/lp-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <h5 class="mb-0">Nombre del producto</h5>
-                                                        <p class="my-0 small">Breve descripción del producto</p>
-                                                        <h5><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <div class="shoping__cart__quantity">
-                                                            <div class="quantity">
-                                                                <div class="pro-qty border">
-                                                                    <input type="text" value="1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <h6 class="small mb-0">Importe: <b>S/ 15.90</b></h6>
-                                                        <a class="agregar_cart mr-3" href="#">Agregar <i class="fa fa-shopping-cart"></i></a>
-                                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                        <i class="fas fa-chevron-left"></i>
-                                      </a>
-                                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                        <i class="fas fa-chevron-right"></i>
-                                      </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- End Productos nuevo y productos mas pedidos -->
 
 
     <!-- Productos -->
@@ -636,13 +155,31 @@
                 </div>
                 <div class="col-12">
                     <div class="row karl-new-arrivals mb-5">
-                        
                         <!-- Single gallery Item Start -->
+
+                        @foreach ($productosofertas as $productooferta)
+
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-3" data-wow-delay="0.2s">
-                            <div class="single_product_wrapper bg-light">
+                            <div class="single_product_wrapper">
                                 <div class="product-img">
-                                    <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                    <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+
+                                    @foreach ($productooferta->fotos as $foto)
+                                        <img 
+                                        src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$productooferta->fotos ) }}" 
+                                        alt="{{ $productooferta->nombre }}"
+                                        @if ( $loop->last )
+                                            class="hover-img"
+                                        @endif
+                                        >
+                                    @endforeach
+                                    
+                                    @if ( count( $productooferta->fotos ) == 0 )
+                                        <img src="pedidos/img/featured/feature-2.jpg" alt="">
+                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                    @elseif ( count( $productooferta->fotos ) == 1 )   
+                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                    @endif
+
                                     <!-- Product Badge -->
                                     <div class="product-badge offer-badge">
                                         <span>Oferta</span>
@@ -655,8 +192,7 @@
                                     <hr class="my-0">
                                     <div class="row">
                                         <div class="col-12">
-                                            <p class="small my-0"><s>P. Normal: <b> S/ 20.90</b></s></p>
-                                            {{-- <p></p> --}}
+                                            <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
                                             <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
                                         </div>
                                     </div>
@@ -667,7 +203,7 @@
                                                 <input type="text" class="text-center" value="1">
                                             </div>
                                         </div>
-                                        <div class="col-5 text-center">
+                                        <div class="col-5 text-center text-muted">
                                             <p class="small py-0 my-0">Importe:</p>
                                             <h4 class="small"><b>S/ 15.90</b></h4>
                                         </div>
@@ -693,84 +229,90 @@
                                 </div>
                             </div>
                         </div>
+
+                        @endforeach
+        
+                        @foreach ($productosnuevos as $producto)
+                            <!-- Single gallery Item Start -->
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
+                                <div class="single_product_wrapper">
+                                    <div class="product-img">
+                                        <img src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$producto->fotos )}}" alt="">
+                                        <img class="hover-img" src="pedidos/img/featured/feature-3.jpg" alt="">
+                                        <!-- Product Badge -->
+                                        <div class="product-badge new-badge">
+                                            <span>Nuevo</span>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="featured__item__text px-3">
+                                        <h6 class="mb-0"><b>{{$producto->nombre}}</b></h6>
+                                        <p class="small my-0">{{$producto->descripcion}}</p>
+                                        <hr class="my-0">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
+                                                {{-- <p></p> --}}
+                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$producto->precio}}</span></h5>
+                                            </div>
+                                        </div>
+                                        <hr class="my-1">
+                                        <div class="row px-1">
+                                            <div class="col-7 py-0">
+                                                <div class="input_group_unit_product border m-0">
+                                                    <input type="text" class="text-center" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 text-center text-muted">
+                                                <p class="small py-0 my-0">Importe:</p>
+                                                <h4 class="small"><b>S/ 15.90</b></h4>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-0 mb-1">
+                                        <div class="row mb-2 px-3">
+                                            <div class="col-8 p-0">
+                                                <button class="agregar_cart">Agregar 
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="agregar_favoritos">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
         
                         <!-- Single gallery Item Start -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
-                            <div class="single_product_wrapper bg-light">
+                        @foreach ($productosmaspedidos as $productomaspedido)
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-3" data-wow-delay="0.4s">
+                                <!-- Product Image -->
                                 <div class="product-img">
-                                    <img src="pedidos/img/featured/feature-1.jpg" alt="">
-                                    <img class="hover-img" src="pedidos/img/featured/feature-3.jpg" alt="">
-                                    <!-- Product Badge -->
-                                    <div class="product-badge new-badge">
-                                        <span>Nuevo</span>
+                                    <img src="pedidos/img/featured/feature-3.jpg" alt="">
+                                    <div class="product-quicview">
+                                        <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
                                     </div>
                                 </div>
                                 <!-- Product Description -->
-                                <div class="featured__item__text px-3">
-                                    <h6 class="mb-0"><b>Nombre del producto</b></h6>
-                                    <p class="small my-0">Breve descripción del producto</p>
-                                    <hr class="my-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="small my-0"><s>P. Normal: <b> S/ 20.90</b></s></p>
-                                            {{-- <p></p> --}}
-                                            <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
-                                        </div>
-                                    </div>
-                                    <hr class="my-1">
-                                    <div class="row px-1">
-                                        <div class="col-7 py-0">
-                                            <div class="input_group_unit_product border m-0">
-                                                <input type="text" class="text-center" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <p class="small py-0 my-0">Importe:</p>
-                                            <h4 class="small"><b>S/ 15.90</b></h4>
-                                        </div>
-                                    </div>
-                                    <hr class="mt-0 mb-1">
-                                    <div class="row mb-2 px-3">
-                                        <div class="col-8 p-0">
-                                            <button class="agregar_cart">Agregar 
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div class="product-description">
+                                    <h4 class="product-price">$39.90 --- 1</h4>
+                                    <p>Jeans midi cocktail dress</p>
+                                    <!-- Add to Cart -->
+                                    <a href="#" class="add-to-cart-btn">ADD TO CART</a>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
         
                         <!-- Single gallery Item Start -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-3" data-wow-delay="0.4s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-3.jpg" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">$39.90 --- 1</h4>
-                                <p>Jeans midi cocktail dress</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                            </div>
-                        </div>
-        
-                        <!-- Single gallery Item Start -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item shoes wow fadeInUpBig mb-3" data-wow-delay="0.5s">
+                        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item shoes wow fadeInUpBig mb-3" data-wow-delay="0.5s">
                             <!-- Product Image -->
                             <div class="product-img">
                                 <img src="pedidos/img/featured/feature-4.jpg" alt="">
@@ -803,7 +345,7 @@
                                 <!-- Add to Cart -->
                                 <a href="#" class="add-to-cart-btn">ADD TO CART</a>
                             </div>
-                        </div>
+                        </div> --}}
         
                         <!-- Single gallery Item -->
                         {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item kids wow fadeInUpBig" data-wow-delay="0.7s">
@@ -824,30 +366,14 @@
                         </div> --}}
                     </div>
                 </div>
+                {{-- <div>
+                    {!! $productos->appends(request()->query() )->links('pagination::bootstrap-4') !!}
+                </div> --}}
             </div>
         </div>
     </section>
     <!-- End Todos los productos -->
 
-
-    <!-- Banner Begin -->
-    {{-- <div class="banner mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="pedidos/img/banner/banner-1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="pedidos/img/banner/banner-2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Banner End -->
 
 	<!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
