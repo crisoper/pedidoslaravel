@@ -517,6 +517,7 @@ $(document).ready(function(){
             },
             error:function( jqXHR, textStatus, errorThrown  ){
                 if( jqXHR.status == 404 ) {}
+                
                 else if( jqXHR.status == 422 ) 
                 {                        
                     GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
