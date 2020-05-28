@@ -340,8 +340,41 @@ class EmpresasController extends Controller
     //    }
 
     
+    $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
+    $diasNoValidosInicio = array();
+    $diasNoValidosFin = array();
+    foreach ($request->dias as $key => $value) {
+        if ( $request->horainicio[$key] == null) {
+            $diasNoValidosInicio[] = $dias[$key - 1];
+        }
+        
+        if ( $request->horafin[$key] == null) {
+            $diasNoValidosFin[] = $dias[$key - 1];
+        }
+    } 
+
+
+    if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
+        return response()->json([
+            'error' =>  [
+                'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
+                'data' => [
+                    "inicio" => $diasNoValidosInicio,
+                    "fin" => $diasNoValidosFin,
+                ]
+            ] 
+        ], 429);
+    }
+    else {
+        return $request;
+    }
+
+
     
     if ($request->dias != null) {
+
+
+
         
         return "NULL";
             $dias = array();

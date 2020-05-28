@@ -312,7 +312,7 @@
                                             <div class="form-group col-sm-4 col-md-6">
                                                 <div class="ml-5 d-flex align-items-center">
                                                     <label class="form-check-label" for="dias{{ $dia }}">
-                                                        <input class="form-check-input" type="checkbox" name="dias[]"
+                                                        <input class="form-check-input" type="checkbox" name="dias[{{ $loop->iteration }}]"
                                                             id="dias{{ $dia }}" value="{{ $dia }}">{{ $dia }}
                                                     </label>
                                                 </div>
@@ -323,7 +323,7 @@
                                                 <small class="text-muted">Desde:</small>
                                                 <div class="input-group date horainicio" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horainicio[]" id="horainicio{{ $dia }}"
+                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]" id="horainicio{{ $dia }}"
                                                         class="form-control form-control-sm datetimepicker-input"
                                                         data-target="#hora" />
                                                     <div class="input-group-append" data-target="#hora"
@@ -338,7 +338,7 @@
                                                 <small class="text-muted">Hasta:</small>
                                                 <div class="input-group date horafin" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horafin[]" id="horafin{{ $dia }}"
+                                                    <input type="text" name="horafin[{{ $loop->iteration }}]" id="horafin{{ $dia }}"
                                                         class="form-control form-control-sm datetimepicker-input"
                                                         data-target="#hora" />
                                                     <div class="input-group-append" data-target="#hora"
@@ -517,10 +517,14 @@ $(document).ready(function(){
             },
             error:function( jqXHR, textStatus, errorThrown  ){
                 if( jqXHR.status == 404 ) {}
-                    else if( jqXHR.status == 422 ) 
-                    {                        
-                        GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
-                    }
+                else if( jqXHR.status == 422 ) 
+                {                        
+                    GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
+                }
+                else if( jqXHR.status == 429 ) 
+                {                        
+                    console.log( jqXHR );
+                }
             }
         });
     });
@@ -551,7 +555,7 @@ $(document).ready(function(){
    bootbox.alert({
             message: "La respuesta se ha registrado correctamente!",
             callback: function () {
-                window.location = $("#preguntasiguiente").val();
+                // window.location = $("#preguntasiguiente").val();
             }
         });
    
