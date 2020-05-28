@@ -89,3 +89,6 @@ Route::get('/home', 'HomeController@index')
 
 //CONSULTA RUC
 Route::get('consultar.ruc', 'Admin\EmpresasController@consultaRuc')->name('consultar.ruc');
+
+
+Route::resource('/', 'Publico\ProductosController');

@@ -6,7 +6,6 @@
 }
 
 .header_top_cart > li {
-    cursor: pointer;
 	list-style: none;
 	display: inline-block;
     padding: 3px 25px 0px 15px !important;
@@ -150,4 +149,16 @@
 .dropdown_cart_header::-webkit-scrollbar-track {
     border-radius: 10px;
 }
+
+
+/* Tablet Device = 991px */
+
+@media (max-width: 991px) {	
+
+}
+
+
+/* Tablet Device = 991px */
+
+@media (max-width: 578px) {
 

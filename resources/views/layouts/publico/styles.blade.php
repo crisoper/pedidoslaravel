@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}">
     
     {{-- CARRITO COMPRAS --}}
-        <link rel="stylesheet" type="text/css" href="{{asset('pedidos/carritocompras/carritocomprasmenu.css')}}">
+        <link rel="stylesheet" href="{{asset('pedidos/carritocompras/carritocomprasmenu.css')}}">
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/core-style.css')}}">
     

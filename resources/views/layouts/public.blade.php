@@ -85,126 +85,167 @@
                 <div class="container">
                     <div class="row">
                         {{-- SERVICIO AL CLIENTE --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-2 px-0 padding_menu_1">
-                            <div class="header__top__titulo text-left">
-                                <div>Servicio al cliente <i class="fas fa-angle-down"></i></div>
-                                <ul class="header__top__titulo_service">
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="#">Escribenos</a></li>
-                                    <hr class="my-0">
-                                    <li style="width: 100%">
-                                        <p class="mb-0">+65 11.188.888</p>
-                                        <p class="my-0 small">support 24/7 time</p>
-                                    </li>
-                                    <hr class="my-0">
-                                    <li class="mt-0" style="width: 100%">
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-square"></i></a>
-                                    </li>
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="#">Preguntas frecuentes</a></li>
-                                </ul>
-                            </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-2 px-0" id="servicio_cliente">
+                            <ul class="header_top_cliente text-left">
+                                <li class="header_cliente_description pt-1">
+                                    <a href="#">Servicio al cliente <i class="fas fa-angle-down"></i></a>
+                                    <ul class="herder_cliente_items">
+                                        <div><a href="#">Escribenos</a></div>
+                                        <div>
+                                            <p class="mb-0">+65 11.188.888</p>
+                                            <p class="my-0 small">support 24/7 time</p>
+                                        </div>
+                                        <div>
+                                            <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                            <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                                            <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                                        </div>
+                                        <div><a href="#">Preguntas frecuentes</a></div>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
 
                         {{-- LOGIN --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-2 px-0 padding_menu_1" id="ingresar_1">
-                            <div class="header__top__titulo text-right">
-                                <div>Ingresar <i class="fas fa-angle-down"></i></div>
-                                <ul class="header__top__titulo_login">
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="{{ route('login') }}">Ingresar</a></li>
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="{{ route('register') }}">Registrase</a></li>
-                                </ul>
-                            </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 px-0" id="ingresar_1">
+                            <ul class="header_top_login text-center">
+                                <li class="header_login_description float-left pt-1">
+                                    <a href="#"><b>Ingresar </b> <i class="fas fa-angle-down"></i></a>
+                                    <ul class="herder_login_items text-center">
+                                        <div><a href="{{ route('login') }}">Ingresar</a></div>
+                                        <div><a href="{{ route('register') }}">Registrase</a></div>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
 
                         {{-- AFILIAR RESTAURANTE --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-5 px-0 padding_menu_1">
-                            <div class="header__top__titulo text-center">
-                                <div>
-                                    <a class="text-primary" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
-                                </div>
-                            </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-5 px-0" id="afiliar_empresa">
+                            <ul class="header_top_empresa text-center">
+                                <li class="header_empresa_description pt-1">
+                                    <a href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
+                                </li>
+                            </ul>
                         </div>
                         
                         {{-- BUSCADOR --}}
-                        <div class="col-1 col-sm-2 col-md-1 col-lg-0 px-0 padding_menu_1">
-                            <div class="header__search__movil">
+                        <div class="col-3 col-sm-4 col-md-1 col-lg-0 px-0">
+                            <div class="header__search__movil text-center">
                                 <div id="search_2"><i class="fa fa-search"></i></div>
                             </div>
                         </div>
 
-                        {{-- CARRITO COMPRAS --}}
-                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 px-0 padding_menu_1">
-
-                             <div class="header__cart text-right">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                                    <li class="carrito_compras">
-                                        <a href="#" id="mostrarProductosCestaMenuFlotante">
-                                            <i class="fas fa-shopping-basket"></i><span>3</span>
-                                        </a>
-                                        <ul class="compras_item header-dropdown text-center">
-                                            <small><b>Como mínimo debes comprar s/ 30.00</b></small>
-                                            <hr class="mt-1">
-                                            <div class="scroll_cart_header">
-                                                <li class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
-                                                    {{-- <div class="col-12 mt-2">
-                                                        <div class="row border_caja_product">
-                                                            <div class="col-2 p-0">
-                                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                                            </div>
-                                                            <div class="col-4 p-0">
-                                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                                <small class="mt-0 mb-0">x2</small>
-                                                            </div>
-                                                            <div class="eliminar_compra p-0">x
-                                                            </div>
+                        {{-- FAVORITOS Y CARRITO COMPRAS --}}
+                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 px-0">
+                            <ul class="header_top_cart text-right">
+                                {{-- <li class="header_cart_favorites">
+                                    <a href="#">
+                                        <i class="fa fa-heart"></i> <span>1</span>
+                                    </a>
+                                    <ul class="header_favorites_items text-center">
+                                        <small><b>Como mínimo debes comprar s/ 30.00</b></small>
+                                        <hr class="mt-1">
+                                        <div class="scroll_favorites_header">
+                                            <div class="dropdown_favorites_header row" id="">
+                                                <div class="col-12 mt-2">
+                                                    <div class="row border_caja_product">
+                                                        <div class="col-2 p-0">
+                                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
                                                         </div>
-                                                    </div> --}}
-                                                </li>
-                                            </div>
-    
-                                            <hr class=" mb-1">
-                                            <li class="bottom_total">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <small>Estas comprando:</small>
-                                                        <h5 class="text-info">2 Productos</h5>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <small>Total:</small>
-                                                        <h5 class="text-success"><b>S/ 30.00</b></h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <a class="btn btn_pedido_cart" href="{{route('cart.index')}}">Realizar Pedido</a>
+                                                        <div class="col-6 p-0">
+                                                            <p class="favorites_product_description small mb-0">Descripción breve del producto</p>
+                                                        </div>
+                                                        <div class="col-4 p-0">
+                                                            <p class="favorites_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
+                                                            <small class="mt-0 mb-0">x2</small>
+                                                        </div>
+                                                        <div class="eliminar_compra p-0">x
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="mb-1">
+                                        <div class="bottom_total">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <small>Estas comprando:</small>
+                                                    <h5 class="text-info">2 Productos</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <small>Total:</small>
+                                                    <h5 class="text-success"><b>S/ 30.00</b></h5>
+                                                </div>
+                                                <div class="col-12">
+                                                    <a class="btn btn_pedido_favorites" href="#">Ver Todos</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li> --}}
+
+                                <li class="header_cart_description" id="mostrarProductosCestaMenuFlotante">
+                                    <a href="#">
+                                        <i class="fas fa-shopping-basket"></i><span>3</span>
+                                    </a>
+                                    <ul class="header_cart_items text-center">
+                                        <small><b>Como mínimo debes comprar s/ 30.00</b></small>
+                                        <hr class="mt-1">
+                                        <div class="scroll_cart_header">
+                                            <div class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
+                                                {{-- <div class="col-12 mt-2">
+                                                    <div class="row border_caja_product">
+                                                        <div class="col-2 p-0">
+                                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
+                                                        </div>
+                                                        <div class="col-6 p-0">
+                                                            <p class="cart_product_description small mb-0">Descripción breve del producto</p>
+                                                        </div>
+                                                        <div class="col-4 p-0">
+                                                            <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
+                                                            <small class="mt-0 mb-0">x2</small>
+                                                        </div>
+                                                        <div class="eliminar_compra p-0">x
+                                                        </div>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+
+                                        <hr class="mb-1">
+                                        <div class="bottom_total">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <small>Estas comprando:</small>
+                                                    <h5 class="text-info">2 Productos</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <small>Total:</small>
+                                                    <h5 class="text-success"><b>S/ 30.00</b></h5>
+                                                </div>
+                                                <div class="col-12">
+                                                    <a class="btn btn_pedido_cart" href="{{route('cart.index')}}">Realizar Pedido</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
 
                         {{-- LOGIN --}}
-                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 px-0 padding_menu_1 py-1" id="ingresar_2">
-                            <div class="header__top__titulo text-right">
-                                <div>Ingresar <i class="fas fa-angle-down"></i></div>
-                                <ul class="header__top__titulo_login">
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="{{ route('login') }}">Ingresar</a></li>
-                                    <hr class="my-0">
-                                    <li style="width: 100%"><a href="{{ route('register') }}">Registrase</a></li>
-                                </ul>
-                            </div>
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 px-0" id="ingresar_2">
+                            <ul class="header_top_login">
+                                <li class="header_login_description float-right pt-1">
+                                    <a href="#">Ingresar <i class="fas fa-angle-down"></i></a>
+                                    <ul class="herder_login_items text-center">
+                                        <div><a href="{{ route('login') }}">Ingresar</a></div>
+                                        <div><a href="{{ route('register') }}">Registrase</a></div>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

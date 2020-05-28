@@ -4,184 +4,189 @@
 -----------------------*/
 
 .header__top {
+	margin-top: -1px;
 	background: #f5f5f5;
+	height: 34px;
 }
 
+
+
+/* ------- SERVICIO AL CLIENTE -------*/
+
+.header_top_cliente {
+    width: 100%;
+	height: 34px;
+    display: inline-block;
+}
+
+.header_top_cliente li {
+	list-style: none;
+	width: 145px;
+	height: 100%;
+}
+
+.header_top_cliente li:hover {
+    background-color: #ffffff;
+    box-shadow: 0 -10px 20px -5px #868686;
+}
+.header_top_cliente li a {
+	width: 100%;
+	height: 100%;
+	font-size: 15px;
+	padding: 0px 10px !important;
+	color: #5b6268!important;
+}
+.header_top_cliente li a:hover {
+	font-size: 15px;
+	color: #7fad39 !important;
+}
+
+.header_cliente_description:hover .herder_cliente_items {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+}
+.header_cliente_description .herder_cliente_items {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    width: auto;
+    background: #fff;
+    padding: 10px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-box-shadow: 0 10px 20px -5px #868686;
+    -moz-box-shadow: 0 10px 20px -5px #868686;
+    box-shadow: 0 10px 20px -5px #868686;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+}
+
+
+
+
+
+/* ------- AFILIAR RESTAURANTE -------*/
+.header_top_empresa {
+    width: 100%;
+	height: 100%;
+    display: inline-block;
+}
+
+.header_top_empresa li {
+	list-style: none;
+	width: auto;
+	height: 100%;
+	padding-top: 0px;
+}
+
+.header_top_empresa li a {
+	width: 100%;
+	height: 100%;
+	font-size: 15px;
+	padding: 5px 10px !important;
+	color: #5b6268!important;
+}
+.header_top_empresa li a:hover {
+	font-size: 15px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 -10px 20px -5px #868686;
+    -moz-box-shadow: 0 -10px 20px -5px #868686;
+    box-shadow: 0 -10px 20px -5px #868686;
+	color: #7fad39 !important;
+}
+
+
+
+
+
+
+/* ------- LOGIN -------*/
 #ingresar_1 {
 	display: none;
 }
 
-.header__top__titulo {
-	padding: 1.5px 0 1.5px 0 !important;
+.header_top_login {
+    width: 100%;
+	height: 100%;
+    display: inline-block;
 }
 
-.header__top__titulo {
-	position: relative;
-	display: inline-block;
-	cursor: pointer;
+.header_top_login li {
+	list-style: none;
+	width: 85px;
+	height: 100%;
+}
+
+.header_top_login li:hover {
+    background-color: #ffffff;
+    box-shadow: 0 -10px 20px -5px #868686;
+}
+.header_top_login li a {
 	width: 100%;
-	text-align: center;
+	height: 100%;
+	font-size: 15px;
+	padding: 0px 10px !important;
+	color: #5b6268!important;
+}
+.header_top_login li a:hover {
+	font-size: 15px;
+	color: #7fad39 !important;
 }
 
-.header__top__titulo:hover .header__top__titulo_service {
-	top: 34px;
-	left: -30px;
-	opacity: 1;
-	visibility: visible;
+.header_login_description:hover .herder_login_items {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
 }
-
-.header__top__titulo:hover .header__top__titulo_login {
-	top: 30px;
-	left: 110px;
-	opacity: 1;
-	visibility: visible;
-}
-
-.header__top__titulo div {
-	font-size: 14px;
-	color: #1c1c1c;
-	display: inline-block;
-}
-
-.header__top__titulo .header__top__titulo_service {
-	background: #f5f5f5;
-	width: 160px;
-	text-align: center;
-	padding: 0;
-	position: absolute;
-	left: 0;
-	top: 30px;
-	z-index: 9;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all, 0.3s;
-	-moz-transition: all, 0.3s;
-	-ms-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
-}
-.header__top__titulo .header__top__titulo_login {
-	background: #f5f5f5;
-	width: 100px;
-	text-align: center;
-	padding: 0;
-	position: absolute;
-	left: 0;
-	top: 30px;
-	z-index: 9;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all, 0.3s;
-	-moz-transition: all, 0.3s;
-	-ms-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
-}
-
-.header__top__titulo ul li {
-	list-style: none;
-	padding: 5px 5px;
-    color: #1c1c1c;
-}
-.header__top__titulo ul li:hover {
-	list-style: none;
-	padding: 5px 5px;
-    background-color: #e4e3e3;
-}
-
-.header__top__titulo ul li a {
-    font-size: 15px;
-    color: #1c1c1c;
-}
-
-
-/* Tablet Device = 768px */
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-	
-	.header__top__titulo:hover .header__top__titulo_service {
-		left: -25px;
-	}
-	
-	.header__top__titulo:hover .header__top__titulo_login {
-		left: 80px;
-		top: 30px;
-	}
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-	
-	.header__top__titulo:hover .header__top__titulo_service {
-		left: -25px;
-	}
-	
-	.header__top__titulo:hover .header__top__titulo_login {
-		left: 40px;
-		top: 30px;
-	}
-}
-
-/* Movil Device = 768px */
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-	
-	.header__top__titulo:hover .header__top__titulo_service {
-		top: 30px;
-		left: 50px;
-	}
-	
-	.header__top__titulo:hover .header__top__titulo_login {
-		top: 30px;
-		left: 85px;
-	}
-}
-
-@media only screen and (min-width: 381px) and (max-width: 575px) {
-	.header__top__titulo:hover .header__top__titulo_service {
-		top: 27px;
-		left: 35px;
-	}
-	
-	.header__top__titulo:hover .header__top__titulo_login {
-		top: 27px;
-		left: 65px;
-	}
-
-}
-
-@media (max-width: 380px) {
-	.header__top__titulo:hover .header__top__titulo_service {
-		top: 27px;
-		left: 5px;
-	}
-	
-	.header__top__titulo:hover .header__top__titulo_login {
-		top: 27px;
-		left: 40px;
-	}
+.header_login_description .herder_login_items {
+    position: absolute;
+    top: 33px;
+    right: 0;
+    width: auto;
+    background: #fff;
+    padding: 10px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-box-shadow: 0 10px 20px -5px #868686;
+    -moz-box-shadow: 0 10px 20px -5px #868686;
+    box-shadow: 0 10px 20px -5px #868686;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
 }
 
 
 
 
 
-@media (max-width: 768px) { 
-}
 
 @media (max-width: 768px) {
-	.padding_menu_1 {
-		padding: 3px 0;
+	#servicio_cliente {
+		display: none;
 	}
-
+	#afiliar_empresa {
+		display: none;
+	}
+	
+	.header_login_description .herder_login_items {
+		left: 0;
+		width: 95px;
+		padding: 10px 0px;
+	}
 	#ingresar_1 {
 		display: initial;
 	}
 	#ingresar_2 {
 		display: none;
-	}
-	.header__top__titulo {
-		text-align: center !important;
-	}
-	.header__search__movil {
-		text-align: center !important;
 	}
 }
