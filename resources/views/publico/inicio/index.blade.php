@@ -155,87 +155,84 @@
                 </div>
                 <div class="col-12">
                     <div class="row karl-new-arrivals mb-5">
-                        <!-- Single gallery Item Start -->
-
+                        
+                        <!-- PRODUCTOS EN OFERTA -->
                         @foreach ($productosofertas as $productooferta)
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-3" data-wow-delay="0.2s">
+                                <div class="single_product_wrapper">
+                                    <div class="product-img">
 
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-3" data-wow-delay="0.2s">
-                            <div class="single_product_wrapper">
-                                <div class="product-img">
+                                        @foreach ($productooferta->fotos as $foto)
+                                            <img 
+                                            nombre="{{ $productooferta->nombre }}"
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productooferta->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
+                                        @endforeach
+                                        
+                                        {{-- @if ( count( $productooferta->fotos ) == 0 )
+                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @elseif ( count( $productooferta->fotos ) == 1 )   
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @endif --}}
 
-                                    @foreach ($productooferta->fotos as $foto)
-                                    {{$productooferta}}
-                                        <img 
-                                        nombre="{{ $productooferta->nombre }}"
-                                        src="{{ asset( Storage::disk('img_productos')->url('/').$foto->url ) }}" 
-                                        alt="{{ $productooferta->nombre }}"
-                                        @if ( $loop->iteration == 2 )
-                                            class="hover-img"
-                                        @endif
-                                        >
-                                    @endforeach
-                                    
-                                    @if ( count( $productooferta->fotos ) == 0 )
-                                        <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @elseif ( count( $productooferta->fotos ) == 1 )   
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @endif
-
-                                    <!-- Product Badge -->
-                                    <div class="product-badge offer-badge">
-                                        <span>Oferta</span>
-                                    </div>
-                                </div>
-                                <!-- Product Description -->
-                                <div class="featured__item__text px-3">
-                                    <h6 class="mb-0"><b>{{$productooferta->nombre}}</b></h6>
-                                    <p class="small my-0">Breve descripción del producto</p>
-                                    <hr class="my-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
-                                            <h5 class="my-0"><small>Precio:</small> <span class="text-success"> S/ 15.90</span></h5>
+                                        <!-- Product Badge -->
+                                        <div class="product-badge offer-badge">
+                                            <span>Oferta</span>
                                         </div>
                                     </div>
-                                    <hr class="my-1">
-                                    <div class="row px-1">
-                                        <div class="col-7 py-0">
-                                            <div class="input_group_unit_product border m-0">
-                                                <input type="text" class="text-center" value="1">
+                                    <!-- Product Description -->
+                                    <div class="featured__item__text px-3">
+                                        <h6 class="mb-0"><b>{{$productooferta->nombre}}</b></h6>
+                                        <p class="small my-0">{{$productooferta->descripcion}}</p>
+                                        <hr class="my-0">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
+                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$productooferta->precio}}</span></h5>
                                             </div>
                                         </div>
-                                        <div class="col-5 text-center text-muted">
-                                            <p class="small py-0 my-0">Importe:</p>
-                                            <h4 class="small"><b>S/ 15.90</b></h4>
+                                        <hr class="my-1">
+                                        <div class="row px-1">
+                                            <div class="col-7 py-0">
+                                                <div class="input_group_unit_product border m-0">
+                                                    <input type="text" class="text-center" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 text-center text-muted">
+                                                <p class="small py-0 my-0">Importe:</p>
+                                                <h4 class="small"><b>S/ 15.90</b></h4>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr class="mt-0 mb-1">
-                                    <div class="row mb-2 px-3">
-                                        <div class="col-8 p-0">
-                                            <button class="agregar_cart">Agregar 
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
+                                        <hr class="mt-0 mb-1">
+                                        <div class="row mb-2 px-3">
+                                            <div class="col-8 p-0">
+                                                <button class="agregar_cart">Agregar 
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="agregar_favoritos">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
                         @endforeach
         
+                        <!-- PRODUCTOS NUEVOS -->
                         @foreach ($productosnuevos as $producto)
-                            <!-- Single gallery Item Start -->
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
                                 <div class="single_product_wrapper">
                                     <div class="product-img">
@@ -310,22 +307,73 @@
                             </div>
                         @endforeach
         
-                        <!-- Single gallery Item Start -->
+                        <!-- PRODUCTOS MAS  -->
                         @foreach ($productosmaspedidos as $productomaspedido)
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-3" data-wow-delay="0.4s">
-                                <!-- Product Image -->
-                                <div class="product-img">
-                                    <img src="pedidos/img/featured/feature-3.jpg" alt="">
-                                    <div class="product-quicview">
-                                        <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                <div class="single_product_wrapper">
+                                    <div class="product-img">
+                                        @foreach ($productomaspedido->fotos as $foto)
+                                            <img 
+                                            nombre="{{ $productomaspedido->nombre }}"
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productomaspedido->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
+                                        @endforeach
+                                        
+                                        {{-- @if ( count( $productomaspedido->fotos ) == 0 )
+                                            <img src="{{ Storage::url("img_productos/".$foto->nombre)}}" alt="">
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @elseif ( count( $productomaspedido->fotos ) == 1 )   
+                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
+                                        @endif --}}
+                                        
                                     </div>
-                                </div>
-                                <!-- Product Description -->
-                                <div class="product-description">
-                                    <h4 class="product-price">$39.90 --- 1</h4>
-                                    <p>Jeans midi cocktail dress</p>
-                                    <!-- Add to Cart -->
-                                    <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    <!-- Product Description -->
+                                    <div class="featured__item__text px-3">
+                                        <h6 class="mb-0"><b>{{$productomaspedido->nombre}}</b></h6>
+                                        <p class="small my-0">{{$productomaspedido->descripcion}}</p>
+                                        <hr class="my-0">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
+                                                {{-- <p></p> --}}
+                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$productomaspedido->precio}}</span></h5>
+                                            </div>
+                                        </div>
+                                        <hr class="my-1">
+                                        <div class="row px-1">
+                                            <div class="col-7 py-0">
+                                                <div class="input_group_unit_product border m-0">
+                                                    <input type="text" class="text-center" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 text-center text-muted">
+                                                <p class="small py-0 my-0">Importe:</p>
+                                                <h4 class="small"><b>S/ 15.90</b></h4>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-0 mb-1">
+                                        <div class="row mb-2 px-3">
+                                            <div class="col-8 p-0">
+                                                <button class="agregar_cart">Agregar 
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="agregar_favoritos">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
