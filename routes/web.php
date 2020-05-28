@@ -69,7 +69,7 @@ Route::post("administracion/register", "Auth\RegisterController@showRegistration
 
 
 
-Route::get('/', 'Publico\InicioController@index')
+Route::get('/', 'Publico\ProductosController@index')
 ->name('inicio.index');
 
 Route::get('cart', 'Publico\CartController@index')
