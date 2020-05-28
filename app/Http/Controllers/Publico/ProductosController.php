@@ -10,12 +10,32 @@ class ProductosController extends Controller
 {
     public function index( Request $request )
     {
-        $productos = Producto::where("descripcion", 'like', "%".request()->buscar.'%')
-                    ->orWhere('nombre','like','%'.request()->buscar.'%')
-                    ->orWhere('precio','like','%'.request()->buscar.'%')
-                    ->with(['fotos'])
-                    ->get();
+        $productosofertas = Producto::whereDate("created_at", "<", now() )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos" => function( $queryFotos ) {
+                $queryFotos->limit(2);
+            },
+        ])
+        ->paginate(8);
+        
+        $productosnuevos = Producto::whereDate("created_at", now() )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->paginate(8);
+        
+        $productosmaspedidos = Producto::where("stock", "<", 10 )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->paginate(8);
               
-        return view('publico.inicio.index', compact('productos', 'fotosproducto'));
+        return view('publico.inicio.index', compact('productosofertas', 'productosnuevos', 'productosmaspedidos'));
     }
 }
