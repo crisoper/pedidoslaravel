@@ -16,8 +16,14 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->paginate(8);
+        ->limit(8)
+        ->get();
+
+
+        $productosrecomendadosIds = $productosrecomendados->pluck("id");
+
         $productosofertas = Producto::whereDate("created_at", "<", now() )
+        ->whereNotIn("id", $productosrecomendadosIds )
         ->with([
             "tags",
             "categoria",

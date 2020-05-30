@@ -36,6 +36,8 @@ Route::get("clientes/obtenernavegadorid", "Publico\LocalstorageController@index"
 
 Route::get("cesta/index", "Publico\CestaController@index")
 ->name("cesta.index");
+Route::post("cesta/store", "Publico\CestaController@store")
+->name("cesta.store");
 Route::delete("cesta/delete", "Publico\CestaController@delete")
 ->name("cesta.delete");
 
