@@ -1,4 +1,4 @@
-<script>
+{{-- <script>
     $(document).ready(  function () {
 
         obtenerProductosNuevos( "{{ route('ajax.productos.nuevos') }}" );
@@ -58,4 +58,4 @@
         }
 
     });
-</script>
+</script> --}}

@@ -21,17 +21,16 @@
 ---------------------------- */
 
 .portfolio-menu > .btn {
-    font-size: 14px;
+    color: #1c1c1c;
     font-weight: 700;
-    color: #9f9f9f;
-    background-color: transparent;
     padding: 0 15px;
+    font-size: 20px;
     text-transform: uppercase;
 }
 
 .portfolio-menu > .btn:focus,
 .portfolio-menu > .btn.active {
-    color: #3a3a3a;
+    color: #7fad39;
     box-shadow: none;
 }
 

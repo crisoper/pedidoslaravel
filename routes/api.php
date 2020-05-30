@@ -19,12 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get("ajax/productos/inicio", "Publico\ProductoController@index")
-->name("ajax.productos.inicio");
+// Route::get("ajax/productos/inicio", "Publico\ProductoController@index")
+// ->name("ajax.productos.inicio");
 
-//Obtenemos los ultimos 9 productos registrados
-Route::get("ajax/productos/nuevos", "Publico\ProductoController@nuevos")
-->name("ajax.productos.nuevos");
+// //Obtenemos los ultimos 9 productos registrados
+// Route::get("ajax/productos/nuevos", "Publico\ProductoController@nuevos")
+// ->name("ajax.productos.nuevos");
 
 Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index")
 ->name("ajax.categorias.inicio");

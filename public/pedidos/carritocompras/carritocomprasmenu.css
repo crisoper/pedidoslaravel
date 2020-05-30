@@ -44,10 +44,11 @@
     visibility: visible;
 }
 .header_cart_description .header_cart_items {
+    cursor: initial;
     position: absolute;
     top: 33px;
     right: 0;
-    width: 360px;
+    width: 350px;
     background: #ffffff;
     padding: 15px;
     -webkit-transition: all 0.3s ease 0s;
@@ -77,10 +78,10 @@
 }
 
 .cart_product_description {
-    line-height: 15px;
+    line-height: 18px;
 }
 .cart_product_precio {
-    line-height: 15px;
+    line-height: 18px;
     margin-bottom: -5px;
 }
 

@@ -3,126 +3,91 @@
 @section('contenido')
 
 
-
 	<!-- Empresas recomendadas -->
-	<div class="product-area most-popular section mb-5">
+	<div class="product-area most-popular mb-5">
         <div class="container">
             <div class="row">
 				<div class="col-12">
 					<div class="section-title mb-0">
-						<h2>Restaurantes recomendados</h2>
+						<h2>Recomendados</h2>
 					</div>
 				</div>
                 <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
+                </div>
+                <div class="col-12">
                     <div class="owl-carousel popular-slider">
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                <div class="product-badge new-badge">
-                                    <span>New</span>
+                        <!-- PRODUCTOS EN OFERTA -->
+                        @foreach ($productosrecomendados as $productorecomendado)
+                            <div class="single_product_wrapper mx-2 mb-0">
+                                <div class="product-img">
+                                    @foreach ($productorecomendado->fotos as $foto)
+                                        <img 
+                                        nombre="{{ $productorecomendado->nombre }}"
+                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                        alt="{{ $productorecomendado->nombre }}"
+                                        @if ( $loop->iteration == 2 )
+                                            class="hover-img"
+                                        @endif
+                                        >
+                                    @endforeach
+
+                                    <!-- Product Badge -->
+                                    <div class="product-badge empresa_badge">
+                                        <p class="text-truncate p-0">Nombre de empresa</p>
+                                    </div>
+                                    {{-- <div class="product-badge empresa_direccion_badge">
+                                        <p class="text-truncate small p-0">Dirección de empresa</p>
+                                    </div> --}}
                                 </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
+                                <!-- Product Description -->
+                                <div class="featured__item__text featured__item__text_recomendados px-2">
+                                    <h6 class="text-truncate mb-0"><b>{{$productorecomendado->nombre}}</b></h6>
+                                    <p class="text-truncate small my-0">{{$productorecomendado->descripcion}}</p>
+                                    <hr class="my-0">
+                                    <div class="pt-1 pr-2">
+                                        {{-- <h5 class="text-center"><small>Precio:</small><span class="text-success">{{$productorecomendado->precio}}</span></h5> --}}
+                                        <h5 class="text-right"><small>Precio:</small><span class="text-success">{{$productorecomendado->precio}}</span></h5>
+                                        <p class="my-0 py-0">
+                                            <span><s>P. Normal: <br><b> S/ 20.90</b></s></span> 
+                                        </p>
+                                    </div>
+                                    <hr class="my-1">
+                                    <div class="row px-1">
+                                        <div class="col-12">
+                                            
+                                        </div>
+                                        <div class="col-7 py-0">
+                                            <div class="input_group_unit_product border m-0">
+                                                <input type="text" class="text-center" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="col-5 text-center text-muted">
+                                            <p class="small py-0 my-0">Importe:</p>
+                                            <h4 class="small"><b>S/ 15.90</b></h4>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-0 mb-1">
+                                    <div class="row mb-2 px-3">
+                                        <div class="col-8 p-0">
+                                            <button class="agregar_cart">Agregar 
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-2 p-0">
+                                            <button class="agregar_favoritos">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-2 p-0">
+                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                <div class="product-badge offer-badge">
-                                    <span>-30%</span>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_empresas_wrapper bg-light mx-2 mt-2 mb-3">
-                            <div class="product-img">
-                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                            </div>
-                            <!-- Product Description -->
-                            <div class="featured__item__text px-3">
-                                <h6 class="mb-0"><b>Nombre del Restaurant</b></h6>
-                                <p class="small my-0">Dirección del restaurant</p>
-                                <hr class="mt-0 mb-1">
-                                <div class="row mb-2">
-                                    <div class="col-12 mx-auto">
-                                        <a class="visitar_empresa" href="#">Visitar <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -137,31 +102,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-title mb-3">
-                        <h2>Productos</h2>
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
                     <div class="karl-projects-menu">
                         <div class="text-center portfolio-menu">
                             <button class="btn active" data-filter="*">TODOS</button>
                             <button class="btn" data-filter=".productosOfertas">EN OFERTA</button>
                             <button class="btn" data-filter=".productosNuevos">NUEVOS</button>
                             <button class="btn" data-filter=".productosMasPedidos">MAS PEDIDOS</button>
-                            <button class="btn" data-filter=".shoes">shoes</button>
-                            <button class="btn" data-filter=".kids">KIDS</button>
+                            {{-- <button class="btn" data-filter=".shoes">shoes</button>
+                            <button class="btn" data-filter=".kids">KIDS</button> --}}
                         </div>
                     </div>
+                </div>
+                <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
                 </div>
                 <div class="col-12">
                     <div class="row karl-new-arrivals mb-5">
                         
                         <!-- PRODUCTOS EN OFERTA -->
                         @foreach ($productosofertas as $productooferta)
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-3" data-wow-delay="0.2s">
-                                <div class="single_product_wrapper">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-0" data-wow-delay="0.2s">
+                                <div class="single_product_wrapper mb-5">
                                     <div class="product-img">
-
                                         @foreach ($productooferta->fotos as $foto)
                                             <img 
                                             nombre="{{ $productooferta->nombre }}"
@@ -172,13 +134,6 @@
                                             @endif
                                             >
                                         @endforeach
-                                        
-                                        {{-- @if ( count( $productooferta->fotos ) == 0 )
-                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                        @elseif ( count( $productooferta->fotos ) == 1 )   
-                                            <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                        @endif --}}
 
                                         <!-- Product Badge -->
                                         <div class="product-badge offer-badge">
@@ -187,14 +142,15 @@
                                     </div>
                                     <!-- Product Description -->
                                     <div class="featured__item__text px-3">
-                                        <h6 class="mb-0"><b>{{$productooferta->nombre}}</b></h6>
-                                        <p class="small my-0">{{$productooferta->descripcion}}</p>
+                                        <h6 class="text-truncate mb-0"><b>{{$productooferta->nombre}}</b></h6>
+                                        <p class="text-truncate small my-0">{{$productooferta->descripcion}}</p>
                                         <hr class="my-0">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
-                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$productooferta->precio}}</span></h5>
-                                            </div>
+                                        <div class="pt-1">
+                                            {{-- <h4 class="text-center"><small><small>Precio: </small></small><span class="text-success"><b>{{$productooferta->precio}}</b></span></h4> --}}
+                                            <h4 class="text-right"><small><small>Precio: </small></small><span class="text-success"><b>{{$productooferta->precio}}</b></span></h4>
+                                            <p class="my-0 py-0">
+                                                <span><s>P. Normal: <br><b> S/ 20.90</b></s></span> 
+                                            </p>
                                         </div>
                                         <hr class="my-1">
                                         <div class="row px-1">
@@ -233,8 +189,8 @@
         
                         <!-- PRODUCTOS NUEVOS -->
                         @foreach ($productosnuevos as $producto)
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-3" data-wow-delay="0.3s">
-                                <div class="single_product_wrapper">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosNuevos wow fadeInUpBig mb-0" data-wow-delay="0.3s">
+                                <div class="single_product_wrapper mb-5">
                                     <div class="product-img">
                                         @foreach ($producto->fotos as $foto)
                                         {{-- {{$producto}} --}}
@@ -262,15 +218,15 @@
                                     </div>
                                     <!-- Product Description -->
                                     <div class="featured__item__text px-3">
-                                        <h6 class="mb-0"><b>{{$producto->nombre}}</b></h6>
-                                        <p class="small my-0">{{$producto->descripcion}}</p>
+                                        <h6 class="text-truncate mb-0"><b>{{$producto->nombre}}</b></h6>
+                                        <p class="text-truncate small my-0">{{$producto->descripcion}}</p>
                                         <hr class="my-0">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
-                                                {{-- <p></p> --}}
-                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$producto->precio}}</span></h5>
-                                            </div>
+                                        <div class="pt-1">
+                                            <h4 class="text-center"><small><small>Precio: </small></small><span class="text-success"><b>{{$producto->precio}}</b></span></h4>
+                                            {{-- <h4 class="text-right"><small><small>Precio: </small></small><span class="text-success"><b>{{$producto->precio}}</b></span></h4> --}}
+                                            {{-- <p class="my-0 py-0">
+                                                <span><s>P. Normal: <br><b> S/ 20.90</b></s></span> 
+                                            </p> --}}
                                         </div>
                                         <hr class="my-1">
                                         <div class="row px-1">
@@ -309,8 +265,8 @@
         
                         <!-- PRODUCTOS MAS  -->
                         @foreach ($productosmaspedidos as $productomaspedido)
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-3" data-wow-delay="0.4s">
-                                <div class="single_product_wrapper">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-0" data-wow-delay="0.4s">
+                                <div class="single_product_wrapper mb-5">
                                     <div class="product-img">
                                         @foreach ($productomaspedido->fotos as $foto)
                                             <img 
@@ -333,15 +289,15 @@
                                     </div>
                                     <!-- Product Description -->
                                     <div class="featured__item__text px-3">
-                                        <h6 class="mb-0"><b>{{$productomaspedido->nombre}}</b></h6>
-                                        <p class="small my-0">{{$productomaspedido->descripcion}}</p>
+                                        <h6 class="text-truncate mb-0"><b>{{$productomaspedido->nombre}}</b></h6>
+                                        <p class="text-truncate small my-0">{{$productomaspedido->descripcion}}</p>
                                         <hr class="my-0">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <p class="small my-0 text-muted"><small><s>P. Normal: <b> S/ 20.90</b></s></small></p>
-                                                {{-- <p></p> --}}
-                                                <h5 class="my-0"><small>Precio:</small> <span class="text-success"> {{$productomaspedido->precio}}</span></h5>
-                                            </div>
+                                        <div class="pt-1">
+                                            <h4 class="text-center"><small><small>Precio: </small></small><span class="text-success"><b>{{$productomaspedido->precio}}</b></span></h4>
+                                            {{-- <h4 class="text-right"><small><small>Precio: </small></small><span class="text-success"><b>{{$productomaspedido->precio}}</b></span></h4> --}}
+                                            {{-- <p class="my-0 py-0">
+                                                <span><s>P. Normal: <br><b> S/ 20.90</b></s></span> 
+                                            </p> --}}
                                         </div>
                                         <hr class="my-1">
                                         <div class="row px-1">
@@ -379,7 +335,7 @@
                         @endforeach
         
                         <!-- Single gallery Item Start -->
-                        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item shoes wow fadeInUpBig mb-3" data-wow-delay="0.5s">
+                        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item shoes wow fadeInUpBig mb-0" data-wow-delay="0.5s">
                             <!-- Product Image -->
                             <div class="product-img">
                                 <img src="pedidos/img/featured/feature-4.jpg" alt="">
@@ -397,7 +353,7 @@
                         </div>
         
                         <!-- Single gallery Item Start -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item kids wow fadeInUpBig mb-3" data-wow-delay="0.6s">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item kids wow fadeInUpBig mb-0" data-wow-delay="0.6s">
                             <!-- Product Image -->
                             <div class="product-img">
                                 <img src="pedidos/img/featured/feature-5.jpg" alt="">
@@ -433,13 +389,11 @@
                         </div> --}}
                     </div>
                 </div>
-                {{-- <div>
-                    {!! $productos->appends(request()->query() )->links('pagination::bootstrap-4') !!}
-                </div> --}}
             </div>
         </div>
     </section>
     <!-- End Todos los productos -->
+
 
 
 	<!-- Modal -->
@@ -544,6 +498,7 @@
         </div>
     </div>
     <!-- Modal end -->
+
 
 @endsection
 

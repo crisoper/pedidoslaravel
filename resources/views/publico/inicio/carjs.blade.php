@@ -57,8 +57,7 @@
                             <p class="cart_product_precio small text-success mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
                             <small class="mt-0 mb-0">x${ cesta.cantidad }</small>
                         </div>
-                        <div class="eliminar_compra p-0 eliminarProductoCestaMenu" producto_id="${ cesta.producto.id }">x
-                        </div>
+                        <div class="eliminar_compra p-0 eliminarProductoCestaMenu" producto_id="${ cesta.producto.id }"><i class="fas fa-trash-alt small"></i></div>
                     </div>
                 </div>
             `;

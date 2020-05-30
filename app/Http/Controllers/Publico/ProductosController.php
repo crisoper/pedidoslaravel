@@ -10,13 +10,21 @@ class ProductosController extends Controller
 {
     public function index( Request $request )
     {
+        $productosrecomendados = Producto::whereDate("created_at", ">", 20 )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->paginate(8);
         $productosofertas = Producto::whereDate("created_at", "<", now() )
         ->with([
             "tags",
             "categoria",
-            "fotos" => function( $queryFotos ) {
-                $queryFotos->limit(2);
-            },
+            "fotos",
+            // "fotos" => function( $queryFotos ) {
+            //     $queryFotos->limit(2);
+            // },
         ])
         ->paginate(8);
         
@@ -36,6 +44,6 @@ class ProductosController extends Controller
         ])
         ->paginate(8);
               
-        return view('publico.inicio.index', compact('productosofertas', 'productosnuevos', 'productosmaspedidos'));
+        return view('publico.inicio.index', compact('productosrecomendados', 'productosofertas', 'productosnuevos', 'productosmaspedidos'));
     }
 }

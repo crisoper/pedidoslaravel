@@ -16,7 +16,7 @@
     @include('layouts.publico.styles')
 
 </head>
-<body>
+<body class="bg-light">
     
     <!-- Page Preloder -->
     {{-- <div id="preloder">
@@ -26,56 +26,136 @@
         <!-- MENU HAMBURGER APP-->
         <div class="humberger__menu__overlay"></div>
         <div class="humberger__menu__wrapper">
-            <div class="humberger__menu__logo">
+            <div class="humberger__menu__logo py-2 px-3 bg-dark">
                 <a href="#"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
             </div>
             
-            <div class="humberger__menu__login">
+            {{-- LOGIN --}}
+            <div class="humberger__menu__login py-2 px-3 bg-dark">
                 <div class="row">
                     <div class="col-6">
-                        <a href="#"><i class="fa fa-user"></i> Registrarse</a>
+                        <a href="#">Registrarse</a>
                     </div>
                     <div class="col-6">
-                        <a href="#"><i class="fa fa-user"></i> Ingresar</a>
+                        <a href="#">Ingresar</a>
+                    </div>
+                </div>
+                <hr class="my-2">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                     </div>
                 </div>
             </div>
 
+
             {{-- MENU APP --}}
-            <nav class="humberger__menu__nav mobile-menu">
-                <ul>
-                    {{-- <li class="{{! Route::is('/') ?: 'active'}}"><a href="{{route('/')}}">Home</a></li> --}}
-                    {{-- <li class="{{! Route::is('welcome2.index') ?: 'active'}}"><a href="{{route('welcome2.index')}}">Shop</a></li>
-                    <li class="{{! Route::is('carritocompras.index') ?: 'active'}}"><a href="{{route('carritocompras.index')}}">Cart</a></li> --}}
-                    <li><a href="#">Pages</a>
-                        <ul class="header__menu__dropdown ml-3">
-                            <li><a href="./shop-details.html">Shop Details</a></li>
-                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                            <li><a href="./checkout.html">Check Out</a></li>
-                            <li><a href="./blog-details.html">Blog Details</a></li>
+            <nav class="humberger__menu__nav py-2">
+                {{-- PRIMERO MENU --}}
+                <ul class="nav_items px-3">
+                    <li class="nav-item nav_expanded">
+                        <a class="nav_link" href="#">
+                        Menu <i class="fas fa-chevron-right float-right"></i>
+                        </a>
+                        {{-- SEGUNDO MENU --}}
+                        <ul class="nav_items nav_expand_content px-3">
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">
+                                Level 2
+                                </a>
+                            </li>
+                            <li class="nav-item nav_expanded">
+                                <a class="nav_link" href="#">
+                                Menu <i class="fas fa-chevron-right float-right"></i>
+                                </a>
+                                {{-- TERCER MENU --}}
+                                <ul class="nav_items nav_expand_content pl-3 pr-2">
+                                    <li class="nav-item">
+                                        <a class="nav_link" href="#">
+                                        Level 3
+                                        </a>
+                                    </li>
+                                    <li class="nav-item nav_expanded">
+                                        <a class="nav_link" href="#">Menu</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav_link" href="#">Level 3 Directory</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav_link" href="#">Level 3 Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav_link" href="#">Level 3 Quick links</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav_link" href="#">Launchpad</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">Level 2 Directory</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">Level 2 Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">Level 2 Quick links</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">Launchpad 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav_link" href="#">Launchpad 1</a>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Directory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Quick links</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Launchpad 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Launchpad 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav_link" href="#">Launchpad 3</a>
+                    </li>
                 </ul>
             </nav>
             
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li>
-                        <div class="header__top__description">
-                            <div>Servicio al cliente</div>
-                            <span class="arrow_carrot-down"></span>
-                            <ul>
-                                <li><a href="#">Contáctanos</a></li>
-                                <li><a href="#">Preguntas frecuentes</a></li>
-                            </ul>
+            {{-- ATENCION AL CLIENTE --}}
+            <div class="humberger__menu__contact fixed-bottom">
+                <hr class="my-1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn_servicio_2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Servicio al cliente
+                            </button>
+                            <div class="dropdown-menu">
+                                <div><a href="#">Escribenos</a></div>
+                                <div>
+                                    <p class="mb-0">+65 11.188.888</p>
+                                    <p class="my-0 small">support 24/7 time</p>
+                                </div>
+                                <div>
+                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                                </div>
+                                <div><a href="#">Preguntas frecuentes</a></div>
+                            </div>
                         </div>
-                    </li>
-                    <li><a href="#">Afilia a tu restaurante</a>
-                    
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     
@@ -91,16 +171,19 @@
                                     <a href="#">Servicio al cliente <i class="fas fa-angle-down"></i></a>
                                     <ul class="herder_cliente_items">
                                         <div><a href="#">Escribenos</a></div>
-                                        <div>
+                                        <hr class="my-1">
+                                        <div class="pl-2">
                                             <p class="mb-0">+65 11.188.888</p>
                                             <p class="my-0 small">support 24/7 time</p>
                                         </div>
-                                        <div>
-                                            <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                            <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                                            <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                                        <hr class="my-2">
+                                        <div class="row px-3">
+                                            <a class="col-3" href="#"><h5><i class="fab fa-facebook-square"></i></h5></a>
+                                            <a class="col-3" href="#"><h5><i class="fab fa-twitter-square"></i></h5></a>
+                                            <a class="col-3" href="#"><h5><i class="fab fa-linkedin"></i></h5></a>
+                                            <a class="col-3" href="#"><h5><i class="fab fa-pinterest-square"></i></h5></a>
                                         </div>
+                                        <hr class="mt-0 mb-1">
                                         <div><a href="#">Preguntas frecuentes</a></div>
                                     </ul>
                                 </li>
@@ -114,6 +197,7 @@
                                     <a href="#"><b>Ingresar </b> <i class="fas fa-angle-down"></i></a>
                                     <ul class="herder_login_items text-center">
                                         <div><a href="{{ route('login') }}">Ingresar</a></div>
+                                        <hr class="my-2 mx-2">
                                         <div><a href="{{ route('register') }}">Registrase</a></div>
                                     </ul>
                                 </li>
@@ -121,7 +205,7 @@
                         </div>
 
                         {{-- AFILIAR RESTAURANTE --}}
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-5 px-0" id="afiliar_empresa">
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-4 px-0" id="afiliar_empresa">
                             <ul class="header_top_empresa text-center">
                                 <li class="header_empresa_description pt-1">
                                     <a href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
@@ -130,26 +214,26 @@
                         </div>
                         
                         {{-- BUSCADOR --}}
-                        <div class="col-3 col-sm-4 col-md-1 col-lg-0 px-0">
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-0 px-0">
                             <div class="header__search__movil text-center">
                                 <div id="search_2"><i class="fa fa-search"></i></div>
                             </div>
                         </div>
 
-                        {{-- FAVORITOS Y CARRITO COMPRAS --}}
-                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 px-0">
-                            <ul class="header_top_cart text-right">
-                                {{-- <li class="header_cart_favorites">
+                        {{-- FAVORITOS --}}
+                        <div class="col-2 col-sm-2 col-md-1 col-lg-1 px-0">
+                            <ul class="header_top_favorites text-right">
+                                <li class="header_favorites_description">
                                     <a href="#">
                                         <i class="fa fa-heart"></i> <span>1</span>
                                     </a>
                                     <ul class="header_favorites_items text-center">
-                                        <small><b>Como mínimo debes comprar s/ 30.00</b></small>
+                                        <small><b>Tus productos elegidos como favoritos</b></small>
                                         <hr class="mt-1">
                                         <div class="scroll_favorites_header">
                                             <div class="dropdown_favorites_header row" id="">
                                                 <div class="col-12 mt-2">
-                                                    <div class="row border_caja_product">
+                                                    <div class="row border_caja_favorites">
                                                         <div class="col-2 p-0">
                                                             <img src="pedidos/img/featured/feature-2.jpg" alt="">
                                                         </div>
@@ -157,35 +241,25 @@
                                                             <p class="favorites_product_description small mb-0">Descripción breve del producto</p>
                                                         </div>
                                                         <div class="col-4 p-0">
-                                                            <p class="favorites_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                            <small class="mt-0 mb-0">x2</small>
+                                                            <p class="favorites_product_precio text-success mb-0"><b>S/ 12.90</b></p>
                                                         </div>
-                                                        <div class="eliminar_compra p-0">x
-                                                        </div>
+                                                        <div class="eliminar_favoritos p-0"><i class="far fa-trash-alt small"></i></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
+    
                                         <hr class="mb-1">
                                         <div class="bottom_total">
-                                            <div class="row">
-                                                <div class="col-7">
-                                                    <small>Estas comprando:</small>
-                                                    <h5 class="text-info">2 Productos</h5>
-                                                </div>
-                                                <div class="col-5">
-                                                    <small>Total:</small>
-                                                    <h5 class="text-success"><b>S/ 30.00</b></h5>
-                                                </div>
-                                                <div class="col-12">
-                                                    <a class="btn btn_pedido_favorites" href="#">Ver Todos</a>
-                                                </div>
-                                            </div>
+                                            <a class="btn btn_pedido_favorites" href="#">Ver Todos</a>
                                         </div>
                                     </ul>
-                                </li> --}}
-
+                                </li>
+                            </ul>
+                        </div>
+                        {{-- CARRITO COMPRAS  --}}
+                        <div class="col-2 col-sm-2 col-md-1 col-lg-1 px-0">
+                            <ul class="header_top_cart text-right">
                                 <li class="header_cart_description" id="mostrarProductosCestaMenuFlotante">
                                     <a href="#">
                                         <i class="fas fa-shopping-basket"></i><span>3</span>
@@ -242,6 +316,7 @@
                                     <a href="#">Ingresar <i class="fas fa-angle-down"></i></a>
                                     <ul class="herder_login_items text-center">
                                         <div><a href="{{ route('login') }}">Ingresar</a></div>
+                                        <hr class="my-2">
                                         <div><a href="{{ route('register') }}">Registrase</a></div>
                                     </ul>
                                 </li>

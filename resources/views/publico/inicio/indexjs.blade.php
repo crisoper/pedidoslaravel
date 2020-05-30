@@ -1,4 +1,4 @@
-<script>
+{{-- <script>
     $(document).ready(  function () {
 
         $(".btnBuscarProductos").on("click", function( e ) {
@@ -101,4 +101,4 @@
         
 
     });
-</script>
+</script> --}}
