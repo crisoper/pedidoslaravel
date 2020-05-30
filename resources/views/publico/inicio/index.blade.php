@@ -23,7 +23,8 @@
                                 <div class="product-img">
                                     @foreach ($productorecomendado->fotos as $foto)
                                         <img 
-                                        src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
+                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
+                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                         alt="{{ $productorecomendado->nombre }}"
                                         @if ( $loop->iteration == 2 )
                                             class="hover-img"
@@ -122,8 +123,8 @@
                                     <div class="product-img">
                                         @foreach ($productooferta->fotos as $foto)
                                             <img 
-                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
-                                            {{-- src="{{ Storage::url("img_productos/".$foto->nombre)}}"  --}}
+                                            {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productooferta->nombre }}"
                                             @if ( $loop->iteration == 2 )
                                                 class="hover-img"
@@ -191,7 +192,8 @@
                                         @foreach ($producto->fotos as $foto)
                                         {{-- {{$producto}} --}}
                                             <img 
-                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
+                                            {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $producto->nombre }}"
                                             @if ( $loop->iteration == 2 )
                                                 class="hover-img"
@@ -265,7 +267,8 @@
                                     <div class="product-img">
                                         @foreach ($productomaspedido->fotos as $foto)
                                             <img 
-                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
+                                            {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productomaspedido->nombre }}"
                                             @if ( $loop->iteration == 2 )
                                                 class="hover-img"

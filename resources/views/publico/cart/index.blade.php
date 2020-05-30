@@ -21,7 +21,7 @@
 							</tr>
 						</thead>
 						<tbody id="cuerpoTablaCarritoCompras">
-							<tr>
+							{{-- <tr>
 								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#">Women Dress</a></p>
@@ -35,7 +35,7 @@
 								</td>
 								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-							</tr>
+							</tr> --}}
 						</tbody>
 					</table>
 				</div>
@@ -86,7 +86,7 @@
 
 
     <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
+    {{-- <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -107,7 +107,7 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTablaCarritoCompras">
-                                {{-- <tr>
+                                <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-1.jpg" alt="">
                                         <h5>Vegetable’s Package</h5>
@@ -128,7 +128,7 @@
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
-                                </tr> --}}
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Shoping Cart Section End -->
 
 @endsection

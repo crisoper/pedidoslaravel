@@ -35,7 +35,6 @@
 
         $.each( cestas.data, function( key, cesta ) {
             carHTML = carHTML + `
-            
                 <tr>
                     <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
                     <td class="product-des" data-title="Description">
@@ -53,7 +52,6 @@
                         <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" ><i class="fas fa-trash-alt small"></i></span>
                     </td>
                 </tr>
-                
             `;
         });
 
