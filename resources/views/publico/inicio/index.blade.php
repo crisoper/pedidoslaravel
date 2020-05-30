@@ -55,7 +55,7 @@
                                     <div class="row px-1">
                                         <div class="col-7 py-0">
                                             <div class="input_group_unit_product border m-0">
-                                                <input type="text" class="text-center" value="1">
+                                                <input type="text" class="text-center input_value_cart" value="1">
                                             </div>
                                         </div>
                                         <div class="col-5 text-center text-muted">
@@ -66,7 +66,7 @@
                                     <hr class="mt-0 mb-1">
                                     <div class="row mb-2 px-3">
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart">Agregar 
+                                            <button class="agregar_cart" idproducto="{{$productooferta->nombre}}">Agregar 
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         </div>
@@ -152,7 +152,7 @@
                                         <div class="row px-1">
                                             <div class="col-7 py-0">
                                                 <div class="input_group_unit_product border m-0">
-                                                    <input type="text" class="text-center" value="1">
+                                                    <input type="text" class="text-center input_value_cart" value="1">
                                                 </div>
                                             </div>
                                             <div class="col-5 text-center text-muted">
@@ -163,7 +163,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$productooferta->nombre}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
@@ -227,7 +227,7 @@
                                         <div class="row px-1">
                                             <div class="col-7 py-0">
                                                 <div class="input_group_unit_product border m-0">
-                                                    <input type="text" class="text-center" value="1">
+                                                    <input type="text" class="text-center input_value_cart" value="1">
                                                 </div>
                                             </div>
                                             <div class="col-5 text-center text-muted">
@@ -238,7 +238,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$productooferta->nombre}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
@@ -297,7 +297,7 @@
                                         <div class="row px-1">
                                             <div class="col-7 py-0">
                                                 <div class="input_group_unit_product border m-0">
-                                                    <input type="text" class="text-center" value="1">
+                                                    <input type="text" class="text-center input_value_cart" value="1">
                                                 </div>
                                             </div>
                                             <div class="col-5 text-center text-muted">
@@ -308,7 +308,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$productooferta->nombre}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
