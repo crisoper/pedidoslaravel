@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\CestaResource;
 use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CestaController extends Controller
 {
@@ -24,12 +25,35 @@ class CestaController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function store(Request $request)
+    {
+        
+        $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        ->where("producto_id", $request->producto_id )
+        ->where("tipo", $request->tipo )
+        ->first();
+
+        if ( !$cesta ) {
+            $cesta = new Cesta();
+        }
+        $cesta->storagecliente_id = $request->storagecliente_id;
+        $cesta->producto_id = $request->producto_id;
+        $cesta->cantidad = $request->cantidad;
+        $cesta->tipo = $request->tipo;
+        
+        if ( Auth::guard('api')->check() ) {
+            $cesta->cliente_id = Auth::id();
+        }
+        else {
+            $cesta->cliente_id = Auth::id();
+        }
+
+        $cesta->save();
+
+        return response()->json(['success' => "Operacion realizada con exito"], 200);
+    }
+    
+    
     public function delete(Request $request)
     {
         $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id)

@@ -94,4 +94,51 @@
 
     });
 
+
+
+
+
+    //Agregar producto a carrito compras
+    $(".content").on("click", ".agregar_cart", function() {
+
+        let btnAgregarCar = $( this );
+        let inputCantidad = $( btnAgregarCar ).closest(".container_product_cart").find(".input_value_cart");
+        let producto_id = $( btnAgregarCar).attr("idproducto");
+        let cantidad = $( inputCantidad).val();
+
+        if( obtenerLocalStorageclienteID () != false ) {
+            
+            $( btnAgregarCar ).html("Agregado.... <i class='fa fa-eye'></i>");
+
+            agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta" );
+        }
+
+    })
+
+
+    function agregarProducto_Canasta( producto_id, cantidad, storagecliente_id, tipo, btnAgregarCar) {
+
+        $.ajax({
+            url: "{{ route('cesta.store') }}",
+            method: 'POST',
+            data: {
+                storagecliente_id: storagecliente_id,
+                tipo: tipo,
+                producto_id: producto_id,
+                cantidad: cantidad
+            },
+            success: function ( data ) {
+                console.log( $( btnAgregarCar ) );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR.responseJSON);
+            }
+        });
+
+    }
+
+
+
+
+
 </script>
