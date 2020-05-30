@@ -35,6 +35,24 @@
 
         $.each( cestas.data, function( key, cesta ) {
             carHTML = carHTML + `
+            
+                <tr>
+                    <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                    <td class="product-des" data-title="Description">
+                        <p class="product-name"><a href="#">${ cesta.producto.nombre }</a></p>
+                        <p class="product-des">${ cesta.producto.descripcion }</p>
+                    </td>
+                    <td class="price" data-title="Price"><span>${ cesta.producto.precio }</span></td>
+                    <td class="qty" data-title="Qty">
+                        <div class="input_group_unit_product border m-0">
+                            <input type="text" class="text-center" value="${ cesta.cantidad }">
+                        </div>
+                    </td>
+                    <td class="total-amount" data-title="Total"><span>${ cesta.cantidad * cesta.producto.precio }</span></td>
+                    <td class="action" data-title="Remove">
+                        <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" >x</span>
+                    </td>
+                </tr>
                 <tr>
                     <td class="shoping__cart__item">
                         <img src="img/cart/cart-1.jpg" alt="">
