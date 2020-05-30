@@ -40,7 +40,7 @@
                                     </div> --}}
                                 </div>
                                 <!-- Product Description -->
-                                <div class="featured__item__text featured__item__text_recomendados px-2">
+                                <div class="featured__item__text container_product_cart featured__item__text_recomendados px-2">
                                     <h6 class="text-truncate mb-0"><b>{{$productorecomendado->nombre}}</b></h6>
                                     <p class="text-truncate small my-0">{{$productorecomendado->descripcion}}</p>
                                     <hr class="my-0">
@@ -53,9 +53,6 @@
                                     </div>
                                     <hr class="my-1">
                                     <div class="row px-1">
-                                        <div class="col-12">
-                                            
-                                        </div>
                                         <div class="col-7 py-0">
                                             <div class="input_group_unit_product border m-0">
                                                 <input type="text" class="text-center" value="1">
@@ -140,7 +137,7 @@
                                         </div>
                                     </div>
                                     <!-- Product Description -->
-                                    <div class="featured__item__text px-3">
+                                    <div class="featured__item__text container_product_cart px-3">
                                         <h6 class="text-truncate mb-0"><b>{{$productooferta->nombre}}</b></h6>
                                         <p class="text-truncate small my-0">{{$productooferta->descripcion}}</p>
                                         <hr class="my-0">
@@ -215,7 +212,7 @@
                                         </div>
                                     </div>
                                     <!-- Product Description -->
-                                    <div class="featured__item__text px-3">
+                                    <div class="featured__item__text container_product_cart px-3">
                                         <h6 class="text-truncate mb-0"><b>{{$producto->nombre}}</b></h6>
                                         <p class="text-truncate small my-0">{{$producto->descripcion}}</p>
                                         <hr class="my-0">
@@ -285,7 +282,7 @@
                                         
                                     </div>
                                     <!-- Product Description -->
-                                    <div class="featured__item__text px-3">
+                                    <div class="featured__item__text container_product_cart px-3">
                                         <h6 class="text-truncate mb-0"><b>{{$productomaspedido->nombre}}</b></h6>
                                         <p class="text-truncate small my-0">{{$productomaspedido->descripcion}}</p>
                                         <hr class="my-0">
