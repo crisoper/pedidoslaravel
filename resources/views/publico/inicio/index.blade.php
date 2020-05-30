@@ -66,7 +66,7 @@
                                     <hr class="mt-0 mb-1">
                                     <div class="row mb-2 px-3">
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productorecomendado->nombre}}">Agregar 
+                                            <button class="agregar_cart" idproducto="{{$productorecomendado->id}}">Agregar 
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         </div>
@@ -163,7 +163,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart" idproducto="{{$productooferta->nombre}}">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$productooferta->id}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
@@ -238,7 +238,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart" idproducto="{{$producto->nombre}}">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$producto->id}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
@@ -308,7 +308,7 @@
                                         <hr class="mt-0 mb-1">
                                         <div class="row mb-2 px-3">
                                             <div class="col-8 p-0">
-                                                <button class="agregar_cart" idproducto="{{$productomaspedido->nombre}}">Agregar 
+                                                <button class="agregar_cart" idproducto="{{$productomaspedido->id}}">Agregar 
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>

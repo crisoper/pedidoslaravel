@@ -53,28 +53,7 @@
                         <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" ><i class="fas fa-trash-alt small"></i></span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="shoping__cart__item">
-                        <img src="img/cart/cart-1.jpg" alt="">
-                        <h5>${ cesta.producto.nombre }</h5>
-                    </td>
-                    <td class="shoping__cart__price">
-                        ${ cesta.producto.precio }
-                    </td>
-                    <td class="shoping__cart__quantity">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="${ cesta.cantidad }">
-                            </div>
-                        </div>
-                    </td>
-                    <td class="shoping__cart__total">
-                        ${ cesta.cantidad * cesta.producto.precio }
-                    </td>
-                    <td class="shoping__cart__item__close">
-                        <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" >x</span>
-                    </td>
-                </tr>
+                
             `;
         });
 
