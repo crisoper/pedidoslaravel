@@ -50,7 +50,7 @@
                     </td>
                     <td class="total-amount" data-title="Total"><span>${ cesta.cantidad * cesta.producto.precio }</span></td>
                     <td class="action" data-title="Remove">
-                        <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" >x</span>
+                        <span class="icon_close eliminarProductoCesta" producto_id="${ cesta.producto.id }" ><i class="fas fa-trash-alt small"></i></span>
                     </td>
                 </tr>
                 <tr>
