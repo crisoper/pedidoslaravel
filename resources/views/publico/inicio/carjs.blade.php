@@ -94,4 +94,17 @@
 
     });
 
+
+
+
+
+    //Agregar producto a carrito compras
+    $(".content").on("click", ".agregar_cart", function() {
+
+        let btnAgregarCar = $( this );
+        let inputCantidad = $( btnAgregarCar ).parent(".container_product_cart").find(".input_group_unit_product");
+        console.log( inputCantidad );
+    })
+
+
 </script>

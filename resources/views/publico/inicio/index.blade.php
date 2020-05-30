@@ -500,7 +500,7 @@
 @section('scripts')
 
     @include('publico.inicio.nuevosjs')
-    @include('publico.inicio.indexjs')
+    {{-- @include('publico.inicio.indexjs') --}}
     @include('publico.inicio.categoriasjs')
     @include('publico.inicio.carjs')
 
