@@ -33,14 +33,14 @@
 
    });
 
-        function fileValidation(){
+    function fileValidation(){
   
-}
+    }
 
-        $('#horainicio').datetimepicker({
-            format: 'LT'
-        })
-        $('#horafin').datetimepicker({
+    $('.datetimepicker').datetimepicker({
+        format: 'LT'
+    })
+        $('#horafinMartes').datetimepicker({
             format: 'LT'
         })
         $('#hora').datetimepicker({
@@ -147,14 +147,21 @@
                 else if( jqXHR.status == 429 ) 
                 {   
                     let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
-                    let error = jqXHR.responseJSON.error.data;
-                     
-                        for (let i = 1; i <= dias.length; i++) {
-                          if (error.fin[i - 1] == dias[i - 1]) {                        
-                            $("#horafin-"+ i ).val( 'ok' );
-                          
-                          }
-                        }     
+                    let errorInicio = jqXHR.responseJSON.error.data['inicio'];
+                    let errorFin = jqXHR.responseJSON.error.data['fin'];
+
+                    $.each( errorInicio , function( index, diasemana ) {
+                        $("#horainicio-"+ diasemana ).addClass("is-invalid");
+                    });
+                    
+                    $.each( errorFin , function( index, diasemana ) {
+                        $("#horafin-"+ diasemana ).addClass("is-invalid");
+                    });
+
+                    setTimeout( function() {
+                        $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
+                    }, 1500);
+
                 }  
             }
         });
@@ -185,7 +192,7 @@
     setTimeout( function() {
     
         $("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
-    }, 7000);
+    }, 1500);
 
     }
     

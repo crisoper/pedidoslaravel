@@ -331,8 +331,8 @@
                                                <small class="text-muted">Desde:</small>
                                                 <div class="input-group date horainicio" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]" id="horainicio[{{ $loop->iteration }}]"
-                                                        class="form-control form-control-sm datetimepicker-input"
+                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]" id="horainicio-{{ $dia }}"
+                                                        class="form-control form-control-sm datetimepicker-input datetimepicker"
                                                         data-target="horainicio[{{$loop->iteration}}]" />
                                                     <div class="input-group-append" data-target="horainicio[{{$loop->iteration}}]"
                                                         data-toggle="datetimepicker">
@@ -348,8 +348,8 @@
                                                 <small class="text-muted">Hasta:</small>
                                                 <div class="input-group date horafin" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horafin[{{ $loop->iteration }}]" id="horafin-{{ $loop->iteration }}"
-                                                        class="form-control form-control-sm datetimepicker-input "
+                                                    <input type="text" name="horafin[{{ $loop->iteration }}]" id="horafin-{{ $dia }}"
+                                                        class="form-control form-control-sm datetimepicker-input datetimepicker"
                                                         data-target="#hora" />
                                                     <div class="input-group-append" data-target="#hora"
                                                         data-toggle="datetimepicker">
@@ -398,5 +398,6 @@
 @endsection
 
 @section('scripts')
+
     @include('publico.empresa.js')
 @endsection

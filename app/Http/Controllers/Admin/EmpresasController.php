@@ -240,7 +240,7 @@ class EmpresasController extends Controller
  
     //REGISTRA TU EMPRESA
     public function registrartuempresa(){
-        $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
+        $dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
         $empresarubros  = Empresarubro::get();
         $departamentos = Departamento::get();
         $provincias = Provincia::get();
@@ -250,13 +250,40 @@ class EmpresasController extends Controller
 
         
     }
+    
     protected function guard()
     {
         return Auth::guard();
     }
+
     public function tuempresastore( CreatuempresaCreateRequest $request){
       
-        // EGISTRAMOS USUARIO
+        $dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
+        $diasNoValidosInicio = array();
+        $diasNoValidosFin = array();
+    
+        
+        foreach ($request->dias as $key => $value) {
+            if ( $request->horainicio[$key] == null) {
+                $diasNoValidosInicio[] = $dias[$key - 1];
+            }
+            if ( $request->horafin[$key] == null) {
+                $diasNoValidosFin[] = $dias[$key - 1];
+            }
+        } 
+    
+    
+        if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
+            return response()->json([
+                'error' =>  [
+                    'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
+                    'data' => [
+                        "inicio" => $diasNoValidosInicio,
+                        "fin" => $diasNoValidosFin,
+                    ]
+                ] 
+            ], 429);
+        }    
 
         $user = User::firstOrNew([
             'name' => $request->name ." ". $request->paterno ." ". $request->materno,
@@ -340,33 +367,34 @@ class EmpresasController extends Controller
         //VALIDAMOS VCAMPOS DE HORARIOS
 
           
-    $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
-    $diasNoValidosInicio = array();
-    $diasNoValidosFin = array();
+        // $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
+        // $diasNoValidosInicio = array();
+        // $diasNoValidosFin = array();
 
-    
-    foreach ($request->dias as $key => $value) {
-        if ( $request->horainicio[$key] == null) {
-            $diasNoValidosInicio[] = $dias[$key - 1];
-        }
-        if ( $request->horafin[$key] == null) {
-            $diasNoValidosFin[] = $dias[$key - 1];
-        }
-    } 
+        
+        // foreach ($request->dias as $key => $value) {
+        //     if ( $request->horainicio[$key] == null) {
+        //         $diasNoValidosInicio[] = $dias[$key - 1];
+        //     }
+        //     if ( $request->horafin[$key] == null) {
+        //         $diasNoValidosFin[] = $dias[$key - 1];
+        //     }
+        // } 
 
 
-    if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
-        return response()->json([
-            'error' =>  [
-                'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
-                'data' => [
-                    "inicio" => $diasNoValidosInicio,
-                    "fin" => $diasNoValidosFin,
-                ]
-            ] 
-        ], 429);
-    }
-    else {
+        // if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
+        //     return response()->json([
+        //         'error' =>  [
+        //             'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
+        //             'data' => [
+        //                 "inicio" => $diasNoValidosInicio,
+        //                 "fin" => $diasNoValidosFin,
+        //             ]
+        //         ] 
+        //     ], 429);
+        // }
+        // else {
+        // }
         for ($i = 1; $i <= count($request->dias) ; $i++) { 
             $horario = new Horario();
             $horario->empresa_id = $empresa->id;
@@ -376,7 +404,6 @@ class EmpresasController extends Controller
             $horario->created_by = $user->id;        
             $horario->save();        
         }
-    }
  
 
         $this->guard()->login($user);
@@ -415,7 +442,7 @@ class EmpresasController extends Controller
     
  
     public function activarcuentatoken( Request $request ) {
-      return $request;
+
         if ( $request->has("tokenactivation") ) {
             
             $usuario = User::where("remember_token", $request->tokenactivation ) ->first();
@@ -424,8 +451,9 @@ class EmpresasController extends Controller
                 $usuario->email_verified_at = now();
                 $usuario->save();
                 
+                $this->guard()->login($usuario);
 
-                return "Cuenta activada";
+                return view('publico.empresa.cuentaactivada');
             }
 
         }

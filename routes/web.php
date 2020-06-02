@@ -82,7 +82,8 @@ Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambi
 
 
 // Route::get('activarcuentaempresa/{cuentas}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
-Route::get('activarcuentaempresa/{token}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+Route::get('activarcuentaempresa','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+// Route::get('activarcuentaempresa/{token}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
 
 Route::get('vistaprevia','Admin\EmpresasController@vistaprevia')->name('vistaprevia');
 
