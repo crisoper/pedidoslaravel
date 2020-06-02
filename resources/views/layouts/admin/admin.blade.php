@@ -42,9 +42,18 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">
+                            @php
+                            $rol = auth()->user()->roles()->select('name')->where("name", "web_Administrador empresa")->whereNotNull("paginainicio")->first();
+                            @endphp
+                    
                             @guest
                             @else
                             {{ Auth::user()->name }}
+                               <br>
+                               @if ( $rol != null )
+                                   
+                               {{$rol->name}}
+                               @endif
                             @endguest
                         </span>
                         <div class="dropdown-divider"></div>

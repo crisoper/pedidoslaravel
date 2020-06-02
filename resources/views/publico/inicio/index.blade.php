@@ -21,14 +21,25 @@
                             <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-5">
                                 <div class="product-img">
                                     @foreach ($productorecomendado->fotos as $foto)
-                                        <img 
-                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
-                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                                        alt="{{ $productorecomendado->nombre }}"
-                                        @if ( $loop->iteration == 2 )
-                                            class="hover-img"
+
+                                        @if ( env("APP_ENV") == "production")
+                                            <img 
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productorecomendado->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            > 
+                                        @else
+                                            <img 
+                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
+                                            alt="{{ $productorecomendado->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
                                         @endif
-                                        >
+                                        
                                     @endforeach
 
                                     <!-- Product Badge -->
@@ -120,14 +131,25 @@
                             <div class="single_product_wrapper mb-5">
                                 <div class="product-img">
                                     @foreach ($productooferta->fotos as $foto)
-                                        <img 
-                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
-                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                                        alt="{{ $productooferta->nombre }}"
-                                        @if ( $loop->iteration == 2 )
+
+                                        @if ( env("APP_ENV") == "production")
+                                            <img 
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productooferta->nombre }}"
+                                            @if ( $loop->iteration == 2 )
                                             class="hover-img"
+                                            @endif
+                                            >    
+                                        @else
+                                            <img 
+                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
+                                            alt="{{ $productooferta->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
                                         @endif
-                                        >
+                                        
                                     @endforeach
 
                                     <!-- Product Badge -->
@@ -188,23 +210,26 @@
                             <div class="single_product_wrapper mb-5">
                                 <div class="product-img">
                                     @foreach ($producto->fotos as $foto)
-                                    {{-- {{$producto}} --}}
-                                        <img 
-                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
-                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                                        alt="{{ $producto->nombre }}"
-                                        @if ( $loop->iteration == 2 )
-                                            class="hover-img"
+
+                                        @if ( env("APP_ENV") == "production")
+                                            <img 
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $producto->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >    
+                                        @else
+                                            <img 
+                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
+                                            alt="{{ $producto->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
                                         @endif
-                                        >
+                                        
                                     @endforeach
-                                    
-                                    {{-- @if ( count( $productooferta->fotos ) == 0 )
-                                        <img src="{{ Storage::url("img_productos/".$foto->nombre)}}" alt="">
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @elseif ( count( $productooferta->fotos ) == 1 )   
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @endif --}}
 
                                     <!-- Product Badge -->
                                     <div class="product-badge new-badge">
@@ -264,22 +289,26 @@
                             <div class="single_product_wrapper mb-5">
                                 <div class="product-img">
                                     @foreach ($productomaspedido->fotos as $foto)
-                                        <img 
-                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
-                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                                        alt="{{ $productomaspedido->nombre }}"
-                                        @if ( $loop->iteration == 2 )
-                                            class="hover-img"
+
+                                        @if ( env("APP_ENV") == "production")
+                                            <img 
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productomaspedido->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >    
+                                        @else
+                                            <img 
+                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
+                                            alt="{{ $productomaspedido->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
                                         @endif
-                                        >
+                                        
                                     @endforeach
-                                    
-                                    {{-- @if ( count( $productomaspedido->fotos ) == 0 )
-                                        <img src="{{ Storage::url("img_productos/".$foto->nombre)}}" alt="">
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @elseif ( count( $productomaspedido->fotos ) == 1 )   
-                                        <img class="hover-img" src="pedidos/img/featured/feature-4.jpg" alt="">
-                                    @endif --}}
                                     
                                 </div>
                                 <!-- Product Description -->

@@ -60,8 +60,8 @@ class HomeController extends Controller
                     }
                     else {
 
-                    $rol = auth()->user()->roles()->where("guard_name", "menu")->whereNotNull("paginainicio")->first();
                     
+                    $rol = auth()->user()->roles()->where("guard_name", "menu")->whereNotNull("paginainicio")->first();
                     if ( $rol and Route::has($rol->paginainicio ) ) {
                         return redirect()->route( $rol->paginainicio );
                     }
@@ -76,8 +76,7 @@ class HomeController extends Controller
             else
             {
                 return redirect()->route('registrartuempresa');
-                // return view("admin.errores.registreempresas");
-
+               
 
             }
     }

@@ -1,0 +1,49 @@
+
+.titulo_encuesta {
+    border-bottom: 1px solid #000;
+}
+
+u {
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+}
+
+#imagen_pdf_vistaprevia {
+    width: 200px !important;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+#miembros_familia1 {
+    font-size: 13px !important;
+}
+#miembros_familia2 {
+    font-size: 12px !important;
+}
+
+#tp008_tabla1 {
+    font-size: 13px !important;
+}
+#tp008_tabla2 {
+    font-size: 12px !important;
+}
+
+#btn_pdf {
+    border: none;
+    background-color: transparent;
+}
+
+.btneliminarregistro {
+    color: #dc3545 !important;
+}
+
+.btneliminarregistro:hover {
+    color: #b32e3b !important;
+}
+
+#btn_pdf:focus, #btn_pdf.form-control:focus {
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}

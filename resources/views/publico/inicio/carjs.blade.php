@@ -100,7 +100,7 @@
 
 
     //Agregar producto a carrito compras
-    $(".content").on("click", ".agregar_cart", function() {
+    $(".contenidoPrincipalPagina").on("click", ".agregar_cart", function() {
 
         let btnAgregarCar = $( this );
         let inputCantidad = $( btnAgregarCar ).closest(".container_product_cart").find(".input_value_cart");

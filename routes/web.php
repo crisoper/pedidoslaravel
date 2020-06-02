@@ -75,13 +75,16 @@ Route::get('/', 'Publico\ProductosController@index')
 Route::get('cart', 'Publico\CartController@index')
 ->name('cart.index');
 
-Route::get('registrartuempresa','Admin\EmpresasController@registrarTuEmpresa')->name('registrartuempresa');
+Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
 Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
-Route::get('confirmarcuenta/{user}','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
-Route::post('cambiaremail/{userid}','Admin\EmpresasController@cambiaremail')->name('cambiaremail');
+Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
+Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');
 
 
-Route::get('activarcuentaempresa/cuentas','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+// Route::get('activarcuentaempresa/{cuentas}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+Route::get('activarcuentaempresa/{token}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+
+Route::get('vistaprevia','Admin\EmpresasController@vistaprevia')->name('vistaprevia');
 
 
 Route::get('/home', 'HomeController@index')
