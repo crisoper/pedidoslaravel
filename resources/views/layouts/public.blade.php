@@ -13,7 +13,7 @@
     @include('layouts.publico.styles')
 
 </head>
-<body>
+<body class="contenidoPrincipalPagina">
     
     <!-- Page Preloder -->
     {{-- <div id="preloder">
