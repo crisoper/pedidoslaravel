@@ -428,10 +428,15 @@ class EmpresasController extends Controller
     }
 
     private function enviarCorreoActivarCuentaEmpresa( $user ) {
+
+        try {
+            Mail::to( $user->email )
+            ->cc("crisoper@gmail.com")
+            ->send( new  ActivarcuentaempresaMail( $user ) );
+        } catch (\Exception $e) {
+            return null;
+        }
        
-        Mail::to( $user->email )
-        // ->cc("crisoper@gmail.com")
-        ->send( new  ActivarcuentaempresaMail( $user ) );
     }
 
     public function confirmarcuenta(){        
