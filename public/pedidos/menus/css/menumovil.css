@@ -1,47 +1,57 @@
 
-
+#humberger__open {
+	display: none;
+}
 .humberger__menu__wrapper {
 	display: none;
 }
 
-.humberger__open {
-	display: none;
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+	#humberger__open {
+		display: initial;
+	}
+
+	.humberger__open {
+		width: 100%;
+	}
+	
+	.humberger__open > button {
+		width: 100%;
+		font-size: 20px;
+		color: #5b6268 !important;
+		background-color: #ffffff;
+		border: none;
+	}
+	.humberger__open #icon_humberger {
+	  	padding: 3px 0px 0px 0px !important;
+	}
+	.humberger__open > button h3 {
+        width: 33px;
+        height: 30px;
+		text-align: center;
+		font-size: 25px;
+		border: 1px solid #5b6268;
+        margin-bottom: 3px !important;
+	}
+	.humberger__open > button p {
+		padding-top: 5px !important;
+		font-size: 10px;
+		line-height: 0px;
+	}
+	
+	.humberger__open > button:focus {
+		font-size: 20px;
+		color: #7fad39 !important;
+		background-color: #ffffff;
+		/* box-shadow: 0 -10px 20px -5px #868686; */
+	}	
+    
 }
 
 
-/* Tablet Device = 991px */
-
-@media (max-width: 991px) {
+@media (max-width: 768px) {
 	
-	.footer__copyright {
-		text-align: center;
-	}
-	.footer__copyright__text {
-		float: none;
-		margin-bottom: 25px;
-	}
-	.footer__copyright__payment {
-		float: none;
-	}
-	
-	.humberger__open {
-		display: block;
-		font-size: 22px;
-		color: #ffffff;
-		height: 35px;
-		width: 35px;
-		line-height: 33px;
-		text-align: center;
-		border: 1px solid #ffffff;
-		cursor: pointer;
-		position: absolute;
-		right: 15px;
-		top: 12px;
-	}
-	.header .container {
-		position: relative;
-	}
-
 	.humberger__menu__wrapper {
 		width: 310px;
 		background: #ffffff;
@@ -193,6 +203,19 @@
 		box-shadow: none;
 		-moz-box-shadow: none;
 		-webkit-box-shadow: none;		
+	}
+
+
+	
+	.footer__copyright {
+		text-align: center;
+	}
+	.footer__copyright__text {
+		float: none;
+		margin-bottom: 25px;
+	}
+	.footer__copyright__payment {
+		float: none;
 	}
 
 }

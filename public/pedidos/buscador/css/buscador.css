@@ -1,0 +1,171 @@
+
+.header__search {
+    width: 100%;
+}
+
+.header__search > button {
+    width: 100%;
+    font-size: 20px;
+    color: #5b6268 !important;
+    background-color: #ffffff;
+    padding: 0px !important;
+    border: none;
+}
+.header__search #icon_search {
+  padding: 6px 4px 0px 0px !important;
+}
+.header__search > button h3 {
+  width: 50px;
+  height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #5b6268;
+  padding: 5px 0px 0px 0px;
+  float: right;
+}
+.header__search > button p {
+    padding-top: 5px !important;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.header__search > button:focus {
+    font-size: 20px;
+    color: #7fad39 !important;
+    background-color: #ffffff;
+    /* box-shadow: 0 -10px 20px -5px #868686; */
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 991px) {
+    .header__search {
+      height: 50px;
+    }
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 3px 27px 0px 0px !important;
+    }
+    .header__search > button h3 {
+        width: 33px;
+        height: 30px;
+        font-size: 22px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid #5b6268;
+        padding: 1px 0px 0px 0px;
+        margin-bottom: -8px !important;
+    }
+    .header__search > button p {
+        width: 100%;
+        font-size: 10px;
+        line-height: 0px;
+        text-align: center !important;  
+        padding: 0 !important;  
+    }
+    
+}
+
+@media only screen and (min-width: 351px) and (max-width: 400px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 27.5px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 401px) and (max-width: 450px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 32.5px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 451px) and (max-width: 500px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 35px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 501px) and (max-width: 550px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 40px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 551px) and (max-width: 600px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 45px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 601px) and (max-width: 700px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 42.5px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 701px) and (max-width: 767px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 42.5px 0px 0px !important;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header__search #icon_search {
+        text-align: center !important;
+        padding: 4px 27.5px 0px 0px !important;
+    }
+}
+
+
+#search_input_box {
+    position: fixed;
+    top: 89px;
+    left: 50%;
+    width: 100%;
+    max-width: 1140px;
+    z-index: 999;
+    text-align: center;
+    background: #ffffff;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+}
+
+#close_search {
+    position: relative;
+    z-index: 99999;
+    top: 2px;
+    color: rgb(20, 20, 20);
+    cursor: pointer;
+    font-size: 20px !important;
+}
+
+select:focus, .form-control:focus {
+	outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+/* Tablet Device = 991px */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #search_input_box {
+        top: 79px !important;
+    }
+}
+@media (max-width: 767px) {
+    #search_input_box {
+        top: 50px !important;
+    }
+    #close_search {
+        right: 10px;
+    }
+}
+
+

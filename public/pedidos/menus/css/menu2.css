@@ -1,0 +1,202 @@
+/*---------------------
+  MENU 2
+-----------------------*/
+.header_top_secondary {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    -moz-box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
+    -webkit-box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
+    box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
+}
+
+@media only screen and (min-width: 0px) and (max-width: 991px) {
+    .header_top_secondary {
+        height: 50px;
+    }
+}
+
+#header__logo {
+    width: 100%;
+    height: 100%;
+    padding: 5px 0 !important;
+    border-right: 1px solid #ececec;
+}
+
+#header_menu {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    height: 100%;
+    width: 100%;
+}
+.navbar-nav {
+    height: 100%;
+    width: auto;
+}
+.nav-item .nav-link {
+    color: #181717;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 15px 20px !important;
+    text-transform: uppercase;
+}
+.nav-item .nav-link:hover,
+.nav-item .nav-link:focus {
+    background-color: #ececec;
+}
+
+.dropdown-menu {
+	width: 100%;
+    margin-top: 1px;
+    background-color: #ececec;
+    border: 0;
+	border-radius: 0;
+}
+.dropdown-menu .dropdown-item {
+	padding: 10px 10px 10px 20px;
+	font-weight: 500;
+	font-size: 16px;
+}
+.dropdown-menu .dropdown-item i {
+	font-size: 25px;
+}
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+	border-left: 10px solid #7fad39;
+	background-color: #ffffff;
+	transition: 0.1s;
+	font-weight: 700;
+}
+
+
+.dropdown-menu > li:hover .megasubmenu {
+    display: block;
+}
+.megasubmenu {
+    left: 100%;
+    top: 7px;
+    min-height: 100%;
+    min-width: 400px;
+    padding: 10px 20px;
+	background-color: #ffffff;
+}
+.megasubmenu li {
+	list-style: none;
+}
+.megasubmenu li a {
+	color: #5b6268;
+}
+.megasubmenu li a:hover,
+.megasubmenu li a:focus {
+	color: #7fad39;
+}
+
+/* Tablet Device = 991px */
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #header__logo a {
+        height: 40px;
+	}
+	.nav-item .nav-link {
+		font-size: 16px;
+		padding: 13px 20px !important;
+	}
+	.dropdown-menu {
+		top: 10px;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 805px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 45.8%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+@media only screen and (min-width: 806px) and (max-width: 845px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 46.1%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+@media only screen and (min-width: 846px) and (max-width: 900px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 46.2%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+@media only screen and (min-width: 901px) and (max-width: 910px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 46.4%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+@media only screen and (min-width: 911px) and (max-width: 950px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 46.5%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+@media only screen and (min-width: 951px) and (max-width: 991px) {
+	.dropdown-menu > li:hover .megasubmenu {
+		display: block !important;
+		position: relative;
+		position: fixed;
+	}
+	.megasubmenu {
+		left: 46.6%!important;
+		top: 87px !important;
+		height: auto !important;
+		width: 200px !important;
+	}
+}
+
+@media (max-width: 768px) {
+    #header_menu {
+        display: none;
+    }
+    #header__logo {
+        padding: 0px 0;
+        border-left: 1px solid #ececec !important;
+    }
+    #header__logo a {
+        height: 40px;
+    }
+}
