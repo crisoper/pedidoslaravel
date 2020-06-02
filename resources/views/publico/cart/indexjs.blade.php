@@ -121,21 +121,23 @@
     
 
     function sumarImportes() {
-            let array = $("#cuerpoTablaCarritoCompras").find(".precioTotalProductos");
+        
+        let array = $("#cuerpoTablaCarritoCompras").find(".precioTotalProductos");
 
-            let sumaTotal = 0;
-            $.each(array, function (index, caja) {
-                sumaTotal = sumaTotal + parseFloat($(caja).html());
-            });
+        let sumaTotal = 0;
+        $.each(array, function (index, caja) {
+            sumaTotal = sumaTotal + parseFloat($(caja).html());
+        });
 
-            $(".sumaTotal").html(Number((sumaTotal).toFixed(2)));
+        $(".sumaTotal").html(Number((sumaTotal).toFixed(2)));
 
-            // let porcentajeIGV = parseFloat($("#valorIGV").val());
-            // let sumaSubTotal = sumaTotal / (1 + porcentajeIGV / 100);
 
-            // $("#sumaIGV").html(Number((sumaTotal - sumaSubTotal).toFixed(2)));
+        let delivery = parseFloat($('.deliveryTotal').html());
+        let descuento = parseFloat($('.descuentoTotal').html());
 
-            // $("#sumaSubtotal").html(Number((sumaSubTotal).toFixed(2)));
-        }
+
+        $(".pedidoTotal").html(Number((sumaTotal - delivery + descuento).toFixed(2)));
+
+    }
 
 </script>

@@ -1,9 +1,5 @@
 <script>
     
-    $("#mostrarProductosCestaMenuFlotante").on("mouseover", function() {
-        obtenerProductosCesta( );
-    });
-    
     $("#mostrarProductosCestaMenuFlotante").on("click", function() {
         obtenerProductosCesta( );
     });
@@ -55,7 +51,11 @@
                         </div>
                         <div class="col-4 p-0">
                             <p class="cart_product_precio small text-success mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
-                            <small class="mt-0 mb-0">x${ cesta.cantidad }</small>
+                            <small class="mt-0 mb-0">
+                                x<span class="CantidadProductoCestaMenu">${ cesta.cantidad }</span>
+                            </small>
+
+                            <input type="hidden" class="precioProductoCestaMenu" value="${ cesta.producto.precio * cesta.cantidad }">
                         </div>
                         <div class="eliminar_compra p-0 eliminarProductoCestaMenu" producto_id="${ cesta.producto.id }"><i class="fas fa-trash-alt small"></i></div>
                     </div>
@@ -64,6 +64,7 @@
         });
 
         $("#mostrarProductosCestaMenuFlotanteItems").html( carHTML);
+        sumarImportesCestaMenu();
     } 
 
 
@@ -138,6 +139,33 @@
     }
 
 
+    function sumarImportesCestaMenu() {
+        
+        let array = $("#mostrarProductosCestaMenuFlotanteItems").find(".precioProductoCestaMenu");
+
+        let sumaTotal = 0;
+        $.each(array, function (index, caja) {
+            sumaTotal = sumaTotal + parseFloat($(caja).val());
+        });
+
+        $(".sumaTotalCestaMenu").html(Number((sumaTotal).toFixed(2)));
+
+
+
+
+        let arrayCantidad = $("#mostrarProductosCestaMenuFlotanteItems").find(".CantidadProductoCestaMenu");
+
+        let sumaTotalCantidad = 0;
+        $.each(arrayCantidad, function (index, caja) {
+            sumaTotalCantidad = sumaTotalCantidad + parseFloat($(caja).html());
+        });
+
+        $(".sumaCantidadCestaMenu").html(Number((sumaTotalCantidad).toFixed(2)));
+
+        
+
+
+    }
 
 
 
