@@ -79,16 +79,24 @@
                             <div class="col-6"><p>Delivery</p></div>
                             <div class="col-6">
                                 <p class="text-right">
-                                    <b>S/ <span class="">2</span>.00</b>
+                                    <b>S/ <span class="deliveryTotal">2.00</span></b>
                                 </p>
                             </div>
                             <div class="col-6"><p>Descuento</p></div>
-                            <div class="col-6"><p class="text-right"><b>S/ 5.00</b></p></div>
+                            <div class="col-6">
+                                <p class="text-right">
+                                    <b>S/ <span class="descuentoTotal">5.00</span></b>
+                                </p>
+                            </div>
                         </div>
                         <hr class="mt-0 mb-2">
                         <div class="row px-4">
                             <div class="col-6"><h4>Total</h4></div>
-                            <div class="col-6"><h4 class="text-right"><b>S/ 197.70</b></h4></div>
+                            <div class="col-6">
+                                <h4 class="text-right">
+                                    <b>S/ <span class="pedidoTotal">00</span></b>
+                                </h4>
+                            </div>
                         </div>
                         <hr>
                     </div>

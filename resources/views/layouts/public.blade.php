@@ -383,17 +383,20 @@
                                             </div> --}}
                                         </div>
                                     </div>
-
                                     <hr class="mb-1">
                                     <div class="bottom_total">
                                         <div class="row text-center">
                                             <div class="col-7">
                                                 <small>Estas comprando:</small>
-                                                <h5 class="text-info">2 Productos</h5>
+                                                <h5 class="text-info">
+                                                    <span class="sumaCantidadCestaMenu">2</span> Productos
+                                                </h5>
                                             </div>
                                             <div class="col-5">
                                                 <small>Total:</small>
-                                                <h5 class="text-success"><b>S/ 30.00</b></h5>
+                                                <h5 class="text-success">
+                                                    <b>S/ <span class="sumaTotalCestaMenu">30.00</span></b>
+                                                </h5>
                                             </div>
                                             <div class="col-12">
                                                 <a class="btn btn_pedido_cart" href="{{route('cart.index')}}">Realizar Pedido</a>
