@@ -21,14 +21,25 @@
                             <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-5">
                                 <div class="product-img">
                                     @foreach ($productorecomendado->fotos as $foto)
-                                        <img 
-                                        {{-- src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"  --}}
-                                        src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                                        alt="{{ $productorecomendado->nombre }}"
-                                        @if ( $loop->iteration == 2 )
-                                            class="hover-img"
+
+                                        @if ( env("APP_ENV") == "production")
+                                            <img 
+                                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
+                                            alt="{{ $productorecomendado->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            > 
+                                        @else
+                                            <img 
+                                            src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
+                                            alt="{{ $productorecomendado->nombre }}"
+                                            @if ( $loop->iteration == 2 )
+                                                class="hover-img"
+                                            @endif
+                                            >
                                         @endif
-                                        >
+                                        
                                     @endforeach
 
                                     <!-- Product Badge -->
