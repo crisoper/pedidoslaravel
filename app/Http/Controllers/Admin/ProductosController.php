@@ -143,7 +143,7 @@ class ProductosController extends Controller
         if ( count($files) > 0) {                
         foreach($files as $file){                
             $extension = strtolower( $file->getClientOriginalExtension() ) ;
-            $filename = uniqid().'_'.$file->getClientOriginalName();           
+            $filename = strtolower(uniqid().'_'.$file->getClientOriginalName());           
             if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
                 $redimencionImg = Image::make($file->path());
                 $redimencionImg->fit(350, 300, function ($constraint) {

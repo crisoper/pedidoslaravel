@@ -44,12 +44,15 @@
         width: 100%;
     }
 </style>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
 
             <div class="col-12" style="background-color: #F5F5F5">
-
+@php
+    $usuario = Auth()->user()
+@endphp
+{{$usuario}}
                 <form id="formularioRegistroEmpresa" action="{{route('registratuempresa.store')}}" method="POST"
                     enctype="multipart/form-data">
                     <div class="row mt-5">
@@ -72,7 +75,7 @@
                                         <div class="col-md-8 col-sm-12 ">
                                             <div class="form-group col-md-12 col-sm-12">
                                                 <select name="rubro_id" id="rubro_id"
-                                                    class="form-control form-control-sm btn-block " autofocus>
+                                                    class="form-control" autofocus>
                                                     <option value="">Rubro de negocio</option>
                                                     @foreach ($empresarubros as $empresarubro)
                                                     <option value="{{ $empresarubro->id }}"
@@ -142,8 +145,8 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4 col-sm-12">
-                                            <select name="departamentoid" id="departamento"
-                                                class="form-control form-control-sm " autofocus>
+                                            <select name="departamentoid" id="departamentoid"
+                                                class="form-control form-control-sm select2" autofocus>
                                                 <option value="">Departamento</option>
                                                 @foreach ($departamentos as $departamento)
                                                 <option value="{{ $departamento->id }}"
@@ -152,23 +155,22 @@
                                                 @endforeach
                                             </select>
                                             <span class="text-danger">{{ $errors->first('departamentoid') }}</span>
-                                            <input type="hidden" id="obligatorio" class="text-danger"
-                                                value="{{ $departamento->nombre }}">
+                                           
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
-                                            <select name="procinciaid" id="provincia"
-                                                class="form-control form-control-sm " autofocus>
+                                            <select name="provinciaid" id="provinciaid"
+                                                class="form-control form-control-sm select2" autofocus>
                                                 <option value="">Provincia</option>
                                                 @foreach ($provincias as $provincia)
                                                 <option value="{{ $provincia->id }}"
-                                                    {{ old('procinciaid') == $provincia->id ? 'selected' : '' }}>
+                                                    {{ old('provinciaid') == $provincia->id ? 'selected' : '' }}>
                                                     {{ $provincia->nombre }}</option>
                                                 @endforeach
                                             </select>
-                                            <span class="text-danger">{{ $errors->first('procinciaid') }}</span>
+                                            <span class="text-danger">{{ $errors->first('provinciaid') }}</span>
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
-                                            <select name="distritoid" id="distrito"
+                                            <select name="distritoid" id="distritoid"
                                                 class="form-control form-control-sm " autofocus>
                                                 <option value="">Distrito</option>
                                                 @foreach ($distritos as $distrito)
@@ -190,7 +192,8 @@
                         <div class="col-md-4 col-sm-12 mx-auto d-flex justify-content-center align-items-center">
                         </div>
                         <div class="col-md-8 col-sm-12  mx-auto ">
-                            <div class="card card-outline card-primary col-12 ">
+                            <div class="card card-outline card-primary">
+                         
                                 <div class="card-header">
                                     <span>Datos del Representante</span>
                                 </div>
@@ -257,13 +260,14 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 col-sm-12 col-md-12">
                                             <input id="email" type="email"
-                                                class="form-control form-control-sm @error('email') is-invalid @enderror"
-                                                name="email" value="{{ old('email') }}" required autocomplete="email"
+                                                class="form-control form-control-sm "
+                                                name="email" value="{{ old('email') }}"
+                                                required autocomplete="email"
                                                 placeholder="Dirección de correo electrónico">
-
+                                                {{-- form-control form-control-sm @error('email') is-invalid @enderror --}}
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                            <strong>{{$message}}</strong>
                                             </span>
                                             @enderror
                                         </div>
@@ -299,7 +303,7 @@
 
                         </div>
                         <div class="col-md-8 col-sm-12  mx-auto">
-                            <div class="card card-outline">
+                            <div class="card card-outline card-primary">
                                 <div class="card-header">
                                     <input type="hidden" name="" id="changeicon" value="0">
                                     <a class="btn" data-toggle="collapse" href="#verhorario" role="button"
@@ -311,12 +315,12 @@
                                 <div class="collapse" id="verhorario">
                                     <div class="card-body pt-0">
                                         @foreach ($dias as $dia)
-                                        <div class="form-row">
+                                        <div class="form-row d-flex align-items-center">
                                             <div class="form-group col-sm-4 col-md-6">
                                                 <div class="ml-5 d-flex align-items-center">
-                                                    <label class="form-check-label" for="dias{{ $dia }}">
+                                                    <label class="form-check-label" for="dias[{{ $loop->iteration }}]">
                                                         <input class="form-check-input" type="checkbox" name="dias[{{ $loop->iteration }}]"
-                                                            id="dias{{ $dia }}" value="{{ $dia }}">{{ $dia }}
+                                                            id="dias[{{ $loop->iteration }}]" value="{{ $dia }}">{{ $dia }}
                                                     </label>
                                                 </div>
 
@@ -324,22 +328,10 @@
                                             </div>
                                             <div class="form-group col-sm-4 col-md-3">
 
-                                                <div class="input-group date horafin" id="timepicker"
-                                                    data-target-input="nearest">
-                                                    <input type="text" name="hora" id="hora"
-                                                        class="form-control datetimepicker-input" data-target="#hora" />
-                                                    <div class="input-group-append" data-target="#hora"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text">
-                                                            <i class="far fa-clock"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <small class="text-muted">Desde:</small>
+                                               <small class="text-muted">Desde:</small>
                                                 <div class="input-group date horainicio" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]" id="horainicio{{ $dia }}"
+                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]" id="horainicio[{{ $loop->iteration }}]"
                                                         class="form-control form-control-sm datetimepicker-input"
                                                         data-target="horainicio[{{$loop->iteration}}]" />
                                                     <div class="input-group-append" data-target="horainicio[{{$loop->iteration}}]"
@@ -350,13 +342,14 @@
                                                         
                                                     </div>
                                                 </div>
+                                                <span id="errorInicio" class="text-danger"></span>
                                             </div>
                                             <div class="form-group col-sm-4 col-md-3">
                                                 <small class="text-muted">Hasta:</small>
                                                 <div class="input-group date horafin" id="timepicker"
                                                     data-target-input="nearest">
-                                                    <input type="text" name="horafin[{{ $loop->iteration }}]" id="horafin{{ $dia }}"
-                                                        class="form-control form-control-sm datetimepicker-input"
+                                                    <input type="text" name="horafin[{{ $loop->iteration }}]" id="horafin-{{ $loop->iteration }}"
+                                                        class="form-control form-control-sm datetimepicker-input "
                                                         data-target="#hora" />
                                                     <div class="input-group-append" data-target="#hora"
                                                         data-toggle="datetimepicker">
@@ -405,191 +398,5 @@
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function(){
-        setTimeout( function() {
-            $("#errorextension").fadeOut(1000);
-        }, 5000);
-       
-      $("#camara").on("click", function(){
-        $("#file").trigger('click');
-        $("#errorextension").fadeOut();
-      })
-
-   $("#file").on('change', function(event){
-   
-    event.preventDefault();
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        $("#errorextension").show();
-      
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-   });
-
-        function fileValidation(){
-  
-}
-
-        $('#horainicio').datetimepicker({
-            format: 'LT'
-        })
-        $('#horafin').datetimepicker({
-            format: 'LT'
-        })
-        $('#hora').datetimepicker({
-            format: 'LT'
-        })
-
-    $('#departamento').select2({
-            placeholder: "Departamento"
-    });
-    $('#provincia').select2({
-            placeholder: "Provincia"
-    });
-    $('#distrito').select2({
-            placeholder: "Distrito"
-    });
-    $('#rubro_id').select2({
-            placeholder: "Rubro"
-    });
-
-    $('#departamento').on("change", function () {
-
-    let elemento = this;
-
-    $.ajax({
-        url: "{{ route('ajax.getprovinciaByDepartamentoId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            departamento_id : $( elemento ).val()
-        },
-        success: function( resp ){
-            //console.log( resp );
-            $("#provincia").html(""); 
-
-            $.each( resp.data, function( key, value ) {
-
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#provincia").append( opcion ); 
-            });
-
-            $('#provincia').trigger("change");
-
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#provincia").html(""); 
-            console.log( jqXHR );
-        }
-
-    });
-
-    });
-        
-        
-    
-    $('#provincia').on("change", function () {
-    
-    let elemento = this;
-    
-    $.ajax({
-        url: "{{ route('ajax.getdistritosByProvinciaId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            provincia_id : $( elemento ).val()
-        },
-        success: function( resp ){
-        
-            $("#distrito").html(""); 
-            $.each( resp.data, function( key, value ) {
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#distrito").append( opcion ); 
-            });
-            
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#distrito").html(""); 
-            console.log( jqXHR );
-        }
-    
-    });
-    
-    });
-    
-    
-    $("#enviarFormRegistro").on('click', function(event){
-        event.preventDefault();
-        $.ajax({
-            url: $("#formularioRegistroEmpresa").attr('action'),
-            method: 'post',
-            dataType: 'json',
-            data: $("#formularioRegistroEmpresa").serialize(),
-            success: function( data ){
-                datoguardadocorrectamente();
-            },
-            error:function( jqXHR, textStatus, errorThrown  ){
-                if( jqXHR.status == 404 ) {}
-                
-                else if( jqXHR.status == 422 ) 
-                {                        
-                    GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
-                }
-                else if( jqXHR.status == 429 ) 
-                {                        
-                    console.log( jqXHR );
-                }
-            }
-        });
-    });
-    function GLOBARL_settearErroresEnCampos( jqXHR, idElementoContenedorCampos ) {
-
-    //Mostramos errores devueltos desde Backend
-    let errorsRespuesta = jqXHR.responseJSON.errors;
-
-    $.each( errorsRespuesta, function( idElemento, arrayErrores ) {
-
-        $( "#" + idElemento ).addClass("is-invalid");
-            arrayErrores.forEach( error => {
-            MostrarNotificaciones( $("#obligatorio").val() ,  'error') ;
-           
-        });
-
-    });
-
-    //Ocultamos los errores despues de 5 segundos
-    setTimeout( function() {
-    
-        $("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
-    }, 5000);
-
-    }
-    function datoguardadocorrectamente() {
-   
-   bootbox.alert({
-            message: "La respuesta se ha registrado correctamente!",
-            callback: function () {
-                // window.location = $("#preguntasiguiente").val();
-            }
-        });
-   
-    }
-                
-});
-</script>
-
+    @include('publico.empresa.js')
 @endsection

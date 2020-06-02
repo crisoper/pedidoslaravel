@@ -30,7 +30,7 @@ class ActivarcuentaempresaMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Por favor activa tu cuenta')
+        return $this->subject('Activar cuenta en PedidosApp' )
         ->view('publico.mail.activarcuentaempresa', [
             'usuario' => $this->user
         ]);

@@ -31,20 +31,24 @@ class CreatuempresaCreateRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
             
-            "rubro_id" => 'required|not_in:0',//["required"],
+            "rubro_id" => 'required|not_in:0',
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombre" => ["required"],
             "direccion" => ["required"],
             "facebook" => ["nullable"],
-            'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            // 'logo' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             "nombrecomercial" => ["required"],
-            // "departamentoid" => ["required"],
-            // "provinciaid" => ["required"],
-            // "distritoid" => ["required"],
+            "departamentoid" => ["required"],
+            "provinciaid" => ["required"],
+            "distritoid" => ["required"],
           
             "dni" => ["required"],
             "telefono" => ["required"],
-           
+            
+            "horainicio"  => ["required","array","min:1"],
+            "horafin"  =>[ "required","array","min:1" ],
+            "dias"  => ["required", "array", "min:1"],
+          
       
         ];
 
@@ -52,7 +56,7 @@ class CreatuempresaCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'ruc.required' => 'El número de ruc ya esta en uso.',
+            // 'ruc.required' => 'El número de ruc ya esta en uso.',
               
         ];
     }
