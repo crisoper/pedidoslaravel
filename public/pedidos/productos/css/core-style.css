@@ -1,10 +1,70 @@
+
+.section_heading {
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.section_heading h2 {
+    font-size: 48px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.section_heading.text-left {
+    text-align: left !important;
+}
+
+
+/* ----------------------------
+:: 11.0 New Arrivals Area Start
+---------------------------- */
+
+.portfolio-menu > .btn {
+    color: #1c1c1c;
+    font-weight: 700;
+    padding: 0 15px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.portfolio-menu > .btn:focus,
+.portfolio-menu > .btn.active {
+    color: #7fad39;
+    box-shadow: none;
+}
+
+.single_gallery_item {
+    margin-bottom: 100px;
+    overflow: hidden
+}
+
+.product-img {
+    position: relative;
+    z-index: 1;
+    overflow: hidden
+}
+
+.product-img > img {
+    width: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+.single_gallery_item:hover .product-img > img {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+}
+
+
 /* :: 8.0 Popular Products Area CSS */
 .single_product_wrapper {
     position: relative;
     z-index: 1;
-    margin-bottom: 50px;
     overflow: hidden;
     background-color: #ffffff;
+    border: none !important;
+    border-radius: 5px;
 }
 .single_product_wrapper:hover {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.14);
@@ -16,6 +76,9 @@
     z-index: 1;
     overflow: hidden;
     height: 200px;
+}
+.single_product_wrapper_rec .product-img {
+    height: 180px !important;
 }
 .single_product_wrapper .product-img img {
     width: 100%;
@@ -51,6 +114,20 @@
     left: 20px;
     z-index: 10;
 }
+.single_product_wrapper .product-img .product-badge.empresa_badge {
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/* .single_product_wrapper .product-img .product-badge.empresa_direccion_badge {
+    top: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+} */
 .single_product_wrapper .product-img .product-badge.offer-badge {
     background-color: #dc0345;
 }
@@ -163,6 +240,76 @@
 
 
 
+
+
+
+/*---------------------
+  PRECIO NORMAL SI HAY OFERTA
+-----------------------*/
+
+.link_producto_detalle {
+    color: #212529;
+    font-weight: 700;
+}
+.link_producto_detalle:hover, 
+.link_producto_detalle:focus {
+    color: #7fad39;
+}
+
+
+.featured__item__text > div > p span {
+    top: 68%;
+    left: 8%;
+    height: 30px;
+	width: 70px;
+	color: #6d6b6b;
+	background: #f1f1f1;
+	font-size: 11px !important;
+	text-align: center;
+	font-weight: 700;
+	border-radius: 10%;
+    position: absolute;
+    line-height: 14px;
+}
+.featured__item__text > div > h4 {
+    padding-right: 11px !important;
+}
+
+.featured__item__text_recomendados > div > p span {
+    top: 66.5% !important;
+    left: 6%;
+    height: 30px;
+	width: 60px;
+	color: #6d6b6b;
+	background: #f1f1f1;
+	font-size: 10px !important;
+	text-align: center;
+	font-weight: 600 !important;
+	border-radius: 10%;
+    position: absolute;
+    line-height: 14px;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .featured__item__text > div > h4 {
+        font-size: 21px !important;
+        text-align: right;
+        padding-right: 2px !important;
+    }
+    .featured__item__text > div > p span {
+        left: 9%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 276px) {
+    .featured__item__text > div > h4 {
+        font-size: 21px !important;
+        text-align: right;
+        padding-right: 15px !important;
+    }
+}
+
 @media (max-width: 480px) {
     .single_product_wrapper .product-img {
       position: relative;
@@ -170,5 +317,17 @@
       overflow: hidden;
       height: 260px;
     }
+
+    .featured__item__text > div > h4 {
+        font-size: 25px !important;
+        text-align: right;
+        padding-right: 15px !important;
+    }
+
+    .featured__item__text > div > p span {
+        left: 9%;
+        top: 72%;
+    }
   
 }
+

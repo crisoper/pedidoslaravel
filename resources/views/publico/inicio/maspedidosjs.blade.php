@@ -2,16 +2,16 @@
     
     $(document).ready(  function () {
         //Obtenemos los productos en ofertas
-        obtenerProductosNuevos( );
+        obtenerProductosMasPedidos( );
     
-        function obtenerProductosNuevos( ) {
+        function obtenerProductosMasPedidos( ) {
     
             $.ajax({
-                url: "{{ route('ajax.productos.nuevos') }}",
+                url: "{{ route('ajax.productos.maspedidos') }}",
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarProductosNuevos( data )
+                    mostrarProductosMasPedidos( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -20,12 +20,12 @@
     
         }
     
-        function mostrarProductosNuevos( datos ) {
-            $("#cuerpoProductosNuevos").html();
+        function mostrarProductosMasPedidos( datos ) {
+            $("#cuerpoProductosMasPedidos").html();
     
             let carHTML = "";
     
-            $.each( datos.data, function( key, nuevo ) {
+            $.each( datos.data, function( key, maspedido ) {
                 carHTML = carHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-0" data-wow-delay="0.2s">
                         <div class="single_product_wrapper mb-5">
@@ -48,12 +48,12 @@
                             </div>
                             <!-- Product Description -->
                             <div class="featured__item__text container_product_cart px-3">
-                                <h6 class="text-truncate mb-0"><b>${ nuevo.nombre }</b></h6>
-                                <p class="text-truncate small my-0">${ nuevo.descripcion }</p>
+                                <h6 class="text-truncate mb-0"><b>${ maspedido.nombre }</b></h6>
+                                <p class="text-truncate small my-0">${ maspedido.descripcion }</p>
                                 <hr class="my-0">
                                 <div class="pt-1">
-                                    <h4 class="text-center"><small><small>Precio: </small></small><span class="text-success"><b>${ nuevo.precio }</b></span></h4>
-                                    <h4 class="text-right"><small><small>Precio: </small></small><span class="text-success"><b>${ nuevo.precio }</b></span></h4>
+                                    <h4 class="text-center"><small><small>Precio: </small></small><span class="text-success"><b>${ maspedido.precio }</b></span></h4>
+                                    <h4 class="text-right"><small><small>Precio: </small></small><span class="text-success"><b>${ maspedido.precio }</b></span></h4>
                                     <p class="my-0 py-0">
                                         <span><s>P. Normal: <br><b> S/ 20.90</b></s></span> 
                                     </p>
@@ -73,7 +73,7 @@
                                 <hr class="mt-0 mb-1">
                                 <div class="row mb-2 px-3">
                                     <div class="col-8 p-0">
-                                        <button class="agregar_cart" idproducto="${ nuevo.id }">Agregar 
+                                        <button class="agregar_cart" idproducto="${ maspedido.id }">Agregar 
                                             <i class="fa fa-shopping-cart"></i>
                                         </button>
                                     </div>
@@ -94,7 +94,7 @@
                 `;
             });
     
-            $("#cuerpoProductosNuevos").html( carHTML);
+            $("#cuerpoProductosMasPedidos").html( carHTML);
         } 
     });
 

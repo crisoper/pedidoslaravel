@@ -1,5 +1,3 @@
-
-
 // Owl Carousel JS //
 !(function (a, b, c, d) {
     function e(b, c) {

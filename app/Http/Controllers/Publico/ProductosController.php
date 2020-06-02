@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Publico;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Producto;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,27 @@ class ProductosController extends Controller
 {
     public function index( Request $request )
     {
-        $productosofertas = Producto::whereDate("created_at", "<", now() )
+        $productosrecomendados = Producto::whereDate("created_at", ">", 20 )
         ->with([
             "tags",
             "categoria",
-            "fotos" => function( $queryFotos ) {
-                $queryFotos->limit(2);
-            },
+            "fotos",
+        ])
+        ->limit(8)
+        ->get();
+
+
+        $productosrecomendadosIds = $productosrecomendados->pluck("id");
+
+        $productosofertas = Producto::whereDate("created_at", "<", now() )
+        ->whereNotIn("id", $productosrecomendadosIds )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+            // "fotos" => function( $queryFotos ) {
+            //     $queryFotos->limit(2);
+            // },
         ])
         ->paginate(8);
         
@@ -36,6 +51,71 @@ class ProductosController extends Controller
         ])
         ->paginate(8);
               
-        return view('publico.inicio.index', compact('productosofertas', 'productosnuevos', 'productosmaspedidos'));
+        return view('publico.inicio.index', compact('productosrecomendados', 'productosofertas', 'productosnuevos', 'productosmaspedidos'));
+    }
+
+    
+
+
+    
+    //PRODUCTOS X AJAX
+
+    public function recomendados()
+    {
+        $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->limit(8)
+        ->get();
+
+        return ProductoResource::collection( $productosrecomendados );
+    }
+
+    
+    public function ofertas()
+    {
+        $productosofertados = Producto::whereDate( "created_at", ">", 20 )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->limit(8)
+        ->get();
+
+        return ProductoResource::collection( $productosofertados );
+    }
+
+    
+    public function nuevos()
+    {
+        $productosnuevos = Producto::whereDate( "created_at", now() )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->limit(8)
+        ->get();
+
+        return ProductoResource::collection( $productosnuevos );
+    }
+
+    
+    public function maspedidos()
+    {
+        $productosmaspedidos = Producto::whereDate( "stock", "<", 10 )
+        ->with([
+            "tags",
+            "categoria",
+            "fotos",
+        ])
+        ->limit(8)
+        ->get();
+
+        return ProductoResource::collection( $productosmaspedidos );
     }
 }

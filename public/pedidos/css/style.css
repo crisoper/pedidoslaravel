@@ -5,7 +5,7 @@ body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background-color: #fafafa;
+	background-color: #f2f2f2;
 }
 
 
@@ -43,21 +43,18 @@ ol {
 }
 
 .section-title h2 {
-	color: #1c1c1c;
-	font-weight: 700;
-	position: relative;
+    color: #1c1c1c;
+    font-weight: 700;
+    padding: 0 15px;
+    font-size: 22px;
+    text-transform: uppercase;
 }
 
-.section-title h2:after {
-	position: absolute;
-	left: 0;
-	bottom: -6px;
-	right: 0;
+.subrayado_productos {
+	top: 0;
 	height: 4px;
 	width: 100%;
 	background: #7fad39;
-	content: "";
-	margin: 0 auto;
 }
 
 .spad {
@@ -266,41 +263,6 @@ ol {
 	content: "";
 	margin: 0 auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

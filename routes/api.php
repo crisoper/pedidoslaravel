@@ -19,27 +19,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get("ajax/productos/inicio", "Publico\ProductoController@index")
-->name("ajax.productos.inicio");
+// Route::get("ajax/productos/inicio", "Publico\ProductoController@index")
+// ->name("ajax.productos.inicio");
 
-//Obtenemos los ultimos 9 productos registrados
-Route::get("ajax/productos/nuevos", "Publico\ProductoController@nuevos")
-->name("ajax.productos.nuevos");
-
-Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index")
-->name("ajax.categorias.inicio");
-
-
+//LOCALSTORAGE
 Route::get("clientes/obtenernavegadorid", "Publico\LocalstorageController@index")
 ->name("localstorage.index");
 
+//MENU
+Route::get("ajax/categorias/inicio", "Publico\ProductocategoriaController@index")
+->name("ajax.categorias.inicio");
 
+//CESTA MENU
 Route::get("cesta/index", "Publico\CestaController@index")
 ->name("cesta.index");
+Route::post("cesta/store", "Publico\CestaController@store")
+->name("cesta.store");
 Route::delete("cesta/delete", "Publico\CestaController@delete")
 ->name("cesta.delete");
 
+//PRODUCTOS RECOMENDADOS
+Route::get("ajax/productos/recomendados", "Publico\ProductosController@recomendados")
+->name("ajax.productos.recomendados");
 
+//PRODUCTOS OFERTAS
+Route::get("ajax/productos/ofertas", "Publico\ProductosController@ofertas")
+->name("ajax.productos.ofertas");
+
+//PRODUCTOS NUEVOS
+Route::get("ajax/productos/nuevos", "Publico\ProductosController@nuevos")
+->name("ajax.productos.nuevos");
+
+//PRODUCTOS NUEVOS
+Route::get("ajax/productos/maspedidos", "Publico\ProductosController@maspedidos")
+->name("ajax.productos.maspedidos");
 
 
 

@@ -1,0 +1,142 @@
+
+/*---------------------
+  MENU 1
+-----------------------*/
+
+.header__top {
+	margin-top: -1px;
+	background: #f5f5f5;
+	height: 30px;
+}
+
+/* ------- SERVICIO AL CLIENTE -------*/
+
+.header_top_client {
+    width: 100%;
+    border-right: 2px solid #474f57;
+}
+.header_top_client .btn-group {
+    width: 100%;
+}
+.header_top_client .btn-group button {
+    width: 100%;
+    color: #ffffff;
+    padding: 3px 10px !important;
+    border-radius: 0;
+    border: 0;
+}
+.header_top_client .btn-group button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.header_top_client .btn-group .dropdown-menu {
+    margin-top: -1px;
+    width: 100%;
+    padding: 10px !important;
+    background-color:#343a40;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+.header_top_client .btn-group .dropdown-menu a,
+.header_top_client .btn-group .dropdown-menu p {
+    color: #f5f5f5;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.header_top_client .btn-group .dropdown-menu hr {
+    background-color: #525252;
+}
+.header_top_client .btn-group .dropdown-menu a:hover,
+.header_top_client .btn-group .dropdown-menu a:focus {
+    color: #7fad39;
+}
+
+
+
+
+/* ------- AFILIAR RESTAURANTE -------*/
+
+.header_top_recommended {
+    width: 100%;
+    text-align: center;
+}
+.header_top_recommended .btn_recommended {
+    width: 100%;
+    color: #7fad39;
+    padding: 3px 10px !important;
+    border-radius: 0;
+    border: 0;
+}
+.header_top_recommended .btn_recommended:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* ------- LOGIN -------*/
+
+.header_top_login {
+    width: 100%;
+    border-left: 2px solid #474f57;
+}
+.header_top_login .btn-group {
+    width: 100%;
+}
+.header_top_login .btn-group button {
+    width: 100%;
+    color: #ffffff;
+    padding: 3px 10px !important;
+    border-radius: 0;
+    border: 0;
+}
+.header_top_login .btn-group button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.header_top_login .btn-group .dropdown-menu {
+    margin-top: -1px;
+    width: 100%;
+    padding: 10px !important;
+    background-color:#343a40;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+.header_top_login .btn-group .dropdown-menu .btn_login {
+    color: #ffffff;
+    background: #7fad39;
+    padding: 8px 15px;
+    display: block;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+}
+.header_top_login .btn-group .dropdown-menu .btn_register {
+    color: #ffffff;
+    background: #5b646d;
+    padding: 8px 15px;
+    display: block;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+}
+.header_top_login .btn-group .dropdown-menu .btn_register:hover,
+.header_top_login .btn-group .dropdown-menu .btn_register:focus {
+    color: #ffffff !important;
+    background: #7fad39 !important;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .header__top { display: none;}
+}

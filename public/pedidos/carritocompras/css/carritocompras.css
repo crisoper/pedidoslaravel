@@ -1,0 +1,138 @@
+.shopping_summery {
+    vertical-align: middle;
+    background-color: #ffffff;
+}
+.shopping_summery td {
+    vertical-align: middle;
+    background-color: #ffffff;
+}
+.shopping_summery td img {
+    width: 65px !important;
+}
+.shopping_summery td h5 a {
+    color: #212529;
+    font-weight: 700;
+}
+.shopping_summery td h5 a:hover, 
+.shopping_summery td h5 a:focus {
+    color: #7fad39;
+}
+.shopping_summery td .td_product_description {
+    font-size: 13px;
+}
+
+.shopping_summery td .input_group_unit_product {
+    width: 85px;
+}
+
+.eliminarProductoCesta {
+    border: none;
+    background-color: #ffffff;
+}
+
+
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+.monto_total {
+    background-color: #ffffff;
+    margin-right: 15px !important;
+    border-radius: 8px;
+}
+
+.btn_altualizar_pedido {
+    color: #7fad39;
+    background: #ffffff;
+    padding: 10px 20px;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    width: 90%;
+    border-radius: 5px;
+}
+.btn_altualizar_pedido:hover,
+.btn_altualizar_pedido:focus {
+    color: #ffffff;
+    background: #7fad39;
+}
+
+
+
+.input_cupon {
+    color: #7fad39;
+    background: #ffffff;
+    padding: 12px 20px;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    border: none;
+    width: 230px;
+    border-radius: 5px;
+}
+.btn_aplicar_cupon {
+    color: #ffffff;
+    background: #7fad39;
+    padding: 12px 5px;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    width: 80px;
+    border-radius: 5px;
+}
+
+
+
+
+.btn_realizar_pedido {
+    color: #7fad39;
+    background: #ececeb;
+    padding: 10px 20px;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    width: 100%;
+}
+.btn_realizar_pedido:hover,
+.btn_realizar_pedido:focus {
+    color: #ffffff;
+    background: #7fad39;
+}
+
+
+.btn_seguir_comprando {
+    color: #7fad39;
+    background: #ececeb;
+    padding: 10px 20px;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+.btn_seguir_comprando:hover,
+.btn_seguir_comprando:focus {
+    color: #ffffff;
+    background: #7fad39;
+}
