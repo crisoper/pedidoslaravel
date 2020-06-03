@@ -30,6 +30,7 @@ use App\Http\Requests\Publico\CreatuempresaCreateRequest;
 use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 use App\Http\Requests\Publico\CambiaremailCreateRequest;
+use App\Jobs\ProcesssendmailJob;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -421,7 +422,10 @@ class EmpresasController extends Controller
             $user = User::findOrFail($user_id);
             $user->email =  $request->email;
             $user->save();      
-            $this->enviarCorreoActivarCuentaEmpresa( $user );        
+
+            // ProcesssendmailJob::dispatch( $user );
+            ProcesssendmailJob::dispatchNow( $user );
+            // $this->enviarCorreoActivarCuentaEmpresa( $user ); 
       
             return back()->withErrors(['email'=>'Ingresa correo'])->withInput(request('email'));
       
