@@ -1,5 +1,5 @@
 
-(function ($) {
+$(document).ready(  function () {
     /*-------------------		
 		SUMAR O RESTAR UNIDADES DE PRODUCTO
 	--------------------- */
@@ -21,5 +21,6 @@
         }
         $button.parent().find('input').val(newVal);
     });
-    
-})(jQuery);
+
+
+});

@@ -531,6 +531,7 @@
 
 @include('layouts.publico.scripts')
 @include('includes.ajaxsetup')
+@include('publico.inicio.categoriasjs')
 
 <script>
     // Script que permite guardar el codigo del cliente en local storafe

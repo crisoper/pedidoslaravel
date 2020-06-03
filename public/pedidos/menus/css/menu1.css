@@ -48,7 +48,7 @@
 }
 .header_top_client .btn-group .dropdown-menu a:hover,
 .header_top_client .btn-group .dropdown-menu a:focus {
-    color: #7fad39;
+    color: #3eb291;
 }
 
 
@@ -62,7 +62,7 @@
 }
 .header_top_recommended .btn_recommended {
     width: 100%;
-    color: #7fad39;
+    color: #3eb291;
     padding: 3px 10px !important;
     border-radius: 0;
     border: 0;
@@ -103,7 +103,7 @@
 }
 .header_top_login .btn-group .dropdown-menu .btn_login {
     color: #ffffff;
-    background: #7fad39;
+    background: #3eb291;
     padding: 8px 15px;
     display: block;
     border-radius: 0px;
@@ -128,7 +128,7 @@
 .header_top_login .btn-group .dropdown-menu .btn_register:hover,
 .header_top_login .btn-group .dropdown-menu .btn_register:focus {
     color: #ffffff !important;
-    background: #7fad39 !important;
+    background: #3eb291 !important;
 }
 
 

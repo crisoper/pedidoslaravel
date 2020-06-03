@@ -109,7 +109,7 @@
 
         if( obtenerLocalStorageclienteID () != false ) {
             
-            $( btnAgregarCar ).html("Agregado.... <i class='fa fa-eye'></i>");
+            $( btnAgregarCar ).html("<span class='product_aggregate'>Agregado</span> <i class='fas fa-check-circle'></i>");
 
             agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta" );
         }
@@ -161,9 +161,6 @@
         });
 
         $(".sumaCantidadCestaMenu").html(Number((sumaTotalCantidad).toFixed(2)));
-
-        
-
 
     }
 

@@ -15,7 +15,7 @@
 }
 .shopping_summery td h5 a:hover, 
 .shopping_summery td h5 a:focus {
-    color: #7fad39;
+    color: #3eb291;
 }
 .shopping_summery td .td_product_description {
     font-size: 13px;
@@ -44,7 +44,7 @@ label {
 }
 
 .btn_altualizar_pedido {
-    color: #7fad39;
+    color: #3eb291;
     background: #ffffff;
     padding: 10px 20px;
     display: block;
@@ -60,13 +60,13 @@ label {
 .btn_altualizar_pedido:hover,
 .btn_altualizar_pedido:focus {
     color: #ffffff;
-    background: #7fad39;
+    background: #3eb291;
 }
 
 
 
 .input_cupon {
-    color: #7fad39;
+    color: #3eb291;
     background: #ffffff;
     padding: 12px 20px;
     display: block;
@@ -81,7 +81,7 @@ label {
 }
 .btn_aplicar_cupon {
     color: #ffffff;
-    background: #7fad39;
+    background: #3eb291;
     padding: 12px 5px;
     display: block;
     margin-top: 10px;
@@ -98,7 +98,7 @@ label {
 
 
 .btn_realizar_pedido {
-    color: #7fad39;
+    color: #3eb291;
     background: #ececeb;
     padding: 10px 20px;
     display: block;
@@ -113,12 +113,12 @@ label {
 .btn_realizar_pedido:hover,
 .btn_realizar_pedido:focus {
     color: #ffffff;
-    background: #7fad39;
+    background: #3eb291;
 }
 
 
 .btn_seguir_comprando {
-    color: #7fad39;
+    color: #3eb291;
     background: #ececeb;
     padding: 10px 20px;
     display: block;
@@ -134,5 +134,5 @@ label {
 .btn_seguir_comprando:hover,
 .btn_seguir_comprando:focus {
     color: #ffffff;
-    background: #7fad39;
+    background: #3eb291;
 }
