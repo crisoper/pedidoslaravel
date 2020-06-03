@@ -168,9 +168,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <p class="text-truncate my-0">
-                                                <a class="link_producto_detalle" href="#"><b>{{$productorecomendado->nombre}}</b></a>
+                                                <a class="link_producto_detalle" href="#"><b>{{$productooferta->nombre}}</b></a>
                                             </p>
-                                            <p class="text-truncate small my-0">{{$productorecomendado->descripcion}}</p>
+                                            <p class="text-truncate small my-0">{{$productooferta->descripcion}}</p>
                                         </div>
                                     </div>
                                     <hr class="mt-1 mb-0">
@@ -180,7 +180,7 @@
                                                 S/ <span>20.90</span>
                                             </p>
                                             <h4 class="price_product_unit my-0">
-                                                S/ <span>{{$productorecomendado->precio}}</span>
+                                                S/ <span>{{$productooferta->precio}}</span>
                                             </h4>
                                         </div>
                                         <div class="col-6 pt-1 pb-2 px-2 m-0">
@@ -205,7 +205,7 @@
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productorecomendado->id}}">
+                                            <button class="agregar_cart" idproducto="{{$productooferta->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -253,9 +253,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <p class="text-truncate my-0">
-                                                <a class="link_producto_detalle" href="#"><b>{{$productorecomendado->nombre}}</b></a>
+                                                <a class="link_producto_detalle" href="#"><b>{{$producto->nombre}}</b></a>
                                             </p>
-                                            <p class="text-truncate small my-0">{{$productorecomendado->descripcion}}</p>
+                                            <p class="text-truncate small my-0">{{$producto->descripcion}}</p>
                                         </div>
                                     </div>
                                     <hr class="mt-1 mb-0">
@@ -266,7 +266,7 @@
                                             </p> --}}
                                             <p class="small"></p>
                                             <h4 class="price_product_unit my-0">
-                                                S/ <span>{{$productorecomendado->precio}}</span>
+                                                S/ <span>{{$producto->precio}}</span>
                                             </h4>
                                         </div>
                                         <div class="col-6 pt-1 pb-2 px-2 m-0">
@@ -291,7 +291,7 @@
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productorecomendado->id}}">
+                                            <button class="agregar_cart" idproducto="{{$producto->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -335,9 +335,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <p class="text-truncate my-0">
-                                                <a class="link_producto_detalle" href="#"><b>{{$productorecomendado->nombre}}</b></a>
+                                                <a class="link_producto_detalle" href="#"><b>{{$productomaspedido->nombre}}</b></a>
                                             </p>
-                                            <p class="text-truncate small my-0">{{$productorecomendado->descripcion}}</p>
+                                            <p class="text-truncate small my-0">{{$productomaspedido->descripcion}}</p>
                                         </div>
                                     </div>
                                     <hr class="mt-1 mb-0">
@@ -348,7 +348,7 @@
                                             </p> --}}
                                             <p class="small"></p>
                                             <h4 class="price_product_unit my-0">
-                                                S/ <span>{{$productorecomendado->precio}}</span>
+                                                S/ <span>{{$productomaspedido->precio}}</span>
                                             </h4>
                                         </div>
                                         <div class="col-6 pt-1 pb-2 px-2 m-0">
@@ -373,7 +373,7 @@
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productorecomendado->id}}">
+                                            <button class="agregar_cart" idproducto="{{$productomaspedido->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
