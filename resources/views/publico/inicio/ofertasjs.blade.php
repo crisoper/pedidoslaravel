@@ -24,20 +24,31 @@
         function mostrarProductosEnOferta( datos ) {
             $("#cuerpoProductosEnOferta").html();
     
-            let carHTML = "";
+            let ofertasHTML = "";
     
             $.each( datos.data, function( key, oferta ) {
-                carHTML = carHTML + `
+
+                let fotos = '';
+
+                let contador = 0; 
+                
+                $.each( oferta.fotos, function( key, foto ) {
+                    
+                    contador++
+
+                    if (contador == 2) {
+                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover-img">`;
+                    } else {
+                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }">`;
+                    }
+
+                });  
+
+                ofertasHTML = ofertasHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-0" data-wow-delay="0.2s">
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
-                                <img 
-                                src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
-                                alt="{{ $productomaspedido->nombre }}"
-                                @if ( $loop->iteration == 2 )
-                                    class="hover-img"
-                                @endif
-                                >
+                                ${ fotos }
                             </div>
                             
                             
@@ -95,7 +106,7 @@
                 `;
             });
     
-            $("#cuerpoProductosEnOferta").html( carHTML);
+            $("#cuerpoProductosEnOferta").html( ofertasHTML);
         } 
     });
 

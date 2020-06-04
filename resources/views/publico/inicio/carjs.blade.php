@@ -103,6 +103,10 @@
 
 
     //Agregar producto a carrito compras
+    // $(".agregar_cart").on("click", function() {
+
+    // })
+
     $(".contenidoPrincipalPagina").on("click", ".agregar_cart", function() {
 
         let btnAgregarCar = $( this );

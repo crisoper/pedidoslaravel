@@ -12,7 +12,10 @@
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarProductosRecomendados( data )
+                    mostrarProductosRecomendados( data );
+
+                    $('.slick').slick();
+                    $('.slick2').slick();
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -24,27 +27,26 @@
         function mostrarProductosRecomendados( datos ) {
             $("#cuerpoProductosRecomendados").html();
     
-            let carHTML = "";
+            let recomendadosHTML = "";
     
             $.each( datos.data, function( key, recomendados ) {
-                carHTML = carHTML + `
-                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-5">
+
+                let fotos = '';
+
+                $.each( recomendados.fotos, function( key, foto ) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }">`;
+                });                
+
+                recomendadosHTML = recomendadosHTML + `
+                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-5 col-sm-6 col-md-4">
                         <div class="product-img">
-                            <img 
-                            src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
-                            alt="{{ $productorecomendado->nombre }}"
-                            @if ( $loop->iteration == 2 )
-                                class="hover-img"
-                            @endif
-                            > 
+                            
+                            ${ fotos }
 
                             <!-- Product Badge -->
                             <div class="product-badge empresa_badge">
                                 <p class="text-truncate p-0">Nombre de empresa</p>
                             </div>
-                            {{-- <div class="product-badge empresa_direccion_badge">
-                                <p class="text-truncate small p-0">Dirección de empresa</p>
-                            </div> --}}
                         </div>
 
 
@@ -101,7 +103,15 @@
                 `;
             });
     
-            $("#cuerpoProductosRecomendados").html( carHTML);
+            $("#productosRecomendados").html( recomendadosHTML, function() {
+                $('.slick').slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    arrows: true
+                });
+            });
         } 
     });
 
