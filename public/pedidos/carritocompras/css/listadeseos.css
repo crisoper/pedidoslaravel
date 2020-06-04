@@ -43,7 +43,8 @@
     background: #3eb291;
 }
 
-.eliminarProductoListaDeseos {
+.eliminarProductoListaDeseosTabla {
+    color: #df3550 !important;
     border: none;
     background-color: #ffffff;
 }

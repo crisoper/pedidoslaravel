@@ -25,7 +25,8 @@
     width: 85px;
 }
 
-.eliminarProductoCesta {
+.eliminarProductoCestaTabla {
+    color: #df3550 !important;
     border: none;
     background-color: #ffffff;
 }

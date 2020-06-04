@@ -55,7 +55,7 @@
                         <p class="my-0">S/ <span class="precioTotalProductos">${ cesta.cantidad * cesta.producto.precio }</span></p>
                     </td>
                     <td class="text-center">
-                        <button class="eliminarProductoCesta hint--top-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
+                        <button class="eliminarProductoCestaTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
                             <i class="fas fa-trash-alt text-danger"></i>
                         </button>
                     </td>
@@ -69,7 +69,7 @@
     } 
     
 
-    $("#cuerpoTablaCarritoCompras").on("click", ".eliminarProductoCesta", function() {
+    $("#cuerpoTablaCarritoCompras").on("click", ".eliminarProductoCestaTabla", function() {
 
         let spanEliminar = $( this );
 

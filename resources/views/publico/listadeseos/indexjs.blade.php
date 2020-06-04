@@ -55,7 +55,7 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <button class="eliminarProductoListaDeseos hint--top-left hint--error" data-hint="Eliminar" producto_id="${ deseos.producto.id }">
+                        <button class="eliminarProductoListaDeseosTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ deseos.producto.id }">
                             <i class="fas fa-trash-alt text-danger"></i>
                         </button>
                     </td>
@@ -67,7 +67,7 @@
     } 
 
 
-    $("#cuerpoTablaListaDeseos").on("click", ".eliminarProductoListaDeseos", function() {
+    $("#cuerpoTablaListaDeseos").on("click", ".eliminarProductoListaDeseosTabla", function() {
 
         let spanEliminar = $( this );
 
