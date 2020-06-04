@@ -75,8 +75,16 @@ class ProductosController extends Controller
     }
 
     
-    public function ofertas()
+    public function ofertas(Request $request)
     {
+
+        if ( $request->has("storagecliente_id") and $request->has("storagecliente_id") != 'false') {
+            # code...
+        } else {
+            # code...
+        }
+        
+
         $productosofertados = Producto::whereDate( "created_at", ">", 20 )
         ->with([
             "tags",

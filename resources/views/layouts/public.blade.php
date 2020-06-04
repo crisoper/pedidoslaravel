@@ -448,15 +448,17 @@
     
 
     
-    <section style="margin-top: 130px">
+    <section style="margin-top: 130px; display: block">
         <main>
             @yield('contenido')
         </main>
     </section>
 
+    {{-- <div class="clear"></div> --}}
+
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
+    <footer class="footer spad" style="clear: both">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">

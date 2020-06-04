@@ -10,7 +10,9 @@
             $.ajax({
                 url: "{{ route('ajax.productos.ofertas') }}",
                 method: 'GET',
-                data: {},
+                data: {
+                    storagecliente_id: obtenerLocalStorageclienteID (),
+                },
                 success: function ( data ) {
                     mostrarProductosEnOferta( data )
                 },
@@ -24,20 +26,51 @@
         function mostrarProductosEnOferta( datos ) {
             $("#cuerpoProductosEnOferta").html();
     
-            let carHTML = "";
+            let ofertasHTML = "";
     
             $.each( datos.data, function( key, oferta ) {
-                carHTML = carHTML + `
+
+                let fotos = '';
+
+                let contador = 0; 
+                
+                $.each( oferta.fotos, function( key, foto ) {
+                    
+                    contador++
+
+                    if (contador == 2) {
+                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover-img">`;
+                    } else {
+                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }">`;
+                    }
+
+                });  
+
+                let encarrito = '';
+
+                console.log( typeof( oferta.encarrito ) );
+
+                if (oferta.encarrito == false) {
+                    encarrito = encarrito + `<div class="col-8 p-0">
+                        <button class="agregar_cart" idproducto="${ oferta.id }">
+                            <span>Agregar</span>
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>`;
+                } else {
+                    encarrito = encarrito + `<div class="col-8 p-0">
+                        <button class="product_aggregate" idproducto="${ oferta.id }">
+                            <span>Agregado</span>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>`;
+                }
+
+                ofertasHTML = ofertasHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosOfertas wow fadeInUpBig mb-0" data-wow-delay="0.2s">
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
-                                <img 
-                                src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
-                                alt="{{ $productomaspedido->nombre }}"
-                                @if ( $loop->iteration == 2 )
-                                    class="hover-img"
-                                @endif
-                                >
+                                ${ fotos }
                             </div>
                             
                             
@@ -82,12 +115,7 @@
                                             <i class="fa fa-heart"></i>
                                         </button>
                                     </div>
-                                    <div class="col-8 p-0">
-                                        <button class="agregar_cart" idproducto="${ oferta.id }">
-                                            <span>Agregar</span>
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </button>
-                                    </div>
+                                    ${ encarrito }
                                 </div>
                             </div>
                         </div>
@@ -95,7 +123,7 @@
                 `;
             });
     
-            $("#cuerpoProductosEnOferta").html( carHTML);
+            $("#cuerpoProductosEnOferta").html( ofertasHTML);
         } 
     });
 

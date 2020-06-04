@@ -24,14 +24,14 @@
     <script src="{{asset('pedidos/buscador/js/buscador.js')}}"></script>
 
     {{-- CAROUSEL 1 --}}
-	<script src="{{asset('pedidos/slider/js/owl.carousel.min.js')}}"></script>
+	{{-- <script src="{{asset('pedidos/slider/js/owl.carousel.min.js')}}"></script> --}}
 	<script src="{{asset('pedidos/slider/js/slick.js')}}"></script>
-	<script src="{{asset('pedidos/slider/js/slick-custom.js')}}"></script>
+	{{-- <script src="{{asset('pedidos/slider/js/slick-custom.js')}}"></script> --}}
     
     {{-- PRODUCTOS --}}
     <script src="{{asset('pedidos/productos/js/agregarcantidadpedido.js')}}"></script>
     <script src="{{asset('pedidos/productos/js/plugins.js')}}"></script>
-    <script src="{{asset('pedidos/productos/js/active.js')}}"></script>
+    {{-- <script src="{{asset('pedidos/productos/js/active.js')}}"></script> --}}
     
 
 
