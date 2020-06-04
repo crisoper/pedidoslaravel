@@ -22,7 +22,7 @@
                                 <div class="product-img">
                                     @foreach ($productorecomendado->fotos as $foto)
 
-                                        {{-- @if ( env("APP_ENV") == "production") --}}
+                                        @if ( env("APP_ENV") == "production")
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productorecomendado->nombre }}"
@@ -30,7 +30,7 @@
                                                 class="hover-img"
                                             @endif
                                             > 
-                                        {{-- @else
+                                        @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
                                             alt="{{ $productorecomendado->nombre }}"
@@ -38,7 +38,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif --}}
+                                        @endif
                                         
                                     @endforeach
 
@@ -138,7 +138,7 @@
                                 <div class="product-img">
                                     @foreach ($productooferta->fotos as $foto)
 
-                                        {{-- @if ( env("APP_ENV") == "production") --}}
+                                        @if ( env("APP_ENV") == "production")
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productooferta->nombre }}"
@@ -146,7 +146,7 @@
                                             class="hover-img"
                                             @endif
                                             >    
-                                        {{-- @else
+                                        @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
                                             alt="{{ $productooferta->nombre }}"
@@ -154,7 +154,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif --}}
+                                        @endif
                                         
                                     @endforeach
 
@@ -223,7 +223,7 @@
                                 <div class="product-img">
                                     @foreach ($producto->fotos as $foto)
 
-                                        {{-- @if ( env("APP_ENV") == "production") --}}
+                                        @if ( env("APP_ENV") == "production")
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $producto->nombre }}"
@@ -231,7 +231,7 @@
                                                 class="hover-img"
                                             @endif
                                             >    
-                                        {{-- @else
+                                        @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
                                             alt="{{ $producto->nombre }}"
@@ -239,7 +239,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif --}}
+                                        @endif
                                         
                                     @endforeach
 
@@ -309,7 +309,7 @@
                                 <div class="product-img">
                                     @foreach ($productomaspedido->fotos as $foto)
 
-                                        {{-- @if ( env("APP_ENV") == "production") --}}
+                                        @if ( env("APP_ENV") == "production")
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productomaspedido->nombre }}"
@@ -317,7 +317,7 @@
                                                 class="hover-img"
                                             @endif
                                             >    
-                                        {{-- @else
+                                        @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
                                             alt="{{ $productomaspedido->nombre }}"
@@ -325,7 +325,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif --}}
+                                        @endif
                                         
                                     @endforeach
                                     
@@ -490,17 +490,6 @@
                                     <p class="descripcion_preducto_modal_listadeseos">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis dignissimos pariatur nihil officia alias magni quod doloribus sit nesciunt labore perspiciatis veritatis eveniet recusandae blanditiis, perferendis quaerat, facere repellendus voluptates exercitationem! Minima, odio voluptate hic esse possimus rerum voluptas qui, dolorum accusantium fugit repellendus sequi non libero ex doloremque.
                                     </p>
-                                </div>
-                                <div class="col-6 col-sm-5 col-md-4">
-                                    <div class="input_producto_modal_lista_deseos border m-0">
-                                        <input type="text" class="text-center input_value_cartcart" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-5 col-md-4">
-                                    <button class="agregar_cart_modal_lista_deseos hint--top" data-hint="Agregar producto a cesta" idproducto="">
-                                        <span>Agregar</span>
-                                        <i class="fas fa-shopping-basket"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
