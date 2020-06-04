@@ -1,22 +1,22 @@
 <script>
     
     //Obtenemos los productos de la cesta
-    obtenerProductosCesta( );
+    obtenerProductosListaDeseos( );
 
 
-    function obtenerProductosCesta( tipo = "cesta" ) {
+    function obtenerProductosListaDeseos( tipo = "deseos" ) {
 
         if( obtenerLocalStorageclienteID () != false ) {
             
             $.ajax({
-                url: "{{ route('cesta.index') }}",
+                url: "{{ route('listadeseo.index') }}",
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID (),
                     tipo: tipo,
                 },
                 success: function ( data ) {
-                    mostrarProductosPaginaCarrito( data )
+                    mostrarProductosPaginaListaDeseos( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -28,34 +28,34 @@
     }
 
 
-    function mostrarProductosPaginaCarrito( cestas ) {
-        $("#cuerpoTablaCarritoCompras").html();
+    function mostrarProductosPaginaListaDeseos( listadeseos ) {
+        $("#cuerpoTablaListaDeseos").html();
 
         let carHTML = "";
 
-        $.each( cestas.data, function( key, cesta ) {
+        $.each( listadeseos.data, function( key, deseos ) {
             carHTML = carHTML + `
                 <tr>
                     <td class="imagen">
                         <img src="https://via.placeholder.com/100x100" alt="#">
                     </td>
                     <td class="text-left">
-                        <h5 class="text-truncate mt-0 mb-1"><a href="#">${ cesta.producto.nombre }</a></h5>
-                        <p class="text-truncate td_product_description my-0">${ cesta.producto.descripcion }</p>
-                    </td>
-                    <td class="text-center">
-                        <p class="my-0">S/ ${ cesta.producto.precio }</p>
+                        <h5 class="text-truncate mt-0 mb-1"><a href="#">${ deseos.producto.nombre }</a></h5>
+                        <p class="text-truncate td_product_description my-0">${ deseos.producto.descripcion }</p>
                     </td>
                     <td class="cantidad text-center">
-                        <div class="input_group_unit_product border m-0">
-                            <input type="text" class="text-center input_value_cartcart" value="${ cesta.cantidad }">
-                        </div>
+                        <p class="stock_lista_deseos my-0">${ deseos.producto.stock }</p>
                     </td>
                     <td class="text-center">
-                        <p class="my-0">S/ <span class="precioTotalProductos">${ cesta.cantidad * cesta.producto.precio }</span></p>
+                        <p class="my-0">S/ ${ deseos.producto.precio }</p>
+                    </td>
+                    <td class="cantidad text-center">
+                        <button class="agregar_producto_delista_apedidos" data-toggle="modal" data-target="#productoTablaListaDeseos">
+                            Agregar <i class="fas fa-shopping-basket"></i>
+                        </button>
                     </td>
                     <td class="text-center">
-                        <button class="eliminarProductoCesta hint--top-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
+                        <button class="eliminarProductoListaDeseos hint--top-left hint--error" data-hint="Eliminar" producto_id="${ deseos.producto.id }">
                             <i class="fas fa-trash-alt text-danger"></i>
                         </button>
                     </td>
@@ -63,29 +63,27 @@
             `;
         });
 
-        $("#cuerpoTablaCarritoCompras").html( carHTML);
-        sumarRestarCantidad();
-        sumarImportes();
+        $("#cuerpoTablaListaDeseos").html( carHTML);
     } 
-    
 
-    $("#cuerpoTablaCarritoCompras").on("click", ".eliminarProductoCesta", function() {
+
+    $("#cuerpoTablaListaDeseos").on("click", ".eliminarProductoListaDeseos", function() {
 
         let spanEliminar = $( this );
 
         if( obtenerLocalStorageclienteID () != false ) {
             
             $.ajax({
-                url: "{{ route('cesta.delete') }}",
+                url: "{{ route('listadeseo.delete') }}",
                 method: 'POST',
                 data: {
                     _method:"DELETE",
                     storagecliente_id: obtenerLocalStorageclienteID (),
-                    tipo: "cesta",
+                    tipo: "deseos",
                     producto_id: $( spanEliminar ).attr("producto_id"),
                 },
                 success: function ( data ) {
-                    obtenerProductosCesta( );
+                    obtenerProductosListaDeseos( );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -96,7 +94,6 @@
 
     });
 
-    
     function sumarRestarCantidad() {
         
         var proQty = $('.input_group_unit_product');
@@ -119,25 +116,5 @@
         });
     }
     
-
-    function sumarImportes() {
-        
-        let arrayTotal = $("#cuerpoTablaCarritoCompras").find(".precioTotalProductos");
-
-        let sumaTotal = 0;
-        $.each(arrayTotal, function (index, caja) {
-            sumaTotal = sumaTotal + parseFloat($(caja).html());
-        });
-
-        $(".sumaTotal").html(sumaTotal.toFixed(2));
-
-
-        let delivery = parseFloat($('.deliveryTotal').html());
-        let descuento = parseFloat($('.descuentoTotal').html());
-
-
-        $(".pedidoTotal").html((sumaTotal - delivery + descuento).toFixed(2));
-
-    }
 
 </script>

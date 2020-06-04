@@ -239,9 +239,8 @@
   margin-bottom: -5px;
 }
 
-.eliminar_favoritos {
-  background: #DC0055;
-  background: #dc0055;
+.eliminarProductoListaDeseos {
+  background: #df3550 !important;
   width: 18px;
   height: 18px;
   display: block;

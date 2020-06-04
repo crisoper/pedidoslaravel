@@ -37,6 +37,14 @@ Route::post("cesta/store", "Publico\CestaController@store")
 ->name("cesta.store");
 Route::delete("cesta/delete", "Publico\CestaController@delete")
 ->name("cesta.delete");
+//LISTA DESEOS MENU
+Route::get("listadeseo/index", "Publico\ListadeseosMenuController@index")
+->name("listadeseo.index");
+Route::post("listadeseo/store", "Publico\ListadeseosMenuController@store")
+->name("listadeseo.store");
+Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
+->name("listadeseo.delete");
+
 
 //PRODUCTOS RECOMENDADOS
 Route::get("ajax/productos/recomendados", "Publico\ProductosController@recomendados")

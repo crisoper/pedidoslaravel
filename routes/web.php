@@ -72,8 +72,15 @@ Route::post("administracion/register", "Auth\RegisterController@showRegistration
 Route::get('/', 'Publico\ProductosController@index')
 ->name('inicio.index');
 
+// CESTA REALIZAR COMPRA
 Route::get('cart', 'Publico\CartController@index')
 ->name('cart.index');
+
+// LISTA DE DESEOS
+Route::get('listadedeseos', 'Publico\ListadeseosController@index')
+->name('listadedeseos.index');
+
+
 
 Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
 Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');

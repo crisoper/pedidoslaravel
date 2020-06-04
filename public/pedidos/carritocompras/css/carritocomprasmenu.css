@@ -229,17 +229,31 @@
     height: 37.5px !important;
 }
 
-.cart_product_description {
+.cart_product_nombre {
+    text-align: left;
     line-height: 18px;
+    font-weight: 700;
+}
+.cart_product_nombre a {
+    color: #5b6268;
+}
+.cart_product_nombre a:hover,
+.cart_product_nombre a:focus {
+    color: #3eb291;
+}
+.cart_product_description {
+    text-align: left;
+    line-height: 18px;
+    color: #5b6268;
 }
 .cart_product_precio {
     line-height: 18px;
     margin-bottom: -5px;
+    color: #3eb291;
 }
 
 .eliminar_compra {
-    background: #dc0055;
-    background: #dc0055;
+    background: #df3550;
     width: 18px;
     height: 18px;
     display: block;
@@ -253,6 +267,15 @@
     top: -7px;
     right: -5px;
     cursor: pointer;
+}
+
+.sumaCantidadCestaMenu_content {
+    color: #5b6268;
+    font-weight: 700;
+}
+
+.sumaTotalCestaMenu_content {
+    color: #3eb291;
 }
 
 .btn_pedido_cart {

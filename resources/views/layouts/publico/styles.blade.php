@@ -20,12 +20,14 @@
     <link rel="stylesheet" href="{{asset('pedidos/menus/css/menumovil.css')}}">
 
     {{-- MODAL --}}
-    <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}"> --}}
+    <link rel="stylesheet" href="{{asset('pedidos/modal/modal.css')}}">
     
     {{-- CARRITO COMPRAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/carritocompras.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/carritocomprasmenu.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/favoritosmenu.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/listadeseos.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/listadeseosmenu.css')}}">
     
     {{-- BUSCADOR --}}
     <link rel="stylesheet" href="{{asset('pedidos/buscador/css/buscador.css')}}">
@@ -37,6 +39,18 @@
     {{-- PRODUCTOS --}}
     <link rel="stylesheet" href="{{asset('pedidos/productos/css/core-style.css')}}">
     
+    {{-- TOOLTIPS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/tooltips/hint.css')}}">
 
 
 
+
+
+
+
+
+
+
+
+
+    

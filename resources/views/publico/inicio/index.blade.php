@@ -22,7 +22,7 @@
                                 <div class="product-img">
                                     @foreach ($productorecomendado->fotos as $foto)
 
-                                        @if ( env("APP_ENV") == "production")
+                                        {{-- @if ( env("APP_ENV") == "production") --}}
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productorecomendado->nombre }}"
@@ -30,7 +30,7 @@
                                                 class="hover-img"
                                             @endif
                                             > 
-                                        @else
+                                        {{-- @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
                                             alt="{{ $productorecomendado->nombre }}"
@@ -38,7 +38,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif
+                                        @endif --}}
                                         
                                     @endforeach
 
@@ -82,17 +82,17 @@
                                     <hr class="mt-0 mb-2">
                                     <div class="row mb-2 px-3">
                                         <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modalProductosInicio">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
                                         <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
+                                            <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="{{$productorecomendado->id}}">
                                                 <i class="fa fa-heart"></i>
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productorecomendado->id}}">
+                                            <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="{{$productorecomendado->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -138,7 +138,7 @@
                                 <div class="product-img">
                                     @foreach ($productooferta->fotos as $foto)
 
-                                        @if ( env("APP_ENV") == "production")
+                                        {{-- @if ( env("APP_ENV") == "production") --}}
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productooferta->nombre }}"
@@ -146,7 +146,7 @@
                                             class="hover-img"
                                             @endif
                                             >    
-                                        @else
+                                        {{-- @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
                                             alt="{{ $productooferta->nombre }}"
@@ -154,7 +154,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif
+                                        @endif --}}
                                         
                                     @endforeach
 
@@ -195,17 +195,17 @@
                                     <hr class="mt-0 mb-2">
                                     <div class="row mb-2 px-3">
                                         <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modalProductosInicio">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
                                         <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
+                                            <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="{{$productooferta->id}}">
                                                 <i class="fa fa-heart"></i>
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productooferta->id}}">
+                                            <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="{{$productooferta->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -223,7 +223,7 @@
                                 <div class="product-img">
                                     @foreach ($producto->fotos as $foto)
 
-                                        @if ( env("APP_ENV") == "production")
+                                        {{-- @if ( env("APP_ENV") == "production") --}}
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $producto->nombre }}"
@@ -231,7 +231,7 @@
                                                 class="hover-img"
                                             @endif
                                             >    
-                                        @else
+                                        {{-- @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}"
                                             alt="{{ $producto->nombre }}"
@@ -239,7 +239,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif
+                                        @endif --}}
                                         
                                     @endforeach
 
@@ -281,17 +281,17 @@
                                     <hr class="mt-0 mb-2">
                                     <div class="row mb-2 px-3">
                                         <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modalProductosInicio">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
                                         <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
+                                            <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="{{$producto->id}}">
                                                 <i class="fa fa-heart"></i>
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$producto->id}}">
+                                            <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="{{$producto->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -309,7 +309,7 @@
                                 <div class="product-img">
                                     @foreach ($productomaspedido->fotos as $foto)
 
-                                        @if ( env("APP_ENV") == "production")
+                                        {{-- @if ( env("APP_ENV") == "production") --}}
                                             <img 
                                             src="{{ Storage::url("img_productos/".$foto->nombre)}}" 
                                             alt="{{ $productomaspedido->nombre }}"
@@ -317,7 +317,7 @@
                                                 class="hover-img"
                                             @endif
                                             >    
-                                        @else
+                                        {{-- @else
                                             <img 
                                             src="{{ asset( Storage::disk('img_productos')->url('img_productos/').$foto->nombre ) }}" 
                                             alt="{{ $productomaspedido->nombre }}"
@@ -325,7 +325,7 @@
                                                 class="hover-img"
                                             @endif
                                             >
-                                        @endif
+                                        @endif --}}
                                         
                                     @endforeach
                                     
@@ -363,17 +363,17 @@
                                     <hr class="mt-0 mb-2">
                                     <div class="row mb-2 px-3">
                                         <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modalProductosInicio">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
                                         <div class="col-2 p-0">
-                                            <button class="agregar_favoritos">
+                                            <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="{{$productomaspedido->id}}">
                                                 <i class="fa fa-heart"></i>
                                             </button>
                                         </div>
                                         <div class="col-8 p-0">
-                                            <button class="agregar_cart" idproducto="{{$productomaspedido->id}}">
+                                            <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="{{$productomaspedido->id}}">
                                                 <span>Agregar</span>
                                                 <i class="fas fa-shopping-basket"></i>
                                             </button>
@@ -445,98 +445,62 @@
 
 
 	<!-- MODAL PRODUCTOS -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="modalProductosInicio" tabindex="-1" role="dialog" aria-labelledby="modalProductosInicio" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content p-0">
+                <div class="modal-body">
+                    <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body m-0 py-0">
-                    <div class="row mt-3 mb-3">
-                        <div class="col-12 col-lg-6 ">
-                            <div class="card card-raised card-carousel">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-                                  <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-                                  </ol>
-                                  <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg.jpg"
-                                      alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg"  alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img class="d-block w-100" src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg3.jpg" alt="Third slide">
-                                    </div>
-                                  </div>
-                                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                  </a>
-                                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <i class="fas fa-chevron-right"></i>
-                                  </a>
-                                </div>
+                    
+                    <div class="quickview_body row p-0">
+                        <div class="col-12 col-lg-5">
+                            <div class="quickview_pro_img">
+                                <img src="pedidos/img/product/product-1.jpg" alt="">
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 px-2" id="product_description">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4>Flared Shift Dress</h4>
-                                    </div>
-                                    <div class="col-8 col-sm-9 col-lg-8">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4 col-lg-5 small">
-                                                <i class="yellow fa fa-star"></i>
-                                                <i class="yellow fa fa-star"></i>
-                                                <i class="yellow fa fa-star"></i>
-                                                <i class="yellow fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <div class="col-12 col-sm-7 col-lg-7 small">
-                                                <a href="#">(1 customer review)</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 col-sm-3 col-lg-4">
-                                        <span><i class="fa fa-check-circle-o text-success"></i> in stock</span>
+                        <div class="col-12 col-lg-7">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="titulo_producto_modal_listadeseos">Nombre del producto</h4>
+                                </div>
+                                <div class="col-6 col-sm-5 col-md-4">
+                                    <div class="top_seller_product_rating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12"><h3 class="my-3">$29.00</h3></div>
-                                    <div class="col-12">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
+                                <div class="col-6 col-sm-5 col-md-8">
+                                    <p class="stock_modal">
+                                        Stock: <span class="stock_modal_span">10</span>
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <h3 class="precio_modal_lista_deseos my-0">
+                                        S/ <span class="precio_modal_lista_deseos_span">20.99</span>
+                                    </h3>
+                                    <p class="precio_prev_modal_lista_deseos">
+                                        S/ <span class="precio_prev_modal_lista_deseos_span">30.99</span>
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <p class="descripcion_preducto_modal_listadeseos">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis dignissimos pariatur nihil officia alias magni quod doloribus sit nesciunt labore perspiciatis veritatis eveniet recusandae blanditiis, perferendis quaerat, facere repellendus voluptates exercitationem! Minima, odio voluptate hic esse possimus rerum voluptas qui, dolorum accusantium fugit repellendus sequi non libero ex doloremque.
+                                    </p>
+                                </div>
+                                <div class="col-6 col-sm-5 col-md-4">
+                                    <div class="input_producto_modal_lista_deseos border m-0">
+                                        <input type="text" class="text-center input_value_cartcart" value="1">
                                     </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-5 col-sm-5 col-lg-5">
-                                                <div class="shoping__cart__quantity">
-                                                    <div class="quantity">
-                                                        <div class="pro-qty border">
-                                                            <input type="text" value="1">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 col-sm-4 col-lg-5 px-0 ">
-                                                <a href="#" class="btn btn-dark form-control my-0">
-                                                    <span id="cart_name">Add to cart</span>
-                                                    <span id="cart_logo"><i class="fas fa-cart-plus"></i></span>
-                                                </a>
-                                            </div>
-                                            <div class="col-3 col-sm-3 col-lg-2 text-center">
-                                                <a href="#" class="btn btn-dark"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-5 col-md-4">
+                                    <button class="agregar_cart_modal_lista_deseos hint--top" data-hint="Agregar producto a cesta" idproducto="">
+                                        <span>Agregar</span>
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -554,6 +518,7 @@
 @section('scripts')
 
     @include('publico.inicio.carjs')
+    @include('publico.inicio.listadeseosjs')
     {{-- @include('publico.inicio.recomendadosjs') --}}
     {{-- @include('publico.inicio.ofertasjs') --}}
     {{-- @include('publico.inicio.nuevosjs') --}}

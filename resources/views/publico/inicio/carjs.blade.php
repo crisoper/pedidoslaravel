@@ -47,10 +47,13 @@
                             <img src="pedidos/img/featured/feature-2.jpg" alt="">
                         </div>
                         <div class="col-6 p-0">
-                            <p class="cart_product_description small mb-0">${ cesta.producto.nombre }</p>
+                            <p class="cart_product_nombre text-truncate small mb-0">
+                                <a href="#">${ cesta.producto.nombre }</a>
+                                </p>
+                            <p class="cart_product_description text-truncate small mb-0"><small>${ cesta.producto.descripcion }</small></p>
                         </div>
                         <div class="col-4 p-0">
-                            <p class="cart_product_precio small text-success mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
+                            <p class="cart_product_precio small mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
                             <small class="mt-0 mb-0">
                                 x<span class="CantidadProductoCestaMenu">${ cesta.cantidad }</span>
                             </small>
@@ -110,6 +113,8 @@
         if( obtenerLocalStorageclienteID () != false ) {
             
             $( btnAgregarCar ).html("<span class='product_aggregate'>Agregado</span> <i class='fas fa-check-circle'></i>");
+            $("#capa");
+            $( btnAgregarCar ).addClass("hint--success").attr('data-hint', 'Producto agregado en cesta');
 
             agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta" );
         }
@@ -148,7 +153,7 @@
             sumaTotal = sumaTotal + parseFloat($(caja).val());
         });
 
-        $(".sumaTotalCestaMenu").html(Number((sumaTotal).toFixed(2)));
+        $(".sumaTotalCestaMenu").html(sumaTotal.toFixed(2));
 
 
 
@@ -160,7 +165,7 @@
             sumaTotalCantidad = sumaTotalCantidad + parseFloat($(caja).html());
         });
 
-        $(".sumaCantidadCestaMenu").html(Number((sumaTotalCantidad).toFixed(2)));
+        $(".sumaCantidadCestaMenu").html(sumaTotalCantidad);
 
     }
 
