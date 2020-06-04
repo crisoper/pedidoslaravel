@@ -73,7 +73,7 @@
                             <div class="col-6"><p>Subtotal</p></div>
                             <div class="col-6">
                                 <p class="text-right">
-                                    <b>S/ <span class="sumaTotal">00</span></b>
+                                    <b>S/ <span class="sumaTotal">0.00</span></b>
                                 </p>
                             </div>
                             <div class="col-6"><p>Delivery</p></div>
@@ -94,7 +94,7 @@
                             <div class="col-6"><h4>Total</h4></div>
                             <div class="col-6">
                                 <h4 class="text-right">
-                                    <b>S/ <span class="pedidoTotal">00</span></b>
+                                    <b>S/ <span class="pedidoTotal">0.00</span></b>
                                 </h4>
                             </div>
                         </div>

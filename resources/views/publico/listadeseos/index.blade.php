@@ -3,63 +3,58 @@
 @section('contenido')
 
 
-	<!-- RECOMENDADOS -->
-    <div class="container">
+	<!-- Shopping Cart -->
+    <div class="container mb-5">
         <div class="row">
             <div class="col-12">
                 <div class="section-title mb-0">
-                    <h2>Recomendados</h2>
-                </div>
-            </div>
-            <div class="col-12">
-                <hr class="subrayado_productos mt-1">
-            </div>
-            <div class="col-12 px-1">
-                <div class="wrap-slick2">
-                    <div class="slick2 slickCustom" id="productosRecomendados">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<!-- END RECOMENDADOS  -->
-
-
-
-    <!-- PRODUCTOS (todos, ofertas, nuevos, mas pedidos, etc) -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="karl-projects-menu">
-                    <div class="text-center portfolio-menu">
-                        <button class="btn active" data-filter="*">TODOS</button>
-                        <button class="btn" data-filter=".productosOfertas">EN OFERTA</button>
-                        <button class="btn" data-filter=".productosNuevos">NUEVOS</button>
-                        <button class="btn" data-filter=".productosMasPedidos">MAS PEDIDOS</button>
-                        {{-- <button class="btn" data-filter=".shoes">shoes</button>
-                        <button class="btn" data-filter=".kids">KIDS</button> --}}
-                    </div>
+                    <h2>Detalle de lista de deseos</h2>
                 </div>
             </div>
             <div class="col-12">
                 <hr class="subrayado_productos mt-1">
             </div>
             <div class="col-12">
-                <div class="row karl-new-arrivals mb-5" id="cuerpoProductosEnOferta">
-                   
-                </div>
+                <!-- Shopping Summery -->
+                <table class="table table-hover table-responsive-lg shopping_summery">
+                    <thead>
+                        <tr class="main-hading">
+                            <th colspan="2">PRODUCTO</th>
+                            <th class="text-center">STOCK</th>
+                            <th class="text-center">PRECIO POR UNIDAD</th>
+                            <th class="text-center">AGREGAR A PEDIDO</th> 
+                            <th class="text-center"><b><i class="fas fa-trash-alt"></i></b></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaListaDeseos">
+                        {{-- <tr>
+                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a href="#">Women Dress</a></p>
+                                <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+                            </td>
+                            <td class="price" data-title="Price"><span>$110.00 </span></td>
+                            <td class="qty" data-title="Qty">
+                                <div class="input_group_unit_product border m-0">
+                                    <input type="text" class="text-center" value="1">
+                                </div>
+                            </td>
+                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
+                            <td class="action"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+                        </tr> --}}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <!-- END PRODUCTOS -->
 
-	<!-- MODAL PRODUCTOS -->
-    <div class="modal fade" id="modalProductosInicio" tabindex="-1" role="dialog" aria-labelledby="modalProductosInicio" aria-hidden="true">
+    
+    <!-- ****** Quick View Modal Area Start ****** -->
+    <div class="modal fade" id="productoTablaListaDeseos" tabindex="-1" role="dialog" aria-labelledby="productoTablaListaDeseos" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content p-0">
                 <div class="modal-body">
-                    <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close_modal_list_2" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     
@@ -101,6 +96,17 @@
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis dignissimos pariatur nihil officia alias magni quod doloribus sit nesciunt labore perspiciatis veritatis eveniet recusandae blanditiis, perferendis quaerat, facere repellendus voluptates exercitationem! Minima, odio voluptate hic esse possimus rerum voluptas qui, dolorum accusantium fugit repellendus sequi non libero ex doloremque.
                                     </p>
                                 </div>
+                                <div class="col-6 col-sm-5 col-md-4">
+                                    <div class="input_producto_modal_lista_deseos border m-0">
+                                        <input type="text" class="text-center input_value_cartcart" value="1">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-5 col-md-4">
+                                    <button class="agregar_cart_modal_lista_deseos hint--top" data-hint="Agregar producto a cesta" idproducto="">
+                                        <span>Agregar</span>
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -108,19 +114,11 @@
             </div>
         </div>
     </div>
-    <!-- END MODAL PRODUCTOS -->
-
+			
 
 @endsection
 
 
 @section('scripts')
-
-    @include('publico.inicio.carjs')
-    {{-- @include('publico.inicio.listadeseosjs') --}}
-    @include('publico.inicio.recomendadosjs')
-    @include('publico.inicio.ofertasjs')
-    {{-- @include('publico.inicio.nuevosjs') --}}
-    {{-- @include('publico.inicio.maspedidosjs') --}}
-
+    @include('publico.listadeseos.indexjs')
 @endsection

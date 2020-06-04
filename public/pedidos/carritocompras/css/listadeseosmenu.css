@@ -36,7 +36,7 @@
 
 .header_top_favorites > button:focus {
   box-shadow: none;
-  color: #7fad39 !important;
+  color: #3eb291 !important;
   background-color: #ffffff;
   /* box-shadow: 0 -10px 20px -5px #868686; */
 }
@@ -47,7 +47,7 @@
   height: 20px;
   width: 20px;
   color: #ffffff;
-  background: #7fad39;
+  background: #3eb291;
   font-size: 16px;
   text-align: center;
   font-weight: 700;
@@ -239,9 +239,8 @@
   margin-bottom: -5px;
 }
 
-.eliminar_favoritos {
-  background: #DC0055;
-  background: #dc0055;
+.eliminarProductoListaDeseos {
+  background: #df3550 !important;
   width: 18px;
   height: 18px;
   display: block;
@@ -257,7 +256,7 @@
   cursor: pointer;
 }
 .btn_pedido_favorites {
-  color: #7fad39;
+  color: #3eb291;
   background: #ececeb;
   padding: 10px 20px;
   display: block;
@@ -269,7 +268,7 @@
 }
 .btn_pedido_favorites:hover {
   color: #ffffff;
-  background: #7fad39;
+  background: #3eb291;
 }
 
 

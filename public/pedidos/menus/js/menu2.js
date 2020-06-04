@@ -3,7 +3,7 @@
 $(function() {
     $('#dropdownCategorias').hover(function() {
         $('.dropdownCategorias').css('background-color', '#ffffff');
-        $('.dropdownCategorias').css('border-left', '10px solid #7fad39');
+        $('.dropdownCategorias').css('border-left', '10px solid #3eb291');
         $('.dropdownCategorias').css('font-weight', '700');
     }, function() {
         $('.dropdownCategorias').css('background-color', '');
@@ -15,7 +15,7 @@ $(function() {
 $(function() {
     $('#dropdownLugares').hover(function() {
         $('.dropdownLugares').css('background-color', '#ffffff');
-        $('.dropdownLugares').css('border-left', '10px solid #7fad39');
+        $('.dropdownLugares').css('border-left', '10px solid #3eb291');
         $('.dropdownLugares').css('font-weight', '700');
     }, function() {
         $('.dropdownLugares').css('background-color', '');
@@ -28,7 +28,7 @@ $(function() {
 $(function() {
     $('#dropdownRecomendados').hover(function() {
         $('.dropdownRecomendados').css('background-color', '#ffffff');
-        $('.dropdownRecomendados').css('border-left', '10px solid #7fad39');
+        $('.dropdownRecomendados').css('border-left', '10px solid #3eb291');
         $('.dropdownRecomendados').css('font-weight', '700');
     }, function() {
         $('.dropdownRecomendados').css('background-color', '');

@@ -25,7 +25,25 @@
     width: 85px;
 }
 
-.eliminarProductoCestaTabla {
+.agregar_producto_delista_apedidos {
+    color: #3eb291;
+    background: #ececeb;
+    padding: 5px 10px;
+    border-radius: 0px;
+    font-size: 14px;
+    border: none;
+    width: auto;
+}
+.agregar_producto_delista_apedidos > i {
+    font-size: 17px;
+}
+.agregar_producto_delista_apedidos:hover,
+.agregar_producto_delista_apedidos:focus {
+    color: #ffffff;
+    background: #3eb291;
+}
+
+.eliminarProductoListaDeseosTabla {
     color: #df3550 !important;
     border: none;
     background-color: #ffffff;
@@ -44,7 +62,7 @@ label {
     border-radius: 8px;
 }
 
-.btn_altualizar_pedido {
+.btn_altualizar_lista_deseos {
     color: #3eb291;
     background: #ffffff;
     padding: 10px 20px;
@@ -58,8 +76,8 @@ label {
     width: 90%;
     border-radius: 5px;
 }
-.btn_altualizar_pedido:hover,
-.btn_altualizar_pedido:focus {
+.btn_altualizar_lista_deseos:hover,
+.btn_altualizar_lista_deseos:focus {
     color: #ffffff;
     background: #3eb291;
 }

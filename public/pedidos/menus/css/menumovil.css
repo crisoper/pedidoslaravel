@@ -42,7 +42,7 @@
 	
 	.humberger__open > button:focus {
 		font-size: 20px;
-		color: #7fad39 !important;
+		color: #3eb291 !important;
 		background-color: #ffffff;
 		/* box-shadow: 0 -10px 20px -5px #868686; */
 	}	
@@ -136,7 +136,7 @@
 	}
 
 	.regresar_menu {
-		color: #7fad39 !important;
+		color: #3eb291 !important;
 		/* background-color: #e8f8f5 !important; */
 	}
 
@@ -158,7 +158,7 @@
 		font-size: 14px;
 	}
 	.nav_link:hover {
-		color: #7fad39;
+		color: #3eb291;
 	}
 	
 

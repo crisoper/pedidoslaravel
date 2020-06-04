@@ -54,7 +54,7 @@ ol {
 	top: 0;
 	height: 4px;
 	width: 100%;
-	background: #7fad39;
+	background: #3eb291;
 }
 
 .spad {
@@ -70,7 +70,7 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #7fad39;
+	background: #3eb291;
 	border: none;
 }
 
@@ -259,7 +259,7 @@ ol {
 	right: 0;
 	height: 4px;
 	width: 100%;
-	background: #7fad39;
+	background: #3eb291;
 	content: "";
 	margin: 0 auto;
 }
@@ -503,7 +503,7 @@ ol {
 }
 
 .footer__widget ul li a:hover {
-	color: #7fad39;
+	color: #3eb291;
 	margin-left: 10px;
 	transition: 0.5s;
 }
@@ -564,7 +564,7 @@ ol {
 }
 
 .footer__widget .footer__widget__social a:hover {
-	background: #7fad39;
+	background: #3eb291;
 	color: #ffffff;
 	border-color: #ffffff;
 }

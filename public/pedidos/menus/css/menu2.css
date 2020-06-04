@@ -65,7 +65,7 @@
 }
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
-	border-left: 10px solid #7fad39;
+	border-left: 10px solid #3eb291;
 	background-color: #ffffff;
 	transition: 0.1s;
 	font-weight: 700;
@@ -91,7 +91,7 @@
 }
 .megasubmenu li a:hover,
 .megasubmenu li a:focus {
-	color: #7fad39;
+	color: #3eb291;
 }
 
 /* Tablet Device = 991px */

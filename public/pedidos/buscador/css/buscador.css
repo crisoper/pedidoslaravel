@@ -31,7 +31,7 @@
 
 .header__search > button:focus {
     font-size: 20px;
-    color: #7fad39 !important;
+    color: #3eb291 !important;
     background-color: #ffffff;
     /* box-shadow: 0 -10px 20px -5px #868686; */
 }

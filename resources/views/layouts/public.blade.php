@@ -167,12 +167,12 @@
                                 <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Servicio al cliente <i class="fas fa-angle-down"></i>
                                 </button>
-                                <div class="dropdown-menu">
+                                <div class="dropdown-menu dropdown_menu">
                                     <div><a href="#">Escribenos</a></div>
                                     <hr class="my-1">
                                     <div class="">
-                                        <p class="mb-0">+65 11.188.888</p>
-                                        <p class="my-0 small">support 24/7 time</p>
+                                        <p class="mb-0 number_phone">+65 11.188.888</p>
+                                        <p class="my-0 suport"><small>support 24/7 time</small></p>
                                     </div>
                                     <hr class="mt-2 mb-1">
                                     <div><a href="#">Preguntas frecuentes</a></div>
@@ -191,7 +191,7 @@
                                 <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user-circle"></i> Iniciar sesión <i class="fas fa-angle-down"></i>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-menu dropdown-menu-right dropdown_menu">
                                     <div>
                                         <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
                                     </div>
@@ -306,7 +306,7 @@
                         {{-- LISTA DE DESEOS --}}
                         <div class="col-2 col-md-1 col-lg-2 px-0">
                             <div class="btn-group header_top_favorites">
-                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="">
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosListaDeseosMenuFlotante">
                                     <div class="row">
                                         <div class="col-12 col-lg-6 pt-2 pr-1 text-right" id="icon_favorites">
                                             <h2><i class="fa fa-heart"></i><span>5</span></h2>
@@ -317,11 +317,11 @@
                                     </div>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right header_favorites">
-                                    <small><b>Tus productos elegidos como favoritos</b></small>
+                                    <small><b>Mi lista de deseos</b></small>
                                     <hr class="mt-1">
                                     <div class="scroll_favorites_header">
-                                        <div class="dropdown_favorites_header row" id="">
-                                            <div class="col-12 mt-2">
+                                        <div class="dropdown_favorites_header row" id="mostrarProductosListaDeseosMenuFlotanteItems">
+                                            {{-- <div class="col-12 mt-2">
                                                 <div class="row border_caja_favorites">
                                                     <div class="col-2 p-0">
                                                         <img src="pedidos/img/featured/feature-2.jpg" alt="">
@@ -334,13 +334,13 @@
                                                     </div>
                                                     <div class="eliminar_favoritos p-0"><i class="far fa-trash-alt small"></i></div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
                                     <hr class="mb-1">
                                     <div class="bottom_total">
-                                        <a class="btn btn_pedido_favorites" href="#">Ver Todos</a>
+                                        <a class="btn btn_pedido_favorites" href="{{route('listadedeseos.index')}}">Ver Todos</a>
                                     </div>
                                 </div>
                             </div>
@@ -388,14 +388,14 @@
                                         <div class="row text-center">
                                             <div class="col-7">
                                                 <small>Estas comprando:</small>
-                                                <h5 class="text-info">
+                                                <h5 class="sumaCantidadCestaMenu_content">
                                                     <span class="sumaCantidadCestaMenu">2</span> Productos
                                                 </h5>
                                             </div>
                                             <div class="col-5">
                                                 <small>Total:</small>
-                                                <h5 class="text-success">
-                                                    <b>S/ <span class="sumaTotalCestaMenu">30.00</span></b>
+                                                <h5 class="sumaTotalCestaMenu_content">
+                                                    <b>S/ <span class="sumaTotalCestaMenu">0.00</span></b>
                                                 </h5>
                                             </div>
                                             <div class="col-12">
@@ -448,15 +448,17 @@
     
 
     
-    <section style="margin-top: 130px">
+    <section style="margin-top: 130px; display: block">
         <main>
             @yield('contenido')
         </main>
     </section>
 
+    {{-- <div class="clear"></div> --}}
+
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
+    <footer class="footer spad" style="clear: both">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -531,6 +533,7 @@
 
 @include('layouts.publico.scripts')
 @include('includes.ajaxsetup')
+@include('publico.inicio.categoriasjs')
 
 <script>
     // Script que permite guardar el codigo del cliente en local storafe
