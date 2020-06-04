@@ -472,12 +472,9 @@ class EmpresasController extends Controller
     }
  
     public function vistaprevia(){
-        $user = Auth()->user();
-        $usuario = User::get()->last();
-     
-        // $password = openssl_decrypt(base64_decode($usuario->password),METHOD,$key);
+        
 
-        return view('publico.empresa.cuentaactivada',compact('usuario', 'password' , 'user'));
+        return view('publico.empresa.preview');
     }
 
     public function consultaRuc(){

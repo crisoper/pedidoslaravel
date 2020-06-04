@@ -9,8 +9,9 @@
         $("#errorextension").fadeOut();
       })
 
+    $(".imgLiquid").imgLiquid({fill:true});
+
    $("#file").on('change', function(event){
-   
     event.preventDefault();
     var fileInput = document.getElementById('file');
     var filePath = fileInput.value;
@@ -25,28 +26,20 @@
         if (fileInput.files && fileInput.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+                $('#imagePreview').html('<img src="'+e.target.result+'"/>');
+                $(".imgLiquid").imgLiquid({fill:true});
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
     }
 
    });
-
-    function fileValidation(){
+   $(".datetimepicker-input").datetimepicker({
+                            format: 'LT'
+                        })
+                        
+                      
   
-    }
-
-    $('.datetimepicker').datetimepicker({
-        format: 'LT'
-    })
-        $('#horafinMartes').datetimepicker({
-            format: 'LT'
-        })
-        $('#hora').datetimepicker({
-            format: 'LT'
-        })
-
     $('#departamentoid').select2({
             placeholder: "Departamento"
     });
@@ -127,6 +120,7 @@
     
     $("#enviarFormRegistro").on('click', function(event){
         event.preventDefault();
+        $( enviarFormRegistro ).prop( "disabled", true ).find("span").show();
         $.ajax({
             url: $("#formularioRegistroEmpresa").attr('action'),
             method: 'post',
@@ -135,32 +129,40 @@
             success: function( user ){
                 
                 window.location = '{{route("confirmarcuenta")}}';
-          
+                $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
             error:function( jqXHR, textStatus, errorThrown  ){
                 if( jqXHR.status == 404 ) {}
                 
                 else if( jqXHR.status == 422 ) 
-                {                        
+                {     
+                    $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();                    
                     GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
                 }
                 else if( jqXHR.status == 429 ) 
                 {   
+                    // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
                     let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
                     let errorInicio = jqXHR.responseJSON.error.data['inicio'];
                     let errorFin = jqXHR.responseJSON.error.data['fin'];
 
                     $.each( errorInicio , function( index, diasemana ) {
                         $("#horainicio-"+ diasemana ).addClass("is-invalid");
+                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");
+                      
+                    
                     });
                     
                     $.each( errorFin , function( index, diasemana ) {
                         $("#horafin-"+ diasemana ).addClass("is-invalid");
+                        $("#errorfin-"+ diasemana ).addClass("is-invalid");
+                    
                     });
 
                     setTimeout( function() {
+                        // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
                         $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
-                    }, 1500);
+                    }, 5000);
 
                 }  
             }
@@ -192,7 +194,7 @@
     setTimeout( function() {
     
         $("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
-    }, 1500);
+    }, 5000);
 
     }
     

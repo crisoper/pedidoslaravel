@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductosCreateRequest;
 use App\Http\Requests\Admin\ProductosUpdateRequest;
+use App\Jobs\ProcessimageJob;
 use App\Models\Admin\Producto;
 use App\Models\Admin\Productocategoria;
 use App\Models\Admin\Productofoto;
@@ -13,6 +14,7 @@ use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ProductosController extends Controller
@@ -139,36 +141,38 @@ class ProductosController extends Controller
         ]);
         $productotag->save();  
 
+
         $files = $request->file('fotoproducto');       
         if ( count($files) > 0) {                
-        foreach($files as $file){                
-            $extension = strtolower( $file->getClientOriginalExtension() ) ;
-            $filename = strtolower(uniqid().'_'.$file->getClientOriginalName());           
-            if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
-                $redimencionImg = Image::make($file->path());
-                $redimencionImg->fit(350, 300, function ($constraint) {
-                    $constraint->upsize();
-                });
-                $redimencionImg->save(storage_path('app/public/img_productos').'/'.$filename);
+        foreach($files as $file){    
+            
+            //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
+       
+            $input['fotoproducto'] = strtolower(uniqid().'.'.$file->getClientOriginalExtension());
+            $destinationPath = public_path('/images');
+            $file->move($destinationPath, $input['fotoproducto']);
 
-                $fotoproducto = Productofoto::firstOrNew([               
-                    'empresa_id'=> $this->empresaId(),
-                    'producto_id'=> $productos->id,
-                    'nombre'=>  $filename,
-                    'url' =>  'img_productos'.'/'.$filename,
-                ],
-                [
-                    'created_at' => Auth()->user()->id,
-                ] );
-                $fotoproducto->save();
-            } 
-        }      
-    }  
+            //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
+
+              $fotoproducto = Productofoto::firstOrNew([               
+                'empresa_id'=> $this->empresaId(),
+                'producto_id'=> $productos->id,
+                'nombre'=>   $input['fotoproducto'],
+                'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
+            ],
+            [
+                'created_at' => Auth()->user()->id,
+            ] );
+            $fotoproducto->save();
+               
+            ProcessimageJob::dispatch($fotoproducto);
+            }
+        }  
+    //    
         
         return redirect()->route('productos.index')->with('El producto se ha registrado satisfactoriamente...');
     }
-
-   
+     
     /**
      * Display the specified resource.
      *
@@ -194,7 +198,7 @@ class ProductosController extends Controller
         $fotosproducto = Productofoto::where('producto_id', $producto->id  )->get();
         foreach ($fotosproducto as $foto) {
           
-            $exists = \Storage::disk('img_productos')->exists( $foto->nombre ); 
+            $exists = Storage::disk('img_productos')->exists( $foto->nombre ); 
                        
         }
         return view('admin.productos.editar', compact('producto','exists','tag'));
@@ -256,42 +260,41 @@ class ProductosController extends Controller
        $productotag->tag_id = $tagid;
        $productotag->save();  
       
-        $files = $request->file('fotoproducto');      
-       
-        if ( $files != null || $files != "" ) {            
-            $fotosdelete = Productofoto::where("producto_id", $producto->id )->get();
-            foreach($fotosdelete as $foto){
-                $foto->delete();
-            }         
-               if($request->hasFile('fotoproducto')){
-                foreach($files as $file){                
-                    $extension = strtolower( $file->getClientOriginalExtension() ) ;
-                    $filename = uniqid().'_'.$file->getClientOriginalName();           
-                    if (   \Storage::disk('img_productos')->put($filename,  \File::get($file)) ) { 
-                        $redimencionImg = Image::make($file->path());
-                        $redimencionImg->fit(350, 300, function ($constraint) {
-                            $constraint->upsize();
-                        });
-                        $redimencionImg->save(storage_path('app/public/img_productos').'/'.$filename);
-        
-                        $fotoproducto = Productofoto::firstOrNew([               
-                            'empresa_id'=> $this->empresaId(),
-                            'producto_id'=> $producto->id,
-                            'nombre'=>  $filename,
-                            'url' =>  'img_productos'.'/'.$filename,
-                        ],
-                        [
-                            'created_at' => Auth()->user()->id,
-                        ] );
-                        $fotoproducto->save();
-                    } 
-                }
-               }
-     
-               
-            }
+       $files = $request->file('fotoproducto');       
+       if ( count($files) > 0) {                
+       foreach($files as $file){    
+           
+           //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
+      
+           $input['fotoproducto'] = time().'.'.$file->getClientOriginalExtension();
+           $destinationPath = public_path('/images');
+           $file->move($destinationPath, $input['fotoproducto']);
+
+            //  \Storage::disk('img_productos')->put($filename,  \File::get($file));
+
+             $fotoproducto = Productofoto::firstOrNew([               
+               'empresa_id'=> $this->empresaId(),
+               'producto_id'=> $producto->id,
+               'nombre'=>   $input['fotoproducto'],
+               'url' =>  'images' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
+           ],
+           [
+               'created_at' => Auth()->user()->id,
+           ] );
+
+           
+           $fotoproducto->save();
+          
+             // defer the processing of the image thumbnails
+             $this->redimension($fotoproducto);
+            //  ProcessimageJob::dispatch($fotoproducto);
+           }
+       }  
+   //    
             return redirect()->route('productos.index')->with('info','Datos modificados satisfactoriamente...');  
     }
+
+ 
     /**
      * Remove the specified resource from storage.
      *
@@ -326,7 +329,7 @@ class ProductosController extends Controller
         $fotosproducto = Productofoto::where('producto_id', $request->id  )->get();
         foreach ($fotosproducto as $foto) {
           
-            $exists = \Storage::disk('img_productos')->exists( $foto->nombre ); 
+            $exists = Storage::disk('img_productos')->exists( $foto->nombre ); 
             if ($exists) {
                 return response()->json(["data", $fotosproducto], 200);
             }else{
