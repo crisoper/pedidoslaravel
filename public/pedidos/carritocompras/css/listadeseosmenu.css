@@ -266,9 +266,11 @@
   font-size: 14px;
   font-weight: 500;
 }
-.btn_pedido_favorites:hover {
+.btn_pedido_favorites:hover,
+.btn_pedido_favorites:focus {
   color: #ffffff;
   background: #3eb291;
+  box-shadow: none;
 }
 
 

@@ -60,8 +60,14 @@ class ProductosController extends Controller
     
     //PRODUCTOS X AJAX
 
-    public function recomendados()
+    public function recomendados(Request $request)
     {
+        if ( $request->has("storagecliente_id") and $request->has("storagecliente_id") != 'false') {
+            # code...
+        } else {
+            # code...
+        }
+        
         $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
         ->with([
             "tags",
@@ -77,13 +83,6 @@ class ProductosController extends Controller
     
     public function ofertas(Request $request)
     {
-
-        if ( $request->has("storagecliente_id") and $request->has("storagecliente_id") != 'false') {
-            # code...
-        } else {
-            # code...
-        }
-        
 
         $productosofertados = Producto::whereDate( "created_at", ">", 20 )
         ->with([
@@ -115,7 +114,7 @@ class ProductosController extends Controller
     
     public function maspedidos()
     {
-        $productosmaspedidos = Producto::whereDate( "stock", "<", 10 )
+        $productosmaspedidos = Producto::where( "stock", "<", 10 )
         ->with([
             "tags",
             "categoria",

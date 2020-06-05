@@ -46,20 +46,33 @@
 
                 });  
 
+                let enlistadeseos = '';
+                // console.log( typeof( oferta.encarrito ) );
+                if (oferta.enlistadeseos == false) {
+                    enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
+                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ oferta.id }">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                    </div>`;
+                } else {
+                    enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ oferta.id }">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                    </div>`;
+                }
+
                 let encarrito = '';
-
-                console.log( typeof( oferta.encarrito ) );
-
                 if (oferta.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart" idproducto="${ oferta.id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ oferta.id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate" idproducto="${ oferta.id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ oferta.id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </button>
@@ -71,6 +84,10 @@
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
                                 ${ fotos }
+                                
+                                <div class="product-badge offer-badge">
+                                    <span>Oferta</span>
+                                </div>
                             </div>
                             
                             
@@ -106,15 +123,11 @@
                                 <hr class="mt-0 mb-2">
                                 <div class="row mb-2 px-3">
                                     <div class="col-2 p-0">
-                                        <button class="abrir_modal_producto" data-toggle="modal" data-target="#exampleModal">
+                                        <button class="abrir_modal_producto hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                     </div>
-                                    <div class="col-2 p-0">
-                                        <button class="agregar_favoritos">
-                                            <i class="fa fa-heart"></i>
-                                        </button>
-                                    </div>
+                                    ${ enlistadeseos }
                                     ${ encarrito }
                                 </div>
                             </div>
@@ -124,7 +137,63 @@
             });
     
             $("#cuerpoProductosEnOferta").html( ofertasHTML);
-        } 
+            // sumarRestarCantidad();
+            menuProductos();
+        }
+
+        
+        function sumarRestarCantidad() {
+            
+            var proQty = $('.input_group_unit_product');
+            proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
+            proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
+            $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
+                var $button = $(this);
+                var oldValue = $button.parent().find('input').val();
+                if ($button.hasClass('more')) {
+                    var newVal = parseFloat(oldValue) + 1;
+                } else {
+                    // Don't allow decrementing below zero
+                    if (oldValue > 1) {
+                        var newVal = parseFloat(oldValue) - 1;
+                    } else {
+                        newVal = 1;
+                    }
+                }
+                $button.parent().find('input').val(newVal);
+            });
+        }
+
+        
+        function menuProductos() {
+            $('.portfolio-menu button.btn').on('click', function () {
+                $('.portfolio-menu button.btn').removeClass('active');
+                $(this).addClass('active');
+            })
+
+            // :: 6.0 Masonary Gallery Active Code
+            if ($.fn.imagesLoaded) {
+                $('.karl-new-arrivals').imagesLoaded(function () {
+                    // filter items on button click
+                    $('.portfolio-menu').on('click', 'button', function () {
+                        var filterValue = $(this).attr('data-filter');
+                        $grid.isotope({
+                            filter: filterValue
+                        });
+                    });
+                    // init Isotope
+                    var $grid = $('.karl-new-arrivals').isotope({
+                        itemSelector: '.single_gallery_item',
+                        percentPosition: true,
+                        masonry: {
+                            columnWidth: '.single_gallery_item'
+                        }
+                    });
+                });
+            }
+        }
+
+
     });
 
 

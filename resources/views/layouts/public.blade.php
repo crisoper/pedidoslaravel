@@ -181,15 +181,37 @@
                         </div>
 
                         {{-- AFILIAR RESTAURANTE --}}
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-8 p-0 header_top_recommended">
+                        <div class="col-6 col-sm-6 col-md-5 col-lg-6 p-0 header_top_recommended">
                             <a class="btn btn_recommended" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                         </div>
                         
-                        {{-- LOGIN --}}
-                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 p-0 header_top_login">
+                        {{-- APPS --}}
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
                             <div class="btn-group">
                                 <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user-circle"></i> Iniciar sesión <i class="fas fa-angle-down"></i>
+                                    Apps <i class="fas fa-angle-down"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right dropdown_menu">
+                                    <div>
+                                        <a class="btn btn_app_android" href="#">
+                                            <img src="{{asset('img/appmovil/googleplay.png')}}" alt="">
+                                        </a>
+                                    </div>
+                                    <hr class="my-1">
+                                    <div>
+                                        <a class="btn btn_app_ios" href="#">
+                                            <img src="{{asset('img/appmovil/appstore.png')}}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- LOGIN --}}
+                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
+                            <div class="btn-group">
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Iniciar sesión <i class="fas fa-angle-down"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right dropdown_menu">
                                     <div>
@@ -361,7 +383,7 @@
                                     </div>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right header_cart">
-                                    <small><b>Como mínimo debes comprar s/ 30.00</b></small>
+                                    <small class="holamundo"><b>Como mínimo debes comprar s/ 30.00</b></small>
                                     <hr class="mt-1">
                                     <div class="scroll_cart_header">
                                         <div class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
@@ -389,7 +411,7 @@
                                             <div class="col-7">
                                                 <small>Estas comprando:</small>
                                                 <h5 class="sumaCantidadCestaMenu_content">
-                                                    <span class="sumaCantidadCestaMenu">2</span> Productos
+                                                    <span class="sumaCantidadCestaMenu">0</span> Productos
                                                 </h5>
                                             </div>
                                             <div class="col-5">
@@ -448,7 +470,7 @@
     
 
     
-    <section style="margin-top: 130px; display: block">
+    <section style="margin-top: 130px;">
         <main>
             @yield('contenido')
         </main>

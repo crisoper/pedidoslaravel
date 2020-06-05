@@ -3,7 +3,8 @@
 @section('contenido')
 
 
-	<!-- RECOMENDADOS -->
+    <!-- RECOMENDADOS -->
+    
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -14,11 +15,9 @@
             <div class="col-12">
                 <hr class="subrayado_productos mt-1">
             </div>
-            <div class="col-12 px-1">
-                <div class="wrap-slick2">
-                    <div class="slick2 slickCustom" id="productosRecomendados">
-                        
-                    </div>
+            <div class="col-12 p-0 slickCustom">
+                <div class="responsiveSlick p-0" id="productosRecomendados">
+
                 </div>
             </div>
         </div>
@@ -46,7 +45,13 @@
                 <hr class="subrayado_productos mt-1">
             </div>
             <div class="col-12">
-                <div class="row karl-new-arrivals mb-5" id="cuerpoProductosEnOferta">
+                <div class="row karl-new-arrivals" id="cuerpoProductosEnOferta">
+                   
+                </div>
+                <div class="row karl-new-arrivals" id="cuerpoProductosNuevos">
+                   
+                </div>
+                <div class="row karl-new-arrivals" id="cuerpoProductosMasPedidos">
                    
                 </div>
             </div>
@@ -117,10 +122,10 @@
 @section('scripts')
 
     @include('publico.inicio.carjs')
-    {{-- @include('publico.inicio.listadeseosjs') --}}
+    @include('publico.inicio.listadeseosjs')
     @include('publico.inicio.recomendadosjs')
     @include('publico.inicio.ofertasjs')
-    {{-- @include('publico.inicio.nuevosjs') --}}
-    {{-- @include('publico.inicio.maspedidosjs') --}}
+    @include('publico.inicio.nuevosjs')
+    @include('publico.inicio.maspedidosjs')
 
 @endsection

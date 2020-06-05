@@ -7,11 +7,6 @@
     {{-- <link rel="stylesheet" href="{{asset('pedidos/css/bootstrap.min.css')}}"> --}}
     
     <link rel="stylesheet" href="{{asset('pedidos/css/style.css')}}">
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/font-awesome.min.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/elegant-icons.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/nice-select.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/jquery-ui.min.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/slicknav.min.css')}}"> --}}
 
 
     {{-- MENUS --}}
@@ -20,7 +15,6 @@
     <link rel="stylesheet" href="{{asset('pedidos/menus/css/menumovil.css')}}">
 
     {{-- MODAL --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/css/modal.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('pedidos/modal/modal.css')}}">
     
     {{-- CARRITO COMPRAS --}}
@@ -33,8 +27,8 @@
     <link rel="stylesheet" href="{{asset('pedidos/buscador/css/buscador.css')}}">
 
     {{-- CAROUSEL 1 --}}
-    <link rel="stylesheet" href="{{asset('pedidos/slider/css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/slider/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/slick/slick-theme.css')}}">
 
     {{-- PRODUCTOS --}}
     <link rel="stylesheet" href="{{asset('pedidos/productos/css/core-style.css')}}">

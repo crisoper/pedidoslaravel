@@ -23,8 +23,8 @@ class ProductoResource extends JsonResource
             'precio' => $this->precio,
             'stock' => $this->stock,
             'tags' => $this->tags,
-            'encarrito' => true,
-            'megusta' => true,
+            'encarrito' => false,
+            'enlistadeseos' => false,
             'fotos' => ProductofotoResource::collection( $this->fotos ),
         ];
     }
