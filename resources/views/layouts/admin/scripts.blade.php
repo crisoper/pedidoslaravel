@@ -3,6 +3,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="{{ asset('adminlte301/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<script src="{{ asset('Plugins/imgLiquid/imgLiquid.js') }}"></script>
 <script src="{{ asset('adminlte301/js/adminlte.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
