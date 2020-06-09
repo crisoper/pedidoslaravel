@@ -31,53 +31,46 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $idempresa = session()->get('empresaactual');      
+        $idempresa = session()->get('empresaactual');
         // $periodos = Periodo::where('empresa_id', $idempresa )->first();  
         $userEmpresa = Auth()->user()->empresas;
-        
+        $flag = "home";
         $empresas = $userEmpresa;
         $empresa = $userEmpresa->first();
-       
-        if( count($userEmpresa) != 0 ){        
-           
-                if ( auth()->user()->hasRole('SuperAdministrador') ) {
-                    Session::put( 'empresaactual', $empresa->id );
-                    Session::put( 'empresadescripcion', $empresa->nombre );
-                    return view('home');
-                }
-                else {
 
-                    if ( auth()->user()->hasRole('web_Administrador empresa') ) {
-                        if( count($userEmpresa) > 1 ){
-                            return view('admin.empresas.formseleccionarempresa', compact('empresas'));
-                            
-                        }else{
-                            Session::put( 'empresaactual', $empresa->id );
-                            Session::put( 'empresadescripcion', $empresa->nombre );
-                            return view('home');
-                        }                        
-                        
+        if (count($userEmpresa) != 0) {
+
+            if (auth()->user()->hasRole('SuperAdministrador')) {
+                Session::put('empresaactual', $empresa->id);
+                Session::put('empresadescripcion', $empresa->nombre);
+                return view('home', compact('flag'));
+            } else {
+
+                if (auth()->user()->hasRole('web_Administrador empresa')) {
+                    if (count($userEmpresa) > 1) {
+
+                        return view('admin.empresas.formseleccionarempresa', compact('empresas'));
+                    } else {
+                        Session::put('empresaactual', $empresa->id);
+                        Session::put('empresadescripcion', $empresa->nombre);
+                        return view('home', compact('flag'));
                     }
-                    else {
+                } else {
 
-                    
+
                     $rol = auth()->user()->roles()->where("guard_name", "menu")->whereNotNull("paginainicio")->first();
-                    if ( $rol and Route::has($rol->paginainicio ) ) {
-                        return redirect()->route( $rol->paginainicio );
-                    }
-                    else {
-                        
+                    if ($rol and Route::has($rol->paginainicio)) {
+                        return redirect()->route($rol->paginainicio);
+                    } else {
+
                         return view("layouts.paginas.mensajes.sinrol");
                     }
                 }
 
-                }
+                
             }
-            else
-            {
-                return redirect()->route('registrartuempresa');
-               
-
-            }
+        } else {
+            return redirect()->route('registrartuempresa');
+        }
     }
 }

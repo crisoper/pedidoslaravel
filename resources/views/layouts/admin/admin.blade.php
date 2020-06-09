@@ -12,9 +12,9 @@
     @include('layouts.admin.styles')
     @include('layouts.admin.scripts')
     @include('layouts.admin.messenger')
-    
+  
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed " >
     <div class="wrapper" id="app">
   
         <!-- Navbar -->

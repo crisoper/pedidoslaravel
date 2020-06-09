@@ -81,7 +81,10 @@ function() {
     Route::resource('usuariosxempresa', 'Admin\Usuarios\UsuariosxempresaController');
 
 
-
+    //INCLUDES DE HOME
+    Route::get('includeProductos.productos','Admin\IncludeshomeController@includeProductos')->name('includeProductos.productos');
+    Route::get('includeProductos.principal','Admin\IncludeshomeController@includePrincipal')->name('includeProductos.principal');
+    Route::get('includeProductos','Admin\IncludeshomeController@getproductosmasvendidos')->name('getproductosmasvendidos');
 
     
     //Rutas que requieren un periodo para continuar
