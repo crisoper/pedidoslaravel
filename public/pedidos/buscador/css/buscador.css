@@ -6,8 +6,8 @@
 .header__search > button {
     width: 100%;
     font-size: 20px;
-    color: #5b6268 !important;
-    background-color: #ffffff;
+    color: #ffffff !important;
+    background-color: #3eb291;
     padding: 0px !important;
     border: none;
 }
@@ -19,7 +19,7 @@
   height: 45px;
   text-align: center;
   border-radius: 50%;
-  border: 1px solid #5b6268;
+  border: 1px solid #ffffff;
   padding: 5px 0px 0px 0px;
   float: right;
 }

@@ -42,7 +42,7 @@
                     if (contador == 2) {
                         fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover-img">`;
                     } else {
-                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }">`;
+                        fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
                     }
 
                 });
