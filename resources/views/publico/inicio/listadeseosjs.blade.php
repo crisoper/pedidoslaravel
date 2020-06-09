@@ -37,12 +37,12 @@
 
         $("#mostrarProductosListaDeseosMenuFlotanteItems").html();
 
-        let carHTML = "";
+        let listaHTML = "";
 
         $.each( listadeseos.data, function( key, deseos ) {
-            carHTML = carHTML + `
+            listaHTML = listaHTML + `
                 <div class="col-12 mt-2">
-                    <div class="row border_caja_product">
+                    <div class="row border_caja_favorites">
                         <div class="col-2 p-0">
                             <img src="pedidos/img/featured/feature-2.jpg" alt="">
                         </div>
@@ -61,8 +61,19 @@
             `;
         });
 
-        $("#mostrarProductosListaDeseosMenuFlotanteItems").html( carHTML);
+        $("#mostrarProductosListaDeseosMenuFlotanteItems").html( listaHTML);
+        marginListaDeseosMenu();
     } 
+
+    function marginListaDeseosMenu() {
+        let contarDrpdownListaDeseosHeader = $('.border_caja_favorites').length;
+        if (contarDrpdownListaDeseosHeader < 3) {
+            $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '67.5px');
+        }
+        else {
+            $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '0px');
+        }
+    }
 
 
     $("#mostrarProductosListaDeseosMenuFlotanteItems").on("click", ".eliminarProductoListaDeseos", function() {
@@ -99,21 +110,19 @@
     //Agregar producto a carrito compras
     $(".contenidoPrincipalPagina").on("click", ".agregar_lista_deseos", function() {
 
-        let btnAgregarCar = $( this );
-        let producto_id = $( btnAgregarCar).attr("idproducto");
+        console.log($(this));
+        let btnAgregarLista = $( this );
+        let producto_id = $( btnAgregarLista).attr("idproducto");
 
         if( obtenerLocalStorageclienteID () != false ) {
             
-            $( btnAgregarCar, ">", ".fa-heart" ).css('color', '#3eb291');
-            $( btnAgregarCar ).addClass("hint--success").attr('data-hint', 'Agregado a mi lista de deseos');
-
             agregarProducto_ListDeseos( producto_id, obtenerLocalStorageclienteID (), "deseos" );
         }
 
     })
 
 
-    function agregarProducto_ListDeseos( producto_id, storagecliente_id, tipo, btnAgregarCar) {
+    function agregarProducto_ListDeseos( producto_id, storagecliente_id, tipo, btnAgregarLista) {
 
         $.ajax({
             url: "{{ route('listadeseo.store') }}",
@@ -124,7 +133,7 @@
                 producto_id: producto_id
             },
             success: function ( data ) {
-                console.log( $( btnAgregarCar ) );
+                console.log( $( btnAgregarLista ) );
             },
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.responseJSON);

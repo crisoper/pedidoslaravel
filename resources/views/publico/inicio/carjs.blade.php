@@ -2,6 +2,7 @@
     
     $("#mostrarProductosCestaMenuFlotante").on("click", function() {
         obtenerProductosCesta( );
+        marginCestaMenu();
     });
     
 
@@ -68,7 +69,18 @@
 
         $("#mostrarProductosCestaMenuFlotanteItems").html( carHTML);
         sumarImportesCestaMenu();
-    } 
+        marginCestaMenu();
+    }
+
+    function marginCestaMenu() {
+        let contarDrpdownCartHeader = $('.border_caja_product').length;
+        if (contarDrpdownCartHeader < 3) {
+            $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '67.5px');
+        }
+        else {
+            $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '0px');
+        }
+    }
 
 
     $("#mostrarProductosCestaMenuFlotanteItems").on("click", ".eliminarProductoCestaMenu", function() {
@@ -103,9 +115,6 @@
 
 
     //Agregar producto a carrito compras
-    // $(".agregar_cart").on("click", function() {
-
-    // })
 
     $(".contenidoPrincipalPagina").on("click", ".agregar_cart", function() {
 
@@ -116,10 +125,6 @@
 
         if( obtenerLocalStorageclienteID () != false ) {
             
-            $( btnAgregarCar ).html("<span class='product_aggregate'>Agregado</span> <i class='fas fa-check-circle'></i>");
-            $("#capa");
-            $( btnAgregarCar ).addClass("hint--success").attr('data-hint', 'Producto agregado en cesta');
-
             agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta" );
         }
 

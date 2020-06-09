@@ -46,21 +46,20 @@ Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
 ->name("listadeseo.delete");
 
 
-//PRODUCTOS RECOMENDADOS
+//PRODUCTOS INICIO
 Route::get("ajax/productos/recomendados", "Publico\ProductosController@recomendados")
 ->name("ajax.productos.recomendados");
-
-//PRODUCTOS OFERTAS
 Route::get("ajax/productos/ofertas", "Publico\ProductosController@ofertas")
 ->name("ajax.productos.ofertas");
-
-//PRODUCTOS NUEVOS
 Route::get("ajax/productos/nuevos", "Publico\ProductosController@nuevos")
 ->name("ajax.productos.nuevos");
-
-//PRODUCTOS NUEVOS
 Route::get("ajax/productos/maspedidos", "Publico\ProductosController@maspedidos")
 ->name("ajax.productos.maspedidos");
+
+
+// PRODUCTOS RECOMENDADOS
+Route::get("ajax/recomendados/index", "Publico\RecomendadosAjaxController@index")
+->name("ajax.recomendados.index");
 
 
 

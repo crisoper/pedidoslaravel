@@ -2,19 +2,19 @@
 <script>
     
     $(document).ready(  function () {
-        //Obtenemos los productos en ofertas
-        obtenerProductosMasPedidos( );
+        //Obtenemos los productos en recomendados
+        obtenerProductosRecomendados( );
     
-        function obtenerProductosMasPedidos( ) {
+        function obtenerProductosRecomendados( ) {
     
             $.ajax({
-                url: "{{ route('ajax.productos.maspedidos') }}",
+                url: "{{ route('ajax.recomendados.index') }}",
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID (),
                 },
                 success: function ( data ) {
-                    mostrarProductosMasPedidos( data )
+                    mostrarProductosRecomendados( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -23,18 +23,18 @@
     
         }
     
-        function mostrarProductosMasPedidos( datos ) {
-            $("#cuerpoProductosMasPedidos").html();
+        function mostrarProductosRecomendados( datos ) {
+            $("#cuerpoProductosRecomendados").html();
     
-            let masPedidosHTML = "";
+            let recomendadosHTML = "";
     
-            $.each( datos.data, function( key, maspedido ) {
+            $.each( datos.data, function( key, recomendado ) {
 
                 let fotos = '';
 
                 let contador = 0; 
                 
-                $.each( maspedido.fotos, function( key, foto ) {
+                $.each( recomendado.fotos, function( key, foto ) {
                     
                     contador++
 
@@ -47,43 +47,47 @@
                 });  
 
                 let enlistadeseos = '';
-                // console.log( typeof( maspedido.encarrito ) );
-                if (maspedido.enlistadeseos == false) {
+                // console.log( typeof( recomendado.encarrito ) );
+                if (recomendado.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ maspedido.id }">
+                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ recomendado.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ maspedido.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ recomendado.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 }
 
                 let encarrito = '';
-                if (maspedido.encarrito == false) {
+                if (recomendado.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedido.id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendado.id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedido.id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendado.id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </div>`;
                 }
 
-                masPedidosHTML = masPedidosHTML + `
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 single_gallery_item productosMasPedidos wow fadeInUpBig mb-0" data-wow-delay="0.4s">
+                recomendadosHTML = recomendadosHTML + `
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
                                 ${ fotos }
+                                
+                                <div class="product-badge offer-badge">
+                                    <span>Oferta</span>
+                                </div>
                             </div>
                             
                             
@@ -91,9 +95,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-truncate my-0">
-                                            <a class="link_producto_detalle" href="#"><b>${ maspedido.nombre }</b></a>
+                                            <a class="link_producto_detalle" href="#"><b>${ recomendado.nombre }</b></a>
                                         </p>
-                                        <p class="text-truncate small my-0">${ maspedido.descripcion }</p>
+                                        <p class="text-truncate small my-0">${ recomendado.descripcion }</p>
                                     </div>
                                 </div>
                                 <hr class="mt-1 mb-0">
@@ -104,7 +108,7 @@
                                         </p> --}}
                                         <p class="small"></p>
                                         <h4 class="price_product_unit my-0">
-                                            S/ <span>${ maspedido.precio }</span>
+                                            S/ <span>${ recomendado.precio }</span>
                                         </h4>
                                     </div>
                                     <div class="col-6 pt-1 pb-2 px-2 m-0">
@@ -132,9 +136,8 @@
                 `;
             });
     
-            $("#cuerpoProductosMasPedidos").html( masPedidosHTML);
+            $("#cuerpoProductosRecomendados").html( recomendadosHTML);
             sumarRestarCantidad();
-            menuProductos();
         }
 
         
@@ -160,36 +163,7 @@
             });
         }
 
-
-        function menuProductos() {
-            $('.portfolio-menu button.btn').on('click', function () {
-                $('.portfolio-menu button.btn').removeClass('active');
-                $(this).addClass('active');
-            })
-
-            // :: 6.0 Masonary Gallery Active Code
-            if ($.fn.imagesLoaded) {
-                $('.karl-new-arrivals').imagesLoaded(function () {
-                    // filter items on button click
-                    $('.portfolio-menu').on('click', 'button', function () {
-                        var filterValue = $(this).attr('data-filter');
-                        $grid.isotope({
-                            filter: filterValue
-                        });
-                    });
-                    // init Isotope
-                    var $grid = $('.karl-new-arrivals').isotope({
-                        itemSelector: '.single_gallery_item',
-                        percentPosition: true,
-                        masonry: {
-                            columnWidth: '.single_gallery_item'
-                        }
-                    });
-                });
-            }
-        }
-
-
+        
     });
 
 
