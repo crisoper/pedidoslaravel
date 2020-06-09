@@ -71,7 +71,7 @@ class IncludeshomeController extends Controller
 
 
 
-    public function getproductosmasvendidos( )
+    public function getproductosmasvendidos()
     {        
         $hoy =  Carbon::now();
         $fechainicio = Carbon::now()->subDays( 7 );
