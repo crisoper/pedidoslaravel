@@ -81,6 +81,20 @@ Route::get('listadedeseos', 'Publico\ListadeseosController@index')
 ->name('listadedeseos.index');
 
 
+// PRODUCTOS RECOMENDADOS
+Route::get('recomendados', 'Publico\RecomendadosController@index')
+->name('recomendados.index');
+
+
+// EMPRESAS
+Route::get('empresas1', 'Publico\EmpresasController@index')
+->name('empresas1.index');
+
+
+
+
+
+
 
 Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
 Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');

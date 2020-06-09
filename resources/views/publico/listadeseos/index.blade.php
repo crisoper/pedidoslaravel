@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title mb-0">
-                    <h2>Detalle de lista de deseos</h2>
+                    <h2 class="float-left m-0 p-0">Detalle de lista de deseos</h2>
                 </div>
             </div>
             <div class="col-12">

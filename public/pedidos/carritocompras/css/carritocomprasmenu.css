@@ -16,6 +16,7 @@
 .header_top_cart #icon_pedido {
     padding: 6px 10px 0px 0px !important;
 }
+
 .header_top_cart > button h2 {
     width: 50px;
     height: 45px;
@@ -25,6 +26,7 @@
     padding: 1px 0px 0px 0px;
     float: right;
 }
+
 .header_top_cart > button p {
     font-size: 14px;
     line-height: 15px;

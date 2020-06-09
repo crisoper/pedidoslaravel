@@ -81,7 +81,7 @@ label {
     border-radius: 5px;
 }
 .btn_aplicar_cupon {
-    color: #ffffff;
+    color: #ffffff !important;
     background: #3eb291;
     padding: 12px 5px;
     display: block;
@@ -99,8 +99,8 @@ label {
 
 
 .btn_realizar_pedido {
-    color: #3eb291;
-    background: #ececeb;
+    color: #5b6268  !important;
+    background: #3eb291 !important;
     padding: 10px 20px;
     display: block;
     margin-top: 10px;
@@ -113,13 +113,12 @@ label {
 }
 .btn_realizar_pedido:hover,
 .btn_realizar_pedido:focus {
-    color: #ffffff;
-    background: #3eb291;
+    color: #ffffff !important;
 }
 
 
 .btn_seguir_comprando {
-    color: #3eb291;
+    color: #5b6268  !important;
     background: #ececeb;
     padding: 10px 20px;
     display: block;
@@ -134,6 +133,6 @@ label {
 }
 .btn_seguir_comprando:hover,
 .btn_seguir_comprando:focus {
-    color: #ffffff;
+    color: #ffffff !important;
     background: #3eb291;
 }

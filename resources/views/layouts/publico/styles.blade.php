@@ -37,6 +37,13 @@
     <link rel="stylesheet" href="{{asset('pedidos/tooltips/hint.css')}}">
 
 
+    {{-- MENU PRODUCTOS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/menuproductos/menuproductos.css')}}">
+
+
+    {{-- FILTRAR PRODUCTOS --}}
+    <link rel="stylesheet" href="{{asset('pedidos/filtrarproductos/filtrar.css')}}">
+
 
 
 

@@ -87,8 +87,8 @@
                             ${ fotos }
 
                             <!-- Product Badge -->
-                            <div class="product-badge empresa_badge">
-                                <p class="text-truncate p-0">Nombre de empresa</p>
+                            <div class="product-badge empresa_badge p-0">
+                                <a href="{{route('empresas1.index')}}" class="text-truncate p-0">Nombre de empresa</a>
                             </div>
                         </div>
 
@@ -97,9 +97,7 @@
                         <div class="featured__item__text container_product_cart featured__item__text_recomendados px-2 pt-2">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="text-truncate my-0">
-                                        <a class="link_producto_detalle" href="#"><b>${ recomendados.nombre }</b></a>
-                                    </p>
+                                    <p class="text-truncate my-0"><b>${ recomendados.nombre }</b></p>
                                     <p class="text-truncate small my-0">${ recomendados.descripcion }</p>
                                 </div>
                             </div>

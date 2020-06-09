@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 	
     $(document).on("click", ".dropdown-menu", function (e) {
@@ -14,11 +15,11 @@ $(document).ready(function () {
         });
       });
     }
-  });
+});
   
 
 
-(function ($) {
+  $(document).ready(function () {
 
     /*------------------
         Background Set
@@ -54,9 +55,8 @@ $(document).ready(function () {
         item.querySelector('.nav_link').addEventListener('click', () => item.classList.add('active'))
         item.querySelector('.regresar_menu').addEventListener('click', () => item.classList.remove('active'))
     })
-    
 
-})(jQuery);
+});
 
 
   

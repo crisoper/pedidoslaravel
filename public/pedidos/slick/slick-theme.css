@@ -1,12 +1,9 @@
-@charset 'UTF-8';
-
-
 
 /* Arrows */
 .slick-prev,
 .slick-next {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     top: calc((100% - 70px) / 2);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -32,11 +29,11 @@
     background: #3eb291;
 }
 .slick-prev {
-    left: -5px;
+    left: 0px;
 }
 
 .slick-next {
-    right: -5px;
+    right: 0px;
 }
 
 /* Dots */

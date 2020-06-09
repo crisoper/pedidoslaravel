@@ -1,19 +1,4 @@
 
-.section_heading {
-    margin-bottom: 50px;
-    position: relative;
-    z-index: 1;
-}
-
-.section_heading h2 {
-    font-size: 48px;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
-
-.section_heading.text-left {
-    text-align: left !important;
-}
 
 
 /* ----------------------------
@@ -66,12 +51,10 @@
     border: none !important;
     border-radius: 5px;
 }
-.single_product_wrapper:hover,
-.single_product_wrapper:focus {
+.single_product_wrapper:hover {
+    transition: 0.3s !important;
     border: 0 !important;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.14);
-    -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.14);
-    -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .single_product_wrapper .product-img {
@@ -125,6 +108,35 @@
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
 }
+.single_product_wrapper:hover .product-img .product-badge.empresa_badge {
+    background-color: #3eb291;
+}
+.single_product_wrapper .product-img .empresa_badge a {
+    padding: 5px 45px !important;
+    color: #000000;
+}
+.single_product_wrapper:hover .product-img .product-badge.empresa_badge a {
+    color: #ffffff;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .single_product_wrapper .product-img .empresa_badge a {
+        padding: 5px 50px !important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .single_product_wrapper .product-img .empresa_badge a {
+        padding: 5px 60px !important;
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 575px) {
+    .single_product_wrapper .product-img .empresa_badge a {
+        padding: 5px 100px !important;
+    }
+}
+
+
+
 /* .single_product_wrapper .product-img .product-badge.empresa_direccion_badge {
     top: 25px;
     left: 0;

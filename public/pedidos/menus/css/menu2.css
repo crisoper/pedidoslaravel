@@ -7,7 +7,8 @@
     background-color: #ffffff;
     -moz-box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
     -webkit-box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
-    box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
+	box-shadow: 0 0px 4px rgba(99, 107, 114, 0.4);
+	z-index: 5;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 991px) {

@@ -3,61 +3,136 @@
 @section('contenido')
 
 
-    <!-- RECOMENDADOS -->
-    
-    <div class="container">
+    {{-- RESTAURANTES RECOMENDADOS --}}
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="section-title mb-0">
-                    <h2>Recomendados</h2>
+            <div class="col-12 mb-4 m-0 p-0 slickCustomEmpresas">
+                <div class="m-0 p-0 slickempresas" id="empresasRecomendadas">
+                    <img src="{{asset('img/banners/banner1.jpg')}}" alt="">
+                    <img src="{{asset('img/banners/banner2.jpg')}}" alt="">
+                    <img src="{{asset('img/banners/banner3.jpg')}}" alt="">
+                    <img src="{{asset('img/banners/banner4.jpg')}}" alt="">
                 </div>
             </div>
-            <div class="col-12">
-                <hr class="subrayado_productos mt-1">
+            <div class="col-12 mb-5">
+                <div class="row text-center">
+                    <div class="col-12 col-sm-6">
+                        <p class="mt-0">
+                            <i class="fas fa-check-circle"></i> Pedidos directos a restaurante
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <p class="mt-0">
+                            <i class="fas fa-motorcycle"></i> Seguimiento de delivery
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 p-0 slickCustom">
-                <div class="responsiveSlick p-0" id="productosRecomendados">
+        </div>
+    </div>
 
+
+
+    <!-- RECOMENDADOS -->
+    <div class="container-fluid sticky-top-2 py-0">
+        <div class="row">
+            <div class="col-12 py-0 my-0 navbar navbar-expand-sm" id="mainNav">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Seleccionar<i class="fas fa-bars ml-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar_nav text-uppercase mx-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#preductRecomendado">Recomendados</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#productosEnOferta">Ofertas</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#productosNuevos">Nuevos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#productosMasPedidos">Mas Pedidos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid page-section" id="preductRecomendado">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title mb-0">
+                        <h2 class="float-left m-0 p-0">Recomendados</h2>
+                        <a class="float-right m-0 p-0" href="{{route('recomendados.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
+                </div>
+                <div class="col-12 slickCustom">
+                    <div class="responsiveSlick" id="productosRecomendados">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid page-section" id="productosEnOferta">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title mb-0">
+                        <h2 class="float-left m-0 p-0">Ofertas</h2>
+                        <a class="float-right m-0 p-0" href="#">Ver más <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
+                </div>
+                <div class="col-12">
+                    <div class="row karl-new-arrivals" id="cuerpoProductosEnOferta">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid page-section" id="productosNuevos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title mb-0">
+                        <h2 class="float-left m-0 p-0">Nuevos</h2>
+                        <a class="float-right m-0 p-0" href="#">Ver más <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
+                </div>
+                <div class="col-12">
+                    <div class="row karl-new-arrivals" id="cuerpoProductosNuevos">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid page-section" id="productosMasPedidos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title mb-0">
+                        <h2 class="float-left m-0 p-0">Mas Pedidos</h2>
+                        <a class="float-right m-0 p-0" href="#">Ver más <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="subrayado_productos mt-1">
+                </div>
+                <div class="col-12">
+                    <div class="row karl-new-arrivals" id="cuerpoProductosMasPedidos">
+                       
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 	<!-- END RECOMENDADOS  -->
-
-
-
-    <!-- PRODUCTOS (todos, ofertas, nuevos, mas pedidos, etc) -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="karl-projects-menu">
-                    <div class="text-center portfolio-menu">
-                        <button class="btn active" data-filter="*">TODOS</button>
-                        <button class="btn" data-filter=".productosOfertas">EN OFERTA</button>
-                        <button class="btn" data-filter=".productosNuevos">NUEVOS</button>
-                        <button class="btn" data-filter=".productosMasPedidos">MAS PEDIDOS</button>
-                        {{-- <button class="btn" data-filter=".shoes">shoes</button>
-                        <button class="btn" data-filter=".kids">KIDS</button> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <hr class="subrayado_productos mt-1">
-            </div>
-            <div class="col-12">
-                <div class="row karl-new-arrivals" id="cuerpoProductosEnOferta">
-                   
-                </div>
-                <div class="row karl-new-arrivals" id="cuerpoProductosNuevos">
-                   
-                </div>
-                <div class="row karl-new-arrivals" id="cuerpoProductosMasPedidos">
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END PRODUCTOS -->
 
 	<!-- MODAL PRODUCTOS -->
     <div class="modal fade" id="modalProductosInicio" tabindex="-1" role="dialog" aria-labelledby="modalProductosInicio" aria-hidden="true">
