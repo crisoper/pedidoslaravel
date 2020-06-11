@@ -84,7 +84,8 @@ function() {
     //INCLUDES DE HOME
     Route::get('includeProductos.productos','Admin\IncludeshomeController@includeProductos')->name('includeProductos.productos');
     Route::get('includeProductos.principal','Admin\IncludeshomeController@includePrincipal')->name('includeProductos.principal');
-    Route::get('includeProductos','Admin\IncludeshomeController@getproductosmasvendidos')->name('getproductosmasvendidos');
+    Route::get('includeProductos','Admin\IncludeshomeController@getproductosmaspedidos')->name('getproductosmaspedidos');
+    Route::get('includeProductos.getHistoricoVentas','Admin\IncludeshomeController@getHistoricoVentas')->name('getHistoricoVentas');
 
     
     //Rutas que requieren un periodo para continuar
