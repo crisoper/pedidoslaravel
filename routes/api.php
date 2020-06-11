@@ -71,6 +71,9 @@ Route::get("ajax/maspedidos/index", "Publico\MaspedidosAjaxController@index")
 ->name("ajax.maspedidos.index");
 
 
+Route::get("ajax/productos/getdatosxid", "Publico\ProductosController@getdatosxid")
+->name("ajax.productos.getdatosxid");
+
 
 
 

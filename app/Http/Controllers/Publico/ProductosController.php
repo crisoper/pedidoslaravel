@@ -125,4 +125,25 @@ class ProductosController extends Controller
 
         return ProductoResource::collection( $productosmaspedidos );
     }
+
+
+
+    public function getdatosxid ( Request $request ) {
+        $producto = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
+        ->with([
+            "categoria",
+            "tags",
+            "fotos"
+        ])
+        ->first();
+
+        if ( $producto != null ) {
+            return new ProductoResource (  $producto );
+        }
+
+        return "No se enncontro el producto";
+
+    }
+
+
 }

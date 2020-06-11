@@ -147,14 +147,14 @@
                     
                     <div class="quickview_body row p-0">
                         <div class="col-12 col-lg-5">
-                            <div class="quickview_pro_img">
-                                <img src="pedidos/img/product/product-1.jpg" alt="">
+                            <div id="imagenes_producto_modal">
+                                <img  src="pedidos/img/product/product-1.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-12 col-lg-7">
                             <div class="row">
                                 <div class="col-12">
-                                    <h4 class="titulo_producto_modal_listadeseos">Nombre del producto</h4>
+                                    <h4 id="titulo_producto_modal">Nombre del producto</h4>
                                 </div>
                                 <div class="col-6 col-sm-5 col-md-4">
                                     <div class="top_seller_product_rating">
@@ -179,7 +179,7 @@
                                     </p>
                                 </div>
                                 <div class="col-12">
-                                    <p class="descripcion_preducto_modal_listadeseos">
+                                    <p id="descripcion_producto_modal">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis dignissimos pariatur nihil officia alias magni quod doloribus sit nesciunt labore perspiciatis veritatis eveniet recusandae blanditiis, perferendis quaerat, facere repellendus voluptates exercitationem! Minima, odio voluptate hic esse possimus rerum voluptas qui, dolorum accusantium fugit repellendus sequi non libero ex doloremque.
                                     </p>
                                 </div>

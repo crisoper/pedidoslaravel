@@ -120,7 +120,7 @@
                             <hr class="mt-0 mb-2">
                             <div class="row mb-2 px-3">
                                 <div class="col-2 p-0">
-                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio">
+                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendados.id }">
                                         <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
@@ -186,8 +186,53 @@
             });
 
         }
+
+
+        $(".contenidoPrincipalPagina").on("click", ".abrir_modal_producto_inicio", function() {
+
+            let btn = $( this );
+
+            $.ajax({
+                url: "{{ route('ajax.productos.getdatosxid') }}",
+                method: 'GET',
+                data: {
+                    idproducto: $( btn ).attr("idproducto")
+                },
+                success: function ( data ) {
+                    llenarDatosModalProductoDetalle( data );
+                },
+                error: function ( jqXHR, textStatus, errorThrown ) {
+                    console.log(jqXHR.responseJSON);
+                }
+            });
+
+        });
+
+
+        function llenarDatosModalProductoDetalle( data ) {
+            // console.log( data );
+
+            $("#titulo_producto_modal").html( data.data.nombre ); 
+            $("#descripcion_producto_modal").html( data.data.descripcion );
+
+            crearImagenesProducto( data.data.fotos );
+
+        }
+
+
+
+        function crearImagenesProducto( fotos ) {
+
+            let html = ""; 
+            $.each( fotos, function( key, foto ) {        
+                html = html + `<img  src="${ foto.url }" alt="${ foto.nombre }">`
+            });
+
+            $("#imagenes_producto_modal").html( html );
+
+        }
+
+        imagenes_producto_modal
         
     });
-
-
 </script>
