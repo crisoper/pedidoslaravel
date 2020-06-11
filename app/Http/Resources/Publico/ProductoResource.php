@@ -26,6 +26,8 @@ class ProductoResource extends JsonResource
             'encarrito' => false,
             'enlistadeseos' => false,
             'fotos' => ProductofotoResource::collection( $this->fotos ),
+            'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
+            'empresa' => $this->empresa ? $this->empresa->nombre : '',
         ];
     }
 }

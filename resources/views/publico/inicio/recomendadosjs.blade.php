@@ -232,7 +232,7 @@
 
         }
 
-        imagenes_producto_modal
+        
         
     });
 </script>
