@@ -10,7 +10,9 @@
             $.ajax({
                 url: "{{ route('ajax.productos.recomendados') }}",
                 method: 'GET',
-                data: {},
+                data: {
+                    storagecliente_id: obtenerLocalStorageclienteID()
+                },
                 success: function ( data ) {
                     mostrarProductosRecomendadosInicio( data );
                     
@@ -232,7 +234,7 @@
 
         }
 
-        
+
         
     });
 </script>

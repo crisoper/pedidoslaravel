@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publico;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Producto;
+use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -62,10 +63,20 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
-        if ( $request->has("storagecliente_id") and $request->has("storagecliente_id") != 'false') {
-            # code...
-        } else {
-            # code...
+        $productoCestaIds = array();
+        $productoDeseoIds = array();
+
+        if ( $request->has("storagecliente_id") ) {
+            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "cesta")
+            ->get()
+            ->pluck("producto_id");
+
+
+            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "deseos")
+            ->get()
+            ->pluck("producto_id");
         }
         
         $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
@@ -77,6 +88,24 @@ class ProductosController extends Controller
         ])
         ->limit(10)
         ->get();
+
+        foreach ( $productosrecomendados as $producto ) {
+
+            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+                $producto->encarrito = true;
+            }
+            else {
+                $producto->encarrito = false;
+            }
+            
+            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+                $producto->enlistadeseos = true;
+            }
+            else {
+                $producto->enlistadeseos = false;
+            }
+
+        }
 
         return ProductoResource::collection( $productosrecomendados );
     }
