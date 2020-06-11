@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Producto;
-use App\Models\Admin\Productocategoria;
-use App\Models\Publico\Pedidodetalle;
 use Illuminate\Http\Request;
+use App\Models\Admin\Producto;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Publico\Pedidodetalle;
+use App\Models\Admin\Productocategoria;
+use App\Models\Publico\Cesta;
 use Illuminate\Support\Facades\Session;
+
+use Carbon\Carbon;
 
 class IncludeshomeController extends Controller
 {
@@ -64,46 +68,24 @@ class IncludeshomeController extends Controller
             return view('home', compact('flag', 'productos', 'categorias', 'productospedidos'));
         }
     }
+
+
+
     public function getproductosmasvendidos()
-    {
-        $flag = 'principal';
-        $productoArray = [];
-        $productos = Producto::where('empresa_id', $this->empresaId())->get();
+    {        
+        $hoy =  Carbon::now();
+        $fechainicio = Carbon::now()->subDays( 7 );
 
-
-
-
-        
-
-        $productosmaspedidos = Pedidodetalle::get();
-        $productopedidos = $productosmaspedidos->groupBy('producto_id');
-        $arrayproducto = [];
-
-
-
-        for ($i = 1; $i <= count($productopedidos); $i++) {
-            $totalproducto = count($productopedidos[$i]);
-            $arraytotalproductos = $productopedidos[$i];
-
-            for ($itemproducto = 0; $itemproducto < count($arraytotalproductos); $itemproducto++) {
-
-                for ($j = 0; $j < count($productos); $j++) {
-
-                    if ($arraytotalproductos[$itemproducto]->producto_id ==  $productos[$j]->id) {
-
-                        $arrayproducto[] = [
-                            'id' =>  $productos[$j]->id,
-                            'producto' =>  $productos[$j]->nombre,
-                            'cantidad' =>  $totalproducto,
-                            'fecha' => $arraytotalproductos[$itemproducto]->created_at,
-                        ];
-                    }
-                }
-            }
-        }
-
+        $arrayproducto = Cesta::join("productos", 'cestas.producto_id', '=', 'productos.id')
+        ->select("productos.nombre", "cestas.created_at", DB::raw('COUNT( cestas.id ) AS cantidad') )
+        ->groupBy("productos.nombre", "cestas.created_at")
+        ->orderBy("cantidad", "desc")
+        ->whereDate("cestas.created_at", ">=", $fechainicio )
+        ->whereDate("cestas.created_at", "<=", $hoy )
+        ->limit(5)
+        ->get();
        
-        // return $arrayproducto;
+        // return response()->json([$arrayproducto, $hoy, $fechainicio], 200);
         return response()->json($arrayproducto, 200);
     }
 }
