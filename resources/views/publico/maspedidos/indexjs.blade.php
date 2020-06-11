@@ -2,19 +2,19 @@
 <script>
     
     $(document).ready(  function () {
-        //Obtenemos los productos en recomendados
-        obtenerProductosRecomendados( );
+        //Obtenemos los productos en maspedidoss
+        obtenerProductosMasPedidos( );
     
-        function obtenerProductosRecomendados( ) {
+        function obtenerProductosMasPedidos( ) {
     
             $.ajax({
-                url: "{{ route('ajax.recomendados.index') }}",
+                url: "{{ route('ajax.maspedidos.index') }}",
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID (),
                 },
                 success: function ( data ) {
-                    mostrarProductosRecomendados( data )
+                    mostrarProductosMasPedidos( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -23,18 +23,18 @@
     
         }
     
-        function mostrarProductosRecomendados( datos ) {
-            $("#cuerpoProductosRecomendados").html();
+        function mostrarProductosMasPedidos( datos ) {
+            $("#cuerpoProductosMasPedidos").html();
     
-            let recomendadosHTML = "";
+            let maspedidossHTML = "";
     
-            $.each( datos.data, function( key, recomendado ) {
+            $.each( datos.data, function( key, maspedidos ) {
 
                 let fotos = '';
 
                 let contador = 0; 
                 
-                $.each( recomendado.fotos, function( key, foto ) {
+                $.each( maspedidos.fotos, function( key, foto ) {
                     
                     contador++
 
@@ -47,39 +47,39 @@
                 });  
 
                 let enlistadeseos = '';
-                // console.log( typeof( recomendado.encarrito ) );
-                if (recomendado.enlistadeseos == false) {
+                // console.log( typeof( maspedidos.encarrito ) );
+                if (maspedidos.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ recomendado.id }">
+                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ maspedidos.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ recomendado.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ maspedidos.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 }
 
                 let encarrito = '';
-                if (recomendado.encarrito == false) {
+                if (maspedidos.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendado.id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedidos.id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendado.id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedidos.id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </div>`;
                 }
 
-                recomendadosHTML = recomendadosHTML + `
+                maspedidossHTML = maspedidossHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
@@ -91,6 +91,9 @@
                                 <div class="product-badge offer-badge">
                                     <span>Oferta</span>
                                 </div>
+                                <div class="product-badge new-badge">
+                                    <span>Nuevo</span>
+                                </div>
                             </div>
                             
                             
@@ -98,9 +101,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-truncate my-0">
-                                            <a class="link_producto_detalle" href="#"><b>${ recomendado.nombre }</b></a>
+                                            <a class="link_producto_detalle" href="#"><b>${ maspedidos.nombre }</b></a>
                                         </p>
-                                        <p class="text-truncate small my-0">${ recomendado.descripcion }</p>
+                                        <p class="text-truncate small my-0">${ maspedidos.descripcion }</p>
                                     </div>
                                 </div>
                                 <hr class="mt-1 mb-0">
@@ -111,7 +114,7 @@
                                         </p> --}}
                                         <p class="small"></p>
                                         <h4 class="price_product_unit my-0">
-                                            S/ <span>${ recomendado.precio }</span>
+                                            S/ <span>${ maspedidos.precio }</span>
                                         </h4>
                                     </div>
                                     <div class="col-6 pt-1 pb-2 px-2 m-0">
@@ -139,7 +142,7 @@
                 `;
             });
     
-            $("#cuerpoProductosRecomendados").html( recomendadosHTML);
+            $("#cuerpoProductosMasPedidos").html( maspedidossHTML);
             sumarRestarCantidad();
         }
 

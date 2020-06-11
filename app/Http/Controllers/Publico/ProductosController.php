@@ -74,7 +74,7 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosrecomendados );
@@ -84,13 +84,13 @@ class ProductosController extends Controller
     public function ofertas(Request $request)
     {
 
-        $productosofertados = Producto::whereDate( "created_at", ">", 20 )
+        $productosofertados = Producto::where( "stock", ">", 20 )
         ->with([
             "tags",
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosofertados );
@@ -105,7 +105,7 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosnuevos );
@@ -120,7 +120,7 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosmaspedidos );

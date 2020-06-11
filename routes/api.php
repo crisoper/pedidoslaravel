@@ -60,6 +60,15 @@ Route::get("ajax/productos/maspedidos", "Publico\ProductosController@maspedidos"
 // PRODUCTOS RECOMENDADOS
 Route::get("ajax/recomendados/index", "Publico\RecomendadosAjaxController@index")
 ->name("ajax.recomendados.index");
+// PRODUCTOS OFERTADOS
+Route::get("ajax/ofertas/index", "Publico\OfertasAjaxController@index")
+->name("ajax.ofertas.index");
+// PRODUCTOS NUEVOS
+Route::get("ajax/nuevos/index", "Publico\NuevosAjaxController@index")
+->name("ajax.nuevos.index");
+// PRODUCTOS MAS PEDIDOS
+Route::get("ajax/maspedidos/index", "Publico\MaspedidosAjaxController@index")
+->name("ajax.maspedidos.index");
 
 
 

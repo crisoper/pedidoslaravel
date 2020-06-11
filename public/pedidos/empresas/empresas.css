@@ -1,0 +1,27 @@
+
+.informacion_empresas_row {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.22);
+}
+
+@media (max-width: 576px) {
+    .informacion_empresas {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+    .productos_empresas {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media (min-width: 992px) {
+    .productos_empresas {
+        padding-left: 50px;
+    }
+}
+/* @media only screen and (min-width: 769px) and (max-width: 1200px) {
+    .productos_empresas {
+        pad
+    }
+} */

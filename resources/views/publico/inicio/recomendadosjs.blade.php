@@ -3,19 +3,16 @@
     
     $(document).ready(  function () {
         //Obtenemos los productos recomendados
-        obtenerProductosRecomendados( );
+        obtenerProductosRecomendadosInicio( );
     
-        function obtenerProductosRecomendados( ) {
+        function obtenerProductosRecomendadosInicio( ) {
     
             $.ajax({
                 url: "{{ route('ajax.productos.recomendados') }}",
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarProductosRecomendados( data );
-
-                    $('.slick').slick();
-                    $('.slick2').slick();
+                    mostrarProductosRecomendadosInicio( data );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -24,8 +21,8 @@
     
         }
     
-        function mostrarProductosRecomendados( datos ) {
-            $("#cuerpoProductosRecomendados").html();
+        function mostrarProductosRecomendadosInicio( datos ) {
+            $("#cuerpoProductosRecomendadosInicio").html();
     
             let recomendadosHTML = "";
     
@@ -81,7 +78,7 @@
                 }
 
                 recomendadosHTML = recomendadosHTML + `
-                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 p-0 mb-5 col-sm-6 col-md-4">
+                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-3">
                         <div class="product-img">
                             
                             ${ fotos }
@@ -123,7 +120,7 @@
                             <hr class="mt-0 mb-2">
                             <div class="row mb-2 px-3">
                                 <div class="col-2 p-0">
-                                    <button class="abrir_modal_producto hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
+                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio">
                                         <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
@@ -135,23 +132,23 @@
                 `;
             });
     
-            $("#productosRecomendados").html( recomendadosHTML);
-            sliderRecomendados();
+            $("#cuerpoProductosRecomendadosInicio").html( recomendadosHTML);
+            sliderRecomendadosInicio();
         }
 
         
 
-        function sliderRecomendados() {
-            $(".responsiveSlick").slick({
+        function sliderRecomendadosInicio() {
+            $(".responsiveSlickRecomendadosInicio").slick({
                 slidesToShow: 5,
                 slidesToScroll: 5,
                 arrows: true,
                 dots: true,
                 infinite: true,
-                speed: 300,
+                speed: 800,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                appendArrows: $(".slickCustom"),
+                appendArrows: $(".slickArrowsRecomendadosInicio"),
                 prevArrow:
                     '<button class="slick-prev" type="button"><i class="fa  fa-angle-left"></i></button>',
                 nextArrow:

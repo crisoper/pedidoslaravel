@@ -2,11 +2,12 @@
 
 .header_top_cart {
     width: 100%;
+    height: 100%;
 }
 
 .header_top_cart > button {
     width: 100%;
-    height: 80%;
+    height: 50px;
     color: #ffffff !important;
     background-color: #3eb291;
     padding: 0px !important;
@@ -15,12 +16,12 @@
 }
 
 .header_top_cart #icon_pedido {
-    padding: 6px 10px 0px 0px !important;
+    padding: 5px 10px 0px 0px !important;
 }
 
-.header_top_cart > button h2 {
-    width: 50px;
-    height: 45px;
+.header_top_cart > button h3 {
+    width: 45px;
+    height: 40px;
     text-align: center;
     border-radius: 50%;
     border: 1px solid #ffffff;
@@ -28,12 +29,17 @@
     float: right;
 }
 
+.header_top_cart > button #content_mi_pedido {
+    padding-left: 0;
+    padding-top: 12px;
+}
+
 .header_top_cart > button p {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 15px;
 }
 .header_top_cart > button h5 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800 !important;
 }
 
@@ -45,17 +51,25 @@
 }
 
 .header_top_cart > button span {
-    top: 3px;
-    right: 3px;
-    height: 20px;
-    width: 20px;
+    top: 2px;
+    right: 5px;
+    height: 17.5px;
+    width: 17px;
     color: #ffffff;
-    background: #3eb291;
-    font-size: 16px;
+    background: #9c5c32;
+    font-size: 14px;
     text-align: center;
-    font-weight: 700;
     border-radius: 50%;
     position: absolute;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header_top_cart > button p {
+      font-size: 11px;
+    }
+    .header_top_cart > button h5 {
+      font-size: 13px;
+    }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 991px) {
@@ -64,32 +78,39 @@
     }
 
     .header_top_cart {
-        height: 50px;
+        height: 40px;
     }
-    .header_top_cart #icon_pedido {
-        padding: 2px 15px 0px 0px !important;
+    .header_top_cart > button {
+        height: 45px;
+        padding: 0px 0px 5px 0px !important;
     }
-    .header_top_cart > button h2 {
-        width: 33px;
-        height: 30px;
+
+    .header_top_cart > button h3 {
+        width: 35px;
+        height: 29px;
         font-size: 22px;
         text-align: center;
         border-radius: 50%;
         border: 1px solid #5b6268;
-        padding: 1px 0px 0px 0px;
-        margin-bottom: -8px !important;
+        padding: 0px;
+        margin-bottom: -6px !important;
     }
+    
+    .header_top_cart > button #content_mi_pedido {
+        padding-left: 0;
+        padding-top: 12px;
+    }
+
     .header_top_cart > button p {
         width: 100%;
         font-size: 10px;
         line-height: 0px;
         text-align: center;
+        margin-left: 7.5px !important;
     }
     .header_top_cart > button span {
-        top: 0px;
-        right: 9px;
         height: 13px;
-        width: 13px;
+        width: 15px;
         font-size: 11px;
     }
 
@@ -112,6 +133,16 @@
 @media only screen and (min-width: 351px) and (max-width: 400px) {
     .header_top_cart #icon_pedido {
         text-align: center !important;
+        padding: 4px 23px 0px 0px !important;
+    }
+    .header_top_cart > button span {
+        top: 2px;
+        right: 17.5px;
+    }
+}
+@media only screen and (min-width: 401px) and (max-width: 450px) {
+    .header_top_cart #icon_pedido {
+        text-align: center !important;
         padding: 4px 27.5px 0px 0px !important;
     }
     .header_top_cart > button span {
@@ -119,7 +150,7 @@
         right: 22.5px;
     }
 }
-@media only screen and (min-width: 401px) and (max-width: 450px) {
+@media only screen and (min-width: 451px) and (max-width: 500px) {
     .header_top_cart #icon_pedido {
         text-align: center !important;
         padding: 4px 32.5px 0px 0px !important;
@@ -129,17 +160,17 @@
         right: 27.5px;
     }
 }
-@media only screen and (min-width: 451px) and (max-width: 500px) {
+@media only screen and (min-width: 501px) and (max-width: 550px) {
     .header_top_cart #icon_pedido {
         text-align: center !important;
-        padding: 4px 35px 0px 0px !important;
+        padding: 4px 37.5px 0px 0px !important;
     }
     .header_top_cart > button span {
         top: 2px;
-        right: 30px;
+        right: 32.5px;
     }
 }
-@media only screen and (min-width: 501px) and (max-width: 550px) {
+@media only screen and (min-width: 551px) and (max-width: 600px) {
     .header_top_cart #icon_pedido {
         text-align: center !important;
         padding: 4px 40px 0px 0px !important;
@@ -149,44 +180,14 @@
         right: 35px;
     }
 }
-@media only screen and (min-width: 551px) and (max-width: 600px) {
+@media only screen and (min-width: 601px) and (max-width: 768px) {
     .header_top_cart #icon_pedido {
         text-align: center !important;
-        padding: 4px 45px 0px 0px !important;
+        padding: 4px 42.5px 0px 0px !important;
     }
     .header_top_cart > button span {
         top: 2px;
-        right: 40px;
-    }
-}
-@media only screen and (min-width: 601px) and (max-width: 700px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 45px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 40px;
-    }
-}
-@media only screen and (min-width: 701px) and (max-width: 767px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 45px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 40px;
-    }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 27.5px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 22.5px;
+        right: 37.5px;
     }
 }
 

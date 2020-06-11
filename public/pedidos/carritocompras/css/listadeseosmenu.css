@@ -2,11 +2,12 @@
 
 .header_top_favorites {
   width: 100%;
+  height: 100%;
 }
 
 .header_top_favorites > button {
   width: 100%;
-  height: 80%;
+  height: 50px;
   color: #ffffff !important;
   background-color: #3eb291;
   padding: 0px !important;
@@ -15,23 +16,29 @@
 }
 
 .header_top_favorites #icon_favorites {
-  padding: 6px 10px 0px 0px !important;
+  padding: 5px 10px 0px 0px !important;
 }
-.header_top_favorites > button h2 {
-  width: 50px;
-  height: 45px;
+.header_top_favorites > button h3 {
+  width: 45px;
+  height: 40px;
   text-align: center;
   border-radius: 50%;
   border: 1px solid #ffffff;
-  padding: 5px 0px 0px 0px;
+  padding: 3px 0px 0px 0px;
   float: right;
 }
+
+.header_top_favorites > button #content_mi_pedido_fav {
+  padding-left: 0;
+  padding-top: 12px;
+}
+
 .header_top_favorites > button p {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 15px;
 }
 .header_top_favorites > button h5 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800 !important;
 }
 
@@ -39,22 +46,21 @@
   box-shadow: none;
   color: #3eb291 !important;
   background-color: #ffffff;
-  /* box-shadow: 0 -10px 20px -5px #868686; */
 }
 
 .header_top_favorites > button span {
-  top: 3px;
-  right: 3px;
-  height: 20px;
-  width: 20px;
+  top: 2px;
+  right: 5px;
+  height: 17.5px;
+  width: 17px;
   color: #ffffff;
-  background: #3eb291;
-  font-size: 16px;
+  background: #9c5c32;
+  font-size: 14px;
   text-align: center;
-  font-weight: 700;
   border-radius: 50%;
   position: absolute;
 }
+
 
 @media only screen and (min-width: 0px) and (max-width: 991px) {
   #amount_menu_favorites {
@@ -62,33 +68,30 @@
   }
 
   .header_top_favorites {
-      height: 50px;
+    height: 40px;
   }
-  .header_top_favorites #icon_favorites {
-      padding: 2px 15px 0px 0px !important;
+  .header_top_favorites > button {
+    height: 45px;
+    padding: 0px 0px 5px 0px !important;
+    background-color: #868686;
   }
-  .header_top_favorites > button h2 {
-      width: 33px;
-      height: 30px;
+
+  .header_top_favorites > button h3 {
+    width: 33px;
+    height: 29px;
       font-size: 22px;
       text-align: center;
       border-radius: 50%;
       border: 1px solid #5b6268;
-      padding: 1px 0px 0px 0px;
-      margin-bottom: -8px !important;
+      padding: 2px 0px 0px 0px;
   }
-  .header_top_favorites > button p {
-      width: 100%;
-      font-size: 10px;
-      line-height: 0px;
-      text-align: center;
+  .header_top_favorites > button #content_mi_pedido_fav {
+      display: none;
   }
   .header_top_favorites > button span {
-      top: 0px;
-      right: 9px;
-      height: 13px;
-      width: 13px;
-      font-size: 11px;
+    height: 13px;
+    width: 15px;
+    font-size: 11px;
   }
 
   .header_favorites {
@@ -167,7 +170,7 @@
       right: 40px;
   }
 }
-@media only screen and (min-width: 701px) and (max-width: 767px) {
+@media only screen and (min-width: 701px) and (max-width: 768px) {
   .header_top_favorites #icon_favorites {
       text-align: center !important;
       padding: 4px 45px 0px 0px !important;
@@ -177,17 +180,6 @@
       right: 40px;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .header_top_favorites #icon_favorites {
-      text-align: center !important;
-      padding: 4px 27.5px 0px 0px !important;
-  }
-  .header_top_favorites > button span {
-      top: 2px;
-      right: 22.5px;
-  }
-}
-
 
 
 

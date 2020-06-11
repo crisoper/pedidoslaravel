@@ -29,11 +29,11 @@
     background: #3eb291;
 }
 .slick-prev {
-    left: 0px;
+    left: 5px;
 }
 
 .slick-next {
-    right: 0px;
+    right: 5px;
 }
 
 /* Dots */
