@@ -123,7 +123,7 @@
                             <hr class="mt-0 mb-2">
                             <div class="row mb-2 px-3">
                                 <div class="col-2 p-0">
-                                    <button class="abrir_modal_producto hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
+                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
                                         <i class="fa fa-eye"></i>
                                     </button>
                                 </div>
