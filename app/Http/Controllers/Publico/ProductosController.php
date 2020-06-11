@@ -70,6 +70,7 @@ class ProductosController extends Controller
         
         $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
         ->with([
+            "empresa",
             "tags",
             "categoria",
             "fotos",

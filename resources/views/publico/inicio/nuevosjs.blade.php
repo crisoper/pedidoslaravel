@@ -85,7 +85,7 @@
 
                             <!-- Product Badge -->
                             <div class="product-badge empresa_badge p-0">
-                                <a href="{{route('empresas1.index')}}" class="text-truncate p-0">Nombre de empresa</a>
+                                <a target="blank" href="{{route('empresas1.index')}}" class="text-truncate p-0">${ nuevos.empresa }</a>
                             </div>
                             <div class="product-badge new-badge">
                                 <span>Nuevo</span>
@@ -123,7 +123,7 @@
                             <hr class="mt-0 mb-2">
                             <div class="row mb-2 px-3">
                                 <div class="col-2 p-0">
-                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
+                                    <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ nuevos.id }">
                                         <i class="fa fa-eye"></i>
                                     </button>
                                 </div>

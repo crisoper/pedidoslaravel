@@ -13,6 +13,7 @@
                 data: {},
                 success: function ( data ) {
                     mostrarProductosRecomendadosInicio( data );
+                    
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -85,7 +86,7 @@
 
                             <!-- Product Badge -->
                             <div class="product-badge empresa_badge p-0">
-                                <a href="{{route('empresas1.index')}}" class="text-truncate p-0">Nombre de empresa</a>
+                                <a target="blank" href="{{route('empresas1.index')}}" class="text-truncate p-0">${ recomendados.empresa }</a>
                             </div>
                         </div>
 
@@ -94,8 +95,7 @@
                         <div class="featured__item__text container_product_cart featured__item__text_recomendados px-2 pt-2">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="text-truncate my-0"><b>${ recomendados.nombre }</b></p>
-                                    <p class="text-truncate small my-0">${ recomendados.descripcion }</p>
+                                    <p class="text-truncate my-0">${ recomendados.nombre }</p>
                                 </div>
                             </div>
                             <hr class="mt-1 mb-0">
