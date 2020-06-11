@@ -84,6 +84,15 @@ Route::get('listadedeseos', 'Publico\ListadeseosController@index')
 // PRODUCTOS RECOMENDADOS
 Route::get('recomendados', 'Publico\RecomendadosController@index')
 ->name('recomendados.index');
+// PRODUCTOS OFERTADOS
+Route::get('ofertas', 'Publico\OfertasController@index')
+->name('ofertas.index');
+// PRODUCTOS NUEVOS
+Route::get('nuevos', 'Publico\NuevosController@index')
+->name('nuevos.index');
+// PRODUCTOS MAS PEDIDOS
+Route::get('maspedidos', 'Publico\MaspedidosController@index')
+->name('maspedidos.index');
 
 
 // EMPRESAS

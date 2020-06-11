@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publico;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Producto;
+use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -62,20 +63,49 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
-        if ( $request->has("storagecliente_id") and $request->has("storagecliente_id") != 'false') {
-            # code...
-        } else {
-            # code...
+        $productoCestaIds = array();
+        $productoDeseoIds = array();
+
+        if ( $request->has("storagecliente_id") ) {
+            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "cesta")
+            ->get()
+            ->pluck("producto_id");
+
+
+            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "deseos")
+            ->get()
+            ->pluck("producto_id");
         }
         
         $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
         ->with([
+            "empresa",
             "tags",
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
+
+        foreach ( $productosrecomendados as $producto ) {
+
+            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+                $producto->encarrito = true;
+            }
+            else {
+                $producto->encarrito = false;
+            }
+            
+            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+                $producto->enlistadeseos = true;
+            }
+            else {
+                $producto->enlistadeseos = false;
+            }
+
+        }
 
         return ProductoResource::collection( $productosrecomendados );
     }
@@ -84,13 +114,13 @@ class ProductosController extends Controller
     public function ofertas(Request $request)
     {
 
-        $productosofertados = Producto::whereDate( "created_at", ">", 20 )
+        $productosofertados = Producto::where( "stock", ">", 20 )
         ->with([
             "tags",
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosofertados );
@@ -105,7 +135,7 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosnuevos );
@@ -120,9 +150,31 @@ class ProductosController extends Controller
             "categoria",
             "fotos",
         ])
-        ->limit(8)
+        ->limit(10)
         ->get();
 
         return ProductoResource::collection( $productosmaspedidos );
     }
+
+
+
+    public function getdatosxid ( Request $request ) {
+        $producto = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
+        ->with([
+            "empresa",
+            "categoria",
+            "tags",
+            "fotos",
+        ])
+        ->first();
+
+        if ( $producto != null ) {
+            return new ProductoResource (  $producto );
+        }
+
+        return "No se enncontro el producto";
+
+    }
+
+
 }

@@ -158,69 +158,67 @@
     </div>
     
     <!-- MENU WEB 1 -->
-    <header class="container-fluid header__top bg-dark">
-        <div class="container">
-            <div class="row">
-                {{-- SERVICIO AL CLIENTE --}}
-                <div class="col-6 col-sm-6 col-md-3 col-lg-2 p-0 header_top_client">
-                    <div class="btn-group">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Servicio al cliente <i class="fas fa-angle-down"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown_menu">
-                            <div><a href="#">Escribenos</a></div>
-                            <hr class="my-1">
-                            <div class="">
-                                <p class="mb-0 number_phone">+51 976301482</p>
-                                <p class="my-0 suport"><small>Soporte 24/7</small></p>
-                            </div>
-                            <hr class="mt-2 mb-1">
-                            <div><a href="#">Preguntas frecuentes</a></div>
+    <header class="container-fluid header__top bg-dark mx-0 px-5">
+        <div class="row">
+            {{-- SERVICIO AL CLIENTE --}}
+            <div class="col-6 col-sm-6 col-md-3 col-lg-2 p-0 header_top_client">
+                <div class="btn-group">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Servicio al cliente <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown_menu">
+                        <div><a href="#">Escribenos</a></div>
+                        <hr class="my-1">
+                        <div class="">
+                            <p class="mb-0 number_phone">+51 976301482</p>
+                            <p class="my-0 suport"><small>Soporte 24/7</small></p>
+                        </div>
+                        <hr class="mt-2 mb-1">
+                        <div><a href="#">Preguntas frecuentes</a></div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- AFILIAR RESTAURANTE --}}
+            <div class="col-6 col-sm-6 col-md-5 col-lg-6 p-0 header_top_recommended">
+                <a class="btn btn_recommended" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
+            </div>
+            
+            {{-- APPS --}}
+            <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
+                <div class="btn-group">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Apps <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown_menu">
+                        <div>
+                            <a class="btn btn_app_android" href="#">
+                                <img src="{{asset('img/appmovil/googleplay.png')}}" alt="">
+                            </a>
+                        </div>
+                        <hr class="my-1">
+                        <div>
+                            <a class="btn btn_app_ios" href="#">
+                                <img src="{{asset('img/appmovil/appstore.png')}}" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-6 col-sm-6 col-md-5 col-lg-6 p-0 header_top_recommended">
-                    <a class="btn btn_recommended" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
-                </div>
-                
-                {{-- APPS --}}
-                <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
-                    <div class="btn-group">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Apps <i class="fas fa-angle-down"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown_menu">
-                            <div>
-                                <a class="btn btn_app_android" href="#">
-                                    <img src="{{asset('img/appmovil/googleplay.png')}}" alt="">
-                                </a>
-                            </div>
-                            <hr class="my-1">
-                            <div>
-                                <a class="btn btn_app_ios" href="#">
-                                    <img src="{{asset('img/appmovil/appstore.png')}}" alt="">
-                                </a>
-                            </div>
+            {{-- LOGIN --}}
+            <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
+                <div class="btn-group">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Iniciar sesión <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown_menu">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
                         </div>
-                    </div>
-                </div>
-
-                {{-- LOGIN --}}
-                <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
-                    <div class="btn-group">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Iniciar sesión <i class="fas fa-angle-down"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown_menu">
-                            <div>
-                                <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
-                            </div>
-                            <hr class="my-2">
-                            <div>
-                                <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
-                            </div>
+                        <hr class="my-2">
+                        <div class="d-flex justify-content-center mb-1">
+                            <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
                         </div>
                     </div>
                 </div>
@@ -228,37 +226,39 @@
         </div>
     </header>
     <!-- MENU WEB 2 -->
-    <div class="container-fluid header_top_secondary sticky-top">
-        <div class="container">
-            <div class="row">
-                {{-- ABRIR MENU MOVIL --}}
-                <div class="col-2 col-md-2 px-0" id="humberger__open">
-                    <div class="humberger__open text-center">
-                        <button>
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-around" id="icon_humberger">
-                                    <h3><i class="fa fa-bars"></i></h3>
-                                </div>
-                                <div class="col-12 px-0 d-flex justify-content-around">
-                                    <p class="small m-0 p-0">Menú</p>
-                                </div>
+    <div class="container-fluid header_top_secondary mx-0 px-5 sticky-top">
+        <div class="row">
+            {{-- ABRIR MENU MOVIL --}}
+            <div class="col-2 col-md-2 px-0" id="humberger__open">
+                <div class="humberger__open text-center">
+                    <button>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-around" id="icon_humberger">
+                                <h3><i class="fa fa-bars"></i></h3>
                             </div>
-                        </button>
-                    </div>
+                            <div class="col-12 px-0 d-flex justify-content-around">
+                                <p class="small m-0 p-0">Menú</p>
+                            </div>
+                        </div>
+                    </button>
                 </div>
+            </div>
 
-                {{-- LOGOTIPO --}}
-                <div class="col-4 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
-                    <a href="{{ route('inicio.index') }}"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
-                </div>
-
-                {{-- MENU WEB --}}
-                <div class="col-md-7 col-lg-4 p-0" id="header_menu">
+            {{-- LOGOTIPO --}}
+            <div class="col-4 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
+                <a href="{{ route('inicio.index') }}">
+                    <img src="{{asset('pedidos/img/logo.png')}}" alt="">
+                </a>
+            </div>
+            
+            {{-- MENU CATEGORIAS --}}
+            <div class="col-4 col-md-2 col-lg-2 px-0" id="menu_categorias">
+                <div class="header_menu_categorias">
                     <nav class="navbar navbar-expand-lg p-0">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link btn_" href="#" data-toggle="dropdown">
-                                    Todas las categorías
+                                <a class="nav-link btn_ text-uppercase" href="#" data-toggle="dropdown">
+                                    <i class="fas fa-bars"></i> Categorías <i class="fas fa-angle-down ml-3"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="has-submenu">
@@ -267,7 +267,7 @@
                                         </a>
                                         <div class="megasubmenu dropdown-menu" id="dropdownCategorias">
                                             <ul id="menuCategorias">
-
+    
                                             </ul>
                                         </div>
                                     </li>
@@ -295,135 +295,143 @@
                             </li>
                         </ul>
                     </nav>
-
-
-
-
-                    {{-- <nav class="header__menu">
-                        <ul>
-                            <li>
-                                <a href="#">Todas las categorías <i class="fas fa-angle-down"></i></a>
-                                <ul class="header__menu__dropdown"  id="menuCategorias">
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav> --}}
                 </div>
+            </div>
 
-                {{-- BUSCADOR --}}
-                <div class="col-2 col-md-1 col-lg-2 px-0">
-                    <div class="header__search">
-                        <button id="search_1">
-                            <div class="row">
-                                <div class="col-12 col-lg-6 pt-2 text-right" id="icon_search">
-                                    <h3><i class="fa fa-search"></i></h3>
-                                </div>
-                                <div class="col-12 col-lg-6 px-0 pt-3 text-left">
-                                    <p class="small m-0 p-0">Buscar</p>
+            {{-- BUSCADOR WEB --}}
+            <div class="col-2 col-md-6 col-lg-4 px-0" id="search_web">
+                <div class="header_search_web">
+                    <form id="form_buscar_productos" action="">
+                        <div class="form-row">
+                            <div class="col-12 px-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+    
+                                    <div class="input-group-append">
+                                        <a href="#" class="btn btn_buscar_productos" onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </button>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
 
-                {{-- LISTA DE DESEOS --}}
-                <div class="col-2 col-md-1 col-lg-2 px-0">
-                    <div class="btn-group header_top_favorites">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosListaDeseosMenuFlotante">
-                            <div class="row">
-                                <div class="col-12 col-lg-6 pt-2 pr-1 text-right" id="icon_favorites">
-                                    <h2><i class="fa fa-heart"></i><span>5</span></h2>
-                                </div>
-                                <div class="col-12 col-lg-6 pl-0 pt-3 text-left">
-                                    <p class="small m-0 p-0" id="amount_menu_favorites">Mi lista <br> de deseos</p>
-                                </div>
+            {{-- BUSCADOR MOVIL --}}
+            <div class="col-2 col-md-0 col-lg-0 px-0" id="search_movil">
+                <div class="header_search_movil">
+                    <button id="header_search_movil">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 d-flex justify-content-center" id="icon_search">
+                                <h3><i class="fa fa-search"></i></h3>
                             </div>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right header_favorites">
-                            <small><b>Mi lista de deseos</b></small>
-                            <hr class="mt-1">
-                            <div class="scroll_favorites_header">
-                                <div class="dropdown_favorites_header row" id="mostrarProductosListaDeseosMenuFlotanteItems">
-                                    {{-- <div class="col-12 mt-2">
-                                        <div class="row border_caja_favorites">
-                                            <div class="col-2 p-0">
-                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                            </div>
-                                            <div class="col-6 p-0">
-                                                <p class="favorites_product_description small mb-0">Descripción breve del producto</p>
-                                            </div>
-                                            <div class="col-4 p-0">
-                                                <p class="favorites_product_precio text-success mb-0"><b>S/ 12.90</b></p>
-                                            </div>
-                                            <div class="eliminar_favoritos p-0"><i class="far fa-trash-alt small"></i></div>
+                            <div class="col-12 col-lg-6 d-flex justify-content-center">
+                                <p class="small m-0 p-0">Buscar</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            {{-- LISTA DE DESEOS --}}
+            <div class="col-2 col-md-1 col-lg-2 px-0">
+                <div class="btn-group header_top_favorites">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosListaDeseosMenuFlotante">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 text-right" id="icon_favorites">
+                                <h3><i class="fa fa-heart"></i><span>5</span></h3>
+                            </div>
+                            <div class="col-12 col-lg-6 text-left" id="content_mi_pedido_fav">
+                                <p class="small m-0 p-0">Mi lista <br> de deseos</p>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right header_favorites">
+                        <small><b>Mi lista de deseos</b></small>
+                        <hr class="mt-1">
+                        <div class="scroll_favorites_header">
+                            <div class="dropdown_favorites_header row" id="mostrarProductosListaDeseosMenuFlotanteItems">
+                                {{-- <div class="col-12 mt-2">
+                                    <div class="row border_caja_favorites">
+                                        <div class="col-2 p-0">
+                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
                                         </div>
-                                    </div> --}}
-                                </div>
+                                        <div class="col-6 p-0">
+                                            <p class="favorites_product_description small mb-0">Descripción breve del producto</p>
+                                        </div>
+                                        <div class="col-4 p-0">
+                                            <p class="favorites_product_precio text-success mb-0"><b>S/ 12.90</b></p>
+                                        </div>
+                                        <div class="eliminar_favoritos p-0"><i class="far fa-trash-alt small"></i></div>
+                                    </div>
+                                </div> --}}
                             </div>
+                        </div>
 
-                            <hr class="mb-1">
-                            <div class="bottom_total">
-                                <a class="btn btn_pedido_favorites" href="{{route('listadedeseos.index')}}">Ver Todos</a>
-                            </div>
+                        <hr class="mb-1">
+                        <div class="bottom_total">
+                            <a class="btn btn_pedido_favorites" href="{{route('listadedeseos.index')}}">Ver Todos</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- LISTA DE PEDIDOS  --}}
-                <div class="col-2 col-md-1 col-lg-2 p-0">
-                    <div class="btn-group header_top_cart">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosCestaMenuFlotante">
-                            <div class="row">
-                                <div class="col-12 col-lg-6 pt-2 pr-1 text-right" id="icon_pedido">
-                                    <h2><i class="fas fa-shopping-basket"></i><span>3</span></h2>
-                                </div>
-                                <div class="col-12 col-lg-6 px-0 pt-3 text-left">
-                                    <p class="small m-0 p-0">Mi pedido</p>
-                                    <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ 100.00</h5>
-                                </div>
+            {{-- LISTA DE PEDIDOS  --}}
+            <div class="col-2 col-md-1 col-lg-2 p-0">
+                <div class="btn-group header_top_cart">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosCestaMenuFlotante">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 text-right" id="icon_pedido">
+                                <h3><i class="fas fa-shopping-basket"></i><span>3</span></h3>
                             </div>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right header_cart">
-                            <small class="holamundo"><b>Como mínimo debes comprar s/ 30.00</b></small>
-                            <hr class="mt-1">
-                            <div class="scroll_cart_header">
-                                <div class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
-                                    {{-- <div class="col-12 mt-2">
-                                        <div class="row border_caja_product">
-                                            <div class="col-2 p-0">
-                                                <img src="pedidos/img/featured/feature-2.jpg" alt="">
-                                            </div>
-                                            <div class="col-6 p-0">
-                                                <p class="cart_product_description small mb-0">Descripción breve del producto</p>
-                                            </div>
-                                            <div class="col-4 p-0">
-                                                <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
-                                                <small class="mt-0 mb-0">x2</small>
-                                            </div>
-                                            <div class="eliminar_compra p-0">x
-                                            </div>
+                            <div class="col-12 col-lg-6 text-left" id="content_mi_pedido">
+                                <p class="small m-0 p-0">Mi pedido</p>
+                                <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ 100.00</h5>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right header_cart">
+                        <small class="holamundo"><b>Como mínimo debes comprar s/ 30.00</b></small>
+                        <hr class="mt-1">
+                        <div class="scroll_cart_header">
+                            <div class="dropdown_cart_header row" id="mostrarProductosCestaMenuFlotanteItems">
+                                {{-- <div class="col-12 mt-2">
+                                    <div class="row border_caja_product">
+                                        <div class="col-2 p-0">
+                                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
                                         </div>
-                                    </div> --}}
-                                </div>
+                                        <div class="col-6 p-0">
+                                            <p class="cart_product_description small mb-0">Descripción breve del producto</p>
+                                        </div>
+                                        <div class="col-4 p-0">
+                                            <p class="cart_product_precio small text-success mb-0"><b>S/ 12.90</b></p>
+                                            <small class="mt-0 mb-0">x2</small>
+                                        </div>
+                                        <div class="eliminar_compra p-0">x
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </div>
-                            <hr class="mb-1">
-                            <div class="bottom_total">
-                                <div class="row text-center">
-                                    <div class="col-7">
-                                        <small>Estas comprando:</small>
-                                        <h5 class="sumaCantidadCestaMenu_content">
-                                            <span class="sumaCantidadCestaMenu">0</span> Productos
-                                        </h5>
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Total:</small>
-                                        <h5 class="sumaTotalCestaMenu_content">
-                                            <b>S/ <span class="sumaTotalCestaMenu">0.00</span></b>
-                                        </h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <a class="btn btn_pedido_cart" href="{{route('cart.index')}}">Realizar Pedido</a>
-                                    </div>
+                        </div>
+                        <hr class="mb-1">
+                        <div class="bottom_total">
+                            <div class="row text-center">
+                                <div class="col-7">
+                                    <small>Estas comprando:</small>
+                                    <h5 class="sumaCantidadCestaMenu_content">
+                                        <span class="sumaCantidadCestaMenu">0</span> Productos
+                                    </h5>
+                                </div>
+                                <div class="col-5">
+                                    <small>Total:</small>
+                                    <h5 class="sumaTotalCestaMenu_content">
+                                        <b>S/ <span class="sumaTotalCestaMenu">0.00</span></b>
+                                    </h5>
+                                </div>
+                                <div class="col-12">
+                                    <a class="btn btn_pedido_cart" href="{{route('cart.index')}}">Realizar Pedido</a>
                                 </div>
                             </div>
                         </div>
@@ -467,7 +475,7 @@
         </div>
     </div>
     
-
+    
     
     <section style="margin-top: 30px;">
         <main>

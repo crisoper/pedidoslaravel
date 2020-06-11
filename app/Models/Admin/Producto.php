@@ -27,7 +27,11 @@ class Producto extends Model
     {
         return $this->belongsTo('App\Models\Admin\Productocategoria', 'categoria_id');
     }
-
+    
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Admin\Empresa', 'empresa_id');
+    }
 
     //Fotos del producto
     public function fotos()
