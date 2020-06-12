@@ -113,24 +113,76 @@ class ProductosController extends Controller
     
     public function ofertas(Request $request)
     {
+        $productoCestaIds = array();
+        $productoDeseoIds = array();
 
+        if ( $request->has("storagecliente_id") ) {
+            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "cesta")
+            ->get()
+            ->pluck("producto_id");
+
+
+            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "deseos")
+            ->get()
+            ->pluck("producto_id");
+        }
+        
         $productosofertados = Producto::where( "stock", ">", 20 )
         ->with([
+            "empresa",
             "tags",
             "categoria",
             "fotos",
         ])
         ->limit(10)
         ->get();
+
+        foreach ( $productosofertados as $producto ) {
+
+            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+                $producto->encarrito = true;
+            }
+            else {
+                $producto->encarrito = false;
+            }
+            
+            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+                $producto->enlistadeseos = true;
+            }
+            else {
+                $producto->enlistadeseos = false;
+            }
+
+        }
 
         return ProductoResource::collection( $productosofertados );
+
     }
 
     
-    public function nuevos()
+    public function nuevos(Request $request)
     {
+        $productoCestaIds = array();
+        $productoDeseoIds = array();
+
+        if ( $request->has("storagecliente_id") ) {
+            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "cesta")
+            ->get()
+            ->pluck("producto_id");
+
+
+            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "deseos")
+            ->get()
+            ->pluck("producto_id");
+        }
+        
         $productosnuevos = Producto::whereDate( "created_at", now() )
         ->with([
+            "empresa",
             "tags",
             "categoria",
             "fotos",
@@ -138,14 +190,50 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
+        foreach ( $productosnuevos as $producto ) {
+
+            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+                $producto->encarrito = true;
+            }
+            else {
+                $producto->encarrito = false;
+            }
+            
+            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+                $producto->enlistadeseos = true;
+            }
+            else {
+                $producto->enlistadeseos = false;
+            }
+
+        }
+
         return ProductoResource::collection( $productosnuevos );
+
     }
 
     
-    public function maspedidos()
+    public function maspedidos(Request $request)
     {
+        $productoCestaIds = array();
+        $productoDeseoIds = array();
+
+        if ( $request->has("storagecliente_id") ) {
+            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "cesta")
+            ->get()
+            ->pluck("producto_id");
+
+
+            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+            ->where("tipo", "deseos")
+            ->get()
+            ->pluck("producto_id");
+        }
+        
         $productosmaspedidos = Producto::where( "stock", "<", 10 )
         ->with([
+            "empresa",
             "tags",
             "categoria",
             "fotos",
@@ -153,8 +241,29 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
+        foreach ( $productosmaspedidos as $producto ) {
+
+            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+                $producto->encarrito = true;
+            }
+            else {
+                $producto->encarrito = false;
+            }
+            
+            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+                $producto->enlistadeseos = true;
+            }
+            else {
+                $producto->enlistadeseos = false;
+            }
+
+        }
+
         return ProductoResource::collection( $productosmaspedidos );
+
     }
+
+
 
 
 

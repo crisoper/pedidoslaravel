@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-3 mb-5 informacion_empresas">
             <div class="row mb-4 p-3 informacion_empresas_row">
                 <div class="col-12 col-md-6 col-lg-12 text-center">
-                    <img src="{{asset('pedidos/img/product/discount/pd-6.jpg')}}" alt="">
+                    <img src="{{asset('pedidos/img/product/discount/pd-3.jpg')}}" alt="">
                     <div class="top_seller_product_rating">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="featured__item__text container_product_cart px-3">
+                                <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                                     <div class="row">
                                         <div class="col-12">
                                             <p class="text-truncate my-0">
@@ -86,9 +86,6 @@
                                     <hr class="mt-1 mb-0">
                                     <div class="row px-2">
                                         <div class="col-6 pt-1 pb-2 px-0 m-0 text-center" id="price_product_border">
-                                            {{-- <p class="price_product_prev text-muted py-0 my-0">
-                                                S/ <span>20.90</span>
-                                            </p> --}}
                                             <p class="small"></p>
                                             <h4 class="price_product_unit my-0">
                                                 S/ <span>20.99</span>
@@ -104,9 +101,9 @@
                                         </div>
                                     </div>
                                     <hr class="mt-0 mb-2">
-                                    <div class="row mb-2 px-3">
+                                    <div class="row modal_lista_cart">
                                         <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
+                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendados.id }">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
@@ -136,5 +133,5 @@
 @endsection
 
 {{-- @section('scripts')
-    @include('publico.recomendados.indexjs')
+    @include('publico.empresas.indexjs')
 @endsection --}}

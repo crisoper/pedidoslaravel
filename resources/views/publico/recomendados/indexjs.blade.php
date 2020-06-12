@@ -83,18 +83,22 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="single_product_wrapper mb-5">
                             <div class="product-img">
+
                                 ${ fotos }
                                 
-                                <div class="product-badge empresa_badge p-0">
-                                    <a href="{{route('empresas1.index')}}" class="text-truncate p-0">Nombre de empresa</a>
-                                </div>
+                                <span class="empresa_badge">
+                                    <a target="blank" href="{{route('empresas1.index')}}" class="row">
+                                        <p class="text-truncate m-0 p-0">${ recomendado.empresa }</p>
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
+                                </span>
                                 <div class="product-badge offer-badge">
                                     <span>Oferta</span>
                                 </div>
                             </div>
                             
                             
-                            <div class="featured__item__text container_product_cart px-3">
+                            <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-truncate my-0">
@@ -124,9 +128,9 @@
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-2">
-                                <div class="row mb-2 px-3">
+                                <div class="row modal_lista_cart">
                                     <div class="col-2 p-0">
-                                        <button class="abrir_modal_producto hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#exampleModal">
+                                        <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendado.id }">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                     </div>

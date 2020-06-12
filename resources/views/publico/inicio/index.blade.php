@@ -6,7 +6,7 @@
     {{-- RESTAURANTES RECOMENDADOS --}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 mb-4 m-0 p-0 slickCustomEmpresas">
+            <div class="col-12 mb-5 m-0 p-0 slickCustomEmpresas">
                 <div class="m-0 p-0 slickempresas" id="empresasRecomendadas">
                     <img src="{{asset('img/banners/banner1.jpg')}}" alt="">
                     <img src="{{asset('img/banners/banner2.jpg')}}" alt="">
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="container-fluid page-section px-3" id="preductRecomendado">
+    <div class="container-fluid page-section px-4" id="preductRecomendado">
         {{-- <div class="container"> --}}
             <div class="row">
                 <div class="col-12">
@@ -74,7 +74,7 @@
             </div>
         {{-- </div> --}}
     </div>
-    <div class="container-fluid page-section px-3" id="productosEnOferta">
+    <div class="container-fluid page-section px-4" id="productosEnOferta">
         {{-- <div class="container"> --}}
             <div class="row">
                 <div class="col-12">
@@ -94,7 +94,7 @@
             </div>
         {{-- </div> --}}
     </div>
-    <div class="container-fluid page-section px-3" id="productosNuevos">
+    <div class="container-fluid page-section px-4" id="productosNuevos">
         {{-- <div class="container"> --}}
             <div class="row">
                 <div class="col-12">
@@ -114,7 +114,7 @@
             </div>
         {{-- </div> --}}
     </div>
-    <div class="container-fluid page-section px-3" id="productosMasPedidos">
+    <div class="container-fluid page-section px-4" id="productosMasPedidos">
         {{-- <div class="container"> --}}
             <div class="row">
                 <div class="col-12">
@@ -198,8 +198,6 @@
 
 @section('scripts')
 
-    @include('publico.inicio.carjs')
-    @include('publico.inicio.listadeseosjs')
     @include('publico.inicio.recomendadosjs')
     @include('publico.inicio.ofertasjs')
     @include('publico.inicio.nuevosjs')

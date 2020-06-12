@@ -34,10 +34,27 @@
         let carHTML = "";
 
         $.each( cestas.data, function( key, cesta ) {
+
+            let fotos = '';
+
+            let contador = 0; 
+
+            $.each( cesta.producto.fotos, function( key, foto ) {
+                contador++
+                if (contador >= 2) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover_img">`;
+                } else {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
+                }
+            });
+
+
             carHTML = carHTML + `
                 <tr>
                     <td class="imagen">
-                        <img src="https://via.placeholder.com/100x100" alt="#">
+                        <div class="cart_product_foto">
+                            ${ fotos }
+                        </div>
                     </td>
                     <td class="text-left">
                         <h5 class="text-truncate mt-0 mb-1"><a href="#">${ cesta.producto.nombre }</a></h5>
