@@ -10,15 +10,45 @@
 
     <title>{{ config('app.name', 'Pedidos') }}</title>
 
-        @include('layouts.admin.styles')
-        @include('layouts.admin.scripts')
-        @include('publico.empresa.css')
-        
-   
+    @include('layouts.admin.styles')
+    @include('layouts.admin.scripts')
+    @include('publico.empresa.css')
 
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic|Lora:400,700,700italic|Source+Code+Pro:400,700|Abril+Fatface|Montserrat);
+
+        .color-1 {
+            font-family: 'Lora', serif;
+            background: -webkit-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
+            background: -moz-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
+            background: -ms-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
+            background: -o-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
+            background: linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
+        }
+
+        .color-1 h1 1{
+            font-size: 48px;
+            text-align: center;
+        }
+
+       texto-2 {
+            clear: both;
+            text-transform: none;
+            line-height: 1.4;
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .section_item p {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+    </style>
 </head>
 
-<body cz-shortcut-listen="true"  class="color-2 " >
+<body cz-shortcut-listen="true">
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-dark text-light">
             <ul class="navbar-nav">
@@ -82,7 +112,7 @@
         </nav>
     </header>
 
-    <main class="container-fluid" role="main" >
+    <main class="container-fluid" role="main">
 
         <section class="content">
 

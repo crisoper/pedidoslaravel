@@ -544,6 +544,8 @@
 @include('includes.ajaxsetup')
 @include('publico.inicio.categoriasjs')
 
+@include('publico.inicio.carjs')
+@include('publico.inicio.listadeseosjs')
 <script>
     // Script que permite guardar el codigo del cliente en local storafe
     function obtenerLocalStorageclienteID () {

@@ -7,7 +7,7 @@
                     <span>Ventas </span>
                 </div>
                </div>
-            <canvas id="myChart" style="min-height: 350px; height: 350px; max-height: 200px; max-width: 100%;"></canvas>
+            <canvas id="chartHistoricoVentas" style="min-height: 350px; height: 350px; max-height: 200px; max-width: 100%;"></canvas>
         </div>
     </div>
     
@@ -54,47 +54,107 @@
 @section('scripts')
 <script>
     $(document).ready(function(){   
-        var myChart;
-        var tipografico = 'pie';
+        var CharthistoticoVentas;
+        var ChartProductos;
+       
 
     $(window).on('load', function(){             
-          
-        $.ajax({
-            url:"{{route('getproductosmasvendidos')}}",
+        HistoricoVentas();
+        productosMasVendidos();
+                            
+    });
+//FITRAR CAMPOS UNICOS DE UN ARRAY
+    // function onlyUnique(value, index, self) { 
+    // return self.indexOf(value) === index;
+//}
+function productosMasVendidos(){
+    $.ajax({
+            url:"{{route('getproductosmaspedidos')}}",
             method: "get",
             dataType:"json",
             data:{},
             success: function( data ){          
-
-              var arraydeproductos =[];
+                console.log(data);
+              var nombredeproducto =[];
+              var cantidadeproducto =[];
               $.each(data, function(index, producto){
-                arraydeproductos.push(producto.producto);
+                nombredeproducto.push(producto.nombre);
+                cantidadeproducto.push(producto.cantidad);
                 $("#tbl_productosmasvendidos").append(
                         "<tr>"+
-                            "<td>"+ producto.producto+" </td>"+
+                            "<td>"+ producto.nombre+" </td>"+
                              "<td>"+ producto.cantidad +" </td>"+                            
                         "</tr>"
                     );
               })             
-                generarGrafico(arraydeproductos, tipografico);
-                generarGraficoPrincial(arraydeproductos, tipografico);
+                // generarGrafico(nombredeproducto, tipografico);
+                GraficoProductosmasVendidos(nombredeproducto,cantidadeproducto);
             }
         });
-                            
-    });
-//FITRAR CAMPOS UNICOS DE UN ARRAY
-    function onlyUnique(value, index, self) { 
-    return self.indexOf(value) === index;
 }
-
-function generarGrafico(data, tipografico){            
-            
-            var sectores=[];
-            var totalresgitro =[];
+function HistoricoVentas(){
+    $.ajax({
+            url:"{{route('getHistoricoVentas')}}",
+            method: "get",
+            dataType:"json",
+            data:{},
+            success: function( data ){          
+              
+              var nombredeproducto =[];
+              var totalvendidos =[];
+              $.each(data, function(index, producto){
+                nombredeproducto.push(producto.nombre);
+                totalvendidos.push(producto.cantidad);         
+             
+                graficoHistoricoVentas(nombredeproducto,totalvendidos);
+            });
+            }
+        });
+}
+function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){            
+         
             var colores=[];
-            $.each( data , function(index, valor){               
-                sectores.push(index);
-                totalresgitro.push(valor);                      
+            $.each( nombredeproducto , function(index, valor){       
+                var colorUno = Math.random() * (255 - 1) + 1;
+                var colorDos = Math.random() * (255 - 1) + 1;
+                var colorTres = Math.random() * (255 - 1) + 1;
+                colores.push('rgba( '+ colorUno +',' +colorDos + ',' + colorTres + ',' + 1 +  ')' );
+            });
+           
+                var ctx = document.getElementById('chartHistoricoVentas');
+                CharthistoticoVentas = new Chart(ctx, {                   
+                    type: 'bar' ,                    
+                    data: {
+                        labels: nombredeproducto,
+                        datasets: [{
+                            label: 'VENTAS REALIZADAS HASTA LA FECHA ACTUAL',
+                            data: cantidadeproducto,
+                            backgroundColor: colores,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,                                    
+                                }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero: true,                                   
+                                }
+                            }]
+                        }
+                    }
+                });  
+                      
+        }
+//GRAFICO PRINCIPAL
+
+function GraficoProductosmasVendidos(nombredeproducto,cantidadeproducto){            
+       
+            var colores=[];
+            $.each( nombredeproducto , function(index, valor){ 
                 var colorUno = Math.random() * (255 - 1) + 1;
                 var colorDos = Math.random() * (255 - 1) + 1;
                 var colorTres = Math.random() * (255 - 1) + 1;
@@ -102,13 +162,13 @@ function generarGrafico(data, tipografico){
             });
            
                 var ctx = document.getElementById('ChartProductosMasVendidos');
-                myChart = new Chart(ctx, {                   
-                    type: tipografico ,                    
+                ChartProductos = new Chart(ctx, {                   
+                    type: 'pie' ,                    
                     data: {
-                        labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+                        labels: nombredeproducto,
                         datasets: [{
-                            label: '10 Productos más vendido',
-                            data: [0, 59, 75, 20, 20, 55, 40],
+                            label: 'PRODUCTOS MAS VENDIDOS',
+                            data: cantidadeproducto,
                             backgroundColor: colores,
                         }]
                     },
@@ -126,50 +186,8 @@ function generarGrafico(data, tipografico){
                             }]
                         }
                     }
-                });               
-        }
-//GRAFICO PRINCIPAL
-
-function generarGraficoPrincial(data, tipografico){            
-            
-            var sectores=[];
-            var totalresgitro =[];
-            var colores=[];
-            $.each( data , function(index, valor){               
-                sectores.push(index);
-                totalresgitro.push(valor);                      
-                var colorUno = Math.random() * (255 - 1) + 1;
-                var colorDos = Math.random() * (255 - 1) + 1;
-                var colorTres = Math.random() * (255 - 1) + 1;
-                colores.push('rgba( '+ colorUno +',' +colorDos + ',' + colorTres + ',' + 1 +  ')' );
-            });
-           
-                var ctx = document.getElementById('myChart');
-                myChart = new Chart(ctx, {                   
-                    type: 'bar' ,                    
-                    data: {
-                        labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
-                        datasets: [{
-                            label: 'VENTAS DEL MES',
-                            data: [0, 59, 75, 20, 20, 55, 40],
-                            backgroundColor: colores,
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,                                    
-                                }
-                            }],
-                            xAxes: [{
-                                ticks: {
-                                    beginAtZero: true,                                   
-                                }
-                            }]
-                        }
-                    }
-                });               
+                });
+                    
         }
 
     

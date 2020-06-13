@@ -260,34 +260,34 @@ class ProductosController extends Controller
        $productotag->tag_id = $tagid;
        $productotag->save();  
       
+    //    $fotos = Productofoto::where("producto_id", $producto->id )->get();
+    //         foreach ($fotos as $foto) {
+    //             $foto->delete();
+    //         }
+       Productofoto::where("producto_id", $producto->id )->delete();
+      
        $files = $request->file('fotoproducto');       
        if ( count($files) > 0) {                
        foreach($files as $file){    
-           
-           //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
-      
-           $input['fotoproducto'] = time().'.'.$file->getClientOriginalExtension();
+          
+           $input['fotoproducto'] = strtolower(uniqid().'.'.$file->getClientOriginalExtension());
            $destinationPath = public_path('/images');
            $file->move($destinationPath, $input['fotoproducto']);
 
-            //  \Storage::disk('img_productos')->put($filename,  \File::get($file));
+           //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
 
              $fotoproducto = Productofoto::firstOrNew([               
                'empresa_id'=> $this->empresaId(),
                'producto_id'=> $producto->id,
                'nombre'=>   $input['fotoproducto'],
-               'url' =>  'images' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
+               'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
            ],
            [
                'created_at' => Auth()->user()->id,
            ] );
-
-           
            $fotoproducto->save();
-          
-             // defer the processing of the image thumbnails
-             $this->redimension($fotoproducto);
-            //  ProcessimageJob::dispatch($fotoproducto);
+              
+           ProcessimageJob::dispatch($fotoproducto);
            }
        }  
    //    

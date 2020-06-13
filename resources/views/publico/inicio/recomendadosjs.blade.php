@@ -51,13 +51,13 @@
                 let enlistadeseos = '';
                 if (recomendados.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ recomendados.id }">
+                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ recomendados.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ recomendados.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ recomendados.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
@@ -81,26 +81,28 @@
                 }
 
                 recomendadosHTML = recomendadosHTML + `
-                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 mb-3">
+                    <div class="single_product_wrapper mx-2 mb-4">
                         <div class="product-img">
                             
                             ${ fotos }
 
-                            <!-- Product Badge -->
-                            <div class="product-badge empresa_badge p-0">
-                                <a target="blank" href="{{route('empresas1.index')}}" class="text-truncate p-0">${ recomendados.empresa }</a>
-                            </div>
+    						<span class="empresa_badge">
+                                <a target="blank" href="{{route('empresas1.index')}}" class="row">
+                                    <p class="text-truncate m-0 p-0">${ recomendados.empresa }</p>
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </span>
                         </div>
 
 
                         <!-- Product Description -->
-                        <div class="featured__item__text container_product_cart featured__item__text_recomendados px-2 pt-2">
+                        <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                             <div class="row">
                                 <div class="col-12">
                                     <p class="text-truncate my-0">${ recomendados.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-3 mb-0">
                             <div class="row px-2">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
@@ -120,7 +122,7 @@
                                 </div>
                             </div>
                             <hr class="mt-0 mb-2">
-                            <div class="row mb-2 px-3">
+                            <div class="row modal_lista_cart">
                                 <div class="col-2 p-0">
                                     <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendados.id }">
                                         <i class="fa fa-eye"></i>
@@ -142,10 +144,10 @@
 
         function sliderRecomendadosInicio() {
             $(".responsiveSlickRecomendadosInicio").slick({
+                dots: false,
+                arrows: true,
                 slidesToShow: 5,
                 slidesToScroll: 5,
-                arrows: true,
-                dots: true,
                 infinite: true,
                 speed: 800,
                 autoplay: true,
@@ -157,14 +159,14 @@
                     '<button class="slick-next" type="button"><i class="fa  fa-angle-right"></i></button>',
                 responsive: [
                     {
-                        breakpoint: 1200,
+                        breakpoint: 1300,
                         settings: {
                             slidesToShow: 4,
                             slidesToScroll: 4,
                         },
                     },
                     {
-                        breakpoint: 992,
+                        breakpoint: 991,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
@@ -216,6 +218,8 @@
 
             $("#titulo_producto_modal").html( data.data.nombre ); 
             $("#descripcion_producto_modal").html( data.data.descripcion );
+            $("#precio_modal_lista_deseos_span").html( data.data.precio );
+            $("#stock_modal_span").html( data.data.stock );
 
             crearImagenesProducto( data.data.fotos );
 
@@ -227,13 +231,20 @@
 
             let html = ""; 
             $.each( fotos, function( key, foto ) {        
-                html = html + `<img  src="${ foto.url }" alt="${ foto.nombre }">`
+                html = html + `
+                    <a class="lightbox" href="#${ foto.nombre }">
+                        <img src="${ foto.url }">
+                    </a>
+                    <div class="lightbox-target" id="${ foto.nombre }">
+                        <img src="${ foto.url }">
+                        <a class="lightbox-close" href="#"></a>
+                    </div>
+                `
             });
 
             $("#imagenes_producto_modal").html( html );
 
         }
-
 
         
     });

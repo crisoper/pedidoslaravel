@@ -71,21 +71,46 @@ class IncludeshomeController extends Controller
 
 
 
-    public function getproductosmasvendidos()
+    public function getproductosmaspedidos()
     {        
         $hoy =  Carbon::now();
         $fechainicio = Carbon::now()->subDays( 7 );
 
-        $arrayproducto = Cesta::join("productos", 'cestas.producto_id', '=', 'productos.id')
-        ->select("productos.nombre", "cestas.created_at", DB::raw('COUNT( cestas.id ) AS cantidad') )
-        ->groupBy("productos.nombre", "cestas.created_at")
+        // $productomaspedidos = Cesta::join("productos", 'cestas.producto_id', '=', 'productos.id')
+        // ->select("productos.nombre", "cestas.created_at", DB::raw('COUNT( cestas.id ) AS cantidad') )
+        // ->groupBy("productos.nombre", "cestas.created_at")
+        // ->orderBy("cantidad", "desc")
+        // ->whereDate("cestas.created_at", ">=", $fechainicio )
+        // ->whereDate("cestas.created_at", "<=", $hoy )
+        // ->limit(5)
+        // ->get();
+       
+
+         $productomaspedidos = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
+        ->select("productos.nombre",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->groupBy("productos.nombre" )
         ->orderBy("cantidad", "desc")
-        ->whereDate("cestas.created_at", ">=", $fechainicio )
-        ->whereDate("cestas.created_at", "<=", $hoy )
+        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
+        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
         ->limit(5)
         ->get();
-       
-        // return response()->json([$arrayproducto, $hoy, $fechainicio], 200);
-        return response()->json($arrayproducto, 200);
+        // return response()->json([$productomaspedidos, $hoy, $fechainicio], 200);
+        return response()->json($productomaspedidos, 200);
+    }
+
+    public function getHistoricoVentas(){
+        $hoy =  Carbon::now();
+        $fechainicio = Carbon::now()->subDays( 7 );
+
+        return  $productomaspedidos = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
+        ->select("productos.nombre",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->groupBy("productos.nombre")
+        ->orderBy("cantidad", "desc")
+        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
+        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
+        ->limit(5)
+        ->get();
+ 
+        return response()->json($productomaspedidos, 200);
     }
 }
