@@ -148,13 +148,13 @@
                     <div class="quickview_body row p-0">
                         <div class="col-12 col-lg-5">
                             <div id="imagenes_producto_modal">
-                                <img  src="pedidos/img/product/product-1.jpg" alt="">
+                                {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
                             </div>
                         </div>
                         <div class="col-12 col-lg-7">
                             <div class="row">
                                 <div class="col-12">
-                                    <h4 id="titulo_producto_modal">Nombre del producto</h4>
+                                    <h4 id="titulo_producto_modal"> </h4>
                                 </div>
                                 <div class="col-6 col-sm-5 col-md-4">
                                     <div class="top_seller_product_rating">
@@ -167,20 +167,20 @@
                                 </div>
                                 <div class="col-6 col-sm-5 col-md-8">
                                     <p class="stock_modal">
-                                        Stock: <span class="stock_modal_span">10</span>
+                                        Stock: <span id="stock_modal_span"> </span>
                                     </p>
                                 </div>
                                 <div class="col-12">
                                     <h3 class="precio_modal_lista_deseos my-0">
-                                        S/ <span class="precio_modal_lista_deseos_span">20.99</span>
+                                        S/ <span id="precio_modal_lista_deseos_span"> </span>
                                     </h3>
-                                    <p class="precio_prev_modal_lista_deseos">
+                                    {{-- <p class="precio_prev_modal_lista_deseos">
                                         S/ <span class="precio_prev_modal_lista_deseos_span">30.99</span>
-                                    </p>
+                                    </p> --}}
                                 </div>
                                 <div class="col-12">
                                     <p id="descripcion_producto_modal">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis dignissimos pariatur nihil officia alias magni quod doloribus sit nesciunt labore perspiciatis veritatis eveniet recusandae blanditiis, perferendis quaerat, facere repellendus voluptates exercitationem! Minima, odio voluptate hic esse possimus rerum voluptas qui, dolorum accusantium fugit repellendus sequi non libero ex doloremque.
+                                        
                                     </p>
                                 </div>
                             </div>

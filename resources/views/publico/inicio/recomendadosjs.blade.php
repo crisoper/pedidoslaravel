@@ -218,6 +218,8 @@
 
             $("#titulo_producto_modal").html( data.data.nombre ); 
             $("#descripcion_producto_modal").html( data.data.descripcion );
+            $("#precio_modal_lista_deseos_span").html( data.data.precio );
+            $("#stock_modal_span").html( data.data.stock );
 
             crearImagenesProducto( data.data.fotos );
 
@@ -229,13 +231,20 @@
 
             let html = ""; 
             $.each( fotos, function( key, foto ) {        
-                html = html + `<img  src="${ foto.url }" alt="${ foto.nombre }">`
+                html = html + `
+                    <a class="lightbox" href="#${ foto.nombre }">
+                        <img src="${ foto.url }">
+                    </a>
+                    <div class="lightbox-target" id="${ foto.nombre }">
+                        <img src="${ foto.url }">
+                        <a class="lightbox-close" href="#"></a>
+                    </div>
+                `
             });
 
             $("#imagenes_producto_modal").html( html );
 
         }
-
 
         
     });
