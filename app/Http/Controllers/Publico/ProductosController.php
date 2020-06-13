@@ -107,7 +107,16 @@ class ProductosController extends Controller
 
         }
 
-        return ProductoResource::collection( $productosrecomendados );
+
+
+        //Productos en oferta
+        
+
+
+        return response()->json([
+            'recomendados' => ProductoResource::collection( $productosrecomendados ),
+            'ofertas' => []
+        ], 200);
     }
 
     
