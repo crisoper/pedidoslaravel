@@ -14,8 +14,14 @@
                     storagecliente_id: obtenerLocalStorageclienteID()
                 },
                 success: function ( data ) {
-                    mostrarProductosRecomendadosInicio( data );
-                    
+                    // console.log("recomendados", data.recomendados );
+                    // console.log("ofertas", data.ofertas );
+                    // console.log("nuevos", data.nuevos );
+                    // console.log("maspedidos", data.maspedidos );
+                    mostrarProductosRecomendadosInicio( data.recomendados );
+                    mostrarProductosEnOfertaInicio( data.ofertas )
+                    mostrarProductosNuevosInicio( data.nuevos );
+                    mostrarProductosMasPedidosInicio( data.maspedidos );  
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -29,7 +35,7 @@
     
             let recomendadosHTML = "";
     
-            $.each( datos.data, function( key, recomendados ) {
+            $.each( datos, function( key, recomendados ) {
 
                 let fotos = '';
 
@@ -248,4 +254,5 @@
 
         
     });
+
 </script>

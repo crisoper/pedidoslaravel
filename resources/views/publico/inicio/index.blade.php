@@ -197,10 +197,9 @@
 
 
 @section('scripts')
-
-    @include('publico.inicio.recomendadosjs')
     @include('publico.inicio.ofertasjs')
     @include('publico.inicio.nuevosjs')
     @include('publico.inicio.maspedidosjs')
+    @include('publico.inicio.recomendadosjs')
 
 @endsection

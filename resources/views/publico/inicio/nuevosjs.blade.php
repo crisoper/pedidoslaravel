@@ -1,34 +1,34 @@
 
 <script>
     
-    $(document).ready(  function () {
+    // $(document).ready(  function () {
         //Obtenemos los productos nuevos
-        obtenerProductosNuevosInicio( );
+        // obtenerProductosNuevosInicio( );
     
-        function obtenerProductosNuevosInicio( ) {
+        // function obtenerProductosNuevosInicio( ) {
     
-            $.ajax({
-                url: "{{ route('ajax.productos.nuevos') }}",
-                method: 'GET',
-                data: {
-                    storagecliente_id: obtenerLocalStorageclienteID()
-                },
-                success: function ( data ) {
-                    mostrarProductosNuevosInicio( data );
-                },
-                error: function ( jqXHR, textStatus, errorThrown ) {
-                    console.log(jqXHR.responseJSON);
-                }
-            });
+        //     $.ajax({
+        //         url: "{{ route('ajax.productos.nuevos') }}",
+        //         method: 'GET',
+        //         data: {
+        //             storagecliente_id: obtenerLocalStorageclienteID()
+        //         },
+        //         success: function ( data ) {
+        //             mostrarProductosNuevosInicio( data );
+        //         },
+        //         error: function ( jqXHR, textStatus, errorThrown ) {
+        //             console.log(jqXHR.responseJSON);
+        //         }
+        //     });
     
-        }
+        // }
     
         function mostrarProductosNuevosInicio( datos ) {
             $("#cuerpoProductosNuevosInicio").html();
     
             let nuevosHTML = "";
     
-            $.each( datos.data, function( key, nuevos ) {
+            $.each( datos, function( key, nuevos ) {
 
                 let fotos = '';
 
@@ -194,7 +194,7 @@
 
         }
         
-    });
+    // });
 
 
 </script>
