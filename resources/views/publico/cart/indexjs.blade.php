@@ -65,7 +65,9 @@
                     </td>
                     <td class="cantidad text-center">
                         <div class="input_group_unit_product border m-0">
+                            <button class="minus MoreMinProd" idcesta="${ cesta.id }"><b>-</b></button>
                             <input type="text" class="text-center input_value_cartcart" value="${ cesta.cantidad }">
+                            <button class="more MoreMinProd" idcesta="${ cesta.id }"><b>+</b></button>
                         </div>
                     </td>
                     <td class="text-center">
@@ -117,23 +119,59 @@
     function sumarRestarCantidad() {
         
         var proQty = $('.input_group_unit_product');
-        proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
-        proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
+        // proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
+        // proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
         $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
             var $button = $(this);
             var oldValue = $button.parent().find('input').val();
             if ($button.hasClass('more')) {
-                var newVal = parseFloat(oldValue) + 1;
+                var newVal = parseInt(oldValue) + 1;
             } else {
                 // Don't allow decrementing below zero
                 if (oldValue > 1) {
-                    var newVal = parseFloat(oldValue) - 1;
+                    var newVal = parseInt(oldValue) - 1;
                 } else {
                     newVal = 1;
                 }
             }
+
+
+
+            if( $button.hasClass('more') ) {
+                actualizarCesta( "sumar", newVal, $button.attr("idcesta") )
+            }
+            else {
+                actualizarCesta( "restar", newVal, $button.attr("idcesta") )
+            }
+
             $button.parent().find('input').val(newVal);
         });
+    }
+
+
+    function actualizarCesta( _action, _cantidad, _idcesta ) {
+
+        console.log( _action, _cantidad, _idcesta);
+
+        // $.ajax({
+        //     url: "{{ route('cesta.store') }}",
+        //     method: 'POST',
+        //     data: {
+        //         _method:"UPDATE",
+        //         storagecliente_id: obtenerLocalStorageclienteID (),
+        //         tipo: "cesta",
+        //         action: _action, 
+        //         cantidad: _cantidad, 
+        //         idcesta: _idcesta
+        //     },
+        //     success: function ( data ) {
+        //         obtenerProductosCesta( );
+        //     },
+        //     error: function ( jqXHR, textStatus, errorThrown ) {
+        //         console.log(jqXHR.responseJSON);
+        //     }
+        // });
+
     }
     
 

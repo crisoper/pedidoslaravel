@@ -1,34 +1,34 @@
 
 <script>
     
-    $(document).ready(  function () {
+    // $(document).ready(  function () {
         //Obtenemos los productos maspedidos
-        obtenerProductosMasPedidosInicio( );
+        // obtenerProductosMasPedidosInicio( );
     
-        function obtenerProductosMasPedidosInicio( ) {
+        // function obtenerProductosMasPedidosInicio( ) {
     
-            $.ajax({
-                url: "{{ route('ajax.productos.maspedidos') }}",
-                method: 'GET',
-                data: {
-                    storagecliente_id: obtenerLocalStorageclienteID()
-                },
-                success: function ( data ) {
-                    mostrarProductosMasPedidosInicio( data );
-                },
-                error: function ( jqXHR, textStatus, errorThrown ) {
-                    console.log(jqXHR.responseJSON);
-                }
-            });
+        //     $.ajax({
+        //         url: "{{ route('ajax.productos.maspedidos') }}",
+        //         method: 'GET',
+        //         data: {
+        //             storagecliente_id: obtenerLocalStorageclienteID()
+        //         },
+        //         success: function ( data ) {
+        //             mostrarProductosMasPedidosInicio( data );
+        //         },
+        //         error: function ( jqXHR, textStatus, errorThrown ) {
+        //             console.log(jqXHR.responseJSON);
+        //         }
+        //     });
     
-        }
+        // }
     
         function mostrarProductosMasPedidosInicio( datos ) {
             $("#cuerpoProductosMasPedidosInicio").html();
     
             let maspedidosHTML = "";
     
-            $.each( datos.data, function( key, maspedidos ) {
+            $.each( datos, function( key, maspedidos ) {
 
                 let fotos = '';
 
@@ -218,7 +218,7 @@
 
         }
         
-    });
+    // });
 
 
 </script>

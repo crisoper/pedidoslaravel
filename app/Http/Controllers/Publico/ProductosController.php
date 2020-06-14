@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Publico;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\Publico\ProductoResource;
-use App\Models\Admin\Producto;
-use App\Models\Publico\Cesta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Publico\Cesta;
+use App\Models\Admin\Producto;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+use App\Models\Publico\Pedidodetalle;
+use App\Http\Resources\Publico\ProductoResource;
 
 class ProductosController extends Controller
 {
@@ -107,29 +111,10 @@ class ProductosController extends Controller
 
         }
 
-        return ProductoResource::collection( $productosrecomendados );
-    }
 
-    
-    public function ofertas(Request $request)
-    {
-        $productoCestaIds = array();
-        $productoDeseoIds = array();
-
-        if ( $request->has("storagecliente_id") ) {
-            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "cesta")
-            ->get()
-            ->pluck("producto_id");
-
-
-            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "deseos")
-            ->get()
-            ->pluck("producto_id");
-        }
-        
-        $productosofertados = Producto::where( "stock", ">", 20 )
+        //Productos en oferta
+        $productosoferta = Producto::where( "stock", ">", 20 )
+        ->whereNotIn("id", $productosrecomendados->pluck("id") )
         ->with([
             "empresa",
             "tags",
@@ -139,7 +124,7 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
-        foreach ( $productosofertados as $producto ) {
+        foreach ( $productosoferta as $producto ) {
 
             if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
                 $producto->encarrito = true;
@@ -157,30 +142,12 @@ class ProductosController extends Controller
 
         }
 
-        return ProductoResource::collection( $productosofertados );
-
-    }
-
-    
-    public function nuevos(Request $request)
-    {
-        $productoCestaIds = array();
-        $productoDeseoIds = array();
-
-        if ( $request->has("storagecliente_id") ) {
-            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "cesta")
-            ->get()
-            ->pluck("producto_id");
 
 
-            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "deseos")
-            ->get()
-            ->pluck("producto_id");
-        }
-        
+        //Productos nuevos
         $productosnuevos = Producto::whereDate( "created_at", now() )
+        ->whereNotIn("id", $productosrecomendados->pluck("id") )
+        ->whereNotIn("id", $productosoferta->pluck("id") )
         ->with([
             "empresa",
             "tags",
@@ -205,33 +172,24 @@ class ProductosController extends Controller
             else {
                 $producto->enlistadeseos = false;
             }
-
         }
 
-        return ProductoResource::collection( $productosnuevos );
 
-    }
+        //Productos mas pedidos
+        $hoy =  Carbon::now();
+        $fechainicio = Carbon::now()->subDays( 30 );
 
-    
-    public function maspedidos(Request $request)
-    {
-        $productoCestaIds = array();
-        $productoDeseoIds = array();
+        $productomaspedidosIds = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
+        ->select("productos.id",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->groupBy("productos.id" )
+        ->orderBy("cantidad", "desc")
+        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
+        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
+        ->limit(10)
+        ->pluck("id");
 
-        if ( $request->has("storagecliente_id") ) {
-            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "cesta")
-            ->get()
-            ->pluck("producto_id");
-
-
-            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "deseos")
-            ->get()
-            ->pluck("producto_id");
-        }
-        
         $productosmaspedidos = Producto::where( "stock", "<", 10 )
+        ->whereIn("id", $productomaspedidosIds )
         ->with([
             "empresa",
             "tags",
@@ -256,12 +214,175 @@ class ProductosController extends Controller
             else {
                 $producto->enlistadeseos = false;
             }
-
         }
 
-        return ProductoResource::collection( $productosmaspedidos );
+        return response()
+        ->json(
+            [
+                'recomendados' => ProductoResource::collection( $productosrecomendados ),
+                'ofertas' => ProductoResource::collection( $productosoferta ),
+                'nuevos' => ProductoResource::collection( $productosnuevos ),
+                'maspedidos' => ProductoResource::collection( $productosmaspedidos )
+            ], 
+            200
+        );
 
     }
+
+    
+    // public function ofertas(Request $request)
+    // {
+
+
+    //     $productoCestaIds = array();
+    //     $productoDeseoIds = array();
+
+    //     if ( $request->has("storagecliente_id") ) {
+    //         $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "cesta")
+    //         ->get()
+    //         ->pluck("producto_id");
+
+
+    //         $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "deseos")
+    //         ->get()
+    //         ->pluck("producto_id");
+    //     }
+        
+    //     $productosofertados = Producto::where( "stock", ">", 20 )
+    //     ->with([
+    //         "empresa",
+    //         "tags",
+    //         "categoria",
+    //         "fotos",
+    //     ])
+    //     ->limit(10)
+    //     ->get();
+
+    //     foreach ( $productosofertados as $producto ) {
+
+    //         if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+    //             $producto->encarrito = true;
+    //         }
+    //         else {
+    //             $producto->encarrito = false;
+    //         }
+            
+    //         if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+    //             $producto->enlistadeseos = true;
+    //         }
+    //         else {
+    //             $producto->enlistadeseos = false;
+    //         }
+
+    //     }
+
+    //     return ProductoResource::collection( $productosofertados );
+
+    // }
+
+    
+    // public function nuevos(Request $request)
+    // {
+    //     $productoCestaIds = array();
+    //     $productoDeseoIds = array();
+
+    //     if ( $request->has("storagecliente_id") ) {
+    //         $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "cesta")
+    //         ->get()
+    //         ->pluck("producto_id");
+
+
+    //         $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "deseos")
+    //         ->get()
+    //         ->pluck("producto_id");
+    //     }
+        
+    //     $productosnuevos = Producto::whereDate( "created_at", now() )
+    //     ->with([
+    //         "empresa",
+    //         "tags",
+    //         "categoria",
+    //         "fotos",
+    //     ])
+    //     ->limit(10)
+    //     ->get();
+
+    //     foreach ( $productosnuevos as $producto ) {
+
+    //         if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+    //             $producto->encarrito = true;
+    //         }
+    //         else {
+    //             $producto->encarrito = false;
+    //         }
+            
+    //         if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+    //             $producto->enlistadeseos = true;
+    //         }
+    //         else {
+    //             $producto->enlistadeseos = false;
+    //         }
+
+    //     }
+
+    //     return ProductoResource::collection( $productosnuevos );
+
+    // }
+
+    
+    // public function maspedidos(Request $request)
+    // {
+    //     $productoCestaIds = array();
+    //     $productoDeseoIds = array();
+
+    //     if ( $request->has("storagecliente_id") ) {
+    //         $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "cesta")
+    //         ->get()
+    //         ->pluck("producto_id");
+
+
+    //         $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+    //         ->where("tipo", "deseos")
+    //         ->get()
+    //         ->pluck("producto_id");
+    //     }
+        
+    //     $productosmaspedidos = Producto::where( "stock", "<", 10 )
+    //     ->with([
+    //         "empresa",
+    //         "tags",
+    //         "categoria",
+    //         "fotos",
+    //     ])
+    //     ->limit(10)
+    //     ->get();
+
+    //     foreach ( $productosmaspedidos as $producto ) {
+
+    //         if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+    //             $producto->encarrito = true;
+    //         }
+    //         else {
+    //             $producto->encarrito = false;
+    //         }
+            
+    //         if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+    //             $producto->enlistadeseos = true;
+    //         }
+    //         else {
+    //             $producto->enlistadeseos = false;
+    //         }
+
+    //     }
+
+    //     return ProductoResource::collection( $productosmaspedidos );
+
+    // }
 
 
 

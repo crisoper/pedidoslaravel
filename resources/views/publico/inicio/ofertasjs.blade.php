@@ -1,34 +1,34 @@
 
 <script>
     
-    $(document).ready(  function () {
+    // $(document).ready(  function () {
         //Obtenemos los productos ofertas
-        obtenerProductosEnOfertaInicio( );
+        // obtenerProductosEnOfertaInicio( );
     
-        function obtenerProductosEnOfertaInicio( ) {
+        // function obtenerProductosEnOfertaInicio( ) {
     
-            $.ajax({
-                url: "{{ route('ajax.productos.ofertas') }}",
-                method: 'GET',
-                data: {
-                    storagecliente_id: obtenerLocalStorageclienteID()
-                },
-                success: function ( data ) {
-                    mostrarProductosEnOfertaInicio( data );
-                },
-                error: function ( jqXHR, textStatus, errorThrown ) {
-                    console.log(jqXHR.responseJSON);
-                }
-            });
+        //     $.ajax({
+        //         url: "{{ route('ajax.productos.ofertas') }}",
+        //         method: 'GET',
+        //         data: {
+        //             storagecliente_id: obtenerLocalStorageclienteID()
+        //         },
+        //         success: function ( data ) {
+        //             mostrarProductosEnOfertaInicio( data );
+        //         },
+        //         error: function ( jqXHR, textStatus, errorThrown ) {
+        //             console.log(jqXHR.responseJSON);
+        //         }
+        //     });
     
-        }
+        // }
     
         function mostrarProductosEnOfertaInicio( datos ) {
             $("#cuerpoProductosEnOfertaInicio").html();
     
             let ofertasHTML = "";
     
-            $.each( datos.data, function( key, ofertas ) {
+            $.each( datos, function( key, ofertas ) {
 
                 let fotos = '';
 
@@ -194,7 +194,7 @@
 
         }
         
-    });
+    // });
 
 
 </script>
