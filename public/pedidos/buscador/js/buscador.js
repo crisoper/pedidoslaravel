@@ -5,7 +5,7 @@
 
     $("#header_search_movil").on("click", function () {
         $("#search_input_box").slideToggle();
-        // $("#search_input").focus();
+        $(".input_buscar").focus();
     });
     
 

@@ -80,7 +80,7 @@
                 }
 
                 ofertasHTML = ofertasHTML + `
-                    <div class="single_product_wrapper mx-2 mb-4">
+                    <div class="single_product_wrapper mx-2 mb-3">
                         <div class="product-img">
                             
                             ${ fotos }

@@ -1,38 +1,14 @@
 
 
-$(function() {
-    $('#dropdownCategorias').hover(function() {
-        $('.dropdownCategorias').css('background-color', '#ffffff');
-        $('.dropdownCategorias').css('border-left', '10px solid #3eb291');
-        $('.dropdownCategorias').css('font-weight', '700');
-    }, function() {
-        $('.dropdownCategorias').css('background-color', '');
-        $('.dropdownCategorias').css('border-left', '');
-        $('.dropdownCategorias').css('font-weight', '');
+$(document).ready(function () {
+    $(".dropdown-submenu a.submenu_categorias").on("click", function (e) {
+        $(this).next("ul").toggle();
+        e.stopPropagation();
+        e.preventDefault();
     });
-});
-
-$(function() {
-    $('#dropdownLugares').hover(function() {
-        $('.dropdownLugares').css('background-color', '#ffffff');
-        $('.dropdownLugares').css('border-left', '10px solid #3eb291');
-        $('.dropdownLugares').css('font-weight', '700');
-    }, function() {
-        $('.dropdownLugares').css('background-color', '');
-        $('.dropdownLugares').css('border-left', '');
-        $('.dropdownLugares').css('font-weight', '');
+    
+    $(".js-scroll-trigger").on("click", function () {
+        $("#menuCategorias").hide();
     });
-});
 
-
-$(function() {
-    $('#dropdownRecomendados').hover(function() {
-        $('.dropdownRecomendados').css('background-color', '#ffffff');
-        $('.dropdownRecomendados').css('border-left', '10px solid #3eb291');
-        $('.dropdownRecomendados').css('font-weight', '700');
-    }, function() {
-        $('.dropdownRecomendados').css('background-color', '');
-        $('.dropdownRecomendados').css('border-left', '');
-        $('.dropdownRecomendados').css('font-weight', '');
-    });
 });

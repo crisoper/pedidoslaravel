@@ -38,9 +38,16 @@
   overflow-y: auto;
 }
 
+.modal.left .modal-header,
+.modal.right .modal-header {
+  border: 0;
+  border-radius: 0;
+}
 .modal.left .modal-body,
 .modal.right .modal-body {
-  padding: 15px 15px 80px;
+  padding: 0px;
+  border: 0;
+  border-radius: 0;
 }
 
 .modal.left.fade .modal-dialog {
