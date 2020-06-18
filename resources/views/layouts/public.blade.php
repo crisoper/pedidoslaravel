@@ -130,7 +130,7 @@
                             <div class="form-row">
                                 <div class="col-12 px-4">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+                                        <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
         
                                         <div class="input-group-append">
                                             <a href="#" class="btn btn_buscar_productos" onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">

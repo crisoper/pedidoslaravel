@@ -36,6 +36,11 @@ class Empresa extends Model
         return $this->hasMany('App\Models\Encuestas\Administracion\Periodos', 'empresa_id','id');
     }
 
+    public function horarios()
+    {
+        return $this->hasMany('App\Models\Publico\Horario', 'empresa_id', 'id');
+    }
+
 
     //Relacion muchos a muchos con comprobante tipos 
     public function comprobantetipos()
