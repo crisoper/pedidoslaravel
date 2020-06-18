@@ -200,7 +200,7 @@
                     </div>
         
                     {{-- LISTA DE PEDIDOS  --}}
-                    <div class="header_top_cart d-flex justify-content-around">
+                    {{-- <div class="header_top_cart d-flex justify-content-around">
                         <button type="button" class="row" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosCestaMenuFlotante">
                             <div id="icon_pedido">
                                 <h3><i class="fas fa-shopping-basket"></i></h3>
@@ -240,7 +240,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -72,17 +72,17 @@
                 let encarrito = '';
                 if (recomendados.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }">
+                        <a href="{{route('empresas1.index')}}" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </button>
+                        </a>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }">
+                        <a href="{{route('empresas1.index')}}" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </button>
+                        </a>
                     </div>`;
                 }
 
