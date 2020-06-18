@@ -8,4 +8,10 @@ class Horario extends Model
 {
     use  SoftDeletes;
     
+
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Admin\Empresa', 'empresa_id', 'id');
+    }
+
 }

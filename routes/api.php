@@ -77,6 +77,13 @@ Route::get("ajax/productos/getdatosxid", "Publico\ProductosController@getdatosxi
 ->name("ajax.productos.getdatosxid");
 
 
+Route::get("ajax/locales/productos", "Publico\LocalesController@productos")
+->name("ajax.locales.productos");
+
+
+
+
+
 
 
 
