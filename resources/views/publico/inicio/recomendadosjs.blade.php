@@ -72,14 +72,14 @@
                 let encarrito = '';
                 if (recomendados.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="{{route('empresas1.index')}}" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }">
+                        <a href="${ recomendados.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </a>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="{{route('empresas1.index')}}" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }">
+                        <a href="${ recomendados.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </a>
@@ -93,7 +93,7 @@
                             ${ fotos }
 
     						<span class="empresa_badge">
-                                <a target="blank" href="{{route('empresas1.index')}}" class="row">
+                                <a target="blank" href="${ recomendados.empresa_url }" class="row">
                                     <p class="text-truncate m-0 p-0">${ recomendados.empresa }</p>
                                     <i class="fas fa-angle-double-right"></i>
                                 </a>

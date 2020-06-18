@@ -28,6 +28,7 @@ class ProductoResource extends JsonResource
             'fotos' => ProductofotoResource::collection( $this->fotos ),
             'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
             'empresa' => $this->empresa ? $this->empresa->nombre : '',
+            'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : ''
         ];
     }
 }

@@ -73,8 +73,8 @@
                 </div>
                 
                 <div class="col-12">
-                    <div class="row" id="">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="row" id="cuerpoProductosEmpresas">
+                        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                             <div class="single_product_wrapper mb-5">
                                 <div class="product-img">
                                     <img src="{{asset('pedidos/img/product/discount/pd-1.jpg')}}" alt="">
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                   
+                        </div>                    --}}
                     </div>
                 </div>
             </div>
