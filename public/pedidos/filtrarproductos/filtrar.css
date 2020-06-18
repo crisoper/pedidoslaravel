@@ -90,8 +90,9 @@
 
 .modal.left .modal-dialog.modal-lg,
 .modal.right .modal-dialog.modal-lg {
-  width: 800px;
+  width: 310px;
 }
+
 
 .modal.left .modal-dialog.modal-xl,
 .modal.right .modal-dialog.modal-xl {

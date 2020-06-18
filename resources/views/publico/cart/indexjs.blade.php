@@ -50,35 +50,48 @@
 
 
             carHTML = carHTML + `
-                <tr>
-                    <td class="imagen">
-                        <div class="cart_product_foto">
-                            ${ fotos }
+                <div class="col-12 mb-3" id="contenido_producto_detalle_pedido">
+                    <div class="row p-2">
+                        <div class="col-md-12 col-lg-7 column_detalle_pedido_1">
+                            <div class="row">
+                                <div class="col-3 col-md-2 col-lg-3 p-0 cart_product_foto">
+                                    ${ fotos }
+                                </div>
+                                <div class="col-9 col-md 10 col-lg-9">
+                                    <p class="my-0 nombre_produc_detalle">${ cesta.producto.nombre }</p>
+                                    <p class="my-0 descripcion_produc_detalle"><small>${ cesta.producto.descripcion }</small></p>
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                    <td class="text-left">
-                        <h5 class="text-truncate mt-0 mb-1"><a href="#">${ cesta.producto.nombre }</a></h5>
-                        <p class="text-truncate td_product_description my-0">${ cesta.producto.descripcion }</p>
-                    </td>
-                    <td class="text-center">
-                        <p class="my-0">S/ ${ cesta.producto.precio }</p>
-                    </td>
-                    <td class="cantidad text-center">
-                        <div class="input_group_unit_product border m-0">
-                            <button class="minus MoreMinProd" idcesta="${ cesta.id }"><b>-</b></button>
-                            <input type="text" class="text-center input_value_cartcart" value="${ cesta.cantidad }">
-                            <button class="more MoreMinProd" idcesta="${ cesta.id }"><b>+</b></button>
+                        <div class="col-md-12 col-lg-5 column_detalle_pedido_2">
+                            <div class="row text-center">
+                                <div class="col-4 p-0 padding_column_detalle_pedido">
+                                    <p class="prec_cant_subt my-0">Precio</p>
+                                    <p class="my-0">S/ ${ cesta.producto.precio }</p>
+                                </div>
+                                <div class="col-4 p-0 px-2 cantidad_detalle padding_column_detalle_pedido">
+                                    <p class="prec_cant_subt my-0">Cantidad</p>
+                                    <div class="input_group_unit_product border m-0">
+                                        <button class="minus MoreMinProd" idcesta="${ cesta.id }"><b>-</b></button>
+                                        <input type="text" class="text-center input_value_cartcart" value="${ cesta.cantidad }">
+                                        <button class="more MoreMinProd" idcesta="${ cesta.id }"><b>+</b></button>
+                                    </div>
+                                </div>
+                                <div class="col-4 p-0 padding_column_detalle_pedido">
+                                    <p class="prec_cant_subt my-0">Subtotal</p>
+                                    <p class="my-0">
+                                        S/ <span class="precioTotalProductos">${ cesta.cantidad * cesta.producto.precio }</span>
+                                    </p>
+                                </div>
+                                <div class="col-12 p-0 botones_detalle_pedido">
+                                    <button class="eliminarProductoCestaTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                    <td class="text-center">
-                        <p class="my-0">S/ <span class="precioTotalProductos">${ cesta.cantidad * cesta.producto.precio }</span></p>
-                    </td>
-                    <td class="text-center">
-                        <button class="eliminarProductoCestaTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
-                            <i class="fas fa-trash-alt text-danger"></i>
-                        </button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             `;
         });
 
@@ -118,9 +131,6 @@
     
     function sumarRestarCantidad() {
         
-        var proQty = $('.input_group_unit_product');
-        // proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
-        // proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
         $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
             var $button = $(this);
             var oldValue = $button.parent().find('input').val();

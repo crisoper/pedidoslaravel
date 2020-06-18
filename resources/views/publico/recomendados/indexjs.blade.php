@@ -123,12 +123,14 @@
                                             Importe: <b>S/ <span>15.90</span></b>
                                         </p>
                                         <div class="input_group_unit_product border m-0">
+                                            <button class="minus MoreMinProd"><b>-</b></button>
                                             <input type="text" class="text-center input_value_cart" value="1">
+                                            <button class="more MoreMinProd"><b>+</b></button>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-2">
-                                <div class="row modal_lista_cart">
+                                <div class="row modal_lista_cart mx-1 mb-2">
                                     <div class="col-2 p-0">
                                         <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendado.id }">
                                             <i class="fa fa-eye"></i>
@@ -150,9 +152,6 @@
         
         function sumarRestarCantidad() {
             
-            var proQty = $('.input_group_unit_product');
-            proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
-            proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
             $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
                 var $button = $(this);
                 var oldValue = $button.parent().find('input').val();

@@ -80,7 +80,7 @@
         </div>
     </header>
     <!-- MENU WEB 2 -->
-    <div class="container-fluid header_top_secondary mx-0 sticky-top">
+    <div class="container-fluid header_top_secondary mx-0 px-0 sticky-top">
         <div class="container">
             <div class="row">
                 {{-- ABRIR MENU MOVIL --}}

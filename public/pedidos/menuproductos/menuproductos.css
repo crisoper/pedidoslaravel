@@ -52,10 +52,6 @@
 }
 
 @media (max-width: 991px) {
-    .sticky-top-2 {
-        top: 50px;
-        height: 30px;
-    }
     .navbar_nav {
         padding: 0 30px !important;
     }
