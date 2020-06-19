@@ -38,9 +38,16 @@
   overflow-y: auto;
 }
 
+.modal.left .modal-header,
+.modal.right .modal-header {
+  border: 0;
+  border-radius: 0;
+}
 .modal.left .modal-body,
 .modal.right .modal-body {
-  padding: 15px 15px 80px;
+  padding: 0px;
+  border: 0;
+  border-radius: 0;
 }
 
 .modal.left.fade .modal-dialog {
@@ -83,8 +90,9 @@
 
 .modal.left .modal-dialog.modal-lg,
 .modal.right .modal-dialog.modal-lg {
-  width: 800px;
+  width: 310px;
 }
+
 
 .modal.left .modal-dialog.modal-xl,
 .modal.right .modal-dialog.modal-xl {

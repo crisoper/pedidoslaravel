@@ -35,6 +35,8 @@ Route::get("cesta/index", "Publico\CestaController@index")
 ->name("cesta.index");
 Route::post("cesta/store", "Publico\CestaController@store")
 ->name("cesta.store");
+Route::post("cesta/update", "Publico\CestaController@update")
+->name("cesta.update");
 Route::delete("cesta/delete", "Publico\CestaController@delete")
 ->name("cesta.delete");
 //LISTA DESEOS MENU
@@ -73,6 +75,13 @@ Route::get("ajax/maspedidos/index", "Publico\MaspedidosAjaxController@index")
 
 Route::get("ajax/productos/getdatosxid", "Publico\ProductosController@getdatosxid")
 ->name("ajax.productos.getdatosxid");
+
+
+Route::get("ajax/locales/productos", "Publico\LocalesController@productos")
+->name("ajax.locales.productos");
+
+
+
 
 
 

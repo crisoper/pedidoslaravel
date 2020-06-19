@@ -96,8 +96,8 @@ Route::get('maspedidos', 'Publico\MaspedidosController@index')
 
 
 // EMPRESAS
-Route::get('empresas1', 'Publico\EmpresasController@index')
-->name('empresas1.index');
+Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
+->name('locales.index');
 
 
 

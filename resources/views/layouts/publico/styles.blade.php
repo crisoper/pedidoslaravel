@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('pedidos/menus/css/menu1.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/css/menu2.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/css/menumovil.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/css/loginmovil.css')}}">
 
     {{-- MODAL --}}
     <link rel="stylesheet" href="{{asset('pedidos/modal/modal.css')}}">

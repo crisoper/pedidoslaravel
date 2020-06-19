@@ -34,32 +34,59 @@
         let carHTML = "";
 
         $.each( listadeseos.data, function( key, deseos ) {
+
+            let fotos = '';
+
+            let contador = 0; 
+
+            $.each( deseos.producto.fotos, function( key, foto ) {
+                contador++
+                if (contador >= 2) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover_img">`;
+                } else {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
+                }
+            });
+
+
             carHTML = carHTML + `
-                <tr>
-                    <td class="imagen">
-                        <img src="https://via.placeholder.com/100x100" alt="#">
-                    </td>
-                    <td class="text-left">
-                        <h5 class="text-truncate mt-0 mb-1"><a href="#">${ deseos.producto.nombre }</a></h5>
-                        <p class="text-truncate td_product_description my-0">${ deseos.producto.descripcion }</p>
-                    </td>
-                    <td class="cantidad text-center">
-                        <p class="stock_lista_deseos my-0">${ deseos.producto.stock }</p>
-                    </td>
-                    <td class="text-center">
-                        <p class="my-0">S/ ${ deseos.producto.precio }</p>
-                    </td>
-                    <td class="cantidad text-center">
-                        <button class="agregar_producto_delista_apedidos" data-toggle="modal" data-target="#productoTablaListaDeseos">
-                            Agregar <i class="fas fa-shopping-basket"></i>
-                        </button>
-                    </td>
-                    <td class="text-center">
-                        <button class="eliminarProductoListaDeseosTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ deseos.producto.id }">
-                            <i class="fas fa-trash-alt text-danger"></i>
-                        </button>
-                    </td>
-                </tr>
+                <div class="col-12 mb-3" id="contenido_producto_detalle_pedido">
+                    <div class="row p-2">
+                        <div class="col-md-12 col-lg-7 column_detalle_pedido_1">
+                            <div class="row">
+                                <div class="col-3 col-md-2 col-lg-3 p-0 cart_product_foto_lista">
+                                    ${ fotos }
+                                </div>
+                                <div class="col-9 col-md 10 col-lg-9">
+                                    <p class="my-0 nombre_produc_detalle">${ deseos.producto.nombre }</p>
+                                    <p class="my-0 descripcion_produc_detalle"><small>${ deseos.producto.descripcion }</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-5 column_detalle_pedido_2">
+                            <div class="row text-center">
+                                <div class="col-3 p-0 padding_column_listadeseos">
+                                    <p class="prec_cant_subt my-0">Stock</p>
+                                    <p class="my-0">${ deseos.producto.stock }</p>
+                                </div>
+                                <div class="col-4 p-0 padding_column_listadeseos">
+                                    <p class="prec_cant_subt my-0">Precio</p>
+                                    <p class="my-0">S/ ${ deseos.producto.precio }</p>
+                                </div>
+                                <div class="col-3 col-sm-4 p-0 px-2 padding_column_agregar">
+                                    <button class="agregar_producto_delista_apedidos" data-toggle="modal" data-target="#productoTablaListaDeseos">
+                                        <span class="agregar_btn_modal">Agregar</span> <i class="fas fa-shopping-basket"></i>
+                                    </button>
+                                </div>
+                                <div class="col-2 col-sm-1 p-0 botones_detalle_listadeseos">
+                                    <button class="eliminarProductodeseosTabla hint--top-left hint--error" data-hint="Eliminar" producto_id="${ deseos.producto.id }">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
         });
 
@@ -67,7 +94,7 @@
     } 
 
 
-    $("#cuerpoTablaListaDeseos").on("click", ".eliminarProductoListaDeseosTabla", function() {
+    $("#cuerpoTablaListaDeseos").on("click", ".eliminarProductodeseosTabla", function() {
 
         let spanEliminar = $( this );
 
@@ -96,9 +123,6 @@
 
     function sumarRestarCantidad() {
         
-        var proQty = $('.input_group_unit_product');
-        proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
-        proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
         $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
             var $button = $(this);
             var oldValue = $button.parent().find('input').val();

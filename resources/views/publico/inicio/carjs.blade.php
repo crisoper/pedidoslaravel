@@ -41,17 +41,36 @@
         let carHTML = "";
 
         $.each( cestas.data, function( key, cesta ) {
+
+            let fotos = '';
+
+            let contador = 0; 
+            
+            $.each( cesta.producto.fotos, function( key, foto ) {
+                contador++
+                if (contador >= 2) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover_img">`;
+                } else {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
+                }
+            });
+
+
             carHTML = carHTML + `
                 <div class="col-12 mt-2">
-                    <div class="row border_caja_product">
+                    <div class="row border_caja_product mb-1">
                         <div class="col-2 p-0">
-                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
+                            <div class="cart_product_foto">
+                                ${ fotos }
+                            </div>
                         </div>
-                        <div class="col-6 p-0">
+                        <div class="col-6 p-0 pl-2">
                             <p class="cart_product_nombre text-truncate small mb-0">
                                 <a href="#">${ cesta.producto.nombre }</a>
-                                </p>
-                            <p class="cart_product_description text-truncate small mb-0"><small>${ cesta.producto.descripcion }</small></p>
+                            </p>
+                            <p class="cart_product_description text-truncate small mb-0">
+                                <small>${ cesta.producto.descripcion }</small>
+                            </p>
                         </div>
                         <div class="col-4 p-0">
                             <p class="cart_product_precio small mb-0"><b>s/ ${ cesta.producto.precio }</b></p>
@@ -74,8 +93,11 @@
 
     function marginCestaMenu() {
         let contarDrpdownCartHeader = $('.border_caja_product').length;
-        if (contarDrpdownCartHeader < 3) {
-            $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '67.5px');
+        if (contarDrpdownCartHeader == 3) {
+            $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '60px');
+        }
+        else if (contarDrpdownCartHeader == 2) {
+            $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '127px');
         }
         else {
             $('.border_caja_product').parents('.dropdown_cart_header').css('padding-bottom', '0px');
@@ -117,6 +139,19 @@
     //Agregar producto a carrito compras
 
     $(".contenidoPrincipalPagina").on("click", ".agregar_cart", function() {
+
+        let btnAgregarCar = $( this );
+        let inputCantidad = $( btnAgregarCar ).closest(".container_product_cart").find(".input_value_cart");
+        let producto_id = $( btnAgregarCar).attr("idproducto");
+        let cantidad = $( inputCantidad).val();
+
+        if( obtenerLocalStorageclienteID () != false ) {
+            
+            agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta" );
+        }
+
+    })
+    $(".contenidoPrincipalPagina").on("click", ".product_aggregate_cesta", function() {
 
         let btnAgregarCar = $( this );
         let inputCantidad = $( btnAgregarCar ).closest(".container_product_cart").find(".input_value_cart");

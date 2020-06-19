@@ -1,10 +1,10 @@
 
 $(document).ready(function () {
     $(".slickempresas").slick({
+        dots: true,
+        arrows: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true,
-        dots: true,
         infinite: true,
         speed: 500,
         autoplay: true,

@@ -32,6 +32,22 @@
             });
 
             $("#menuCategorias").html( html );
+            
+            
+            $("#menuMovilCategorias").html("");
+
+            let htmlMovil = '';
+
+            $.each( datos.data, function( key, categoria ) {
+
+                htmlMovil = htmlMovil + `
+                    <div class="col-12 p-0">
+                        <a class="btn" href="#" value="${ categoria.id }">${ categoria.nombre }</a>
+                    </div>
+                `;
+            });
+
+            $("#menuMovilCategorias").html( htmlMovil );
 
         }
 

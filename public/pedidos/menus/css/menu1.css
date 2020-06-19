@@ -13,77 +13,86 @@
 
 /* ------- SERVICIO AL CLIENTE -------*/
 
-.header_top_client {
-    width: 100%;
-    border-right: 2px solid #474f57;
-}
-.header_top_client .btn-group {
+.header_top_options {
     width: 100%;
 }
-.header_top_client .btn-group button {
+
+.header_top_options button {
     width: 100%;
     color: #ffffff;
-    padding: 3px 10px !important;
+    padding: 3px 0px !important;
     border-radius: 0;
     border: 0;
 }
-.header_top_client .btn-group button:focus {
+.header_top_options button:hover,
+.header_top_options button:focus {
     outline: none;
     box-shadow: none;
+    color: #3eb291;
 }
-.header_top_client .btn-group .dropdown_menu {
-    margin-top: 0px;
+.header_top_options .dropdown_options {
+    margin-top: -1px;
     width: 100%;
-    padding: 10px !important;
     background-color:#343a40;
     border-radius: 0 0 5px 5px;
     text-align: center;
 }
-.header_top_client .btn-group .dropdown_menu a {
+.header_top_options .dropdown_options .hr_options {
+    border-bottom: 1px solid #292d31;
+}
+.header_top_options .dropdown_options .btn_top_client {
+    width: 100%;
     color: #f5f5f5;
     font-size: 14px;
+    padding: 10px 0 !important;
     text-transform: uppercase;
 }
-.header_top_client .btn-group .dropdown_menu .number_phone {
+.header_top_options .dropdown_options .btn_top_client:hover,
+.header_top_options .dropdown_options .btn_top_client:focus {
+    color: #3eb291;
+}
+.header_top_options .dropdown_options .number_phone {
     color: #f5f5f5;
     font-size: 15px;
     text-transform: uppercase;
 }
-.header_top_client .btn-group .dropdown_menu .suport {
+.header_top_options .dropdown_options .suport {
     color: #f5f5f5;
     font-size: 12px;
+    font-weight: 0px;
 }
-.header_top_client .btn-group .dropdown_menu hr {
+.header_top_options .dropdown_options hr {
     background-color: #525252;
 }
-.header_top_client .btn-group .dropdown_menu a:hover,
-.header_top_client .btn-group .dropdown_menu a:focus {
-    color: #3eb291;
-}
-
-
 
 
 /* ------- AFILIAR RESTAURANTE -------*/
 
-.header_top_recommended {
-    width: 100%;
-    text-align: center;
-}
-.header_top_recommended .btn_recommended {
-    width: 100%;
+.btn_recommended {
+    width: auto;
     color: #3eb291;
+    text-align: center;
     padding: 3px 10px !important;
     border-radius: 0;
     border: 0;
-}
-.header_top_recommended .btn_recommended:focus {
+} 
+.btn_recommended:hover,
+.btn_recommended:focus {
     outline: none;
     box-shadow: none;
+    color: #3eb291;
 }
 
 
 /* ------- APPS -------*/
+.btn_app_android {
+    width: 80% !important;
+    margin: 10px 0 5px 0;
+}
+.btn_app_ios {
+    width: 80% !important;
+    margin: 5px 0 10px 0;
+}
 .btn_app_android:focus,
 .btn_app_ios:focus {
     box-shadow: none;
@@ -91,93 +100,72 @@
 
 
 
-
 /* ------- LOGIN -------*/
 
-.header_top_login {
-    width: 100%;
-    border-left: 2px solid #474f57;
-}
-.header_top_login .btn-group {
-    width: 100%;
-}
-.header_top_login .btn-group button {
-    width: 100%;
-    color: #ffffff;
-    padding: 3px 10px !important;
-    border-radius: 0;
-    border: 0;
-}
-.header_top_login .btn-group button:focus {
-    outline: none;
-    box-shadow: none;
-}
-.header_top_login .btn-group .dropdown_menu {
-    margin-top: 0px;
-    width: 100%;
-    padding: 10px !important;
-    background-color:#343a40;
-    border-radius: 0 0 5px 5px;
-    text-align: center;
-}
-.header_top_login .btn-group .dropdown_menu .btn_login {
+.btn_login {
     color: #ffffff;
     background: #3eb291;
-    box-shadow: none;
-    padding: 8px 15px;
-    display: block;
+    padding: 8px 10px;
     border-radius: 0px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
     border: none;
-    width: 100%;
+    width: 80%;
+    margin: 10px 5px 5px 5px;
 }
-.header_top_login .btn-group .dropdown_menu .btn_register {
+.btn_register {
     color: #ffffff;
     background: #5b646d;
-    box-shadow: none;
-    padding: 8px 15px;
-    display: block;
+    padding: 8px 10px;
     border-radius: 0px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
     border: none;
-    width: 100%;
+    width: 80%;
+    margin: 5px 5px 10px 5px;
 }
-.header_top_login .btn-group .dropdown_menu .btn_register:hover,
-.header_top_login .btn-group .dropdown_menu .btn_register:focus {
+.btn_login:hover,
+.btn_login:focus,
+.btn_register:hover,
+.btn_register:focus {
     color: #ffffff !important;
     background: #3eb291 !important;
 }
 
-
-
-
-
-
-
-@media (max-width: 768px) {
-    .header__top { display: none;}
+#header_top_client {
+    border-right: 1px solid #5b646d;
+}
+#header_top_apps,
+#header_top_login {
+    border-left: 1px solid #5b646d;
 }
 
 
-@media (min-width: 1300px) {
-    .header__top {
-        padding-left: 50px !important;
-        padding-right: 50px !important;
+@media (min-width: 1200px) {
+    .btn_app_android {
+        width: 70% !important;
     }
-    .btn_app_android,
     .btn_app_ios {
-        width: 80%;
-    }
-    
-    .header_top_login .btn-group .dropdown_menu .btn_login {
-        width: 80% !important;
-    }
-    .header_top_login .btn-group .dropdown_menu .btn_register {
-        width: 80% !important;
-        margin-bottom: 10px !important;
+        width: 70% !important;
     }
 }
+
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    #header_top_client {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    #header_top_client {
+        display: none;
+    }
+    #header_top_login {
+        display: none;
+    }
+}
+
+

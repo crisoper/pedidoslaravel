@@ -1,12 +1,14 @@
 /* Header cart top */
 
 .header_top_cart {
-    width: 100%;
+    width: 50%;
     height: 100%;
+    padding-right: 15px;
 }
 
+
 .header_top_cart > button {
-    width: 100%;
+    width: 114px;
     height: 50px;
     color: #ffffff !important;
     background-color: #3eb291;
@@ -15,8 +17,9 @@
     border-radius: 0;
 }
 
-.header_top_cart #icon_pedido {
-    padding: 5px 10px 0px 0px !important;
+.header_top_cart > button > #icon_pedido {
+    padding-left: 8px;
+    padding-top: 5px;
 }
 
 .header_top_cart > button h3 {
@@ -26,20 +29,22 @@
     border-radius: 50%;
     border: 1px solid #ffffff;
     padding: 1px 0px 0px 0px;
-    float: right;
+}
+.header_top_cart > button:focus h3 {
+    border: 1px solid #3eb291;
 }
 
-.header_top_cart > button #content_mi_pedido {
-    padding-left: 0;
-    padding-top: 12px;
+.header_top_cart > button > #content_mi_pedido {
+    padding-top: 17px;
+    padding-left: 2px;
+  }
+.header_top_cart > button > #content_mi_pedido p {
+    font-size: 11px;
+    line-height: 12px;
 }
 
-.header_top_cart > button p {
-    font-size: 13px;
-    line-height: 15px;
-}
-.header_top_cart > button h5 {
-    font-size: 15px;
+.header_top_cart > button > #content_mi_pedido h5 {
+    font-size: 11px;
     font-weight: 800 !important;
 }
 
@@ -47,150 +52,111 @@
     box-shadow: none;
     color: #3eb291 !important;
     background-color: #ffffff;
-    /* box-shadow: 0 -10px 20px -5px #868686; */
 }
 
-.header_top_cart > button span {
-    top: 2px;
-    right: 5px;
+.header_top_cart > button h6 {
+    margin-top: -51px;
+    margin-right: -6px;
     height: 17.5px;
     width: 17px;
     color: #ffffff;
     background: #9c5c32;
     font-size: 14px;
-    text-align: center;
     border-radius: 50%;
-    position: absolute;
+    float: right;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .header_top_cart > button p {
-      font-size: 11px;
-    }
-    .header_top_cart > button h5 {
-      font-size: 13px;
-    }
-}
 
-@media only screen and (min-width: 0px) and (max-width: 991px) {
-    #amount_menu_pedido {
-        display: none;
-    }
-
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+    
     .header_top_cart {
         height: 40px;
     }
     .header_top_cart > button {
+        width: auto;
         height: 45px;
-        padding: 0px 0px 5px 0px !important;
-    }
-
-    .header_top_cart > button h3 {
-        width: 35px;
-        height: 29px;
-        font-size: 22px;
-        text-align: center;
-        border-radius: 50%;
-        border: 1px solid #5b6268;
-        padding: 0px;
-        margin-bottom: -6px !important;
     }
     
-    .header_top_cart > button #content_mi_pedido {
-        padding-left: 0;
-        padding-top: 12px;
+    .header_top_cart > button > #icon_pedido {
+        padding-left: 5px;
+        padding-top: 5px;
+    }
+    
+    .header_top_cart > button h3 {
+        width: 40px;
+        height: 35px;
+        font-size: 25px;
     }
 
-    .header_top_cart > button p {
-        width: 100%;
+    .header_top_cart > button > #content_mi_pedido {
+        padding-top: 15px;
+        padding-left: 2px;
+        padding-right: 5px;
+    }
+    .header_top_cart > button > #content_mi_pedido p {
         font-size: 10px;
-        line-height: 0px;
-        text-align: center;
-        margin-left: 7.5px !important;
     }
-    .header_top_cart > button span {
-        height: 13px;
-        width: 15px;
-        font-size: 11px;
+    .header_top_cart > button > #content_mi_pedido h5 {
+        font-size: 10px;
     }
 
+    .header_top_cart > button:focus {
+        box-shadow: none;
+        color: #3eb291 !important;
+        background-color: #ffffff;
+    }
+    
+    .header_top_cart > button h6 {
+        margin-top: -47px;
+        height: 15.5px;
+        width: 17px;
+        font-size: 12px;
+    }
+    
     .header_cart {
-        top: 1px !important;
-        width: 340px;
+        margin-top: 1px !important;
+        margin-right: -1px;
     }
 }
 
-@media only screen and (min-width: 300px) and (max-width: 350px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 25px 0px 0px !important;
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+    .header_top_cart {
+        width: 100% !important;
+        height: 40px;
     }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 20px;
+    .header_top_cart > button {
+        width: auto;
+        height: 45px;
     }
-}
-@media only screen and (min-width: 351px) and (max-width: 400px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 23px 0px 0px !important;
+    
+    .header_top_cart > button > #icon_pedido {
+        padding-left: 5px;
+        padding-top: 7px;
+        padding-right: 10px;
     }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 17.5px;
+    
+    .header_top_cart > button h3 {
+        width: 40px;
+        height: 35px;
+        font-size: 25px;
     }
-}
-@media only screen and (min-width: 401px) and (max-width: 450px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 27.5px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 22.5px;
-    }
-}
-@media only screen and (min-width: 451px) and (max-width: 500px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 32.5px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 27.5px;
-    }
-}
-@media only screen and (min-width: 501px) and (max-width: 550px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 37.5px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 32.5px;
-    }
-}
-@media only screen and (min-width: 551px) and (max-width: 600px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 40px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 35px;
-    }
-}
-@media only screen and (min-width: 601px) and (max-width: 768px) {
-    .header_top_cart #icon_pedido {
-        text-align: center !important;
-        padding: 4px 42.5px 0px 0px !important;
-    }
-    .header_top_cart > button span {
-        top: 2px;
-        right: 37.5px;
-    }
-}
 
+    .header_top_cart > button > #content_mi_pedido {
+        display: none;
+    }
+    
+    .header_top_cart > button h6 {
+        margin-top: -47px;
+        height: 15.5px;
+        width: 17px;
+        font-size: 12px;
+    }
+    
+    .header_cart {
+        margin-top: 1px !important;
+        margin-right: -1px;
+    }
+}
 
 
 
@@ -198,7 +164,7 @@
 
 .header_cart {
     width: 350px;
-    top: 1px !important;
+    top: -1px !important;
     right: 0px;
     padding: 15px;
     background-color: #ffffff;
@@ -211,16 +177,6 @@
     -webkit-box-shadow: 0 10px 20px -5px #868686;
     -o-box-shadow: 0 10px 20px -5px #868686;
     -ms-box-shadow: 0 10px 20px -5px #868686;
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .header_cart {
-        top: 11px !important;
-    }
-}
-@media (max-width: 767px) {
-    .header_cart {
-        top: 11px !important;
-    }
 }
 
 .border_caja_product {
@@ -302,7 +258,7 @@
 
 .scroll_cart_header {
     width: 100% !important;
-    height: 200px !important;
+    height: 261px !important;
     text-align: center;
 }
 
@@ -330,4 +286,35 @@
 }
 .dropdown_cart_header::-webkit-scrollbar-track {
     border-radius: 10px;
+}
+
+
+
+
+
+
+.cart_product_foto {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.cart_product_foto img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+.cart_product_foto .hover_img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
 }

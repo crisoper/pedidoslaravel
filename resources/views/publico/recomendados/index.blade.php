@@ -18,7 +18,7 @@
                 <h6 class="float-left"><b>10</b> Productos encontrados</h6>
                 <button type="button" class="float-right btn btn_filtrar_productos" data-toggle="modal" data-target="#filtrar_productos">Filtrar por</button>
             </div>
-            <div class="col-12 m-0 p-0 slickCustom">
+            <div class="col-12 m-0 p-0">
                 <div class="row" id="cuerpoProductosRecomendados">
 
                 </div>

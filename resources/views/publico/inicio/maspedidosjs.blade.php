@@ -1,32 +1,34 @@
 
 <script>
     
-    $(document).ready(  function () {
+    // $(document).ready(  function () {
         //Obtenemos los productos maspedidos
-        obtenerProductosMasPedidosInicio( );
+        // obtenerProductosMasPedidosInicio( );
     
-        function obtenerProductosMasPedidosInicio( ) {
+        // function obtenerProductosMasPedidosInicio( ) {
     
-            $.ajax({
-                url: "{{ route('ajax.productos.maspedidos') }}",
-                method: 'GET',
-                data: {},
-                success: function ( data ) {
-                    mostrarProductosMasPedidosInicio( data );
-                },
-                error: function ( jqXHR, textStatus, errorThrown ) {
-                    console.log(jqXHR.responseJSON);
-                }
-            });
+        //     $.ajax({
+        //         url: "{{ route('ajax.productos.maspedidos') }}",
+        //         method: 'GET',
+        //         data: {
+        //             storagecliente_id: obtenerLocalStorageclienteID()
+        //         },
+        //         success: function ( data ) {
+        //             mostrarProductosMasPedidosInicio( data );
+        //         },
+        //         error: function ( jqXHR, textStatus, errorThrown ) {
+        //             console.log(jqXHR.responseJSON);
+        //         }
+        //     });
     
-        }
+        // }
     
         function mostrarProductosMasPedidosInicio( datos ) {
             $("#cuerpoProductosMasPedidosInicio").html();
     
             let maspedidosHTML = "";
     
-            $.each( datos.data, function( key, maspedidos ) {
+            $.each( datos, function( key, maspedidos ) {
 
                 let fotos = '';
 
@@ -48,13 +50,13 @@
                 let enlistadeseos = '';
                 if (maspedidos.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ maspedidos.id }">
+                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ maspedidos.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ maspedidos.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ maspedidos.id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
@@ -78,15 +80,17 @@
                 }
 
                 maspedidosHTML = maspedidosHTML + `
-                    <div class="single_product_wrapper single_product_wrapper_rec mx-2 p-0 mb-3 col-sm-6 col-md-4">
+                    <div class="single_product_wrapper mx-2 mb-3">
                         <div class="product-img">
                             
                             ${ fotos }
 
-                            <!-- Product Badge -->
-                            <div class="product-badge empresa_badge p-0">
-                                <a target="blank" href="{{route('empresas1.index')}}" class="text-truncate p-0">${ maspedidos.empresa }</a>
-                            </div>
+    						<span class="empresa_badge">
+                                <a target="blank" href="${ maspedidos.empresa_url }" class="row">
+                                    <p class="text-truncate m-0 p-0">${ maspedidos.empresa }</p>
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </span>
                             <div class="product-badge offer-badge">
                                 <span>Oferta</span>
                             </div>
@@ -100,11 +104,10 @@
                         <div class="featured__item__text container_product_cart featured__item__text_maspedidos px-2 pt-2">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="text-truncate my-0"><b>${ maspedidos.nombre }</b></p>
-                                    <p class="text-truncate small my-0">${ maspedidos.descripcion }</p>
+                                    <p class="text-truncate my-0">${ maspedidos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-3 mb-0">
                             <div class="row px-2">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
@@ -119,12 +122,14 @@
                                         Importe: <b>S/ <span>15.90</span></b>
                                     </p>
                                     <div class="input_group_unit_product border m-0">
+                                        <button class="minus MoreMinProd"><b>-</b></button>
                                         <input type="text" class="text-center input_value_cart" value="1">
+                                        <button class="more MoreMinProd"><b>+</b></button>
                                     </div>
                                 </div>
                             </div>
                             <hr class="mt-0 mb-2">
-                            <div class="row mb-2 px-3">
+                            <div class="row modal_lista_cart mx-1 mb-2">
                                 <div class="col-2 p-0">
                                     <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ maspedidos.id }">
                                         <i class="fa fa-eye"></i>
@@ -146,9 +151,6 @@
         
         function sumarRestarCantidad() {
             
-            var proQty = $('.input_group_unit_product');
-            proQty.prepend('<button class="minus MoreMinProd"><b>-</b></button>');
-            proQty.append('<button class="more MoreMinProd"><b>+</b></button>');
             $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
                 var $button = $(this);
                 var oldValue = $button.parent().find('input').val();
@@ -168,10 +170,10 @@
 
         function sliderMasPedidosInicio() {
             $(".responsiveSlickMasPedidosInicio").slick({
+                dots: false,
+                arrows: true,
                 slidesToShow: 5,
                 slidesToScroll: 5,
-                arrows: true,
-                dots: true,
                 infinite: true,
                 speed: 800,
                 autoplay: true,
@@ -183,14 +185,14 @@
                     '<button class="slick-next" type="button"><i class="fa  fa-angle-right"></i></button>',
                 responsive: [
                     {
-                        breakpoint: 1200,
+                        breakpoint: 1300,
                         settings: {
                             slidesToShow: 4,
                             slidesToScroll: 4,
                         },
                     },
                     {
-                        breakpoint: 992,
+                        breakpoint: 991,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
@@ -215,7 +217,7 @@
 
         }
         
-    });
+    // });
 
 
 </script>

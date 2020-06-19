@@ -14,36 +14,10 @@
             <div class="col-12">
                 <hr class="subrayado_productos mt-1">
             </div>
-            <div class="col-12">
-                <!-- Shopping Summery -->
-                <table class="table table-hover table-responsive-lg shopping_summery">
-                    <thead>
-                        <tr class="main-hading">
-                            <th colspan="2">PRODUCTO</th>
-                            <th class="text-center">STOCK</th>
-                            <th class="text-center">PRECIO POR UNIDAD</th>
-                            <th class="text-center">AGREGAR A PEDIDO</th> 
-                            <th class="text-center"><b><i class="fas fa-trash-alt"></i></b></th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTablaListaDeseos">
-                        {{-- <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                                <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty">
-                                <div class="input_group_unit_product border m-0">
-                                    <input type="text" class="text-center" value="1">
-                                </div>
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr> --}}
-                    </tbody>
-                </table>
+            <div class="col-12 mb-0" id="contenido_detalle_pedido">
+                <div class="row pl-4 pt-4 pr-4 pb-2" id="cuerpoTablaListaDeseos">
+
+                </div>
             </div>
         </div>
     </div>

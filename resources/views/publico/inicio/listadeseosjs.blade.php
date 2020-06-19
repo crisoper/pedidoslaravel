@@ -40,13 +40,30 @@
         let listaHTML = "";
 
         $.each( listadeseos.data, function( key, deseos ) {
+
+            let fotos = '';
+
+            let contador = 0; 
+
+            $.each( deseos.producto.fotos, function( key, foto ) {
+                contador++
+                if (contador >= 2) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover_img">`;
+                } else {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
+                }
+            });
+
+
             listaHTML = listaHTML + `
                 <div class="col-12 mt-2">
-                    <div class="row border_caja_favorites">
+                    <div class="row border_caja_favorites mb-1">
                         <div class="col-2 p-0">
-                            <img src="pedidos/img/featured/feature-2.jpg" alt="">
+                            <div class="cart_product_foto">
+                                ${ fotos }
+                            </div>
                         </div>
-                        <div class="col-6 p-0">
+                        <div class="col-6 p-0 pl-2">
                             <p class="cart_product_nombre text-truncate small mb-0">
                                 <a href="#">${ deseos.producto.nombre }</a>
                                 </p>
@@ -67,8 +84,11 @@
 
     function marginListaDeseosMenu() {
         let contarDrpdownListaDeseosHeader = $('.border_caja_favorites').length;
-        if (contarDrpdownListaDeseosHeader < 3) {
-            $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '67.5px');
+        if (contarDrpdownListaDeseosHeader == 3) {
+            $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '60px');
+        }
+        else if (contarDrpdownListaDeseosHeader == 2) {
+            $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '127px');
         }
         else {
             $('.border_caja_favorites').parents('.dropdown_favorites_header').css('padding-bottom', '0px');
