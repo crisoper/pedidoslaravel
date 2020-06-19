@@ -38,6 +38,16 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 
 
+{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> --}}
+
+
+
+<!-- DataTables -->
+<script src="{{ asset('plugins\datatables\jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('plugins\datatables-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('plugins\datatables-responsive\js\dataTables.responsive.min.js')}}"></script>
+{{-- <script src="{{ asset('plugins\datatables-responsive\js\responsive.bootstrap4.min.js')}}"></script> --}}
 
 <script>
     $.widget.bridge('uibutton', $.ui.button)

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +14,9 @@
     @include('layouts.publico.styles')
 
 </head>
+
 <body class="contenidoPrincipalPagina">
-    
+
     <!-- Page Preloder -->
     {{-- <div id="preloder">
         <div class="loader"></div>
@@ -26,7 +28,7 @@
             <div class="humberger__menu__logo py-2 px-3 bg-dark">
                 <a href="#"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
             </div>
-            
+
             {{-- LOGIN --}}
             <div class="humberger__menu__login py-2 px-3 bg-dark">
                 <div class="row">
@@ -52,24 +54,24 @@
                 <ul class="nav_items px-3">
                     <li class="nav-item nav_expanded">
                         <a class="nav_link" href="#">
-                        Menu <i class="fas fa-chevron-right float-right"></i>
+                            Menu <i class="fas fa-chevron-right float-right"></i>
                         </a>
                         {{-- SEGUNDO MENU --}}
                         <ul class="nav_items nav_expand_content px-3">
                             <li class="nav-item">
                                 <a class="nav_link" href="#">
-                                Level 2
+                                    Level 2
                                 </a>
                             </li>
                             <li class="nav-item nav_expanded">
                                 <a class="nav_link" href="#">
-                                Menu <i class="fas fa-chevron-right float-right"></i>
+                                    Menu <i class="fas fa-chevron-right float-right"></i>
                                 </a>
                                 {{-- TERCER MENU --}}
                                 <ul class="nav_items nav_expand_content pl-3 pr-2">
                                     <li class="nav-item">
                                         <a class="nav_link" href="#">
-                                        Level 3
+                                            Level 3
                                         </a>
                                     </li>
                                     <li class="nav-item nav_expanded">
@@ -126,14 +128,15 @@
                     </li>
                 </ul>
             </nav>
-            
+
             {{-- ATENCION AL CLIENTE --}}
             <div class="humberger__menu__contact fixed-bottom">
                 <hr class="my-1">
                 <div class="row">
                     <div class="col-12">
                         <div class="btn-group dropup">
-                            <button type="button" class="btn btn_servicio_2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn_servicio_2 dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 Servicio al cliente
                             </button>
                             <div class="dropdown-menu">
@@ -156,7 +159,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- MENU WEB 1 -->
     <header class="container-fluid header__top bg-dark mx-0 px-5">
         <div class="row">
@@ -182,8 +185,9 @@
             {{-- AFILIAR RESTAURANTE --}}
             <div class="col-6 col-sm-6 col-md-5 col-lg-6 p-0 header_top_recommended">
                 <a class="btn btn_recommended" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
+         
             </div>
-            
+
             {{-- APPS --}}
             <div class="col-4 col-sm-4 col-md-2 col-lg-2 p-0 header_top_login">
                 <div class="btn-group">
@@ -220,8 +224,41 @@
                         <div class="d-flex justify-content-center mb-1">
                             <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
                         </div>
+                        
                     </div>
                 </div>
+
+                {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">
+                  
+                        {{ Auth::user()->name }}
+                    </span>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                    <a class="dropdown-item" href="{{ route('config.seleccionar.periodo') }}"><i class="fa fa-calendar"
+                            aria-hidden="true"></i> Cambiar periodo</a>
+                    <a class="dropdown-item" href="{{ route('config.seleccionar.empresa') }}"><i class="fa fa-building"
+                            aria-hidden="true"></i> Cambiar empresa</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </a>
+
+
+                </div> --}}
+               
+               
+               
+
+
             </div>
         </div>
     </header>
@@ -250,7 +287,7 @@
                     <img src="{{asset('pedidos/img/logo.png')}}" alt="">
                 </a>
             </div>
-            
+
             {{-- MENU CATEGORIAS --}}
             <div class="col-4 col-md-2 col-lg-2 px-0" id="menu_categorias">
                 <div class="header_menu_categorias">
@@ -267,12 +304,12 @@
                                         </a>
                                         <div class="megasubmenu dropdown-menu" id="dropdownCategorias">
                                             <ul id="menuCategorias">
-    
+
                                             </ul>
                                         </div>
                                     </li>
                                     <li class="has-submenu">
-                                        <a class="dropdown-item dropdownLugares" href="#"> 
+                                        <a class="dropdown-item dropdownLugares" href="#">
                                             Lugares <i class="fas fa-angle-right float-right"></i>
                                         </a>
                                         <div class="megasubmenu dropdown-menu" id="dropdownLugares">
@@ -305,10 +342,13 @@
                         <div class="form-row">
                             <div class="col-12 px-4">
                                 <div class="input-group">
-                                    <input type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
-    
+                                    <input type="text" class="form-control input_buscar"
+                                        placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus
+                                        name="buscar" value="{{request()->query('buscar')}}">
+
                                     <div class="input-group-append">
-                                        <a href="#" class="btn btn_buscar_productos" onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">
+                                        <a href="#" class="btn btn_buscar_productos"
+                                            onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">
                                             <i class="fas fa-search"></i>
                                         </a>
                                     </div>
@@ -338,7 +378,8 @@
             {{-- LISTA DE DESEOS --}}
             <div class="col-2 col-md-1 col-lg-2 px-0">
                 <div class="btn-group header_top_favorites">
-                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosListaDeseosMenuFlotante">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        id="mostrarProductosListaDeseosMenuFlotante">
                         <div class="row">
                             <div class="col-12 col-lg-6 text-right" id="icon_favorites">
                                 <h3><i class="fa fa-heart"></i><span>5</span></h3>
@@ -352,7 +393,8 @@
                         <small><b>Mi lista de deseos</b></small>
                         <hr class="mt-1">
                         <div class="scroll_favorites_header">
-                            <div class="dropdown_favorites_header row" id="mostrarProductosListaDeseosMenuFlotanteItems">
+                            <div class="dropdown_favorites_header row"
+                                id="mostrarProductosListaDeseosMenuFlotanteItems">
                                 {{-- <div class="col-12 mt-2">
                                     <div class="row border_caja_favorites">
                                         <div class="col-2 p-0">
@@ -381,7 +423,8 @@
             {{-- LISTA DE PEDIDOS  --}}
             <div class="col-2 col-md-1 col-lg-2 p-0">
                 <div class="btn-group header_top_cart">
-                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosCestaMenuFlotante">
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        id="mostrarProductosCestaMenuFlotante">
                         <div class="row">
                             <div class="col-12 col-lg-6 text-right" id="icon_pedido">
                                 <h3><i class="fas fa-shopping-basket"></i><span>3</span></h3>
@@ -456,10 +499,13 @@
                             </div>
                             <div class="col-12 col-sm-9 col-md-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control rounded-1" placeholder="Buscar" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
-    
+                                    <input type="text" class="form-control rounded-1" placeholder="Buscar"
+                                        aria-label="Buscar" autofocus name="buscar"
+                                        value="{{request()->query('buscar')}}">
+
                                     <div class="input-group-append">
-                                        <a href="#" class="btn btn-outline-secondary" onclick="event.preventDefault(); document.getElementById('form-buscar-productos').submit();">
+                                        <a href="#" class="btn btn-outline-secondary"
+                                            onclick="event.preventDefault(); document.getElementById('form-buscar-productos').submit();">
                                             <i class="fas fa-search"></i>
                                         </a>
                                     </div>
@@ -474,9 +520,9 @@
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+
     <section style="margin-top: 30px;">
         <main>
             @yield('contenido')
@@ -575,6 +621,3 @@
 @yield("scripts")
 
 </html>
-
-
-

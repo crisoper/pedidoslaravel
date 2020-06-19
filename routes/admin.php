@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Admin\Empresa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,8 +88,11 @@ function() {
     Route::get('includeProductos.principal','Admin\IncludeshomeController@includePrincipal')->name('includeProductos.principal');
     Route::get('includeProductos','Admin\IncludeshomeController@getproductosmaspedidos')->name('getproductosmaspedidos');
     Route::get('includeProductos.getHistoricoVentas','Admin\IncludeshomeController@getHistoricoVentas')->name('getHistoricoVentas');
+  
+//INCLUDE SUPERADMINISTRADOR  
+    Route::get('includeProductos.empresasRegitradas','Admin\IncludeshomeController@empresasRegitradas')->name('empresasRegitradas');
+    Route::get('includeProductos.totalderegistros','Admin\IncludeshomeController@totalderegistros')->name('totalderegistros');
 
-    
     //Rutas que requieren un periodo para continuar
     Route::group([
         'middleware' => [

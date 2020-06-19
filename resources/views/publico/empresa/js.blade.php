@@ -17,8 +17,7 @@
     var filePath = fileInput.value;
     var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
     if(!allowedExtensions.exec(filePath)){
-        $("#errorextension").show();
-      
+        $("#errorextension").show();      
         fileInput.value = '';
         return false;
     }else{
@@ -35,9 +34,9 @@
 
    });
    $(".datetimepicker-input").datetimepicker({
-                            format: 'LT'
-                        })
-                        
+        format: 'LT'
+  
+    });                   
                       
   
     $('#departamentoid').select2({
@@ -136,7 +135,7 @@
                 
                 else if( jqXHR.status == 422 ) 
                 {     
-                    $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();                    
+                    // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();                    
                     GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
                 }
                 else if( jqXHR.status == 429 ) 
@@ -149,8 +148,6 @@
                     $.each( errorInicio , function( index, diasemana ) {
                         $("#horainicio-"+ diasemana ).addClass("is-invalid");
                         $("#errorInicio-"+ diasemana ).addClass("is-invalid");
-                      
-                    
                     });
                     
                     $.each( errorFin , function( index, diasemana ) {
@@ -176,16 +173,14 @@
     $.each( errorsRespuesta, function( idElemento, arrayErrores ) {
            
 
-        if( $( "#" + idElemento ).hasClass("select2") ) {
-            $( "#" + idElemento ).parent().find("span.select2-container").addClass("is-invalid");
-            $( "#" + idElemento ).parent().find(".select2-selection").addClass("is-invalid");
-           
-        }
-       
+         if( $( "#" + idElemento ).hasClass("select2") ) {
+                $( "#" + idElemento ).parent().find("span.select2-container").addClass("is-invalid");
+                $( "#" + idElemento ).parent().find(".select2-selection").addClass("is-invalid");
+            }      
             
-        $( "#" + idElemento ).addClass("is-invalid");
+        $( "#" + idElemento ).addClass("is-invalid");        
             arrayErrores.forEach( error => {
-            // MostrarNotificaciones( $("#obligatorio").val() ,  'error') ;
+            MostrarNotificaciones( error ,  'error') ;
         });
 
     });

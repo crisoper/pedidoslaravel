@@ -15,6 +15,7 @@ class Persona extends Model
         'paterno',
         'materno',
         'dni',
+        'direccion',
         'telefono',
         'correo',
         'created_by'

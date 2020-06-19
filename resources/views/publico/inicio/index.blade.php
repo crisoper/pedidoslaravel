@@ -60,6 +60,7 @@
                 <div class="col-12">
                     <div class="section-title mb-0">
                         <h2 class="float-left m-0 p-0">Recomendados</h2>
+                       
                         <a class="float-right m-0 p-0" href="{{route('recomendados.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>

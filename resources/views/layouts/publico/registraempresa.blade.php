@@ -13,6 +13,7 @@
     @include('layouts.admin.styles')
     @include('layouts.admin.scripts')
     @include('publico.empresa.css')
+    @include('layouts.admin.messenger')
 
     <style>
         @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic|Lora:400,700,700italic|Source+Code+Pro:400,700|Abril+Fatface|Montserrat);
@@ -26,12 +27,12 @@
             background: linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
         }
 
-        .color-1 h1 1{
+        .color-1 h1 1 {
             font-size: 48px;
             text-align: center;
         }
 
-       texto-2 {
+        texto-2 {
             clear: both;
             text-transform: none;
             line-height: 1.4;
@@ -63,12 +64,12 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown ">
 
                     @guest
 
                     @else
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link text-light" data-toggle="dropdown" href="#">
                         <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
                         Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
                         src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
@@ -92,8 +93,8 @@
                         @guest
 
                         @else
-                        <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                        {{-- <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                                class="fas fa-users-cog"></i></i> Mi cuenta</a> --}}
 
                         <div class="dropdown-divider"></div>
 
@@ -111,18 +112,19 @@
             </ul>
         </nav>
     </header>
+   
+        <main class="container-fluid" role="main">
 
-    <main class="container-fluid" role="main">
+            <section class="content">
 
-        <section class="content">
+                @yield('contenido')
 
-            @yield('contenido')
-
-        </section>
-    </main>
+            </section>
+        </main>
+    
 
     <footer class="footer fixed-bottom bg-dark text-light">
-        <small>@if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif </small>
+        <small>@if ( Session::has( 'empresadescripcion') ) {{ config('app.name')}} @endif </small>
         <div class="float-right d-none d-sm-inline-block">
             <small><strong>Copyright &copy; {{ date('Y') }}</strong></small>
         </div>

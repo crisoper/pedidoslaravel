@@ -31,6 +31,7 @@ use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Http\Requests\Admin\Empresas\EmpresaUpdateRequest;
 use App\Http\Requests\Publico\CambiaremailCreateRequest;
 use App\Jobs\ProcesssendmailJob;
+use App\Models\Admin\Userperiodo;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -346,15 +347,22 @@ class EmpresasController extends Controller
         
         $periodo = new Periodo();
         $periodo->empresa_id = $empresa->id;
-        $periodo->nombre = 'demo'.  $empresa->ruc;
+        $periodo->nombre = 'demo';
         $fechaActual = date('Y-m-d');
-        $fechaFin = strtotime ( '+6 month' , strtotime ( $fechaActual ) ) ;
+        $fechaFin = strtotime ( '+12 month' , strtotime ( $fechaActual ) ) ;
         $fechaFin = date ( 'Y-m-d' , $fechaFin );
         $periodo->inicio = date('Y-m-d');
         $periodo->fin = $fechaFin;
         $periodo->estado= 1;
         $periodo->created_by = $user->id;
         $periodo->save();
+
+        $userperiodo = new Userperiodo();
+        $userperiodo->user_id =  $user->id;
+        $userperiodo->periodo_id = $periodo->id;
+        $userperiodo->created_at = $user->id;
+        $userperiodo->save();
+
         
         $rol = rol::where('name', 'web_Administrador empresa')->first();
         
@@ -364,38 +372,6 @@ class EmpresasController extends Controller
             'model_id'=> $user->id,
         ]); 
      
-    
-        //VALIDAMOS VCAMPOS DE HORARIOS
-
-          
-        // $dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado', 'Domingo'];
-        // $diasNoValidosInicio = array();
-        // $diasNoValidosFin = array();
-
-        
-        // foreach ($request->dias as $key => $value) {
-        //     if ( $request->horainicio[$key] == null) {
-        //         $diasNoValidosInicio[] = $dias[$key - 1];
-        //     }
-        //     if ( $request->horafin[$key] == null) {
-        //         $diasNoValidosFin[] = $dias[$key - 1];
-        //     }
-        // } 
-
-
-        // if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
-        //     return response()->json([
-        //         'error' =>  [
-        //             'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
-        //             'data' => [
-        //                 "inicio" => $diasNoValidosInicio,
-        //                 "fin" => $diasNoValidosFin,
-        //             ]
-        //         ] 
-        //     ], 429);
-        // }
-        // else {
-        // }
         for ($i = 1; $i <= count($request->dias) ; $i++) { 
             $horario = new Horario();
             $horario->empresa_id = $empresa->id;
@@ -404,14 +380,12 @@ class EmpresasController extends Controller
             $horario->horafin =  $request->horafin[$i];
             $horario->created_by = $user->id;        
             $horario->save();        
-        }
- 
+        } 
 
         $this->guard()->login($user);
         //Enviamos correo para activar cuenta
         $this->enviarCorreoActivarCuentaEmpresa( $user );     
-        Session::put( 'empresadescripcion',  $empresa->nombre );   
-        
+        Session::put( 'empresadescripcion',  $empresa->nombre );           
 
         return \Response::json( $user );
     
