@@ -48,6 +48,8 @@
 
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/empresas.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/empresas/productos.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/empresas/filtrarproductos.css')}}">
 
 
 
