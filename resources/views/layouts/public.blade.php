@@ -45,7 +45,7 @@
                 </div>
     
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0" id="header_top_restaurant">
+                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                 </div>
                 
@@ -67,7 +67,10 @@
                 </div>
     
                 {{-- LOGIN --}}
-                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0" id="header_top_login">
+                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
+
+                  @if ( Auth::user() == '' || Auth::user() == null )
+                    
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Iniciar sesión <i class="fas fa-angle-down"></i>
@@ -77,35 +80,56 @@
                             <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
                         </div>
                         
+                    </div>    
+                    @else
+                    <div class="header_top_options">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                {{-- <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <img width="25px" height="25px" 
+                                        @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
+                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
+                                        @else 
+                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
+                                        @endif
+                                        src="{{Storage::url('usuarios/default.png')}}"
+                                        
+                                    alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+                                    
+                                </a> --}}
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ auth()->user()->name }} <i class="fas fa-angle-down"></i>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                   
+                                    
+                                    @guest
+                                    
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                                      
+                                        
+                                        <div class="dropdown-divider"></div>
+                                        
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </a>
+                                    @endguest
+                    
+                                </div>
+                            </li>
+                        </ul>
+
                     </div>
+                    @endif
+                    
                 </div>
 
-                {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">
-                  
-                        {{ Auth::user()->name }}
-                    </span>
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                    <a class="dropdown-item" href="{{ route('config.seleccionar.periodo') }}"><i class="fa fa-calendar"
-                            aria-hidden="true"></i> Cambiar periodo</a>
-                    <a class="dropdown-item" href="{{ route('config.seleccionar.empresa') }}"><i class="fa fa-building"
-                            aria-hidden="true"></i> Cambiar empresa</a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </a>
-
-
-                </div> --}}
+               
                
                
                

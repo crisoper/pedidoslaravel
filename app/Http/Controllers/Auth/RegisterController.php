@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\SendcorreonuevousuarioJob;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -45,7 +46,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+  
     /**
      * Get a validator for an incoming registration request.
      *
@@ -104,9 +105,11 @@ class RegisterController extends Controller
         
         $user = User::create([
                 'dni' => $data['dni'],
-                'name' => $data['paterno'].' '.$data['materno'].' '.$data['nombres'],
+                'name' => $data['nombres'].' '. $data['paterno'].' '.$data['materno'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
+                'remember_token' => Hash::make( time() ),
+                'cuenta_activada' => '0',
         ]);
 
         //Asignamos el rol postulante por defecto
@@ -115,14 +118,33 @@ class RegisterController extends Controller
             $user->assignRole( $rol );
         }
 
-        // Asignamos el usuario a la unica empresa
-        // $user->empresas()->attach(1, ['estado' => 1]);
-
         //Enviamos correo, mediane un job
-        // SendcorreonuevousuarioJob::dispatchNow( $user );
+        SendcorreonuevousuarioJob::dispatchNow( $user );
 
         return $user;
+        
      
+    }
+
+    public function activarcuentatoken( Request $request ) {
+
+        if ( $request->has("tokenactivation") ) {
+            
+            $usuario = User::where("remember_token", $request->tokenactivation ) ->first();
+
+            if( $usuario ) {
+                $usuario->email_verified_at = now();
+                $usuario->save();
+                
+               
+
+                return view('publico.empresa.cuentaactivada');
+            }
+
+        }
+
+        return "El token enviado no es valido";
+
     }
 
 }

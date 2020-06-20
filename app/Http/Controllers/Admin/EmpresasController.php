@@ -436,7 +436,14 @@ class EmpresasController extends Controller
                 
                 $this->guard()->login($usuario);
 
-                return view('publico.empresa.cuentaactivada');
+                if ( $usuario->hasRole('web_Comprador')) {
+                    return view('publico.mail.cuentaactivadaComprador');
+                    
+                }else{
+
+                    return view('publico.empresa.cuentaactivada');
+                }
+
             }
 
         }

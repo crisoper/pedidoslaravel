@@ -20,20 +20,20 @@
 $style = [
     /* Layout ------------------------------ */
 
-    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;',
+    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #FFF; display:flex;  justify-content: center;',
     'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #1E69DE;',
 
     /* Masthead ----------------------- */
 
-    'email-masthead' => 'padding: 25px 0; text-align: center;',
-    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #F6F6F6; text-decoration: none; text-shadow: 0 1px 0 white;',
+    'email-masthead' => 'padding: 15px 0; text-align:left;',
+    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #7c7b7b; text-decoration: none; text-shadow: 0 1px 0 white;',
 
-    'email-body' => 'width: 100%; margin: 0; padding: 0; border-top: 1px solid #EDEFF2; border-bottom: 1px solid #EDEFF2; background-color: #FFF;',
+    'email-body' => 'width: 100%; margin: 0; padding: 0; border-top: 1px solid #3869D4; border-bottom: 5px solid #3869D4; background-color: #fff;',
     'email-body_inner' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0;',
     'email-body_cell' => 'padding: 35px;',
 
     'email-footer' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0; text-align: center;',
-    'email-footer_cell' => 'color: #FFFFFF; padding: 35px; text-align: center;',
+    'email-footer_cell' => 'color: #000; padding: 20px; text-align: center;',
 
     /* Body ------------------------------ AEAEAE*/
 
@@ -42,15 +42,15 @@ $style = [
 
     /* Type ------------------------------ */
 
-    'anchor' => 'color: ##FFFFFF;',
-    'header-1' => 'margin-top: 0; color: #febf01; font-size: 19px; font-weight: bold; text-align: left;',
+    'anchor' => 'color: #FFFFFF;',
+    'header-1' => 'margin-top: 0; color: #f9ce5e;  font-weight: bold; text-align: left;',
     'paragraph' => 'margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;',
     'paragraph-sub' => 'margin-top: 0; color: #74787E; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
 
     /* Buttons ------------------------------ */
 
-    'button' => 'display: block; display: inline-block; width: 200px; min-height: 20px; padding: 10px;
+    'button' => 'display: block; display: inline-block; width: 250px; min-height: 20px; padding: 10px;
                  background-color: #3869D4; border-radius: 3px; color: #ffffff; font-size: 15px; line-height: 25px;
                  text-align: center; text-decoration: none; -webkit-text-size-adjust: none;',
 
@@ -63,9 +63,9 @@ $style = [
 <?php $fontFamily = 'font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;'; ?>
 
 <body style="{{ $style['body'] }}">
-    <table width="100%" cellpadding="0" cellspacing="0">
+    <table width="70%" cellpadding="0" cellspacing="0">
         <tr>
-            <td style="{{ $style['email-wrapper'] }}" align="center">
+            <td align="center">
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <!-- Logo -->
                     <tr>
@@ -83,45 +83,34 @@ $style = [
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                         <!-- Greeting -->
-                                        <h1 style="{{ $style['header-1'] }}">                                           
+                                        <h1 style="{{ $style['header-1'] }}">                                          
                                                     ¡Hola!                                              
                                         </h1>
-                                        <strong>{{ $usuario->name ." ".$usuario->paterno }}</strong>
+                                        <h4><strong>{{ $usuario->name ." ".$usuario->paterno }}</strong> </h4>
                                         <!-- Intro -->
                                         {{-- @foreach ($introLines as $line) --}}
                                             <p style="{{ $style['paragraph'] }}">
-                                                {{-- {{ $line }} --}}
-                                                Gracias por elegir <i>{{ config('app.name', 'PEDIDOSAPP') }}</i> para promocionar y vender tus productos por internet. Valida tu correo electronico haciendo click en el botón "Activar mi cuenta".
+                                
+                                                Para completar la creación de tu cuenta en <i>{{ config('app.name', 'PEDIDOSAPP') }}</i>, Confirma tu dirección de correo electrónico.
                                             </p>
-                                        {{-- @endforeach --}}
-
-                                        <!-- Action Button -->
+                                    
                                       
                                             <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td align="center">
-                                                        <?php
-                                                             $actionColor = 'button--green';
-                                                        ?>
-                                                   
+                                                    <td align="center">                                                     
+                                                      
                                                         <a href="{{  url('/') }}/activarcuentaempresa?tokenactivation={{ $usuario->remember_token  }}"
-                                                            style="{{ $fontFamily }} {{ $style['button'] }} {{ $style[$actionColor] }}"
+                                                            style="{{ $fontFamily }} {{ $style['button'] }}"
                                                             class="button"
                                                             target="_blank">
-                                                            Activar mi cuenta
+                                                            VERIFICAR CORREO ELECTRÓNICO
                                                         </a>
-                                                      
+                                               
                                                     </td>
                                                 </tr>
                                             </table>
                                     
-                                        <!-- Outro -->
-                                    
-                                            <p style="{{ $style['paragraph'] }}">
-                                                
-
-                                            </p>
-                                    
+                                     
                                         <!-- Sub Copy -->
                                      
                                             <table style="{{ $style['body_sub'] }}">
@@ -130,7 +119,7 @@ $style = [
                                                         <p style="{{ $style['paragraph-sub'] }}">
                                                             Si tiene problemas para hacer clic en el botón "Activar mi cuenta",
                                                             copie y pegue la siguiente URL en su navegador web:
-                                                            {{ url('/') }}/activarcuentaempresa?tokenactivation={{ $usuario->remember_token }}
+                                                            <span style="color: rgb(59, 59, 235)">{{ url('/') }}/activarcuentaempresa?tokenactivation={{ $usuario->remember_token }}</span>
                                                         </p>
 
                                                     </td>
@@ -146,14 +135,16 @@ $style = [
                     <!-- Footer -->
                     <tr>
                         <td>
-                            <table style="{{ $style['email-footer'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
+                            <table  align="center" width="570" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
-                                        <p style="{{ $style['anchor'] }}">
+                                        <small>
+                                        <p >
                                             &copy; {{ date('Y') }}
-                                            <a style="{{ $style['anchor'] }}" href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.
-                                            Todos los derechos reservados.
+                                            <a  href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.
+                                            <i>Todos los derechos reservados.</i>
                                         </p>
+                                    </small>
                                     </td>
                                 </tr>
                             </table>

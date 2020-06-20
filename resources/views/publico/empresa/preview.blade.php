@@ -1,137 +1,172 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-	<meta charset="utf-8">
-	<title>imgLiquid Jquery Plugin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<!-- RESET ______________________ -->
-	<link   href="reset.css"	type="text/css" rel="stylesheet" />
-
-	<!-- JQUERY ______________________ -->
-	<!--[if lt IE 9]> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script> <![endif]-->
-	<!--[if gte IE 9]><!--> <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript"></script> <!--<![endif]-->
-
-
-	<!-- IMGLIQUID ______________________ -->
-	{{-- <script src ="../js/imgLiquid.js" type="text/javascript"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/imgLiquid/0.9.944/js/imgLiquid-min.js" integrity="sha256-z4cMTdo7oNjKxlSoGDe6zbGDxBBu9u0SZjAZs8xzmWA=" crossorigin="anonymous"></script>
-
-	<!-- EXAMPLE ______________________ -->
-	<script type="text/javascript">
-	$(document).ready(function () {
-		$(".imgLiquidFill").imgLiquid({fill:true});
-		$(".imgLiquidNoFill").imgLiquid({fill:false});
-	});
-	</script>
-
-
-	<!-- EXAMPLE ______________________ -->
-	<style type="text/css">
-	/*github-ribbon*/
-	.github-ribbon{background-color:#121621;top:3.2em;right:-3.7em;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);-webkit-box-shadow:0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;-moz-box-shadow:0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;-ms-box-shadow:0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;-o-box-shadow:0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;box-shadow:0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;color:rgba(255,255,255,0.90);display:block;padding:.6em 3.5em;position:absolute;font:bold .82em sans-serif;text-align:center;text-decoration:none;text-shadow:1px -1px 8px rgba(0,0,0,0.60);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}
-	body {
-		margin:0;
-		padding:0;
-		background-color:#fff;
-		font-family: 'Open Sans', arial, sans-serif;
-		font-weight:300;
-		margin:30px;
-	}
-	.boxSep{
-		background-color:#f7f7f7;
-		border: 1px solid #ddd;
-		margin:10px;
-		float:left;
-		margin-right:30px;
-	}
-	.LogSep{
-		margin:10px;
-	}
-	h1{
-		margin:10px;
-		margin-bottom:60px;
-		font-size:30px;
-		font-family: 'Open Sans', arial, sans-serif!Important;
-		font-weight:300;
-		color:#888;
-	}
-	h2{
-		margin:10px;
-		margin-top:0;
-		margin-bottom:2px;
-		font-size:20px;
-		font-family: 'Open Sans', arial, sans-serif!Important;
-		font-weight:300;
-		color:#bbb;
-		margin-top:80px;
-	}
-	</style>
+    <style type="text/css" rel="stylesheet" media="all">
+        /* Media Queries */
+        @media only screen and (max-width: 500px) {
+            .button {
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 
+<?php
 
-<body>
+$style = [
+    /* Layout ------------------------------ */
 
-	<a href="https://github.com/karacas/imgLiquid" class="github-ribbon">Fork me on GitHub</a>
-	<div class="LogSep" >
-		<img src="logoimgliquid.png" alt="imgliquid"><br><br>
-		<p style='line-height:24px'>jQuery plugin to resize images to fit in a container.
-			<br>All of the images src of Woody's are the same.
-			<br>More info & usage in <a href="https://github.com/karacas/imgLiquid" >gitHub</a>.
-		</p>
-	</div>
+    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #FFF; display:flex;  justify-content: center;',
+    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #1E69DE;',
 
-	<h2 style='clear:both'>ImageBox fill: true</h2>
-	<div class="boxSep" >
-		<div class="imgLiquidFill imgLiquid" style="width:200px; height:200px;" data-imgLiquid-fill="false" data-imgLiquid-verticalAlign="50%">
-			<a href="woody.jpg"  target="_blank"  title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    /* Masthead ----------------------- */
 
-	<div class="boxSep" >
-		<div class="imgLiquidFill imgLiquid" style="width:150px; height:200px;" data-imgLiquid-verticalAlign="bottom"  data-imgLiquid-fill="false">
-			<a href="woody.jpg" target="_blank"  title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    'email-masthead' => 'padding: 15px 0; text-align:left;',
+    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #7c7b7b; text-decoration: none; text-shadow: 0 1px 0 white;',
 
-	<div class="boxSep" >
-		<div class="imgLiquidFill imgLiquid" style="width:350px; height:200px;">
-			<a href="woody.jpg"  target="_blank" title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    'email-body' => 'width: 100%; margin: 0; padding: 0; border-top: 1px solid #3869D4; border-bottom: 5px solid #3869D4; background-color: #fff;',
+    'email-body_inner' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0;',
+    'email-body_cell' => 'padding: 35px;',
 
+    'email-footer' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0; text-align: center;',
+    'email-footer_cell' => 'color: #000; padding: 20px; text-align: center;',
 
-	<div style='clear:both'></div>
-	<h2 style='clear:both'>ImageBox fill: false</h2>
-	<div class="boxSep" >
-		<div class="imgLiquidNoFill imgLiquid" style="width:200px; height:200px;" >
-			<a href="woody.jpg"  target="_blank" title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    /* Body ------------------------------ AEAEAE*/
 
-	<div class="boxSep" >
-		<div class="imgLiquidNoFill imgLiquid" style="width:150px; height:200px;">
-			<a href="woody.jpg"  target="_blank" title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    'body_action' => 'width: 100%; margin: 30px auto; padding: 0; text-align: center;',
+    'body_sub' => 'margin-top: 25px; padding-top: 25px; border-top: 1px solid #EDEFF2;',
 
-	<div class="boxSep" >
-		<div class="imgLiquidNoFill imgLiquid" style="width:350px; height:200px;">
-			<a href="woody.jpg" target="_blank"  title="test">
-				<img alt="TEST" src="{{asset('img/woody.jpg')}}"/>
-			</a>
-		</div>
-	</div>
+    /* Type ------------------------------ */
 
+    'anchor' => 'color: #FFFFFF;',
+    'header-1' => 'margin-top: 0; color: #f9ce5e;  font-weight: bold; text-align: left;',
+    'paragraph' => 'margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;',
+    'paragraph-sub' => 'margin-top: 0; color: #74787E; font-size: 12px; line-height: 1.5em;',
+    'paragraph-center' => 'text-align: center;',
 
+    /* Buttons ------------------------------ */
+
+    'button' => 'display: block; display: inline-block; width: 250px; min-height: 20px; padding: 10px;
+                 background-color: #3869D4; border-radius: 3px; color: #ffffff; font-size: 15px; line-height: 25px;
+                 text-align: center; text-decoration: none; -webkit-text-size-adjust: none;',
+
+    'button--green' => 'background-color: #8fc800;',
+    'button--red' => 'background-color: #dc4d2f;',
+    'button--blue' => 'background-color: #3869D4;',
+];
+?>
+
+<?php $fontFamily = 'font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;'; ?>
+
+<body style="{{ $style['body'] }}">
+    <table width="70%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="center">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <!-- Logo -->
+                    <tr>
+                        <td style="{{ $style['email-masthead'] }}">
+                            <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
+                                {{ config('app.name') }}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Email Body -->
+                    <tr>
+                        <td style="{{ $style['email-body'] }}" width="100%">
+                            <table style="{{ $style['email-body_inner'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
+                                        <!-- Greeting -->
+                                        <h1 style="{{ $style['header-1'] }}">                                          
+                                                    ¡Hola!                                              
+                                        </h1>
+                                        <h4><strong>{{ $usuario->name ." ".$usuario->paterno }}</strong> </h4>
+                                        <!-- Intro -->
+                                        {{-- @foreach ($introLines as $line) --}}
+                                            <p style="{{ $style['paragraph'] }}">
+                                
+                                                Para completar la creación de tu cuenta en <i>{{ config('app.name', 'PEDIDOSAPP') }}</i>, Confirma tu dirección de correo electrónico.
+                                            </p>
+                                    
+                                      
+                                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td align="center">
+                                                      
+                                                        <a href=""
+                                                            style="{{ $fontFamily }} {{ $style['button'] }}"
+                                                            class="button"
+                                                            target="_blank">
+                                                            VERIFICAR CORREO ELECTRÓNICO
+                                                        </a>
+                                               
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    
+                                     
+                                        <!-- Sub Copy -->
+                                     
+                                            <table style="{{ $style['body_sub'] }}">
+                                                <tr>
+                                                    <td style="{{ $fontFamily }}">
+                                                        <p style="{{ $style['paragraph-sub'] }}">
+                                                            Si tiene problemas para hacer clic en el botón "Activar mi cuenta",
+                                                            copie y pegue la siguiente URL en su navegador web:
+                                                            <span style="color: rgb(59, 59, 235)">{{ url('/') }}/activarcuentaempresa?tokenactivation={{ $usuario->remember_token }}</span>
+                                                        </p>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                       
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td>
+                            <table  align="center" width="570" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
+                                        <small>
+                                        <p >
+                                            &copy; {{ date('Y') }}
+                                            <a  href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.
+                                            <i>Todos los derechos reservados.</i>
+                                        </p>
+                                    </small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- http://pedidoslaravel.test/confirmarcuenta?tokenactivar=asdasdasdasdasdasdasdasdasdasd --}}

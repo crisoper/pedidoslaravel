@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\User as UserModel;
 use App\Mail\Publico\ActivarcuentaempresaMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,9 +21,9 @@ class SendcorreonuevousuarioJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( UserModel $user )
     {
-        //
+        $this->user = $user;
     }
 
     /**

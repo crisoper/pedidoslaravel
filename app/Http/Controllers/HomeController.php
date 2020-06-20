@@ -69,7 +69,11 @@ class HomeController extends Controller
             }
         } else {
             if (auth()->user()->hasRole('web_Comprador')) {
-                return view("publico.inicio.index");
+                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {                    
+                    return view("publico.inicio.index");
+                }else{
+                    return view('publico.mail.confirmarcuentaComprador');
+                }
             } else {
                 return redirect()->route('registrartuempresa');
             }
