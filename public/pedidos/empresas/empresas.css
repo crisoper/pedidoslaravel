@@ -201,6 +201,50 @@
     border-bottom-color: #bac5d1;
 }
 
+
+
+
+
+
+
+
+
+
+.column_detalle_cesta_1 .imagen_producto_cesta {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.column_detalle_cesta_1 .imagen_producto_cesta img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+.column_detalle_cesta_1 .imagen_producto_cesta .hover_img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
 .nombre_produc_cesta {
     font-weight: 700;
     line-height: 18px;
