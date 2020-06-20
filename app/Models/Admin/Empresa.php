@@ -48,6 +48,10 @@ class Empresa extends Model
         return $this->belongsToMany('\App\Models\Admin\Comprobantetipo', 'empresacomprabantetipos', 'comprobantetipo_id', 'empresa_id');
     }
 
+    public function departamento(){
+        return $this->hasOne('App\Models\Publico\Departamento');
+    }
+
 
     /*
     * Usuario que ha creado el registro

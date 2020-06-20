@@ -10,7 +10,7 @@
 
     Etimad@:
     <br>
-    {{ $usuario->name }}, el administrador de sitio {{ config('app.name', 'Encuestas') }}, ha generado una nueva clave de ingreso.
+    {{ $usuario->name }}, el administrador de sitio {{ config('app.name', 'PedidosAPP') }}, ha generado una nueva clave de ingreso.
 
     <br><br>
 

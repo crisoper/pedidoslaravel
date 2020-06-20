@@ -3,21 +3,18 @@
 @section('contenido')
 
 
-<div class="col">
+<div class="col-12">
 
-    <div class="row">
-        @include('layouts.admin.dashboardhome.vistaAdministrador')
-    </div>
 
-    <div class="row">
-        
-        @if ( $flag == 'home' )
-             @include('admin.administrador_includes.principal')
-        @elseif ( $flag == 'productos' )
-             @include('admin.administrador_includes.producto')
+  
+        @if ( $flag == 'SuperAdministrador' )
+            @include('layouts.admin.dashboardhome.vistaSuperadministrador')
+        @elseif ( $flag == 'Administrador' )     
+            @include('layouts.admin.dashboardhome.vistaAdministrador')
+             {{-- @include('admin.administrador_includes.producto') --}}
         @endif
 
-    </div>
+   
 </div>
 
 

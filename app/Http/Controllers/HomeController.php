@@ -34,7 +34,7 @@ class HomeController extends Controller
         $idempresa = session()->get('empresaactual');
         // $periodos = Periodo::where('empresa_id', $idempresa )->first();  
         $userEmpresa = Auth()->user()->empresas;
-        $flag = "home";
+
         $empresas = $userEmpresa;
         $empresa = $userEmpresa->first();
 
@@ -43,6 +43,7 @@ class HomeController extends Controller
             if (auth()->user()->hasRole('SuperAdministrador')) {
                 Session::put('empresaactual', $empresa->id);
                 Session::put('empresadescripcion', $empresa->nombre);
+                $flag = "SuperAdministrador";
                 return view('home', compact('flag'));
             } else {
 
@@ -53,24 +54,29 @@ class HomeController extends Controller
                     } else {
                         Session::put('empresaactual', $empresa->id);
                         Session::put('empresadescripcion', $empresa->nombre);
+                        $flag = "Administrador";
                         return view('home', compact('flag'));
                     }
                 } else {
-
 
                     $rol = auth()->user()->roles()->where("guard_name", "menu")->whereNotNull("paginainicio")->first();
                     if ($rol and Route::has($rol->paginainicio)) {
                         return redirect()->route($rol->paginainicio);
                     } else {
-
                         return view("layouts.paginas.mensajes.sinrol");
                     }
                 }
-
-                
             }
         } else {
-            return redirect()->route('registrartuempresa');
+            if (auth()->user()->hasRole('web_Comprador')) {
+                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {                    
+                    return view("publico.inicio.index");
+                }else{
+                    return view('publico.mail.confirmarcuentaComprador');
+                }
+            } else {
+                return redirect()->route('registrartuempresa');
+            }
         }
     }
 }

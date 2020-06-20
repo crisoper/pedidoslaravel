@@ -24,9 +24,17 @@
         margin-top: 2.5rem;
         padding: 8rem;
     }
-
+    .seccion-2 {
+        margin-top: 2.5rem;
+        padding: 5rem;
+    }
     h4 {
         font-size: 24px;
+    }
+
+    #foot {
+        width: 350px;
+        height: 400px;
     }
 </style>
 
@@ -43,7 +51,6 @@
                 <span class=" "> Registra tu negocio <br>
                     y <span class="text-warning"><strong>empieza a incrementar</strong></span> tus ventas.
                 </span>
-
             </div>
             <div>
                 <p>
@@ -51,18 +58,12 @@
                     necesitas para vender en internet, lo mejor de todo <span class="text-warning"><strong>es
                             gratis.</strong></span>
                 </p>
-
             </div>
-        </div>    
+        </div>
     </div>
     <div class="row ">
-
-     
-
         <div class="row mt-5">
             <div class="col">
-
-
                 <div class="col-12">
                     @php
                     $usuario = Auth()->user()
@@ -71,17 +72,20 @@
                     <form id="formularioRegistroEmpresa" action="{{route('registratuempresa.store')}}" method="POST"
                         enctype="multipart/form-data">
 
-                        <div class="row mt-5 ">
-                            <div class="col-md-5 col-sm-12 mx-auto d-flex flex-column justify-content-center align-items-center ">
-                                    <p class="text-dark text-center">
-                                 
-                                    </p>
-                                    <h1 class="text-center">
-                                        La información que ingrese en este formulario se mostraran en la página principal junto a sus productos que registre. <strong>
+                        <div class="row mt-3 ">
+                            <div
+                                class="col-md-5 col-sm-12 mx-auto d-flex flex-column justify-content-center align-items-center ">
+                                <div class="d-flex flex-nowrap align-items-center">
+                                    <img id="foot" src="{{asset('img/resitroempresa/foot.png')}}">
+
+                                    <h4 class="text-center">
+                                        La información que ingreses en este formulario se mostraran en la página
+                                        principal junto a los productos que registres. <strong>
                                             Es importante que la información ingresada sea real.
                                         </strong>
-                                    </h1>
-                             
+                                    </h4>
+                                </div>
+
                             </div>
 
                             <div class="col-md-7 col-sm-12  mx-auto ">
@@ -118,6 +122,7 @@
                                                         class="form-control form-control-sm" value="{{old('nombre')}}"
                                                         placeholder="Nombre o Razón Social">
                                                     <span class="text-danger">{{ $errors->first('nombre') }}</span>
+                                                    <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                                 </div>
                                                 <div class="form-group col-md-12 col-sm-12">
                                                     <input type="text" name="nombrecomercial" id="nombrecomercial"
@@ -151,8 +156,7 @@
                                                     </div>
 
                                                 </div>
-                                                <figcaption class="text-danger"><small><i>Tamaño recomendado: 200 x
-                                                            200px</i></small> </figcaption>
+                                                <figcaption class="text-danger"><small><i>Tamaño recomendado: 200 x                                                             200px</i></small> </figcaption>
 
 
                                                 <div class="bg-danger pt-1 pb-1" id="errorextension"
@@ -223,10 +227,14 @@
 
                             </div>
                         </div>
-                        <div class="row ">
+                        <div class="row mt-5  seccion-2 p-5 ">
                             <div class="col-md-5 col-sm-12 mx-auto d-flex justify-content-center align-items-center">
 
-                                <img src="{{asset('img/logo tienda.png')}}" width="400px" alt="">
+                                <h3>
+                                    <strong>{{config('app.name')}}</strong> te ofrece un sitio web independiente donde
+                                    tus clientes podrán ingresar y realizar sus pedidos de los diferentes productos que
+                                    publiques.
+                                </h3>
 
                             </div>
                             <div class="col-md-7 col-sm-12  mx-auto ">
@@ -320,25 +328,28 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-group col-sm-12 col-md-6">
-                                                    <input id="password" type="password"
-                                                        class="form-control form-control-sm @error('password') is-invalid @enderror"
-                                                        name="password" required autocomplete="new-password"
-                                                        placeholder="Contraseña" minlength="8">
+                                                <div class="col-12 d-flex flex-wrap">
+                                                    <div class="form-group col-sm-12 col-md-6">
+                                                        <input id="password" type="password"
+                                                            class="form-control form-control-sm @error('password') is-invalid @enderror"
+                                                            name="password" required autocomplete="new-password"
+                                                            placeholder="Contraseña" minlength="8">
 
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
+                                                        @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
 
-                                                <div class="form-group col-sm-12 col-md-6">
-                                                    <input id="password-confirm" type="password"
-                                                        class="form-control form-control-sm"
-                                                        name="password_confirmation" required
-                                                        autocomplete="new-password"
-                                                        placeholder="Confirmar la contraseña">
+                                                    <div class="form-group col-sm-12 col-md-6">
+                                                        <input id="password-confirm" type="password"
+                                                            class="form-control form-control-sm"
+                                                            name="password_confirmation" required
+                                                            autocomplete="new-password"
+                                                            placeholder="Confirmar la contraseña">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
@@ -350,7 +361,7 @@
                         </div>
                         <div class="row ">
                             <div class="col-md-5 col-sm-12 mx-auto d-flex justify-content-center align-items-center">
-
+                                <h3>Registra los días y horas de atención.  </h3>
                             </div>
                             <div class="col-md-7 col-sm-12  mx-auto">
                                 <div class="card card-outline card-primary">
@@ -445,21 +456,21 @@
                 </div>
 
                 <div class="row ">
-                  
-          
+
+
                     <div class="col-12 mt-3">
                         <div class="form-row text-center">
                             <div class="form-group col-5 d-flex flex-nowrap">
                             </div>
                             <div class="form-group col-7 d-flex flex-nowrap">
 
-<div>
- 
-    @foreach ($errors as $error)
-        
-    <span class="text-danger">{{ $error}}</span>
-    @endforeach
-</div>
+                                <div>
+
+                                    @foreach ($errors as $error)
+
+                                    <span class="text-danger">{{ $error}}</span>
+                                    @endforeach
+                                </div>
 
                                 @csrf
 
