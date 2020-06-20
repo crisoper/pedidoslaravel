@@ -24,10 +24,12 @@
         margin-top: 2.5rem;
         padding: 8rem;
     }
+
     .seccion-2 {
         margin-top: 2.5rem;
         padding: 5rem;
     }
+
     h4 {
         font-size: 24px;
     }
@@ -35,6 +37,123 @@
     #foot {
         width: 350px;
         height: 400px;
+    }
+
+    #time-range p {
+        font-family: "Arial", sans-serif;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .ui-slider-horizontal {
+        height: 8px;
+        background: #D7D7D7;
+        border: 1px solid #BABABA;
+        box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
+        clear: both;
+        margin: 8px 0;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        border-radius: 6px;
+    }
+
+    .ui-slider {
+        position: relative;
+        text-align: left;
+    }
+
+    .ui-slider-horizontal .ui-slider-range {
+        top: -1px;
+        height: 100%;
+    }
+
+    .ui-slider .ui-slider-range {
+        position: absolute;
+        z-index: 1;
+        height: 8px;
+        font-size: .7em;
+        display: block;
+        border: 1px solid #5BA8E1;
+        box-shadow: 0 1px 0 #AAD6F6 inset;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -khtml-border-radius: 6px;
+        border-radius: 6px;
+        background: #81B8F3;
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+        background-size: 100%;
+        background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #4daae4), color-stop(100%, #2781e0));
+        background-image: -webkit-linear-gradient(top, #4daae4, #2781e0);
+        background-image: -moz-linear-gradient(top, #4daae4, #2781e0);
+        background-image: -o-linear-gradient(top, #4daae4, #2781e0);
+        background-image: linear-gradient(top, #4daae4, #2781e0);
+    }
+
+    .ui-slider .ui-slider-handle {
+        border-radius: 50%;
+        background: #F9FBFA;
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+        background-size: 100%;
+        background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #C7CED6), color-stop(100%, #F9FBFA));
+        background-image: -webkit-linear-gradient(top, #C7CED6, #F9FBFA);
+        background-image: -moz-linear-gradient(top, #C7CED6, #F9FBFA);
+        background-image: -o-linear-gradient(top, #C7CED6, #F9FBFA);
+        background-image: linear-gradient(top, #C7CED6, #F9FBFA);
+        width: 22px;
+        height: 22px;
+        -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+        -moz-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+        box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+        -webkit-transition: box-shadow .3s;
+        -moz-transition: box-shadow .3s;
+        -o-transition: box-shadow .3s;
+        transition: box-shadow .3s;
+    }
+
+    .ui-slider .ui-slider-handle {
+        position: absolute;
+        z-index: 2;
+        width: 22px;
+        height: 22px;
+        cursor: default;
+        border: none;
+        cursor: pointer;
+    }
+
+    .ui-slider .ui-slider-handle:after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        top: 50%;
+        margin-top: -4px;
+        left: 50%;
+        margin-left: -4px;
+        background: #30A2D2;
+        -webkit-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
+        -moz-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 white;
+        box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
+    }
+
+    .ui-slider-horizontal .ui-slider-handle {
+        top: -.5em;
+        margin-left: -.6em;
+    }
+
+    .ui-slider a:focus {
+        outline: none;
+    }
+
+    .slider-range {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #time-range {
+        width: 200px;
     }
 </style>
 
@@ -156,7 +275,8 @@
                                                     </div>
 
                                                 </div>
-                                                <figcaption class="text-danger"><small><i>Tamaño recomendado: 200 x                                                             200px</i></small> </figcaption>
+                                                <figcaption class="text-danger"><small><i>Tamaño recomendado: 200 x
+                                                            200px</i></small> </figcaption>
 
 
                                                 <div class="bg-danger pt-1 pb-1" id="errorextension"
@@ -361,143 +481,161 @@
                         </div>
                         <div class="row ">
                             <div class="col-md-5 col-sm-12 mx-auto d-flex justify-content-center align-items-center">
-                                <h3>Registra los días y horas de atención.  </h3>
+
+                                <h3>Registra los días y horas de atención. </h3>
+
+
                             </div>
                             <div class="col-md-7 col-sm-12  mx-auto">
                                 <div class="card card-outline card-primary">
-                                    <div class="card-header">
-                                        <input type="hidden" name="" id="changeicon" value="0">
-                                        <a class="btn" data-toggle="collapse" href="#verhorario" role="button"
-                                            aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-angle-double-down" id="icono"></i> Horario de atención
-                                        </a>
-                                    </div>
-
-
-                                    <div class="collapse" id="verhorario">
-                                        <div class="card-body pt-0">
-
-
-
-                                            @foreach ($dias as $dia)
-                                            <div class="form-row d-flex align-items-center">
-                                                <div class="form-group col-sm-4 col-md-6">
-                                                    <div class="ml-5 d-flex align-items-center">
-                                                        <label class="form-check-label"
-                                                            for="dias[{{ $loop->iteration }}]">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="dias[{{ $loop->iteration }}]"
-                                                                id="dias[{{ $loop->iteration }}]"
-                                                                value="{{ $dia }}">{{ $dia }}
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="form-group col-sm-4 col-md-3">
-
-                                                    {{-- <small class="text-muted">Desde:</small>
-                                                <div class="input-group date horainicio" id="timepicker"
-                                                    data-target-input="nearest">
-                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]"
-                                                    id="horainicio-{{ $dia }}"
-                                                    class="form-control form-control-sm datetimepicker-input
-                                                    datetimepicker"
-                                                    data-target="horainicio[{{$loop->iteration}}]" />
-                                                    <div class="input-group-append"
-                                                        data-target="horainicio[{{$loop->iteration}}]"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text">
-                                                            <i class="far fa-clock"></i>
-                                                        </div>
-
-                                                    </div>
-                                                </div> --}}
-
-
-
-                                                <div class="input-group date mr-3" id="timepicker"
-                                                    data-target-input="nearest">
-                                                    <span class="col-12 ">Desde:</span>
-                                                    <input type="text" name="horainicio[{{ $loop->iteration }}]"
-                                                        id="horainicio-{{ $dia }}"
-                                                        class="form-control form-control-sm col-12 datetimepicker-input"
-                                                        data-target="#horainicio-{{ $dia }}" />
-                                                    <div class="input-group-append" data-target="#horainicio-{{ $dia }}"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                                    </div>
-                                                </div>
-                                                <span id="errorInicio-{{ $dia }}" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group col-sm-4 col-md-3">
-                                                <div class="input-group date mr-3" id="timepicker"
-                                                    data-target-input="nearest">
-                                                    <span class="col-12 ">Hasta:</span>
-                                                    <input type="text" name="horafin[{{ $loop->iteration }}]"
-                                                        id="horafin-{{ $dia }}"
-                                                        class="form-control form-control-sm col-12 datetimepicker-input"
-                                                        data-target="#horafin-{{ $dia }}" />
-                                                    <div class="input-group-append" data-target="#horafin-{{ $dia }}"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                                    </div>
-                                                </div>
-                                                <span id="errorfin-{{ $dia }}" class="text-danger"></span>
-                                            </div>
+                                    <div class="card-header d-flex flex-nowrap">
+                                        <div class="form-group col-12">
+                                            <input type="hidden" name="" id="changeicon" value="0">
+                                            <a class="btn" data-toggle="collapse" href="#verhorario" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fas fa-angle-double-down" id="icono"></i> Horario de atención
+                                            </a>
                                         </div>
 
-                                        @endforeach
+                                    </div>
 
+
+                                    <div class="collapse " id="verhorario">
+
+                                        <div class="card-body ">
+                                            <table class="table table-striped table-sm">
+                                                <thead class="bg-primary">
+                                                    <tr>
+                                                        <th>
+                                                            <div class="col-12 text-center">
+                                                                <span> Dia de la semana</span>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div
+                                                                class="col-12 d-flex flex-nowrap justify-content-around">
+                                                                <span>Hora Inicio</span>
+                                                                <span>Hora fin</span>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($dias as $dia)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group col-12">
+
+                                                                <div class="ml-5 d-flex align-items-center">
+                                                                    <label class="form-check-label"
+                                                                        for="dias[{{ $loop->iteration }}]">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            name="dias[{{ $loop->iteration }}]"
+                                                                            id="dias[{{ $loop->iteration }}]"
+                                                                            value="{{ $dia }}">{{ $dia }}
+                                                                    </label>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </td>
+                                                        <td>
+
+                                                            <div class="form-row d-flex align-items-center flex-nowrap">
+
+                                                                <div class="form-group col-12">
+
+
+                                                                    <div class="d-flex flex-nowrap">
+
+
+                                                                        <input type="text"
+                                                                            name="horainicio[{{ $loop->iteration }}]"
+                                                                            id="horainicio-{{ $dia }}"
+                                                                            class="form-control form-control-sm text-center "
+                                                                            data-target="#horainicio-{{ $dia }}"
+                                                                            value="12:00 AM"
+                                                                            style="border: none;  background-color:transparent;" />
+                                                                        <span> - </span>
+                                                                        <input type="text"
+                                                                            name="horafin[{{ $loop->iteration }}]"
+                                                                            id="horafin-{{ $dia }}"
+                                                                            class="form-control form-control-sm text-center "
+                                                                            data-target="#horafin-{{ $dia }}"
+                                                                            value="11:59 PM"
+                                                                            style="border: none ;  background-color:transparent;" />
+                                                                    </div>
+                                                                    <div id="time-range-{{ $loop->iteration }}">
+
+                                                                        <div class="sliders_step1">
+                                                                            <div class="slider-range"
+                                                                                name="slider-range[{{$loop->iteration}}]">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <span id="errorInicio-{{ $dia }}"
+                                                                        class="text-danger"></span>
+                                                                </div>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                </div>
 
-                <div class="row ">
+                        <div class="row ">
 
 
-                    <div class="col-12 mt-3">
-                        <div class="form-row text-center">
-                            <div class="form-group col-5 d-flex flex-nowrap">
-                            </div>
-                            <div class="form-group col-7 d-flex flex-nowrap">
+                            <div class="col-12 mt-3">
+                                <div class="form-row text-center">
+                                    <div class="form-group col-5 d-flex flex-nowrap">
+                                    </div>
+                                    <div class="form-group col-7 d-flex flex-nowrap">
 
-                                <div>
+                                        <div>
 
-                                    @foreach ($errors as $error)
+                                            @foreach ($errors as $error)
 
-                                    <span class="text-danger">{{ $error}}</span>
-                                    @endforeach
-                                </div>
+                                            <span class="text-danger">{{ $error}}</span>
+                                            @endforeach
+                                        </div>
 
-                                @csrf
+                                        @csrf
 
-                                <div class="form-group col-6">
-                                    <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
-                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-                                            style="display: none"></span>
-                                        Guardar
-                                    </button>
-                                </div>
-                                <div class="form-group col-6">
-                                    <a href="{{route('empresas.index')}}" class="btn btn-danger btn-block">Cancelar</a>
+                                        <div class="form-group col-6">
+                                            <button type="button" class="btn btn-primary btn-block"
+                                                id="enviarFormRegistro">
+                                                <span class="spinner-border spinner-border-sm spinnerr" role="status"
+                                                    aria-hidden="true" style="display: none"></span>
+                                                Guardar
+                                            </button>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <a href="{{route('empresas.index')}}"
+                                                class="btn btn-danger btn-block">Cancelar</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                </form>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 
-@endsection
+    @endsection
 
-@section('scripts')
+    @section('scripts')
 
-@include('publico.empresa.js')
-@endsection
+    @include('publico.empresa.js')
+    @endsection
