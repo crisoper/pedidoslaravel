@@ -229,36 +229,37 @@
                 <div id="scroll_filtrar_prod">
                     <div class="content_filtrar_prod p-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosOfertas">
-                            <label class="form-check-label" for="empresasProductosOfertas">
+                            <input class="form-check-input" type="checkbox" value="filtro_ofertas" id="filtro_ofertas">
+                            <label class="form-check-label" for="filtro_ofertas">
                                 Ofertas
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosNuevos">
-                            <label class="form-check-label" for="empresasProductosNuevos">
+                            <input class="form-check-input" type="checkbox" value="filtro_nuevos" id="filtro_nuevos">
+                            <label class="form-check-label" for="filtro_nuevos">
                                 Nuevos
                             </label>
                         </div>
+                        <hr>
+
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosMenorMayorPrecio">
-                            <label class="form-check-label" for="empresasProductosMenorMayorPrecio">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="menor" id="filtro_orden_menor">
+                            <label class="form-check-label" for="filtro_orden_menor">
                                 Menor a Mayor Precio
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosMayorMenorPrecio">
-                            <label class="form-check-label" for="empresasProductosMayorMenorPrecio">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="mayor" id="filtro_orden_mayor">
+                            <label class="form-check-label" for="filtro_orden_mayor">
                                 Mayor a Menor Precio
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosOrdenAlfabetico">
-                            <label class="form-check-label" for="empresasProductosOrdenAlfabetico">
-                                Orden Alfabético
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
+                            <label class="form-check-label" for="filtro_orden_ofertas">
+                                Ofertas primero
                             </label>
                         </div>
-                        <hr>
                         
                         {{-- <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -272,7 +273,7 @@
                         </div>
                         <hr> --}}
 
-                        <div class="form-check">
+                        {{-- <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="empresasProductosEntradas">
                             <label class="form-check-label" for="empresasProductosEntradas">
                                 Entradas
@@ -289,7 +290,7 @@
                             <label class="form-check-label" for="empresasProductosPostres">
                                 Postres
                             </label>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

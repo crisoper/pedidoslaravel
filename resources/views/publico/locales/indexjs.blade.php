@@ -1,6 +1,34 @@
 <script>
     $(document).ready( function() {
+
+
+        $("#filtro_ofertas").on("click", function() {
+            obtnerProductosLocales();
+        });
         
+        $("#filtro_nuevos").on("click", function() {
+            obtnerProductosLocales();
+        });
+        
+        $("#filtro_orden_menor").on("click", function() {
+            obtnerProductosLocales();
+        });
+        
+        $("#filtro_orden_mayor").on("click", function() {
+            obtnerProductosLocales();
+        });
+        
+        $("#filtro_orden_ofertas").on("click", function() {
+            obtnerProductosLocales();
+        });
+
+
+        $(".btn_buscar_productos").on("click", function( e ) {
+            e.preventDefault();
+
+            obtnerProductosLocales();
+        });
+      
         obtnerProductosLocales();
 
         function obtnerProductosLocales() {
@@ -12,13 +40,12 @@
                     storagecliente_id: obtenerLocalStorageclienteID(),
                     buscar: $("#txtBuscarTextoGeneral").val(),
                     empresa_id: $("#idlocal").attr("idlocal"),
+                    filtro_nuevos: $("#filtro_nuevos").is(':checked')  ? 1 : 0,
+                    filtro_ofertas: $("#filtro_ofertas").is(':checked')  ? 1 : 0,
+                    filtro_orden: $("input[name='fitroorden']:checked").val(),
                 },
                 success: function ( data ) { 
                     mostrarProductosEmpresa( data.recomendados );
-                    // mostrarProductosEmpresa( data.ofertas );
-                    // mostrarProductosEmpresa( data.nuevos );
-                    // mostrarProductosEmpresa( data.maspedidos );
-                    // console.log( data );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
