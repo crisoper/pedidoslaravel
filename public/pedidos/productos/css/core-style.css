@@ -24,22 +24,6 @@
     overflow: hidden
 }
 
-.product-img {
-    position: relative;
-    z-index: 1;
-    overflow: hidden
-}
-
-.product-img > img {
-    width: 100%;
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-}
-
-.single_gallery_item:hover .product-img > img {
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-}
 
 
 /* :: 8.0 Popular Products Area CSS */

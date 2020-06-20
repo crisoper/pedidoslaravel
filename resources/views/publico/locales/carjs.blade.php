@@ -45,14 +45,15 @@
             let fotos = '';
 
             let contador = 0; 
-            
+
             $.each( cesta.producto.fotos, function( key, foto ) {
                 contador++
                 if (contador >= 2) {
+                    fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="hover_img">`;
+                } else {
                     fotos = fotos + `<img src="${ foto.url }" alt="${ foto.nombre }" class="m-0">`;
                 }
             });
-
 
             carHTML = carHTML + `
                 <div class="col-12 mb-3" id="contenido_producto_cesta">
