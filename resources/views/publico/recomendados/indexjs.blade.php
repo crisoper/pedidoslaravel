@@ -87,7 +87,7 @@
                                 ${ fotos }
                                 
                                 <span class="empresa_badge">
-                                    <a target="blank" href="{{route('empresas1.index')}}" class="row">
+                                    <a target="blank" href="#" class="row">
                                         <p class="text-truncate m-0 p-0">${ recomendado.empresa }</p>
                                         <i class="fas fa-angle-double-right"></i>
                                     </a>

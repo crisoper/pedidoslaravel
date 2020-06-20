@@ -3,27 +3,14 @@
 @section('contenido')
 
 
-<div class="btn_modal_cesta">
-    <button type="button" class="row" id="abrirCestaProductosid" data-toggle="modal" data-target="#abrirCestaProductos">
-        <div id="icon_pedido">
-            <h3><i class="fas fa-shopping-basket"></i></h3>
-            <h6>3</h6>
-        </div>
-        <div id="content_mi_pedido">
-            <p class="small m-0 p-0">Mi pedido</p>
-            <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ 100.00</h5>
-        </div>
-    </button>
-</div>
 
-
-
+{{-- CONTENIDO EMPRESA Y PRODUCTOS --}}
 <div class="container-fluid page-section px-3">
     <div class="row"> 
         <div class="col-12 col-lg-3 mb-5 informacion_empresas">
             <div class="row mb-4 p-3 informacion_empresas_row">
                 <div class="col-12 col-md-6 col-lg-12 text-center">
-                    <img src="{{asset( $empresa->logo )}}" alt="">
+                    <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
                     <div class="top_seller_product_rating">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -73,68 +60,62 @@
                 </div>
                 
                 <div class="col-12">
-                    <div class="row" id="cuerpoProductosEmpresas">
-                        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="single_product_wrapper mb-5">
-                                <div class="product-img">
-                                    <img src="{{asset('pedidos/img/product/discount/pd-1.jpg')}}" alt="">
-                                    <img class="hover-img" src="{{asset('pedidos/img/product/discount/pd-2.jpg')}}" alt="">
-    
-                                    <div class="product-badge offer-badge">
-                                        <span>Oferta</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="text-truncate my-0">
-                                                <a class="link_producto_detalle" href="#"><b>Nombre producto</b></a>
-                                            </p>
-                                            <p class="text-truncate small my-0">Descripción producto</p>
-                                        </div>
-                                    </div>
-                                    <hr class="mt-1 mb-0">
-                                    <div class="row px-2">
-                                        <div class="col-6 pt-1 pb-2 px-0 m-0 text-center" id="price_product_border">
-                                            <p class="small"></p>
-                                            <h4 class="price_product_unit my-0">
-                                                S/ <span>20.99</span>
-                                            </h4>
-                                        </div>
-                                        <div class="col-6 pt-1 pb-2 px-2 m-0">
-                                            <p class="import_price text-muted py-0 my-0">
-                                                Importe: <b>S/ <span>15.90</span></b>
-                                            </p>
-                                            <div class="input_group_unit_product border m-0">
-                                                <button class="minus MoreMinProd"><b>-</b></button>
-                                                <input type="text" class="text-center input_value_cart" value="1">
-                                                <button class="more MoreMinProd"><b>+</b></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr class="mt-0 mb-2">
-                                    <div class="row mx-1 mb-2 modal_lista_cart">
-                                        <div class="col-2 p-0">
-                                            <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendados.id }">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-2 p-0">
-                                            <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="#">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-8 p-0">
-                                            <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="#">
-                                                <span>Agregar</span>
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                    <div class="row text-center" id="cuerpoProductosEmpresas">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- MODAL DETALLE PRODUCTOS --}}
+<div class="modal fade" id="modal_productos_x_empresa" tabindex="-1" role="dialog" aria-labelledby="modal_productos_x_empresa" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content p-0">
+            <div class="modal-body">
+                <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                
+                <div class="quickview_body row p-0">
+                    <div class="col-12 col-lg-6">
+                        <div id="imagenes_producto_modal">
+                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 id="titulo_producto_modal"> </h4>
+                            </div>
+                            <div class="col-6 col-sm-5 col-md-4">
+                                <div class="top_seller_product_rating">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                             </div>
-                        </div>                    --}}
+                            <div class="col-6 col-sm-5 col-md-8">
+                                <p class="stock_modal">
+                                    Stock: <span id="stock_modal_span"> </span>
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <h3 class="precio_modal_lista_deseos my-0">
+                                    S/ <span id="precio_modal_lista_deseos_span"> </span>
+                                </h3>
+                                {{-- <p class="precio_prev_modal_lista_deseos">
+                                    S/ <span class="precio_prev_modal_lista_deseos_span">30.99</span>
+                                </p> --}}
+                            </div>
+                            <div class="col-12">
+                                <p id="descripcion_producto_modal">
+                                    
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,10 +124,24 @@
 </div>
 
 
+{{-- BOTON CESTA --}}
+<div class="btn_modal_cesta">
+    <button type="button" class="row" id="mostrarProductosCestaMenuFlotante" data-toggle="modal" data-target="#abrirCestaProductos">
+        <div id="icon_pedido">
+            <h3><i class="fas fa-shopping-basket"></i></h3>
+            <h6>3</h6>
+        </div>
+        <div id="content_mi_pedido">
+            <p class="small m-0 p-0">Mi pedido</p>
+            <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ 100.00</h5>
+        </div>
+    </button>
+</div>
+{{-- CESTA --}}
 <div class="modal right fade" id="abrirCestaProductos" tabindex="-1" role="dialog" aria-labelledby="abrirCestaProductos">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header p-0 bg-dark">
+            <div class="modal-header modal_header_cesta p-0 bg-dark">
                 <button type="button" class="btn_close" data-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
@@ -156,175 +151,8 @@
             </div>
             <div class="modal-body modal_body_cesta">
                 <div id="scroll_cesta">
-                    <div class="row px-3 pt-4 pb-0" id="cuerpoCestaPedido">
-                        <div class="col-12 mb-3" id="contenido_producto_cesta">
-                            <div class="row p-1">
-                                <div class="col-md-12 column_detalle_cesta_1">
-                                    <div class="row">
-                                        <div class="col-3 col-md-2 col-lg-3 p-0 imagen_producto_cesta">
-                                            <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="">
-                                        </div>
-                                        <div class="col-9 col-md 10 col-lg-9">
-                                            <p class="my-0 nombre_produc_cesta">Nombre de producto</p>
-                                            <p class="my-0 descripcion_produc_cesta"><small>Descripción de producto</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column_detalle_cesta_2">
-                                    <div class="row text-center">
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Precio</b></p>
-                                            <p class="my-0">S/ 14.90</p>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
-                                            <p class="my-0"><b>Cantidad</b></p>
-                                            <div class="input_group_unit_product border m-0">
-                                                <button class="minus MoreMinProd" idcesta=""><b>-</b></button>
-                                                <input type="text" class="text-center input_value_cartcart" value="1">
-                                                <button class="more MoreMinProd" idcesta=""><b>+</b></button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Subtotal</b></p>
-                                            <p class="my-0">
-                                                S/ <span class="precioTotalProductos">20.90</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-12 p-0 content_btn_eliminar">
-                                            <button class="eliminar_producto_cesta hint--top-left hint--error" data-hint="Eliminar" producto_id="">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3" id="contenido_producto_cesta">
-                            <div class="row p-1">
-                                <div class="col-md-12 column_detalle_cesta_1">
-                                    <div class="row">
-                                        <div class="col-3 col-md-2 col-lg-3 p-0 imagen_producto_cesta">
-                                            <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="">
-                                        </div>
-                                        <div class="col-9 col-md 10 col-lg-9">
-                                            <p class="my-0 nombre_produc_cesta">Nombre de producto</p>
-                                            <p class="my-0 descripcion_produc_cesta"><small>Descripción de producto</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column_detalle_cesta_2">
-                                    <div class="row text-center">
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Precio</b></p>
-                                            <p class="my-0">S/ 14.90</p>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
-                                            <p class="my-0"><b>Cantidad</b></p>
-                                            <div class="input_group_unit_product border m-0">
-                                                <button class="minus MoreMinProd" idcesta=""><b>-</b></button>
-                                                <input type="text" class="text-center input_value_cartcart" value="1">
-                                                <button class="more MoreMinProd" idcesta=""><b>+</b></button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Subtotal</b></p>
-                                            <p class="my-0">
-                                                S/ <span class="precioTotalProductos">20.90</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-12 p-0 content_btn_eliminar">
-                                            <button class="eliminar_producto_cesta hint--top-left hint--error" data-hint="Eliminar" producto_id="">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3" id="contenido_producto_cesta">
-                            <div class="row p-1">
-                                <div class="col-md-12 column_detalle_cesta_1">
-                                    <div class="row">
-                                        <div class="col-3 col-md-2 col-lg-3 p-0 imagen_producto_cesta">
-                                            <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="">
-                                        </div>
-                                        <div class="col-9 col-md 10 col-lg-9">
-                                            <p class="my-0 nombre_produc_cesta">Nombre de producto 222</p>
-                                            <p class="my-0 descripcion_produc_cesta"><small>Descripción de producto</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column_detalle_cesta_2">
-                                    <div class="row text-center">
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Precio</b></p>
-                                            <p class="my-0">S/ 14.90</p>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
-                                            <p class="my-0"><b>Cantidad</b></p>
-                                            <div class="input_group_unit_product border m-0">
-                                                <button class="minus MoreMinProd" idcesta=""><b>-</b></button>
-                                                <input type="text" class="text-center input_value_cartcart" value="1">
-                                                <button class="more MoreMinProd" idcesta=""><b>+</b></button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Subtotal</b></p>
-                                            <p class="my-0">
-                                                S/ <span class="precioTotalProductos">20.90</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-12 p-0 content_btn_eliminar">
-                                            <button class="eliminar_producto_cesta hint--top-left hint--error" data-hint="Eliminar" producto_id="">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3" id="contenido_producto_cesta">
-                            <div class="row p-1">
-                                <div class="col-md-12 column_detalle_cesta_1">
-                                    <div class="row">
-                                        <div class="col-3 col-md-2 col-lg-3 p-0 imagen_producto_cesta">
-                                            <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="">
-                                        </div>
-                                        <div class="col-9 col-md 10 col-lg-9">
-                                            <p class="my-0 nombre_produc_cesta">Nombre de producto 222</p>
-                                            <p class="my-0 descripcion_produc_cesta"><small>Descripción de producto</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column_detalle_cesta_2">
-                                    <div class="row text-center">
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Precio</b></p>
-                                            <p class="my-0">S/ 14.90</p>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
-                                            <p class="my-0"><b>Cantidad</b></p>
-                                            <div class="input_group_unit_product border m-0">
-                                                <button class="minus MoreMinProd" idcesta=""><b>-</b></button>
-                                                <input type="text" class="text-center input_value_cartcart" value="1">
-                                                <button class="more MoreMinProd" idcesta=""><b>+</b></button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 px-0 py-2 padding_column_cesta">
-                                            <p class="my-0"><b>Subtotal</b></p>
-                                            <p class="my-0">
-                                                S/ <span class="precioTotalProductos">20.90</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-12 p-0 content_btn_eliminar">
-                                            <button class="eliminar_producto_cesta hint--top-left hint--error" data-hint="Eliminar" producto_id="">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row px-3 pt-4 pb-0 dropdown_cart_header" id="cuerpoCestaPedido">
+                        
                     </div>
                 </div>
             </div>
@@ -342,7 +170,7 @@
                         <div class="col-12 px-1 titulo_resumen mb-2 pb-2">
                             <p class="my-0">Estas Comprando</p>
                             <h6 class="my-0 text-right">
-                                <b><span class="sumaTotal">3</span> Productos</b>
+                                <b><span class="sumaTotalProductos"></span> Productos</b>
                             </h6>
                         </div>
                         <div class="col-12 px-1 content_detalle_monto_total">
@@ -379,6 +207,97 @@
         </div>
     </div>
 </div>
+
+
+
+{{-- BOTON FILTRAR PRODUCTOS --}}
+<div class="btn_filtrar_productos">
+    <button type="button" id="" data-toggle="modal" data-target="#abrirFiltrarProductos">
+        Filtrar <br> Productos
+    </button>
+</div>
+{{-- FILTRAR PRODUCTOS --}}
+<div class="modal right fade" id="abrirFiltrarProductos" tabindex="-1" role="dialog" aria-labelledby="abrirFiltrarProductos">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal_header_filtrar_prod p-0 pb-1 bg-dark">
+                <button type="button" class="btn_close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body modal_body_filtrar_prod">
+                <div id="scroll_filtrar_prod">
+                    <div class="content_filtrar_prod p-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosOfertas">
+                            <label class="form-check-label" for="empresasProductosOfertas">
+                                Ofertas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosNuevos">
+                            <label class="form-check-label" for="empresasProductosNuevos">
+                                Nuevos
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosMenorMayorPrecio">
+                            <label class="form-check-label" for="empresasProductosMenorMayorPrecio">
+                                Menor a Mayor Precio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosMayorMenorPrecio">
+                            <label class="form-check-label" for="empresasProductosMayorMenorPrecio">
+                                Mayor a Menor Precio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosOrdenAlfabetico">
+                            <label class="form-check-label" for="empresasProductosOrdenAlfabetico">
+                                Orden Alfabético
+                            </label>
+                        </div>
+                        <hr>
+                        
+                        {{-- <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                        <hr> --}}
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosEntradas">
+                            <label class="form-check-label" for="empresasProductosEntradas">
+                                Entradas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosBebidas">
+                            <label class="form-check-label" for="empresasProductosBebidas">
+                                Bebidas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosPostres">
+                            <label class="form-check-label" for="empresasProductosPostres">
+                                Postres
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 @section('scripts')

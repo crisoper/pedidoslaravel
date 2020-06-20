@@ -31,7 +31,6 @@
     z-index: 3;
 }
 
-
 .btn_modal_cesta > button {
     width: 114px;
     height: 50px;
@@ -108,7 +107,7 @@
 
 
 /* ----- MODAL ----- */
-.modal-header {
+.modal_header_cesta {
     box-shadow: 0 6px 5px -5px #333333;
     z-index: 300;
 }
@@ -190,6 +189,7 @@
     /* border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); */
+    /* height: 142px; */
     border: 1px solid #bac5d1;
     border-radius: 5px;
 }
@@ -206,7 +206,7 @@
     line-height: 18px;
 }
 .descripcion_produc_cesta {
-    line-height: 18px;
+    line-height: 15px;
 }
 
 .padding_column_cesta,
@@ -222,11 +222,58 @@
     border-right-color: #bac5d1;
 }
 
+
+
+.input_group_cant_prod_cesta {
+	width: 100%;
+	height: 25px;
+    padding: 0 !important;
+}
+.input_group_cant_prod_cesta > input {
+	width: 45%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    border-left: 1px solid rgba(0,0,0,.1) !important;
+    border-right: 1px solid rgba(0,0,0,.1) !important;
+}
+.input_group_cant_prod_cesta > input:focus {
+    box-shadow: none;
+}
+.input_group_cant_prod_cesta > .sumar {
+	width: 27%; 
+	height: 100%;
+    padding: 2.5px 0 0 5px;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 0px 5px 5px 0px; */
+}
+.input_group_cant_prod_cesta > .restar {
+	width: 27%; 
+	height: 100%;
+    padding: 2.5px 0 0 6px;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 5px 0px 0px 5px; */
+}
+.input_group_cant_prod_cesta > .restar:hover, .input_group_cant_prod_cesta > .sumar:hover {
+    color: #ffffff;
+    background-color: #3eb291;
+}
+
+
 .content_btn_eliminar {
     text-align: right;
     display: block;
     position: absolute;
-    top: -92px;
+    top: -85px;
     right: -10px;
 }
 
@@ -247,7 +294,7 @@
 
 .modal_footer_cesta {
     width: 100%;
-    height: 100%;
+    height: 270px;
     padding: 5px 20px;
     background-color: #d2deeb;
     box-shadow: 0 -5px 5px -5px #333;

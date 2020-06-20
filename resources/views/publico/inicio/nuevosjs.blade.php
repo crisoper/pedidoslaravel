@@ -119,10 +119,10 @@
                                     <p class="import_price text-muted py-0 my-0">
                                         Importe: <b>S/ <span>15.90</span></b>
                                     </p>
-                                    <div class="input_group_unit_product border m-0">
-                                        <button class="minus MoreMinProd"><b>-</b></button>
-                                        <input type="text" class="text-center input_value_cart" value="1">
-                                        <button class="more MoreMinProd"><b>+</b></button>
+                                    <div class="input-group input_group_unit_product">
+                                        <button class="input-group-prepend minus MoreMinProd">-</button>
+                                        <input type="text" class="form-control input_value_cart" value="1">
+                                        <button class="input-group-append more MoreMinProd">+</button>
                                     </div>
                                 </div>
                             </div>
