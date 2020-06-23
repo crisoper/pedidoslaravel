@@ -181,6 +181,13 @@
     font-weight: 700;
 }
 
+@media (max-width: 576px) {
+    #nav-tab .nav-link {
+        font-size: 13px;
+    }
+}
+
+
 #nav-tab > .active {
     background-color: #ffffff;
     color: #3eb291;
@@ -235,10 +242,10 @@
 
 
 #scroll_cesta {
-    /* background-color: #f8f8f8; */
     width: 100% !important;
-    /* height: 92% !important; */
+    background-color: #4f35df;
 }
+
 
 #cuerpoCestaPedido {
     width: 100% !important;

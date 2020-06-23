@@ -289,33 +289,48 @@ function marginProductosCesta() {
 
     console.log(marginProductosCesta);
 
-    if (marginProductosCesta == 1) {
-        $('#scroll_cesta').height('auto');
-    }
-    else if (marginProductosCesta == 2) {
-        $('#scroll_cesta').height('auto');
-    }
-    else if (marginProductosCesta == 3) {
-        $('#scroll_cesta').height('auto');
-    }
-    else {
-        $('#scroll_cesta').height(92+'%');
-    }
 
+    var cestaResponsive = $(window).width();
     
-    var wi = $(window).width();
-    
-    if (wi <= 576){
+    if (cestaResponsive >= 1201){
         if (marginProductosCesta == 1) {
-            $('#scroll_cesta').height('auto');
+            $('#scroll_cesta').height(185);
         }
         else if (marginProductosCesta == 2) {
-            $('#scroll_cesta').height('auto');
+            $('#scroll_cesta').height(340);
+        }
+        else if (marginProductosCesta == 3) {
+            $('#scroll_cesta').height(485);
+        }
+        else {
+            $('#scroll_cesta').height(92+'%');
+        }
+    }
+
+    if ((cestaResponsive >= 769) && (cestaResponsive <= 1200)){
+        if (marginProductosCesta == 1) {
+            $('#scroll_cesta').height(185);
+        }
+        else if (marginProductosCesta == 2) {
+            $('#scroll_cesta').height(340);
+        }
+        else {
+            $('#scroll_cesta').height(90+'%');
+        }
+    }
+    if (cestaResponsive <= 768){
+        if (marginProductosCesta == 1) {
+            $('#scroll_cesta').height(185);
+        }
+        else if (marginProductosCesta == 2) {
+            $('#scroll_cesta').height(340);
         }
         else {
             $('#scroll_cesta').height(85+'%');
         }
     }
+
+    
 }
 
 

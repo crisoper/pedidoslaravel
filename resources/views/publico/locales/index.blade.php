@@ -161,7 +161,7 @@
                 </a>
             </div>
         </nav>
-        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}">
+        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}" method="POST">
             <div class="tab-content" id="nav_tabContent">
                 <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
                     <div class="info_cantidad_total">
@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="" id="scroll_cesta">
-                        <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
+                        <div class="row m-0 px-3 pt-4 pb-2 cuerpoCestaPedido" id="cuerpoCestaPedido">
 
                         </div>
                     </div>
