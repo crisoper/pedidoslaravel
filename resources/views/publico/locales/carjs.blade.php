@@ -82,6 +82,12 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
                             <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
                                 <p class="my-0"><b>Cantidad</b></p>
                                 <div class="input-group input_group_cant_prod_cesta">
+                                    
+                                    <input type="hidden" name="cesta_id[]" value="${ cesta.id }">
+                                    <input type="hidden" name="cantidad[]" value="${ cesta.cantidad }">
+                                    <input type="hidden" name="precio[]" value="${ cesta.producto.precio }">
+                                    <input type="hidden" name="subtotal[]" value="${ (cesta.cantidad * cesta.producto.precio).toFixed(2) } ">
+
                                     <button class="input-group-prepend restar sumarRestarProducto" idcesta="${ cesta.id }">-</button>
                                     <input type="text" class="form-control input_value_cartcart" value="${ cesta.cantidad }">
                                     <button class="input-group-append sumar sumarRestarProducto" idcesta="${ cesta.id }">+</button>

@@ -82,6 +82,11 @@ Route::get("ajax/locales/productos", "Publico\LocalesController@productos")
 
 
 
+Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
+->name("ajax.locales.pedidosstore");
+
+
+
 
 
 
