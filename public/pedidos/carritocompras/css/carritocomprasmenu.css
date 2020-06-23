@@ -1,28 +1,28 @@
-/* Header cart top */
-
-.header_top_cart {
-    width: 50%;
-    height: 100%;
+/* ABRIR CESTA MENU */
+.btn_modal_cesta {
     padding-right: 15px;
+    position: fixed;
+    top: 80px;
+    right: 0px;
+    z-index: 3;
 }
 
-
-.header_top_cart > button {
+.btn_modal_cesta > button {
     width: 114px;
     height: 50px;
     color: #ffffff !important;
     background-color: #3eb291;
     padding: 0px !important;
     border: none;
-    border-radius: 0;
+    border-radius: 5px 0px 0px 5px;
 }
 
-.header_top_cart > button > #icon_pedido {
+.btn_modal_cesta > button > #icon_pedido {
     padding-left: 8px;
     padding-top: 5px;
 }
 
-.header_top_cart > button h3 {
+.btn_modal_cesta > button h3 {
     width: 45px;
     height: 40px;
     text-align: center;
@@ -30,31 +30,26 @@
     border: 1px solid #ffffff;
     padding: 1px 0px 0px 0px;
 }
-.header_top_cart > button:focus h3 {
-    border: 1px solid #3eb291;
-}
 
-.header_top_cart > button > #content_mi_pedido {
+.btn_modal_cesta > button > #content_mi_pedido {
     padding-top: 17px;
     padding-left: 2px;
-  }
-.header_top_cart > button > #content_mi_pedido p {
+}
+.btn_modal_cesta > button > #content_mi_pedido p {
     font-size: 11px;
     line-height: 12px;
 }
 
-.header_top_cart > button > #content_mi_pedido h5 {
+.btn_modal_cesta > button > #content_mi_pedido h5 {
     font-size: 11px;
     font-weight: 800 !important;
 }
 
-.header_top_cart > button:focus {
+.btn_modal_cesta > button:focus {
     box-shadow: none;
-    color: #3eb291 !important;
-    background-color: #ffffff;
 }
 
-.header_top_cart > button h6 {
+.btn_modal_cesta > button h6 {
     margin-top: -51px;
     margin-right: -6px;
     height: 17.5px;
@@ -67,224 +62,198 @@
 }
 
 
-@media only screen and (min-width: 769px) and (max-width: 991px) {
-    
-    .header_top_cart {
-        height: 40px;
-    }
-    .header_top_cart > button {
-        width: auto;
-        height: 45px;
-    }
-    
-    .header_top_cart > button > #icon_pedido {
-        padding-left: 5px;
-        padding-top: 5px;
-    }
-    
-    .header_top_cart > button h3 {
-        width: 40px;
-        height: 35px;
-        font-size: 25px;
-    }
 
-    .header_top_cart > button > #content_mi_pedido {
-        padding-top: 15px;
-        padding-left: 2px;
-        padding-right: 5px;
-    }
-    .header_top_cart > button > #content_mi_pedido p {
-        font-size: 10px;
-    }
-    .header_top_cart > button > #content_mi_pedido h5 {
-        font-size: 10px;
-    }
 
-    .header_top_cart > button:focus {
-        box-shadow: none;
-        color: #3eb291 !important;
-        background-color: #ffffff;
-    }
-    
-    .header_top_cart > button h6 {
-        margin-top: -47px;
-        height: 15.5px;
-        width: 17px;
-        font-size: 12px;
-    }
-    
-    .header_cart {
-        margin-top: 1px !important;
-        margin-right: -1px;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DETALLE PRODUCTOS CESTA */
+
+.content_modal_cesta.content_modal_cesta_on {
+    -webkit-transition-duration: 1000ms;
+    transition-duration: 1000ms;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1050;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 768px) {
-    .header_top_cart {
-        width: 100% !important;
-        height: 40px;
-    }
-    .header_top_cart > button {
-        width: auto;
-        height: 45px;
-    }
-    
-    .header_top_cart > button > #icon_pedido {
-        padding-left: 5px;
-        padding-top: 7px;
-        padding-right: 10px;
-    }
-    
-    .header_top_cart > button h3 {
-        width: 40px;
-        height: 35px;
-        font-size: 25px;
-    }
-
-    .header_top_cart > button > #content_mi_pedido {
-        display: none;
-    }
-    
-    .header_top_cart > button h6 {
-        margin-top: -47px;
-        height: 15.5px;
-        width: 17px;
-        font-size: 12px;
-    }
-    
-    .header_cart {
-        margin-top: 1px !important;
-        margin-right: -1px;
-    }
-}
-
-
-
-/* ----PRODUCTOS----- */
-
-.header_cart {
-    width: 350px;
-    top: -1px !important;
-    right: 0px;
-    padding: 15px;
+/* Cart Area CSS */
+.sidebar_modal_cesta_right {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    right: -400px;
     background-color: #ffffff;
+    z-index: 1100;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 800ms;
+    transition-duration: 800ms;
+}
+
+.sidebar_modal_cesta_right.sidebar_modal_cesta_right_on {
+    right: 0;
+}
+.sidebar_modal_cesta_right #close_sidebar_cesta {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 100%;
+    z-index: 100;
+    display: block;
+    font-size: 30px;
     text-align: center;
     border: 0;
-    border-radius: 0;
-
-    box-shadow: 0 10px 20px -5px #868686;
-    -moz-box-shadow: 0 10px 20px -5px #868686;
-    -webkit-box-shadow: 0 10px 20px -5px #868686;
-    -o-box-shadow: 0 10px 20px -5px #868686;
-    -ms-box-shadow: 0 10px 20px -5px #868686;
+    background-color: #343a40;
+    color: #ffffff;
 }
 
-.border_caja_product {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 7.5px;
-    padding: 5px;
-}
-.border_caja_product > div > img {
-    width: 37.5 !important;
-    height: 37.5px !important;
+
+/* CESTA INFO Y REALIZAR PEDIDO */
+.cart_content_cesta {
+    /* position: relative; */
+    z-index: 1;
+    width: 100%;
+    height: 100% !important;
 }
 
-.cart_product_nombre {
-    text-align: left;
-    line-height: 18px;
-    font-weight: 700;
-}
-.cart_product_nombre a {
-    color: #5b6268;
-}
-.cart_product_nombre a:hover,
-.cart_product_nombre a:focus {
-    color: #3eb291;
-}
-.cart_product_description {
-    text-align: left;
-    line-height: 18px;
-    color: #5b6268;
-}
-.cart_product_precio {
-    line-height: 18px;
-    margin-bottom: -5px;
-    color: #3eb291;
-}
-
-.eliminar_compra {
-    background: #df3550;
-    width: 18px;
-    height: 18px;
-    display: block;
+.cart_tittle_cesta {
+    width: 100%;
+    height: 40px;
+    background-color: #343a40;
     text-align: center;
-    border-radius: 50px;
-    padding: 0px !important;
+    position: static;
+    border-bottom: 3px solid #000000;
+}
+
+.minimo_compra {
+      width: 100%;
+      height: 100%;
+}
+
+.minimo_compra p {
+    background-color: #343a40;
+    color: #ffffff;
     font-size: 12px;
-    color: #ffffff;
-    color: white;
-    position: absolute;
-    top: -7px;
-    right: -5px;
-    cursor: pointer;
+    line-height: 15px;
 }
 
-.sumaCantidadCestaMenu_content {
-    color: #5b6268;
+#nav-tab .nav-link {
+    color: #ffffff;
+    background-color: #3eb291;
+    width: 50%;
+    border-radius: 0;
+    border: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
     font-weight: 700;
 }
 
-.sumaTotalCestaMenu_content {
+#nav-tab > .active {
+    background-color: #ffffff;
     color: #3eb291;
 }
 
-.btn_pedido_cart {
-    color: #3eb291;
-    background: #ececeb;
-    padding: 10px 20px;
-    display: block;
-    margin-top: 10px;
-    border-radius: 0px;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 800;
-}
-.btn_pedido_cart:hover,
-.btn_pedido_cart:focus {
-    color: #ffffff;
-    background: #3eb291;
-    box-shadow: none;
+
+
+#nav_tabContent {
+    width: 100%;
+    height: 89%;
 }
 
-.scroll_cart_header {
-    width: 100% !important;
-    height: 261px !important;
+#navDetallePedidoCesta {
+    width: 100%;
+    height: 100%;
+}
+
+.info_cantidad_total {
+    width: 100%;
+    height: 50px;
+    display: flex;
     text-align: center;
+    padding: 5px 10px;
+    box-shadow: 0 5px 5px -5px #333333;
+    background-color: #ffffff;
+    z-index: 15;
+}
+.info_cantidad {
+    width: 60%;
+    height: 100%;
+}
+.info_total {
+    width: 40%;
+    height: 100%;
+}
+.info_cantidad_total p {
+    font-size: 13px;
+}
+.info_cantidad_total h6 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.info_cantidad_total h5 {
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.dropdown_cart_header {
+
+
+
+
+#scroll_cesta {
+    /* background-color: #f8f8f8; */
+    width: 100% !important;
+    height: 92% !important;
+}
+
+#cuerpoCestaPedido {
     width: 100% !important;
     height: 100% !important;
     overflow: scroll;
     box-sizing: border-box;
     margin-left: 0px;
-    padding: 1px 8px 5px 5px;
+    padding: 0;
 }
-.dropdown_cart_header::-webkit-scrollbar {
+#cuerpoCestaPedido::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-.dropdown_cart_header::-webkit-scrollbar:vertical {
-    width: 5px;
+#cuerpoCestaPedido::-webkit-scrollbar:vertical {
+    width: 7px;
 }
-.dropdown_cart_header::-webkit-scrollbar:horizontal {
+#cuerpoCestaPedido::-webkit-scrollbar:horizontal {
     height: 0px;
 }
-.dropdown_cart_header::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
+#cuerpoCestaPedido::-webkit-scrollbar-thumb {
+    background-color: #7d838a;
+    border-radius: 4px;
+    border: 4px solid #7d838a;
 }
-.dropdown_cart_header::-webkit-scrollbar-track {
+#cuerpoCestaPedido::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
@@ -292,21 +261,37 @@
 
 
 
+#contenido_producto_cesta {
+    width: 100%;
+    height: 135px !important;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #dfdfdf;
+}
 
-.cart_product_foto {
+.column_detalle_cesta_1 {
+    padding-bottom: 10px;
+    border-bottom-style: dashed; 
+    border-bottom-width: 1px;
+    border-bottom-color: #d7dbdf;
+}
+
+
+.column_detalle_cesta_1 .imagen_producto_cesta {
     position: relative;
     z-index: 1;
     overflow: hidden;
     width: 100%;
     height: 100%;
 }
-.cart_product_foto img {
+.column_detalle_cesta_1 .imagen_producto_cesta img {
     width: 100%;
-    height: 100%;
+    height: 55px !important;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
 }
-.cart_product_foto .hover_img {
+.column_detalle_cesta_1 .imagen_producto_cesta .hover_img {
     width: 100%;
     height: 100%;
     -webkit-transition-duration: 500ms;
@@ -318,3 +303,241 @@
     opacity: 0;
     visibility: hidden;
 }
+
+.nombre_produc_cesta {
+    font-weight: 700;
+    line-height: 15px;
+    font-size: 14px;
+    -webkit-line-clamp: 2;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.descripcion_produc_cesta {
+    line-height: 11px;
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.padding_column_cesta,
+.padding_column_cesta_1 {
+    font-size: 12px;
+}
+.padding_column_cesta_1 {
+    border-left-style: dashed; 
+    border-left-width: 1px;
+    border-left-color: #d7dbdf;
+    border-right-style: dashed; 
+    border-right-width: 1px;
+    border-right-color: #d7dbdf;
+}
+
+.input_group_cant_prod_cesta {
+	width: 100%;
+	height: 25px;
+    padding: 0 !important;
+}
+.input_group_cant_prod_cesta > input {
+	width: 45%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    border-left: 1px solid rgba(0,0,0,.1) !important;
+    border-right: 1px solid rgba(0,0,0,.1) !important;
+}
+.input_group_cant_prod_cesta > input:focus {
+    box-shadow: none;
+}
+.input_group_cant_prod_cesta > .sumar {
+	width: 27%; 
+	height: 100%;
+    padding: 2px 0 0 4px;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 0px 5px 5px 0px; */
+}
+.input_group_cant_prod_cesta > .restar {
+	width: 27%; 
+	height: 100%;
+    padding: 2px 0 0 5px;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 5px 0px 0px 5px; */
+}
+.input_group_cant_prod_cesta > .restar:hover, .input_group_cant_prod_cesta > .sumar:hover {
+    color: #ffffff;
+    background-color: #3eb291;
+}
+
+
+.content_btn_eliminar {
+    text-align: right;
+    display: block;
+    position: absolute;
+    top: -80px;
+    right: -10px;
+}
+
+.eliminar_producto_cesta {
+    background-color: #df3550;
+    border-radius: 50%;
+    border: 0;
+}
+.eliminar_producto_cesta i {
+    color: #ffffff !important;
+}
+
+
+
+
+
+
+
+#navRealizarPedidoCesta {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.container_cupon {
+    width: 100%;
+}
+
+.input_group_cupon_cesta {
+    width: 100% !important;
+}
+.input_cupon_cesta {
+    width: 75% !important;
+    color: #3eb291;
+    background: #ffffff;
+    font-size: 12px;
+    border: 1px solid #b5b7b9;
+    border-radius: 5px 0px 0px 5px;
+    padding-left: 5px;
+}
+.append_cupon {
+    width: 25% !important;
+}
+.btn_aplicar_cupon_cesta {
+    width: 100% !important;
+    color: #ffffff !important;
+    background: #3eb291;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+}
+
+
+
+
+.content_total_cesta {
+    width: 100%;
+    height: auto;
+}
+
+.monto_total_cesta {
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #dfdfdf;
+}
+
+
+.titulo_resumen p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.content_detalle_total_prod {
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #e8e8e9;
+    border-bottom: 1px solid #e8e8e9;
+}
+.content_detalle_total_prod p {
+    width: 50%;
+    font-size: 14px;
+    font-weight: 700;
+}
+.content_detalle_total_prod h6 {
+    width: 50% !important;
+}
+
+
+.content_detalle_monto_total {
+    width: 100%;
+    display: flex;
+}
+.content_detalle_monto_total p {
+    width: 40%;
+    font-size: 14px;
+}
+.content_detalle_monto_total h6 {
+    width: 60% !important;
+}
+
+.content_detalle_total {
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #e8e8e9;
+    border-bottom: 1px solid #e8e8e9;
+}
+.content_detalle_total h5 {
+    width: 40%;
+    font-weight: 700;
+    color: #3eb291;
+}
+.content_detalle_total h4 {
+    width: 60% !important;
+    color: #3eb291;
+}
+
+.content_botones_pedido {
+    width: 100%;
+}
+
+.btn_realizar_pedido_cesta {
+    color: #515355  !important;
+    background: #3eb291 !important;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    width: 100%;
+}
+.btn_realizar_pedido_cesta:hover,
+.btn_realizar_pedido_cesta:focus {
+    color: #ffffff !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,8 +28,23 @@ class MaspedidosAjaxController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosMasPedidos = Producto::where( "stock", "<", 10 )
-        ->with([
+        $productosMasPedidos = Producto::where( "stock", "<", 10 );
+
+        if( $request->has('buscar')  and $request->buscar != "" ) {
+            $productosMasPedidos = $productosMasPedidos->where('nombre', 'like', '%'.$request->buscar.'%');
+        }
+        
+        if ( $request->has('filtro_orden')  and $request->filtro_orden == "ofertas" ) {
+            $productosMasPedidos = $productosMasPedidos->orderBy("id", "asc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "mayor" ) {
+            $productosMasPedidos = $productosMasPedidos->orderBy("precio", "desc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "menor" ) {
+            $productosMasPedidos = $productosMasPedidos->orderBy("precio", "asc");
+        }
+
+        $productosMasPedidos = $productosMasPedidos->with([
             "empresa",
             "tags",
             "categoria",

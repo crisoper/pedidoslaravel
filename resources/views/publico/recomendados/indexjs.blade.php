@@ -2,6 +2,34 @@
 <script>
     
     $(document).ready(  function () {
+        
+        $("#filtro_ofertas").on("click", function() {
+            obtenerProductosRecomendados();
+        });
+        
+        $("#filtro_nuevos").on("click", function() {
+            obtenerProductosRecomendados();
+        });
+        
+        $("#filtro_orden_menor").on("click", function() {
+            obtenerProductosRecomendados();
+        });
+        
+        $("#filtro_orden_mayor").on("click", function() {
+            obtenerProductosRecomendados();
+        });
+        
+        $("#filtro_orden_ofertas").on("click", function() {
+            obtenerProductosRecomendados();
+        });
+
+
+        $(".btn_buscar_productos").on("click", function( e ) {
+            e.preventDefault();
+
+            obtenerProductosRecomendados();
+        });
+      
         //Obtenemos los productos en recomendados
         obtenerProductosRecomendados( );
     
@@ -12,6 +40,10 @@
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID (),
+                    buscar: $("#txtBuscarTextoGeneral").val(),
+                    filtro_nuevos: $("#filtro_nuevos").is(':checked')  ? 1 : 0,
+                    filtro_ofertas: $("#filtro_ofertas").is(':checked')  ? 1 : 0,
+                    filtro_orden: $("input[name='fitroorden']:checked").val(),
                 },
                 success: function ( data ) {
                     mostrarProductosRecomendados( data )
@@ -65,17 +97,17 @@
                 let encarrito = '';
                 if (recomendado.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendado.id }">
+                        <a href="${ recomendado.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendado.id }" idempresa="${ recomendado.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </button>
+                        </a>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendado.id }">
+                        <a href="${ recomendado.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendado.id }" idempresa="${ recomendado.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </button>
+                        </a>
                     </div>`;
                 }
 
@@ -87,7 +119,7 @@
                                 ${ fotos }
                                 
                                 <span class="empresa_badge">
-                                    <a target="blank" href="#" class="row">
+                                    <a target="blank" href="${ recomendado.empresa_url }" class="row">
                                         <p class="text-truncate m-0 p-0">${ recomendado.empresa }</p>
                                         <i class="fas fa-angle-double-right"></i>
                                     </a>
@@ -122,15 +154,15 @@
                                         <p class="import_price text-muted py-0 my-0">
                                             Importe: <b>S/ <span>15.90</span></b>
                                         </p>
-                                        <div class="input_group_unit_product border m-0">
-                                            <button class="minus MoreMinProd"><b>-</b></button>
-                                            <input type="text" class="text-center input_value_cart" value="1">
-                                            <button class="more MoreMinProd"><b>+</b></button>
+                                        <div class="input-group input_group_unit_product">
+                                            <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
+                                            <input type="text" class="form-control input_value_cart" value="1">
+                                            <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-2">
-                                <div class="row modal_lista_cart mx-1 mb-2">
+                                <div class="row modal_lista_cart mx-1 mb-2 text-center">
                                     <div class="col-2 p-0">
                                         <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendado.id }">
                                             <i class="fa fa-eye"></i>
@@ -147,6 +179,7 @@
     
             $("#cuerpoProductosRecomendados").html( recomendadosHTML);
             sumarRestarCantidad();
+            contarProductosAlFiltrar();
         }
 
         
@@ -167,6 +200,12 @@
                 }
                 $button.parent().find('input').val(newVal);
             });
+        }
+
+        
+        function contarProductosAlFiltrar() {
+            let contarProductos = $('.single_product_wrapper').length;
+            $(".nro_productos_buscados").html(contarProductos);
         }
 
         

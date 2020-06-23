@@ -137,7 +137,16 @@
 
 
 
-
+/* NOMBRE PRODUCTO */
+.nombre_producto {
+    height: 35px;
+    line-height: 17px;
+    -webkit-line-clamp: 2;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
 
 
 
@@ -193,7 +202,7 @@
 .input_group_unit_product > .more {
 	width: 27%; 
 	height: 100%;
-    padding: 0 0 0 11px;
+    padding-top: 0;
 	text-align: center;
     border: 1px solid rgba(0,0,0,.2) !important;
     background-color: #ffffff;
@@ -203,8 +212,8 @@
 }
 .input_group_unit_product > .minus {
 	width: 27%; 
-	height: 100%;
-    padding: 0 0 0 12.5px;
+    height: 100%;
+    padding-top: 0;
 	text-align: center;
     border: 1px solid rgba(0,0,0,.2) !important;
     background-color: #ffffff;

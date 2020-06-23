@@ -28,8 +28,23 @@ class NuevosAjaxController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosNuevos = Producto::whereDate( "created_at", now() )
-        ->with([
+        $productosNuevos = Producto::whereDate( "created_at", now() );
+
+        if( $request->has('buscar')  and $request->buscar != "" ) {
+            $productosNuevos = $productosNuevos->where('nombre', 'like', '%'.$request->buscar.'%');
+        }
+        
+        if ( $request->has('filtro_orden')  and $request->filtro_orden == "ofertas" ) {
+            $productosNuevos = $productosNuevos->orderBy("id", "asc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "mayor" ) {
+            $productosNuevos = $productosNuevos->orderBy("precio", "desc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "menor" ) {
+            $productosNuevos = $productosNuevos->orderBy("precio", "asc");
+        }
+
+        $productosNuevos = $productosNuevos->with([
             "empresa",
             "tags",
             "categoria",

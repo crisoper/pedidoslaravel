@@ -78,7 +78,10 @@
                             <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
                             <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
                             <hr class="my-2">
-                            <button class="btn btn_favoritos bg-success" data-toggle="modal" data-target="#modal_favoritos">Favoritos <i class="fa fa-heart"></i></button>
+                            
+                            <button id="btn_open_favorites">
+                                Favoritos <i class="fas fa-heart"></i>
+                            </button>
                         </div>
                         
                     </div>    
@@ -101,18 +104,12 @@
                                 <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ auth()->user()->name }} <i class="fas fa-angle-down"></i>
                                 </button>
-
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                   
-                                    
                                     @guest
-                                    
                                     @else
                                         <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                                      
-                                        
                                         <div class="dropdown-divider"></div>
-                                        
+
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -120,22 +117,12 @@
                                             </form>
                                         </a>
                                     @endguest
-                    
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                     @endif
-                    
                 </div>
-
-               
-               
-               
-               
-
-
             </div>
         </div>
     </header>
@@ -156,7 +143,7 @@
                 </div>
     
                 {{-- LOGOTIPO --}}
-                <div class="col-4 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
                     <a href="{{ route('inicio.index') }}">
                         <img src="{{asset('pedidos/img/logo.png')}}" alt="">
                     </a>
@@ -184,7 +171,7 @@
                 </div>
     
                 {{-- BUSCADOR WEB --}}
-                <div class="col-0 col-sm-8 col-md-8 col-lg-7 px-0" id="search_web">
+                <div class="col-0 col-sm-9 col-md-9 col-lg-8 px-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
                             <div class="form-row">
@@ -208,7 +195,7 @@
                 </div>
     
                 {{-- BUSCADOR MOVIL --}}
-                <div class="col-2 col-sm-2 col-md-2 col-lg-0 px-0 mx-0" id="search_movil">
+                <div class="col-6 col-sm-2 col-md-2 col-lg-0 px-0 mx-0" id="search_movil">
                     <div class="header_search_movil">
                         <button id="header_search_movil">
                             <div id="icon_search">
@@ -232,33 +219,7 @@
                         </div>
                     </div>
                 </div>
-    
-                {{-- LISTA DE DESEOS Y CESTA --}}
-                <div class="col-2 col-sm-1 col-md-1 col-lg-1 px-0" id="listadeseos_and_cesta">
-                    {{-- LISTA DE DESEOS --}}
-                    <div class="header_top_favorites">
-                        <button type="button" class="row d-flex justify-content-around" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mostrarProductosListaDeseosMenuFlotante">
-                            <div id="icon_favorites">
-                                <h4><i class="fa fa-heart"></i></h4>
-                                <p class="m-0 p-0">Favoritos</p>
-                            </div>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right header_favorites">
-                            <small><b>Mi lista de deseos</b></small>
-                            <hr class="mt-1">
-                            <div class="scroll_favorites_header">
-                                <div class="dropdown_favorites_header row" id="mostrarProductosListaDeseosMenuFlotanteItems">
-                                    
-                                </div>
-                            </div>
-    
-                            <hr class="mb-1">
-                            <div class="bottom_total">
-                                <a class="btn btn_pedido_favorites" href="{{route('listadedeseos.index')}}">Ver Todos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -369,200 +330,27 @@
         </div>
     </div>
 
+    
     {{-- FAVORITOS --}}
-    <div class="modal right fade" id="modal_favoritos" tabindex="-1" role="dialog" aria-labelledby="modal_favoritos">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header modal_header_favoritos py-1 bg-dark">
-                    <button type="button" class="close mr-auto" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times-circle"></i>
-                    </button>
-                </div>
-                <div class="modal-body modal_body_favoritos">
-                    <div class="favoritos_productos">
-                        <h5 class="titulo_fav_prod my-0">Productos</h5>
-                        <div class="content_fav_prod">
+    <div class="content_modal"></div>
+    <div class="sideban_modal_right">
+        <button class="p-0" id="close_sidebar">
+            <i class="fas fa-times"></i>
+        </button>
 
-                            <div class="row m-0 p-3" id="mostarFavoritosProductos">
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_prod p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_prod">
-                                                <img src="{{asset('pedidos/img/product/product-2.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_prod my-0">
-                                                <a href="#">Nombre de producto</a>
-                                                </p>
-                                            <p class="descripcion_fav_prod my-0">Descripcion de producto</p>
-                                            <p class="precio_fav_prod mb-0"><b>s/ 14.90</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarProductoListaDeseos" producto_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_prod p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_prod">
-                                                <img src="{{asset('pedidos/img/product/product-2.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_prod my-0">
-                                                <a href="#">Nombre de producto</a>
-                                                </p>
-                                            <p class="descripcion_fav_prod my-0">Descripcion de producto</p>
-                                            <p class="precio_fav_prod mb-0"><b>s/ 14.90</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarProductoListaDeseos" producto_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_prod p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_prod">
-                                                <img src="{{asset('pedidos/img/product/product-2.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_prod my-0">
-                                                <a href="#">Nombre de producto</a>
-                                                </p>
-                                            <p class="descripcion_fav_prod my-0">Descripcion de producto</p>
-                                            <p class="precio_fav_prod mb-0"><b>s/ 14.90</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarProductoListaDeseos" producto_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_prod p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_prod">
-                                                <img src="{{asset('pedidos/img/product/product-2.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_prod my-0">
-                                                <a href="#">Nombre de producto</a>
-                                                </p>
-                                            <p class="descripcion_fav_prod my-0">Descripcion de producto</p>
-                                            <p class="precio_fav_prod mb-0"><b>s/ 14.90</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarProductoListaDeseos" producto_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="favoritos_restaurantes">
-                        <h5 class="titulo_fav_rest my-0">Restaurantes</h5>
-                        <div class="content_fav_rest">
-                            <div class="row m-0 p-3" id="mostarFavoritosRestaurantes">
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_rest p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_rest">
-                                                <img src="{{asset('pedidos/img/banner/banner-1.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_rest my-0">
-                                                <a href="#">Nombre de Empresa</a>
-                                                </p>
-                                            <p class="tipococina_fav_rest my-0">Tipo de cocina</p>
-                                            <p class="direccion_fav_rest mb-0"><b>Direccion de empresa</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarEmpresaListaDeseos" empresa_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>                                
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_rest p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_rest">
-                                                <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_rest my-0">
-                                                <a href="#">Nombre de Empresa</a>
-                                                </p>
-                                            <p class="tipococina_fav_rest my-0">Tipo de cocina</p>
-                                            <p class="direccion_fav_rest mb-0"><b>Direccion de empresa</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarEmpresaListaDeseos" empresa_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>                                
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_rest p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_rest">
-                                                <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_rest my-0">
-                                                <a href="#">Nombre de Empresa</a>
-                                                </p>
-                                            <p class="tipococina_fav_rest my-0">Tipo de cocina</p>
-                                            <p class="direccion_fav_rest mb-0"><b>Direccion de empresa</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarEmpresaListaDeseos" empresa_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>                                
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_rest p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_rest">
-                                                <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_rest my-0">
-                                                <a href="#">Nombre de Empresa</a>
-                                                </p>
-                                            <p class="tipococina_fav_rest my-0">Tipo de cocina</p>
-                                            <p class="direccion_fav_rest mb-0"><b>Direccion de empresa</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarEmpresaListaDeseos" empresa_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>                                
-                                <div class="col-12 mb-2">
-                                    <div class="row border_fav_rest p-1">
-                                        <div class="col-3 p-0">
-                                            <div class="foto_fav_rest">
-                                                <img src="{{asset('pedidos/img/product/product-3.jpg')}}" alt="" class="m-0">
-                                            </div>
-                                        </div>
-                                        <div class="col-9 p-0 pl-2">
-                                            <p class="nombre_fav_rest my-0">
-                                                <a href="#">Nombre de Empresa</a>
-                                                </p>
-                                            <p class="tipococina_fav_rest my-0">Tipo de cocina</p>
-                                            <p class="direccion_fav_rest mb-0"><b>Direccion de empresa</b></p>
-                                        </div>
-                                        
-                                        <div class="p-0 eliminarEmpresaListaDeseos" empresa_id=""><i class="fas fa-trash-alt small"></i></div>
-                                    </div>
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
+        <div class="cart_content">
+            <div class="cart_tittle_favorites">
+                <a href="#" class="btn btn_link_favoritos">Ver Todos</a>
+            </div>
+            <div class="scroll_cart_content">
+                <div class="row m-0 p-3" id="mostarFavoritosProductos">
+                    
                 </div>
             </div>
         </div>
     </div>
+    
+
     
 
     {{-- CONTENIDO INICIO --}}
