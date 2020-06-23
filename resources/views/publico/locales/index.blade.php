@@ -230,7 +230,7 @@
                                 </h4>
                             </div>
                             <div class="col-12 content_botones_pedido">
-                                <button class="btn_realizar_pedido_cesta">Realizar Pedido</button>
+                                <button id="btn_realizar_pedido_cesta" class="btn_realizar_pedido_cesta">Realizar Pedido</button>
                             </div>
                         </div>
                     </div>

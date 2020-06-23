@@ -2,6 +2,11 @@
     $(document).ready( function() {
 
 
+        $("#btn_realizar_pedido_cesta").on("click", function() {
+            console.log( $("#navDetallePedidoCesta").serialize() );
+        });
+
+
         $("#filtro_ofertas").on("click", function() {
             obtnerProductosLocales();
         });

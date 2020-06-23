@@ -87,6 +87,8 @@ Route::get("ajax/locales/productos", "Publico\LocalesController@productos")
 
 
 
+
+
 Route::get("getpersonaxdni", "Admin\Ajax\PersonasController@getpersonaxdni")
 ->name("ajax.getpersonaxdni");
 
