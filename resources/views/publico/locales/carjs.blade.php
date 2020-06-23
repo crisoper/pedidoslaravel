@@ -284,10 +284,10 @@ function marginProductosCesta() {
     console.log(marginProductosCesta);
 
     if (marginProductosCesta == 3) {
-        $('#scroll_cesta').height(495);
+        $('#scroll_cesta').height('auto');
     }
     else if (marginProductosCesta == 2) {
-        $('#scroll_cesta').height(345);
+        $('#scroll_cesta').height('auto');
     }
     else {
         $('#scroll_cesta').height(92+'%');

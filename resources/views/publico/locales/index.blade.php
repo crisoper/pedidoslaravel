@@ -175,9 +175,11 @@
                 </div>
 
                 <div class="scroll_cesta" id="scroll_cesta">
-                    <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
-
-                    </div>
+                    <form id="" action="{{ $empresa->id }}">
+                        <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
+    
+                        </div>
+                    </form>
                 </div>
             </div>
 
