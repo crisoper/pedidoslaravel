@@ -114,6 +114,13 @@
     transition-duration: 800ms;
 }
 
+
+@media (max-width: 576px) {
+    .sidebar_modal_cesta_right {
+        width: 280px;
+    }
+}
+
 .sidebar_modal_cesta_right.sidebar_modal_cesta_right_on {
     right: 0;
 }
