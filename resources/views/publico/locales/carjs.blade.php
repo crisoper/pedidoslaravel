@@ -108,7 +108,7 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
     $("#cuerpoCestaPedido").html( carHTML);
     sumarRestarCantidad();
     sumarImportesCesta();
-    // marginProductosCesta();
+    marginProductosCesta();
 }
 
 //Sumar o Restar cantidad de productos en cesta
@@ -278,21 +278,21 @@ function sumarImportesCesta() {
 }
 
 
-// function marginProductosCesta() {
-//     let marginProductosCesta = $('.contenido_producto_cesta').length;
+function marginProductosCesta() {
+    let marginProductosCesta = $('.contenido_producto_cesta').length;
 
-//     console.log(marginProductosCesta);
+    console.log(marginProductosCesta);
 
-//     if (marginProductosCesta == 3) {
-//         $('.contenido_producto_cesta').parents('#scroll_cesta').css('padding-bottom', '85px');
-//     }
-//     else if (marginProductosCesta == 2) {
-//         $('.contenido_producto_cesta').parents('#scroll_cesta').css('padding-bottom', '230px');
-//     }
-//     else {
-//         $('.contenido_producto_cesta').parents('#scroll_cesta').css('padding-bottom', '0px');
-//     }
-// }
+    if (marginProductosCesta == 3) {
+        $('#scroll_cesta').height(495);
+    }
+    else if (marginProductosCesta == 2) {
+        $('#scroll_cesta').height(345);
+    }
+    else {
+        $('#scroll_cesta').height(92+'%');
+    }
+}
 
 
 

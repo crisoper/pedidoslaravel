@@ -174,8 +174,8 @@
                     </div>
                 </div>
 
-                <div id="scroll_cesta">
-                    <div class="row m-0 p-3 pt-4" id="cuerpoCestaPedido">
+                <div class="scroll_cesta" id="scroll_cesta">
+                    <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
 
                     </div>
                 </div>
