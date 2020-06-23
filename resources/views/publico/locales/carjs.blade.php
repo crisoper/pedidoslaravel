@@ -283,14 +283,17 @@ function marginProductosCesta() {
 
     console.log(marginProductosCesta);
 
-    if (marginProductosCesta == 3) {
+    if (marginProductosCesta == 1) {
         $('#scroll_cesta').height('auto');
     }
     else if (marginProductosCesta == 2) {
         $('#scroll_cesta').height('auto');
     }
-    else {
-        $('#scroll_cesta').height(92+'%');
+    else if (marginProductosCesta == 3) {
+        $('#scroll_cesta').height('auto');
+    }
+    else if (marginProductosCesta >= 4) {
+        $('#scroll_cesta').height(500);
     }
 }
 

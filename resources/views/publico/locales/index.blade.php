@@ -162,80 +162,80 @@
             </div>
         </nav>
         <div class="tab-content" id="nav_tabContent">
-            <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
-                <div class="info_cantidad_total">
-                    <div class="info_cantidad">
-                        <p class="my-0">Estas comprando:</p>
-                        <h6><span class="suma_productos_Cesta">0</span> Productos</h6>
+            <form id="" action="{{ $empresa->id }}">
+                <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
+                    <div class="info_cantidad_total">
+                        <div class="info_cantidad">
+                            <p class="my-0">Estas comprando:</p>
+                            <h6><span class="suma_productos_Cesta">0</span> Productos</h6>
+                        </div>
+                        <div class="info_total">
+                            <p class="my-0">Subtotal:</p>
+                            <h5>S/ <span class="suma_total_prev">0.00</span></h5>
+                        </div>
                     </div>
-                    <div class="info_total">
-                        <p class="my-0">Subtotal:</p>
-                        <h5>S/ <span class="suma_total_prev">0.00</span></h5>
+
+                    <div class="scroll_cesta" id="scroll_cesta">
+                            <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
+        
+                            </div>
                     </div>
                 </div>
 
-                <div class="scroll_cesta" id="scroll_cesta">
-                    <form id="" action="{{ $empresa->id }}">
-                        <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
-    
+                <div class="tab-pane fade" id="navRealizarPedidoCesta" role="tabpanel" aria-labelledby="realizar_pedido_cesta">
+                    <form class="container_cupon mt-3" form action="#">
+                        <div class="input-group input_group_cupon_cesta">
+                            <input type="text" class="input_cupon_cesta mt-0" placeholder="Ingrese su cupón de descuento">
+                            <div class="input-group-append append_cupon">
+                                <a href="#" class="btn btn_aplicar_cupon_cesta mt-0 pl-1">Aplicar</a>
+                            </div>
                         </div>
                     </form>
-                </div>
-            </div>
+                    <div class="content_total_cesta mt-4 px-2">
+                        <div class="row p-2 monto_total_cesta">
+                            <div class="col-12 titulo_resumen text-center pb-2">
+                                <p class="mb-0">Resumen del pedido</p>
+                            </div>
 
-            <div class="tab-pane fade" id="navRealizarPedidoCesta" role="tabpanel" aria-labelledby="realizar_pedido_cesta">
-                <form class="container_cupon mt-3" form action="#">
-                    <div class="input-group input_group_cupon_cesta">
-                        <input type="text" class="input_cupon_cesta mt-0" placeholder="Ingrese su cupón de descuento">
-                        <div class="input-group-append append_cupon">
-                            <a href="#" class="btn btn_aplicar_cupon_cesta mt-0 pl-1">Aplicar</a>
-                        </div>
-                    </div>
-                </form>
-                <div class="content_total_cesta mt-4 px-2">
-                    <div class="row p-2 monto_total_cesta">
-                        <div class="col-12 titulo_resumen text-center pb-2">
-                            <p class="mb-0">Resumen del pedido</p>
-                        </div>
+                            <div class="col-12 content_detalle_total_prod py-2 px-1 mb-3">
+                                <p class="my-0 text-muted">Estas comprando</p>
+                                <h6 class="my-0 text-muted text-right">
+                                    <b><span class="sumaTotalProductos">0.00</span> Productos</b>
+                                </h6>
+                            </div>
 
-                        <div class="col-12 content_detalle_total_prod py-2 px-1 mb-3">
-                            <p class="my-0 text-muted">Estas comprando</p>
-                            <h6 class="my-0 text-muted text-right">
-                                <b><span class="sumaTotalProductos">0.00</span> Productos</b>
-                            </h6>
-                        </div>
-
-                        <div class="col-12 content_detalle_monto_total">
-                            <p class="my-0">Subtotal</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="sumaTotal">0.00</span></b>
-                            </h6>
-                        </div>
-                        <div class="col-12 content_detalle_monto_total">
-                            <p class="my-0">Delivery</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="deliveryTotal">2.00</span></b>
-                            </h6>
-                        </div>
-                        <div class="col-12 content_detalle_monto_total">
-                            <p class="my-0">Descuento</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="descuentoTotal">5.00</span></b>
-                            </h6>
-                        </div>
-                            
-                        <div class="col-12 content_detalle_total my-2 py-2">
-                            <h5>Total</h5>
-                            <h4 class="my-0 text-right">
-                                <b>S/ <span class="pedidoTotal">0.00</span></b>
-                            </h4>
-                        </div>
-                        <div class="col-12 content_botones_pedido">
-                            <button class="btn_realizar_pedido_cesta">Realizar Pedido</button>
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Subtotal</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="sumaTotal">0.00</span></b>
+                                </h6>
+                            </div>
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Delivery</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="deliveryTotal">2.00</span></b>
+                                </h6>
+                            </div>
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Descuento</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="descuentoTotal">5.00</span></b>
+                                </h6>
+                            </div>
+                                
+                            <div class="col-12 content_detalle_total my-2 py-2">
+                                <h5>Total</h5>
+                                <h4 class="my-0 text-right">
+                                    <b>S/ <span class="pedidoTotal">0.00</span></b>
+                                </h4>
+                            </div>
+                            <div class="col-12 content_botones_pedido">
+                                <button class="btn_realizar_pedido_cesta">Realizar Pedido</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
