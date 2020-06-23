@@ -161,7 +161,7 @@
                 </a>
             </div>
         </nav>
-        <form id="" action="">
+        <form id="" action="{{ $empresa->id }}">
             <div class="tab-content" id="nav_tabContent">
                 <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
                     <div class="info_cantidad_total">
