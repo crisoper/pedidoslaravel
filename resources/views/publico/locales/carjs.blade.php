@@ -292,8 +292,23 @@ function marginProductosCesta() {
     else if (marginProductosCesta == 3) {
         $('#scroll_cesta').height('auto');
     }
-    else if (marginProductosCesta >= 4) {
+    else {
         $('#scroll_cesta').height(92+'%');
+    }
+
+    
+    var wi = $(window).width();
+    
+    if (wi <= 576){
+        if (marginProductosCesta == 1) {
+            $('#scroll_cesta').height('auto');
+        }
+        else if (marginProductosCesta == 2) {
+            $('#scroll_cesta').height('auto');
+        }
+        else {
+            $('#scroll_cesta').height(85+'%');
+        }
     }
 }
 
