@@ -257,22 +257,13 @@ class EmpresasController extends Controller
     {
         return Auth::guard();
     }
-
-    public function tuempresastore( CreatuempresaCreateRequest $request){
+    // CreatuempresaCreateRequest
+    public function tuempresastore( CreatuempresaCreateRequest  $request){
       
         $dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
         $diasNoValidosInicio = array();
         $diasNoValidosFin = array();
-    
-        
-        foreach ($request->dias as $key => $value) {
-            if ( $request->horainicio[$key] == null) {
-                $diasNoValidosInicio[] = $dias[$key - 1];
-            }
-            if ( $request->horafin[$key] == null) {
-                $diasNoValidosFin[] = $dias[$key - 1];
-            }
-        } 
+
     
     
         if ( count( $diasNoValidosInicio ) > 0 || count( $diasNoValidosFin ) > 0 ) {
@@ -371,16 +362,19 @@ class EmpresasController extends Controller
             'model_type' => 'App\User' ,
             'model_id'=> $user->id,
         ]); 
-     
+         
         for ($i = 1; $i <= count($request->dias) ; $i++) { 
+
             $horario = new Horario();
             $horario->empresa_id = $empresa->id;
-            $horario->dia =  $dias[$i];
+            $horario->dia =  $dias[ $i - 1 ];
             $horario->horainicio = $request->horainicio[$i];
             $horario->horafin =  $request->horafin[$i];
             $horario->created_by = $user->id;        
-            $horario->save();        
+            $horario->save();
+            
         } 
+       
 
         $this->guard()->login($user);
         //Enviamos correo para activar cuenta
