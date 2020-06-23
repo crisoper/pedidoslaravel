@@ -82,9 +82,9 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
                             <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
                                 <p class="my-0"><b>Cantidad</b></p>
                                 <div class="input-group input_group_cant_prod_cesta">
-                                    <button class="input-group-prepend restar" idcesta="${ cesta.id }">-</button>
+                                    <button class="input-group-prepend restar sumarRestarProducto" idcesta="${ cesta.id }">-</button>
                                     <input type="text" class="form-control input_value_cartcart" value="${ cesta.cantidad }">
-                                    <button class="input-group-append sumar" idcesta="${ cesta.id }">+</button>
+                                    <button class="input-group-append sumar sumarRestarProducto" idcesta="${ cesta.id }">+</button>
                                 </div>
                             </div>
                             <div class="col-4 px-0 py-2 padding_column_cesta">
