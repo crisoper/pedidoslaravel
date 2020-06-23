@@ -161,8 +161,8 @@
                 </a>
             </div>
         </nav>
-        <div class="tab-content" id="nav_tabContent">
-            <form id="" action="{{ $empresa->id }}">
+        <form id="" action="">
+            <div class="tab-content" id="nav_tabContent">
                 <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
                     <div class="info_cantidad_total">
                         <div class="info_cantidad">
@@ -176,9 +176,9 @@
                     </div>
 
                     <div class="scroll_cesta" id="scroll_cesta">
-                            <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
-        
-                            </div>
+                        <div class="row m-0 p-3 pt-4 cuerpoCestaPedido" id="cuerpoCestaPedido">
+    
+                        </div>
                     </div>
                 </div>
 
@@ -235,8 +235,8 @@
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 

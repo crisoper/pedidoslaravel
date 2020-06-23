@@ -293,7 +293,7 @@ function marginProductosCesta() {
         $('#scroll_cesta').height('auto');
     }
     else if (marginProductosCesta >= 4) {
-        $('#scroll_cesta').height(500);
+        $('#scroll_cesta').height(92+'%');
     }
 }
 
