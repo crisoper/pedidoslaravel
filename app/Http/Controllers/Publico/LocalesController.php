@@ -49,32 +49,32 @@ class LocalesController extends Controller
         }
         
         
-        $productosrecomendados = Producto::where("empresa_id", $request->input("empresa_id", 0) );
+        $productosxempresa = Producto::where("empresa_id", $request->input("empresa_id", 0) );
 
         if( $request->has('buscar')  and $request->buscar != "" ) {
-            $productosrecomendados = $productosrecomendados->where('nombre', 'like', '%'.$request->buscar.'%');
+            $productosxempresa = $productosxempresa->where('nombre', 'like', '%'.$request->buscar.'%');
         }
 
         if( $request->has('filtro_nuevos')  and $request->filtro_nuevos == 1 ) {
-            $productosrecomendados = $productosrecomendados->whereDate( "created_at", now() );
+            $productosxempresa = $productosxempresa->whereDate( "created_at", now() );
         }
         
-        if( $request->has('filtro_ofertas')  and $request->filtro_nuevos == 1 ) {
-            // $productosrecomendados = $productosrecomendados->whereDate( "created_at", now() );
+        if( $request->has('filtro_ofertas')  and $request->filtro_ofertas == 1 ) {
+            // $productosxempresa = $productosxempresa->whereDate( "created_at", now() );
         }
 
 
         if ( $request->has('filtro_orden')  and $request->filtro_orden == "ofertas" ) {
-            $productosrecomendados = $productosrecomendados->orderBy("id", "asc");
+            $productosxempresa = $productosxempresa->orderBy("id", "asc");
         }
         elseif( $request->has('filtro_orden')  and $request->filtro_orden == "mayor" ) {
-            $productosrecomendados = $productosrecomendados->orderBy("precio", "desc");
+            $productosxempresa = $productosxempresa->orderBy("precio", "desc");
         }
         elseif( $request->has('filtro_orden')  and $request->filtro_orden == "menor" ) {
-            $productosrecomendados = $productosrecomendados->orderBy("precio", "asc");
+            $productosxempresa = $productosxempresa->orderBy("precio", "asc");
         }
 
-        $productosrecomendados = $productosrecomendados->with([
+        $productosxempresa = $productosxempresa->with([
             "empresa",
             "tags",
             "categoria",
@@ -82,7 +82,7 @@ class LocalesController extends Controller
         ])
         ->get();
 
-        foreach ( $productosrecomendados as $producto ) {
+        foreach ( $productosxempresa as $producto ) {
 
             if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
                 $producto->encarrito = true;
@@ -98,123 +98,12 @@ class LocalesController extends Controller
                 $producto->enlistadeseos = false;
             }
 
-        }
-
-
-        //Productos en oferta
-        $productosoferta = Producto::where("empresa_id", $request->input("empresa_id", 0) )
-        ->where( "stock", ">", 20 )
-        ->whereNotIn("id", $productosrecomendados->pluck("id") )
-        ->with([
-            "empresa",
-            "tags",
-            "categoria",
-            "fotos",
-        ])
-        ->limit(10)
-        ->get();
-
-        foreach ( $productosoferta as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-
-        }
-
-
-
-        //Productos nuevos
-        $productosnuevos = Producto::where("empresa_id", $request->input("empresa_id", 0) )
-        ->whereDate( "created_at", now() )
-        ->whereNotIn("id", $productosrecomendados->pluck("id") )
-        ->whereNotIn("id", $productosoferta->pluck("id") )
-        ->with([
-            "empresa",
-            "tags",
-            "categoria",
-            "fotos",
-        ])
-        ->limit(10)
-        ->get();
-
-        foreach ( $productosnuevos as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-        }
-
-
-        //Productos mas pedidos
-        $hoy =  Carbon::now();
-        $fechainicio = Carbon::now()->subDays( 30 );
-
-        $productomaspedidosIds = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
-        ->select("pedidodetalles.empresa_id", "productos.id",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
-        ->groupBy("pedidodetalles.empresa_id", "productos.id" )
-        ->orderBy("cantidad", "desc")
-        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
-        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
-        ->limit(10)
-        ->pluck("id");
-
-
-        $productosmaspedidos = Producto::where( "stock", "<", 10 )
-        ->whereIn("id", $productomaspedidosIds )
-        ->with([
-            "empresa",
-            "tags",
-            "categoria",
-            "fotos",
-        ])
-        ->limit(10)
-        ->get();
-
-        foreach ( $productosmaspedidos as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
         }
 
         return response()
         ->json(
             [
-                'recomendados' => ProductoResource::collection( $productosrecomendados ),
-                'ofertas' => ProductoResource::collection( $productosoferta ),
-                'nuevos' => ProductoResource::collection( $productosnuevos ),
-                'maspedidos' => ProductoResource::collection( $productosmaspedidos )
+                'productosxempresa' => ProductoResource::collection( $productosxempresa ),
             ], 
             200
         );

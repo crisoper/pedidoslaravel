@@ -1,6 +1,6 @@
 <script>
     
-    $("#mostrarProductosListaDeseosMenuFlotante").on("click", function() {
+    $("#btn_open_favorites").on("click", function() {
         obtenerProductosListaDeseos( );
     });
     
@@ -35,7 +35,7 @@
     function mostrarProductosListaDeseosMenuFlotante( listadeseos ) {
 
 
-        $("#mostrarProductosListaDeseosMenuFlotanteItems").html();
+        $("#mostarFavoritosProductos").html();
 
         let listaHTML = "";
 
@@ -56,29 +56,28 @@
 
 
             listaHTML = listaHTML + `
-                <div class="col-12 mt-2">
-                    <div class="row border_caja_favorites mb-1">
-                        <div class="col-2 p-0">
-                            <div class="cart_product_foto">
+                <div class="col-12 mb-2">
+                    <div class="row border_fav_prod p-1">
+                        <div class="col-3 p-0">
+                            <div class="foto_fav_prod">
                                 ${ fotos }
                             </div>
                         </div>
-                        <div class="col-6 p-0 pl-2">
-                            <p class="cart_product_nombre text-truncate small mb-0">
+                        <div class="col-9 p-0 pl-2">
+                            <p class="nombre_fav_prod my-0">
                                 <a href="#">${ deseos.producto.nombre }</a>
                                 </p>
-                            <p class="cart_product_description text-truncate small mb-0"><small>${ deseos.producto.descripcion }</small></p>
+                            <p class="descripcion_fav_prod my-0">${ deseos.producto.descripcion }</p>
+                            <p class="precio_fav_prod mb-0"><b>s/ ${ deseos.producto.precio }</b></p>
                         </div>
-                        <div class="col-4 p-0">
-                            <p class="cart_product_precio small mb-0"><b>s/ ${ deseos.producto.precio }</b></p>
-                        </div>
+                        
                         <div class="p-0 eliminarProductoListaDeseos" producto_id="${ deseos.producto.id }"><i class="fas fa-trash-alt small"></i></div>
                     </div>
                 </div>
             `;
         });
 
-        $("#mostrarProductosListaDeseosMenuFlotanteItems").html( listaHTML);
+        $("#mostarFavoritosProductos").html( listaHTML);
         marginListaDeseosMenu();
     } 
 
@@ -96,7 +95,7 @@
     }
 
 
-    $("#mostrarProductosListaDeseosMenuFlotanteItems").on("click", ".eliminarProductoListaDeseos", function() {
+    $("#mostarFavoritosProductos").on("click", ".eliminarProductoListaDeseos", function() {
 
         let spanEliminar = $( this );
 

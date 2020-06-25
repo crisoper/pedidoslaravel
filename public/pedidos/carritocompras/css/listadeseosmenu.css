@@ -1,259 +1,93 @@
 /* Header cart top */
 
-.header_top_favorites {
+
+#btn_open_favorites {
+  width: 100%;
+  border: none;
+  background-color: #343a40;
+}
+
+
+.content_modal.content_modal_on {
+  -webkit-transition-duration: 1000ms;
+  transition-duration: 1000ms;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1050;
+}
+
+/* Cart Area CSS */
+.sideban_modal_right {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  top: 0;
+  right: -400px;
+  background-color: #ffffff;
+  z-index: 1100;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 800ms;
+  transition-duration: 800ms;
+}
+
+.sideban_modal_right.sideban_modal_right_on {
+  right: 0;
+}
+.sideban_modal_right #close_sidebar {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  right: 100%;
+  z-index: 100;
+  display: block;
+  font-size: 30px;
+  text-align: center;
+  border: 0;
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+
+.sideban_modal_right .cart_content {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
 
-.header_top_favorites > button {
+.cart_tittle_favorites {
   width: 100%;
   height: 50px;
-  color: #ffffff !important;
-  background-color: #3eb291;
-  border: none;
-  border-radius: 0;
-}
-.header_top_favorites > button > #icon_favorites {
-  padding-left: 5px;
-  padding-top: 2px;
-}
-.header_top_favorites > button:focus {
-  box-shadow: none;
-  color: #3eb291 !important;
-  background-color: #ffffff;
-}
-
-.header_top_favorites > button h4 {
-  width: 40px;
-  height: 35px;
+  background-color: #343a40;
   text-align: center;
-  border-radius: 50%;
-  border: 1px solid #ffffff;
-  padding: 3px 0px 0px 0px;
-  margin-bottom: -3px;
-}
-.header_top_favorites > button:focus h4 {
-    border: 1px solid #3eb291;
+  padding: 10px 0;
 }
 
-.header_top_favorites > button p {
-  font-size: 11px !important;
-}
-
-
-@media only screen and (min-width: 769px) and (max-width: 991px) {
-    
-  .header_top_favorites {
-      height: 40px;
-  }
-  .header_top_favorites > button {
-      width: auto;
-      height: 45px;
-  }
-  
-  .header_top_favorites > button > #icon_favorites {
-    padding-left: 5px;
-    padding-top: 2px;
-  }
-  
-  .header_top_favorites > button h4 {
-    width: 35px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 0px 0px 0px;
-    margin-bottom: -1px;
-  }
-  .header_top_favorites > button:focus h4 {
-      border: 1px solid #3eb291;
-  }
-
-  .header_top_favorites > button p {
-    font-size: 10px !important;
-  }
-  
-}
-
-@media only screen and (min-width: 0px) and (max-width: 768px) {
-    
-  .header_top_favorites {
-    width: 100% !important;
-      height: 40px;
-  }
-  .header_top_favorites > button {
-      width: auto;
-      height: 45px;
-  }
-  
-  .header_top_favorites > button > #icon_favorites {
-    padding-left: 5px;
-    padding-top: 2px;
-  }
-  
-  .header_top_favorites > button h4 {
-    width: 35px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 0px 0px 0px;
-    margin-bottom: -1px;
-  }
-  .header_top_favorites > button:focus h4 {
-      border: 1px solid #3eb291;
-  }
-
-  .header_top_favorites > button p {
-    font-size: 10px !important;
-  }
-}
-
-
-
-/* ----PRODUCTOS----- */
-
-.header_favorites {
-  width: 350px;
-  top: -1px !important;
-  right: 0px;
-  padding: 15px;
-  background-color: #ffffff;
-  text-align: center;
+.btn_link_favoritos {
+  width: 60%;
+  height: 100%;
   border: 0;
   border-radius: 0;
-
-  box-shadow: 0 10px 20px -5px #868686;
-  -moz-box-shadow: 0 10px 20px -5px #868686;
-  -webkit-box-shadow: 0 10px 20px -5px #868686;
-  -o-box-shadow: 0 10px 20px -5px #868686;
-  -ms-box-shadow: 0 10px 20px -5px #868686;
-}
-
-
-.border_caja_favorites {
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: 7.5px;
-  padding: 5px;
-}
-.border_caja_favorites>div>img {
-  width: 37.5 !important;
-  height: 37.5px !important;
-}
-
-.favorites_favorites_description {
-  line-height: 18px;
-}
-.favorites_favorites_precio {
-  line-height: 18px;
-  margin-bottom: -5px;
-}
-
-.eliminarProductoListaDeseos {
-  background: #df3550 !important;
-  width: 18px;
-  height: 18px;
-  display: block;
-  text-align: center;
-  border-radius: 50px;
-  padding: 0px !important;
-  font-size: 12px;
-  color: #FFFFFF;
-  color: white;
-  position: absolute;
-  top: -7px;
-  right: -5px;
-  cursor: pointer;
-}
-.btn_pedido_favorites {
-  color: #3eb291;
-  background: #ececeb;
-  padding: 10px 20px;
-  display: block;
-  margin-top: 10px;
-  border-radius: 0px;
+  font-size: 20px;
+  background-color: #3eb291;
   text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 0;
 }
-.btn_pedido_favorites:hover,
-.btn_pedido_favorites:focus {
+.btn_link_favoritos:hover,
+.btn_link_favoritos:focus {
   color: #ffffff;
-  background: #3eb291;
   box-shadow: none;
 }
 
 
-.scroll_favorites_header {
-  width: 100% !important;
-  height: 260px !important;
-  text-align: center;
-}
-
-.dropdown_favorites_header {
-  width: 100% !important;
-  height: 100% !important;
-  overflow: scroll;
-  box-sizing: border-box;
-  margin-left: 0px;
-  padding: 1px 8px 5px 5px;
-}
-.dropdown_favorites_header::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-.dropdown_favorites_header::-webkit-scrollbar:vertical {
-  width: 5px;
-}
-.dropdown_favorites_header::-webkit-scrollbar:horizontal {
-  height: 0px;
-}
-.dropdown_favorites_header::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,.1);
-  border-radius: 3px;
-  border: 3px solid rgba(0,0,0,.1);
-}
-.dropdown_favorites_header::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.modal_header_favoritos i {
-  color: #ffffff;
-}
-
-.modal_body_favoritos {
+.scroll_cart_content {
   width: 100%;
-  height: 95%;
-}
-
-.favoritos_productos {
-  width: 100%;
-  height: 50%;
-}
-.titulo_fav_prod {
-  width: 100%;
-  height: 10%;
-  color: #ffffff;
-  background-color: #3eb291;
-  font-weight: 700;
-  text-align: center;
-  padding-top: 5px;
-  background-image: linear-gradient(#308a70, #38a184, #3eb291, #3eb291, #38a184, #308a70);
-}
-.content_fav_prod {
-  width: 100%;
-  height: 90%;
+  height: 100%;
 }
 
 #mostarFavoritosProductos {
@@ -281,11 +115,49 @@
 }
 
 
-
 .border_fav_prod {
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 5px;
 }
+
+
+
+
+.foto_fav_prod {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.foto_fav_prod img {
+  width: 100%;
+  height: 55px !important;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+}
+.foto_fav_prod .hover_img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
 .foto_fav_prod > img {
   width: 100%;
   height: 100%;
@@ -327,93 +199,3 @@
 
 
 
-
-
-.favoritos_restaurantes {
-  height: 50%;
-}
-.titulo_fav_rest {
-  width: 100%;
-  height: 10%;
-  color: #ffffff;
-  background-color: #3eb291;
-  font-weight: 700;
-  text-align: center;
-  padding-top: 5px;
-  background-image: linear-gradient(#308a70, #38a184, #3eb291, #3eb291, #38a184, #308a70);
-}
-.content_fav_rest {
-  width: 100%;
-  height: 89%;
-  /* box-shadow: inset 0 0 5px #333; */
-}
-
-#mostarFavoritosRestaurantes {
-  width: 100% !important;
-  height: 100% !important;
-  overflow: scroll;
-  box-sizing: border-box;
-}
-#mostarFavoritosRestaurantes::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-#mostarFavoritosRestaurantes::-webkit-scrollbar:vertical {
-  width: 5px;
-}
-#mostarFavoritosRestaurantes::-webkit-scrollbar:horizontal {
-  height: 0px;
-}
-#mostarFavoritosRestaurantes::-webkit-scrollbar-thumb {
-  background-color: #7d838a;
-  border-radius: 4px;
-  border: 4px solid #7d838a;
-}
-#mostarFavoritosRestaurantes::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-
-
-.border_fav_rest {
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: 5px;
-}
-
-.foto_fav_rest > img {
-  width: 100%;
-  height: 100%;
-}
-
-.nombre_fav_rest {
-  font-size: 13px;
-  font-weight: 700;
-}
-.nombre_fav_rest  a {
-  color: #2a2b2a;
-}
-.tipococina_fav_rest {
-  font-size: 11px;
-  line-height: 18px;
-}
-.direccion_fav_rest {
-  font-size: 11px;
-  line-height: 18px;
-}
-
-
-.eliminarEmpresaListaDeseos {
-  background: #df3550 !important;
-  width: 18px;
-  height: 18px;
-  display: block;
-  text-align: center;
-  border-radius: 50px;
-  padding: 0px !important;
-  font-size: 12px;
-  color: #FFFFFF;
-  color: white;
-  position: absolute;
-  top: -7px;
-  right: -5px;
-  cursor: pointer;
-}

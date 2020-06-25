@@ -65,17 +65,17 @@
                 let encarrito = '';
                 if (maspedidos.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedidos.id }">
+                        <a href="${ maspedidos.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </button>
+                        </a>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedidos.id }">
+                        <a href="${ maspedidos.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </button>
+                        </a>
                     </div>`;
                 }
 
@@ -104,10 +104,10 @@
                         <div class="featured__item__text container_product_cart featured__item__text_maspedidos px-2 pt-2">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="text-truncate my-0">${ maspedidos.nombre }</p>
+                                    <p class="nombre_producto my-0">${ maspedidos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-3 mb-0">
+                            <hr class="mt-1 mb-0">
                             <div class="row px-2">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
@@ -122,9 +122,9 @@
                                         Importe: <b>S/ <span>15.90</span></b>
                                     </p>
                                     <div class="input-group input_group_unit_product">
-                                        <button class="input-group-prepend minus MoreMinProd">-</button>
+                                        <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
                                         <input type="text" class="form-control input_value_cart" value="1">
-                                        <button class="input-group-append more MoreMinProd">+</button>
+                                        <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
                                     </div>
                                 </div>
                             </div>

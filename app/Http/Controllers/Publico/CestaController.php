@@ -27,7 +27,6 @@ class CestaController extends Controller
 
     public function store(Request $request)
     {
-        
         $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id )
         ->where("producto_id", $request->producto_id )
         ->where("tipo", $request->tipo )
@@ -40,6 +39,7 @@ class CestaController extends Controller
         $cesta->producto_id = $request->producto_id;
         $cesta->cantidad = $request->cantidad;
         $cesta->tipo = $request->tipo;
+        $cesta->empresa_id = $request->empresa_id;
         
         if ( Auth::guard('api')->check() ) {
             $cesta->cliente_id = Auth::id();
@@ -54,6 +54,8 @@ class CestaController extends Controller
     }
     
     
+
+
     public function delete(Request $request)
     {
         $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id)

@@ -34,6 +34,7 @@
 
     {{-- EMPRESAS --}}
     <script src="{{asset('pedidos/empresas/empresas.js')}}"></script>
+    <script src="{{asset('pedidos/empresas/filtrarproductos.js')}}"></script>
 
 
     {{-- FILTRAR PRODUCTOS --}}

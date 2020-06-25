@@ -28,8 +28,23 @@ class OfertasAjaxController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosOfertados = Producto::where( "stock", ">", 20 )
-        ->with([
+        $productosOfertados = Producto::where( "stock", ">", 20 );
+
+        if( $request->has('buscar')  and $request->buscar != "" ) {
+            $productosOfertados = $productosOfertados->where('nombre', 'like', '%'.$request->buscar.'%');
+        }
+        
+        if ( $request->has('filtro_orden')  and $request->filtro_orden == "ofertas" ) {
+            $productosOfertados = $productosOfertados->orderBy("id", "asc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "mayor" ) {
+            $productosOfertados = $productosOfertados->orderBy("precio", "desc");
+        }
+        elseif( $request->has('filtro_orden')  and $request->filtro_orden == "menor" ) {
+            $productosOfertados = $productosOfertados->orderBy("precio", "asc");
+        }
+
+        $productosOfertados = $productosOfertados->with([
             "empresa",
             "tags",
             "categoria",

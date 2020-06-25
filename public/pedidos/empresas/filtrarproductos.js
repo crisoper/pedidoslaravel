@@ -4,12 +4,12 @@ $(document).ready(function () {
     "use strict";
 
     // :: Header Cart Active Code
-    var cartbtn1 = $("#btn_open_favorites");
-    var cartOverlay = $(".content_modal");
-    var cartWrapper = $(".sideban_modal_right");
-    var cartbtn2 = $("#close_sidebar");
-    var cartOverlayOn = "content_modal_on";
-    var cartOn = "sideban_modal_right_on";
+    var cartbtn1 = $(".btn_filtrar_productos");
+    var cartOverlay = $(".content_modal_filtrar");
+    var cartWrapper = $(".sideban_modal_filtrar_right");
+    var cartbtn2 = $("#close_sidebar_filtrar");
+    var cartOverlayOn = "content_modal_filtrar_on";
+    var cartOn = "sideban_modal_filtrar_right_on";
 
     cartbtn1.on("click", function () {
         cartOverlay.toggleClass(cartOverlayOn);

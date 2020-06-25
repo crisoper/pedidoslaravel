@@ -2,6 +2,32 @@
     $(document).ready( function() {
 
 
+        $("#btn_realizar_pedido_cesta").on("click", function( e ) {
+            e.preventDefault();
+
+            $.ajax({
+                method: "POST",
+                url: $("#formNavDetallePedidoCesta").attr("action"),
+                dataType: "json",
+                data: $("#formNavDetallePedidoCesta").serialize() ,
+                success: function( data ) {
+    
+                    $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
+                    GLOBARL_MostrarNotificaciones( data.success, "info" );
+                    mesajeDatosActualizados( ) ;
+    
+                },
+                error : function ( jqXHR, textStatus, errorThrown ) {
+    
+                    $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
+                    GLOBARL_MostrarNotificaciones( "Error, actualice la pagina y vuelva a intentarlo", "error" );
+                    console.log( jqXHR );
+                }
+            });
+
+        });
+
+
         $("#filtro_ofertas").on("click", function() {
             obtnerProductosLocales();
         });
@@ -45,7 +71,7 @@
                     filtro_orden: $("input[name='fitroorden']:checked").val(),
                 },
                 success: function ( data ) { 
-                    mostrarProductosEmpresa( data.recomendados );
+                    mostrarProductosEmpresa( data.productosxempresa );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -57,8 +83,6 @@
         
 
         function mostrarProductosEmpresa( datos ) {
-
-            console.log(datos);
 
             $("#cuerpoProductosEmpresas").html();
     
@@ -101,14 +125,14 @@
                 let encarrito = '';
                 if (recomendados.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }" idempresa="${ recomendados.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }" idempresa="${ recomendados.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </button>
@@ -126,10 +150,10 @@
                             <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="text-truncate my-0">${ recomendados.nombre }</p>
+                                        <p class="nombre_producto my-0">${ recomendados.nombre }</p>
                                     </div>
                                 </div>
-                                <hr class="mt-3 mb-0">
+                                <hr class="mt-1 mb-0">
                                 <div class="row px-2">
                                     <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                         <p class="price_product_prev text-muted py-0 my-0">
@@ -144,9 +168,9 @@
                                             Importe: <b>S/ <span>15.90</span></b>
                                         </p>
                                         <div class="input-group input_group_unit_product">
-                                            <button class="input-group-prepend minus MoreMinProd">-</button>
+                                            <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
                                             <input type="text" class="form-control input_value_cart" value="1">
-                                            <button class="input-group-append more MoreMinProd">+</button>
+                                            <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
                                         </div>
                                     </div>
                                 </div>
@@ -168,29 +192,8 @@
     
             $("#cuerpoProductosEmpresas").html( recomendadosHTML);
             sumarRestarCantidad();
+            contarProductosAlFiltrar();
         }
-
-
-        function sumarRestarCantidad() {
-            
-            $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
-                var botonMoreMin = $(this);
-                var oldValue = botonMoreMin.parent().find('input').val();
-                if (botonMoreMin.hasClass('more')) {
-                    var newVal = parseFloat(oldValue) + 1;
-                } else {
-                    // Don't allow decrementing below zero
-                    if (oldValue > 1) {
-                        var newVal = parseFloat(oldValue) - 1;
-                    } else {
-                        newVal = 1;
-                    }
-                }
-
-                botonMoreMin.parent().find('input').val(newVal);
-            });
-        }
-        
         
 
         $(".contenidoPrincipalPagina").on("click", ".modal_productos_x_empresa", function() {
@@ -213,7 +216,6 @@
 
         });
 
-
         function llenarDatosModalProductoDetalle( data ) {
             // console.log( data );
 
@@ -225,8 +227,6 @@
             crearImagenesProducto( data.data.fotos );
 
         }
-
-
 
         function crearImagenesProducto( fotos ) {
 
@@ -245,6 +245,33 @@
 
             $("#imagenes_producto_modal").html( html );
 
+        }
+
+
+        function sumarRestarCantidad() {
+            
+            $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
+                var botonMoreMin = $(this);
+                var oldValue = botonMoreMin.parent().find('input').val();
+                if (botonMoreMin.hasClass('more')) {
+                    var newVal = parseFloat(oldValue) + 1;
+                } else {
+                    // Don't allow decrementing below zero
+                    if (oldValue > 1) {
+                        var newVal = parseFloat(oldValue) - 1;
+                    } else {
+                        newVal = 1;
+                    }
+                }
+
+                botonMoreMin.parent().find('input').val(newVal);
+            });
+        }
+
+        
+        function contarProductosAlFiltrar() {
+            let contarProductos = $('.single_product_wrapper').length;
+            $(".nro_productos_buscados").html(contarProductos);
         }
 
     });

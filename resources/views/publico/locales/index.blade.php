@@ -58,6 +58,9 @@
                 <div class="col-12 section_title mb-2">
                     <h2 class=" mt-1 mb-1">Productos</h2>
                 </div>
+                <div class="col-12 m-0 p-0 mb-3 pl-3">
+                    <h6 class="float-left"><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
+                </div>
                 
                 <div class="col-12">
                     <div class="row text-center" id="cuerpoProductosEmpresas">
@@ -126,177 +129,190 @@
 
 {{-- BOTON CESTA --}}
 <div class="btn_modal_cesta">
-    <button type="button" class="row" id="mostrarProductosCestaMenuFlotante" data-toggle="modal" data-target="#abrirCestaProductos">
+    <button type="button" class="row" id="mostrarProductosCestaMenuFlotante">
         <div id="icon_pedido">
             <h3><i class="fas fa-shopping-basket"></i></h3>
-            <h6>3</h6>
+            <h6 class="cantidad_menu_pedido">0</h6>
         </div>
         <div id="content_mi_pedido">
             <p class="small m-0 p-0">Mi pedido</p>
-            <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ 100.00</h5>
+            <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ <span class="precio_menu_pedido">0</span></h5>
         </div>
     </button>
 </div>
 {{-- CESTA --}}
-<div class="modal right fade" id="abrirCestaProductos" tabindex="-1" role="dialog" aria-labelledby="abrirCestaProductos">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header modal_header_cesta p-0 bg-dark">
-                <button type="button" class="btn_close" data-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="modal-title mx-auto">
-                    <p class="minimo_compra my-1">Como mínimo debes comprar s/ 30.00 <br> en este Restaurante</p>
-                </div>
-            </div>
-            <div class="modal-body modal_body_cesta">
-                <div id="scroll_cesta">
-                    <div class="row px-3 pt-4 pb-0 dropdown_cart_header" id="cuerpoCestaPedido">
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer modal_footer_cesta">
-                <form class="container_cupon mt-0" form action="#">
-                    <div class="input-group input_group_cupon_cesta">
-                        <input type="text" class="input_cupon_cesta mt-0" placeholder="Ingrese su cupón de descuento">
-                        <div class="input-group-append append_cupon">
-                            <a href="#" class="btn btn_aplicar_cupon_cesta mt-0 pl-1">Aplicar</a>
-                        </div>
-                    </div>
-                </form>
-                <div class="content_total_cesta px-3">
-                    <div class="row p-2 monto_total_cesta">
-                        <div class="col-12 px-1 titulo_resumen mb-2 pb-2">
-                            <p class="my-0">Estas Comprando</p>
-                            <h6 class="my-0 text-right">
-                                <b><span class="sumaTotalProductos"></span> Productos</b>
-                            </h6>
-                        </div>
-                        <div class="col-12 px-1 content_detalle_monto_total">
-                            <p class="my-0">Subtotal</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="sumaTotal">0.00</span></b>
-                            </h6>
-                        </div>
-                        <div class="col-12 px-1 content_detalle_monto_total">
-                            <p class="my-0">Delivery</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="deliveryTotal">2.00</span></b>
-                            </h6>
-                        </div>
-                        <div class="col-12 px-1 content_detalle_monto_total">
-                            <p class="my-0">Descuento</p>
-                            <h6 class="my-0 text-right">
-                                <b>S/ <span class="descuentoTotal">5.00</span></b>
-                            </h6>
-                        </div>
-                            
-                        <div class="col-12 px-1 content_detalle_total my-2 py-2">
-                            <h5>Total</h5>
-                            <h4 class="my-0 text-right">
-                                <b>S/ <span class="pedidoTotal">0.00</span></b>
-                            </h4>
-                        </div>
-                        <div class="col-12 content_botones_pedido">
-                            <button class="btn_realizar_pedido_cesta">Realizar Pedido</button>
-                        </div>
-                    </div>
-                </div>
+<div class="content_modal_cesta"></div>
+<div class="sidebar_modal_cesta_right">
+    <button class="p-0" id="close_sidebar_cesta">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="cart_content_cesta">
+        <div class="row m-0 p-0 cart_tittle_cesta">
+            <div class="col-12 pt-1 minimo_compra">
+                <p>Como mínimo debes comprar s/ 30.00 <br> en este Restaurante</p>
             </div>
         </div>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="detalle_pedido_cesta" data-toggle="tab" href="#navDetallePedidoCesta" role="tab" aria-controls="navDetallePedidoCesta" aria-selected="true">Detalle pedido</a>
+                <a class="nav-item nav-link" id="realizar_pedido_cesta" data-toggle="tab" href="#navRealizarPedidoCesta" role="tab" aria-controls="navRealizarPedidoCesta" aria-selected="false">
+                    Realizar Pedido
+                </a>
+            </div>
+        </nav>
+        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}" method="POST">
+            <div class="tab-content" id="nav_tabContent">
+                <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
+                    <div class="info_cantidad_total">
+                        <div class="info_cantidad">
+                            <p class="my-0">Estas comprando:</p>
+                            <h6><span class="suma_productos_Cesta">0</span> Productos</h6>
+                        </div>
+                        <div class="info_total">
+                            <p class="my-0">Subtotal:</p>
+                            <h5>S/ <span class="suma_total_prev">0.00</span></h5>
+                        </div>
+                    </div>
+
+                    <div class="" id="scroll_cesta">
+                        <div class="row m-0 px-3 pt-4 pb-2 cuerpoCestaPedido" id="cuerpoCestaPedido">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="navRealizarPedidoCesta" role="tabpanel" aria-labelledby="realizar_pedido_cesta">
+                    <form class="container_cupon mt-3" form action="#">
+                        <div class="input-group input_group_cupon_cesta">
+                            <input type="text" class="input_cupon_cesta mt-0" placeholder="Ingrese su cupón de descuento">
+                            <div class="input-group-append append_cupon">
+                                <a href="#" class="btn btn_aplicar_cupon_cesta mt-0 pl-1">Aplicar</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="content_total_cesta mt-4 px-2">
+                        <div class="row p-2 monto_total_cesta">
+                            <div class="col-12 titulo_resumen text-center pb-2">
+                                <p class="mb-0">Resumen del pedido</p>
+                            </div>
+
+                            <div class="col-12 content_detalle_total_prod py-2 px-1 mb-3">
+                                <p class="my-0 text-muted">Estas comprando</p>
+                                <h6 class="my-0 text-muted text-right">
+                                    <b><span class="sumaTotalProductos">0.00</span> Productos</b>
+                                </h6>
+                            </div>
+
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Subtotal</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="sumaTotal">0.00</span></b>
+                                </h6>
+                            </div>
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Delivery</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="deliveryTotal">2.00</span></b>
+                                </h6>
+                            </div>
+                            <div class="col-12 content_detalle_monto_total">
+                                <p class="my-0">Descuento</p>
+                                <h6 class="my-0 text-right">
+                                    <b>S/ <span class="descuentoTotal">5.00</span></b>
+                                </h6>
+                            </div>
+                                
+                            <div class="col-12 content_detalle_total my-2 py-2">
+                                <h5>Total</h5>
+                                <h4 class="my-0 text-right">
+                                    <b>S/ <span class="pedidoTotal">0.00</span></b>
+                                </h4>
+                            </div>
+                            <div class="col-12 content_botones_pedido">
+                                <button id="btn_realizar_pedido_cesta" class="btn_realizar_pedido_cesta">Realizar Pedido</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
 
-
 {{-- BOTON FILTRAR PRODUCTOS --}}
 <div class="btn_filtrar_productos">
-    <button type="button" id="" data-toggle="modal" data-target="#abrirFiltrarProductos">
+    <button type="button">
         Filtrar <br> Productos
     </button>
 </div>
 {{-- FILTRAR PRODUCTOS --}}
-<div class="modal right fade" id="abrirFiltrarProductos" tabindex="-1" role="dialog" aria-labelledby="abrirFiltrarProductos">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header modal_header_filtrar_prod p-0 pb-1 bg-dark">
-                <button type="button" class="btn_close" data-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body modal_body_filtrar_prod">
-                <div id="scroll_filtrar_prod">
-                    <div class="content_filtrar_prod p-3">
-                        <div class="form-check">
+<div class="content_modal_filtrar"></div>
+<div class="sideban_modal_filtrar_right">
+    <button class="p-0" id="close_sidebar_filtrar">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="cart_content_filtrar">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingFiltrar">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFiltrar" aria-expanded="true" aria-controls="collapseFiltrar">
+                        Filtrar por:
+                    </button>
+                </div>
+                <div id="collapseFiltrar" class="collapse show" aria-labelledby="headingFiltrar" data-parent="#accordionExample">
+                    <div class="card-body pl-0">
+                        <div class="form-check mt-1">
                             <input class="form-check-input" type="checkbox" value="filtro_ofertas" id="filtro_ofertas">
                             <label class="form-check-label" for="filtro_ofertas">
                                 Ofertas
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check mt-1">
                             <input class="form-check-input" type="checkbox" value="filtro_nuevos" id="filtro_nuevos">
                             <label class="form-check-label" for="filtro_nuevos">
                                 Nuevos
                             </label>
                         </div>
-                        <hr>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="form-check">
+            <div class="card">
+                <div class="card-header" id="headingOrdenar">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOrdenar" aria-expanded="false" aria-controls="collapseOrdenar">
+                        Ordenar por:
+                    </button>
+                </div>
+                <div id="collapseOrdenar" class="collapse show" aria-labelledby="headingOrdenar" data-parent="#accordionExample">
+                    <div class="card-body pl-0">
+                        <div class="form-check mt-1">
                             <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="menor" id="filtro_orden_menor">
                             <label class="form-check-label" for="filtro_orden_menor">
                                 Menor a Mayor Precio
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check mt-1">
                             <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="mayor" id="filtro_orden_mayor">
                             <label class="form-check-label" for="filtro_orden_mayor">
                                 Mayor a Menor Precio
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check mt-1">
                             <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
                             <label class="form-check-label" for="filtro_orden_ofertas">
-                                Ofertas primero
+                                Por Defecto
                             </label>
                         </div>
-                        
-                        {{-- <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                        </div>
-                        <hr> --}}
-
-                        {{-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosEntradas">
-                            <label class="form-check-label" for="empresasProductosEntradas">
-                                Entradas
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosBebidas">
-                            <label class="form-check-label" for="empresasProductosBebidas">
-                                Bebidas
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="empresasProductosPostres">
-                            <label class="form-check-label" for="empresasProductosPostres">
-                                Postres
-                            </label>
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 @endsection
