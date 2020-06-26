@@ -348,6 +348,9 @@
       overflow: hidden;
       height: 260px;
     }
+    .single_product_wrapper .product-img span.empresa_badge a {
+        height: 261px;
+    }
 
     .featured__item__text > div > h4 {
         font-size: 25px !important;
