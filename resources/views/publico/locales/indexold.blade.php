@@ -4,116 +4,67 @@
 
 
 
-
 {{-- CONTENIDO EMPRESA Y PRODUCTOS --}}
-<div class="container-fluid page_section px-2">
-    <div class="row m-0 mb-5">
-        <div class="col-12 p-0 content_banner_empresa">
-            <img src="{{asset('pedidos/image/banners/bannerlocal.jpg')}}" alt="">
-        </div>
-        <div class="col-12 text-center">
-            <div class="top_seller_product_rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
+<div class="container-fluid page-section px-3">
+    <div class="row"> 
+        <div class="col-12 col-lg-3 mb-5 informacion_empresas">
+            <div class="row mb-4 p-3 informacion_empresas_row">
+                <div class="col-12 col-md-6 col-lg-12 text-center">
+                    <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
+                    <div class="top_seller_product_rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <h4 id="idlocal" idlocal="{{ $empresa->id }}" class="mt-3">{{ $empresa->nombrecomercial }}</h4>
+                    <hr class="mt-3 mb-2">
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 text-center">
+                    <p class="my-0"><b>Dirección:</b></p>
+                    <p class="my-0">{{ $empresa->direccion }}</p>
+                    <hr class="mt-2 mb-2">
+
+                    <p class="my-0"><b>Horario de atención:</b></p>
+                    @foreach ($empresa->horarios as $horario)
+                        <p class="my-0">{{ $horario->dia }} {{ $horario->horainicio }} - {{ $horario->horafin }} </p>
+                    @endforeach
+                    <hr class="mt-2 mb-2">
+
+                    <p class="my-0"><b>Tipo de cocina:</b></p>
+                    <p class="my-0">Carnes y Parrillas</p>
+                    <hr class="mt-2 mb-2">
+
+                    <p class="my-0"><b>Teléfono:</b></p>
+                    <p class="my-0">964 268236</p>
+                    <hr class="mt-2 mb-2">
+
+                    <p class="my-0"><b>Página web:</b></p>
+                    <a href="#">http://pedidoslaravel.test/locales/1</a>
+                    <hr class="mt-2 mb-2">
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 text-center">
+                    <p class="my-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, odit? Consequatur dolor sequi repellat non necessitatibus aspernatur, at dolores illo hic tempora deleniti, blanditiis asperiores nostrum! Aut commodi et earum.</p>
+                    <hr class="mt-2 mb-3">
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 text-center">
+                    <img src="{{asset('pedidos/img/banner/mapa-google.jpg')}}" alt="">
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="row m-0">
-        <div class="col-12 p-0">
-            <nav class="nav_productos_empresa mb-3">
-                <div class="nav nav_tabs d-flex justify-content-center" id="nav_tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-productos-tab" data-toggle="tab" href="#nav-productos" role="tab" aria-controls="nav-productos" aria-selected="true">
-                        PRODUCTOS
-                    </a>
-                    <a class="nav-item nav-link" id="nav-detalles-tab" data-toggle="tab" href="#nav-detalles" role="tab" aria-controls="nav-detalles" aria-selected="false">
-                        DETALLES
-                    </a>
-                    <a class="nav-item nav-link" id="nav_acercade-tab" data-toggle="tab" href="#nav_acercade" role="tab" aria-controls="nav_acercade" aria-selected="false">
-                        ACERCA DE
-                    </a>
+        <div class="col-12 col-lg-9 productos_empresas">
+            <div class="row">
+                <div class="col-12 section_title mb-2">
+                    <h2 class=" mt-1 mb-1">Productos</h2>
                 </div>
-            </nav>
-            <div class="tab-content px-2" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-productos" role="tabpanel" aria-labelledby="nav-productos-tab">
-                    <div class="row">
-                        <div class="col-12 col-md-9 col-lg-6 mb-3">
-                            <form id="form_buscar_productos_x_empresa" action="">
-                                <div class="input-group">
-                                    <input id="txtBuscarProductosXempresa" type="text" class="form-control input_buscar" placeholder="Buscar productos en: {{ $empresa->nombrecomercial }}" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
-
-                                    <div class="input-group-append">
-                                        <a href="#" class="btn btn_buscar_productos_x_empresa py-0">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        {{-- BOTON FILTRAR PRODUCTOS --}}
-                        <div class="col-12 col-md-3 col-lg-6 mb-3 content_filtrar_productos">
-                            <button type="button" class="btn_filtrar_productos">
-                                Filtrar Productos
-                            </button>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row text-center" id="cuerpoProductosEmpresas">
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 m-0 p-0 mb-3 pl-3">
+                    <h6 class="float-left"><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
                 </div>
-                <div class="tab-pane fade" id="nav-detalles" role="tabpanel" aria-labelledby="nav-detalles-tab">
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-7 mx-auto">
-                            <div class="row">
-                                <div class="col-12 col-sm-6"><b>Dirección:</b></div>
-                                <div class="col-12 col-sm-6">{{ $empresa->direccion }}</div>
-                                <div class="col-12"><hr class="my-4"></div>
-
-                                <div class="col-12 col-sm-6"><b>Horario de atención:</b></div>
-                                <div class="col-12 col-sm-6">
-                                    @foreach ($empresa->horarios as $horario)
-                                        <p class="my-0">{{ $horario->dia }} {{ $horario->horainicio }} - {{ $horario->horafin }} </p>
-                                    @endforeach
-                                </div>
-                                <div class="col-12"><hr class="my-4"></div>
-
-                                <div class="col-12 col-sm-6"><b>Tipo de cocina:</b></div>
-                                <div class="col-12 col-sm-6">Carnes y Parrillas</div>
-                                <div class="col-12"><hr class="my-4"></div>
-
-                                <div class="col-12 col-sm-6"><b>Teléfono:</b></div>
-                                <div class="col-12 col-sm-6">964 268236</div>
-                                <div class="col-12"><hr class="my-4"></div>
-
-                                <div class="col-12 col-sm-6"><b>Página web:</b></div>
-                                <div class="col-12 col-sm-6">http://pedidoslaravel.test/locales/1</div>
-                                <div class="col-12"><hr class="my-4"></div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 mx-auto text-center">
-                            <img src="{{asset('pedidos/image/banners/mapagoogle.jpg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="nav_acercade" role="tabpanel" aria-labelledby="nav_acercade-tab">
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-5 text-center">
-                            <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-7 text-center">
-                            <h4 id="idlocal" idlocal="{{ $empresa->id }}" class="mt-3">{{ $empresa->nombrecomercial }}</h4>
-                            <hr class="mt-3 mb-2">
-
-                            <p class="my-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, odit? Consequatur dolor sequi repellat non necessitatibus aspernatur, at dolores illo hic tempora deleniti, blanditiis asperiores nostrum! Aut commodi et earum.</p>
-                            <hr class="mt-2 mb-3">
-                        </div>
+                
+                <div class="col-12">
+                    <div class="row text-center" id="cuerpoProductosEmpresas">
+                        
                     </div>
                 </div>
             </div>
@@ -167,29 +118,6 @@
                                     
                                 </p>
                             </div>
-                            <div class="col-12"><hr></div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="input-group input_group_unit_product">
-                                            <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
-                                            <input type="text" class="form-control input_value_cart" value="1">
-                                            <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
-                                            <span>Agregar</span>
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-3">
-                                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ prodxempresa.id }">
-                                            <i class="fa fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,18 +128,18 @@
 
 
 {{-- BOTON CESTA --}}
-{{-- <div class="btn_modal_cesta"> --}}
-<button type="button" class="row btn_modal_cesta" id="mostrarProductosCestaMenuFlotante">
-    <div id="icon_pedido">
-        <h3><i class="fas fa-shopping-basket"></i></h3>
-        <h6 class="cantidad_menu_pedido">0</h6>
-    </div>
-    <div id="content_mi_pedido">
-        <p class="small m-0 p-0">Mi pedido</p>
-        <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ <span class="precio_menu_pedido">0.00</span></h5>
-    </div>
-</button>
-{{-- </div> --}}
+<div class="btn_modal_cesta">
+    <button type="button" class="row" id="mostrarProductosCestaMenuFlotante">
+        <div id="icon_pedido">
+            <h3><i class="fas fa-shopping-basket"></i></h3>
+            <h6 class="cantidad_menu_pedido">0</h6>
+        </div>
+        <div id="content_mi_pedido">
+            <p class="small m-0 p-0">Mi pedido</p>
+            <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ <span class="precio_menu_pedido">0.00</span></h5>
+        </div>
+    </button>
+</div>
 {{-- CESTA --}}
 <div class="content_modal_cesta"></div>
 <div class="sidebar_modal_cesta_right">
@@ -313,6 +241,12 @@
 </div>
 
 
+{{-- BOTON FILTRAR PRODUCTOS --}}
+<div class="btn_filtrar_productos">
+    <button type="button">
+        Filtrar <br> Productos
+    </button>
+</div>
 {{-- FILTRAR PRODUCTOS --}}
 <div class="content_modal_filtrar"></div>
 <div class="sideban_modal_filtrar_right">
@@ -378,7 +312,6 @@
         </div>
     </div>
 </div>
-
 
 
 

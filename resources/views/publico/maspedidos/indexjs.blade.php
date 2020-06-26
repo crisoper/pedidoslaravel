@@ -105,8 +105,8 @@
                 }
 
                 maspedidossHTML = maspedidossHTML + `
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="single_product_wrapper mb-5">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="single_product_wrapper">
                             <div class="product-img">
 
                                 ${ fotos }
@@ -182,19 +182,25 @@
         function sumarRestarCantidad() {
             
             $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
-                var $button = $(this);
-                var oldValue = $button.parent().find('input').val();
-                if ($button.hasClass('more')) {
-                    var newVal = parseFloat(oldValue) + 1;
+                var botonMoreMin = $(this);
+
+                var valorActual = botonMoreMin.parent().find('input').val();
+                var precio = botonMoreMin.parents('.conten_precio_cantidad').find('.precio_producto').html();
+                
+                if (botonMoreMin.hasClass('more')) {
+                    var nuevoValor = parseFloat(valorActual) + 1;
                 } else {
                     // Don't allow decrementing below zero
-                    if (oldValue > 1) {
-                        var newVal = parseFloat(oldValue) - 1;
+                    if (valorActual > 1) {
+                        var nuevoValor = parseFloat(valorActual) - 1;
                     } else {
-                        newVal = 1;
+                        nuevoValor = 1;
                     }
                 }
-                $button.parent().find('input').val(newVal);
+
+                botonMoreMin.parent().find('input').val(nuevoValor);
+                botonMoreMin.parents('.conten_precio_cantidad').find('.importe_producto').html((nuevoValor * precio).toFixed(2));
+
             });
         }
 

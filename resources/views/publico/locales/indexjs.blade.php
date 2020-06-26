@@ -1,4 +1,5 @@
 <script>
+    
     $(document).ready( function() {
 
 
@@ -24,7 +25,6 @@
                     console.log( jqXHR );
                 }
             });
-
         });
 
 
@@ -49,12 +49,13 @@
         });
 
 
-        $(".btn_buscar_productos").on("click", function( e ) {
+        $(".btn_buscar_productos_x_empresa").on("click", function( e ) {
             e.preventDefault();
-
             obtnerProductosLocales();
         });
       
+
+
         obtnerProductosLocales();
 
         function obtnerProductosLocales() {
@@ -64,7 +65,7 @@
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID(),
-                    buscar: $("#txtBuscarTextoGeneral").val(),
+                    buscar: $("#txtBuscarProductosXempresa").val(),
                     empresa_id: $("#idlocal").attr("idlocal"),
                     filtro_nuevos: $("#filtro_nuevos").is(':checked')  ? 1 : 0,
                     filtro_ofertas: $("#filtro_ofertas").is(':checked')  ? 1 : 0,
@@ -86,15 +87,15 @@
 
             $("#cuerpoProductosEmpresas").html();
     
-            let recomendadosHTML = "";
+            let prod_x_empresaHTML = "";
     
-            $.each( datos, function( key, recomendados ) {
+            $.each( datos, function( key, prodxempresa ) {
 
                 let fotos = '';
 
                 let contador = 0; 
                 
-                $.each( recomendados.fotos, function( key, foto ) {
+                $.each( prodxempresa.fotos, function( key, foto ) {
                     
                     contador++
 
@@ -108,40 +109,40 @@
                 
                 
                 let enlistadeseos = '';
-                if (recomendados.enlistadeseos == false) {
+                if (prodxempresa.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ recomendados.id }">
+                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ recomendados.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 }
 
                 let encarrito = '';
-                if (recomendados.encarrito == false) {
+                if (prodxempresa.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ recomendados.id }" idempresa="${ recomendados.empresa_id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ recomendados.id }" idempresa="${ recomendados.empresa_id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </div>`;
                 }
 
-                recomendadosHTML = recomendadosHTML + `
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
-                        <div class="single_product_wrapper p-0">
+                prod_x_empresaHTML = prod_x_empresaHTML + `
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="single_product_wrapper">
                             <div class="product-img">
                                 ${ fotos }
                             </div>
@@ -150,22 +151,22 @@
                             <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="nombre_producto my-0">${ recomendados.nombre }</p>
+                                        <p class="nombre_producto my-0">${ prodxempresa.nombre }</p>
                                     </div>
                                 </div>
                                 <hr class="mt-1 mb-0">
-                                <div class="row px-2">
+                                <div class="row px-2 conten_precio_cantidad">
                                     <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                         <p class="price_product_prev text-muted py-0 my-0">
                                             S/ <span>20.90</span>
                                         </p>
                                         <h4 class="price_product_unit my-0">
-                                            S/ <span>${ recomendados.precio }</span>
+                                            S/ <span class="precio_producto">${ prodxempresa.precio }</span>
                                         </h4>
                                     </div>
                                     <div class="col-6 pt-1 pb-2 px-2 m-0">
                                         <p class="import_price text-muted py-0 my-0">
-                                            Importe: <b>S/ <span>15.90</span></b>
+                                            Importe: <b>S/ <span class="importe_producto">${ prodxempresa.precio }</span></b>
                                         </p>
                                         <div class="input-group input_group_unit_product">
                                             <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
@@ -177,7 +178,7 @@
                                 <hr class="mt-0 mb-2">
                                 <div class="row modal_lista_cart mx-1 mb-2">
                                     <div class="col-2 p-0">
-                                        <button class="modal_productos_x_empresa hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modal_productos_x_empresa" idproducto="${ recomendados.id }">
+                                        <button class="modal_productos_x_empresa hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#modal_productos_x_empresa" idproducto="${ prodxempresa.id }">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                     </div>
@@ -190,7 +191,7 @@
                 `;
             });
     
-            $("#cuerpoProductosEmpresas").html( recomendadosHTML);
+            $("#cuerpoProductosEmpresas").html( prod_x_empresaHTML);
             sumarRestarCantidad();
             contarProductosAlFiltrar();
         }
@@ -252,27 +253,33 @@
             
             $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
                 var botonMoreMin = $(this);
-                var oldValue = botonMoreMin.parent().find('input').val();
+
+                var valorActual = botonMoreMin.parent().find('input').val();
+                var precio = botonMoreMin.parents('.conten_precio_cantidad').find('.precio_producto').html();
+                
                 if (botonMoreMin.hasClass('more')) {
-                    var newVal = parseFloat(oldValue) + 1;
+                    var nuevoValor = parseFloat(valorActual) + 1;
                 } else {
                     // Don't allow decrementing below zero
-                    if (oldValue > 1) {
-                        var newVal = parseFloat(oldValue) - 1;
+                    if (valorActual > 1) {
+                        var nuevoValor = parseFloat(valorActual) - 1;
                     } else {
-                        newVal = 1;
+                        nuevoValor = 1;
                     }
                 }
 
-                botonMoreMin.parent().find('input').val(newVal);
+                botonMoreMin.parent().find('input').val(nuevoValor);
+                botonMoreMin.parents('.conten_precio_cantidad').find('.importe_producto').html((nuevoValor * precio).toFixed(2));
+
             });
         }
 
-        
         function contarProductosAlFiltrar() {
             let contarProductos = $('.single_product_wrapper').length;
             $(".nro_productos_buscados").html(contarProductos);
         }
 
     });
+    
+
 </script>

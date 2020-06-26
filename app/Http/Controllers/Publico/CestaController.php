@@ -19,6 +19,7 @@ class CestaController extends Controller
     {
         $cestas = Cesta::where("storagecliente_id", $request->storagecliente_id)
         ->where("tipo", $request->tipo)
+        ->orderBy('id', 'desc')
         ->get();
 
         return CestaResource::collection( $cestas ) ;

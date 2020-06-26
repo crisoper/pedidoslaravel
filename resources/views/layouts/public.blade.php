@@ -25,7 +25,7 @@
     <!-- MENU WEB 1 -->
     <header class="container-fluid header__top mx-0 px-0 bg-dark">
         <div class="container">
-            <div class="row">
+            <div class="row m-0">
                 {{-- SERVICIO AL CLIENTE --}}
                 <div class="col-6 col-sm-6 col-md-3 col-lg-2 p-0" id="header_top_client">
                     <div class="header_top_options">
@@ -44,29 +44,29 @@
                 </div>
     
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
+                <div class="col-6 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
                 </div>
                 
                 {{-- APPS --}}
-                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0" id="header_top_apps">
+                <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0" id="header_top_apps">
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Apps <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0">
                             <a class="btn btn_app_android p-0" href="#">
-                                <img src="{{asset('img/appmovil/googleplay.png')}}" alt="">
+                                <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="">
                             </a>
                             <a class="btn btn_app_ios p-0" href="#">
-                                <img src="{{asset('img/appmovil/appstore.png')}}" alt="">
+                                <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="">
                             </a>
                         </div>
                     </div>
                 </div>
     
                 {{-- LOGIN --}}
-                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
+                <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
 
                   @if ( Auth::user() == '' || Auth::user() == null )
                     
@@ -129,9 +129,9 @@
     <!-- MENU WEB 2 -->
     <div class="container-fluid header_top_secondary mx-0 px-0 sticky-top">
         <div class="container">
-            <div class="row">
+            <div class="row m-0">
                 {{-- ABRIR MENU MOVIL --}}
-                <div class="col-2 col-sm-1 col-md-1 " id="humberger__open">
+                <div class="col-2 col-sm-1 col-md-1 px-0" id="humberger__open">
                     <button type="button" class="open_menu_movil p-0" data-toggle="modal" data-target="#open_menu_movil">
                         <div id="icon_humberger">
                             <h4><i class="fa fa-bars"></i></h4>
@@ -145,7 +145,7 @@
                 {{-- LOGOTIPO --}}
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
                     <a href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/img/logo.png')}}" alt="">
+                        <img src="{{asset('pedidos/image/logo.png')}}" alt="">
                     </a>
                 </div>
                 
@@ -171,82 +171,25 @@
                 </div>
     
                 {{-- BUSCADOR WEB --}}
-                <div class="col-0 col-sm-9 col-md-9 col-lg-8 px-0" id="search_web">
+                <div class="col-8 col-sm-9 col-md-9 col-lg-8 px-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
-                            <div class="form-row">
-                                <div class="col-12 px-4">
-                                    <div class="input-group">
-                                        <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
-        
-                                        <div class="input-group-append">
-                                            {{-- <a href="#" class="btn btn_buscar_productos" onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">
-                                                <i class="fas fa-search"></i>
-                                            </a> --}}
-                                            <a href="#" class="btn btn_buscar_productos">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                            <div class="input-group input_group_search">
+                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+
+                                <div class="input-group-append">
+                                    <a href="#" class="btn btn_buscar_productos">
+                                        <i class="fas fa-search"></i>
+                                    </a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-    
-                {{-- BUSCADOR MOVIL --}}
-                <div class="col-6 col-sm-2 col-md-2 col-lg-0 px-0 mx-0" id="search_movil">
-                    <div class="header_search_movil">
-                        <button id="header_search_movil">
-                            <div id="icon_search">
-                                <h3><i class="fa fa-search"></i></h3>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                
-                {{-- LOGIN MOVIL --}}
-                <div class="col-2 col-sm-2 col-md-2 col-lg-0 px-0 mx-0" id="login_movil">
-                    <div class="header_login_movil">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div id="icon_login_movil">
-                                <h3><i class="fas fa-user"></i></h3>
-                            </div>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right header_login p-0">
-                            <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
-                            <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
-    <!-- BUSCADOR MOVIL -->
-    <div class="search_input pt-3" id="search_input_box">
-        <div class="container">
-            <div class="header_search_web">
-                <form id="form_buscar_productos" action="">
-                    <div class="form-row">
-                        <div class="col-12">
-                            <div class="input-group mt-2">
-                                <input type="text" class="form-control input_buscar" placeholder="Buscar productos o categorías" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
-
-                                <div class="input-group-append">
-                                    <a href="#" class="btn btn_buscar_productos" onclick="event.preventDefault(); document.getElementById('form_buscar_productos').submit();">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h4 id="close_search"><i class="fas fa-times-circle"></i></h4>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
 
     {{-- MENU MOVIL --}}
     <div class="modal left fade" id="open_menu_movil" tabindex="-1" role="dialog" aria-labelledby="open_menu_movil">
@@ -254,7 +197,7 @@
             <div class="modal-content">
                 <div class="modal-header py-1 bg-dark">
                     <div class="modal-title">
-                        <a href="#"><img src="{{asset('pedidos/img/logo.png')}}" alt=""></a>
+                        <a href="#"><img src="{{asset('pedidos/image/logo.png')}}" alt=""></a>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -369,15 +312,15 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
                     <div class="text-center">
                         <a href="{{ route('inicio.index') }}">
-                            <img src="{{asset('pedidos/img/logo.png')}}" alt="">
+                            <img src="{{asset('pedidos/image/logo.png')}}" alt="">
                         </a>
                     </div>
                     <div class="text-center">
                         <a class="btn btn_app_android" href="#">
-                            <img src="{{asset('img/appmovil/googleplay.png')}}" alt="" style="width: 110px">
+                            <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="" style="width: 110px">
                         </a>
                         <a class="btn btn_app_ios" href="#">
-                            <img src="{{asset('img/appmovil/appstore.png')}}" alt="" style="width: 110px">
+                            <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="" style="width: 110px">
                         </a>
                     </div>
                 </div>
@@ -422,6 +365,7 @@
 
 @include('publico.locales.carjs')
 @include('publico.inicio.listadeseosjs')
+
 <script>
     // Script que permite guardar el codigo del cliente en local storafe
     function obtenerLocalStorageclienteID () {
@@ -445,7 +389,6 @@
             return false;
         }
     }
-
     //Creamos el local Sotorge clienteID
     obtenerLocalStorageclienteID ();
 </script>

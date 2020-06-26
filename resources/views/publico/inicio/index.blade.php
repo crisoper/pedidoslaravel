@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-12 mb-5 m-0 p-0 slickCustomEmpresas">
                 <div class="m-0 p-0 slickempresas" id="empresasRecomendadas">
-                    <img src="{{asset('img/banners/banner1.jpg')}}" alt="">
-                    <img src="{{asset('img/banners/banner2.jpg')}}" alt="">
-                    <img src="{{asset('img/banners/banner3.jpg')}}" alt="">
-                    <img src="{{asset('img/banners/banner4.jpg')}}" alt="">
+                    <img src="{{asset('pedidos/image/banners/bannerempresa1.jpg')}}" alt="">
+                    <img src="{{asset('pedidos/image/banners/bannerempresa2.jpg')}}" alt="">
+                    <img src="{{asset('pedidos/image/banners/bannerempresa3.jpg')}}" alt="">
+                    <img src="{{asset('pedidos/image/banners/bannerempresa4.jpg')}}" alt="">
                 </div>
             </div>
-            <div class="col-12 mb-5">
+            <div class="col-12 mb-3">
                 <div class="row text-center">
                     <div class="col-12 col-sm-6">
                         <p class="mt-0">
@@ -33,7 +33,7 @@
 
     
 
-    <div class="container-fluid page-section px-4 mb-5" id="preductRecomendado">
+    <div class="container-fluid page_section px-2 mb-5" id="preductRecomendado">
         <div class="row text-center">
             <div class="col-12 section_title mb-2">
                 <h2 class="float-left py-1 m-0">Recomendados</h2>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid page-section px-4 mb-5" id="productosEnOferta">
+    <div class="container-fluid page_section px-2 mb-5" id="productosEnOferta">
         <div class="row text-center">
             <div class="col-12 section_title mb-2">
                 <h2 class="float-left py-1 m-0">Ofertas</h2>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid page-section px-4 mb-5" id="productosNuevos">
+    <div class="container-fluid page_section px-2 mb-5" id="productosNuevos">
         <div class="row text-center">
             <div class="col-12 section_title mb-2">
                 <h2 class="float-left py-1 m-0">Nuevos</h2>
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid page-section px-4 mb-5" id="productosMasPedidos">
+    <div class="container-fluid page_section px-2 mb-5" id="productosMasPedidos">
         <div class="row text-center">
             <div class="col-12 section_title mb-2">
                 <h2 class="float-left py-1 m-0">Mas Pedidos</h2>

@@ -61,15 +61,6 @@ function() {
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
     
-    
-    Route::resource('productos', 'Admin\ProductosController');
-    Route::get('productosimg', 'Admin\ProductosController@getImagenes')->name('productos.getImagenes');
-    Route::resource('categorias', 'Admin\ProductocategoriasController');
-    Route::get('categorias.getCategorias', 'Admin\ProductocategoriasController@getCategorias')->name('categorias.getCategorias');
-    Route::resource('tags', 'Admin\TagsController');
-    Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
-    
-
 
     //EMPRESA RUBROS
     Route::resource("empresarubros", 'Admin\EmpresarubrosController');
@@ -89,7 +80,7 @@ function() {
     Route::get('includeProductos','Admin\IncludeshomeController@getproductosmaspedidos')->name('getproductosmaspedidos');
     Route::get('includeProductos.getHistoricoVentas','Admin\IncludeshomeController@getHistoricoVentas')->name('getHistoricoVentas');
   
-//INCLUDE SUPERADMINISTRADOR  
+    //INCLUDE SUPERADMINISTRADOR  
     Route::get('includeProductos.empresasRegitradas','Admin\IncludeshomeController@empresasRegitradas')->name('empresasRegitradas');
     Route::get('includeProductos.totalderegistros','Admin\IncludeshomeController@totalderegistros')->name('totalderegistros');
 
@@ -117,6 +108,20 @@ function() {
         Route::post('ajax/miperfil/subirfoto', 'Admin\Usuarios\UsuariosController@miperfilsubirfoto')->name('ajax.miperfilsubirfoto');
 
     });
+
+
+    
+    // PRODUCTOS
+    Route::resource('productos', 'Admin\ProductosController');
+    Route::get('productosimg', 'Admin\ProductosController@getImagenes')->name('productos.getImagenes');
+    Route::resource('categorias', 'Admin\ProductocategoriasController');
+    Route::get('categorias.getCategorias', 'Admin\ProductocategoriasController@getCategorias')->name('categorias.getCategorias');
+    Route::resource('tags', 'Admin\TagsController');
+    Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
+
+
+    // PEDIDOS
+    Route::resource('pedidos', 'Admin\PedidosController');
 
     
 });
