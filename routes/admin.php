@@ -61,6 +61,19 @@ function() {
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
     
+    
+    Route::resource('productos', 'Admin\ProductosController');
+    Route::post('productos.ofertas', 'Admin\ProductosController@productosofertas')->name('productos.ofertas');
+    Route::get('productos.ofertas.editar', 'Admin\ProductosController@productosofertaseditar')->name('productos.ofertas.editar');
+    Route::post('productos.ofertas.update', 'Admin\ProductosController@productosofertasupdate')->name('productos.ofertas.update');
+    Route::post('productos.ofertas.eliminar', 'Admin\ProductosController@productosofertasdelete')->name('productos.ofertas.eliminar');
+    Route::get('productosimg', 'Admin\ProductosController@getImagenes')->name('productos.getImagenes');
+    Route::resource('categorias', 'Admin\ProductocategoriasController');
+    Route::get('categorias.getCategorias', 'Admin\ProductocategoriasController@getCategorias')->name('categorias.getCategorias');
+    Route::resource('tags', 'Admin\TagsController');
+    Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
+    
+
 
     //EMPRESA RUBROS
     Route::resource("empresarubros", 'Admin\EmpresarubrosController');

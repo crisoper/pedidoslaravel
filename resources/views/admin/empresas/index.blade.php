@@ -83,7 +83,7 @@
                                                 </a>
                                             </td>
                                         @endcan
-
+                                        
                                         <td class="text-center">
                                             @can('empresas.eliminar')
                                                 <form id="form.empresas.delete.{{$empresa->id}}" action="{{ route('empresas.destroy', $empresa->id) }}" method="POST">

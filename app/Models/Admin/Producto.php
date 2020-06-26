@@ -44,6 +44,11 @@ class Producto extends Model
     {
         return $this->belongsToMany('App\Models\Admin\Tag', 'productotags', 'producto_id', 'tag_id');
     }
+    
+    public function oferta()
+    {
+        return $this->hasOne('App\Models\Admin\Productooferta', 'producto_id');
+    }
 
     
 }

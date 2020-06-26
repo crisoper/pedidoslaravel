@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductoofertasCreateRequest;
+use App\Http\Requests\Admin\ProductoofertasUpdateRequest;
 use App\Http\Requests\Admin\ProductosCreateRequest;
 use App\Http\Requests\Admin\ProductosUpdateRequest;
 use App\Jobs\ProcessimageJob;
 use App\Models\Admin\Producto;
 use App\Models\Admin\Productocategoria;
 use App\Models\Admin\Productofoto;
+use App\Models\Admin\Productooferta;
 use App\Models\Admin\Productotag;
 use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
@@ -44,6 +47,12 @@ class ProductosController extends Controller
         
        
         $categorias = Productocategoria::get();
+
+        $productosenoferta = Productooferta::get();
+        $arrayofertas = [];
+        foreach( $productosenoferta as $producto){
+            array_push( $arrayofertas, $producto->producto_id);
+        }
        
         
         if (!empty(request()->buscar)) 
@@ -52,7 +61,7 @@ class ProductosController extends Controller
                     ->where('empresa_id', $this->empresaId())
                     ->orderBy('id', 'desc')
                     ->paginate(10);
-            return view('admin.productos.index', compact('productos','categorias'));
+            return view('admin.productos.index', compact('productos','categorias', 'arrayofertas'));
         }
         else
         {
@@ -60,8 +69,8 @@ class ProductosController extends Controller
             ->where('empresa_id', $this->empresaId())
             ->paginate(10);
                       
-         
-            return view('admin.productos.index', compact('productos','categorias'));
+            
+            return view('admin.productos.index', compact('productos','categorias', 'arrayofertas'));
         }
 
 
@@ -341,4 +350,56 @@ class ProductosController extends Controller
             }
         }
     }
+
+    public function productosofertas( ProductoofertasCreateRequest $request){
+       
+        $ofertas = Productooferta::firstOrNew([
+            'empresa_id' => $this->empresaId(),
+            'producto_id' => $request->idproducto,
+        ],
+        [
+            'preciooferta' => $request->preciooferta,
+            'diainicio' => $request->diainicio,
+            'horainicio' => $request->horainicio,
+            'diafin' => $request->diafin,
+            'horafin' => $request->horafin,
+            'created_by',
+        ]);
+        $ofertas->save();
+
+        return response()->json('success',200);
+        
+    }
+
+    public function productosofertaseditar(Request $request){
+       
+        $oferta = Productooferta::where('producto_id', $request->idproducto )->first();        
+        return response()->json($oferta, 200);
+    }
+
+    public function productosofertasupdate( ProductoofertasUpdateRequest $request){
+
+            $ofertas = Productooferta::findOrFail($request->idoferta);        
+            // $ofertas->empresa_id  = $this->empresaId();
+            // $ofertas->producto_id  = $request->idproducto;
+            $ofertas->preciooferta  = $request->preciooferta;
+            $ofertas->diainicio  = $request->diainicio;
+            $ofertas->horainicio  = $request->horainicio;
+            $ofertas->diafin  = $request->diafin;
+            $ofertas->horafin  = $request->horafin;
+            $ofertas->updated_by = Auth()->user()->id ;
+       
+            $ofertas->save();
+
+            return response()->json('success',200);
+    }
+
+    public function productosofertasdelete(Request $request){
+        
+        $ofertas = Productooferta::findOrFail( $request->ofertaid );
+        $ofertas->deleted_at = Auth()->user()->id;
+        $ofertas->save();
+        
+        return response()->json('success',200);
+    } 
 }

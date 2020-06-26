@@ -27,7 +27,7 @@ class RolesController extends Controller
     public function index()
     {
         //Es un usuario administrador, mostramos todos los registros
-        if (!empty(request()->buscar)) 
+        if ( !empty(request()->buscar) ) 
         {
             $roles = Rol::where('name', 'like', '%'.request()->buscar.'%' )
                     ->orderBy('guard_name', 'desc')
