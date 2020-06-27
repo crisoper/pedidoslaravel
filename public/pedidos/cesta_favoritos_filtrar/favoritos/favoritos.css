@@ -65,24 +65,14 @@
   height: 50px;
   background-color: #343a40;
   text-align: center;
-  padding: 10px 0;
+}
+.cart_tittle_favorites p {
+  width: 100%;
+  color: #ffffff;
+  line-height: 16px;
+  padding-top: 9px;
 }
 
-.btn_link_favoritos {
-  width: 60%;
-  height: 100%;
-  border: 0;
-  border-radius: 0;
-  font-size: 20px;
-  background-color: #3eb291;
-  text-transform: uppercase;
-  padding: 0;
-}
-.btn_link_favoritos:hover,
-.btn_link_favoritos:focus {
-  color: #ffffff;
-  box-shadow: none;
-}
 
 
 .scroll_cart_content {
@@ -116,8 +106,10 @@
 
 
 .border_fav_prod {
-  border: 1px solid rgba(0,0,0,.1);
+  height: 110px;
   border-radius: 5px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid #dfdfdf;
 }
 
 
@@ -156,7 +148,13 @@
 
 
 
-
+.column_detalle_favoritos {
+  padding-bottom: 7.5px !important;
+  margin-bottom: 7.5px !important;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  border-bottom-color: #d7dbdf;
+}
 
 .foto_fav_prod > img {
   width: 100%;
@@ -164,38 +162,165 @@
 }
 
 .nombre_fav_prod {
-  font-size: 13px;
-  font-weight: 700;
-}
-.nombre_fav_prod  a {
   color: #2a2b2a;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
 }
+
 .descripcion_fav_prod {
   font-size: 11px;
-  line-height: 18px;
 }
 .precio_fav_prod {
-  color: #11614a;
-  font-size: 14px;
+  color: #3eb291;
+  font-size: 15px;
   line-height: 18px;
 }
 
-.eliminarProductoListaDeseos {
-  background: #df3550 !important;
-  width: 18px;
-  height: 18px;
-  display: block;
+
+
+.content_detalles_prod_fav {
+  width: 100%;
+}
+
+.import_price_fav {
+  font-size: 10px;
+  line-height: 14px;
+  width: 21%;
+}
+
+
+
+
+.input_group_unit_product_fav {
+	width: 30%;
+	height: 27.5px;
+  padding: 0 !important;
+  margin-right: 6px;
+}
+.input_group_unit_product_fav > input {
+  width: 45%;
+  height: 100%;
+  padding: 0;
   text-align: center;
-  border-radius: 50px;
-  padding: 0px !important;
-  font-size: 12px;
-  color: #FFFFFF;
-  color: white;
-  position: absolute;
-  top: -7px;
-  right: -5px;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.input_group_unit_product_fav > input:focus {
+    box-shadow: none;
+}
+.input_group_unit_product_fav > .more {
+	width: 27%; 
+	height: 100%;
+    padding-top: 0;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 0px 5px 5px 0px; */
+}
+.input_group_unit_product_fav > .minus {
+	width: 27%; 
+    height: 100%;
+    padding-top: 0;
+	text-align: center;
+    border: 1px solid rgba(0,0,0,.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* border-radius: 5px 0px 0px 5px; */
+}
+.input_group_unit_product_fav > .minus:hover, .input_group_unit_product_fav > .more:hover {
+    color: #ffffff;
+    background-color: #3eb291;
+}
+
+
+
+
+
+.agregar_cart_de_favoritos {
+  width: 35%;
+  height: 27.5px;
+  font-size: 16px;
+  text-align: center;
+  color: #687480 !important;
+  background-color: #ffffff;
+  border: 1px solid #c8c9c9;
+}
+.agregar_cart_de_favoritos:hover {
+  color: #3eb291 !important;
+  font-size: 16px;
+  transition: all, 0.5s;
+  
+}
+
+
+
+
+
+
+
+
+/* MODAL PRODUCTOS FAVORITOS */
+.abrir_modal_producto_favoritos {
+  background: #ffffff !important;
+  width: 10%;
+  height: 27.5px;
+  text-align: center;
+  font-size: 15px;
+  color: #687480 ;
+  border: 1px solid #c8c9c9;
   cursor: pointer;
 }
 
 
+#abrir_modal_producto_favoritos{
+  z-index: 1500;
+  background-color: rgba(0,0,0,.7);
+}
 
+
+#abrir_modal_producto_favoritos .close_modal_inicio {
+  box-shadow: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -10px;
+  top: -10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff !important;
+  border: 1px solid #5b6268 !important;
+  border-radius: 50%;
+}
+
+
+
+@media (max-width: 991px) {
+  #titulo_producto_modal_listadeseos {
+      margin-top: 20px;
+  }
+}
+
+
+
+
+.eliminarProductoListaDeseos {
+  background: #df3550 !important;
+  width: 25px;
+  height: 25px;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #ffffff;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  cursor: pointer;
+  padding-top: 2px;
+}

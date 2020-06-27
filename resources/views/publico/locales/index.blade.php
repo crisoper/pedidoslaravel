@@ -120,7 +120,8 @@
         </div>
     </div>
 </div>
-{{-- MODAL DETALLE PRODUCTOS --}}
+
+{{-- MODAL PRODUCTOS --}}
 <div class="modal fade" id="modal_productos_x_empresa" tabindex="-1" role="dialog" aria-labelledby="modal_productos_x_empresa" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content p-0">
@@ -136,60 +137,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 id="titulo_producto_modal"> </h4>
-                            </div>
-                            <div class="col-6 col-sm-5 col-md-4">
-                                <div class="top_seller_product_rating">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-6 col-sm-5 col-md-8">
-                                <p class="stock_modal">
-                                    Stock: <span id="stock_modal_span"> </span>
-                                </p>
-                            </div>
-                            <div class="col-12">
-                                <h3 class="precio_modal_lista_deseos my-0">
-                                    S/ <span id="precio_modal_lista_deseos_span"> </span>
-                                </h3>
-                                {{-- <p class="precio_prev_modal_lista_deseos">
-                                    S/ <span class="precio_prev_modal_lista_deseos_span">30.99</span>
-                                </p> --}}
-                            </div>
-                            <div class="col-12">
-                                <p id="descripcion_producto_modal">
-                                    
-                                </p>
-                            </div>
-                            <div class="col-12"><hr></div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="input-group input_group_unit_product">
-                                            <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
-                                            <input type="text" class="form-control input_value_cart" value="1">
-                                            <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ prodxempresa.id }" idempresa="${ prodxempresa.empresa_id }">
-                                            <span>Agregar</span>
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-3">
-                                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ prodxempresa.id }">
-                                            <i class="fa fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row content_producto_modal">
+
                         </div>
                     </div>
                 </div>
@@ -200,7 +149,6 @@
 
 
 {{-- BOTON CESTA --}}
-{{-- <div class="btn_modal_cesta"> --}}
 <button type="button" class="row btn_modal_cesta" id="mostrarProductosCestaMenuFlotante">
     <div id="icon_pedido">
         <h3><i class="fas fa-shopping-basket"></i></h3>
@@ -211,7 +159,6 @@
         <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ <span class="precio_menu_pedido">0.00</span></h5>
     </div>
 </button>
-{{-- </div> --}}
 {{-- CESTA --}}
 <div class="content_modal_cesta"></div>
 <div class="sidebar_modal_cesta_right">
@@ -221,8 +168,14 @@
 
     <div class="cart_content_cesta">
         <div class="row m-0 p-0 cart_tittle_cesta">
-            <div class="col-12 pt-1 minimo_compra">
-                <p>Como mínimo debes comprar s/ 30.00 <br> en este Restaurante</p>
+            <div class="col-2 p-0 pt-1 logo_empresa_cesta">
+                <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
+            </div>
+            <div class="col-10 p-0 pt-1">
+                <p class="minimo_compra m-0">Como mínimo debes comprar s/ 30.00 en: <br> {{ $empresa->nombrecomercial }}</p>
+                <p class="actualizar_cantidad_producto m-0">
+                    <i class="fas fa-check"></i> Actualizar cantidad de producto
+                </p>
             </div>
         </div>
         <nav>

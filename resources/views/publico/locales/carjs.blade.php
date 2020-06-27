@@ -62,35 +62,42 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
         carHTML = carHTML + `
             <div class="col-12 mb-3" id="contenido_producto_cesta">
                 <div class="row p-1 contenido_producto_cesta">
-                    <div class="col-md-12 column_detalle_cesta_1">
+                    <div class="col-12 pb-2 column_detalle_cesta_1">
                         <div class="row">
-                            <div class="col-3 col-md-2 col-lg-3 p-0 imagen_producto_cesta">
+                            <div class="col-3 p-0 imagen_producto_cesta">
                                 ${ fotos }
                             </div>
-                            <div class="col-9 col-md 10 col-lg-9">
+                            <div class="col-9">
                                 <p class="mt-0 mb-1 nombre_produc_cesta">${ cesta.producto.nombre }</p>
                                 <p class="my-0 descripcion_produc_cesta"><small>${ cesta.producto.descripcion }</small></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 column_detalle_cesta_2">
+                    <div class="col-12 column_detalle_cesta_2">
                         <div class="row text-center">
-                            <div class="col-4 px-0 py-2 padding_column_cesta">
+                            <div class="col-3 px-0 py-2 padding_column_cesta">
                                 <p class="my-0"><b>Precio</b></p>
                                 <p class="my-0">S/ ${ cesta.producto.precio }</p>
                             </div>
-                            <div class="col-4 px-0 py-2 px-2 padding_column_cesta_1">
+                            <div class="col-5 px-0 py-2 px-1 padding_column_cesta_1">
                                 <p class="my-0"><b>Cantidad</b></p>
-                                <div class="input-group input_group_cant_prod_cesta">
-                                    
-                                    <input type="hidden" name="cesta_id[]" value="${ cesta.id }">
-                                    <input type="hidden" name="cantidad[]" value="${ cesta.cantidad }">
-                                    <input type="hidden" name="precio[]" value="${ cesta.producto.precio }">
-                                    <input type="hidden" name="subtotal[]" value="${ (cesta.cantidad * cesta.producto.precio).toFixed(2) }">
-
-                                    <button class="input-group-prepend restar sumarRestarProducto" idcesta="${ cesta.id }">-</button>
-                                    <input type="text" class="form-control input_value_cartcart" value="${ cesta.cantidad }">
-                                    <button class="input-group-append sumar sumarRestarProducto" idcesta="${ cesta.id }">+</button>
+                                <div class="row m-0">
+                                    <div class="col-9 input-group input_group_cant_prod_cesta">
+                                        
+                                        <input type="hidden" name="cesta_id[]" value="${ cesta.id }">
+                                        <input type="hidden" name="cantidad[]" value="${ cesta.cantidad }">
+                                        <input type="hidden" name="precio[]" value="${ cesta.producto.precio }">
+                                        <input type="hidden" name="subtotal[]" value="${ (cesta.cantidad * cesta.producto.precio).toFixed(2) }">
+    
+                                        <button class="input-group-prepend restar sumarRestarProducto" idcesta="${ cesta.id }">-</button>
+                                        <input type="text" class="form-control input_value_cartcart" value="${ cesta.cantidad }">
+                                        <button class="input-group-append sumar sumarRestarProducto" idcesta="${ cesta.id }">+</button>
+                                    </div>
+                                    <div class="col-3 p-0 content_btn_actualizar_producto_cesta">
+                                        <button class="btn_actualizar_producto_cesta p-0 hint--top-left hint--success" data-hint="Actualizar cantidad" producto_id="${ cesta.producto.id }">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-4 px-0 py-2 padding_column_cesta">
@@ -99,12 +106,12 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
                                     S/ <span class="precioTotalProductos">${ (cesta.cantidad * cesta.producto.precio).toFixed(2) }</span>
                                 </p>
                             </div>
-                            <div class="col-12 p-0 content_btn_eliminar">
-                                <button class="eliminar_producto_cesta hint--bottom-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
-                                    <i class="fas fa-trash-alt text-danger"></i>
-                                </button>
-                            </div>
+
                         </div>
+                    </div>
+
+                    <div class="eliminar_producto_cesta hint--bottom-left hint--error" data-hint="Eliminar" producto_id="${ cesta.producto.id }">
+                        <i class="fas fa-trash-alt"></i>
                     </div>
                 </div>
             </div>
@@ -201,6 +208,29 @@ $("#cuerpoCestaPedido").on("click", ".eliminar_producto_cesta", function() {
 
 
 //Agregar producto a cesta
+$(".contenidoPrincipalPagina").on("click", ".agregar_cart_de_favoritos", function() {
+    let btnAgregarCar = $( this );
+    let inputCantidad = $( btnAgregarCar ).closest(".border_fav_prod").find(".input_value_cart");
+    let producto_id = $( btnAgregarCar).attr("idproducto");
+    let cantidad = $( inputCantidad).val();
+    let empresa_id = $(btnAgregarCar).attr('idempresa');
+
+    if( obtenerLocalStorageclienteID () != false ) {
+        agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id );
+    }
+});
+$(".contenidoPrincipalPagina").on("click", ".aggregate_cart_de_favoritos", function() {
+    let btnAgregarCar = $( this );
+    let inputCantidad = $( btnAgregarCar ).closest(".border_fav_prod").find(".input_value_cart");
+    let producto_id = $( btnAgregarCar).attr("idproducto");
+    let cantidad = $( inputCantidad).val();
+    let empresa_id = $(btnAgregarCar).attr('idempresa');
+
+    if( obtenerLocalStorageclienteID () != false ) {
+        agregarProducto_Canasta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id );
+    }
+});
+
 $(".contenidoPrincipalPagina").on("click", ".agregar_cart", function() {
     let btnAgregarCar = $( this );
     let inputCantidad = $( btnAgregarCar ).closest(".container_product_cart").find(".input_value_cart");
@@ -297,13 +327,13 @@ function marginProductosCesta() {
     
     if (cestaResponsive >= 1201){
         if (marginProductosCesta == 1) {
-            $('#scroll_cesta').height(185);
+            $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
             $('#scroll_cesta').height(340);
         }
         else if (marginProductosCesta == 3) {
-            $('#scroll_cesta').height(485);
+            $('#scroll_cesta').height(490);
         }
         else {
             $('#scroll_cesta').height(92+'%');
@@ -311,10 +341,13 @@ function marginProductosCesta() {
     }
     if ((cestaResponsive >= 769) && (cestaResponsive <= 1200)){
         if (marginProductosCesta == 1) {
-            $('#scroll_cesta').height(185);
+            $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
             $('#scroll_cesta').height(340);
+        }
+        else if (marginProductosCesta == 3) {
+            $('#scroll_cesta').height(490);
         }
         else {
             $('#scroll_cesta').height(90+'%');
@@ -322,7 +355,7 @@ function marginProductosCesta() {
     }
     if (cestaResponsive <= 768){
         if (marginProductosCesta == 1) {
-            $('#scroll_cesta').height(185);
+            $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
             $('#scroll_cesta').height(340);
@@ -334,6 +367,7 @@ function marginProductosCesta() {
 
     
 }
+
 
 
 

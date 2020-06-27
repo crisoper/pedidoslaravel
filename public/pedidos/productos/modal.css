@@ -70,6 +70,38 @@
 }
 
 
+.input_group_unit_product > .sumar {
+    width: 27%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+}
+.input_group_unit_product > .restar {
+    width: 27%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+}
+.input_group_unit_product > .restar:hover,
+.input_group_unit_product > .sumar:hover {
+    color: #ffffff;
+    background-color: #3eb291;
+}
+
+.content_btn_cesta_modal {
+    height: 27.5px;
+}
+.content_btn_favoritos_modal {
+    height: 27.5px;
+}
+
+
 
 
 a.lightbox img {

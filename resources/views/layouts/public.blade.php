@@ -283,7 +283,7 @@
 
         <div class="cart_content">
             <div class="cart_tittle_favorites">
-                <a href="#" class="btn btn_link_favoritos">Ver Todos</a>
+                <p class="">Lista de productos seleccionados como Favoritos</p>
             </div>
             <div class="scroll_cart_content">
                 <div class="row m-0 p-3" id="mostarFavoritosProductos">
@@ -293,6 +293,31 @@
         </div>
     </div>
     
+	<!-- MODAL PRODUCTOS FAVORITOS -->
+    <div class="modal fade" id="abrir_modal_producto_favoritos" tabindex="-1" role="dialog" aria-labelledby="abrir_modal_producto_inicio" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content p-0">
+                <div class="modal-body">
+                    <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                    <div class="quickview_body row p-0">
+                        <div class="col-12 col-lg-5">
+                            <div id="imagenes_producto_modal_fav">
+                                {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="row content_producto_modal">
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     
 

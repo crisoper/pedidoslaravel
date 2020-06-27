@@ -15,6 +15,7 @@ class ListadeseosMenuController extends Controller
     {
         $listadeseos = Cesta::where("storagecliente_id", $request->storagecliente_id)
         ->where("tipo", $request->tipo)
+        ->orderBy('id', 'desc')
         ->get();
 
         return ListadeseoResource::collection( $listadeseos ) ;

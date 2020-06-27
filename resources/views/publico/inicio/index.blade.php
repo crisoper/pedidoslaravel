@@ -31,8 +31,7 @@
         </div>
     </div>
 
-    
-
+    {{-- PRODUCTOS INICIO --}}
     <div class="container-fluid page_section px-2 mb-5" id="preductRecomendado">
         <div class="row text-center">
             <div class="col-12 section_title mb-2">
@@ -85,7 +84,8 @@
             </div>
         </div>
     </div>
-	<!-- END RECOMENDADOS  -->
+    
+
 
 	<!-- MODAL PRODUCTOS -->
     <div class="modal fade" id="abrir_modal_producto_inicio" tabindex="-1" role="dialog" aria-labelledby="abrir_modal_producto_inicio" aria-hidden="true">
@@ -97,43 +97,14 @@
                     </button>
                     
                     <div class="quickview_body row p-0">
-                        <div class="col-12 col-lg-5">
+                        <div class="col-12 col-lg-6">
                             <div id="imagenes_producto_modal">
                                 {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
                             </div>
                         </div>
-                        <div class="col-12 col-lg-7">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4 id="titulo_producto_modal"> </h4>
-                                </div>
-                                <div class="col-6 col-sm-5 col-md-4">
-                                    <div class="top_seller_product_rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-5 col-md-8">
-                                    <p class="stock_modal">
-                                        Stock: <span id="stock_modal_span"> </span>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <h3 class="precio_modal_lista_deseos my-0">
-                                        S/ <span id="precio_modal_lista_deseos_span"> </span>
-                                    </h3>
-                                    {{-- <p class="precio_prev_modal_lista_deseos">
-                                        S/ <span class="precio_prev_modal_lista_deseos_span">30.99</span>
-                                    </p> --}}
-                                </div>
-                                <div class="col-12">
-                                    <p id="descripcion_producto_modal">
-                                        
-                                    </p>
-                                </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="row content_producto_modal">
+    
                             </div>
                         </div>
                     </div>
@@ -141,7 +112,8 @@
             </div>
         </div>
     </div>
-    <!-- END MODAL PRODUCTOS -->
+
+
 
 
 @endsection

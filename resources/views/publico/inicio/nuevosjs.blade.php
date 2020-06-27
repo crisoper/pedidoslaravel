@@ -50,13 +50,13 @@
                 let enlistadeseos = '';
                 if (nuevos.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ nuevos.id }">
+                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ nuevos.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;

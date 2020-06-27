@@ -197,6 +197,7 @@
         }
         
 
+
         $(".contenidoPrincipalPagina").on("click", ".modal_productos_x_empresa", function() {
 
             let btn = $( this );
@@ -205,6 +206,7 @@
                 url: "{{ route('ajax.productos.getdatosxid') }}",
                 method: 'GET',
                 data: {
+                    // storagecliente_id: obtenerLocalStorageclienteID(),
                     idproducto: $( btn ).attr("idproducto")
                 },
                 success: function ( data ) {
@@ -218,15 +220,89 @@
         });
 
         function llenarDatosModalProductoDetalle( data ) {
-            // console.log( data );
-
-            $("#titulo_producto_modal").html( data.data.nombre ); 
-            $("#descripcion_producto_modal").html( data.data.descripcion );
-            $("#precio_modal_lista_deseos_span").html( data.data.precio );
-            $("#stock_modal_span").html( data.data.stock );
-
+            
             crearImagenesProducto( data.data.fotos );
 
+            let enlistadeseos = '';
+            if (data.data.enlistadeseos == false) {
+                enlistadeseos = enlistadeseos + `
+                    <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <i class="fa fa-heart"></i>
+                    </button>`;
+            } else {
+                enlistadeseos = enlistadeseos + `
+                    <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <i class="fa fa-heart"></i>
+                    </button>`;
+            }
+
+            let encarrito = '';
+            if (data.data.encarrito == false) {
+                encarrito = encarrito + `
+                    <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <span>Agregar</span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </button>`;
+            } else {
+                encarrito = encarrito + `
+                    <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <span>Agregado</span>
+                        <i class="fas fa-check-circle"></i>
+                    </button>`;
+            }
+
+            let productoModalHTML = "";
+            productoModalHTML = productoModalHTML + `
+                <div class="col-12">
+                    <div class="row container_product_cart">
+                        <div class="col-12">
+                            <h4 id="titulo_producto_modal">${data.data.nombre}</h4>
+                        </div>
+                        <div class="col-6 col-sm-5 col-md-4">
+                            <div class="top_seller_product_rating">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-5 col-md-8">
+                            <p class="stock_modal">
+                                Stock: <span id="stock_modal_span">${data.data.stock}</span>
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <h3 class="precio_modal_lista_deseos my-0">
+                                S/ <span id="precio_modal_lista_deseos_span">${data.data.precio}</span>
+                            </h3>
+                        </div>
+                        <div class="col-12">
+                            <p id="descripcion_producto_modal">${data.data.descripcion}</p>
+                        </div>
+                        <div class="col-12"><hr></div>
+                        <div class="col-5">
+                            <div class="input-group input_group_unit_product">
+                                <button class="input-group-prepend restar sumarRestarProdModal d-flex justify-content-around">-</button>
+                                <input type="text" class="form-control input_value_cart" value="1">
+                                <button class="input-group-append sumar sumarRestarProdModal d-flex justify-content-around">+</button>
+                            </div>
+                            <p class="import_price text-muted text-center mt-1 mb-0">
+                                Importe: <b>S/ <span class="importe_producto_modal">${ data.data.precio }</span></b>
+                            </p>
+                        </div>
+                        <div class="col-4 content_btn_cesta_modal">
+                            ${ encarrito }
+                        </div>
+                        <div class="col-2 content_btn_favoritos_modal">
+                            ${ enlistadeseos }
+                        </div>
+                    </div>
+                </div>
+            `;
+            $(".content_producto_modal").html( productoModalHTML );
+            
+            sumarRestarCantidadModal();
         }
 
         function crearImagenesProducto( fotos ) {
@@ -247,6 +323,7 @@
             $("#imagenes_producto_modal").html( html );
 
         }
+
 
 
         function sumarRestarCantidad() {
@@ -273,6 +350,34 @@
 
             });
         }
+
+        function sumarRestarCantidadModal() {
+            
+            $('.input_group_unit_product').on('click', '.sumarRestarProdModal', function () {
+                var botonMoreMin = $(this);
+
+                var valorActual = botonMoreMin.parent().find('input').val();
+                var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
+                
+                console.log(precio);
+
+                if (botonMoreMin.hasClass('sumar')) {
+                    var nuevoValor = parseFloat(valorActual) + 1;
+                } else {
+                    // Don't allow decrementing below zero
+                    if (valorActual > 1) {
+                        var nuevoValor = parseFloat(valorActual) - 1;
+                    } else {
+                        nuevoValor = 1;
+                    }
+                }
+
+                botonMoreMin.parent().find('input').val(nuevoValor);
+                botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+
+            });
+        }
+        
 
         function contarProductosAlFiltrar() {
             let contarProductos = $('.single_product_wrapper').length;

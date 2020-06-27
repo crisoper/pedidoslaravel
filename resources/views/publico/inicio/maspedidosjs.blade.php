@@ -50,13 +50,13 @@
                 let enlistadeseos = '';
                 if (maspedidos.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ maspedidos.id }">
+                        <button class="agregar_lista_deseos  hint--top-right" data-hint="Agregar a lista de deseos" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ maspedidos.id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a lista de deseos" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
@@ -173,6 +173,34 @@
 
             });
         }
+
+        function sumarRestarCantidadModal() {
+            
+            $('.input_group_unit_product').on('click', '.sumarRestarProdModal', function () {
+                var botonMoreMin = $(this);
+
+                var valorActual = botonMoreMin.parent().find('input').val();
+                var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
+                
+                console.log(precio);
+
+                if (botonMoreMin.hasClass('sumar')) {
+                    var nuevoValor = parseFloat(valorActual) + 1;
+                } else {
+                    // Don't allow decrementing below zero
+                    if (valorActual > 1) {
+                        var nuevoValor = parseFloat(valorActual) - 1;
+                    } else {
+                        nuevoValor = 1;
+                    }
+                }
+
+                botonMoreMin.parent().find('input').val(nuevoValor);
+                botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+
+            });
+        }
+        
 
         function sliderMasPedidosInicio() {
             $(".responsiveSlickMasPedidosInicio").slick({
