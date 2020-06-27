@@ -36,6 +36,32 @@ ol {
   Helper CSS
 -----------------------*/
 
+@media (min-width: 1201px) {
+	.page_section {
+		padding-left: 110px !important;
+		padding-right: 110px !important;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+	.page_section {
+		padding-left: 50px !important;
+		padding-right: 50px !important;
+	}
+}
+@media only screen and (min-width: 577px) and (max-width: 991px) {
+	.page_section {
+		padding-left: 30px !important;
+		padding-right: 30px !important;
+	}
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+	.page_section {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+}
+
 .section_title {
 	background-color: #0071bc !important;
 	border-radius: 5px;
@@ -55,6 +81,22 @@ ol {
     color: #ffffff;
 	text-decoration: underline;
 }
+
+
+@media (max-width: 576px) {
+    .slickempresas {
+        height: 160px;
+    }
+    .slickempresas img {
+        height: 160px !important;
+    }
+}
+
+
+
+
+
+
 
 
 /* buttons */

@@ -1,26 +1,69 @@
 
 
-.informacion_empresas_row {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+
+.nav_productos_empresa {
+    width: 100%;
+    background-color: #0071bc;
+    /* border-radius: 5px; */
+}
+.nav_productos_empresa .nav_tabs {
+    width: 100%;
+    background-color: #0071bc;
 }
 
+.nav_productos_empresa .nav-link {
+    color: #131414;
+    font-size: 18px;
+    font-weight: 700;
+}
 @media (max-width: 576px) {
-    .informacion_empresas {
-        padding-left: 25px !important;
-        padding-right: 25px !important;
+    .content_banner_empresa {
+        height: 130px;
     }
-    .productos_empresas {
-        padding-left: 15px;
-        padding-right: 15px;
+    .content_banner_empresa img {
+        height: 100%;
     }
-}
-@media (min-width: 992px) {
-    .productos_empresas {
-        padding-left: 50px;
+
+    .nav_productos_empresa .nav-link {
+        /* width: 100%; */
+        font-size: 15px;
     }
 }
+
+.nav_productos_empresa .nav-link.active {
+    color: #ffffff;
+    background-color: #131414;
+}
+
+
+
+/* BUSCADOR EMPRESA */
+#txtBuscarProductosXempresa {
+    height: 40px;
+    font-size: 14px;
+    color: #0071bc;
+    background-color: #ffffff;
+}
+#txtBuscarProductosXempresa:focus {
+    box-shadow: none;
+    border: 1px solid #ced4da;
+}
+
+.btn_buscar_productos_x_empresa {
+    height: 40px;
+    background-color: #ffffff;
+    color: #3586bb;
+    border: 1px solid #ced4da;
+    font-size: 24px;
+}
+.btn_buscar_productos_x_empresa:hover,
+.btn_buscar_productos_x_empresa:focus {
+    color: #3586bb;
+    box-shadow: none;
+}
+
+
+
 
 .modal_productos_x_empresa {
     width: 100%;

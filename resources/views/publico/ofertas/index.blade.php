@@ -3,19 +3,27 @@
 @section('contenido')
 
 
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 section_title mb-2">
-                <h2 class="my-1">Ofertas</h2>
-            </div>
-            <div class="col-12 m-0 p-0 mb-3 pl-3">
-                <h6 class="float-left"><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
-            </div>
-            <div class="col-12 m-0 p-0">
-                <div class="row" id="cuerpoProductosOfertados">
+<div class="container-fluid page_section px-2">
+    <div class="row">
+        <div class="col-12 section_title mb-2">
+            <h2 class="my-1">Ofertas</h2>
+        </div>
+    </div>        
+    <div class="row">
+        <div class="col-6 mb-3">
+            <h6><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
+        </div>
+        {{-- BOTON FILTRAR PRODUCTOS --}}
+        <div class="col-6 mb-3 content_filtrar_productos">
+            <button type="button" class="btn_filtrar_productos">
+                Filtrar Productos
+            </button>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-12 m-0 p-0">
+            <div class="row text-center" id="cuerpoProductosOfertados">
 
-                </div>
             </div>
         </div>
     </div>
@@ -23,12 +31,6 @@
 
 
 
-{{-- BOTON FILTRAR PRODUCTOS --}}
-<div class="btn_filtrar_productos">
-    <button type="button">
-        Filtrar <br> Productos
-    </button>
-</div>
 {{-- FILTRAR PRODUCTOS --}}
 <div class="content_modal_filtrar"></div>
 <div class="sideban_modal_filtrar_right">

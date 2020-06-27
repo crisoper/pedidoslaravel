@@ -86,7 +86,7 @@ function mostrarProductosCestaMenuFlotante( cestas ) {
                                     <input type="hidden" name="cesta_id[]" value="${ cesta.id }">
                                     <input type="hidden" name="cantidad[]" value="${ cesta.cantidad }">
                                     <input type="hidden" name="precio[]" value="${ cesta.producto.precio }">
-                                    <input type="hidden" name="subtotal[]" value="${ (cesta.cantidad * cesta.producto.precio).toFixed(2) } ">
+                                    <input type="hidden" name="subtotal[]" value="${ (cesta.cantidad * cesta.producto.precio).toFixed(2) }">
 
                                     <button class="input-group-prepend restar sumarRestarProducto" idcesta="${ cesta.id }">-</button>
                                     <input type="text" class="form-control input_value_cartcart" value="${ cesta.cantidad }">
@@ -238,6 +238,7 @@ function agregarProducto_Canasta( producto_id, cantidad, storagecliente_id, tipo
             empresa_id: empresa_id,
         },
         success: function ( data ) {
+            obtenerProductosCesta( );
             console.log( $( btnAgregarCar ) );
         },
         error: function ( jqXHR, textStatus, errorThrown ) {
@@ -260,8 +261,13 @@ function sumarImportesCesta() {
 
     $(".sumaTotalProductos").html(sumaTotalProductos);
     $(".suma_productos_Cesta").html(sumaTotalProductos);
-    $(".cantidad_menu_pedido").html(sumaTotalProductos);
+    
 
+    if ($(".cantidad_menu_pedido").html() <= 9) {
+        $(".cantidad_menu_pedido").html(sumaTotalProductos);
+    } else {
+        $(".cantidad_menu_pedido").html('9+');
+    }
 
 
     let arrayTotalPrecio = $("#cuerpoCestaPedido").find(".precioTotalProductos");
@@ -287,9 +293,6 @@ function sumarImportesCesta() {
 function marginProductosCesta() {
     let marginProductosCesta = $('.contenido_producto_cesta').length;
 
-    console.log(marginProductosCesta);
-
-
     var cestaResponsive = $(window).width();
     
     if (cestaResponsive >= 1201){
@@ -306,7 +309,6 @@ function marginProductosCesta() {
             $('#scroll_cesta').height(92+'%');
         }
     }
-
     if ((cestaResponsive >= 769) && (cestaResponsive <= 1200)){
         if (marginProductosCesta == 1) {
             $('#scroll_cesta').height(185);
@@ -332,8 +334,6 @@ function marginProductosCesta() {
 
     
 }
-
-
 
 
 

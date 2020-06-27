@@ -10,46 +10,42 @@
 
 
     {{-- MENUS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/menus/css/menu1.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/menus/css/menu2.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/menus/css/menumovil.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/menus/css/loginmovil.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menu1/menu1.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/menu2.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/buscador.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/menumovil.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/loginmovil.css')}}">
 
-    {{-- MODAL --}}
-    <link rel="stylesheet" href="{{asset('pedidos/modal/modal.css')}}">
-    
-    {{-- CARRITO COMPRAS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/carritocompras.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/carritocomprasmenu.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/listadeseos.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/carritocompras/css/listadeseosmenu.css')}}">
-    
-    {{-- BUSCADOR --}}
-    <link rel="stylesheet" href="{{asset('pedidos/buscador/css/buscador.css')}}">
 
     {{-- CAROUSEL 1 --}}
-    <link rel="stylesheet" href="{{asset('pedidos/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/carousel/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/carousel/slick-theme.css')}}">
+
 
     {{-- PRODUCTOS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/productos/css/core-style.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/productos/productos.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/productos/modal.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/productos/tooltips.css')}}">
+
+
+    {{-- CESTA, FAVORITOS, FILTRAR PRODUCTOS--}}
+    <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/cesta/cesta.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/favoritos/favoritos.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/filtrarproductos/filtrarproductos.css')}}">
     
-    {{-- TOOLTIPS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/tooltips/hint.css')}}">
-
-
-    {{-- MENU PRODUCTOS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/menuproductos/menuproductos.css')}}">
-
-
-    {{-- FILTRAR PRODUCTOS --}}
-    <link rel="stylesheet" href="{{asset('pedidos/filtrarproductos/filtrar.css')}}">
 
 
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/empresas.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/empresas/productos.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/empresas/filtrarproductos.css')}}">
+    
+    
+    
+
+
+    {{-- MENU PRODUCTOS --}}
+    {{-- <link rel="stylesheet" href="{{asset('pedidos/menuproductos/menuproductos.css')}}"> --}}
+
+
 
 
 

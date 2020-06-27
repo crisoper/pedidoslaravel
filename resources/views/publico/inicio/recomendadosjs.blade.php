@@ -14,10 +14,6 @@
                     storagecliente_id: obtenerLocalStorageclienteID()
                 },
                 success: function ( data ) {
-                    // console.log("recomendados", data.recomendados );
-                    // console.log("ofertas", data.ofertas );
-                    // console.log("nuevos", data.nuevos );
-                    // console.log("maspedidos", data.maspedidos );
                     mostrarProductosRecomendadosInicio( data.recomendados );
                     mostrarProductosEnOfertaInicio( data.ofertas )
                     mostrarProductosNuevosInicio( data.nuevos );
@@ -109,18 +105,18 @@
                                 </div>
                             </div>
                             <hr class="mt-1 mb-0">
-                            <div class="row px-2">
+                            <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
                                         S/ <span>20.90</span>
                                     </p>
                                     <h4 class="price_product_unit my-0">
-                                        S/ <span>${ recomendados.precio }</span>
+                                        S/ <span class="precio_producto">${ recomendados.precio }</span>
                                     </h4>
                                 </div>
                                 <div class="col-6 pt-1 pb-2 px-2 m-0">
                                     <p class="import_price text-muted py-0 my-0">
-                                        Importe: <b>S/ <span>15.90</span></b>
+                                        Importe: <b>S/ <span class="importe_producto">${ recomendados.precio }</span></b>
                                     </p>
                                     <div class="input-group input_group_unit_product">
                                         <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>

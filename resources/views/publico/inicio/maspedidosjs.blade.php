@@ -108,18 +108,18 @@
                                 </div>
                             </div>
                             <hr class="mt-1 mb-0">
-                            <div class="row px-2">
+                                <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
                                         S/ <span>20.90</span>
                                     </p>
                                     <h4 class="price_product_unit my-0">
-                                        S/ <span>${ maspedidos.precio }</span>
+                                        S/ <span class="precio_producto">${ maspedidos.precio }</span>
                                     </h4>
                                 </div>
                                 <div class="col-6 pt-1 pb-2 px-2 m-0">
                                     <p class="import_price text-muted py-0 my-0">
-                                        Importe: <b>S/ <span>15.90</span></b>
+                                        Importe: <b>S/ <span class="importe_producto">${ maspedidos.precio }</span></b>
                                     </p>
                                     <div class="input-group input_group_unit_product">
                                         <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
@@ -152,19 +152,25 @@
         function sumarRestarCantidad() {
             
             $('.input_group_unit_product').on('click', '.MoreMinProd', function () {
-                var $button = $(this);
-                var oldValue = $button.parent().find('input').val();
-                if ($button.hasClass('more')) {
-                    var newVal = parseFloat(oldValue) + 1;
+                var botonMoreMin = $(this);
+
+                var valorActual = botonMoreMin.parent().find('input').val();
+                var precio = botonMoreMin.parents('.conten_precio_cantidad').find('.precio_producto').html();
+                
+                if (botonMoreMin.hasClass('more')) {
+                    var nuevoValor = parseFloat(valorActual) + 1;
                 } else {
                     // Don't allow decrementing below zero
-                    if (oldValue > 1) {
-                        var newVal = parseFloat(oldValue) - 1;
+                    if (valorActual > 1) {
+                        var nuevoValor = parseFloat(valorActual) - 1;
                     } else {
-                        newVal = 1;
+                        nuevoValor = 1;
                     }
                 }
-                $button.parent().find('input').val(newVal);
+
+                botonMoreMin.parent().find('input').val(nuevoValor);
+                botonMoreMin.parents('.conten_precio_cantidad').find('.importe_producto').html((nuevoValor * precio).toFixed(2));
+
             });
         }
 

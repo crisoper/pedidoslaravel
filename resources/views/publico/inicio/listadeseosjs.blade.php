@@ -128,20 +128,21 @@
 
     //Agregar producto a carrito compras
     $(".contenidoPrincipalPagina").on("click", ".agregar_lista_deseos", function() {
-
         console.log($(this));
         let btnAgregarLista = $( this );
         let producto_id = $( btnAgregarLista).attr("idproducto");
+        let empresa_id = $(btnAgregarLista).attr('idempresa');
+
+        console.log(empresa_id)
 
         if( obtenerLocalStorageclienteID () != false ) {
             
-            agregarProducto_ListDeseos( producto_id, obtenerLocalStorageclienteID (), "deseos" );
+            agregarProducto_ListDeseos( producto_id, obtenerLocalStorageclienteID (), "deseos", empresa_id );
         }
-
     })
 
 
-    function agregarProducto_ListDeseos( producto_id, storagecliente_id, tipo, btnAgregarLista) {
+    function agregarProducto_ListDeseos( producto_id, storagecliente_id, tipo, empresa_id, btnAgregarLista) {
 
         $.ajax({
             url: "{{ route('listadeseo.store') }}",
@@ -149,9 +150,11 @@
             data: {
                 storagecliente_id: storagecliente_id,
                 tipo: tipo,
-                producto_id: producto_id
+                producto_id: producto_id,
+                empresa_id: empresa_id,
             },
             success: function ( data ) {
+                obtenerProductosListaDeseos( );
                 console.log( $( btnAgregarLista ) );
             },
             error: function ( jqXHR, textStatus, errorThrown ) {

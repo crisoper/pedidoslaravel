@@ -37,6 +37,7 @@ class ListadeseosMenuController extends Controller
         $listadeseo->producto_id = $request->producto_id;
         $listadeseo->cantidad = 1;
         $listadeseo->tipo = $request->tipo;
+        $listadeseo->empresa_id = $request->empresa_id;
         
         if ( Auth::guard('api')->check() ) {
             $listadeseo->cliente_id = Auth::id();

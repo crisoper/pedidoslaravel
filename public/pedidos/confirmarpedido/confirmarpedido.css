@@ -1,0 +1,123 @@
+
+
+/* PEDIDOS POR CONFIRMAR */
+.content_pedidos_x_confirmar {
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid #808b94;
+}
+
+.content_pedidos_x_confirmar thead {
+    background-color: #808b94;
+}
+
+.tr_tittle_x_confirmar {
+    width: 100%;
+}
+.tr_tittle_x_confirmar .prod_name {
+    width: 55%;
+}
+.tr_tittle_x_confirmar .prod_unit, 
+.tr_tittle_x_confirmar .prod_cant, 
+.tr_tittle_x_confirmar .prod_subtotal {
+    width: 15%;
+}
+
+.content_pedidos_x_confirmar th,
+.content_pedidos_x_confirmar td {
+    text-align: center;
+    border: 1px solid #8a959e;
+}
+
+.total_pedido {
+    color: #3cd4a9;
+}
+
+.btn_x_confirmar {
+    color: #ffffff;
+    background: #3eb291 !important;
+    padding: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 0;
+}
+
+
+
+/* PEDIDOS POR ENTREGAR */
+.content_pedidos_x_entregar .card {
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    border: 1px solid #1bb7cf;
+    background-color: #17a2b8;
+}
+
+.content_pedidos_x_entregar button {
+    color: #104249;
+}
+.content_pedidos_x_entregar button:hover,
+.content_pedidos_x_entregar button:focus {
+    color: #104249;
+}
+.content_pedidos_x_entregar button .mas_detalles {
+    color: #aedfe6;
+}
+.content_pedidos_x_entregar button:hover .mas_detalles {
+    color: #ffffff;
+}
+
+.productos_x_entregar p {
+    color: #135058;
+    line-height: 17px;
+}
+
+.total_pedido_x_entregar {
+    color: #aedfe6 !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+
+
+
+
+/* PEDIDOS POR ENTREGAR */
+.card_pedido_entregados {
+    background-color: #3eb291;
+}
+.card_pedido_entregados h4 {
+    color: #ffffff;
+}
+
+.content_pedidos_entregados .card {
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    border: 1px solid #45c5a1;
+    background-color: #3eb291;
+}
+
+.content_pedidos_entregados button {
+    color: #104249;
+}
+.content_pedidos_entregados button:hover,
+.content_pedidos_entregados button:focus {
+    color: #104249;
+}
+.content_pedidos_entregados button .mas_detalles {
+    color: #a9e9d7;
+}
+.content_pedidos_entregados button:hover .mas_detalles {
+    color: #ffffff;
+}
+
+.productos_entregados p {
+    color: #135058;
+    line-height: 17px;
+}
+
+.total_pedido_entregado {
+    color: #a9e9d7 !important;
+    font-weight: 700;
+    font-size: 17px;
+}
