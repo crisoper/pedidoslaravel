@@ -13,12 +13,9 @@
             $usuario = Auth()->user()
             @endphp
 
-            <form id="formularioRegistroEmpresa" action="{{route('tuempresa.update', $empresa->id)}}" method="POST"
-                enctype="multipart/form-data">
+            <form id="form_UpdateRegistroEmpresa" action='' method="POST" enctype="multipart/form-data">
 
                 <div class="row mt-3 ">
-
-
                     <div class="col-12  mx-auto ">
                         <div class="card card-outline card-primary">
                             <div class="card-header">
@@ -30,12 +27,14 @@
 
                                     <div class="col-md-8 col-sm-12 ">
                                         <div class="form-group col-md-12 col-sm-12">
+                                          
                                             <select name="rubro_id" id="rubro_id" class="form-control" autofocus>
                                                 <option value="">Rubro de negocio</option>
                                                 @foreach ($empresarubros as $empresarubro)
-                                                <option value="{{ $empresarubro->id }}" @if ( $empresarubro->id =
-                                                    $empresa->rubro_id )
-                                                    selected = 'selected'
+                                               
+                                                <option value="{{ $empresarubro->id }}" 
+                                                    @if ( $empresarubro->id == $empresa->rubro_id )
+                                                    selected
                                                     @endif
                                                     >
                                                     {{ $empresarubro->nombre }}</option>
@@ -44,6 +43,7 @@
                                             <span class="text-danger">{{ $errors->first('rubro_id') }}</span>
                                         </div>
                                         <div class="form-group col-md-12 col-sm-12">
+                                            <input type="hidden" name="empresaid" value="{{ $empresa->id }}">
                                             <input type="text" name="ruc" id="ruc" size="11" maxlength="11"
                                                 class="form-control form-control-sm" value="{{$empresa->ruc}}"
                                                 placeholder="Ruc">
@@ -81,7 +81,8 @@
 
                                         <div class="boxSep">
                                             <div id="imagePreview" class="imgLiquid" style="width:200px; height:200px;">
-                                                <img src="{{ $empresa->url }}" alt="">
+                                                <img src="{{ $empresa->logo }}" alt="">
+                                                {{-- <img class='img-thumbnail' src='{{URL::to('/') }}/storage/' data-initial-preview='#' accept='image/*' > --}}
                                             </div>
 
                                         </div>
@@ -102,8 +103,7 @@
                                         <span id="camara">
                                             <h4><i class="fas fa-camera"></i></h4>
                                         </span>
-                                        <input type="file" id="file" name="logo" id="logo" style="display: none">
-
+                                        <input type="file" id="file" name="logoempresa" style="display: 1">
 
                                     </div>
 
@@ -114,7 +114,7 @@
                                             class="form-control form-control-sm select2" autofocus>
                                             <option value="">Departamento</option>
                                             @foreach ($departamentos as $departamento)
-                                            <option value="{{ $departamento->id }}" @if ( $departamento->id =
+                                            <option value="{{ $departamento->id }}" @if ( $departamento->id ==
                                                 $empresa->departamento_id )
                                                 selected = 'selected'
                                                 @endif
@@ -130,7 +130,7 @@
                                             class="form-control form-control-sm select2" autofocus>
                                             <option value="">Provincia</option>
                                             @foreach ($provincias as $provincia)
-                                            <option value="{{ $provincia->id }}" @if ( $provincia->id =
+                                            <option value="{{ $provincia->id }}" @if ( $provincia->id ==
                                                 $empresa->provincia_id )
                                                 selected = 'selected'
                                                 @endif
@@ -145,7 +145,7 @@
                                             autofocus>
                                             <option value="">Distrito</option>
                                             @foreach ($distritos as $distrito)
-                                            <option value="{{ $distrito->id }}" @if ( $distrito->id =
+                                            <option value="{{ $distrito->id }}" @if ( $distrito->id ==
                                                 $empresa->distrito_id )
                                                 selected = 'selected'
                                                 @endif
@@ -199,7 +199,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          
+
                                             @foreach ($dias as $dia)
                                             <tr>
                                                 <td>
@@ -209,18 +209,11 @@
 
                                                             <label class="form-check-label"
                                                                 for="dias[{{ $loop->iteration }}]">
-                                                                <input class="form-check-input"
-                                                                    type="checkbox"
+                                                                <input class="form-check-input" type="checkbox"
                                                                     name="dias[{{ $loop->iteration }}]"
-                                                                    id="dias[{{ $loop->iteration }}]" 
-                                                                    value="{{ $dia }}"
-                                                                    @if ( in_array( $dia, $diasenhorario)  )
-                                                                    checked
-                                                                        
-                                                                    @endif
-
-
-                                                                    >{{ $dia }}
+                                                                    id="dias[{{ $loop->iteration }}]" value="{{ $dia }}"
+                                                                    @if ( in_array( $dia, $diasenhorario) ) checked
+                                                                    @endif>{{ $dia }}
                                                             </label>
 
                                                         </div>
@@ -238,57 +231,62 @@
                                                             <div class="d-flex flex-nowrap">
 
 
-                                                                <input type="text"
+                                                                <input 
+                                                                    readonly
+                                                                    type="text"
                                                                     name="horainicio[{{ $loop->iteration }}]"
                                                                     id="horainicio-{{ $dia }}"
                                                                     class="form-control form-control-sm text-center "
-                                                                    data-target="#horainicio-{{ $dia }}"
-                                                                    @if ( in_array( $dia, $diasenhorario)  )
-                                                                        @php                                                                        
-                                                                            $horariohorainicio = DB::table('horarios')->where("empresa_id", $empresa->id)->where('dia', $dia)->first();                                                                  
-                                                                        @endphp
-                                                                       
-                                                                    value="{{ $horariohorainicio->horainicio }}"
-                                                                     style="border: none;  background-color:transparent; display: 1;" 
-                                                                     @else
-                                                                     style="border: none;  background-color:transparent; display: none;" 
-                                                                        
-                                                                    @endif
-                                                                    />
+                                                                    data-target="#horainicio-{{ $dia }}" @if ( in_array(
+                                                                    $dia, $diasenhorario) ) @php
+                                                                    $horariohorainicio=DB::table('horarios')->where("empresa_id",
+                                                                    $empresa->id)->where('dia', $dia)->first();
+                                                                @endphp
+
+                                                                value="{{ $horariohorainicio->horainicio }}"
+                                                                style="border: none; background-color:transparent;
+                                                                display: 1;"
+                                                                @else
+                                                                style="border: none; background-color:transparent;
+                                                                display: none;"
+
+                                                                @endif
+                                                                />
                                                                 <span> - </span>
-                                                                <input type="text"
+                                                                <input 
+                                                                    readonly
+                                                                    type="text"
                                                                     name="horafin[{{ $loop->iteration }}]"
                                                                     id="horafin-{{ $dia }}"
                                                                     class="form-control form-control-sm text-center "
-                                                                    data-target="#horafin-{{ $dia }}" 
-                                                                    @if ( in_array( $dia, $diasenhorario)  )
-                                                                    @php
-                                                                        
-                                                                        $horariohorafin = DB::table('horarios')->where("empresa_id", $empresa->id)->where('dia', $dia)->first();
-                                                                   
-                                                                        @endphp
-                                                                       
-                                                                    value="  {{ $horariohorafin->horafin }} "
-                                                                    
-                                                                     style="border: none;  background-color:transparent; display: 1;" 
-                                                                        @else
-                                                                        style="border: none;  background-color:transparent; display: none;" 
-                                                                    @endif
-                                                                    
-                                                                    />
+                                                                    data-target="#horafin-{{ $dia }}" @if ( in_array(
+                                                                    $dia, $diasenhorario) ) @php
+                                                                    $horariohorafin=DB::table('horarios')->where("empresa_id",
+                                                                $empresa->id)->where('dia', $dia)->first();
+
+                                                                @endphp
+
+                                                                value=" {{ $horariohorafin->horafin }} "
+
+                                                                style="border: none; background-color:transparent;
+                                                                display: 1;"
+                                                                @else
+                                                                style="border: none; background-color:transparent;
+                                                                display: none;"
+                                                                @endif
+                                                                
+                                                                />
                                                             </div>
                                                             <div id="time-range-{{ $loop->iteration }}">
 
                                                                 <div class="sliders_step1 ">
                                                                     <div class="slider-range"
-                                                                        name="slider-range[{{$loop->iteration}}]"
-
-                                                                      
-                                                                        @if ( in_array( $dia, $diasenhorario)  )
+                                                                        name="slider-range[{{$loop->iteration}}]" @if (
+                                                                        in_array( $dia, $diasenhorario) )
                                                                         style="display: 1;">
-                                                                           @else
-                                                                           style="display: none;">
-                                                                       @endif
+                                                                        @else
+                                                                        style="display: none;">
+                                                                        @endif
 
                                                                     </div>
                                                                 </div>
@@ -328,9 +326,9 @@
                                     @endforeach
                                 </div>
                                 @csrf
-                                {!! method_field('PUT') !!}
+                               
                                 <div class="form-group col-6">
-                                    <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
+                                    <button type="button" class="btn btn-primary btn-block" id="enviarFormActualizandoDatos">
                                         <span class="spinner-border spinner-border-sm spinnerr" role="status"
                                             aria-hidden="true" style="display: none"></span>
                                         Guardar
