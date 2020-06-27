@@ -34,9 +34,7 @@ use App\Jobs\ProcesssendmailJob;
 use App\Models\Admin\Userperiodo;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
-
-
+use Illuminate\Validation\Rules\Exists;
 
 class EmpresasController extends Controller
 {
@@ -176,9 +174,14 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     // EmpresaUpdateRequest
-    public function update(Request $request, $id)
+    public function update(Request $request)
+    {}
+
+    public function tuempresaUpdate(Request $request)
     {
-       
+    
+        return response()->json( $request , 200);
+
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
         $diasNoValidosInicio = array();
         $diasNoValidosFin = array();
@@ -196,9 +199,9 @@ class EmpresasController extends Controller
                 ]
             ], 429);
         }
+      
 
-
-        $empresa = Empresa::findOrFail($id);
+        $empresa = Empresa::findOrFail($request->empresaid);
         $empresa->rubro_id = $request->rubro_id;
         $empresa->ruc = $request->ruc;
         $empresa->nombre = $request->nombre;
@@ -211,8 +214,8 @@ class EmpresasController extends Controller
 
         if ($request->hasFile('logo')) {
             $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension());
-            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName());
+            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
+            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
             \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
 
             $dimensionLogo = Image::make($nombreOriginalLogo->path());
@@ -225,24 +228,37 @@ class EmpresasController extends Controller
         $empresa->updated_by = Auth()->user()->id;
         $empresa->save();
 
-       $deletehorarios = Horario::where('empresa_id' ,  $empresa->id )->get();
-       foreach( $deletehorarios as $horariodelete){
-        $horariodelete->delete();
-       }
+       
+       
+        if ( isset( $request->dias )  ) {
+            $deletehorarios = Horario::where('empresa_id' ,  $empresa->id )->get();
+            foreach( $deletehorarios as $horariodelete){
+                $horariodelete->delete();
+            }
 
-        for ($i = 1; $i <= count($request->dias); $i++) {
+            for ($i = 0; $i <= count($dias); $i++) { 
+
+                if (  isset($request->dias[$i ])  ) {
+               
+                    $horario = new Horario();
+                    $horario->empresa_id = $empresa->id;
+                    $horario->dia =  $dias[$i - 1];
+                    $horario->horainicio =trim( $request->horainicio[$i] ) ;
+                    $horario->horafin = trim( $request->horafin[$i] ) ;
+                    $horario->updated_by = Auth()->user()->id;
+                    $horario->save();
+               
+                }
+             }
+        
             
-            $horario = new Horario();
-            $horario->empresa_id = $empresa->id;
-            $horario->dia =  $dias[$i - 1];
-            $horario->horainicio = $request->horainicio[$i];
-            $horario->horafin =  $request->horafin[$i];
-            $horario->updated_by = Auth()->user()->id;
-            $horario->save();
+        }else{
+            return response()->json('Seleccione minimo un día de la semana',500);
+           
         }
-
+       
      
-        return redirect()->route('empresas.index')->with("info", "Registro editado");
+        return response()->json('success',200);
     }
 
     /**

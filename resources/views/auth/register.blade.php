@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -129,10 +130,37 @@
                                 </button>
                             </div>
                         </div>
+                        <h1>ubicación</h1>
+                        <div id="mapa" style="width: 700px; height: 500px;">
+                            {{-- AIzaSyC7USZB-cMhAHBkAxLc4RVfDtINg_1O5lc --}}
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function(){
+            var divMapa = $("#mapa");
+            navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+            function fn_mal(){}
+            function fn_ok(){
+                var lat= rta.coords.latitude;
+                var lon = rta.coords.longitude;
+                var gLanLong = new google.maps.LatLng( lat, lon);
+                var objConfig = {
+                    zoom:17,
+                    center: gLanLong
+                }
+                var gMap = new google.maps.Map( divMapa, objConfig )
+            }
+            
+
+
+    });
+</script>
+
 @endsection

@@ -136,7 +136,7 @@
                                                 <span id="camara">
                                                     <h4><i class="fas fa-camera"></i></h4>
                                                 </span>
-                                                <input type="file" id="file" name="logo" id="logo"
+                                                <input type="file" id="file" name="logo" 
                                                     style="display: none">
 
 
