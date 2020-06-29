@@ -45,8 +45,8 @@ ol {
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
 	.page_section {
-		padding-left: 50px !important;
-		padding-right: 50px !important;
+		padding-left: 30px !important;
+		padding-right: 30px !important;
 	}
 }
 @media only screen and (min-width: 577px) and (max-width: 991px) {

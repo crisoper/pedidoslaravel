@@ -164,18 +164,21 @@
 }
 .sidebar_modal_cesta_right #close_sidebar_cesta {
     position: absolute;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 41px;
     top: 0;
     right: 100%;
     z-index: 100;
     display: block;
-    font-size: 30px;
+    font-size: 27px;
     text-align: center;
     border: 0;
-    background-color: #343a40;
-    color: #ffffff;
+    background-color: #3986b9;
+    color: #a6c4d8;
 }
+
+
+
 
 /* CESTA INFO Y REALIZAR PEDIDO */
 .cart_content_cesta {
@@ -185,39 +188,12 @@
     height: 100% !important;
 }
 
-.cart_tittle_cesta {
-    width: 100%;
-    height: 45px;
-    background-color: #343a40;
-    text-align: center;
-    position: static;
-    border-bottom: 4px solid #000000;
+#nav-tab {
+    background-color: #3986b9;
 }
-
-.logo_empresa_cesta {
-    width: 100%;
-    height: 100%;
-}
-
-.minimo_compra {
-    color: #ffffff;
-    font-size: 12px;
-    text-align: center;
-    line-height: 12px;
-}
-.actualizar_cantidad_producto {
-    color: #3986b9;
-    font-size: 11px;
-    text-align: center;
-    line-height: 12px;
-}
-.actualizar_cantidad_producto i {
-    color: #3eb291;
-}
-
 
 #nav-tab .nav-link {
-    color: #ffffff;
+    color: #a6c4d8;
     background-color: #3986b9;
     width: 50%;
     border-radius: 0;
@@ -235,12 +211,21 @@
 }
 
 #nav-tab > .active {
-    background-color: #ffffff;
-    color: #3986b9;
+    border-bottom: 3px solid #f5f9fc;
+    color: #ffffff;
+    /* background-color: #f5fafd; */
 }
 
+
+.hr_box_shadow_cesta {
+    border-top: 0;
+    box-shadow: inset 0 5px 5px -5px #333;
+    background-color: #f6f9fc;
+}
+
+
 .cart_content_cesta > form {
-    height: 89%;
+    height: 85%;
 }
 
 #nav_tabContent {
@@ -253,38 +238,52 @@
     height: 100%;
 }
 
-.info_cantidad_total {
+
+.cart_tittle_cesta {
     width: 100%;
-    height: 50px;
-    display: flex;
-    text-align: center;
-    padding: 5px 10px;
-    box-shadow: 0 5px 5px -5px #333333;
+    height: auto;
     background-color: #ffffff;
-    z-index: 15;
+    text-align: center;
 }
-.info_cantidad {
-    width: 60%;
-    height: 100%;
-}
-.info_total {
-    width: 40%;
-    height: 100%;
-}
-.info_cantidad_total p {
+.minimo_compra {
+    color: #b88b2c;
     font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 17px;
 }
-.info_cantidad_total h6 {
-    font-size: 16px;
+.icon_actualizar_producto {
+    color: #3986b9;
+    font-size: 11px;
+    text-align: center;
+    line-height: 12px;
+}
+.icon_actualizar_producto i {
+    color: #3eb291;
+}
+
+.info_cantidad, .info_total {
+    font-size: 12px;
+}
+.content_cantidad h6 {
     font-weight: 700;
 }
-.info_cantidad_total h5 {
-    font-size: 18px;
+.content_subtotal h6 {
     font-weight: 700;
+    font-size: 19px;
 }
+
+
+
+.hr_info_scroll_cesta {
+    background-color: #a1afbd;
+}
+
+
 
 #scroll_cesta {
     width: 100% !important;
+    background-color: #fafdff;
     /* background-color: #4f35df; */
 }
 
@@ -589,7 +588,7 @@
 }
 
 .btn_realizar_pedido_cesta {
-    color: #e4eff7 !important;
+    color: #f6fafd !important;
     background: #3986b9 !important;
     padding: 5px;
     text-transform: uppercase;

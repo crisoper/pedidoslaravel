@@ -286,7 +286,7 @@
                 <p class="">Lista de productos seleccionados como Favoritos</p>
             </div>
             <div class="scroll_cart_content">
-                <div class="row m-0 p-3" id="mostarFavoritosProductos">
+                <div class="row m-0 py-3 px-1" id="mostarFavoritosProductos">
                     
                 </div>
             </div>
@@ -296,22 +296,28 @@
 	<!-- MODAL PRODUCTOS FAVORITOS -->
     <div class="modal fade" id="abrir_modal_producto_favoritos" tabindex="-1" role="dialog" aria-labelledby="abrir_modal_producto_inicio" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content p-0">
-                <div class="modal-body">
+
+            <div class="modal-content">
+                <div class="modal-header bg-light row m-0 py-2">
+                    <div class="col-12 mx-auto">
+                        <p class="text-center mb-0" id="nombre_empresa_modal_fav"> </p>
+                    </div>
                     <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    
-                    <div class="quickview_body row p-0">
-                        <div class="col-12 col-lg-5">
-                            <div id="imagenes_producto_modal_fav">
-                                {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
-                            </div>
+                </div>
+                <div class="modal-body row m-0">
+                    <div class="col-12 col-lg-6 p-0 content_imagenes_modal_fav">
+                        <div class="mb-2" id="imagenes_principal_producto_modal_fav">
+                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="row content_producto_modal">
+                        <div class="text-center" id="imagenes_producto_modal_fav">
+                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 p-0">
+                        <div class="row content_producto_modal_fav">
     
-                            </div>
                         </div>
                     </div>
                 </div>

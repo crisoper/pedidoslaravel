@@ -54,9 +54,14 @@
 
             
             favoritosHTML = favoritosHTML + `
-                <div class="col-12 mb-2">
-                    <div class="row border_fav_prod p-1">
-                        <div class="col-12 p-0 column_detalle_favoritos">
+                <div class="col-12 mb-3">
+                    <div class="card border_fav_prod">
+                        <div class="card-header p-0">
+                            <p class="text-truncate text-center my-0">
+                                <a class="nombre_fav_empresa" href="${ deseos.producto.empresa_url }">${ deseos.producto.empresa }</a>
+                            </p>
+                        </div>
+                        <div class="card-body p-1">
                             <div class="row m-0">
                                 <div class="col-3 p-0">
                                     <div class="foto_fav_prod">
@@ -70,31 +75,32 @@
                                         S/ <span class="precio_prod_favoritos">${ deseos.producto.precio }</span>
                                     </p>
                                 </div>
+                                
+                                <div class="col-12 p-0 column_detalle_favoritos">
+                                    <div class="row m-0 content_detalles_prod_fav">
+                                        <p class="import_price_fav text-muted text-center py-0 my-0">
+                                            Importe: <br> <b>S/ <span class="importe_producto_fav">${ deseos.producto.precio }</span></b>
+                                        </p>
+                                        
+                                        <div class="input-group input_group_unit_product_fav">
+                                            <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
+                                            <input type="text" class="form-control input_value_cart" value="1">
+                                            <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
+                                        </div>
+                                        
+                                        <a href="${ deseos.producto.empresa_url }" class="agregar_cart_de_favoritos hint--top-left" data-hint="Agregar producto a cesta" idproducto="${ deseos.producto.id }" idempresa="${ deseos.producto.empresa_id }">
+                                            <span>Agregar</span>
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        
+                                        <button class="abrir_modal_producto_favoritos p-0 hint--top-left" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_favoritos" idproducto="${ deseos.producto.id }">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-12 p-0">
-                            <div class="row m-0 content_detalles_prod_fav">
-                                <p class="import_price_fav text-muted text-center py-0 my-0">
-                                    Importe: <br> <b>S/ <span class="importe_producto_fav">${ deseos.producto.precio }</span></b>
-                                </p>
-                                
-                                <div class="input-group input_group_unit_product_fav">
-                                    <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
-                                    <input type="text" class="form-control input_value_cart" value="1">
-                                    <button class="input-group-append more MoreMinProd d-flex justify-content-around">+</button>
-                                </div>
-                                
-                                <a href="${ deseos.producto.empresa_url }" class="agregar_cart_de_favoritos hint--top-left" data-hint="Agregar producto a cesta" idproducto="${ deseos.producto.id }" idempresa="${ deseos.producto.empresa_id }">
-                                    <span>Agregar</span>
-                                    <i class="fas fa-shopping-basket"></i>
-                                </a>
-                                
-                                <button class="abrir_modal_producto_favoritos p-0 hint--top-left" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_favoritos" idproducto="${ deseos.producto.id }">
-                                    <i class="fa fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
                         
                         <div class="eliminarProductoListaDeseos" producto_id="${ deseos.producto.id }">
                             <i class="fas fa-trash-alt"></i>
@@ -217,19 +223,6 @@
         
         crearImagenesProducto( data.data.fotos );
 
-        let enlistadeseos = '';
-        if (data.data.enlistadeseos == false) {
-            enlistadeseos = enlistadeseos + `
-                <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                    <i class="fa fa-heart"></i>
-                </button>`;
-        } else {
-            enlistadeseos = enlistadeseos + `
-                <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                    <i class="fa fa-heart"></i>
-                </button>`;
-        }
-
         let encarrito = '';
         if (data.data.encarrito == false) {
             encarrito = encarrito + `
@@ -252,7 +245,7 @@
             <div class="col-12">
                 <div class="row container_product_cart">
                     <div class="col-12">
-                        <h4 id="titulo_producto_modal">${data.data.nombre}</h4>
+                        <h4 id="nombre_producto_modal_fav">${data.data.nombre}</h4>
                     </div>
                     <div class="col-6 col-sm-5 col-md-4">
                         <div class="top_seller_product_rating">
@@ -264,17 +257,17 @@
                         </div>
                     </div>
                     <div class="col-6 col-sm-5 col-md-8">
-                        <p class="stock_modal">
-                            Stock: <span id="stock_modal_span">${data.data.stock}</span>
+                        <p class="stock_modal_fav">
+                            Stock: <span id="stock_producto_modal_fav">${data.data.stock}</span>
                         </p>
                     </div>
                     <div class="col-12">
-                        <h3 class="precio_modal_lista_deseos my-0">
-                            S/ <span id="precio_modal_lista_deseos_span">${data.data.precio}</span>
+                        <h3 class="precio_modal_fav my-0">
+                            S/ <span id="precio_producto_modal_fav">${data.data.precio}</span>
                         </h3>
                     </div>
                     <div class="col-12">
-                        <p id="descripcion_producto_modal">${data.data.descripcion}</p>
+                        <p id="descripcion_producto_modal_fav">${data.data.descripcion}</p>
                     </div>
                     <div class="col-12"><hr></div>
                     <div class="col-5">
@@ -284,40 +277,97 @@
                             <button class="input-group-append sumar sumarRestarProdModal d-flex justify-content-around">+</button>
                         </div>
                         <p class="import_price text-muted text-center mt-1 mb-0">
-                            Importe: <b>S/ <span class="importe_producto_modal">${ data.data.precio }</span></b>
+                            Importe: <b>S/ <span class="importe_producto_modal_fav">${ data.data.precio }</span></b>
                         </p>
                     </div>
-                    <div class="col-4 content_btn_cesta_modal">
+                    <div class="col-5 content_btn_cesta_modal_fav">
                         ${ encarrito }
-                    </div>
-                    <div class="col-2 content_btn_favoritos_modal">
-                        ${ enlistadeseos }
                     </div>
                 </div>
             </div>
         `;
-        $(".content_producto_modal").html( productoModalHTML );
+        $(".content_producto_modal_fav").html( productoModalHTML );
         
-        sumarRestarCantidadModal();
+        let empresaModalHTML = "";
+        empresaModalHTML = empresaModalHTML + `
+            <a href="${data.data.empresa_id}">${data.data.empresa}</a>
+        `;
+        $("#nombre_empresa_modal_fav").html( empresaModalHTML );
+
+
+        sumarRestarCantidadModalFav();
     }
 
     function crearImagenesProducto( fotos ) {
 
-        let html = ""; 
-        $.each( fotos, function( key, foto ) {        
-            html = html + `
-                <a class="lightbox" href="#${ foto.nombre }">
-                    <img src="${ foto.url }">
-                </a>
-                <div class="lightbox-target" id="${ foto.nombre }">
-                    <img src="${ foto.url }">
-                    <a class="lightbox-close" href="#"></a>
-                </div>
-            `
+        let fotoPrincipalFavHTML = '';
+        let contadorPrincipalFav = 0; 
+
+        $.each( fotos, function( key, fotoPrincipal ) {
+            
+            contadorPrincipalFav++
+
+            if (contadorPrincipalFav == 1) {
+                fotoPrincipalFavHTML = fotoPrincipalFavHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_fav_1">`;
+            } else if (contadorPrincipalFav == 2) {
+                fotoPrincipalFavHTML = fotoPrincipalFavHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_fav_2">`;
+            } else if (contadorPrincipalFav == 3) {
+                fotoPrincipalFavHTML = fotoPrincipalFavHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_fav_3">`;
+            } else if (contadorPrincipalFav == 4) {
+                fotoPrincipalFavHTML = fotoPrincipalFavHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_fav_4">`;
+            }
         });
 
-        $("#imagenes_producto_modal_fav").html( html );
+        $("#imagenes_principal_producto_modal_fav").html( fotoPrincipalFavHTML );
 
+
+
+        let fotosFavHTML = '';
+        let contadorFotosFav = 0; 
+
+        $.each( fotos, function( key, foto ) {
+            
+            contadorFotosFav++
+
+            if (contadorFotosFav == 1) {
+                fotosFavHTML = fotosFavHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_fav_1" width="100">`;
+            } else if (contadorFotosFav == 2) {
+                fotosFavHTML = fotosFavHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_fav_2" width="100">`;
+            } else if (contadorFotosFav == 3) {
+                fotosFavHTML = fotosFavHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_fav_3" width="100">`;
+            } else if (contadorFotosFav == 4) {
+                fotosFavHTML = fotosFavHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_fav_4" width="100">`;
+            }
+
+        });
+
+        $("#imagenes_producto_modal_fav").html( fotosFavHTML );
+
+
+        $('.imagen_producto_modal_fav_1').on('click', function () {
+            $(".imagen_princ_producto_modal_fav_1").css( "visibility", "visible" );
+            $(".imagen_princ_producto_modal_fav_2").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_3").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_4").css( "visibility", "hidden" );
+        });
+        $('.imagen_producto_modal_fav_2').on('click', function () {
+            $(".imagen_princ_producto_modal_fav_2").css( "visibility", "visible" );
+            $(".imagen_princ_producto_modal_fav_1").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_3").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_4").css( "visibility", "hidden" );
+        });
+        $('.imagen_producto_modal_fav_3').on('click', function () {
+            $(".imagen_princ_producto_modal_fav_3").css( "visibility", "visible" );
+            $(".imagen_princ_producto_modal_fav_1").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_2").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_4").css( "visibility", "hidden" );
+        });
+        $('.imagen_producto_modal_fav_4').on('click', function () {
+            $(".imagen_princ_producto_modal_fav_4").css( "visibility", "visible" );
+            $(".imagen_princ_producto_modal_fav_1").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_2").css( "visibility", "hidden" );
+            $(".imagen_princ_producto_modal_fav_3").css( "visibility", "hidden" );
+        });
     }
 
 
@@ -346,15 +396,13 @@
         });
     }
 
-    function sumarRestarCantidadModal() {
+    function sumarRestarCantidadModalFav() {
         
         $('.input_group_unit_product').on('click', '.sumarRestarProdModal', function () {
             var botonMoreMin = $(this);
 
             var valorActual = botonMoreMin.parent().find('input').val();
-            var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
-            
-            console.log(precio);
+            var precio = botonMoreMin.parents('.container_product_cart').find('#precio_producto_modal_fav').html();
 
             if (botonMoreMin.hasClass('sumar')) {
                 var nuevoValor = parseFloat(valorActual) + 1;
@@ -368,7 +416,7 @@
             }
 
             botonMoreMin.parent().find('input').val(nuevoValor);
-            botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+            botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal_fav').html((nuevoValor * precio).toFixed(2));
 
         });
     }
@@ -386,13 +434,10 @@
                 $('.scroll_cart_content').height('auto');
             }
             else if (marginProductosFavoritos == 2) {
-                $('.scroll_cart_content').height(285);
+                $('.scroll_cart_content').height(345);
             }
             else if (marginProductosFavoritos == 3) {
-                $('.scroll_cart_content').height(415);
-            }
-            else if (marginProductosFavoritos == 4) {
-                $('.scroll_cart_content').height(540);
+                $('.scroll_cart_content').height(505);
             }
             else {
                 $('.scroll_cart_content').height(92+'%');
@@ -403,10 +448,10 @@
                 $('.scroll_cart_content').height('auto');
             }
             else if (marginProductosFavoritos == 2) {
-                $('.scroll_cart_content').height(285);
+                $('.scroll_cart_content').height(345);
             }
             else if (marginProductosFavoritos == 3) {
-                $('.scroll_cart_content').height(415);
+                $('.scroll_cart_content').height(505);
             }
             else {
                 $('.scroll_cart_content').height(90+'%');
@@ -417,10 +462,10 @@
                 $('.scroll_cart_content').height('auto');
             }
             else if (marginProductosFavoritos == 2) {
-                $('.scroll_cart_content').height(285);
+                $('.scroll_cart_content').height(345);
             }
             else if (marginProductosFavoritos == 3) {
-                $('.scroll_cart_content').height(415);
+                $('.scroll_cart_content').height(505);
             }
             else {
                 $('.scroll_cart_content').height(85+'%');

@@ -254,9 +254,9 @@
             let productoModalHTML = "";
             productoModalHTML = productoModalHTML + `
                 <div class="col-12">
-                    <div class="row container_product_cart">
-                        <div class="col-12">
-                            <h4 id="titulo_producto_modal">${data.data.nombre}</h4>
+                    <div class="row container_producto_modal container_product_cart">
+                        <div class="col-12 mb-2">
+                            <p class="m-0" id="nombre_producto_modal">${data.data.nombre}</p>
                         </div>
                         <div class="col-6 col-sm-5 col-md-4">
                             <div class="top_seller_product_rating">
@@ -269,32 +269,32 @@
                         </div>
                         <div class="col-6 col-sm-5 col-md-8">
                             <p class="stock_modal">
-                                Stock: <span id="stock_modal_span">${data.data.stock}</span>
+                                Stock: <span id="stock_producto_modal">${data.data.stock}</span>
                             </p>
                         </div>
                         <div class="col-12">
-                            <h3 class="precio_modal_lista_deseos my-0">
-                                S/ <span id="precio_modal_lista_deseos_span">${data.data.precio}</span>
-                            </h3>
+                            <p class="precio_modal my-0">
+                                S/ <span id="precio_producto_modal">${data.data.precio}</span>
+                            </p>
                         </div>
                         <div class="col-12">
                             <p id="descripcion_producto_modal">${data.data.descripcion}</p>
                         </div>
-                        <div class="col-12"><hr></div>
-                        <div class="col-5">
+                        <div class="col-12"><hr class="mt-1"></div>
+                        <div class="col-4 p-0 pl-3">
                             <div class="input-group input_group_unit_product">
-                                <button class="input-group-prepend restar sumarRestarProdModal d-flex justify-content-around">-</button>
+                                <button class="input-group-prepend restar sumarRestarProdModal d-flex justify-content-around pt-0">-</button>
                                 <input type="text" class="form-control input_value_cart" value="1">
-                                <button class="input-group-append sumar sumarRestarProdModal d-flex justify-content-around">+</button>
+                                <button class="input-group-append sumar sumarRestarProdModal d-flex justify-content-around pt-0">+</button>
                             </div>
                             <p class="import_price text-muted text-center mt-1 mb-0">
                                 Importe: <b>S/ <span class="importe_producto_modal">${ data.data.precio }</span></b>
                             </p>
                         </div>
-                        <div class="col-4 content_btn_cesta_modal">
+                        <div class="col-5 py-0 px-3 content_btn_cesta_modal">
                             ${ encarrito }
                         </div>
-                        <div class="col-2 content_btn_favoritos_modal">
+                        <div class="col-2 p-0 pr-2 content_btn_favoritos_modal">
                             ${ enlistadeseos }
                         </div>
                     </div>
@@ -302,26 +302,86 @@
             `;
             $(".content_producto_modal").html( productoModalHTML );
             
+            
+            let empresaModalHTML = "";
+            empresaModalHTML = empresaModalHTML + `
+                <a href="${data.data.empresa_id}">${data.data.empresa}</a>
+            `;
+            $("#nombre_empresa_modal").html( empresaModalHTML );
+            
             sumarRestarCantidadModal();
         }
 
         function crearImagenesProducto( fotos ) {
 
-            let html = ""; 
-            $.each( fotos, function( key, foto ) {        
-                html = html + `
-                    <a class="lightbox" href="#${ foto.nombre }">
-                        <img src="${ foto.url }">
-                    </a>
-                    <div class="lightbox-target" id="${ foto.nombre }">
-                        <img src="${ foto.url }">
-                        <a class="lightbox-close" href="#"></a>
-                    </div>
-                `
+            let fotoPrincipalHTML = '';
+            let contadorPrincipal = 0; 
+
+            $.each( fotos, function( key, fotoPrincipal ) {
+                
+                contadorPrincipal++
+
+                if (contadorPrincipal == 1) {
+                    fotoPrincipalHTML = fotoPrincipalHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_1">`;
+                } else if (contadorPrincipal == 2) {
+                    fotoPrincipalHTML = fotoPrincipalHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_2">`;
+                } else if (contadorPrincipal == 3) {
+                    fotoPrincipalHTML = fotoPrincipalHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_3">`;
+                } else if (contadorPrincipal == 4) {
+                    fotoPrincipalHTML = fotoPrincipalHTML + `<img src="${ fotoPrincipal.url }" alt="${ fotoPrincipal.nombre }" class="imagen_princ_producto_modal_4">`;
+                }
             });
+            
+            $("#imagenes_principal_producto_modal").html( fotoPrincipalHTML );
 
-            $("#imagenes_producto_modal").html( html );
 
+
+            let fotosHTML = '';
+            let contadorFotos = 0; 
+
+            $.each( fotos, function( key, foto ) {
+                
+                contadorFotos++
+
+                if (contadorFotos == 1) {
+                    fotosHTML = fotosHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_1" width="100">`;
+                } else if (contadorFotos == 2) {
+                    fotosHTML = fotosHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_2" width="100">`;
+                } else if (contadorFotos == 3) {
+                    fotosHTML = fotosHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_3" width="100">`;
+                } else if (contadorFotos == 4) {
+                    fotosHTML = fotosHTML + `<img src="${ foto.url }" alt="${ foto.nombre }" class="imagen_producto_modal_4" width="100">`;
+                }
+
+            });
+            
+            $("#imagenes_producto_modal").html( fotosHTML );
+
+            
+            $('.imagen_producto_modal_1').on('click', function () {
+                $(".imagen_princ_producto_modal_1").css( "visibility", "visible" );
+                $(".imagen_princ_producto_modal_2").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_3").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_4").css( "visibility", "hidden" );
+            });
+            $('.imagen_producto_modal_2').on('click', function () {
+                $(".imagen_princ_producto_modal_2").css( "visibility", "visible" );
+                $(".imagen_princ_producto_modal_1").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_3").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_4").css( "visibility", "hidden" );
+            });
+            $('.imagen_producto_modal_3').on('click', function () {
+                $(".imagen_princ_producto_modal_3").css( "visibility", "visible" );
+                $(".imagen_princ_producto_modal_1").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_2").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_4").css( "visibility", "hidden" );
+            });
+            $('.imagen_producto_modal_4').on('click', function () {
+                $(".imagen_princ_producto_modal_4").css( "visibility", "visible" );
+                $(".imagen_princ_producto_modal_1").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_2").css( "visibility", "hidden" );
+                $(".imagen_princ_producto_modal_3").css( "visibility", "hidden" );
+            });
         }
 
 
@@ -357,7 +417,7 @@
                 var botonMoreMin = $(this);
 
                 var valorActual = botonMoreMin.parent().find('input').val();
-                var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
+                var precio = botonMoreMin.parents('.container_producto_modal').find('#precio_producto_modal').html();
                 
                 console.log(precio);
 
@@ -373,7 +433,7 @@
                 }
 
                 botonMoreMin.parent().find('input').val(nuevoValor);
-                botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+                botonMoreMin.parents('.container_producto_modal').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
 
             });
         }

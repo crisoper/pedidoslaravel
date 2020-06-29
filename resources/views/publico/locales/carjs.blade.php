@@ -330,10 +330,10 @@ function marginProductosCesta() {
             $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
-            $('#scroll_cesta').height(340);
+            $('#scroll_cesta').height(315);
         }
         else if (marginProductosCesta == 3) {
-            $('#scroll_cesta').height(490);
+            $('#scroll_cesta').height(470);
         }
         else {
             $('#scroll_cesta').height(92+'%');
@@ -344,10 +344,10 @@ function marginProductosCesta() {
             $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
-            $('#scroll_cesta').height(340);
+            $('#scroll_cesta').height(315);
         }
         else if (marginProductosCesta == 3) {
-            $('#scroll_cesta').height(490);
+            $('#scroll_cesta').height(470);
         }
         else {
             $('#scroll_cesta').height(90+'%');
@@ -358,7 +358,7 @@ function marginProductosCesta() {
             $('#scroll_cesta').height('auto');
         }
         else if (marginProductosCesta == 2) {
-            $('#scroll_cesta').height(340);
+            $('#scroll_cesta').height(315);
         }
         else {
             $('#scroll_cesta').height(85+'%');

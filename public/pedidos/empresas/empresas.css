@@ -32,7 +32,8 @@
 
 .nav_productos_empresa .nav-link.active {
     color: #ffffff;
-    background-color: #131414;
+    background-color: #034a79;
+    /* border-bottom: 4px solid #ffffff; */
 }
 
 

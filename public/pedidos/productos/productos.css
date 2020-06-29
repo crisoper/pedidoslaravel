@@ -346,7 +346,7 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
-      height: 260px;
+      height: 265px;
     }
     .single_product_wrapper .product-img span.empresa_badge a {
         height: 261px;
@@ -365,4 +365,8 @@
   
 }
 
-
+@media (min-width: 1300px) {
+    .single_product_wrapper .product-img {
+      height: 230px;
+    }
+}

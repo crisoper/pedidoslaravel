@@ -124,22 +124,27 @@
 {{-- MODAL PRODUCTOS --}}
 <div class="modal fade" id="modal_productos_x_empresa" tabindex="-1" role="dialog" aria-labelledby="modal_productos_x_empresa" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content p-0">
-            <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header bg-light row m-0 py-2">
+                <div class="col-12 mx-auto">
+                    <p class="text-center mb-0" id="nombre_empresa_modal"> </p>
+                </div>
                 <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                
-                <div class="quickview_body row p-0">
-                    <div class="col-12 col-lg-6">
-                        <div id="imagenes_producto_modal">
-                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
-                        </div>
+            </div>
+            <div class="modal-body row m-0">
+                <div class="col-12 col-lg-6 p-0 content_imagenes_modal">
+                    <div class="mb-2" id="imagenes_principal_producto_modal">
+                        {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
                     </div>
-                    <div class="col-12 col-lg-6">
-                        <div class="row content_producto_modal">
+                    <div class="text-center" id="imagenes_producto_modal">
+                        {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 p-0">
+                    <div class="row content_producto_modal">
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -167,41 +172,43 @@
     </button>
 
     <div class="cart_content_cesta">
-        <div class="row m-0 p-0 cart_tittle_cesta">
-            <div class="col-2 p-0 pt-1 logo_empresa_cesta">
-                <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
-            </div>
-            <div class="col-10 p-0 pt-1">
-                <p class="minimo_compra m-0">Como mínimo debes comprar s/ 30.00 en: <br> {{ $empresa->nombrecomercial }}</p>
-                <p class="actualizar_cantidad_producto m-0">
-                    <i class="fas fa-check"></i> Actualizar cantidad de producto
-                </p>
-            </div>
-        </div>
-        <nav>
+        <nav class="content_nav_tab">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="detalle_pedido_cesta" data-toggle="tab" href="#navDetallePedidoCesta" role="tab" aria-controls="navDetallePedidoCesta" aria-selected="true">Detalle pedido</a>
-                <a class="nav-item nav-link" id="realizar_pedido_cesta" data-toggle="tab" href="#navRealizarPedidoCesta" role="tab" aria-controls="navRealizarPedidoCesta" aria-selected="false">
+                <a class="nav-item nav-link px-0 active" id="detalle_pedido_cesta" data-toggle="tab" href="#navDetallePedidoCesta" role="tab" aria-controls="navDetallePedidoCesta" aria-selected="true">
+                    Detalle pedido
+                </a>
+                <a class="nav-item nav-link px-0" id="realizar_pedido_cesta" data-toggle="tab" href="#navRealizarPedidoCesta" role="tab" aria-controls="navRealizarPedidoCesta" aria-selected="false">
                     Realizar Pedido
                 </a>
             </div>
         </nav>
+        <hr class="hr_box_shadow_cesta m-0 pb-2">
         <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}" method="POST">
             <div class="tab-content" id="nav_tabContent">
                 <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
-                    <div class="info_cantidad_total">
-                        <div class="info_cantidad">
-                            <p class="my-0">Estas comprando:</p>
+                    
+                    <div class="row m-0 cart_tittle_cesta">
+                        <div class="col-12 p-0">
+                            <p class="minimo_compra m-0">Mínimo de compra para delivery: S/ 30.00</p>
+                            <p class="icon_actualizar_producto m-0">
+                                <i class="fas fa-check"></i> Actualizar cantidad de producto
+                            </p>
+                        </div>
+                        <div class="col-12"><hr class="my-1"></div>
+                        <div class="col-6 p-0 content_cantidad">
+                            <p class="info_cantidad my-0">Estas comprando:</p>
                             <h6><span class="suma_productos_Cesta">0</span> Productos</h6>
                         </div>
-                        <div class="info_total">
-                            <p class="my-0">Subtotal:</p>
-                            <h5>S/ <span class="suma_total_prev">0.00</span></h5>
+                        <div class="col-6 p-0 content_subtotal">
+                            <p class="info_total my-0">Subtotal:</p>
+                            <h6>S/ <span class="suma_total_prev">0.00</span></h6>
                         </div>
                     </div>
 
+                    <hr class="hr_info_scroll_cesta my-0">
+
                     <div class="" id="scroll_cesta">
-                        <div class="row m-0 px-3 pt-4 pb-2 cuerpoCestaPedido" id="cuerpoCestaPedido">
+                        <div class="row m-0 px-3 pt-3 pb-1 cuerpoCestaPedido" id="cuerpoCestaPedido">
 
                         </div>
                     </div>

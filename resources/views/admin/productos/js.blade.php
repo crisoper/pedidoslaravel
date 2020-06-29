@@ -100,7 +100,7 @@
             $('#imagePreview').html("<img id='vistaimg'  src='" + src + " '/>");
 
         });
-            $(".imgLiquid").imgLiquid({fill:true});
+        $(".imgLiquid").imgLiquid({fill:true});
      
 
         
