@@ -81,6 +81,12 @@
                 <div id="collapseOrdenar" class="collapse show" aria-labelledby="headingOrdenar" data-parent="#accordionExample">
                     <div class="card-body pl-0">
                         <div class="form-check mt-1">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
+                            <label class="form-check-label" for="filtro_orden_ofertas">
+                                Por Defecto
+                            </label>
+                        </div>
+                        <div class="form-check mt-1">
                             <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="menor" id="filtro_orden_menor">
                             <label class="form-check-label" for="filtro_orden_menor">
                                 Menor a Mayor Precio
@@ -90,12 +96,6 @@
                             <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="mayor" id="filtro_orden_mayor">
                             <label class="form-check-label" for="filtro_orden_mayor">
                                 Mayor a Menor Precio
-                            </label>
-                        </div>
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
-                            <label class="form-check-label" for="filtro_orden_ofertas">
-                                Por Defecto
                             </label>
                         </div>
                     </div>

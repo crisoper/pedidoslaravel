@@ -52,6 +52,7 @@
         $(".btn_buscar_productos_x_empresa").on("click", function( e ) {
             e.preventDefault();
             obtnerProductosLocales();
+            $('#txtBuscarProductosXempresa').val('');
         });
       
 

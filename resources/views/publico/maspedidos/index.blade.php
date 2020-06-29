@@ -71,6 +71,37 @@
 
     <div class="cart_content_filtrar">
         <div class="accordion" id="accordionExample">
+
+            <div class="card">
+                <div class="card-header" id="headingOrdenar">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOrdenar" aria-expanded="false" aria-controls="collapseOrdenar">
+                        Ordenar por:
+                    </button>
+                </div>
+                <div id="collapseOrdenar" class="collapse show" aria-labelledby="headingOrdenar" data-parent="#accordionExample">
+                    <div class="card-body pl-0">
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
+                            <label class="form-check-label" for="filtro_orden_ofertas">
+                                Por Defecto
+                            </label>
+                        </div>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="menor" id="filtro_orden_menor">
+                            <label class="form-check-label" for="filtro_orden_menor">
+                                Menor a Mayor Precio
+                            </label>
+                        </div>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="mayor" id="filtro_orden_mayor">
+                            <label class="form-check-label" for="filtro_orden_mayor">
+                                Mayor a Menor Precio
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header" id="headingFiltrar">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFiltrar" aria-expanded="true" aria-controls="collapseFiltrar">
@@ -89,36 +120,6 @@
                             <input class="form-check-input" type="checkbox" value="filtro_nuevos" id="filtro_nuevos">
                             <label class="form-check-label" for="filtro_nuevos">
                                 Nuevos
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header" id="headingOrdenar">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOrdenar" aria-expanded="false" aria-controls="collapseOrdenar">
-                        Ordenar por:
-                    </button>
-                </div>
-                <div id="collapseOrdenar" class="collapse show" aria-labelledby="headingOrdenar" data-parent="#accordionExample">
-                    <div class="card-body pl-0">
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="menor" id="filtro_orden_menor">
-                            <label class="form-check-label" for="filtro_orden_menor">
-                                Menor a Mayor Precio
-                            </label>
-                        </div>
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="mayor" id="filtro_orden_mayor">
-                            <label class="form-check-label" for="filtro_orden_mayor">
-                                Mayor a Menor Precio
-                            </label>
-                        </div>
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" name="fitroorden" type="radio" class="fitroorden" value="ofertas" id="filtro_orden_ofertas" checked>
-                            <label class="form-check-label" for="filtro_orden_ofertas">
-                                Por Defecto
                             </label>
                         </div>
                     </div>
