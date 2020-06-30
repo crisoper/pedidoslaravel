@@ -101,43 +101,45 @@
 
 
 
+.content_imagenes_modal {
+    width: 90%;
+    height: 100%;
+    position: relative;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); */
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    padding: 5px;
+}
 
 #imagenes_principal_producto_modal {
     position: relative;
 }
 
 #imagenes_principal_producto_modal .imagen_princ_producto_modal_1 {
-    width: 90%;
+    width: 100%;
     left: 0px; 
     top: 0px;
-    padding: 4px;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 5px;
+    padding: 0px;
+    border: 0;
+    border-radius: 5px 5px 0px 0px;
 }
 
 #imagenes_principal_producto_modal .imagen_princ_producto_modal_2,
 #imagenes_principal_producto_modal .imagen_princ_producto_modal_3,
 #imagenes_principal_producto_modal .imagen_princ_producto_modal_4 {
-    width: 90%;
+    width: 100%;
     visibility:hidden;
     position: absolute; 
     left: 0px; 
     top: 0px;
-    padding: 4px;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 5px;
+    padding: 0px;
+    border: 0;
+    border-radius: 5px 5px 0px 0px;
 }
 
-
-.content_imagenes_modal {
-    width: 100%;
-    height: 100%;
-    position: relative;
-
-}
 
 #imagenes_producto_modal {
-    width: 90%;
+    width: 100%;
 }
 
 #imagenes_producto_modal img {

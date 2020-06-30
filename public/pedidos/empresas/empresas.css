@@ -1,41 +1,176 @@
 
 
+.content_empresa {
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 0;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.content_banner_empresa img {
+    border-radius: 5px 5px 0px 0px;
+}
+
+.content_info_empresa {
+    border-bottom: 1px solid #c1ccd6;
+}
+
+.content_logo_empresa {
+    position: absolute;
+    z-index: 1;
+    bottom: 15%;
+    left: 7.5%;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+/* .content_logo_empresa img {
+    width: 200px;
+    height: 200px;
+} */
+
+.content_nombre_empresa {
+    text-align: left;
+    padding-left: 25% !important;
+}
+.content_nombre_empresa h4 {
+    color: #2a2e31;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    border-bottom-color: #d7dbdf;
+
+}
+.content_nombre_empresa p {
+    color: #6c757d;
+}
+
+
+
+
+
+/* PRODUCTOS EMPRESA */
+
+.content_productos_info_empresa {
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 0;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
 
 .nav_productos_empresa {
     width: 100%;
-    background-color: #0071bc;
+    /* background-color: #0071bc; */
     /* border-radius: 5px; */
 }
 .nav_productos_empresa .nav_tabs {
     width: 100%;
-    background-color: #0071bc;
+    /* background-color: #0071bc; */
 }
 
 .nav_productos_empresa .nav-link {
-    color: #131414;
+    color: #6c757d;
     font-size: 18px;
     font-weight: 700;
 }
+
+
+.nav_productos_empresa .nav-link.active {
+    color: #0071bc;
+    border-bottom: 3px solid #0071bc;
+    /* border-bottom: 4px solid #ffffff; */
+}
+
 @media (max-width: 576px) {
     .content_banner_empresa {
-        height: 130px;
+        height: 140px;
     }
     .content_banner_empresa img {
         height: 100%;
     }
 
+    .content_logo_empresa {
+        height: 80px;
+        width: 80px;
+        bottom: 15%;
+        left: 5%;
+    }
+    .content_logo_empresa img {
+        height: 100%;
+        width: 100%;
+    }
+
+
+    .content_nombre_empresa {
+        text-align: left;
+        padding-left: 27.5% !important;
+    }
+    .content_nombre_empresa h4 {
+        color: #2a2e31;
+        font-size: 17px;
+    }
+    .content_nombre_empresa p {
+        color: #6c757d;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .content_nombre_empresa .top_seller_product_rating {
+        text-align: left;
+    }
+    
+    .direccion_empresa {
+        display: none;
+    }
+
+    
     .nav_productos_empresa .nav-link {
-        /* width: 100%; */
         font-size: 15px;
     }
 }
 
-.nav_productos_empresa .nav-link.active {
-    color: #ffffff;
-    background-color: #034a79;
-    /* border-bottom: 4px solid #ffffff; */
-}
 
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .content_banner_empresa {
+        height: 200px;
+    }
+    .content_banner_empresa img {
+        height: 200px;
+    }
+
+    
+    .content_nombre_empresa {
+        text-align: left;
+        padding-left: 32.5% !important;
+    }
+    
+    .direccion_empresa {
+        display: none;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+    .content_banner_empresa {
+        height: 200px;
+    }
+    .content_banner_empresa img {
+        height: 200px;
+    }
+
+    
+    .content_nombre_empresa {
+        text-align: left;
+        padding-left: 25% !important;
+    }
+    
+    .direccion_empresa {
+        display: none;
+    }
+}
 
 
 /* BUSCADOR EMPRESA */
@@ -64,6 +199,22 @@
 }
 
 
+@media (max-width: 768px) {
+    .span_filtrar_prod {
+        display: none;
+    }
+}
+
+
+.content_info_detalle_empresa {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.info_acercade_empresa {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
 
 
 .modal_productos_x_empresa {
