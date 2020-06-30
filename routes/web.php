@@ -35,6 +35,7 @@ Auth::routes();
 
 Route::get("administracion/login", "Auth\LoginController@showLoginForm")
 ->name("admin.login");
+Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
 
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");

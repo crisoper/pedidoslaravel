@@ -75,8 +75,13 @@
                             Mi cuenta <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0 pb-2">
-                            <a class="btn btn_login" href="{{ route('login') }}">Identifícate</a>
-                            <a class="btn btn_register" href="{{ route('register') }}">Regístrate</a>
+                            @php
+                                $flagLogin = "login";
+                                $flagRegister = "register"
+                            @endphp
+
+                            <a class="btn btn_login" href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
+                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
                             <hr class="my-2">
                             
                             <button id="btn_open_favorites">
