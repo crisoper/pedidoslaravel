@@ -45,20 +45,30 @@
             font-family: 'Lora', serif;
             font-size: 1.2rem;
             color: #fff;
-        }
+             
+                    }
+        
+       
     </style>
 </head>
 
-<body cz-shortcut-listen="true">
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-dark text-light">
+<body cz-shortcut-listen="true" class="bg-light">
+
+    <header class=" ">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="container">
             <ul class="navbar-nav">
                 <li>
                     @guest
-                    {{ config('app.name', 'Pedidos') }}
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'PedidosApp') }}
+                    </a>
                     @else
-                    <small>@if ( Session::has( 'empresadescripcion') ) {{   Session::get( 'empresadescripcion') }}
-                        @endif </small>
+                    <small>
+                        @if ( Session::has( 'empresadescripcion') ) 
+                            {{ Session::get( 'empresadescripcion') }}
+                        @endif 
+                    </small>
                     @endguest
                 </li>
             </ul>
@@ -110,6 +120,7 @@
                     </div>
                 </li>
             </ul>
+        </div>
         </nav>
     </header>
    
