@@ -9,6 +9,7 @@
         position: absolute;
         padding: 10px;
         pointer-events: none;
+        color: #f72a2a;
     }
    
     #email,
@@ -17,6 +18,7 @@
      #telefono,
      #dni{
         padding-left: 30px !important;
+       
     }
 
     .contenedor {
@@ -45,11 +47,15 @@
         background-color: #d41f1f !important; 
         box-shadow: 0.5px 0.5px 1px 1.5px #e63719 ;
      }
+     .container_left {
+        background-color: #F8F9FA;
+        height: 100vh;
+    }
 </style>
 @section('contenido')
-<div class="container ">
-    <div class="row justify-content-center ">
-        <div class="col-md-6 mt-3">
+<div class="container container_left ">
+    <div class="row justify-content-center pt-5 ">
+        <div class="col-md-8 mt-4">
 
             <ul id="tabs" class="nav nav-tabs">
                 <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
@@ -63,8 +69,8 @@
 
             </ul>
 
-            <div id="" class="tab-content col-12">
-                <div id="login" class="tab-pane fade @if( $flag == 'login') active show @endif" style="border: none;">
+            <div id="" class="tab-content col-12 mt-2">
+                <div id="login" class="pt-5 tab-pane fade @if( $flag == 'login') active show @endif" style="border: none; ">
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="card-body col-12">
