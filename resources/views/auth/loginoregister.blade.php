@@ -2,15 +2,23 @@
 
 <style>
     .fa-envelope,
-    .fa-unlock-alt {
+    .fa-unlock-alt,
+    .fa-map-marker,
+    .fa-phone,
+    .fa-address-card {
         position: absolute;
         padding: 10px;
         pointer-events: none;
+        color: #f72a2a;
     }
-
+   
     #email,
-    #password {
+    #password,
+    #direccion,
+     #telefono,
+     #dni{
         padding-left: 30px !important;
+       
     }
 
     .contenedor {
@@ -19,34 +27,53 @@
 
     #tabs,
     #tabsContent {
-        display: flex;
+        
         justify-content: center;
         border: none;
-    }}
-  
+        
+        
+    }
+  .nav-link{
+    font-size: 16px !important;
+    border: none !important;
+    background-color: transparent !important;
+     }
+     #btn_submit{
+        background-color: #f72a2a !important; 
+        border-radius:0px !important; 
+        border: 0px;
+     }
+     #btn_submit:hover{
+        background-color: #d41f1f !important; 
+        box-shadow: 0.5px 0.5px 1px 1.5px #e63719 ;
+     }
+     .container_left {
+        background-color: #F8F9FA;
+        height: 100vh;
+    }
 </style>
 @section('contenido')
-<div class="container">
-    <div class="row justify-content-center contenedor">
-        <div class="col-md-8">
+<div class="container container_left ">
+    <div class="row justify-content-center pt-5 ">
+        <div class="col-md-8 mt-4">
 
             <ul id="tabs" class="nav nav-tabs">
-                <li class="nav-item"><a href="" data-target="#login" data-toggle="tab"
+                <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
                         class="nav-link small text-uppercase @if( $flag == 'login') active  @endif"
-                        style="border: none;">INICIA SESIÓN</a></li>
-                <li class="nav-item">
+                       >INICIA SESIÓN</a></li>
+                <li class="nav-item li_register">
                     <a href="" data-target="#register" data-toggle="tab"
                         class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif "
-                        style="border: none;">REGISTRATE</a>
+                       >REGISTRATE</a>
                 </li>
 
             </ul>
 
-            <div id="tabsContent" class="tab-content ">
-                <div id="login" class="tab-pane fade @if( $flag == 'login') active show @endif" style="border: none;">
+            <div id="" class="tab-content col-12 mt-2">
+                <div id="login" class="pt-5 tab-pane fade @if( $flag == 'login') active show @endif" style="border: none; ">
                     <div class="row ">
                         <div class="col-md-12">
-                            <div class="card-body">
+                            <div class="card-body col-12">
                                 <form method="POST" action="{{ route('login') }}" >
                                     @csrf
                                     <div class="form-group row">                                   
@@ -95,8 +122,8 @@
 
                                     <div class="form-group row mb-0">
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary btn-block">
-                                                {{ __('Login') }}
+                                            <button id="btn_submit" type="submit" class="btn btn-danger btn-block " >
+                                                {{ __('Iniciar sesión') }}
                                             </button>
 
                                         </div>
@@ -124,8 +151,7 @@
                                     <div class="form-group row">
 
                                         <div class="col-md-12">
-                                            {{-- <label for="dni" class=" col-form-label text-md-right">{{ __('Número de DNI') }}</label><br>
-                                            --}}
+                                            <i class="fa fa-address-card" aria-hidden="true"></i>
                                             <input id="dni" type="text" maxlength="8"
                                                 class="form-control  @error('dni') is-invalid @enderror" name="dni"
                                                 value="{{ old('dni') }}" required autocomplete="dni" autofocus
@@ -192,8 +218,7 @@
                                     <div class="form-group row">
 
                                         <div class="col-md-8">
-                                            {{-- <label for="" class=" col-form-label text-md-right">{{ __('Apellido Paterno') }}</label>
-                                            --}}
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                                             <input id="direccion" type="text"
                                                 class="form-control  @error('name') is-invalid @enderror"
                                                 name="direccion" value="{{ old('direccion') }}" required
@@ -207,8 +232,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            {{-- <label for="" class=" col-form-label text-md-right">{{ __('Apellido Materno') }}</label>
-                                            --}}
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
                                             <input id="telefono" type="text"
                                                 class="form-control  @error('name') is-invalid @enderror"
                                                 name="telefono" value="{{ old('telefono') }}" required
@@ -225,8 +249,7 @@
                                     <div class="form-group row">
 
                                         <div class="col-md-12">
-                                            {{-- <label for="email" class=" col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
-                                            --}}
+                                            <i class="far fa-envelope"></i>
                                             <input id="email" type="email"
                                                 class="form-control  @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" required autocomplete="email"
@@ -243,8 +266,7 @@
                                     <div class="form-group row">
 
                                         <div class="col-md-6">
-                                            {{-- <label for="password" class=" col-form-label text-md-right">{{ __('Contraseña') }}</label>
-                                            --}}
+                                            <i class="fas fa-unlock-alt"></i>
                                             <input id="password" type="password"
                                                 class="form-control  @error('password') is-invalid @enderror"
                                                 name="password" required autocomplete="new-password"
@@ -267,12 +289,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row ml-4">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" id="terminosycondiciones" name="terminosycondiciones" value=""> <i>Acepto haber leido todos los terminos y conciciones <a href="#">Aqui...</a>    </i>
+                                            <span class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
+                                          </label>
+                                         
+                                    </div>
                                     <div class="form-group row mb-0">
                                         <div class="col-md-12 ">
-                                            <button type="submit" class="btn btn-primary btn-block"
-                                                style="background-color: rgb(245, 170, 8)">
-                                                {{ __('Registrar') }}
-                                            </button>
+                                            <input id="btn_submit" type="submit" class="btn btn-primary btn-block  " value="{{ __('Registrar') }}" disabled>
+                                                
+                                          
                                         </div>
                                     </div>
 
@@ -294,11 +322,38 @@
 <script>
 
     $(document).ready(function(){
-        $(document).on('click', 'li', function(){
-            if( $(this).hasClass('active')){
-                $(this).addClass('text-danger  border-bottom-2 border-warning');
-            }
+   
+        if ( $("#login").hasClass('active') ) {
+            $(".li_login").attr('style','border-bottom:3px solid red !important; color: red !important;');
+        }
+       
+        if ( $("#register").hasClass('active') ) {
+            $(".li_register").attr('style','border-bottom:3px solid red !important; color: red !important;');
+        }
+       
+        $(".li_login").on('click', function(){
+            $(".li_login").attr('style','border-bottom:3px solid red !important; color: red !important; font: bold !important;');
+            $(".li_register").removeAttr('style');
         });
+        
+        $(".li_register").on('click', function(){
+            $(".li_register").attr('style','border-bottom:3px solid red !important; color: red !important; font: bold !important;');
+            $(".li_login").removeAttr('style');         
+
+        })
+      
+  
+        $('#terminosycondiciones').on('change', function() {
+             if( $(this).prop('checked') ) {
+                
+               
+                $("input[type=submit]").removeAttr("disabled");
+             }  else{
+                $("input[type=submit]").attr('disabled','disabled');
+             }
+        });
+        
+               
     });
 </script>
     

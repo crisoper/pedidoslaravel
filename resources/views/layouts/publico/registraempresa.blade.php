@@ -45,20 +45,33 @@
             font-family: 'Lora', serif;
             font-size: 1.2rem;
             color: #fff;
+             
+                    }
+        body{
+            background: linear-gradient(90deg, #17A2B8 10%, #F8F9FA 90%);
         }
+        
+       
     </style>
 </head>
 
-<body cz-shortcut-listen="true">
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-dark text-light">
+<body cz-shortcut-listen="true" >
+
+    <header class=" ">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
+            <div class="container">
             <ul class="navbar-nav">
                 <li>
                     @guest
-                    {{ config('app.name', 'Pedidos') }}
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'PedidosApp') }}
+                    </a>
                     @else
-                    <small>@if ( Session::has( 'empresadescripcion') ) {{   Session::get( 'empresadescripcion') }}
-                        @endif </small>
+                    <small>
+                        @if ( Session::has( 'empresadescripcion') ) 
+                            {{ Session::get( 'empresadescripcion') }}
+                        @endif 
+                    </small>
                     @endguest
                 </li>
             </ul>
@@ -110,14 +123,19 @@
                     </div>
                 </li>
             </ul>
+        </div>
         </nav>
     </header>
    
         <main class="container-fluid" role="main">
 
-            <section class="content">
+            <section class="content d-flex justify-content-end">
 
-                @yield('contenido')
+                <div class="col-md-8 col-sm-12 ">
+                    @yield('contenido')
+
+                </div>
+
 
             </section>
         </main>
