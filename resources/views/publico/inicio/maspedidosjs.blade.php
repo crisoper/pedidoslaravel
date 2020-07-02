@@ -101,13 +101,13 @@
 
 
                         <!-- Product Description -->
-                        <div class="featured__item__text container_product_cart featured__item__text_maspedidos px-2 pt-2">
-                            <div class="row">
+                        <div class="featured__item__text container_product_cart px-2 pt-2">
+                            <div class="row mx-0">
                                 <div class="col-12">
                                     <p class="nombre_producto my-0">${ maspedidos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-2 mb-0">
                                 <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
@@ -180,7 +180,7 @@
                 var botonMoreMin = $(this);
 
                 var valorActual = botonMoreMin.parent().find('input').val();
-                var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
+                var precio = botonMoreMin.parents('.container_producto_modal').find('#precio_producto_modal').html();
                 
                 console.log(precio);
 
@@ -196,7 +196,7 @@
                 }
 
                 botonMoreMin.parent().find('input').val(nuevoValor);
-                botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+                botonMoreMin.parents('.container_producto_modal').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
 
             });
         }

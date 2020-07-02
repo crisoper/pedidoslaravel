@@ -96,6 +96,16 @@ Route::get('maspedidos', 'Publico\MaspedidosController@index')
 ->name('maspedidos.index');
 
 
+
+// PRODUCTOS RESULTADOS BUSQUEDA
+Route::get('productos/busqueda', 'Publico\ResultadosproductosController@index')
+->name('productos.busqueda.index');
+// PRODUCTOS RESULTADOS BUSQUEDA
+Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
+->name('locales.busqueda.index');
+
+
+
 // EMPRESAS
 Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 ->name('locales.index');

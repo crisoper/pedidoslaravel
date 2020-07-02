@@ -161,10 +161,12 @@
                             <i class="fas fa-bars"></i> Categorías <i class="fas fa-angle-down ml-3"></i>
                         </button>
                         <ul class="dropdown-menu header_categorias">
-                            <li><a class="dropdown-item js-scroll-trigger" href="#preductRecomendado">Recomendados</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosEnOferta">Ofertas</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosNuevos">Nuevos</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosMasPedidos">Mas Pedidos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('recomendados.index') }}">Recomendados</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ofertas.index') }}">Ofertas</a></li>
+                            <li><a class="dropdown-item" href="{{ route('nuevos.index') }}">Nuevos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los Productos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('locales.busqueda.index') }}">Todos Los Locales</a></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item submenu_categorias" href="#">Categorías <i class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
@@ -180,7 +182,7 @@
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
                             <div class="input-group input_group_search">
-                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
                                     <a href="#" class="btn btn_buscar_productos">

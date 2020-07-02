@@ -73,4 +73,29 @@ class Empresa extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+
+
+    
+
+    /*
+    * Distrito al que pertenece la empresa
+    */
+    public function distrito()
+    {
+        return $this->belongsTo('App\Models\Publico\Distrito', 'distrito_id', 'id');
+    }
+    /*
+    * Provincia al que pertenece la empresa
+    */
+    public function provincia()
+    {
+        return $this->belongsTo('App\Models\Publico\Provincia', 'provincia_id', 'id');
+    }
+    /*
+    * Departamento al que pertenece la empresa
+    */
+    public function departamentoid()
+    {
+        return $this->belongsTo('App\Models\Publico\Departamento', 'departamento_id', 'id');
+    }
 }

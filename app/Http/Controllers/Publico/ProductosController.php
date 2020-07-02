@@ -190,9 +190,7 @@ class ProductosController extends Controller
 
     }
 
-
-
-
+    
     public function getdatosxid ( Request $request ) {
         $producto = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
         ->with([

@@ -3,41 +3,47 @@
 @section('contenido')
 
 
+
 {{-- CONTENIDO EMPRESA Y PRODUCTOS --}}
 <div class="container-fluid page_section px-2">
-    <div class="row m-0 mb-4 content_empresa">
-        <div class="col-12 p-0 content_banner_empresa">
-            <img src="{{asset('pedidos/image/banners/bannerlocal.jpg')}}" alt="">
-        </div>
-        <div class="col-12 p-0 pb-3 content_info_empresa">
-            <div class="row m-0">
-                <div class="col-4 col-sm-3 col-md-2 p-2 content_logo_empresa">
-                    <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
+    <div class="row m-0 mb-4 content_empresa_pagina">
+        <div class="col-12 p-0">
+
+            <div class="row m-0 logos_banners_empresa_pagina">
+                <div class="col-12 p-0 mx-auto content_logo_empresa_pagina">
+                    <img class="logo_empresa_pagina" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
                 </div>
-                <div class="col-12 p-0 pr-3 content_nombre_empresa">
-                    <div class="row m-0">
-                        <div class="col-12">
-                            <h4 class="mb-0 pb-1"><b>{{ $empresa->nombrecomercial }}</b></h4>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p class="my-0">Carnes y Parrillas</p>
-                        </div>
-                        <div class="col-12 col-md-4 text-right direccion_empresa">
-                            <p class="my-0">{{ $empresa->direccion }}</p>
-                        </div>
-                        {{-- <div class="col-12 col-md-4 text-right">
-                            <div class="top_seller_product_rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div> --}}
-                    </div>
+                <div class="col-12 p-0 banner_empresa_pagina">
+                    <img src="{{asset('pedidos/image/banners/bannerlocal.jpg')}}" alt="">
+                </div>
+            </div>
+            
+            <div class="row m-0 content_nombre_empresa_pagina">
+                <div class="col-12 p-0">
+                    <h5 class="m-0 text-truncate">{{ $empresa->nombrecomercial }}</h5>
+                </div>
+                <div class="col-12 pl-0">
+                    <hr class="mx-0 my-2 margin_nombre_empresa_pagina">
+                </div>
+            </div>
+            
+            <div class="row m-0 content_informacion_empresa_pagina">
+                <div class="col-12 col-md-2 col-lg-3 p-0 border__empresa_pagina">
+                    <p class="m-0 rubro_empresa_pagina">{{ $empresa->rubro->nombre }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 p-0 border__empresa_pagina">
+                    <p class="m-0 text_transform">Cajamarca | Cajamarca | Baños Del Inca</p>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-0">
+                    <p class="m-0">Reservaciones - Delivery</p>
                 </div>
             </div>
         </div>
+        
+        <div class="col-12 p-0">
+            <hr class="m-0">
+        </div>
+
         <div class="col-12 p-0">
             <nav class="nav_productos_empresa">
                 <div class="nav nav_tabs d-flex justify-content-center" id="nav_tab" role="tablist">

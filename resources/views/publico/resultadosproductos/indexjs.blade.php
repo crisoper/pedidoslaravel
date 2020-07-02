@@ -3,42 +3,49 @@
     
     $(document).ready(  function () {
         
+        $("#filtro_ofertas").on("click", function() {
+            obtenerProductosResultados();
+        });
+        
+        $("#filtro_nuevos").on("click", function() {
+            obtenerProductosResultados();
+        });
+        
         $("#filtro_orden_menor").on("click", function() {
-            obtenerProductosOfertados();
+            obtenerProductosResultados();
         });
         
         $("#filtro_orden_mayor").on("click", function() {
-            obtenerProductosOfertados();
+            obtenerProductosResultados();
         });
         
         $("#filtro_orden_ofertas").on("click", function() {
-            obtenerProductosOfertados();
+            obtenerProductosResultados();
         });
 
 
         $(".btn_buscar_productos").on("click", function( e ) {
             e.preventDefault();
-
-            obtenerProductosOfertados();
+            obtenerProductosResultados();
         });
-
-        //Obtenemos los productos en ofertass
-        obtenerProductosOfertados( );
+      
+        //Obtenemos los productos en productos
+        obtenerProductosResultados( );
     
-        function obtenerProductosOfertados( ) {
+        function obtenerProductosResultados( ) {
     
             $.ajax({
-                url: "{{ route('ajax.ofertas.index') }}",
+                url: "{{ route('ajax.productos.busqueda.index') }}",
                 method: 'GET',
                 data: {
                     storagecliente_id: obtenerLocalStorageclienteID (),
-                    buscar: $("#txtBuscarTextoGeneral").val(),
+                    buscarproductos: $("#txtBuscarTextoGeneral").val(),
                     filtro_nuevos: $("#filtro_nuevos").is(':checked')  ? 1 : 0,
                     filtro_ofertas: $("#filtro_ofertas").is(':checked')  ? 1 : 0,
                     filtro_orden: $("input[name='fitroorden']:checked").val(),
                 },
                 success: function ( data ) {
-                    mostrarProductosOfertados( data )
+                    mostrarProductosResultados( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -47,18 +54,20 @@
     
         }
     
-        function mostrarProductosOfertados( datos ) {
-            $("#cuerpoProductosOfertados").html();
+        function mostrarProductosResultados( datos ) {
+
+            console.log(datos);
+            $("#cuerpoProductosResultados").html();
     
-            let ofertassHTML = "";
+            let productosHTML = "";
     
-            $.each( datos.data, function( key, ofertas ) {
+            $.each( datos.data, function( key, producto ) {
 
                 let fotos = '';
 
                 let contador = 0; 
                 
-                $.each( ofertas.fotos, function( key, foto ) {
+                $.each( producto.fotos, function( key, foto ) {
                     
                     contador++
 
@@ -71,39 +80,39 @@
                 });  
 
                 let enlistadeseos = '';
-                // console.log( typeof( ofertas.encarrito ) );
-                if (ofertas.enlistadeseos == false) {
+                // console.log( typeof( producto.encarrito ) );
+                if (producto.enlistadeseos == false) {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ ofertas.id }" idempresa="${ ofertas.empresa_id }">
+                        <button class="agregar_lista_deseos hint--top-right" data-hint="Agregar a mi lista de deseos" idproducto="${ producto.id }" idempresa="${ producto.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 } else {
                     enlistadeseos = enlistadeseos + `<div class="col-2 p-0">
-                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ ofertas.id }" idempresa="${ ofertas.empresa_id }">
+                        <button class="product_agreggate_listadeseos hint--top-right hint--success" data-hint="Agregado a mi lista de deseos" idproducto="${ producto.id }" idempresa="${ producto.empresa_id }">
                             <i class="fa fa-heart"></i>
                         </button>
                     </div>`;
                 }
 
                 let encarrito = '';
-                if (ofertas.encarrito == false) {
+                if (producto.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ ofertas.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ ofertas.id }" idempresa="${ ofertas.empresa_id }">
+                        <a href="${ producto.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ producto.id }" idempresa="${ producto.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
                         </a>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ ofertas.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ ofertas.id }" idempresa="${ ofertas.empresa_id }">
+                        <a href="${ producto.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ producto.id }" idempresa="${ producto.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
                         </a>
                     </div>`;
                 }
 
-                ofertassHTML = ofertassHTML + `
+                productosHTML = productosHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                         <div class="single_product_wrapper">
                             <div class="product-img">
@@ -111,8 +120,8 @@
                                 ${ fotos }
                                 
                                 <span class="empresa_badge">
-                                    <a target="blank" href="${ ofertas.empresa_url }" class="row">
-                                        <p class="text-truncate m-0 p-0">${ ofertas.empresa }</p>
+                                    <a target="blank" href="${ producto.empresa_url }" class="row">
+                                        <p class="text-truncate m-0 p-0">${ producto.empresa }</p>
                                         <i class="fas fa-angle-double-right"></i>
                                     </a>
                                 </span>
@@ -125,7 +134,7 @@
                             <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
                                 <div class="row mx-0">
                                     <div class="col-12">
-                                        <p class="nombre_producto my-0">${ ofertas.nombre }</p>
+                                        <p class="nombre_producto my-0">${ producto.nombre }</p>
                                     </div>
                                 </div>
                                 <hr class="mt-2 mb-0">
@@ -136,12 +145,12 @@
                                         </p> --}}
                                         <p class="small"></p>
                                         <h4 class="price_product_unit my-0">
-                                            S/ <span class="precio_producto">${ ofertas.precio }</span>
+                                            S/ <span class="precio_producto">${ producto.precio }</span>
                                         </h4>
                                     </div>
                                     <div class="col-6 pt-1 pb-2 px-2 m-0">
                                         <p class="import_price text-muted py-0 my-0">
-                                            Importe: <b>S/ <span class="importe_producto">${ ofertas.precio }</span></b>
+                                            Importe: <b>S/ <span class="importe_producto">${ producto.precio }</span></b>
                                         </p>
                                         <div class="input-group input_group_unit_product">
                                             <button class="input-group-prepend minus MoreMinProd d-flex justify-content-around">-</button>
@@ -153,7 +162,7 @@
                                 <hr class="mt-0 mb-2">
                                 <div class="row modal_lista_cart mx-1 mb-2 text-center">
                                     <div class="col-2 p-0">
-                                        <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ ofertas.id }">
+                                        <button class="abrir_modal_producto_inicio hint--top-right" data-hint="Detalle de producto" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ producto.id }">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                     </div>
@@ -166,7 +175,7 @@
                 `;
             });
     
-            $("#cuerpoProductosOfertados").html( ofertassHTML);
+            $("#cuerpoProductosResultados").html( productosHTML);
             sumarRestarCantidad();
             contarProductosAlFiltrar();
         }
@@ -414,13 +423,15 @@
             });
         }
 
-        
+
+
         function contarProductosAlFiltrar() {
             let contarProductos = $('.single_product_wrapper').length;
             $(".nro_productos_buscados").html(contarProductos);
         }
 
         
+
     });
 
 

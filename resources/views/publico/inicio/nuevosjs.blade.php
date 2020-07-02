@@ -100,12 +100,12 @@
 
                         <!-- Product Description -->
                         <div class="featured__item__text container_product_cart featured__item__text_nuevos px-2 pt-2">
-                            <div class="row">
+                            <div class="row mx-0">
                                 <div class="col-12 mb-0">
                                     <p class="nombre_producto m-0 p-0" >${ nuevos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-2 mb-0">
                                 <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">

@@ -18,9 +18,23 @@ class EmpresaResource extends JsonResource
         return [
             'id' => $this->id,
             'nombre' => $this->nombre,
+            'logo' => url("/").'/storage/empresaslogos/'.$this->logo,
             'direccion' => $this->direccion,
-            'logo' => $this->logo,
             'paginaweb' => $this->paginaweb,
+            'nombrecomercial' => $this->nombrecomercial,
+            'empresa_url' => $this->id ? url("/").'/locales/'.$this->id : '',
+            
+            'rubro_id' => $this->rubro ? $this->rubro->id : 0, 
+            'rubro' => $this->rubro ? $this->rubro->nombre : '',
+            
+            'provincia_id' => $this->provincia ? $this->provincia->id : 0, 
+            'provincia' => $this->provincia ? $this->provincia->nombre : '',
+            
+            'distrito_id' => $this->distrito ? $this->distrito->id : 0, 
+            'distrito' => $this->distrito ? $this->distrito->nombre : '',
+            
+            'departamentoid_id' => $this->departamentoid ? $this->departamentoid->id : 0, 
+            'departamentoid' => $this->departamentoid ? $this->departamentoid->nombre : '',
         ];
     }
 }

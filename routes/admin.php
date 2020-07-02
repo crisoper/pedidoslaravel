@@ -136,5 +136,8 @@ function() {
     // PEDIDOS
     Route::resource('pedidos', 'Admin\PedidosController');
 
+    Route::get("ajax/pedidos/index", "Admin\PedidosAjaxController@index")
+    ->name("ajax.pedidos.index");
+
     
 });

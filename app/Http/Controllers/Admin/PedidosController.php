@@ -48,27 +48,12 @@ class PedidosController extends Controller
     }
 
 
+
+
+
     public function index()
     {
-        // $categorias = Pedido::get();
-       
-        // if (!empty(request()->buscar)) 
-        // {
-        //     $productos = Pedido::where('nombre', 'like', '%'.request()->buscar.'%' )
-        //             ->where('empresa_id', $this->empresaId())
-        //             ->orderBy('id', 'desc')
-        //             ->paginate(10);
-        //     return view('admin.productos.index', compact('productos','categorias'));
-        // }
-        // else
-        // {
-        //     $productos = Pedido::orderBy('id', 'desc')
-        //     ->where('empresa_id', $this->empresaId())
-        //     ->paginate(10);
-                      
-         
-        //     return view('admin.productos.index', compact('productos','categorias'));
-        // }
         return view('admin.pedidos.index');
     }
+    
 }

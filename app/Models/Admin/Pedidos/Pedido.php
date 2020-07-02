@@ -22,4 +22,15 @@ class Pedido extends Model
     {
         return $this->hasMany('App\Models\Admin\Pedidos\Pedidodetalle', 'pedido_id');
     }
+
+    
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Admin\Empresa', 'empresa_id', 'id');
+    }
+    
+    public function cliente()
+    {
+        return $this->belongsTo('App\User', 'cliente_id', 'id');
+    }
 }
