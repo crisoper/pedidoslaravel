@@ -9,13 +9,13 @@ use App\Models\Admin\Pedidos\Pedidoestado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PedidosAjaxController extends Controller
+class PedidosdespachadosAjaxController extends Controller
 {
     
     public function index()
     {
         $pedidos = Pedido::orderBy("id", "desc")
-        ->whereHas('pedidoestado', function (){}, '=', 1)
+        ->whereHas('pedidoestado', function (){}, '=', 2)
         ->with([
             'empresa',
             'cliente',
@@ -32,16 +32,14 @@ class PedidosAjaxController extends Controller
     
     public function store(Request $request)
     {
-        $pedidos = new Pedidoestado();
-        $pedidos->empresa_id = $request->empresa_id;
-        $pedidos->pedido_id = $request->pedido_id;
-        $pedidos->estado = $request->estado;
-        $pedidos->created_by = Auth::id();
+        $pedidodespachado = new Pedidoestado();
+        $pedidodespachado->empresa_id = $request->empresa_id;
+        $pedidodespachado->pedido_id = $request->pedido_id;
+        $pedidodespachado->estado = $request->estado;
+        $pedidodespachado->created_by = Auth::id();
         
-        $pedidos->save();
+        $pedidodespachado->save();
 
         return response()->json(['success' => "Operacion realizada con exito"], 200);
     }
-
-    
 }

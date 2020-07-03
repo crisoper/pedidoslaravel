@@ -22,7 +22,13 @@ class Pedido extends Model
     {
         return $this->hasMany('App\Models\Admin\Pedidos\Pedidodetalle', 'pedido_id');
     }
+    
+    public function pedidoestado()
+    {
+        return $this->hasMany('App\Models\Admin\Pedidos\Pedidoestado', 'pedido_id');
+    }
 
+    
     
     public function empresa()
     {

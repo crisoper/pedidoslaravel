@@ -65,17 +65,17 @@
                 let encarrito = '';
                 if (nuevos.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ nuevos.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </a>
+                        </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ nuevos.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </a>
+                        </button>
                     </div>`;
                 }
 

@@ -21,6 +21,12 @@ class PedidoResource extends JsonResource
             
             'cliente_id' => $this->cliente ? $this->cliente->id : 0, 
             'cliente' => $this->cliente ? $this->cliente->name : '',
+            
+            'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
+            'empresa' => $this->empresa ? $this->empresa->nombre : '',
+
+
+            'detalle' => $this->pedidodetalle ? PedidodetalleResource::collection($this->pedidodetalle) : [],
         ];
     }
 }

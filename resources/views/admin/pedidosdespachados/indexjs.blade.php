@@ -4,16 +4,16 @@
     $(document).ready(  function () {
         
         //Obtenemos los productos en pedidoss
-        obtenerPedidos( );
+        obtenerPedidosDespachados( );
     
-        function obtenerPedidos( ) {
+        function obtenerPedidosDespachados( ) {
     
             $.ajax({
-                url: "{{ route('ajax.pedidos.index') }}",
+                url: "{{ route('ajax.pedidos.despachados.index') }}",
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarPedidos( data )
+                    mostrarPedidosDespachados( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -22,11 +22,11 @@
     
         }
     
-        function mostrarPedidos( datos ) {
+        function mostrarPedidosDespachados( datos ) {
 
             console.log(datos);
 
-            $("#cuerpoPedidosPorConfirmar").html();
+            $("#cuerpoPedidosDespachados").html();
     
             let pedidosHTML = "";
     
@@ -71,33 +71,33 @@
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                             </div>
                             <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Despachar Pedido</button>
+                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button>
                             </div>
                         </div>
                     </div>
                 `;
             });
     
-            $("#cuerpoPedidosPorConfirmar").html( pedidosHTML);
+            $("#cuerpoPedidosDespachados").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidos, 3000);
+        setInterval(obtenerPedidosDespachados, 3000);
 
 
 
                 
-        $("#cuerpoPedidosPorConfirmar").on("click", ".btn_x_confirmar", function() {
+        $("#cuerpoPedidosDespachados").on("click", ".btn_x_confirmar", function() {
             let btnDespachar = $( this );
             let empresa_id = $(btnDespachar).attr('idempresa');
             let pedido_id = $( btnDespachar).attr("idpedido");
 
-            agregarProducto_Canasta( empresa_id, pedido_id, "despachado" );
+            agregarProducto_Canasta( empresa_id, pedido_id, "entregado" );
         })
 
         function agregarProducto_Canasta( empresa_id, pedido_id, estado, btnDespachar) {
 
             $.ajax({
-                url: "{{ route('ajax.pedidos.store') }}",
+                url: "{{ route('ajax.pedidos.despachados.store') }}",
                 method: 'POST',
                 data: {
                     empresa_id: empresa_id,
@@ -105,7 +105,7 @@
                     estado: estado,
                 },
                 success: function ( data ) {
-                    obtenerPedidos( );
+                    obtenerPedidosDespachados( );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

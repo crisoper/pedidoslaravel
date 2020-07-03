@@ -30,17 +30,17 @@
 
     {{-- CESTA, FAVORITOS, FILTRAR PRODUCTOS--}}
     <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/cesta/cesta.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/cesta/cestamenu.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/favoritos/favoritos.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/favoritos/favoritosmenu.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/cesta_favoritos_filtrar/filtrarproductos/filtrarproductos.css')}}">
     
-
 
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/empresas.css')}}">
     
-    
-    
 
+    
 
     {{-- MENU PRODUCTOS --}}
     {{-- <link rel="stylesheet" href="{{asset('pedidos/menuproductos/menuproductos.css')}}"> --}}

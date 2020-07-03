@@ -20,100 +20,149 @@
     box-shadow: none;
 }
 
-.open_menu_movil #icon_humberger {
-    font-weight: 0px;
-    margin-bottom: -13px;
-}
-.open_menu_movil #menu_humberger {
-    font-size: 13px;
-}
 
-#afiliar_empresa_menu_movil a {
+
+
+
+/* MODAL MENU MOVIL */
+
+.content_modal_menumovil.content_modal_menumovil_on {
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    position: fixed;
     width: 100%;
-    color: #3eb291;
-    background-color: #343a40;
-    text-align: left;
-    border-radius: 0;
-}
-
-.btn_movil_ronm {
-    width: 100%;
-    text-align: left;
-    border-radius: 0;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ffffff;
-}
-.btn_movil_ronm:focus {
-    box-shadow: none;
-    color: #3eb291;
-}
-
-#accordionExample .card {
-    border-radius: 0;
-}
-
-.btn_movil_categorias {
-    width: 100%;
-    text-align: left;
-    border-radius: 0;
-    background-color: #f2f2f2;
-    border: 1px solid #ffffff;
-}
-
-.btn_movil_categorias:focus {
-    box-shadow: none;
-    color: #3eb291;
-}
-
-#menuMovilCategorias > div > a {
-    width: 100%;
-    text-align: left;
-    border-radius: 0;
-    padding-left: 20px !important;
-    background-color: #ffffff;
-    border-bottom: 1px solid #f2f2f2;
-}
-
-.humberger__menu__contact {
-    background-color: #ffffff;
-    border-top:1px solid #f2f2f2;
-}
-
-.btn_servicio_2 {
-    width: auto;
-    border-radius: 0;
-    color: #ffffff;
-}
-.btn_servicio_2:focus {
-    box-shadow: none;
-    color: #3eb291;
-}
-.humberger__menu__contact > .dropdown_menu_movil {
+    height: 100%;
+    top: 0;
     left: 0;
-    margin-left: -5px;
-    width: auto;
-    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
 }
 
-.dropdown_menu_movil a {
+.sidebar_modal_menumovil_left {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    left: -400px;
+    background-color: #ffffff;
+    z-index: 1100;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 800ms;
+    transition-duration: 800ms;
+}
+
+.sidebar_modal_menumovil_left.sidebar_modal_menumovil_left_on {
+    left: 0;
+}
+.sidebar_modal_menumovil_left #close_sidebar_menumovil {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    top: 0;
+    left: 100%;
+    z-index: 100;
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    border: 0;
+    background-color: #3eb291;
     color: #ffffff;
-    width: 100%;
-    font-size: 14px;
-    text-transform: uppercase;
 }
-.dropdown_menu_movil .number_phone {
+
+.sidebar_modal_menumovil_left .content_menumovil {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.logo_menumovil {
+    width: 100%;
+    height: 50px;
+    background-color: #3eb291;
+    text-align: center;
+    border-bottom: 1px solid #7d838a;
+}
+
+.serviviocliente_menumovil {
+    width: 100%;
+    height: auto;
+    background-color: #343a40;
+    text-align: center;
+    border-bottom: 1px solid #7d838a;
+}
+
+.btn_serviciocliente_menumovil {
     color: #ffffff;
-    width: 100%;
-    font-size: 15px;
-    text-transform: uppercase;
 }
-.dropdown_menu_movil .suport {
+.btn_serviciocliente_menumovil:focus {
+    color: #3eb291;
+    box-shadow: none;
+}
+.dropdown_serviciocliente {
+    width: auto;
+    margin-top: -0.5px;
+    border-radius: 0px 0px 5px 5px;
+}
+.dropdown_serviciocliente a {
     color: #ffffff;
-    width: 100%;
-    font-size: 12px;
 }
-.dropdown_menu_movil .border_movil_info {
-    border-bottom: 1px solid #f2f2f2;
+.dropdown_serviciocliente p {
+    color: #ffffff;
 }
+.number_phone {
+    line-height: 15px;
+}
+.border_movil_info {
+    border-bottom: 1px solid #7d838a;
+}
+
+
+
+
+.content_scroll_menumovil {
+    width: 100% !important;
+    height: 90% !important;
+    background-color: #ffffff;
+    box-shadow: inset 0 5px 5px -5px #333;
+}
+
+.scroll_menumovil {
+    width: 100% !important;
+    height: 92.5% !important;
+    overflow: scroll;
+    box-sizing: border-box;
+    margin-left: 0px;
+    padding: 0;
+}
+.scroll_menumovil::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.scroll_menumovil::-webkit-scrollbar:vertical {
+    width: 7px;
+}
+.scroll_menumovil::-webkit-scrollbar:horizontal {
+    height: 0px;
+}
+.scroll_menumovil::-webkit-scrollbar-thumb {
+    background-color: #7d838a;
+    border-radius: 4px;
+    border: 4px solid #7d838a;
+}
+.scroll_menumovil::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -111,6 +111,9 @@ Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 ->name('locales.index');
 
 
+//REALIZAR PEDIDO
+Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
+->name("ajax.locales.pedidosstore");
 
 
 
