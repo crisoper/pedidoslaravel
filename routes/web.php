@@ -107,7 +107,7 @@ Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 
 
 Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
-Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
+Route::post('nuevaEmpresa','Admin\EmpresasController@nuevaEmpresa')->name('nuevaEmpresa.store');
 Route::post('tuempresa.update','Admin\EmpresasController@tuempresaUpdate')->name('tuempresa.update');
 Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
 Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');

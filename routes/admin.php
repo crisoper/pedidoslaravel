@@ -30,6 +30,7 @@ function () {
     
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
+    // Route::post("horarioatencionempresa", 'Admin\SeleccionarempresaController@horarioAtencion')->name("horario.atencion.empresa");
     
 
     Route::resource('roles', 'Admin\Roles\RolesController');
@@ -37,6 +38,21 @@ function () {
 
 });
 
+Route::group([
+    'prefix' => 'configuracion',
+    'middleware' => [
+        'auth'
+    ],    
+],
+function(){
+    Route::get("horarioempresa","Admin\HorariosController@index")->name('horarios.index');
+    Route::get("horarioempresa.editar","Admin\HorariosController@edit")->name('horarios.editar');
+    Route::post("horarioempresa.update","Admin\HorariosController@update")->name('horarios.update');
+    Route::post("horarioempresa","Admin\HorariosController@store")->name('horario.atencion.empresa');
+    Route::get("configuracionempresa","Admin\ConfiguracionesController@index")->name('configuracionempresa.index');
+    Route::get("comprobantesempresa","Admin\ConfiguracionesController@comprobantes")->name('config.comprobantes.index');
+}
+);
 
 Route::group([
     'prefix' => 'administracion',

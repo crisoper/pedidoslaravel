@@ -1,121 +1,6 @@
 <script>
     $(document).ready(function(){
-        setTimeout( function() {
-            $("#errorextension").fadeOut(1000);
-        }, 5000);
-       
-      $("#camara").on("click", function(){
-        $("#file").trigger('click');
-        $("#errorextension").fadeOut();
-      })
 
-    $(".imgLiquid").imgLiquid({fill:true});
-
-   $("#file").on('change', function(event){
-    event.preventDefault();
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        $("#errorextension").show();      
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#imagePreview').html('<img src="'+e.target.result+'"/>');
-                $(".imgLiquid").imgLiquid({fill:true});
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-   });
-//    $(".datetimepicker-input").datetimepicker({
-//         format: 'LT'
-  
-//     });                   
-                      
-  
-    $('#departamentoid').select2({
-            placeholder: "Departamento"
-    });
-    $('#provinciaid').select2({
-            placeholder: "Provincia"
-    });
-    $('#distritoid').select2({
-            placeholder: "Distrito"
-    });
-    $('#rubro_id').select2({
-            placeholder: "Rubro"
-    });
-   
-    $('#departamentoid').on("change", function () {
-
-    let elemento = this;
-
-    $.ajax({
-        url: "{{ route('ajax.getprovinciaByDepartamentoId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            departamento_id : $( elemento ).val()
-        },
-        success: function( resp ){
-            //console.log( resp );
-            $("#provinciaid").html(""); 
-
-            $.each( resp.data, function( key, value ) {
-
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#provinciaid").append( opcion ); 
-            });
-
-            $('#provinciaid').trigger("change");
-
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#provinciaid").html(""); 
-            console.log( jqXHR );
-        }
-
-    });
-
-    });
-        
-        
-    
-    $('#provinciaid').on("change", function () {
-    
-    let elemento = this;
-    
-    $.ajax({
-        url: "{{ route('ajax.getdistritosByProvinciaId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            provincia_id : $( elemento ).val()
-        },
-        success: function( resp ){
-        
-            $("#distritoid").html(""); 
-            $.each( resp.data, function( key, value ) {
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#distritoid").append( opcion ); 
-            });
-            
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#distritoid").html(""); 
-          
-        }
-    
-    });
-    
-    });
-    
 
     
     
@@ -124,13 +9,13 @@
         $( enviarFormRegistro ).prop( "disabled", true ).find("span").show();
 
         $.ajax({
-            url: $("#formularioRegistroEmpresa").attr('action'),
+            url: $("#form_horarioAtencionEmpresa").attr('action'),
             method: 'post',
             dataType: 'json',
-            data: $("#formularioRegistroEmpresa").serialize(),
+            data: $("#form_horarioAtencionEmpresa").serialize(),
             success: function( user ){
-                // console.log(user);
-                window.location = '{{route("confirmarcuenta")}}';
+                
+                window.location = '{{route("configuracionempresa.index")}}';
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
             error:function( jqXHR, textStatus, errorThrown  ){
@@ -141,7 +26,7 @@
                     $( enviarFormRegistro ).prop( "disabled", false ).find("span").show(); 
                     $( ".spinnerr" ).hide(); 
 
-                    GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
+                    GLOBARL_settearErroresEnCampos( jqXHR, "form_horarioAtencionEmpresa" );
                 }
                 // else if( jqXHR.status == 429 ) 
                 // {   
@@ -167,7 +52,7 @@
 
                 //     setTimeout( function() {
                 //         // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-                //         $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
+                //         $("#form_horarioAtencionEmpresa" ).find(".is-invalid").removeClass("is-invalid");
                 //     }, 5000);
 
                 // }  
@@ -206,17 +91,18 @@
 
 //EDITAMOS EMPRESA REGISTRADA
 
-    $("#enviarFormActualizandoDatos").on('click', function(){
+    $("#enviarFormActualizandoDatos").on('click', function(event){
+        event.preventDefault();
         $.ajax({
-            url: "{{ route('tuempresa.update') }}",
+            url: "{{ route('horarios.update') }}",
             // url: $("#form_UpdateRegistroEmpresa").attr('action'),
             method: "post",
             dataType: "json",
             data: $("#form_UpdateRegistroEmpresa").serialize(),
             success: function( data){
                 
-                console.log(data);
-                // window.location= "{{ route('empresas.index') }}"
+                // console.log(data);
+                window.location= "{{ route('configuracionempresa.index') }}"
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
             error:function( jqXHR, textStatus, errorThrown  ){
@@ -227,7 +113,7 @@
                     $( enviarFormRegistro ).prop( "disabled", false ).find("span").show(); 
                     $( ".spinnerr" ).hide(); 
 
-                    GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
+                    GLOBARL_settearErroresEnCampos( jqXHR, "form_UpdateRegistroEmpresa" );
                 }
                 else if( jqXHR.status == 429 ) 
                 {   
@@ -240,20 +126,17 @@
 
                     $.each( errorInicio , function( index, diasemana ) {
                         $("#horainicio-"+ diasemana ).addClass("is-invalid");
-                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");
-                       
+                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");                       
                     });
                     
                     $.each( errorFin , function( index, diasemana ) {
                         $("#horafin-"+ diasemana ).addClass("is-invalid");
                         $("#errorfin-"+ diasemana ).addClass("is-invalid");
-                       
-                    
                     });
 
                     setTimeout( function() {
                         // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-                        $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
+                        $("#form_UpdateRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
                     }, 5000);
 
                 }  
@@ -263,79 +146,78 @@
 
 
        
-//     for (let i = 1; i < 8; i++) {
+    for (let i = 1; i < 8; i++) {
      
-//              let horainicio =   $('input[name="horainicio['+i+']"]').val() ;
-//              let horafinn =  $.trim( $('input[name="horafin['+i+']"]').val() );
+             let horainicio =   $('input[name="horainicio['+i+']"]').val() ;
+             let horafinn =  $.trim( $('input[name="horafin['+i+']"]').val() );
 
-//              let indicehorainicio = horainicio.indexOf(":");
-//              let indiceminutosinicio = horainicio.indexOf(" ");
-//              let horainicioextraida = horainicio.substring(0, indicehorainicio);
-//              let minutosinicioextraida = horainicio.substring(indicehorainicio +  1, indiceminutosinicio);
-//              let AmPmhoraninicio =  horainicio.substring(indiceminutosinicio + 1, horainicio.length);
-//                  valorminimo = ( parseInt(horainicioextraida) * 60 ) +  parseInt(minutosinicioextraida) ;
+             let indicehorainicio = horainicio.indexOf(":");
+             let indiceminutosinicio = horainicio.indexOf(" ");
+             let horainicioextraida = horainicio.substring(0, indicehorainicio);
+             let minutosinicioextraida = horainicio.substring(indicehorainicio +  1, indiceminutosinicio);
+             let AmPmhoraninicio =  horainicio.substring(indiceminutosinicio + 1, horainicio.length);
+                 valorminimo = ( parseInt(horainicioextraida) * 60 ) +  parseInt(minutosinicioextraida) ;
          
-//                  if (AmPmhoraninicio == 'PM' && horainicio != '12:00 PM' ) {
-//                    valorminimo = valorminimo + 720;
-//                  }else if( horainicio == '12:00 AM'){
-//                   valorminimo = 0;
-//                  }else if(horainicio == '12:00 PM'){
-//                     valorminimo = 720;
+                 if (AmPmhoraninicio == 'PM' && horainicio != '12:00 PM' ) {
+                   valorminimo = valorminimo + 720;
+                 }else if( horainicio == '12:00 AM'){
+                  valorminimo = 0;
+                 }else if(horainicio == '12:00 PM'){
+                    valorminimo = 720;
                  
-//                  }else{
-//                     valorminimo = valorminimo;
-//                  }
+                 }else{
+                    valorminimo = valorminimo;
+                 }
 
              
              
-//              let indicehorafin = horafinn.indexOf(":");
-//              let indiceenpaciofin = horafinn.indexOf(" ");
-//              let horafinextraida = horafinn.substring(0, indicehorafin);
-//              let minutosfinextraida = horafinn.substring(indicehorafin + 1, indiceenpaciofin);
-//              let AmPmhoranfin =  horafinn.substring( indicehorafin + 4 ,  horafinn.length);
-//                  valormaximo = ( parseInt(horafinextraida) * 60 ) +  parseInt(minutosfinextraida) ;
+             let indicehorafin = horafinn.indexOf(":");
+             let indiceenpaciofin = horafinn.indexOf(" ");
+             let horafinextraida = horafinn.substring(0, indicehorafin);
+             let minutosfinextraida = horafinn.substring(indicehorafin + 1, indiceenpaciofin);
+             let AmPmhoranfin =  horafinn.substring( indicehorafin + 4 ,  horafinn.length);
+                 valormaximo = ( parseInt(horafinextraida) * 60 ) +  parseInt(minutosfinextraida) ;
             
-//              console.log(minutosfinextraida);
-             
-//              if (AmPmhoranfin == 'PM') {
-//               valormaximo = valormaximo + 720;
-//             }else{
-//              valormaximo = valormaximo + 0;
-//             }
+                          
+             if (AmPmhoranfin == 'PM') {
+              valormaximo = valormaximo + 720;
+            }else{
+             valormaximo = valormaximo + 0;
+            }
 
-//             if( $('input[name="dias['+i+']"]').attr('checked') ) {
-//                 slidertime(valorminimo, valormaximo, i);
-//                 $('div[name="slider-range['+i+']"]').show();
-//             }
+            if( $('input[name="dias['+i+']"]').attr('checked') ) {
+                slidertime(valorminimo, valormaximo, i);
+                $('div[name="slider-range['+i+']"]').show();
+            }
 
-// //MOSTRAMOS SLIDER SI ACTIVAMOS DIA
+//MOSTRAMOS SLIDER SI ACTIVAMOS DIA
             
-//              $('input[name="dias['+i+']"]').on('change', function() {
-//                      if( $(this).prop('checked') ) {
-//                         valorminimo = 0;
-//                         valormaximo = 1440;
+             $('input[name="dias['+i+']"]').on('change', function() {
+                     if( $(this).prop('checked') ) {
+                        valorminimo = 0;
+                        valormaximo = 1440;
 
 
-//                           $('input[name="horainicio['+i+']"]').show();
-//                           $('input[name="horafin['+i+']"]').show();
-//                           $('input[name="horainicio['+i+']"]').val('12:00 AM');
-//                           $('input[name="horafin['+i+']"]').val('11:59 PM');                   
-//                           slidertime(valorminimo, valormaximo, i);
-//                           $('div[name="slider-range['+i+']"]').show();
-//                     }else{
-//                          $('div[name="slider-range['+i+']"]').hide();
-//                          $('input[name="horainicio['+i+']"]').hide();
-//                          $('input[name="horafin['+i+']"]').hide();
-//                          $('input[name="horainicio['+i+']"]').val('');
-//                          $('input[name="horafin['+i+']"]').val('');
-//                     }
-//              });
+                          $('input[name="horainicio['+i+']"]').show();
+                          $('input[name="horafin['+i+']"]').show();
+                          $('input[name="horainicio['+i+']"]').val('12:00 AM');
+                          $('input[name="horafin['+i+']"]').val('11:59 PM');                   
+                          slidertime(valorminimo, valormaximo, i);
+                          $('div[name="slider-range['+i+']"]').show();
+                    }else{
+                         $('div[name="slider-range['+i+']"]').hide();
+                         $('input[name="horainicio['+i+']"]').hide();
+                         $('input[name="horafin['+i+']"]').hide();
+                         $('input[name="horainicio['+i+']"]').val('');
+                         $('input[name="horafin['+i+']"]').val('');
+                    }
+             });
          
     
 
 
     
-//     }
+    }
 
 
 

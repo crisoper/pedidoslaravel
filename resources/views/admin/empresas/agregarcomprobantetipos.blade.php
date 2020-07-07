@@ -49,7 +49,12 @@
                         <div class="form-row py-2">
                             <div class="form-group col">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
-                                <a href="{{ route('empresas.index') }}" class="btn btn-danger">Cancelar</a>
+                                @if ( auth()->user()->hasRole('SuperAdministrador'))
+                                    <a href="{{route('empresas.index')}}" class="btn btn-danger">Cancelar</a>
+                                @else
+                                    <a href="{{route('config.comprobantes.index')}}" class="btn btn-danger">Cancelar</a>
+                                @endif
+                                
                             </div>
                         </div>
                     </form>

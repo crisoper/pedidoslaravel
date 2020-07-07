@@ -10,6 +10,7 @@ use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -37,8 +38,13 @@ class HomeController extends Controller
 
         $empresas = $userEmpresa;
         $empresa = $userEmpresa->first();
-
-        if (count($userEmpresa) != 0) {
+        
+        if (auth()->user()->hasRole('SuperAdministrador')) {
+          
+            $flag = "SuperAdministrador";
+            return view('home', compact('flag'));
+            
+        }else if (count($userEmpresa) != 0 ) {
 
             if (auth()->user()->hasRole('SuperAdministrador')) {
                 Session::put('empresaactual', $empresa->id);
@@ -55,7 +61,14 @@ class HomeController extends Controller
                         Session::put('empresaactual', $empresa->id);
                         Session::put('empresadescripcion', $empresa->nombre);
                         $flag = "Administrador";
-                        return view('home', compact('flag'));
+                        $email_verified  = User::findOrFail( Auth()->user()->id );
+                        if ( $email_verified->email_verified_at != null || $email_verified->email_verified_at != '') {
+                            
+                            return view('home', compact('flag'));
+                        }
+                        else{
+                            return redirect()->route('confirmarcuenta');   
+                        }
                     }
                 } else {
 

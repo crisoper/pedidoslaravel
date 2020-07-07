@@ -49,15 +49,17 @@
                     }
         body{
             background: linear-gradient(90deg, #17A2B8 10%, #F8F9FA 90%);
+            padding: 0;
+            margin: 0;
         }
         
-       
+     
     </style>
 </head>
 
-<body cz-shortcut-listen="true" >
+<body cz-shortcut-listen="true"  >
 
-    <header class=" ">
+    <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
             <div class="container">
             <ul class="navbar-nav">
@@ -127,17 +129,11 @@
         </nav>
     </header>
    
-        <main class="container-fluid" role="main">
+        <main class="container-fluid " role="main">
 
-            <section class="content d-flex justify-content-end">
-
-                <div class="col-md-8 col-sm-12 ">
+                           
                     @yield('contenido')
-
-                </div>
-
-
-            </section>
+            
         </main>
     
 

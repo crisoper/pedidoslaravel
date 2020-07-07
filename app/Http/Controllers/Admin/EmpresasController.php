@@ -97,37 +97,93 @@ class EmpresasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmpresaCreateRequest $request)
+    public function nuevaEmpresa(EmpresaCreateRequest $request)
     {
-        $empresa = new Empresa();
-        $empresa->rubro_id = $request->rubro_id;
-        $empresa->ruc = $request->ruc;
-        $empresa->nombre = $request->nombre;
-        $empresa->direccion = $request->direccion;
-        $empresa->paginaweb = $request->paginaweb;
+               
+        $user = User::firstOrNew([
+            'name' => $request->name_representante . " " . $request->paterno . " " . $request->materno,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->remember_token = Hash::make(time());
+        $user->save();
 
-        if ($request->hasFile('logo')) {
-            $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension());
-            $nuevoNombreLogo = $nombreOriginalLogo->getClientOriginalName();
-            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
+        $this->guard()->login($user);
 
-            $dimensionLogo = Image::make($nombreOriginalLogo->path());
-            $dimensionLogo->fit(300, 200, function ($constraint) {
-                $constraint->upsize();
-            });
-            $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
-            $empresa->logo = $nuevoNombreLogo;
-        }
-        $empresa->created_by = Auth()->user()->id;
+        $persona = Persona::firstOrNew(
+            [
+                'nombre' => $request->name_representante,
+                'paterno' => $request->paterno,
+                'materno' => $request->materno,
+                'dni' => $request->dni,
+                'telefono' => $request->telefono,
+                'correo' => $request->email,
 
+            ],
+            [
+                'created_by' => $user->id,
+            ]
+        );
+        $persona->save();
+
+        $empresa =  Empresa::firstOrNew([
+            "rubro_id" => $request->rubro_id,
+            "ruc" => $request->ruc,
+            "nombre" => $request->nombre,
+            "direccion" => $request->direccion,
+            "provincia_id" => $request->provinciaid,
+            "departamento_id" => $request->departamentoid,
+            "distrito_id" => $request->distritoid,
+            "telefono" => $request->telefono,                   
+        ],
+        [
+            'created_by'=> Auth()->user()->id,
+        ]);
         $empresa->save();
 
+        Userempresa::create([
+            'user_id' => $user->id,
+            'empresa_id' => $empresa->id,
+            'estado' => 1,
+        ]);
+
+        $periodo = new Periodo();
+        $periodo->empresa_id = $empresa->id;
+        $periodo->nombre = 'demo';
+        $fechaActual = date('Y-m-d');
+        $fechaFin = strtotime('+12 month', strtotime($fechaActual));
+        $fechaFin = date('Y-m-d', $fechaFin);
+        $periodo->inicio = date('Y-m-d');
+        $periodo->fin = $fechaFin;
+        $periodo->estado = 1;
+        $periodo->created_by = $user->id;
+        $periodo->save();
+
+        $userperiodo = new Userperiodo();
+        $userperiodo->user_id =  $user->id;
+        $userperiodo->periodo_id = $periodo->id;
+        $userperiodo->created_at = $user->id;
+        $userperiodo->save();
 
 
-        return redirect()->route('empresas.index')->with("info", "Registro creado");
+        $rol = rol::where('name', 'web_Administrador empresa')->first();
+
+        Modelhasrole::create([
+            'role_id' => $rol->id,
+            'model_type' => 'App\User',
+            'model_id' => $user->id,
+        ]);
+
+        //Enviamos correo para activar cuenta
+        $this->enviarCorreoActivarCuentaEmpresa($user);
+        Session::put('empresadescripcion',  $empresa->nombre);
+
+        return \Response::json($user);
+
+            // return redirect()->route('empresas.index')->with("info", "Registro creado");
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -156,11 +212,9 @@ class EmpresasController extends Controller
         $diahorario = Horario::where('empresa_id', $empresa->id)->get();
         $diasenhorario=[];
         foreach( $diahorario as $dia ){
-            array_push($diasenhorario , $dia->dia);
-           
+            array_push($diasenhorario , $dia->dia);          
         }
-
-       
+      
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
         return view('publico.empresa.editar', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
@@ -299,7 +353,13 @@ class EmpresasController extends Controller
         $empresa = Empresa::findOrFail($id);
         $empresa->comprobantetipos()->sync($request->empresacomprobantetipos);
 
-        return redirect()->route('empresas.index')->with("Datos guardados correctamente", "info");
+        if (auth()->user()->hasRole('SuperAdministrador')) {
+
+            return redirect()->route('empresas.index')->with("Datos guardados correctamente", "info");
+        } else {
+            return redirect()->route('config.comprobantes.index');
+        }
+       
     }
 
 
@@ -324,23 +384,7 @@ class EmpresasController extends Controller
     public function tuempresastore(CreatuempresaCreateRequest  $request)
     {
 
-        $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        $diasNoValidosInicio = array();
-        $diasNoValidosFin = array();
-
-
-
-        if (count($diasNoValidosInicio) > 0 || count($diasNoValidosFin) > 0) {
-            return response()->json([
-                'error' =>  [
-                    'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
-                    'data' => [
-                        "inicio" => $diasNoValidosInicio,
-                        "fin" => $diasNoValidosFin,
-                    ]
-                ]
-            ], 429);
-        }
+     
 
         $user = User::firstOrNew([
             'name' => $request->name . " " . $request->paterno . " " . $request->materno,
@@ -429,17 +473,7 @@ class EmpresasController extends Controller
             'model_id' => $user->id,
         ]);
 
-        for ($i = 1; $i <= count($request->dias); $i++) {
-
-            $horario = new Horario();
-            $horario->empresa_id = $empresa->id;
-            $horario->dia =  $dias[$i - 1];
-            $horario->horainicio = $request->horainicio[$i];
-            $horario->horafin =  $request->horafin[$i];
-            $horario->created_by = $user->id;
-            $horario->save();
-        }
-
+      
 
         $this->guard()->login($user);
         //Enviamos correo para activar cuenta
@@ -468,7 +502,7 @@ class EmpresasController extends Controller
 
         try {
             Mail::to($user->email)
-                ->cc("crisoper@gmail.com")
+                ->cc("gilbertofores@gmail.com")
                 ->send(new  ActivarcuentaempresaMail($user));
         } catch (\Exception $e) {
             return null;
@@ -514,32 +548,5 @@ class EmpresasController extends Controller
         return view('publico.empresa.preview');
     }
 
-    public function consultaRuc()
-    {
-        require_once("./src/autoload.php");
-        $cookie = array(
-            'cookie'         => array(
-                'use'         => true,
-                'file'         => __DIR__ . "/cookie.txt"
-            )
-        );
-        $config = array(
-            'representantes_legales'     => true,
-            'cantidad_trabajadores'     => true,
-            'establecimientos'             => true,
-            'cookie'                     => $cookie
-        );
-
-        $sunat = new \Sunat\ruc($config);
-
-        $ruc = "20169004359";
-        $dni = "44274795";
-
-        $search1 = $sunat->consulta($ruc);
-        $search2 = $sunat->consulta($dni);
-
-        if ($search->success == false) {
-            echo "ERROR : " . $search->message;
-        }
-    }
+   
 }
