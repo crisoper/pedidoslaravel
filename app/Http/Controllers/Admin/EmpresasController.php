@@ -46,6 +46,18 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    private function empresaId() {
+        return Session::get( 'empresaactual', 0 );
+    }
+
+
     public function index()
     {
 
@@ -204,7 +216,7 @@ class EmpresasController extends Controller
     public function edit($id)
     {
         $empresarubros = Empresarubro::get();
-        $empresa = Empresa::findOrFail($id);
+        $empresa = Empresa::findOrFail( $this->empresaId());
         $departamentos = Departamento::get();
         $provincias = Provincia::get();
         $distritos = Distrito::get();
@@ -216,8 +228,9 @@ class EmpresasController extends Controller
         }
       
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-
-        return view('publico.empresa.editar', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
+        
+        return view('admin.empresas.edit', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
+        // return view('publico.empresa.editar', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
     }
 
     /**
@@ -228,91 +241,45 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     // EmpresaUpdateRequest
-    public function update(Request $request)
-    {}
-
-    public function tuempresaUpdate(Request $request)
+    public function update(EmpresaUpdateRequest $request)
     {
-    
-        return response()->json( $request , 200);
 
-        $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        $diasNoValidosInicio = array();
-        $diasNoValidosFin = array();
-
-
-
-        if (count($diasNoValidosInicio) > 0 || count($diasNoValidosFin) > 0) {
-            return response()->json([
-                'error' =>  [
-                    'message' => 'Por favor complete hora unicio y hora fin de manera correcta',
-                    'data' => [
-                        "inicio" => $diasNoValidosInicio,
-                        "fin" => $diasNoValidosFin,
-                    ]
-                ]
-            ], 429);
-        }
-      
-
+       
         $empresa = Empresa::findOrFail($request->empresaid);
         $empresa->rubro_id = $request->rubro_id;
         $empresa->ruc = $request->ruc;
         $empresa->nombre = $request->nombre;
         $empresa->direccion = $request->direccion;
-        $empresa->paginaweb = $request->facebook;
         $empresa->nombrecomercial = $request->nombrecomercial;
         $empresa->departamento_id = $request->departamentoid;
         $empresa->provincia_id = $request->provinciaid;
         $empresa->distrito_id = $request->distritoid;
-
-        if ($request->hasFile('logo')) {
-            $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
-            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
-            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-
-            $dimensionLogo = Image::make($nombreOriginalLogo->path());
-            $dimensionLogo->fit(300, 200, function ($constraint) {
-                $constraint->upsize();
-            });
-            $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
-            $empresa->logo = $nuevoNombreLogo;
-        }
         $empresa->updated_by = Auth()->user()->id;
         $empresa->save();
-
-       
-       
-        if ( isset( $request->dias )  ) {
-            $deletehorarios = Horario::where('empresa_id' ,  $empresa->id )->get();
-            foreach( $deletehorarios as $horariodelete){
-                $horariodelete->delete();
-            }
-
-            for ($i = 0; $i <= count($dias); $i++) { 
-
-                if (  isset($request->dias[$i ])  ) {
-               
-                    $horario = new Horario();
-                    $horario->empresa_id = $empresa->id;
-                    $horario->dia =  $dias[$i - 1];
-                    $horario->horainicio =trim( $request->horainicio[$i] ) ;
-                    $horario->horafin = trim( $request->horafin[$i] ) ;
-                    $horario->updated_by = Auth()->user()->id;
-                    $horario->save();
-               
-                }
-             }
         
-            
-        }else{
-            return response()->json('Seleccione minimo un día de la semana',500);
-           
-        }
-       
+                // if ($request->hasFile('logo')) {
+                //     $nombreOriginalLogo = $request->file('logo');
+                //     $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
+                //     $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+                //     \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
+        
+                //     $dimensionLogo = Image::make($nombreOriginalLogo->path());
+                //     $dimensionLogo->fit(300, 200, function ($constraint) {
+                //         $constraint->upsize();
+                //     });
+                //     $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
+                //     $empresa->logo = $nuevoNombreLogo;
+                // }
+
      
         return response()->json('success',200);
+
+    }
+
+    public function tuempresaUpdate(Request $request)
+    {
+    
+
     }
 
     /**

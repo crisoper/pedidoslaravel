@@ -50,7 +50,7 @@
                                 <div class="card-block px-2 py-2 text-dark" style="line-height:12px">
                                     <h4 class="card-title">Horario</h4>
                                     <p class="card-text py-2">
-                                        <small>Espesifique los dias y horas de atención.</small></p>
+                                        <small>Espesifica los dias y horas de atención.</small></p>
 
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="card-block px-2 py-2 text-dark" style="line-height:12px">
                                     <h4 class="card-title">Comprobantes</h4>
                                     <p class="card-text py-2">
-                                        <small>Especifique los tipos de comprobantes que emite.</small></p>
+                                        <small>Especifica los tipos de comprobantes que emites.</small></p>
 
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                 </a>
             </div>
             <div class=" col-md-4 col-sm-12">
-                <a href="{{route('horarios.index')}}">
+                <a href="{{route('empresas.edit', $empresaid)}}">
                     <div class="card mb-1">
                         <div class="row d-flex flex-nowrap">
                             <div
@@ -94,8 +94,8 @@
                                 <div class="card-block px-2 py-2 text-dark" style="line-height:12px">
                                     <h4 class="card-title">Completar o modificar información</h4>
                                     <p class="card-text py-2">
-                                        <small>Actualiza tus datos para que tus cleintes te puedan identificar
-                                            facilmente.</small></p>
+                                        <small>Actualiza tus datos para que tus clientes puedan identificar
+                                            facilmente tu empresa.</small></p>
 
                                 </div>
                             </div>

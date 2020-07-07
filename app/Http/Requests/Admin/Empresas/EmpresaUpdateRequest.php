@@ -27,9 +27,13 @@ class EmpresaUpdateRequest extends FormRequest
             "rubro_id" => ["required"],
             "ruc" => ["required", 'max:11'],
             "nombre" => ["required"],
+            "nombrecomercial" => ["required"],
             "direccion" => ["required"],
-            "paginaweb" => ["nullable"],
-            'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            "departamentoid" => ["required"],
+            "provinciaid" => ["required"],
+            "distritoid" => ["required"],
+            
+            // 'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
     }
 }
