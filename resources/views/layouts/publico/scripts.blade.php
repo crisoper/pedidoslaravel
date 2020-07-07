@@ -25,8 +25,8 @@
 
 
     {{-- CESTA, FAVORITOS, FILTRAR PRODUCTOS--}}
-    <script src="{{asset('pedidos/cesta_favoritos_filtrar/cesta/cesta.js')}}"></script>
-    <script src="{{asset('pedidos/cesta_favoritos_filtrar/favoritos/favoritos.js')}}"></script>
+    <script src="{{asset('pedidos/cesta_favoritos_filtrar/cesta/cestamenu.js')}}"></script>
+    <script src="{{asset('pedidos/cesta_favoritos_filtrar/favoritos/favoritosmenu.js')}}"></script>
     <script src="{{asset('pedidos/cesta_favoritos_filtrar/filtrarproductos/filtrarproductos.js')}}"></script>
 
 

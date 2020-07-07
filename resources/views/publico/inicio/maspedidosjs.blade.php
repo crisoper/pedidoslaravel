@@ -65,17 +65,17 @@
                 let encarrito = '';
                 if (maspedidos.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ maspedidos.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </a>
+                        </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ maspedidos.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ maspedidos.id }" idempresa="${ maspedidos.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </a>
+                        </button>
                     </div>`;
                 }
 
@@ -101,13 +101,13 @@
 
 
                         <!-- Product Description -->
-                        <div class="featured__item__text container_product_cart featured__item__text_maspedidos px-2 pt-2">
-                            <div class="row">
+                        <div class="featured__item__text container_product_cart px-2 pt-2">
+                            <div class="row mx-0">
                                 <div class="col-12">
                                     <p class="nombre_producto my-0">${ maspedidos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-2 mb-0">
                                 <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">
@@ -180,7 +180,7 @@
                 var botonMoreMin = $(this);
 
                 var valorActual = botonMoreMin.parent().find('input').val();
-                var precio = botonMoreMin.parents('.container_product_cart').find('#precio_modal_lista_deseos_span').html();
+                var precio = botonMoreMin.parents('.container_producto_modal').find('#precio_producto_modal').html();
                 
                 console.log(precio);
 
@@ -196,7 +196,7 @@
                 }
 
                 botonMoreMin.parent().find('input').val(nuevoValor);
-                botonMoreMin.parents('.container_product_cart').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
+                botonMoreMin.parents('.container_producto_modal').find('.importe_producto_modal').html((nuevoValor * precio).toFixed(2));
 
             });
         }

@@ -150,7 +150,30 @@ function() {
 
 
     // PEDIDOS
-    Route::resource('pedidos', 'Admin\PedidosController');
+    Route::get('pedidos', 'Admin\PedidosController@index')->name("pedidos.index");
+
+    Route::get("ajax/pedidos/index", "Admin\PedidosAjaxController@index")
+    ->name("ajax.pedidos.index");
+    Route::post("ajax/pedidos/store", "Admin\PedidosAjaxController@store")
+    ->name("ajax.pedidos.store");
+
+    
+    // PEDIDOS DESPACHADOS
+    Route::get('pedidos/despachados', 'Admin\PedidosController@despachados')->name("pedidos.despachados");
+
+    Route::get("ajax/pedidos/despachados/index", "Admin\PedidosdespachadosAjaxController@index")
+    ->name("ajax.pedidos.despachados.index");
+    Route::post("ajax/pedidos/despachados/store", "Admin\PedidosdespachadosAjaxController@store")
+    ->name("ajax.pedidos.despachados.store");
+    
+
+    // PEDIDOS DESPACHADOS
+    Route::get('pedidos/entregados', 'Admin\PedidosController@entregados')->name("pedidos.entregados");
+
+    Route::get("ajax/pedidos/entregados/index", "Admin\PedidosentregadosAjaxController@index")
+    ->name("ajax.pedidos.entregados.index");
+    Route::post("ajax/pedidos/entregados/store", "Admin\PedidosentregadosAjaxController@store")
+    ->name("ajax.pedidos.entregados.store");
 
     
 });

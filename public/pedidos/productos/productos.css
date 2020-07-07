@@ -89,16 +89,16 @@
     letter-spacing: 2px;
     font-size: 12px;
     z-index: 1;
-    height: 203px;
+    height: 101%;
 }
 .single_product_wrapper:hover .product-img span.empresa_badge a {
     color: #ffffff;
 }
 .single_product_wrapper .product-img span a p {
-    height: 183px;
+    height: 95%;
 }
 .single_product_wrapper .product-img span a i {
-    height: 10px;
+    height: 5%;
 }
 
 

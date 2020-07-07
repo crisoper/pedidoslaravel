@@ -17,6 +17,7 @@ class CestaResource extends JsonResource
         return [
             'id' => $this->id,
             'producto' => new ProductoResource( $this->producto ),
+            'empresa' => new EmpresaResource( $this->empresa ),
             'cantidad' => $this->cantidad,
             'tipo' => $this->tipo,
             'fecha' => $this->created_at != null ? date("d/m/Y", strtotime($this->created_at) ) : '',

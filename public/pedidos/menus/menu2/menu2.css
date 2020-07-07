@@ -5,6 +5,7 @@
     width: 100% !important;
     height: 50px;
     background-color: #3eb291;
+	box-shadow: 0 5px 5px -5px #333;
 	z-index: 5;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .header_menu_categorias > .header_categorias {
-	width: 35px;
+	width: 200px !important;
 	margin-top: 0;
 	border: 0;
 	border-radius: 0;

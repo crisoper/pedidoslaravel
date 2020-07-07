@@ -3,52 +3,58 @@
 @section('contenido')
 
 
+
 {{-- CONTENIDO EMPRESA Y PRODUCTOS --}}
 <div class="container-fluid page_section px-2">
-    <div class="row m-0 mb-4 content_empresa">
-        <div class="col-12 p-0 content_banner_empresa">
-            <img src="{{asset('pedidos/image/banners/bannerlocal.jpg')}}" alt="">
-        </div>
-        <div class="col-12 p-0 pb-3 content_info_empresa">
-            <div class="row m-0">
-                <div class="col-4 col-sm-3 col-md-2 p-2 content_logo_empresa">
-                    <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
+    <div class="row m-0 mb-4 content_empresa_pagina">
+        <div class="col-12 p-0">
+
+            <div class="row m-0 logos_banners_empresa_pagina">
+                <div class="col-12 p-0 mx-auto content_logo_empresa_pagina">
+                    <img class="logo_empresa_pagina" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
                 </div>
-                <div class="col-12 p-0 pr-3 content_nombre_empresa">
-                    <div class="row m-0">
-                        <div class="col-12">
-                            <h4 class="mb-0 pb-1"><b>{{ $empresa->nombrecomercial }}</b></h4>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p class="my-0">Carnes y Parrillas</p>
-                        </div>
-                        <div class="col-12 col-md-4 text-right direccion_empresa">
-                            <p class="my-0">{{ $empresa->direccion }}</p>
-                        </div>
-                        {{-- <div class="col-12 col-md-4 text-right">
-                            <div class="top_seller_product_rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div> --}}
-                    </div>
+                <div class="col-12 p-0 banner_empresa_pagina">
+                    <img src="{{asset('pedidos/image/banners/bannerlocal.jpg')}}" alt="">
+                </div>
+            </div>
+            
+            <div class="row m-0 content_nombre_empresa_pagina">
+                <div class="col-12 p-0">
+                    <h5 class="m-0 text-truncate">{{ $empresa->nombrecomercial }}</h5>
+                </div>
+                <div class="col-12 pl-0">
+                    <hr class="mx-0 my-2 margin_nombre_empresa_pagina">
+                </div>
+            </div>
+            
+            <div class="row m-0 content_informacion_empresa_pagina">
+                <div class="col-12 col-md-2 col-lg-3 p-0 border__empresa_pagina">
+                    <p class="m-0 rubro_empresa_pagina">{{ $empresa->rubro->nombre }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 p-0 border__empresa_pagina">
+                    <p class="m-0 text_transform">{{ $empresa->departamentoid->nombre }} | {{ $empresa->provincia->nombre }} | {{ $empresa->distrito->nombre }}</p>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-0">
+                    <p class="m-0">Reservaciones - Delivery</p>
                 </div>
             </div>
         </div>
+        
+        <div class="col-12 p-0">
+            <hr class="m-0">
+        </div>
+
         <div class="col-12 p-0">
             <nav class="nav_productos_empresa">
                 <div class="nav nav_tabs d-flex justify-content-center" id="nav_tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-productos-tab" data-toggle="tab" href="#nav-productos" role="tab" aria-controls="nav-productos" aria-selected="true">
-                        PRODUCTOS
+                        DELIVERY
+                    </a>
+                    <a class="nav-item nav-link" id="nav_reservar-tab" data-toggle="tab" href="#nav_reservar" role="tab" aria-controls="nav_reservar" aria-selected="false">
+                        RESERVAR
                     </a>
                     <a class="nav-item nav-link" id="nav-detalles-tab" data-toggle="tab" href="#nav-detalles" role="tab" aria-controls="nav-detalles" aria-selected="false">
                         DETALLES
-                    </a>
-                    <a class="nav-item nav-link" id="nav_acercade-tab" data-toggle="tab" href="#nav_acercade" role="tab" aria-controls="nav_acercade" aria-selected="false">
-                        ACERCA DE
                     </a>
                 </div>
             </nav>
@@ -88,12 +94,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade" id="nav_reservar" role="tabpanel" aria-labelledby="nav_reservar-tab">
+                    <div class="row m-0">
+                        <div class="col-12 col-md-5 col-lg-5 mb-4 mx-auto text-center">
+                            <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
+                        </div>
+                        <div class="col-11 col-md-6 col-lg-6 py-4 mb-4 mx-auto text-center info_reservar_empresa">
+                            <h4 id="idlocal" idlocal="{{ $empresa->id }}">{{ $empresa->nombrecomercial }}</h4>
+                            <hr class="mt-3 mb-2">
+
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, odit? Consequatur dolor sequi repellat non necessitatibus aspernatur, at dolores illo hic tempora deleniti, blanditiis asperiores nostrum! Aut commodi et earum.</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="nav-detalles" role="tabpanel" aria-labelledby="nav-detalles-tab">
                     <div class="row m-0">
                         <div class="col-12 col-lg-7 mb-4 mx-auto">
                             <div class="row m-0 py-4 content_info_detalle_empresa">
                                 <div class="col-12 col-sm-6"><b>Dirección:</b></div>
-                                <div class="col-12 col-sm-6">{{ $empresa->direccion }}</div>
+                                <div class="col-12 col-sm-6">
+                                    <p class="my-0">{{ $empresa->direccion }}</p>
+                                    <p class="my-0 text_transform">{{ $empresa->departamentoid->nombre }} | {{ $empresa->provincia->nombre }} | {{ $empresa->distrito->nombre }}</p>
+                                </div>
                                 <div class="col-12"><hr class="my-4"></div>
 
                                 <div class="col-12 col-sm-6"><b>Horario de atención:</b></div>
@@ -118,19 +140,6 @@
                         </div>
                         <div class="col-12 col-lg-5 mb-4 mx-auto text-center">
                             <img src="{{asset('pedidos/image/banners/mapagoogle.jpg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="nav_acercade" role="tabpanel" aria-labelledby="nav_acercade-tab">
-                    <div class="row m-0">
-                        <div class="col-12 col-md-5 col-lg-5 mb-4 mx-auto text-center">
-                            <img src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="">
-                        </div>
-                        <div class="col-11 col-md-6 col-lg-6 py-4 mb-4 mx-auto text-center info_acercade_empresa">
-                            <h4 id="idlocal" idlocal="{{ $empresa->id }}">{{ $empresa->nombrecomercial }}</h4>
-                            <hr class="mt-3 mb-2">
-
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, odit? Consequatur dolor sequi repellat non necessitatibus aspernatur, at dolores illo hic tempora deleniti, blanditiis asperiores nostrum! Aut commodi et earum.</p>
                         </div>
                     </div>
                 </div>
@@ -169,126 +178,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-{{-- BOTON CESTA --}}
-<button type="button" class="row btn_modal_cesta" id="mostrarProductosCestaMenuFlotante">
-    <div id="icon_pedido">
-        <h3><i class="fas fa-shopping-basket"></i></h3>
-        <h6 class="cantidad_menu_pedido">0</h6>
-    </div>
-    <div id="content_mi_pedido">
-        <p class="small m-0 p-0">Mi pedido</p>
-        <h5 class="small m-0 p-0" id="amount_menu_pedido">S/ <span class="precio_menu_pedido">0.00</span></h5>
-    </div>
-</button>
-{{-- CESTA --}}
-<div class="content_modal_cesta"></div>
-<div class="sidebar_modal_cesta_right">
-    <button class="p-0" id="close_sidebar_cesta">
-        <i class="fas fa-times"></i>
-    </button>
-
-    <div class="cart_content_cesta">
-        <nav class="content_nav_tab">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link px-0 active" id="detalle_pedido_cesta" data-toggle="tab" href="#navDetallePedidoCesta" role="tab" aria-controls="navDetallePedidoCesta" aria-selected="true">
-                    Detalle pedido
-                </a>
-                <a class="nav-item nav-link px-0" id="realizar_pedido_cesta" data-toggle="tab" href="#navRealizarPedidoCesta" role="tab" aria-controls="navRealizarPedidoCesta" aria-selected="false">
-                    Realizar Pedido
-                </a>
-            </div>
-        </nav>
-        <hr class="hr_box_shadow_cesta m-0 pb-2">
-        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}" method="POST">
-            <div class="tab-content" id="nav_tabContent">
-                <div class="tab-pane fade show active" id="navDetallePedidoCesta" role="tabpanel" aria-labelledby="detalle_pedido_cesta">
-                    
-                    <div class="row m-0 cart_tittle_cesta">
-                        <div class="col-12 p-0">
-                            <p class="minimo_compra m-0">Mínimo de compra para delivery: S/ 30.00</p>
-                            <p class="icon_actualizar_producto m-0">
-                                <i class="fas fa-check"></i> Actualizar cantidad de producto
-                            </p>
-                        </div>
-                        <div class="col-12"><hr class="my-1"></div>
-                        <div class="col-6 p-0 content_cantidad">
-                            <p class="info_cantidad my-0">Estas comprando:</p>
-                            <h6><span class="suma_productos_Cesta">0</span> Productos</h6>
-                        </div>
-                        <div class="col-6 p-0 content_subtotal">
-                            <p class="info_total my-0">Subtotal:</p>
-                            <h6>S/ <span class="suma_total_prev">0.00</span></h6>
-                        </div>
-                    </div>
-
-                    <hr class="hr_info_scroll_cesta my-0">
-
-                    <div class="" id="scroll_cesta">
-                        <div class="row m-0 px-3 pt-3 pb-1 cuerpoCestaPedido" id="cuerpoCestaPedido">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="navRealizarPedidoCesta" role="tabpanel" aria-labelledby="realizar_pedido_cesta">
-                    <form class="container_cupon mt-3" form action="#">
-                        <div class="input-group input_group_cupon_cesta">
-                            <input type="text" class="input_cupon_cesta mt-0" placeholder="Ingrese su cupón de descuento">
-                            <div class="input-group-append append_cupon">
-                                <a href="#" class="btn btn_aplicar_cupon_cesta mt-0 pl-1">Aplicar</a>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="content_total_cesta mt-4 px-2">
-                        <div class="row p-2 monto_total_cesta">
-                            <div class="col-12 titulo_resumen text-center pb-2">
-                                <p class="mb-0">Resumen del pedido</p>
-                            </div>
-
-                            <div class="col-12 content_detalle_total_prod py-2 px-1 mb-3">
-                                <p class="my-0 text-muted">Estas comprando</p>
-                                <h6 class="my-0 text-muted text-right">
-                                    <b><span class="sumaTotalProductos">0.00</span> Productos</b>
-                                </h6>
-                            </div>
-
-                            <div class="col-12 content_detalle_monto_total">
-                                <p class="my-0">Subtotal</p>
-                                <h6 class="my-0 text-right">
-                                    <b>S/ <span class="sumaTotal">0.00</span></b>
-                                </h6>
-                            </div>
-                            <div class="col-12 content_detalle_monto_total">
-                                <p class="my-0">Delivery</p>
-                                <h6 class="my-0 text-right">
-                                    <b>S/ <span class="deliveryTotal">2.00</span></b>
-                                </h6>
-                            </div>
-                            <div class="col-12 content_detalle_monto_total">
-                                <p class="my-0">Descuento</p>
-                                <h6 class="my-0 text-right">
-                                    <b>S/ <span class="descuentoTotal">5.00</span></b>
-                                </h6>
-                            </div>
-                                
-                            <div class="col-12 content_detalle_total my-2 py-2">
-                                <h5>Total</h5>
-                                <h4 class="my-0 text-right">
-                                    <b>S/ <span class="pedidoTotal">0.00</span></b>
-                                </h4>
-                            </div>
-                            <div class="col-12 content_botones_pedido">
-                                <button id="btn_realizar_pedido_cesta" class="btn_realizar_pedido_cesta">Realizar Pedido</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 

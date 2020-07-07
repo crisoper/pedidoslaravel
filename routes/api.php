@@ -77,13 +77,19 @@ Route::get("ajax/productos/getdatosxid", "Publico\ProductosController@getdatosxi
 ->name("ajax.productos.getdatosxid");
 
 
+// PRODUCTOS RESULTADOS POR BUSQUEDA
+Route::get("ajax/productos/busqueda/index", "Publico\ResultadosproductosController@productosbusqueda")
+->name("ajax.productos.busqueda.index");
+// LOCALES RESULTADOS POR BUSQUEDA
+Route::get("ajax/locales/busqueda/index", "Publico\ResultadoslocalesController@localesbusqueda")
+->name("ajax.locales.busqueda.index");
+
+
+// LOCALES
 Route::get("ajax/locales/productos", "Publico\LocalesController@productos")
 ->name("ajax.locales.productos");
 
 
-
-Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
-->name("ajax.locales.pedidosstore");
 
 
 

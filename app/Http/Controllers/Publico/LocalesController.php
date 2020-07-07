@@ -19,7 +19,7 @@ class LocalesController extends Controller
     {
         $empresa = Empresa::where("id", $idempresa)
         ->with([
-            "horarios"
+            "horarios",
         ])
         ->first();
 

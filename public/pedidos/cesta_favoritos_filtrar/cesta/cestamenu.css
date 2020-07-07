@@ -1,0 +1,448 @@
+/* ABRIR CESTA MENU */
+.btn_modal_cesta {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #ffffff !important;
+    background-color: #3eb291;
+    border: none;
+    border-radius: 0;
+}
+.btn_modal_cesta:focus {
+    box-shadow: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    33% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.btn_modal_cesta:before,
+.btn_modal_cesta:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 36%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 22px;
+    height: 20px;
+    opacity: 0;
+    margin: auto;
+    z-index: 0;
+}
+.btn_modal_cesta:before {
+    animation: pulse 1.5s infinite linear;
+}
+.btn_modal_cesta:after {
+    animation: pulse 2s 0.4s infinite linear;
+}
+@media (max-width: 768px) {
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 15px;
+        left: 15px;
+    }
+}
+
+.btn_modal_cesta .icon_cesta_menu {
+    width: 40px;
+    height: 35px;
+    top: 8px;
+    left: 27.5%;
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    padding-top: 1px;
+    z-index: 4;
+}
+
+.btn_modal_cesta .cantidad_cesta_menu {
+    position: absolute;
+    top: 4px;
+    right: 25%;
+    height: 16px;
+    width: 18px;
+    color: #ffffff;
+    background: #9c5c32;
+    font-size: 12px;
+    border-radius: 50%;
+    padding-top: 0.5px;
+    z-index: 4;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 8px;
+        left: 22.5%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 4px;
+        right: 20%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 15px;
+        left: 33%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 15%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 5%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 30%;
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 25%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 22.5%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 30%;
+    }
+}
+
+@media only screen and (min-width: 526px) and (max-width: 576px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 22.5%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 25%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 32.5%;
+    }
+}
+
+@media only screen and (min-width: 476px) and (max-width: 525px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 22.5%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 20%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 35%;
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 475px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 20%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 15%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 32.5%;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 16%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 10%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 30%;
+    }
+}
+
+@media (max-width: 375px) {
+    .btn_modal_cesta .icon_cesta_menu {
+        top: 5px;
+        left: 12.5%;
+    }
+
+    .btn_modal_cesta .cantidad_cesta_menu {
+        top: 2px;
+        right: 7.5%;
+    }
+
+    .btn_modal_cesta:before,
+    .btn_modal_cesta:after {
+        top: 12px;
+        left: 27.5%;
+    }
+}
+
+
+/* MODAL CESTA MENU */
+
+.content_modal_cesta.content_modal_cesta_on {
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
+}
+
+.sidebar_modal_cesta_right {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    right: -400px;
+    background-color: #ffffff;
+    z-index: 1100;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 800ms;
+    transition-duration: 800ms;
+}
+
+.sidebar_modal_cesta_right.sidebar_modal_cesta_right_on {
+    right: 0;
+}
+.sidebar_modal_cesta_right #close_sidebar_cesta {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 100%;
+    z-index: 100;
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    border: 0;
+    background-color: #ffffff;
+    color: #777978;
+}
+
+.sidebar_modal_cesta_right .cart_content_cesta {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.cart_tittle_cesta {
+    width: 100%;
+    height: 40px;
+    background-color: #ffffff;
+    text-align: center;
+    border-bottom: 1px solid #7d838a;
+}
+.cart_tittle_cesta p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.btn_realizar_pedidos_cesta_menu {
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    background-color: #3eb291;
+    line-height: 15px;
+    border-radius: 0;
+}
+
+.btn_realizar_pedidos_cesta_menu:hover,
+.btn_realizar_pedidos_cesta_menu:focus {
+    color: #ffffff;
+    background-color: #3eb291;
+    box-shadow: none;
+}
+
+
+
+
+.content_scroll_cesta {
+    height: 95%;
+    width: 100% !important;
+    background-color: #ffffff;
+    box-shadow: inset 0 5px 5px -5px #333;
+}
+
+.scroll_cesta {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: scroll;
+    box-sizing: border-box;
+    margin-left: 0px;
+    padding: 0;
+}
+.scroll_cesta::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.scroll_cesta::-webkit-scrollbar:vertical {
+    width: 7px;
+}
+.scroll_cesta::-webkit-scrollbar:horizontal {
+    height: 0px;
+}
+.scroll_cesta::-webkit-scrollbar-thumb {
+    background-color: #7d838a;
+    border-radius: 4px;
+    border: 4px solid #7d838a;
+}
+.scroll_cesta::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.border_producto_cesta_menu {
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #dfdfdf;
+  }
+  
+  .nombre_empresa_cesta_menu {
+    color: #191a19;
+    font-size: 13px;
+  }
+  .nombre_empresa_cesta_menu:hover {
+    color: #3eb291;
+  }
+  
+  .foto_producto_cesta_menu {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  .foto_producto_cesta_menu img {
+    width: 100%;
+    height: 100% !important;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  .foto_producto_cesta_menu .hover_img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  
+  .nombre_producto_cesta_menu {
+    color: #2a2b2a;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+  }
+  
+  .descripcion_producto_cesta_menu {
+    font-size: 11px;
+  }
+
+  .border_cantidad_precio_cesta_menu {
+    padding-top: 2px !important;
+    margin-top: 2px !important;
+    border-top-style: dashed;
+    border-top-width: 1px;
+    border-top-color: #d7dbdf;
+  }
+
+  .cantidad_producto_cesta_menu {
+    color: #3eb291;
+    font-size: 15px;
+  }
+
+  .precio_producto_cesta_menu {
+    color: #3eb291;
+    font-size: 15px;
+  }
+  
+  
+  
+  .eliminar_producto_cesta_menu {
+    background: #df3550 !important;
+    width: 25px;
+    height: 25px;
+    display: block;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #ffffff;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    cursor: pointer;
+    padding-top: 2px;
+  }
+  
+  

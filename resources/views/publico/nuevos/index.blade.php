@@ -44,12 +44,14 @@
                 </button>
             </div>
             <div class="modal-body row m-0">
-                <div class="col-12 col-lg-6 p-0 content_imagenes_modal">
-                    <div class="mb-2" id="imagenes_principal_producto_modal">
-                        {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
-                    </div>
-                    <div class="text-center" id="imagenes_producto_modal">
-                        {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                <div class="col-12 col-lg-6 p-0">
+                    <div class="content_imagenes_modal pb-2">
+                        <div class="mb-2" id="imagenes_principal_producto_modal">
+                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                        </div>
+                        <div class="text-center" id="imagenes_producto_modal">
+                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 p-0">

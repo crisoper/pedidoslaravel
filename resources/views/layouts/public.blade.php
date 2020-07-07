@@ -82,11 +82,6 @@
 
                             <a class="btn btn_login" href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
                             <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
-                            <hr class="my-2">
-                            
-                            <button id="btn_open_favorites">
-                                Favoritos <i class="fas fa-heart"></i>
-                            </button>
                         </div>
                         
                     </div>    
@@ -137,7 +132,7 @@
             <div class="row m-0">
                 {{-- ABRIR MENU MOVIL --}}
                 <div class="col-2 col-sm-1 col-md-1 px-0" id="humberger__open">
-                    <button type="button" class="open_menu_movil p-0" data-toggle="modal" data-target="#open_menu_movil">
+                    <button type="button" class="open_menu_movil p-0" id="mostrar_menumovil">
                         <div id="icon_humberger">
                             <h4><i class="fa fa-bars"></i></h4>
                         </div>
@@ -161,10 +156,12 @@
                             <i class="fas fa-bars"></i> Categorías <i class="fas fa-angle-down ml-3"></i>
                         </button>
                         <ul class="dropdown-menu header_categorias">
-                            <li><a class="dropdown-item js-scroll-trigger" href="#preductRecomendado">Recomendados</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosEnOferta">Ofertas</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosNuevos">Nuevos</a></li>
-                            <li><a class="dropdown-item js-scroll-trigger" href="#productosMasPedidos">Mas Pedidos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('recomendados.index') }}">Recomendados</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ofertas.index') }}">Ofertas</a></li>
+                            <li><a class="dropdown-item" href="{{ route('nuevos.index') }}">Nuevos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los Productos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('locales.busqueda.index') }}">Todos Los Locales</a></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item submenu_categorias" href="#">Categorías <i class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
@@ -176,11 +173,11 @@
                 </div>
     
                 {{-- BUSCADOR WEB --}}
-                <div class="col-8 col-sm-9 col-md-9 col-lg-8 px-0" id="search_web">
+                <div class="col-4 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
                             <div class="input-group input_group_search">
-                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscar" value="{{request()->query('buscar')}}">
+                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
                                     <a href="#" class="btn btn_buscar_productos">
@@ -192,143 +189,39 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    {{-- MENU MOVIL --}}
-    <div class="modal left fade" id="open_menu_movil" tabindex="-1" role="dialog" aria-labelledby="open_menu_movil">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header py-1 bg-dark">
-                    <div class="modal-title">
-                        <a href="#"><img src="{{asset('pedidos/image/logo.png')}}" alt=""></a>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                {{-- FAVORITOS --}}
+                <div class="col-2 col-sm-2 col-md-1 col-lg-1 px-0" id="menu_favoritos">
+                    <button type="button" class="btn btn_open_favorites row m-0" id="mostrar_favoritos_menu">
+                        <h4 class="icon_favoritos_menu m-0">
+                            <i class="fas fa-heart"></i>
+                        </h4>
+                        <h6 class="cantidad_favoritos_menu m-0">0</h6>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="col-12 p-0" id="scroll_menu_movil">
-
-                        <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header p-0" id="headingOne">
-                                    <a class="btn btn_movil_categorias js-scroll-trigger"  href="#preductRecomendado" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Recomendados
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header p-0" id="headingTwo">
-                                    <a class="btn btn_movil_categorias js-scroll-trigger collapsed"  href="#productosEnOferta" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Ofertas
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header p-0" id="headingThree">
-                                    <a class="btn btn_movil_categorias js-scroll-trigger collapsed"  href="#productosNuevos" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Nuevos
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header p-0" id="headingFour">
-                                    <a class="btn btn_movil_categorias js-scroll-trigger collapsed"  href="#productosMasPedidos" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Más pedidos
-                                    </a>
-                                </div>
-                            </div>
-
-                            {{-- CATEGORIAS --}}
-                            <div class="card">
-                                <div class="card-header p-0" id="headingFive">
-                                    <button class="btn btn_movil_categorias collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        Categorías <i class="fas fa-plus float-right pt-1"></i>
-                                    </button>
-                                </div>
-                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                    <div class="card-body p-0" id="menuMovilCategorias">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    {{-- ATENCION AL CLIENTE --}}
-                    <div class="humberger__menu__contact fixed-bottom bg-dark">
-                        <button type="button" class="btn btn_servicio_2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Servicio al cliente <i class="fas fa-angle-up"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown_menu_movil bg-dark">
-                            <div class="col-12 p-0 border_movil_info"><a class="btn" href="#">Escribenos</a></div>
-                            <div class="col-12 p-0 py-2 border_movil_info text-center">
-                                <p class="mb-0 number_phone">+51 976301482</p>
-                                <p class="my-0 suport"><small>Soporte 24/7</small></p>
-                            </div>
-                            <div class="col-12 p-0"><a class="btn" href="#">Preguntas frecuentes</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    {{-- FAVORITOS --}}
-    <div class="content_modal"></div>
-    <div class="sideban_modal_right">
-        <button class="p-0" id="close_sidebar">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <div class="cart_content">
-            <div class="cart_tittle_favorites">
-                <p class="">Lista de productos seleccionados como Favoritos</p>
-            </div>
-            <div class="scroll_cart_content">
-                <div class="row m-0 py-3 px-1" id="mostarFavoritosProductos">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-	<!-- MODAL PRODUCTOS FAVORITOS -->
-    <div class="modal fade" id="abrir_modal_producto_favoritos" tabindex="-1" role="dialog" aria-labelledby="abrir_modal_producto_inicio" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-
-            <div class="modal-content">
-                <div class="modal-header bg-light row m-0 py-2">
-                    <div class="col-12 mx-auto">
-                        <p class="text-center mb-0" id="nombre_empresa_modal_fav"> </p>
-                    </div>
-                    <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                
+                {{-- CESTA --}}
+                <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 p-0" id="menu_cesta">
+                    <button type="button" class="btn btn_modal_cesta row m-0" id="mostrar_cesta_menu">
+                        <h4 class="icon_cesta_menu m-0">
+                            <i class="fas fa-shopping-basket"></i>
+                        </h4>
+                        <h6 class="cantidad_cesta_menu m-0">0</h6>
                     </button>
                 </div>
-                <div class="modal-body row m-0">
-                    <div class="col-12 col-lg-6 p-0 content_imagenes_modal_fav">
-                        <div class="mb-2" id="imagenes_principal_producto_modal_fav">
-                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
-                        </div>
-                        <div class="text-center" id="imagenes_producto_modal_fav">
-                            {{-- <img  src="pedidos/img/product/product-1.jpg" alt=""> --}}
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 p-0">
-                        <div class="row content_producto_modal_fav">
-    
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
+
+
+    
+    
+    @include('layouts.publico.cesta')
+    @include('layouts.publico.favoritos')
+    @include('layouts.publico.menumovil')
+    @include('layouts.publico.modalproductos')
+
+
 
     
 
@@ -399,8 +292,8 @@
 @include('publico.inicio.categoriasjs')
 
 
-@include('publico.locales.carjs')
-@include('publico.inicio.listadeseosjs')
+@include('publico.inicio.carjs')
+@include('publico.inicio.favoritosjs')
 
 <script>
     // Script que permite guardar el codigo del cliente en local storafe

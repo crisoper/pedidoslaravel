@@ -65,17 +65,17 @@
                 let encarrito = '';
                 if (nuevos.encarrito == false) {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ nuevos.empresa_url }" class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
+                        <button class="agregar_cart hint--top" data-hint="Agregar producto a cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <span>Agregar</span>
                             <i class="fas fa-shopping-basket"></i>
-                        </a>
+                        </button>
                     </div>`;
                 } else {
                     encarrito = encarrito + `<div class="col-8 p-0">
-                        <a href="${ nuevos.empresa_url }" class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
+                        <button class="product_aggregate_cesta hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ nuevos.id }" idempresa="${ nuevos.empresa_id }">
                             <span>Agregado</span>
                             <i class="fas fa-check-circle"></i>
-                        </a>
+                        </button>
                     </div>`;
                 }
 
@@ -100,12 +100,12 @@
 
                         <!-- Product Description -->
                         <div class="featured__item__text container_product_cart featured__item__text_nuevos px-2 pt-2">
-                            <div class="row">
+                            <div class="row mx-0">
                                 <div class="col-12 mb-0">
                                     <p class="nombre_producto m-0 p-0" >${ nuevos.nombre }</p>
                                 </div>
                             </div>
-                            <hr class="mt-1 mb-0">
+                            <hr class="mt-2 mb-0">
                                 <div class="row px-2 conten_precio_cantidad">
                                 <div class="col-6 pt-1 pb-2 px-0 m-0" id="price_product_border">
                                     <p class="price_product_prev text-muted py-0 my-0">

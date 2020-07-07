@@ -133,15 +133,12 @@
                             
                             
                             <div class="featured__item__text container_product_cart px-2 pt-2 mb-0">
-                                <div class="row">
+                                <div class="row mx-0">
                                     <div class="col-12">
-                                        <p class="text-truncate my-0">
-                                            <a class="link_producto_detalle" href="#"><b>${ recomendado.nombre }</b></a>
-                                        </p>
-                                        <p class="text-truncate small my-0">${ recomendado.descripcion }</p>
+                                        <p class="nombre_producto my-0">${ recomendado.nombre }</p>
                                     </div>
                                 </div>
-                                <hr class="mt-1 mb-0">
+                                <hr class="mt-2 mb-0">
                                 <div class="row px-2 conten_precio_cantidad">
                                     <div class="col-6 pt-1 pb-2 px-0 m-0 text-center" id="price_product_border">
                                         {{-- <p class="price_product_prev text-muted py-0 my-0">

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Pedidos\Pedido;
 use App\Models\Admin\Pedidos\Pedidodetalle;
+use App\Models\Admin\Pedidos\Pedidoestado;
 use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidosController extends Controller
 {
@@ -15,8 +17,8 @@ class PedidosController extends Controller
     public function pedidosstore ( Request $request ) 
     {
         $pedido = new Pedido;
-        $pedido->empresa_id = 1;
-        $pedido->cliente_id = 1;
+        $pedido->cliente_id = Auth::id();
+        $pedido->created_by = Auth::id();
         $pedido->total = 0;
         $pedido->save();
 
@@ -34,41 +36,52 @@ class PedidosController extends Controller
             $pediddetalle->preciounitario = $request->precio[ $key ];
             $pediddetalle->cantidad = $request->cantidad[ $key ];
             $pediddetalle->subtotal = $request->subtotal[ $key ];
+            $pediddetalle->created_by = Auth::id();
             $pediddetalle->save();
 
             $total = $total  + $pediddetalle->subtotal;
 
+            $pedido->empresa_id = $pediddetalle->empresa_id;
+
         }
+
 
         $pedido->total = $total;
         $pedido->save();
+
+        
+        $pedidoestado = Pedidoestado::firstOrNew([
+            'empresa_id' => $pedido->empresa_id,
+            'pedido_id' => $pedido->id,
+            'estado' => 'pedido',
+        ],[
+            'created_by' => Auth::id(),
+        ]);
+
+        $pedidoestado ->save();
+
 
         return response()->json(["success" => "Pedido creado correctamente"], 200);
 
     }
 
 
+
+
+
     public function index()
     {
-        // $categorias = Pedido::get();
-       
-        // if (!empty(request()->buscar)) 
-        // {
-        //     $productos = Pedido::where('nombre', 'like', '%'.request()->buscar.'%' )
-        //             ->where('empresa_id', $this->empresaId())
-        //             ->orderBy('id', 'desc')
-        //             ->paginate(10);
-        //     return view('admin.productos.index', compact('productos','categorias'));
-        // }
-        // else
-        // {
-        //     $productos = Pedido::orderBy('id', 'desc')
-        //     ->where('empresa_id', $this->empresaId())
-        //     ->paginate(10);
-                      
-         
-        //     return view('admin.productos.index', compact('productos','categorias'));
-        // }
         return view('admin.pedidos.index');
     }
+
+    public function despachados()
+    {
+        return view('admin.pedidosdespachados.index');
+    }
+
+    public function entregados()
+    {
+        return view('admin.pedidosentregados.index');
+    }
+    
 }

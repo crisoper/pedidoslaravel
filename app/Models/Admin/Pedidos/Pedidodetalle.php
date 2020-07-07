@@ -22,6 +22,11 @@ class Pedidodetalle extends Model
     
     public function pedido()
     {
-        return  $this->belongsTo('App\Models\Admin\Pedido\Pedido', 'producto_id');
+        return  $this->belongsTo('App\Models\Admin\Pedidos\Pedido', 'pedido_id');
+    }
+    
+    public function producto()
+    {
+        return  $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
     }
 }
