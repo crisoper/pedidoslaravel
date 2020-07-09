@@ -45,13 +45,27 @@
                         </tr>
                     `;
                 })
+
+
+                let pedidoestadoHTML = '';
+
+                $.each( pedidos.estado, function( key, pedidosestado ) {
+
+                    if (pedidosestado.estado == "despachado") {
+                        pedidoestadoHTML = pedidoestadoHTML + `
+                            <span>${ pedidosestado.created_by }</span>
+                        `;
+                    }
+                })
                 
                 pedidosHTML = pedidosHTML + `
                     <div class="col-12 mb-4 content_pedidos_x_confirmar">
                         <div class="row pt-2 pb-3 m-0">
                             <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                             <div class="col-12"><b>Cliente:</b> <span>${ pedidos.cliente }</span></div>
+                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.direccion }</span></div>
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
+                            <div class="col-12"><b>Despachador:</b> ${ pedidoestadoHTML } </div>
                             <div class="col-12 mt-2 mb-2">
                                 <table class="table table-sm mb-2">
                                     <thead>
@@ -81,7 +95,7 @@
             $("#cuerpoPedidosDespachados").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidosDespachados, 3000);
+        // setInterval(obtenerPedidosDespachados, 3000);
 
 
 

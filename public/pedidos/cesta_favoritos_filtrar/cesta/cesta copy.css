@@ -278,56 +278,46 @@
     height: 100%;
 }
 
-
-
-
-
-
-/* REALIZAR PEDIDO */
-.realizar_pedido_menu {
+.cart_tittle_cesta {
     width: 100%;
     height: 40px;
     background-color: #ffffff;
-    box-shadow: 0 5px 5px -5px #333;
+    text-align: center;
+    border-bottom: 1px solid #7d838a;
 }
-.realizar_pedido_menu #menu_realizar_pedido {
+.cart_tittle_cesta p {
     width: 100%;
-    height: 100%;
-    border: 0 !important;
-}
-.realizar_pedido_menu .nav-item {
-    width: 50%;
-    height: 100%;
     font-size: 14px;
-    font-weight: 700;
-    color: #6c757d;
-    border: 0 !important;
-    border-radius: 0 !important;
+    line-height: 15px;
 }
-.realizar_pedido_menu .active {
-    height: 100%;
-    color: #3eb291 !important;
-    border-bottom: 3px solid #3eb291 !important;
+
+.btn_realizar_pedidos_cesta_menu {
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    background-color: #3eb291;
+    line-height: 15px;
+    border-radius: 0;
+}
+
+.btn_realizar_pedidos_cesta_menu:hover,
+.btn_realizar_pedidos_cesta_menu:focus {
+    color: #ffffff;
+    background-color: #3eb291;
+    box-shadow: none;
 }
 
 
 
-#formNavDetallePedidoCestaMenu {
-    height: 100% !important;
-    width: 100% !important;
-}
-#content_realizar_pedido {
-    height: 100% !important;
-    width: 100% !important;
-}
-#detalle_pedido {
-    height: 95% !important;
+
+.content_scroll_cesta {
+    height: 95%;
     width: 100% !important;
     background-color: #ffffff;
     box-shadow: inset 0 5px 5px -5px #333;
 }
 
-.scroll_cesta_menu {
+.scroll_cesta {
     width: 100% !important;
     height: 100% !important;
     overflow: scroll;
@@ -335,23 +325,30 @@
     margin-left: 0px;
     padding: 0;
 }
-.scroll_cesta_menu::-webkit-scrollbar {
+.scroll_cesta::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-.scroll_cesta_menu::-webkit-scrollbar:vertical {
+.scroll_cesta::-webkit-scrollbar:vertical {
     width: 7px;
 }
-.scroll_cesta_menu::-webkit-scrollbar:horizontal {
+.scroll_cesta::-webkit-scrollbar:horizontal {
     height: 0px;
 }
-.scroll_cesta_menu::-webkit-scrollbar-thumb {
+.scroll_cesta::-webkit-scrollbar-thumb {
     background-color: #7d838a;
     border-radius: 4px;
     border: 4px solid #7d838a;
 }
-.scroll_cesta_menu::-webkit-scrollbar-track {
+.scroll_cesta::-webkit-scrollbar-track {
     border-radius: 10px;
 }
+
+
+
+
+
+
+
 
 
 
@@ -412,18 +409,12 @@
     font-size: 11px;
   }
 
-  .border_dashed_cesta_menu {
+  .border_cantidad_precio_cesta_menu {
+    padding-top: 2px !important;
+    margin-top: 2px !important;
     border-top-style: dashed;
     border-top-width: 1px;
     border-top-color: #d7dbdf;
-  }
-  .border_dashed_cesta_menu_2 {
-    border-left-style: dashed;
-    border-left-width: 1px;
-    border-left-color: #d7dbdf;
-    border-right-style: dashed;
-    border-right-width: 1px;
-    border-right-color: #d7dbdf;
   }
 
   .cantidad_producto_cesta_menu {
@@ -437,40 +428,6 @@
   }
   
   
-.input_cantidad_cesta_menu {
-	width: 100%;
-	height: 27.5px;
-    padding: 0 !important;
-}
-.input_cantidad_cesta_menu > input {
-	width: 60%;
-    height: 100%;
-    padding: 0;
-    text-align: center;
-    border: 1px solid rgba(0,0,0,.2) !important;
-    border-left: 1px solid rgba(0,0,0,.1) !important;
-    border-right: 1px solid rgba(0,0,0,.1) !important;
-}
-.input_cantidad_cesta_menu > input:focus {
-    box-shadow: none;
-}
-.input_cantidad_cesta_menu > .sumar_restar_cantidad_producto {
-	width: 20%; 
-	height: 100%;
-    padding-top: 0;
-	text-align: center;
-    border: 1px solid rgba(0,0,0,.2) !important;
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.input_cantidad_cesta_menu > .sumar_restar_cantidad_producto:hover {
-    color: #ffffff;
-    background-color: #3eb291;
-}
-
   
   .eliminar_producto_cesta_menu {
     background: #df3550 !important;
@@ -489,145 +446,3 @@
   }
   
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* REALIZAR PEDIDO */
-
-.input_group_cupon {
-    width: 100%;
-}
-.input_cupon {
-    width: 70%;
-    font-size: 14px;
-    border: 1px solid #3eb291;
-    border-radius: 5px 0px 0px 5px;
-}
-.btn_aplicar_cupon_append {
-    text-align: center;
-    width: 30%;
-}
-.btn_aplicar_cupon_append .btn_aplicar_cupon {
-    width: 100%;
-    color: #ffffff;
-    background-color: #3eb291;
-}
-  
-
-
-.content_realizar_pedido_cesta_menu {
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
-}
-
-.content_resumen_pedido_cesta_menu {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-.content_tota_pedido_cesta_menu h5 {
-    color: #3eb291;
-}
-.content_tota_pedido_cesta_menu h4 {
-    color: #3eb291;
-    font-weight: 700;
-}
-
-
-.content_btn_realizar_pedido_cesta_menu {
-    border-top: 1px solid rgba(0,0,0,.1);
-}
-
-.btn_realizar_pedido_cesta_menu {
-    width: 100%;
-    color: #ffffff;
-    background-color: #3eb291;
-    font-size: 20px;
-    border: 0;
-}
-
-.btn_seguir_comprando_cart {
-    width: 100%;
-    color: #ffffff;
-    background-color: #9ca1a0;
-    font-size: 16px;
-    border: 0;
-    border-radius: 0;
-}
-.btn_seguir_comprando_cart:hover,
-.btn_seguir_comprando_cart:focus {
-    color: #ffffff;
-    box-shadow: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cart_tittle_cesta {
-    width: 100%;
-    height: 40px;
-    background-color: #ffffff;
-    text-align: center;
-    border-bottom: 1px solid #7d838a;
-}
-.cart_tittle_cesta p {
-    width: 100%;
-    font-size: 14px;
-    line-height: 15px;
-}
-
-.btn_realizar_pedidos_cesta_menu {
-    width: 100%;
-    height: 40px;
-    color: #ffffff;
-    background-color: #3eb291;
-    line-height: 15px;
-    border-radius: 0;
-}
-
-.btn_realizar_pedidos_cesta_menu:hover,
-.btn_realizar_pedidos_cesta_menu:focus {
-    color: #ffffff;
-    background-color: #3eb291;
-    box-shadow: none;
-}
-
-
-
-
-
-
-
-
-

@@ -27,22 +27,6 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
-        $productoCestaIds = array();
-        $productoDeseoIds = array();
-
-        if ( $request->has("storagecliente_id") ) {
-            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "cesta")
-            ->get()
-            ->pluck("producto_id");
-
-
-            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "deseos")
-            ->get()
-            ->pluck("producto_id");
-        }
-        
         $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
         ->with([
             "empresa",
@@ -53,25 +37,7 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
-        foreach ( $productosrecomendados as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-
-        }
-
-
+        
         //Productos en oferta
         $productosoferta = Producto::where( "stock", ">", 20 )
         ->whereNotIn("id", $productosrecomendados->pluck("id") )
@@ -83,25 +49,6 @@ class ProductosController extends Controller
         ])
         ->limit(10)
         ->get();
-
-        foreach ( $productosoferta as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-
-        }
-
 
 
         //Productos nuevos
@@ -117,23 +64,7 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
-        foreach ( $productosnuevos as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-        }
-
+        
 
         //Productos mas pedidos
         $hoy =  Carbon::now();
@@ -160,22 +91,8 @@ class ProductosController extends Controller
         ->limit(10)
         ->get();
 
-        foreach ( $productosmaspedidos as $producto ) {
-
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
-            
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
-        }
+        
+        
 
         return response()
         ->json(
@@ -191,8 +108,33 @@ class ProductosController extends Controller
     }
 
     
+
+
+
+
+
+
+
+
+
     public function getdatosxid ( Request $request ) {
-        $producto = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
+        // $productoCestaIds = array();
+        // $productoDeseoIds = array();
+
+        // if ( $request->has("storagecliente_id") ) {
+        //     $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        //     ->where("tipo", "cesta")
+        //     ->get()
+        //     ->pluck("producto_id");
+
+
+        //     $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        //     ->where("tipo", "deseos")
+        //     ->get()
+        //     ->pluck("producto_id");
+        // }
+
+        $productoEnModal = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
         ->with([
             "empresa",
             "categoria",
@@ -201,8 +143,25 @@ class ProductosController extends Controller
         ])
         ->first();
 
-        if ( $producto != null ) {
-            return new ProductoResource (  $producto );
+        // foreach ( $productoEnModal as $producto ) {
+
+        //     if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+        //         $producto->encarrito = true;
+        //     }
+        //     else {
+        //         $producto->encarrito = false;
+        //     }
+            
+        //     if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+        //         $producto->enlistadeseos = true;
+        //     }
+        //     else {
+        //         $producto->enlistadeseos = false;
+        //     }
+        // }
+
+        if ( $productoEnModal != null ) {
+            return new ProductoResource (  $productoEnModal );
         }
 
         return "No se enncontro el producto";

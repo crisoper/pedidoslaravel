@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h4 class="text-center">PEDIDOS POR DESPACHAR</h4>
+            <h4 class="text-center">PEDIDOS INGRESADOS</h4>
         </div>
         <div class="col-12">
             <div class="row m-0" id="cuerpoPedidosPorConfirmar">

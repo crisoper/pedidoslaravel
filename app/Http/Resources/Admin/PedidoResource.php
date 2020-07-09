@@ -27,6 +27,7 @@ class PedidoResource extends JsonResource
 
 
             'detalle' => $this->pedidodetalle ? PedidodetalleResource::collection($this->pedidodetalle) : [],
+            'estado' => $this->pedidoestado ? PedidoestadoResource::collection($this->pedidoestado) : [],
         ];
     }
 }

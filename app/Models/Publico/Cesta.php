@@ -15,11 +15,14 @@ class Cesta extends Model
     {
         return $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
     }
+
+
     public function empresa()
     {
         return $this->belongsTo('App\Models\Admin\Empresa', 'empresa_id');
     }
 
+    
     public function cliente()
     {
         return $this->belongsTo('App\User', 'cliente_id');

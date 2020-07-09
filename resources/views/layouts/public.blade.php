@@ -161,7 +161,6 @@
                             <li><a class="dropdown-item" href="{{ route('nuevos.index') }}">Nuevos</a></li>
                             <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
                             <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los Productos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('locales.busqueda.index') }}">Todos Los Locales</a></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item submenu_categorias" href="#">Categorías <i class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
@@ -214,16 +213,7 @@
     </div>
 
 
-    
-    
-    @include('layouts.publico.cesta')
-    @include('layouts.publico.favoritos')
-    @include('layouts.publico.menumovil')
-    @include('layouts.publico.modalproductos')
-
-
-
-    
+       
 
     {{-- CONTENIDO INICIO --}}
     <section style="margin-top: 30px;">
@@ -287,13 +277,23 @@
 </body>
 
 
+    
+
+
 @include('layouts.publico.scripts')
 @include('includes.ajaxsetup')
 @include('publico.inicio.categoriasjs')
 
+@include('layouts.publico.menumovil')
 
-@include('publico.inicio.carjs')
-@include('publico.inicio.favoritosjs')
+@include('layouts.publico.cesta.cesta')
+@include('layouts.publico.cesta.cestajs')
+@include('layouts.publico.favoritos.favoritos')
+@include('layouts.publico.favoritos.favoritosjs')
+@include('layouts.publico.modalproductos.modalproductos')
+@include('layouts.publico.modalproductos.modalproductosjs')
+@include('layouts.publico.modalproductos.modalproductosfavoritos')
+
 
 <script>
     // Script que permite guardar el codigo del cliente en local storafe

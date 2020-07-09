@@ -53,6 +53,36 @@ class CestaController extends Controller
 
         return response()->json(['success' => "Operacion realizada con exito"], 200);
     }
+
+
+
+    public function update(Request $request)
+    {
+        $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        ->where("producto_id", $request->producto_id )
+        ->where("tipo", $request->tipo )
+        ->first();
+
+        if ( !$cesta ) {
+            $cesta = new Cesta();
+        }
+        $cesta->storagecliente_id = $request->storagecliente_id;
+        $cesta->producto_id = $request->producto_id;
+        $cesta->cantidad = $request->cantidad;
+        $cesta->tipo = $request->tipo;
+        $cesta->empresa_id = $request->empresa_id;
+        
+        if ( Auth::guard('api')->check() ) {
+            $cesta->cliente_id = Auth::id();
+        }
+        else {
+            $cesta->cliente_id = Auth::id();
+        }
+
+        $cesta->save();
+
+        return response()->json(['success' => "Operacion realizada con exito"], 200);
+    }
     
     
 
