@@ -59,10 +59,10 @@
             
             favoritosHTML = favoritosHTML + `
                 <div class="col-12 mb-3">
-                    <div class="card border_producto_favoritos_menu">
+                    <div class="card border_producto_favoritos_menu abrir_modal_productos" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ deseos.producto.id }">
                         <div class="card-header p-0">
-                            <p class="text-truncate text-center my-0">
-                                <a class="nombre_empresa_favoritos_menu" href="${ deseos.producto.empresa_url }">${ deseos.producto.empresa }</a>
+                            <p class="nombre_empresa_favoritos_menu text-truncate text-center my-0">
+                                ${ deseos.producto.empresa }
                             </p>
                         </div>
                         <div class="card-body p-1">
@@ -133,6 +133,14 @@
             success: function ( data ) {
                 obtenerProductosFavoritosMenu( );
                 // console.log( $( btnAgregarLista ) );
+                $('#abrir_modal_producto_inicio').modal('hide')
+                Swal.fire({
+                    // position: 'top-center',
+                    icon: 'success',
+                    title: 'Producto agregado como favorito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             },
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.responseJSON);

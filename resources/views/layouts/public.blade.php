@@ -293,7 +293,6 @@
 @include('layouts.publico.favoritos.favoritosjs')
 @include('layouts.publico.modalproductos.modalproductos')
 @include('layouts.publico.modalproductos.modalproductosjs')
-@include('layouts.publico.modalproductos.modalproductosfavoritos')
 
 
 <script>

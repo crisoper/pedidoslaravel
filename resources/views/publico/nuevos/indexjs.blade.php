@@ -68,7 +68,7 @@
 
                 nuevossHTML = nuevossHTML + `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                        <div class="single_product_wrapper mx-2 mb-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ nuevos.id }">
+                        <div class="single_product_wrapper abrir_modal_productos mx-2 mb-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ nuevos.id }">
 
                             <div class="product-img">
                                 

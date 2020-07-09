@@ -24,7 +24,7 @@
 
     {{-- PRODUCTOS --}}
     <link rel="stylesheet" href="{{asset('pedidos/productos/productos.css')}}">
-    <link rel="stylesheet" href="{{asset('pedidos/productos/modal.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/productos/modalproductos.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/productos/tooltips.css')}}">
 
 
@@ -39,13 +39,6 @@
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/empresas.css')}}">
     
-
-    
-
-    {{-- MENU PRODUCTOS --}}
-    {{-- <link rel="stylesheet" href="{{asset('pedidos/menuproductos/menuproductos.css')}}"> --}}
-
-
 
 
 

@@ -69,6 +69,7 @@
                                                 <div class="col-8">
                                                     <h4 class="text-right">
                                                         S/ <span class="total_pedido_cesta_menu">0.00</span>
+                                                        <input type="hidden" class="input_total_pedido_cesta_menu" name="input_total_pedido_cesta_menu" value="">
                                                     </h4>
                                                 </div>
                                             </div>

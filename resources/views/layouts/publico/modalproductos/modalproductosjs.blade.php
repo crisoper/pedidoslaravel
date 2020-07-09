@@ -4,7 +4,7 @@
 
 
         // MOSTRAR PRODUCTO EN MODAL X ID
-        $(".contenidoPrincipalPagina").on("click", ".single_product_wrapper", function() {
+        $(".contenidoPrincipalPagina").on("click", ".abrir_modal_productos", function() {
 
             let btn = $( this );
 

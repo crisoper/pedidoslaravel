@@ -20,7 +20,7 @@
             });
 
             maspedidosHTML = maspedidosHTML + `
-                <div class="single_product_wrapper mx-2 mb-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ maspedidos.id }">
+                <div class="single_product_wrapper abrir_modal_productos mx-2 mb-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ maspedidos.id }">
 
                     <div class="product-img">
                         

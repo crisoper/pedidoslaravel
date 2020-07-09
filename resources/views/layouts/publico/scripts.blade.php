@@ -7,6 +7,7 @@
 
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         
 
     {{-- MENUS --}}
@@ -20,8 +21,7 @@
 
 
     {{-- PRODUCTOS --}}
-    <script src="{{asset('pedidos/productos/productos.js')}}"></script>
-    <script src="{{asset('pedidos/productos/modal.js')}}"></script>
+    
 
 
     {{-- CESTA, FAVORITOS, FILTRAR PRODUCTOS--}}
@@ -33,15 +33,7 @@
     {{-- EMPRESAS --}}
     <script src="{{asset('pedidos/empresas/empresas.js')}}"></script>
 
-
-    {{-- FILTRAR PRODUCTOS --}}
-
-
-    {{-- MENU PRODUCTOS --}}
-    {{-- <script src="{{asset('pedidos/menuproductos/menuproductos.js')}}"></script> --}}
-
     
-
 
 
 

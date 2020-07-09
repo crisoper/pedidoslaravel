@@ -57,11 +57,6 @@
                                     Todos los productos
                                 </a>
                             </div>
-                            <div class="card">
-                                <a class="btn btn_movil_categorias" href="{{ route('locales.busqueda.index') }}">
-                                    Todos los locales
-                                </a>
-                            </div>
 
                             {{-- CATEGORIAS --}}
                             <div class="card">

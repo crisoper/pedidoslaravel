@@ -61,8 +61,8 @@
                 <div class="col-12 mb-3">
                     <div class="card border_producto_cesta_menu">
                         <div class="card-header p-0">
-                            <p class="text-truncate text-center my-0">
-                                <a class="nombre_empresa_cesta_menu" href="${ cesta.producto.empresa_url }">${ cesta.producto.empresa }</a>
+                            <p class="nombre_empresa_cesta_menu text-truncate text-center my-0">
+                                ${ cesta.producto.empresa }
                             </p>
                         </div>
                         <div class="card-body p-1">
@@ -149,6 +149,7 @@
         if( obtenerLocalStorageclienteID () != false ) {
             agregar_producto_a_cesta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id );
         }
+        
     })
 
     function agregar_producto_a_cesta( producto_id, cantidad, storagecliente_id, tipo, empresa_id, btnAgregarCar) {
@@ -166,6 +167,14 @@
             success: function ( data ) {
                 obtenerProductosCestaMenu( );
                 // console.log( $( btnAgregarCar ) );
+                $('#abrir_modal_producto_inicio').modal('hide')
+                Swal.fire({
+                    // position: 'top-center',
+                    icon: 'success',
+                    title: 'Producto agregado a cesta',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             },
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.responseJSON);
@@ -319,6 +328,7 @@
 
 
         $(".total_pedido_cesta_menu").html((sumaTotal + delivery).toFixed(2));
+        $(".input_total_pedido_cesta_menu").val((sumaTotal + delivery).toFixed(2));
         // $(".total_pedido_cart").html((sumaTotal).toFixed(2));
 
     }
@@ -338,9 +348,17 @@
                 data: $("#formNavDetallePedidoCestaMenu").serialize() ,
                 success: function( data ) {
 
-                    $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                    GLOBARL_MostrarNotificaciones( data.success, "info" );
-                    mesajeDatosActualizados( ) ;
+                    // $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
+                    // GLOBARL_MostrarNotificaciones( data.success, "info" );
+                    // mesajeDatosActualizados( ) ;
+                    
+                    Swal.fire({
+                        // position: 'top-center',
+                        icon: 'success',
+                        title: 'Tu pedido fue realizado con exito',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
 
                 },
                 error : function ( jqXHR, textStatus, errorThrown ) {

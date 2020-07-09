@@ -39,14 +39,14 @@ class PedidosController extends Controller
             $pediddetalle->created_by = Auth::id();
             $pediddetalle->save();
 
-            $total = $total  + $pediddetalle->subtotal;
+            // $total = $total  + $pediddetalle->subtotal;
 
             $pedido->empresa_id = $pediddetalle->empresa_id;
 
         }
 
 
-        $pedido->total = $total;
+        $pedido->total = $request->input_total_pedido_cesta_menu;
         $pedido->save();
 
         
