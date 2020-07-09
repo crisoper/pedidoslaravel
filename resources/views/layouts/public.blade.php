@@ -45,7 +45,8 @@
     
                 {{-- AFILIAR RESTAURANTE --}}
                 <div class="col-6 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
-                    <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registrartuempresa') }}">Afilia a tu restaurante</a>
+                  
+                    <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }}">Afilia a tu restaurante</a>
                 </div>
                 
                 {{-- APPS --}}

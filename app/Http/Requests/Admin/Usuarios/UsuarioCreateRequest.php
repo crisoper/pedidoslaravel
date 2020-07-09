@@ -25,7 +25,12 @@ class UsuarioCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+            'nombre' => ['required'],
+            'paterno' => ['required'],
+            'materno' => ['required'],
+            'dni' => ['required','unique:personas,dni'],
+            'telefono' => ['required' ],
+            'direccion' => ['required'],
             'email' => ['required','unique:users,email'],
             'password' => 'required|confirmed',
         ];

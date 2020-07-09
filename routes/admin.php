@@ -51,6 +51,7 @@ function(){
     Route::post("horarioempresa","Admin\HorariosController@store")->name('horario.atencion.empresa');
     Route::get("configuracionempresa","Admin\ConfiguracionesController@index")->name('configuracionempresa.index');
     Route::get("comprobantesempresa","Admin\ConfiguracionesController@comprobantes")->name('config.comprobantes.index');
+    Route::get("personalizarempresa","Admin\ConfiguracionesController@personalizarempresa")->name('config.personalizarempresa');
 }
 );
 
@@ -76,6 +77,7 @@ function() {
     Route::post('cambiarmiclave', ['as' => 'usuarios.cambiarmiclave', 'uses' => 'Admin\Usuarios\UsuariosController@cambiarmiclave']);
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
+    Route::post('usuariosdistribuidor', 'Admin\Usuarios\UsuariosController@usuariosdistribuidor')->name('usuarios.distribuidor.create');
     
     
     Route::resource('productos', 'Admin\ProductosController');

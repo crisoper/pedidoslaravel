@@ -44,6 +44,7 @@
 
                                 @can('users.crear')
                                     <a href="{{ route('usuarios.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Crear</a>
+                                    <a href="{{ route('usuarios.distribuidor.create') }}" class="dropdown-item"><i class="fas fa-plus-square text-success"></i> Distribuidor</a>
                                 @endcan
                                 
                                 @can('users.exportar')

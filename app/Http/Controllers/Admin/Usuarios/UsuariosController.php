@@ -12,10 +12,13 @@ use App\Http\Requests\Admin\Usuarios\UsuarioCreateRequest;
 use App\Http\Requests\Admin\Usuarios\UsuarioSubirfotoRequest;
 use App\Http\Requests\Admin\Usuarios\UsuarioUpdateRequest;
 use App\Mail\Enviarclaveausuario;
+use App\Models\Admin\Userempresa;
+use App\Models\Publico\Persona;
 use Spatie\Permission\Models\Role as Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
 class UsuariosController extends Controller
@@ -26,11 +29,15 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
 
+    public function empresaId(){
+        return Session::get('empresaactual',0);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //Es un usuario administrador, mostramos todos los registros
@@ -65,17 +72,44 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsuarioCreateRequest $request)
+    public function store(Request $request)
     {
+        // UsuarioCreateRequest
+        $persona = Persona::firstOrNew([
+            'nombre' => $request->name,
+            'paterno' => $request->paterno,
+            'materno' => $request->materno,
+            'dni' => $request->dni,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'correo' => $request->email,            
+        ],
+        [
+            'created_by' => auth()->user()->id,
+        ]);
+            $persona->save();
 
-        $userid = auth()->user()->id;
-
-        $usuario = User::findOrfail( $userid );
-
-
-        $usuario = User::create($request->all());
-        $usuario->password = Hash::make($request->password);
+        // $usuario = User::findOrfail( $userid );        
+        // $usuario = User::create($request->all());
+        $usuario = User::firstOrNew(
+            [
+                'persona_id' => $persona->id,
+                'name' => $request->name .' '. $request->paterno .' '.$request->materno,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ],
+            [
+                'created_by'=> auth()->user()->id,
+            ]
+        );
         $usuario->save();
+
+        Userempresa::create([
+            'user_id' => $usuario->id,
+            'empresa_id' => $this->empresaId(),
+            'estado' => '1',
+        ]);
+
         return redirect()->route('usuarios.index')->with('info', 'Registro creado');
 
     }
@@ -232,6 +266,6 @@ class UsuariosController extends Controller
         }
 
     }
-
+  
 
 }

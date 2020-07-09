@@ -29,4 +29,9 @@ class ConfiguracionesController extends Controller
         return view('admin.configuracion.empresa.comprobantes.index', compact('empresa'));
         
     }
+    public function personalizarempresa(){
+        $empresa = Empresa::findOrFail($this->empresaId());
+        return view('publico.locales.index' , compact('empresa'));
+        
+       }
 }

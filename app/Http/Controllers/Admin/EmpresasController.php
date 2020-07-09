@@ -61,16 +61,6 @@ class EmpresasController extends Controller
     public function index()
     {
 
-
-        // if( $tempresas == 0 ){
-        //    return view('layouts.paginas.mensajes.sinempresas');
-        // }else{
-
-
-        //    return redirect()->route('config.seleccionar.periodo');
-        // }
-
-
         if (!empty(request()->buscar)) {
             $empresas = Empresa::whereHas('usuarios', function ($query) {
                 $query->where('user_id', '=', auth()->user()->id);
@@ -97,12 +87,7 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $empresarubros = Empresarubro::get();
-        return view('admin.empresas.create', compact('empresarubros'));
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -332,16 +317,16 @@ class EmpresasController extends Controller
 
 
     //REGISTRA TU EMPRESA
-    public function registrartuempresa()
-    {
-        $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        $empresarubros  = Empresarubro::get();
-        $departamentos = Departamento::get();
-        $provincias = Provincia::get();
-        $distritos = Distrito::get();
+    // public function registrartuempresa()
+    // {
+    //     $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+    //     $empresarubros  = Empresarubro::get();
+    //     $departamentos = Departamento::get();
+    //     $provincias = Provincia::get();
+    //     $distritos = Distrito::get();
 
-        return view('publico.empresa.create', compact('empresarubros', 'departamentos', 'provincias', 'distritos', 'dias'));
-    }
+    //     return view('publico.empresa.create', compact('empresarubros', 'departamentos', 'provincias', 'distritos', 'dias'));
+    // }
 
     protected function guard()
     {
