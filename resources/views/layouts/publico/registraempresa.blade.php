@@ -12,7 +12,7 @@
 
     @include('layouts.admin.styles')
     @include('layouts.admin.scripts')
-    @include('publico.empresa.css')
+    {{-- @include('publico.empresa.css') --}}
     @include('layouts.admin.messenger')
 
     <style>
@@ -45,108 +45,102 @@
             font-family: 'Lora', serif;
             font-size: 1.2rem;
             color: #fff;
-             
-                    }
-        body{
-            background: linear-gradient(90deg, #17A2B8 10%, #F8F9FA 90%);
+
         }
-        
-       
+
+        body {
+            background: linear-gradient(90deg, #108b9e 50%, #F8F9FA 50%);
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 
-<body cz-shortcut-listen="true" >
+<body cz-shortcut-listen="true">
 
-    <header class=" ">
+    <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
             <div class="container">
-            <ul class="navbar-nav">
-                <li>
-                    @guest
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'PedidosApp') }}
-                    </a>
-                    @else
-                    <small>
-                        @if ( Session::has( 'empresadescripcion') ) 
-                            {{ Session::get( 'empresadescripcion') }}
-                        @endif 
-                    </small>
-                    @endguest
-                </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown ">
-
-                    @guest
-
-                    @else
-                    <a class="nav-link text-light" data-toggle="dropdown" href="#">
-                        <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
-                        Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
-                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
+                <ul class="navbar-nav">
+                    <li>
+                        @guest
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            {{ config('app.name', 'PedidosApp') }}
+                        </a>
                         @else
-                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
-                        @endif
-                        alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
-                    </a>
-                    @endguest
+                        <small>
+                            @if ( Session::has( 'empresadescripcion') )
+                            {{ Session::get( 'empresadescripcion') }}
+                            @endif
+                        </small>
+                        @endguest
+                    </li>
+                </ul>
 
-
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">
-                            @guest
-                            @else
-                            {{ Auth::user()->name }}
-                            @endguest
-                        </span>
-                        <div class="dropdown-divider"></div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown ">
 
                         @guest
 
                         @else
-                        {{-- <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                class="fas fa-users-cog"></i></i> Mi cuenta</a> --}}
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                        <a class="nav-link text-light" data-toggle="dropdown" href="#">
+                            <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
+                            Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
+                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
+                            @else
+                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
+                            @endif
+                            alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                         </a>
                         @endguest
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-item dropdown-header">
+                                @guest
+                                @else
+                                {{ Auth::user()->name }}
+                                @endguest
+                            </span>
+                            <div class="dropdown-divider"></div>
 
-                    </div>
-                </li>
-            </ul>
-        </div>
+                            @guest
+
+                            @else
+                            {{-- <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                                class="fas fa-users-cog"></i></i> Mi cuenta</a> --}}
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </a>
+                            @endguest
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
-   
-        <main class="container-fluid" role="main">
 
-            <section class="content d-flex justify-content-end">
-
-                <div class="col-md-8 col-sm-12 ">
-                    @yield('contenido')
-
-                </div>
+    <main role="main">
 
 
-            </section>
-        </main>
-    
+        @yield('contenido')
 
-    <footer class="footer fixed-bottom bg-dark text-light">
+    </main>
+
+
+    {{-- <footer class="footer fixed-bottom bg-dark text-light">
         <small>@if ( Session::has( 'empresadescripcion') ) {{ config('app.name')}} @endif </small>
-        <div class="float-right d-none d-sm-inline-block">
-            <small><strong>Copyright &copy; {{ date('Y') }}</strong></small>
-        </div>
-    </footer>
+    <div class="float-right d-none d-sm-inline-block">
+        <small><strong>Copyright &copy; {{ date('Y') }}</strong></small>
+    </div>
+    </footer> --}}
 </body>
 
 @include('includes.ajaxsetup')

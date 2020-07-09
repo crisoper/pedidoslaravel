@@ -103,7 +103,7 @@ $style = [
                                                             style="{{ $fontFamily }} {{ $style['button'] }}"
                                                             class="button"
                                                             target="_blank">
-                                                            VERIFICAR CORREO ELECTRÓNICO
+                                                            CONFIRMAR CORREO ELECTRÓNICO
                                                         </a>
                                                
                                                     </td>
@@ -117,8 +117,8 @@ $style = [
                                                 <tr>
                                                     <td style="{{ $fontFamily }}">
                                                         <p style="{{ $style['paragraph-sub'] }}">
-                                                            Si tiene problemas para hacer clic en el botón "Activar mi cuenta",
-                                                            copie y pegue la siguiente URL en su navegador web:
+                                                            Si tiene problemas para hacer clic en el botón "CONFIRMAR CORREO ELECTRÓNICO",
+                                                            copie y pegue la siguiente URL en su navegador web o haga click en el lick:
                                                             <span style="color: rgb(59, 59, 235)">{{ url('/') }}/activarcuentaempresa?tokenactivation={{ $usuario->remember_token }}</span>
                                                         </p>
 

@@ -31,6 +31,16 @@ class EmpresaCreateRequest extends FormRequest
             "direccion" => ["required"],
             "paginaweb" => ["nullable"],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            "provinciaid" => ["required"],
+            "departamentoid" => ["required"],
+            "distritoid" => ["required"],
+            "telefono" => ["required"],
+         
+            'name_representante' => ['required', 'string', 'max:255'],
+            'paterno' => ['required', 'string', 'max:255'],
+            'materno' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.request()->get('email')],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
 
     }

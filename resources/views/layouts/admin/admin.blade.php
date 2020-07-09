@@ -49,11 +49,7 @@
                             @guest
                             @else
                             {{ Auth::user()->name }}
-                               <br>
-                               @if ( $rol != null )
-                                   
-                               {{$rol->name}}
-                               @endif
+                           
                             @endguest
                         </span>
                         <div class="dropdown-divider"></div>
@@ -62,8 +58,8 @@
                         
                         @else
                             <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                            <a class="dropdown-item" href="{{ route('config.seleccionar.periodo') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Cambiar periodo</a>
-                            <a class="dropdown-item" href="{{ route('config.seleccionar.empresa') }}"><i class="fa fa-building" aria-hidden="true"></i> Cambiar empresa</a>
+                            {{-- <a class="dropdown-item" href="{{ route('config.seleccionar.periodo') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Cambiar periodo</a> --}}
+                            {{-- <a class="dropdown-item" href="{{ route('config.seleccionar.empresa') }}"><i class="fa fa-building" aria-hidden="true"></i> Cambiar empresa</a> --}}
                             
                             <div class="dropdown-divider"></div>
                             

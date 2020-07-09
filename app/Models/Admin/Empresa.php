@@ -12,6 +12,25 @@ class Empresa extends Model
     use SoftDeletes;
     protected $dates =['deleted_at'];
 
+    protected $fillable=[
+        "rubro_id",
+        "ruc",
+        "nombre",
+        "direccion",
+        "paginaweb",
+        'logo' ,
+        "provinciaid" ,
+        "departamentoid" ,
+        "distritoid",
+        "telefono" ,     
+        'name_representante',
+        'paterno' ,
+        'materno' ,
+        'email',
+        'password' ,
+        'created_by',
+    ];
+
 
     /*
     * Rubro al que pertenece la empresa

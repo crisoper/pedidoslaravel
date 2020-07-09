@@ -39,94 +39,21 @@
 //     });                   
                       
   
-    $('#departamentoid').select2({
-            placeholder: "Departamento"
-    });
-    $('#provinciaid').select2({
-            placeholder: "Provincia"
-    });
-    $('#distritoid').select2({
-            placeholder: "Distrito"
-    });
-    $('#rubro_id').select2({
-            placeholder: "Rubro"
-    });
-   
-    $('#departamentoid').on("change", function () {
-
-    let elemento = this;
-
-    $.ajax({
-        url: "{{ route('ajax.getprovinciaByDepartamentoId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            departamento_id : $( elemento ).val()
-        },
-        success: function( resp ){
-            //console.log( resp );
-            $("#provinciaid").html(""); 
-
-            $.each( resp.data, function( key, value ) {
-
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#provinciaid").append( opcion ); 
-            });
-
-            $('#provinciaid').trigger("change");
-
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#provinciaid").html(""); 
-            console.log( jqXHR );
-        }
-
-    });
-
-    });
-        
-        
     
-    $('#provinciaid').on("change", function () {
-    
-    let elemento = this;
-    
-    $.ajax({
-        url: "{{ route('ajax.getdistritosByProvinciaId') }}",
-        method:'GET',
-        dataType:'json',
-        data: {
-            provincia_id : $( elemento ).val()
-        },
-        success: function( resp ){
-        
-            $("#distritoid").html(""); 
-            $.each( resp.data, function( key, value ) {
-                let opcion = `<option value="${ value.id }">${ value.nombre }<option>`;
-                $("#distritoid").append( opcion ); 
-            });
-            
-        },
-        error:  function( jqXHR, textStatus, errorThrown ) {
-            $("#distritoid").html(""); 
-          
-        }
-    
-    });
-    
-    });
+
     
     
     $("#enviarFormRegistro").on('click', function(event){
         event.preventDefault();
         $( enviarFormRegistro ).prop( "disabled", true ).find("span").show();
+
         $.ajax({
             url: $("#formularioRegistroEmpresa").attr('action'),
             method: 'post',
             dataType: 'json',
             data: $("#formularioRegistroEmpresa").serialize(),
             success: function( user ){
-                
+                // console.log(user);
                 window.location = '{{route("confirmarcuenta")}}';
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
@@ -140,34 +67,34 @@
 
                     GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
                 }
-                else if( jqXHR.status == 429 ) 
-                {   
-                    $( enviarFormRegistro ).prop( "disabled", false ).find("span").show();
-                    $( ".spinnerr" ).hide(); 
+                // else if( jqXHR.status == 429 ) 
+                // {   
+                //     $( enviarFormRegistro ).prop( "disabled", false ).find("span").show();
+                //     $( ".spinnerr" ).hide(); 
 
-                    let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
-                    let errorInicio = jqXHR.responseJSON.error.data['inicio'];
-                    let errorFin = jqXHR.responseJSON.error.data['fin'];
+                //     let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
+                //     let errorInicio = jqXHR.responseJSON.error.data['inicio'];
+                //     let errorFin = jqXHR.responseJSON.error.data['fin'];
 
-                    $.each( errorInicio , function( index, diasemana ) {
-                        $("#horainicio-"+ diasemana ).addClass("is-invalid");
-                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");
+                //     $.each( errorInicio , function( index, diasemana ) {
+                //         $("#horainicio-"+ diasemana ).addClass("is-invalid");
+                //         $("#errorInicio-"+ diasemana ).addClass("is-invalid");
                        
-                    });
+                //     });
                     
-                    $.each( errorFin , function( index, diasemana ) {
-                        $("#horafin-"+ diasemana ).addClass("is-invalid");
-                        $("#errorfin-"+ diasemana ).addClass("is-invalid");
+                //     $.each( errorFin , function( index, diasemana ) {
+                //         $("#horafin-"+ diasemana ).addClass("is-invalid");
+                //         $("#errorfin-"+ diasemana ).addClass("is-invalid");
                        
                     
-                    });
+                //     });
 
-                    setTimeout( function() {
-                        // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-                        $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
-                    }, 5000);
+                //     setTimeout( function() {
+                //         // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
+                //         $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
+                //     }, 5000);
 
-                }  
+                // }  
             }
         });
     });
@@ -201,138 +128,81 @@
 
 
 
-//EDITAMOS EMPRESA REGISTRADA
-
-    $("#enviarFormActualizandoDatos").on('click', function(){
-        $.ajax({
-            url: "{{ route('tuempresa.update') }}",
-            // url: $("#form_UpdateRegistroEmpresa").attr('action'),
-            method: "post",
-            dataType: "json",
-            data: $("#form_UpdateRegistroEmpresa").serialize(),
-            success: function( data){
-                
-                console.log(data);
-                // window.location= "{{ route('empresas.index') }}"
-                $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-            },
-            error:function( jqXHR, textStatus, errorThrown  ){
-                if( jqXHR.status == 404 ) {}
-                
-                else if( jqXHR.status == 422 ) 
-                {     
-                    $( enviarFormRegistro ).prop( "disabled", false ).find("span").show(); 
-                    $( ".spinnerr" ).hide(); 
-
-                    GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
-                }
-                else if( jqXHR.status == 429 ) 
-                {   
-                    $( enviarFormRegistro ).prop( "disabled", false ).find("span").show();
-                    $( ".spinnerr" ).hide(); 
-
-                    let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
-                    let errorInicio = jqXHR.responseJSON.error.data['inicio'];
-                    let errorFin = jqXHR.responseJSON.error.data['fin'];
-
-                    $.each( errorInicio , function( index, diasemana ) {
-                        $("#horainicio-"+ diasemana ).addClass("is-invalid");
-                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");
-                       
-                    });
-                    
-                    $.each( errorFin , function( index, diasemana ) {
-                        $("#horafin-"+ diasemana ).addClass("is-invalid");
-                        $("#errorfin-"+ diasemana ).addClass("is-invalid");
-                       
-                    
-                    });
-
-                    setTimeout( function() {
-                        // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-                        $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
-                    }, 5000);
-
-                }  
-            }
-        })
-    });
-
 
        
-    for (let i = 1; i < 8; i++) {
+//     for (let i = 1; i < 8; i++) {
      
-             let horainicio =   $('input[name="horainicio['+i+']"]').val() ;
-             let horafinn =  $.trim( $('input[name="horafin['+i+']"]').val() );
+//              let horainicio =   $('input[name="horainicio['+i+']"]').val() ;
+//              let horafinn =  $.trim( $('input[name="horafin['+i+']"]').val() );
 
-             let indicehorainicio = horainicio.indexOf(":");
-             let indiceminutosinicio = horainicio.indexOf(" ");
-             let horainicioextraida = horainicio.substring(0, indicehorainicio);
-             let minutosinicioextraida = horainicio.substring(indicehorainicio +  1, indiceminutosinicio);
-             let AmPmhoraninicio =  horainicio.substring(indiceminutosinicio + 1, horainicio.length);
-                 valorminimo = ( parseInt(horainicioextraida) * 60 ) +  parseInt(minutosinicioextraida) ;
+//              let indicehorainicio = horainicio.indexOf(":");
+//              let indiceminutosinicio = horainicio.indexOf(" ");
+//              let horainicioextraida = horainicio.substring(0, indicehorainicio);
+//              let minutosinicioextraida = horainicio.substring(indicehorainicio +  1, indiceminutosinicio);
+//              let AmPmhoraninicio =  horainicio.substring(indiceminutosinicio + 1, horainicio.length);
+//                  valorminimo = ( parseInt(horainicioextraida) * 60 ) +  parseInt(minutosinicioextraida) ;
          
-                 if (AmPmhoraninicio == 'PM' && horainicio != '12:00 PM' ) {
-                   valorminimo = valorminimo + 720;
-                 }else if( horainicio == '12:00 AM'){
-                  valorminimo = 0;
-                 }else if(horainicio == '12:00 PM'){
-                    valorminimo = 720;
+//                  if (AmPmhoraninicio == 'PM' && horainicio != '12:00 PM' ) {
+//                    valorminimo = valorminimo + 720;
+//                  }else if( horainicio == '12:00 AM'){
+//                   valorminimo = 0;
+//                  }else if(horainicio == '12:00 PM'){
+//                     valorminimo = 720;
                  
-                 }else{
-                    valorminimo = valorminimo;
-                 }
+//                  }else{
+//                     valorminimo = valorminimo;
+//                  }
 
              
              
-             let indicehorafin = horafinn.indexOf(":");
-             let indiceenpaciofin = horafinn.indexOf(" ");
-             let horafinextraida = horafinn.substring(0, indicehorafin);
-             let minutosfinextraida = horafinn.substring(indicehorafin + 1, indiceenpaciofin);
-             let AmPmhoranfin =  horafinn.substring( indicehorafin + 4 ,  horafinn.length);
-                 valormaximo = ( parseInt(horafinextraida) * 60 ) +  parseInt(minutosfinextraida) ;
+//              let indicehorafin = horafinn.indexOf(":");
+//              let indiceenpaciofin = horafinn.indexOf(" ");
+//              let horafinextraida = horafinn.substring(0, indicehorafin);
+//              let minutosfinextraida = horafinn.substring(indicehorafin + 1, indiceenpaciofin);
+//              let AmPmhoranfin =  horafinn.substring( indicehorafin + 4 ,  horafinn.length);
+//                  valormaximo = ( parseInt(horafinextraida) * 60 ) +  parseInt(minutosfinextraida) ;
             
-             console.log(minutosfinextraida);
+//              console.log(minutosfinextraida);
              
-             if (AmPmhoranfin == 'PM') {
-              valormaximo = valormaximo + 720;
-            }else{
-             valormaximo = valormaximo + 0;
-            }
+//              if (AmPmhoranfin == 'PM') {
+//               valormaximo = valormaximo + 720;
+//             }else{
+//              valormaximo = valormaximo + 0;
+//             }
 
-            if( $('input[name="dias['+i+']"]').attr('checked') ) {
-                slidertime(valorminimo, valormaximo, i);
-                $('div[name="slider-range['+i+']"]').show();
-            }
+//             if( $('input[name="dias['+i+']"]').attr('checked') ) {
+//                 slidertime(valorminimo, valormaximo, i);
+//                 $('div[name="slider-range['+i+']"]').show();
+//             }
 
-//MOSTRAMOS SLIDER SI ACTIVAMOS DIA
+// //MOSTRAMOS SLIDER SI ACTIVAMOS DIA
             
-             $('input[name="dias['+i+']"]').on('change', function() {
-                     if( $(this).prop('checked') ) {
-                        valorminimo = 0;
-                        valormaximo = 1440;
+//              $('input[name="dias['+i+']"]').on('change', function() {
+//                      if( $(this).prop('checked') ) {
+//                         valorminimo = 0;
+//                         valormaximo = 1440;
 
 
-                          $('input[name="horainicio['+i+']"]').show();
-                          $('input[name="horafin['+i+']"]').show();
-                          $('input[name="horainicio['+i+']"]').val('12:00 AM');
-                          $('input[name="horafin['+i+']"]').val('11:59 PM');                   
-                          slidertime(valorminimo, valormaximo, i);
-                          $('div[name="slider-range['+i+']"]').show();
-                    }else{
-                         $('div[name="slider-range['+i+']"]').hide();
-                         $('input[name="horainicio['+i+']"]').hide();
-                         $('input[name="horafin['+i+']"]').hide();
-                         $('input[name="horainicio['+i+']"]').val('');
-                         $('input[name="horafin['+i+']"]').val('');
-                    }
-             });
+//                           $('input[name="horainicio['+i+']"]').show();
+//                           $('input[name="horafin['+i+']"]').show();
+//                           $('input[name="horainicio['+i+']"]').val('12:00 AM');
+//                           $('input[name="horafin['+i+']"]').val('11:59 PM');                   
+//                           slidertime(valorminimo, valormaximo, i);
+//                           $('div[name="slider-range['+i+']"]').show();
+//                     }else{
+//                          $('div[name="slider-range['+i+']"]').hide();
+//                          $('input[name="horainicio['+i+']"]').hide();
+//                          $('input[name="horafin['+i+']"]').hide();
+//                          $('input[name="horainicio['+i+']"]').val('');
+//                          $('input[name="horafin['+i+']"]').val('');
+//                     }
+//              });
          
     
 
 
     
-    }
+//     }
 
 
 

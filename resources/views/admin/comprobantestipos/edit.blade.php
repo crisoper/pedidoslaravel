@@ -28,7 +28,11 @@
                                 @csrf
                                 {!! method_field('PUT') !!}
                                 <button type="submit" class="btn btn-primary">Guardar</button>
+                                @if ( auth()->user()->hasRole('SuperAdministrador'))
                                 <a href="{{route('comprobantetipos.index')}}" class="btn btn-danger">Cancelar</a>
+                                @else
+                                <a href="{{route('configuracionempresa.index')}}" class="btn btn-danger">Cancelar</a>
+                                @endif
                             </div>
                         </div>
                     </form>

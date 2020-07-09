@@ -36,6 +36,7 @@ Auth::routes();
 Route::get("administracion/login", "Auth\LoginController@showLoginForm")
 ->name("admin.login");
 Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
+Route::get('registernewempresa' ,'Auth\loginorregisterController@registernewempresa')->name('registernewempresa');
 
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");
@@ -106,9 +107,7 @@ Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 
 
 
-// EMPRESAS
-Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
-->name('locales.index');
+
 
 
 //REALIZAR PEDIDO
@@ -118,10 +117,11 @@ Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 
 
 
+// EMPRESAS
+Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
+->name('locales.index');
+Route::post('nuevaEmpresa','Admin\EmpresasController@nuevaEmpresa')->name('nuevaEmpresa.store');
 
-Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
-Route::post('tuempresa/store','Admin\EmpresasController@tuempresastore')->name('registratuempresa.store');
-Route::post('tuempresa.update','Admin\EmpresasController@tuempresaUpdate')->name('tuempresa.update');
 Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
 Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');
 

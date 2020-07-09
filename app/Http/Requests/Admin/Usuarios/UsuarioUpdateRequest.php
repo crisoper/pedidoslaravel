@@ -24,9 +24,15 @@ class UsuarioUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+          
+            'nombre' => ['required'],
+            'paterno' => ['required'],
+            'materno' => ['required'],
+            'dni' => ['required','numeric', 'max:8', 'unique:personas,dni'],
+            'telefono' => ['required' , 'max:9' ],
             'email' => ['required','unique:users,email,'.$this->route('usuario')],
             'password' => 'confirmed',
+            
         ];
     }
 }

@@ -19,13 +19,12 @@ class ComprobantestiposController extends Controller
     {
         $comprobantesTipos = Comprobantetipo::get();
         if (!empty(request()->buscar)) {
-            $comprobantesTipos = Comprobantetipo::where('nombre', 'like', '%'.request()->buscar.'%' )
-                    ->orWhere('descripcion','like','%'.request()->buscar.'%')
-                    ->orderBy('id', 'desc')
-                    ->paginate(10);
+            $comprobantesTipos = Comprobantetipo::where('nombre', 'like', '%' . request()->buscar . '%')
+                ->orWhere('descripcion', 'like', '%' . request()->buscar . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
             return view('admin.comprobantestipos.index', compact('comprobantesTipos'));
-        } 
-        else {
+        } else {
             $comprobantesTipos = Comprobantetipo::orderBy('id', 'desc')->paginate(10);
             return view('admin.comprobantestipos.index', compact('comprobantesTipos'));
         }
@@ -51,14 +50,19 @@ class ComprobantestiposController extends Controller
     public function store(ComprobantetipoCreateRequest $request)
     {
         $comprobanteTipo = Comprobantetipo::firstOrNew(
-            [           
-            'nombre' => $request->nombre,           
-            'descripcion' => $request->descripcion,           
-        ]);
+            [
+                'nombre' => $request->nombre,
+                'descripcion' => $request->descripcion,
+            ]
+        );
         $comprobanteTipo->created_by = Auth()->user()->id;
         $comprobanteTipo->save();
-      
-        return redirect()->route('comprobantetipos.index');
+
+        if (auth()->user()->hasRole('SuperAdministrador')) {
+            return redirect()->route('comprobantetipos.index');
+        } else {
+            return redirect()->route('config.comprobantes.index');
+        }
     }
 
     /**
@@ -81,7 +85,7 @@ class ComprobantestiposController extends Controller
     public function edit($id)
     {
         $comprobanteTipo = Comprobantetipo::findOrFail($id);
-        
+
         return view('admin.comprobantestipos.edit', compact('comprobanteTipo'));
     }
 
@@ -94,13 +98,19 @@ class ComprobantestiposController extends Controller
      */
     public function update(ComprobantetipoUpdateRequest $request, $id)
     {
-        $comprobanteTipo= Comprobantetipo::findOrFail($id);
-        
-        $comprobanteTipo->nombre = $request->nombre;      
-        $comprobanteTipo->descripcion = $request->descripcion;   
-        $comprobanteTipo->updated_by = Auth()->user()->id;   
+        $comprobanteTipo = Comprobantetipo::findOrFail($id);
+
+        $comprobanteTipo->nombre = $request->nombre;
+        $comprobanteTipo->descripcion = $request->descripcion;
+        $comprobanteTipo->updated_by = Auth()->user()->id;
         $comprobanteTipo->save();
-        return redirect()->route('comprobantetipos.index');
+
+        if (auth()->user()->hasRole('SuperAdministrador')) {
+
+            return redirect()->route('comprobantetipos.index');
+        } else {
+            return redirect()->route('config.comprobantes.index');
+        }
     }
 
     /**
