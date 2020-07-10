@@ -30,7 +30,7 @@ class UsuarioCreateRequest extends FormRequest
             'materno' => ['required'],
             'dni' => ['required','unique:personas,dni'],
             'telefono' => ['required' ],
-            'direccion' => ['required'],
+            'direccion' => ['nullable'],
             'email' => ['required','unique:users,email'],
             'password' => 'required|confirmed',
         ];

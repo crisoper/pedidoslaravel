@@ -16,9 +16,9 @@
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-xs-12 col-sm-4">
-                                    <label for="name">Nombre</label>
-                                    <input autofocus type="text" name="name" id="name" placeholder="Nombre" value="{{ old('name') }}" class="form-control">
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    <label for="nombre">Nombre</label>
+                                    <input autofocus type="text" name="nombre" id="nombre" placeholder="Nombre" value="{{ old('nombre') }}" class="form-control">
+                                    <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                 </div>
                                 <div class="form-group col-xs-12 col-sm-4">
                                     <label for="paterno">Apellido Paterno</label>

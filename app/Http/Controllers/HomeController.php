@@ -32,18 +32,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $idempresa = session()->get('empresaactual');
-        // $periodos = Periodo::where('empresa_id', $idempresa )->first();  
+      
         $userEmpresa = Auth()->user()->empresas;
 
         $empresas = $userEmpresa;
         $empresa = $userEmpresa->first();
         
-        if (auth()->user()->hasRole('SuperAdministrador')) {
-          
+        if ( auth()->user()->hasRole('SuperAdministrador') ) {
+            Session::put('empresaactual', $empresa->id);
+            Session::put('empresadescripcion', $empresa->nombre);
             $flag = "SuperAdministrador";
             return view('home', compact('flag'));
             
+        }else if ( auth()->user()->hasRole('web_Repartidor') ) {
+            Session::put('empresaactual', $empresa->id);
+            Session::put('empresadescripcion', $empresa->nombre);
+            $flag = "Distribuidor";
+            return view('home', compact('flag'));
+        
         }else if (count($userEmpresa) != 0 ) {
 
             if (auth()->user()->hasRole('SuperAdministrador')) {
@@ -90,6 +96,8 @@ class HomeController extends Controller
             } else {
                 return redirect()->route('registrartuempresa');
             }
+        
+            
         }
     }
 }

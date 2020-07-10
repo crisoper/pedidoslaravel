@@ -28,11 +28,12 @@ class UsuarioUpdateRequest extends FormRequest
             'nombre' => ['required'],
             'paterno' => ['required'],
             'materno' => ['required'],
-            'dni' => ['required','numeric', 'max:8', 'unique:personas,dni'],
-            'telefono' => ['required' , 'max:9' ],
+            'dni' => ['required','numeric', 'digits:8', 'unique:personas,dni,'.$this->personaid],
+            'telefono' => ['required' , 'digits:9' ],
             'email' => ['required','unique:users,email,'.$this->route('usuario')],
             'password' => 'confirmed',
-            
+
+                        
         ];
     }
 }

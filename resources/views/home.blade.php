@@ -12,6 +12,8 @@
         @elseif ( $flag == 'Administrador' )     
             @include('layouts.admin.dashboardhome.vistaAdministrador')
              {{-- @include('admin.administrador_includes.producto') --}}
+        @elseif($flag == 'Distribuidor' )
+        @include('layouts.admin.dashboardhome.vistaDistribuidor')
         @endif
 
    

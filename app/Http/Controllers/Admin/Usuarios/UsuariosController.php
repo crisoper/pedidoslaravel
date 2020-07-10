@@ -72,11 +72,11 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioCreateRequest $request)
     {
-        // UsuarioCreateRequest
+       
         $persona = Persona::firstOrNew([
-            'nombre' => $request->name,
+            'nombre' => $request->nombre,
             'paterno' => $request->paterno,
             'materno' => $request->materno,
             'dni' => $request->dni,
@@ -94,7 +94,7 @@ class UsuariosController extends Controller
         $usuario = User::firstOrNew(
             [
                 'persona_id' => $persona->id,
-                'name' => $request->name .' '. $request->paterno .' '.$request->materno,
+                'name' => $request->nombre .' '. $request->paterno .' '.$request->materno,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ],
@@ -107,11 +107,11 @@ class UsuariosController extends Controller
         Userempresa::create([
             'user_id' => $usuario->id,
             'empresa_id' => $this->empresaId(),
-            'estado' => '1',
+            'estado' => 1,
         ]);
 
         return redirect()->route('usuarios.index')->with('info', 'Registro creado');
-
+     
     }
 
     /**
@@ -134,10 +134,11 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = User::findOrFail( $id );
-        return view( 'admin.usuarios.usuarios.edit', compact('usuario') );
+        $persona = Persona::findOrFail( $usuario->persona_id);
+        return view( 'admin.usuarios.usuarios.edit', compact('usuario', 'persona') );
     }
 
-
+   
     private function enviarCorreoCambioClave( $usuario, $clave ) {
         Mail::to( $usuario->email )->send( new Enviarclaveausuario( $usuario, $clave ) );
     }    
@@ -153,8 +154,19 @@ class UsuariosController extends Controller
     public function update(UsuarioUpdateRequest $request, $id)
     {
         $usuario = User::findOrFail( $id );
-        $usuario->name = $request->input('name');
-
+       
+        $persona = Persona::where('correo', $usuario->email );
+        $persona->nombre = $request->nombre;
+        $persona->paterno = $request->paterno;
+        $persona->materno = $request->materno;
+        $persona->dni = $request->dni;
+        $persona->direccion = $request->direccion;
+        $persona->telefono = $request->telefono;
+        $persona->updated_by = auth()->user()->id;
+    
+     
+        $usuario->name = $request->nombre .' '. $request->paterno .' '.$request->materno;
+             
         if ( !empty($request->input("password"))) {
             $usuario->password = Hash::make( $request->input('password') );
 
