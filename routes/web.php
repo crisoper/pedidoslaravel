@@ -120,7 +120,7 @@ Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 // EMPRESAS
 Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 ->name('locales.index');
-Route::post('nuevaEmpresa','Admin\EmpresasController@nuevaEmpresa')->name('nuevaEmpresa.store');
+Route::post('nuevaEmpresa','Auth\RegisterController@nuevaEmpresa')->name('nuevaEmpresa.store');
 
 Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
 Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');

@@ -3,13 +3,13 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Productofoto extends Model
 {
-    use  SoftDeletes;
-    protected $dates =['deleted_at'];
+    // use  SoftDeletes;
+    // protected $dates =['deleted_at'];
     
     protected $fillable=[
         'empresa_id',

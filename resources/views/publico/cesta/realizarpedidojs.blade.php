@@ -13,7 +13,7 @@
                 dataType: "json",
                 data: $("#formNavDetallePedidoCesta").serialize() ,
                 success: function( data ) {
-
+                    
                     $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
                     // GLOBARL_MostrarNotificaciones( data.success, "info" );
                     // mesajeDatosActualizados( ) ;

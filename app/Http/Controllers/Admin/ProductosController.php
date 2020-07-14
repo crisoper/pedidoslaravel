@@ -32,48 +32,45 @@ class ProductosController extends Controller
         $this->middleware('auth');
     }
 
-    private function periodoId( Request $request  ) {
+    private function periodoId(Request $request)
+    {
         return $request->session()->get('periodoactual', 0);
-    }  
-    
+    }
 
-    private function empresaId() {
-        return Session::get( 'empresaactual', 0 );
+
+    private function empresaId()
+    {
+        return Session::get('empresaactual', 0);
     }
 
 
     public function index()
     {
-        
-       
+
+
         $categorias = Productocategoria::get();
 
         $productosenoferta = Productooferta::get();
         $arrayofertas = [];
-        foreach( $productosenoferta as $producto){
-            array_push( $arrayofertas, $producto->producto_id);
+        foreach ($productosenoferta as $producto) {
+            array_push($arrayofertas, $producto->producto_id);
         }
-       
-        
-        if (!empty(request()->buscar)) 
-        {
-            $productos = Producto::where('nombre', 'like', '%'.request()->buscar.'%' )
-                    ->where('empresa_id', $this->empresaId())
-                    ->orderBy('id', 'desc')
-                    ->paginate(10);
-            return view('admin.productos.index', compact('productos','categorias', 'arrayofertas'));
-        }
-        else
-        {
+
+
+        if (!empty(request()->buscar)) {
+            $productos = Producto::where('nombre', 'like', '%' . request()->buscar . '%')
+                ->where('empresa_id', $this->empresaId())
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+            return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
+        } else {
             $productos = Producto::orderBy('id', 'desc')
-            ->where('empresa_id', $this->empresaId())
-            ->paginate(10);
-                      
-            
-            return view('admin.productos.index', compact('productos','categorias', 'arrayofertas'));
+                ->where('empresa_id', $this->empresaId())
+                ->paginate(10);
+
+
+            return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
         }
-
-
     }
 
     /**
@@ -84,9 +81,9 @@ class ProductosController extends Controller
     public function create()
     {
         $categorias = Productocategoria::get();
-        $tags = Tag::get(); 
-        
-        return view('admin.productos.create', compact('categorias','tags'));
+        $tags = Tag::get();
+
+        return view('admin.productos.create', compact('categorias', 'tags'));
     }
 
     /**
@@ -98,21 +95,20 @@ class ProductosController extends Controller
     public function store(ProductosCreateRequest $request)
     {
 
-        $catedoria = Productocategoria::where('id' , $request->categoriasId)->first();
-        if( $catedoria != null || $catedoria != "" ){
+        $catedoria = Productocategoria::where('id', $request->categoriasId)->first();
+        if ($catedoria != null || $catedoria != "") {
             $catedoriaid = $catedoria->id;
-            
-        }else{
+        } else {
             $categorias = Productocategoria::firstOrNew(
                 [
-                   'empresa_id'=> $this->empresaId(),
-                    'nombre'=> $request->categoriasName,
+                    'empresa_id' => $this->empresaId(),
+                    'nombre' => $request->categoriasName,
                 ],
                 [
-                    'created_by'=> Auth()->user()->id,
+                    'created_by' => Auth()->user()->id,
                 ]
             );
-            
+
             $categorias->save();
             $catedoriaid = $categorias->id;
         }
@@ -122,69 +118,71 @@ class ProductosController extends Controller
                 'empresa_id' => $this->empresaId(),
                 'categoria_id' => $catedoriaid,
                 'nombre' => $request->nombre,
-                ],
-                [
-                    
-                    'descripcion' => $request->descripcion,
-                    'precio' => $request->precio,
-                    'codigo' => $request->codigo,
-                    'stock' => $request->stock,
-                    'created_by' => Auth()->user()->id,
+            ],
+            [
+
+                'descripcion' => $request->descripcion,
+                'precio' => $request->precio,
+                'codigo' => $request->codigo,
+                'stock' => $request->stock,
+                'created_by' => Auth()->user()->id,
             ]
-         );     
-         $productos->save();
+        );
+        $productos->save();
 
 
-         $tag = Tag:: where('id', $request->tagsId )->first();
-         if( $tag != null || $tag != ""){
-             $tagid = $tag->id;
-         }else{
+        $tag = Tag::where('id', $request->tagsId)->first();
+        if ($tag != null || $tag != "") {
+            $tagid = $tag->id;
+        } else {
 
-        $tags = Tag::firstOrNew([
+            $tags = Tag::firstOrNew([
                 'nombre' => $request->tagName,
-             ]);
-             $tags->save();
-             $tagid = $tags->id; 
-         }
+            ]);
+            $tags->save();
+            $tagid = $tags->id;
+        }
 
         $productotag = Productotag::firstOrNew([
             'producto_id' => $productos->id,
             'tag_id' => $tagid,
         ]);
-        $productotag->save();  
+        $productotag->save();
 
 
-        $files = $request->file('fotoproducto');       
-        if ( count($files) > 0) {                
-        foreach($files as $file){    
-            
-            //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
-       
-            $input['fotoproducto'] = strtolower(uniqid().'.'.$file->getClientOriginalExtension());
-            $destinationPath = public_path('/images');
-            $file->move($destinationPath, $input['fotoproducto']);
+        $files = $request->file('fotoproducto');
+        if (isset($files)) {
+            foreach ($files as $file) {
 
-            //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
+                //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
 
-              $fotoproducto = Productofoto::firstOrNew([               
-                'empresa_id'=> $this->empresaId(),
-                'producto_id'=> $productos->id,
-                'nombre'=>   $input['fotoproducto'],
-                'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
-            ],
-            [
-                'created_at' => Auth()->user()->id,
-            ] );
-            $fotoproducto->save();
-               
-            ProcessimageJob::dispatch($fotoproducto);
+                $input['fotoproducto'] = strtolower(uniqid() . '.' . $file->getClientOriginalExtension());
+                $destinationPath = public_path('/images');
+                $file->move($destinationPath, $input['fotoproducto']);
+
+                //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
+
+                $fotoproducto = Productofoto::firstOrNew(
+                    [
+                        'empresa_id' => $this->empresaId(),
+                        'producto_id' => $productos->id,
+                        'nombre' =>   $input['fotoproducto'],
+                        'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
+                    ],
+                    [
+                        'created_by' => Auth()->user()->id,
+                    ]
+                );
+                $fotoproducto->save();
+
+                ProcessimageJob::dispatch($fotoproducto);
             }
-        }  
-    //    
-        
+        }
+        //    
+
         return redirect()->route('productos.index')->with('El producto se ha registrado satisfactoriamente...');
     }
-     
+
     /**
      * Display the specified resource.
      *
@@ -207,13 +205,12 @@ class ProductosController extends Controller
         $categorias = Productocategoria::get();
         $producto = Producto::findOrFail($id);
         $tag = $producto->tags->first();
-        $fotosproducto = Productofoto::where('producto_id', $producto->id  )->get();
+        $fotosproducto = Productofoto::where('producto_id', $producto->id)->get();
         foreach ($fotosproducto as $foto) {
-          
-            $exists = Storage::disk('img_productos')->exists( $foto->nombre ); 
-                       
+
+            $exists = Storage::disk('img_productos')->exists($foto->nombre);
         }
-        return view('admin.productos.editar', compact('producto','exists','tag'));
+        return view('admin.productos.editar', compact('producto', 'exists', 'tag'));
     }
 
     /**
@@ -225,25 +222,23 @@ class ProductosController extends Controller
      */
     public function update(ProductosUpdateRequest $request, $id)
     {
-        $catedoria = Productocategoria::where('id' , $request->categoriasId)->first();
-        
-        if( $catedoria->id == $request->categoriasId && $catedoria->nombre ==  $request->categoriasName  ){
-            $catedoriaid = $request->categoriasId;            
-        }else{
+        $catedoria = Productocategoria::where('id', $request->categoriasId)->first();
+
+        if ($catedoria->id == $request->categoriasId && $catedoria->nombre ==  $request->categoriasName) {
+            $catedoriaid = $request->categoriasId;
+        } else {
             $categorias = Productocategoria::firstOrNew(
                 [
-                   'empresa_id'=> $this->empresaId(),
-                    'nombre'=> $request->categoriasName,
+                    'empresa_id' => $this->empresaId(),
+                    'nombre' => $request->categoriasName,
                 ],
                 [
-                    'updated_by'=> Auth()->user()->id,
+                    'updated_by' => Auth()->user()->id,
                 ]
             );
-            
             $categorias->save();
             $catedoriaid = $categorias->id;
         }
-
         $producto = Producto::findOrFail($id);
         $producto->empresa_id =  $this->empresaId();
         $producto->categoria_id = $catedoriaid;
@@ -253,60 +248,57 @@ class ProductosController extends Controller
         $producto->precio =  $request->precio;
         $producto->stock = $request->stock;
         $producto->updated_by =  Auth()->user()->id;
-        $producto->save();   
+        $producto->save();
 
-        $tag = Tag:: where('id', $request->tagId )->first();               
-        if(  $tag->id == $request->tagId && $tag->nombre ==  $request->tagName ){
+        $tag = Tag::where('id', $request->tagId)->first();
+        if ($tag->id == $request->tagId && $tag->nombre ==  $request->tagName) {
             $tagid = $request->tagId;
-            
-        }else{
-            
+        } else {
             $tags = Tag::firstOrNew([
                 'nombre' => $request->tagName,
-                ]);
-                $tags->save();
-                $tagid = $tags->id; 
+            ]);
+            $tags->save();
+            $tagid = $tags->id;
+        }
+
+        $productotag = Productotag::where('producto_id', $producto->id)->first();
+        $productotag->tag_id = $tagid;
+        $productotag->save();
+
+        
+        $files = $request->file('fotoproducto');
+        if (isset($files)) {
+            //    $fotos = Productofoto::where("producto_id", $producto->id )->get();
+            //         foreach ($fotos as $foto) {
+            //             $foto->delete();
+            //         }
+            Productofoto::where("producto_id", $producto->id)->delete();
+
+            foreach ($files as $file) {
+
+                $input['fotoproducto'] = strtolower(uniqid() . '.' . $file->getClientOriginalExtension());
+                $destinationPath = public_path('/images');
+                $file->move($destinationPath, $input['fotoproducto']);
+                $fotoproducto = Productofoto::firstOrNew(
+                    [
+                        'empresa_id' => $this->empresaId(),
+                        'producto_id' => $producto->id,
+                        'nombre' =>   $input['fotoproducto'],
+                        'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
+                    ],
+                    [
+                        'updated_by' => Auth()->user()->id,
+                    ]
+                );
+                $fotoproducto->save();
+                ProcessimageJob::dispatch($fotoproducto);
             }
-            
-       $productotag = Productotag::where('producto_id', $producto->id )->first();
-       $productotag->tag_id = $tagid;
-       $productotag->save();  
-      
-    //    $fotos = Productofoto::where("producto_id", $producto->id )->get();
-    //         foreach ($fotos as $foto) {
-    //             $foto->delete();
-    //         }
-       Productofoto::where("producto_id", $producto->id )->delete();
-      
-       $files = $request->file('fotoproducto');       
-       if ( count($files) > 0) {                
-       foreach($files as $file){    
-          
-           $input['fotoproducto'] = strtolower(uniqid().'.'.$file->getClientOriginalExtension());
-           $destinationPath = public_path('/images');
-           $file->move($destinationPath, $input['fotoproducto']);
-
-           //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
-
-             $fotoproducto = Productofoto::firstOrNew([               
-               'empresa_id'=> $this->empresaId(),
-               'producto_id'=> $producto->id,
-               'nombre'=>   $input['fotoproducto'],
-               'url' =>  'img_productos' . '/' . $input['fotoproducto'], //'img_productos'.'/'.$filename,
-           ],
-           [
-               'created_at' => Auth()->user()->id,
-           ] );
-           $fotoproducto->save();
-              
-           ProcessimageJob::dispatch($fotoproducto);
-           }
-       }  
-   //    
-            return redirect()->route('productos.index')->with('info','Datos modificados satisfactoriamente...');  
+        }
+           
+        return redirect()->route('productos.index')->with('info', 'Datos modificados satisfactoriamente...');
     }
 
- 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -316,90 +308,95 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         $productos = Producto::findOrFail($id);
-        $fotos = Productofoto::where("producto_id", $productos->id )->delete();
-       
-        
-        if ( $productos ) {
+        $fotos = Productofoto::where("producto_id", $productos->id)->delete();
+
+
+        if ($productos) {
             $productos->deleted_at = Auth()->user()->id;
             $fotos->deleted_at = Auth()->user()->id;
-            
+
             Producto::findOrFail($id)->delete();
-            Productofoto::where("producto_id", $productos->id )->delete();
+            Productofoto::where("producto_id", $productos->id)->delete();
 
             return redirect()->back()->with("info", "Se han eliminado el producto");
-        }   
-        else {
+        } else {
             return redirect()->back()->with("error", "No se ha encontrado el producto");
         }
 
         // return redirect()->route('productos.index');
-    
+
     }
 
-    public function getImagenes(Request $request){
-     
-        $fotosproducto = Productofoto::where('producto_id', $request->id  )->get();
+    public function getImagenes(Request $request)
+    {
+
+        $fotosproducto = Productofoto::where('producto_id', $request->id)->get();
         foreach ($fotosproducto as $foto) {
-          
-            $exists = Storage::disk('img_productos')->exists( $foto->nombre ); 
+
+            $exists = Storage::disk('img_productos')->exists($foto->nombre);
             if ($exists) {
                 return response()->json(["data", $fotosproducto], 200);
-            }else{
-                
+            } else {
+
                 return response()->json(["data", "No existe archivo"], 422)->with('error', 'No existe imagen de este producto');
             }
         }
     }
 
-    public function productosofertas( ProductoofertasCreateRequest $request){
-       
-        $ofertas = Productooferta::firstOrNew([
-            'empresa_id' => $this->empresaId(),
-            'producto_id' => $request->idproducto,
-        ],
-        [
-            'preciooferta' => $request->preciooferta,
-            'diainicio' => $request->diainicio,
-            'horainicio' => $request->horainicio,
-            'diafin' => $request->diafin,
-            'horafin' => $request->horafin,
-            'created_by',
-        ]);
+    public function productosofertas(ProductoofertasCreateRequest $request)
+    {
+
+        $ofertas = Productooferta::firstOrNew(
+            [
+                'empresa_id' => $this->empresaId(),
+                'producto_id' => $request->idproducto,
+            ],
+            [
+                'preciooferta' => $request->preciooferta,
+                'diainicio' => $request->diainicio,
+                'horainicio' => $request->horainicio,
+                'diafin' => $request->diafin,
+                'horafin' => $request->horafin,
+                'created_by',
+            ]
+        );
         $ofertas->save();
 
-        return response()->json('success',200);
-        
+        return response()->json('success', 200);
     }
 
-    public function productosofertaseditar(Request $request){
-       
-        $oferta = Productooferta::where('producto_id', $request->idproducto )->first();        
+    public function productosofertaseditar(Request $request)
+    {
+
+        $oferta = Productooferta::where('producto_id', $request->idproducto)->first();
         return response()->json($oferta, 200);
     }
 
-    public function productosofertasupdate( ProductoofertasUpdateRequest $request){
+    public function productosofertasupdate(ProductoofertasUpdateRequest $request)
+    {
 
-            $ofertas = Productooferta::findOrFail($request->idoferta);        
-            // $ofertas->empresa_id  = $this->empresaId();
-            // $ofertas->producto_id  = $request->idproducto;
-            $ofertas->preciooferta  = $request->preciooferta;
-            $ofertas->diainicio  = $request->diainicio;
-            $ofertas->horainicio  = $request->horainicio;
-            $ofertas->diafin  = $request->diafin;
-            $ofertas->horafin  = $request->horafin;
-            $ofertas->updated_by = Auth()->user()->id ;
-       
-            $ofertas->save();
+        $ofertas = Productooferta::findOrFail($request->idoferta);
+        // $ofertas->empresa_id  = $this->empresaId();
+        // $ofertas->producto_id  = $request->idproducto;
+        $ofertas->preciooferta  = $request->preciooferta;
+        $ofertas->diainicio  = $request->diainicio;
+        $ofertas->horainicio  = $request->horainicio;
+        $ofertas->diafin  = $request->diafin;
+        $ofertas->horafin  = $request->horafin;
+        $ofertas->updated_by = Auth()->user()->id;
 
-            return response()->json('success',200);
+        $ofertas->save();
+
+        return response()->json('success', 200);
     }
 
-    public function productosofertasdelete(Request $request){
-        
-        $ofertas = Productooferta::findOrFail( $request->ofertaid );
+    public function productosofertasdelete(Request $request)
+    {
+
+        $ofertas = Productooferta::findOrFail($request->ofertaid);
         $ofertas->deleted_at = Auth()->user()->id;
         $ofertas->save();
-        
-        return response()->json('success',200);
-    } 
+
+        return response()->json('success', 200);
+    }
 }

@@ -5,18 +5,18 @@
 
 <div class="col-12">
 
-
-  
-        @if ( $flag == 'SuperAdministrador' )
-            @include('layouts.admin.dashboardhome.vistaSuperadministrador')
-        @elseif ( $flag == 'Administrador' )     
-            @include('layouts.admin.dashboardhome.vistaAdministrador')
-             {{-- @include('admin.administrador_includes.producto') --}}
-        @elseif($flag == 'Distribuidor' )
+    @if ( auth()->user()->hasRole('SuperAdministrador') )
+        @include('layouts.admin.dashboardhome.vistaSuperadministrador')
+    @elseif( auth()->user()->hasRole('menu_Administrador empresa') )
+        @include('layouts.admin.dashboardhome.vistaAdministrador')
+    @elseif( auth()->user()->hasRole('menu_Administrador empresa') )
         @include('layouts.admin.dashboardhome.vistaDistribuidor')
-        @endif
+    @endif
 
-   
+
+
+
+
 </div>
 
 

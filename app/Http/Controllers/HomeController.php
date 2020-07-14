@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Periodo;
-
+use App\Models\Publico\Cesta;
 use Spatie\Permission\Models\Role as Rol;
 use App\User;
-
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -33,63 +33,77 @@ class HomeController extends Controller
     public function index()
     {
       
-        $userEmpresa = Auth()->user()->empresas;
+        $empresasUser = Auth()->user()->empresas;
 
-        $empresas = $userEmpresa;
-        $empresa = $userEmpresa->first();
+        $empresas = $empresasUser;
+        $empresa = $empresasUser->first();
         
         if ( auth()->user()->hasRole('SuperAdministrador') ) {
             Session::put('empresaactual', $empresa->id);
             Session::put('empresadescripcion', $empresa->nombre);
-            $flag = "SuperAdministrador";
-            return view('home', compact('flag'));
+            
+            return view('home');
             
         }else if ( auth()->user()->hasRole('web_Repartidor') ) {
             Session::put('empresaactual', $empresa->id);
             Session::put('empresadescripcion', $empresa->nombre);
-            $flag = "Distribuidor";
-            return view('home', compact('flag'));
+            $flag = "repartidor";
+            return view('home');
         
-        }else if (count($userEmpresa) != 0 ) {
+        }else if (count($empresasUser) != 0 ) {
 
             if (auth()->user()->hasRole('SuperAdministrador')) {
                 Session::put('empresaactual', $empresa->id);
                 Session::put('empresadescripcion', $empresa->nombre);
-                $flag = "SuperAdministrador";
-                return view('home', compact('flag'));
+               
+                return view('home');
             } else {
 
-                if (auth()->user()->hasRole('web_Administrador empresa')) {
-                    if (count($userEmpresa) > 1) {
+                if (auth()->user()->hasRole('menu_Administrador empresa')) {
+                    if (count($empresasUser) > 1) {
 
                         return view('admin.empresas.formseleccionarempresa', compact('empresas'));
                     } else {
                         Session::put('empresaactual', $empresa->id);
                         Session::put('empresadescripcion', $empresa->nombre);
-                        $flag = "Administrador";
+                      
                         $email_verified  = User::findOrFail( Auth()->user()->id );
                         if ( $email_verified->email_verified_at != null || $email_verified->email_verified_at != '') {
                             
-                            return view('home', compact('flag'));
+                            return view('home');
                         }
                         else{
                             return redirect()->route('confirmarcuenta');   
                         }
                     }
-                } else {
-
+                 } else {
+                    
                     $rol = auth()->user()->roles()->where("guard_name", "menu")->whereNotNull("paginainicio")->first();
                     if ($rol and Route::has($rol->paginainicio)) {
                         return redirect()->route($rol->paginainicio);
                     } else {
-                        return view("layouts.paginas.mensajes.sinrol");
+                        return view("includes.sinrol");
                     }
                 }
             }
         } else {
             if (auth()->user()->hasRole('web_Comprador')) {
-                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {                    
-                    return view("publico.inicio.index");
+
+                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {
+                    
+                     $sesionStorage = Session::get('storagecliente_id', 0);
+                    //consultamos si tiene pedidos pedientes    
+                    $cesta = Cesta::where('storagecliente_id',  $sesionStorage )
+                    ->where('estado', 0)
+                    ->get();                                   
+                   
+                    if( count( $cesta ) > 0  ){
+                        return redirect()->route('cart.index');
+                        
+                    }else{
+                        return view("publico.inicio.index");
+                    }
+                    // publico.cesta.index
                 }else{
                     return view('publico.mail.confirmarcuentaComprador');
                 }

@@ -21,10 +21,7 @@
 
     }
 
-    .contenedor {
-        margin-top: 4rem;
-    }
-
+ 
     #tabs,
     #tabsContent {
 
@@ -34,11 +31,7 @@
 
     }
 
-    .nav-link {
-        font-size: 16px !important;
-        border: none !important;
-        background-color: transparent !important;
-    }
+   
 
     #btn_submit {
         background-color: #108b9e !important;
@@ -54,29 +47,26 @@
     .container_left {
         background-color: #F8F9FA;        
         height: 100vh;
-        padding: 5rem;
-        display: flex;       
-        flex-direction: column;
-
+       
+        padding-top: 5em;
+     
     }
     #tab-content{
         
-        padding-left: 5rem;
-        padding-right: 5rem;
+        padding-left: 1em;
+        padding-right: 1em;
     }
     #texto{
-        padding-left: 5rem;
-        padding-right: 5rem;
+        background-color: #22737E;
         text-align: center;
+        padding-top: 5em;;
     }
     .titulo{
-         font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: #F8F9FA;
-        margin-top: 10rem;
+      
     }
-    .parrafo>span{
-        font-size: 16px;
-    }
+
     img{
         width: 150px;
         height: 40px;
@@ -89,17 +79,17 @@
 @section('contenido')
 <div class="container-fluid ">
     <div class="row m-0 p-0">
-        <div class="d-flex">
-            <div id="texto" class=" col-md-5 col-sm-12 d-flex   flex-column  " >
+        <div class="d-flex flex-wrap">
+            <div id="texto" class="col-sm-12 col-md-5  d-flex   flex-column " >
                 {{-- @if( $flag == 'login' ||  $flag == 'register') --}}
                 <div class="titulo" >              
-                    <h1><span class="text-right">Tu confianza es nuestra fortaleza</span></h1>
+                   <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
                 </div>
-                
-                <div class="parrafo text-light">
-                    <span>
-                        Nuestro principal objetivo es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y atender de forma inmediata tus requerimientos. 
-                    </span>
+                <br>
+                <div class= text-light">
+                    <h4 class="text-light">
+                       <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de forma inmediata</span> tus requerimientos. 
+                    </h4>
                 </div>
                 <div class="mt-auto p-2" id="apps" > 
                     <a class="btn btn_app_android p-0" href="#">
@@ -113,7 +103,7 @@
 
                 @endif --}}
             </div>
-            <div class="col-md-7 container_left">
+            <div class="col-xs-12 col-sm-12 col-md-7 container_left ">
 
                 
                     <ul id="tabs" class="nav nav-tab">
@@ -138,6 +128,8 @@
                                         @csrf
                                         <div class="form-group row">
                                             <div class="col-12">
+                                                {{-- ENVIAMOS SESIONSTORAGE --}}
+                                                <input type="hidden" name="sesionStorage" id="sesionStorage" >
                                                 <i class="far fa-envelope"></i>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror  correo"
@@ -389,20 +381,20 @@
         $(document).ready(function(){
    
         if ( $("#login").hasClass('active') ) {
-            $(".li_login").attr('style','border-bottom:3px solid #108b9e !important; color: #108b9e !important;');
+            $(".li_login").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important;');
         }
        
         if ( $("#register").hasClass('active') ) {
-            $(".li_register").attr('style','border-bottom:3px solid #108b9e !important; color: #108b9e !important;');
+            $(".li_register").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important;');
         }
        
         $(".li_login").on('click', function(){
-            $(".li_login").attr('style','border-bottom:3px solid #108b9e !important; color: #108b9e !important; font: bold !important;');
+            $(".li_login").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important; font: bold !important;');
             $(".li_register").removeAttr('style');
         });
         
         $(".li_register").on('click', function(){
-            $(".li_register").attr('style','border-bottom:3px solid #108b9e !important; color: #108b9e !important; font: bold !important;');
+            $(".li_register").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important; font: bold !important;');
             $(".li_login").removeAttr('style');         
 
         })
@@ -418,6 +410,29 @@
              }
         });
         
+        $("#sesionStorage").val( obtenerLocalStorageclienteID() );
+
+        function obtenerLocalStorageclienteID () {
+        if(typeof(Storage) !== "undefined") {
+            if ( !localStorage.LocalStorageclienteID ) {
+                $.ajax({
+                    url: '{{ route("localstorage.index") }}',
+                    method: 'GET',
+                    data: { },
+                    success: function ( data ) {
+                        localStorage.LocalStorageclienteID = data
+                    },
+                    error: function ( jqXHR, textStatus, errorThrown ) {
+                        console.log(jqXHR.responseJSON);
+                    }
+                });
+            }
+            return localStorage.LocalStorageclienteID;
+        } 
+        else {
+            return false;
+        }
+    }
                
     });
     </script>

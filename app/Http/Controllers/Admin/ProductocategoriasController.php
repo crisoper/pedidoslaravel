@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\CategoriasUpdateRequest;
 use App\Models\Admin\Productocategoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProductocategoriasController extends Controller
 {
@@ -16,6 +17,16 @@ class ProductocategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    private function empresaId() {
+        return Session::get( 'empresaactual', 0 );
+    }
+
     public function index()
     {
        
@@ -59,7 +70,7 @@ class ProductocategoriasController extends Controller
         $categorias = Productocategoria::firstOrNew(
             [
             'empresa_id' => $this->empresaId(),
-            'nombre' => $request->categoriasName,
+            'nombre' => $request->nombre,
             'parent_id'=> $request->parent_id,
         ],
         [
@@ -109,7 +120,7 @@ class ProductocategoriasController extends Controller
     {
         $categoria= Productocategoria::findOrFail($id);
         $categoria->parent_id = $request->categoriasId;
-        $categoria->nombre = $request->categoriasName;
+        $categoria->nombre = $request->nombre;
         $categoria->updated_by = Auth()->user()->id;
         $categoria->save();
         return redirect()->route('categorias.index');

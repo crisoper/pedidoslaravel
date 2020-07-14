@@ -12,51 +12,21 @@
 
     @include('layouts.admin.styles')
     @include('layouts.admin.scripts')
-    {{-- @include('publico.empresa.css') --}}
-    @include('layouts.admin.messenger')
 
+    @include('layouts.admin.messenger')
+    
+    {{-- MENUS --}}
+  
+    <link rel="stylesheet" href="{{asset('pedidos/css/style.css')}}">
     <style>
         @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic|Lora:400,700,700italic|Source+Code+Pro:400,700|Abril+Fatface|Montserrat);
 
-        .color-1 {
-            font-family: 'Lora', serif;
-            background: -webkit-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
-            background: -moz-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
-            background: -ms-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
-            background: -o-linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
-            background: linear-gradient(90deg, #53bbbf 10%, #0f1939 90%);
-        }
-
-        .color-1 h1 1 {
-            font-size: 48px;
-            text-align: center;
-        }
-
-        texto-2 {
-            clear: both;
-            text-transform: none;
-            line-height: 1.4;
-            font-weight: 700;
-            font-style: italic;
-            color: #fff;
-        }
-
-        .section_item p {
-            font-family: 'Lora', serif;
-            font-size: 1.2rem;
-            color: #fff;
-
-        }
-
-        body {
-            background: linear-gradient(90deg, #108b9e 50%, #F8F9FA 50%);
-            padding: 0;
-            margin: 0;
-        }
+      
+       
     </style>
 </head>
 
-<body cz-shortcut-listen="true">
+<body cz-shortcut-listen="true" class="bg-light">
 
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
@@ -83,18 +53,18 @@
                         @guest
 
                         @else
-                        <a class="nav-link text-light" data-toggle="dropdown" href="#">
+                        <a class="nav-link text-dark" data-toggle="dropdown" href="#">
                             <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
                             Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
                             @else
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
                             @endif
-                            alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+                            alt=" {{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                         </a>
                         @endguest
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">
+                            <span class="dropdown-item dropdown-header ">
                                 @guest
                                 @else
                                 {{ Auth::user()->name }}
@@ -135,12 +105,48 @@
     </main>
 
 
-    {{-- <footer class="footer fixed-bottom bg-dark text-light">
-        <small>@if ( Session::has( 'empresadescripcion') ) {{ config('app.name')}} @endif </small>
-    <div class="float-right d-none d-sm-inline-block">
-        <small><strong>Copyright &copy; {{ date('Y') }}</strong></small>
-    </div>
-    </footer> --}}
+ 
+    {{-- FOOTER --}}
+    <footer class="container-fluid footer m-0 mt-5">
+        <div class="container">
+            <div class="row footer_info">
+                <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
+                    <div class="text-center">
+                        <a href="{{ route('inicio.index') }}">
+                            <img src="{{asset('pedidos/image/logo.png')}}" alt="">
+                        </a>
+                    </div>
+                  
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
+                    <h5><b>Acerca de Pedidos.com</b></h5>
+                    <p class="my-1"><a href="#">Nosotros</a></p>
+                    <p class="my-1"><a href="#">Contáctanos</a></p>
+                    <p class="my-1"><a href="#">Quienes somos</a></p>
+                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
+                    <h5><b>Más información</b></h5>
+                    <p class="my-1"><a href="#">Afilia a tu restaurante</a></p>
+                    <p class="my-1"><a href="#">Pedir delivery</a></p>
+                    <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
+                    <h5><b>Políticas y condiciones</b></h5>
+                    <p class="my-1"><a href="#">Políticas de Privacidad</a></p>
+                    <p class="my-1"><a href="#">Términos y Condiciones</a></p>
+                    <p class="my-1"><a href="#">Libro de Reclamaciones</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-dark p-2 pb-0 text-center ">
+            <div class="col-lg-12">
+                <span class="text-center p-0">
+                    Copyright &copy;2020 - Derechos Reservados | <b>Delivery.com</b>
+                </span>
+            </div>
+        </div>
+    </footer>
 </body>
 
 @include('includes.ajaxsetup')

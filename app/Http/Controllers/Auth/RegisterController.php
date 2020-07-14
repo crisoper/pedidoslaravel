@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Models\Admin\Modelhasrole;
 use App\Models\Publico\Persona;
 use App\Providers\RouteServiceProvider;
@@ -12,7 +13,15 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\SendcorreonuevousuarioJob;
+use App\Mail\Publico\ActivarcuentaempresaMail;
+use App\Models\Admin\Empresa;
+use App\Models\Admin\Periodo;
+use App\Models\Admin\Userempresa;
+use App\Models\Admin\Userperiodo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -146,5 +155,105 @@ class RegisterController extends Controller
         return "El token enviado no es valido";
 
     }
+    public function nuevaEmpresa(Request $request)
+    {
+        // EmpresaCreateRequest
+               
+        $user = User::firstOrNew([
+            'name' => $request->name_representante . " " . $request->paterno . " " . $request->materno,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->remember_token = Hash::make(time());
+        $user->save();
 
+
+        $persona = Persona::firstOrNew(
+            [
+                'nombre' => $request->name_representante,
+                'paterno' => $request->paterno,
+                'materno' => $request->materno,
+                'dni' => $request->dni,
+                'telefono' => $request->telefono,
+                'correo' => $request->email,
+
+            ],
+            [
+                'created_by' => $user->id,
+            ]
+        );
+        $persona->save();
+
+        $empresa =  Empresa::firstOrNew([
+            "rubro_id" => $request->rubro_id,
+            "ruc" => $request->ruc,
+            "nombre" => $request->nombreempresa,
+            "direccion" => $request->direccion,
+            // "provincia_id" => $request->provinciaid,
+            // "departamento_id" => $request->departamentoid,
+            // "distrito_id" => $request->distritoid,
+            "telefono" => $request->telefono,                   
+        ],
+        [
+            'created_by'=> $user->id,
+        ]);
+        $empresa->save();
+
+        Userempresa::create([
+            'user_id' => $user->id,
+            'empresa_id' => $empresa->id,
+            'estado' => 1,
+        ]);
+
+        $periodo = new Periodo();
+        $periodo->empresa_id = $empresa->id;
+        $periodo->nombre = 'demo';
+        $fechaActual = date('Y-m-d');
+        $fechaFin = strtotime('+12 month', strtotime($fechaActual));
+        $fechaFin = date('Y-m-d', $fechaFin);
+        $periodo->inicio = date('Y-m-d');
+        $periodo->fin = $fechaFin;
+        $periodo->estado = 1;
+        $periodo->created_by = $user->id;
+        $periodo->save();
+
+        $userperiodo = new Userperiodo();
+        $userperiodo->user_id =  $user->id;
+        $userperiodo->periodo_id = $periodo->id;
+        $userperiodo->created_at = $user->id;
+        $userperiodo->save();
+
+
+        $rol = rol::where('name', 'menu_Administrador empresa')->first();
+
+        Modelhasrole::create([
+            'role_id' => $rol->id,
+            'model_type' => 'App\User',
+            'model_id' => $user->id,
+        ]);
+        $this->guard()->login($user);
+        //Enviamos correo para activar cuenta
+        $this->enviarCorreoActivarCuentaEmpresa($user);
+        Session::put('empresadescripcion',  $empresa->nombre);
+
+        return response()->json($user);
+
+            // return redirect()->route('empresas.index')->with("info", "Registro creado");
+    }
+    private function enviarCorreoActivarCuentaEmpresa($user)
+    {
+
+        try {
+            Mail::to($user->email)
+                ->cc("gilbertofores@gmail.com")
+                ->send(new  ActivarcuentaempresaMail($user));
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    protected function guard()
+    {
+        return Auth::guard();
+    }
 }
