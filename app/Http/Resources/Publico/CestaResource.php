@@ -20,6 +20,7 @@ class CestaResource extends JsonResource
             'empresa' => new EmpresaResource( $this->empresa ),
             'cantidad' => $this->cantidad,
             'tipo' => $this->tipo,
+            'estado' => $this->estado,
             'fecha' => $this->created_at != null ? date("d/m/Y", strtotime($this->created_at) ) : '',
         ];
     }

@@ -225,7 +225,6 @@
     }
 }
 
-
 /* MODAL CESTA MENU */
 
 .content_modal_cesta.content_modal_cesta_on {
@@ -279,50 +278,38 @@
 
 
 
-
-
 /* REALIZAR PEDIDO */
-.realizar_pedido_menu {
+.content_detalle_pedido_cesta_menu {
     width: 100%;
+}
+
+.content_ir_a_pedido {
     height: 40px;
-    background-color: #ffffff;
     box-shadow: 0 5px 5px -5px #333;
 }
-.realizar_pedido_menu #menu_realizar_pedido {
-    width: 100%;
-    height: 100%;
-    border: 0 !important;
+.btn_ir_a_pedido {
+    color: #3eb291;
 }
-.realizar_pedido_menu .nav-item {
-    width: 50%;
-    height: 100%;
-    font-size: 14px;
+.btn_ir_a_pedido:hover,
+.btn_ir_a_pedido:focus {
+    color: #3eb291;
+    text-decoration: underline;
+    box-shadow: none;
+}
+
+.content_detalle_pedido_cesta_menu h6 {
+    font-size: 13px;
+}
+.content_detalle_pedido_cesta_menu p {
+    font-size: 15px;
     font-weight: 700;
-    color: #6c757d;
-    border: 0 !important;
-    border-radius: 0 !important;
-}
-.realizar_pedido_menu .active {
-    height: 100%;
-    color: #3eb291 !important;
-    border-bottom: 3px solid #3eb291 !important;
 }
 
 
-
-#formNavDetallePedidoCestaMenu {
-    height: 100% !important;
-    width: 100% !important;
-}
-#content_realizar_pedido {
-    height: 100% !important;
-    width: 100% !important;
-}
-#detalle_pedido {
-    height: 95% !important;
+.content_scroll_cesta_menu {
+    height: 85% !important;
     width: 100% !important;
     background-color: #ffffff;
-    box-shadow: inset 0 5px 5px -5px #333;
 }
 
 .scroll_cesta_menu {
@@ -351,38 +338,32 @@
     border-radius: 10px;
 }
 
-
-
-
-
-
-
 .border_producto_cesta_menu {
     height: auto;
     border-radius: 5px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
     border: 1px solid #dfdfdf;
-  }
-  
-  .nombre_empresa_cesta_menu {
+}
+
+.nombre_empresa_cesta_menu {
     color: #191a19;
     font-size: 13px;
-  }
-  
-  .foto_producto_cesta_menu {
+}
+
+.foto_producto_cesta_menu {
     position: relative;
     z-index: 1;
     overflow: hidden;
     width: 100%;
     height: 100%;
-  }
-  .foto_producto_cesta_menu img {
+}
+.foto_producto_cesta_menu img {
     width: 100%;
     height: 100% !important;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
-  }
-  .foto_producto_cesta_menu .hover_img {
+}
+.foto_producto_cesta_menu .hover_img {
     width: 100%;
     height: 100%;
     -webkit-transition-duration: 500ms;
@@ -393,81 +374,33 @@
     z-index: 1;
     opacity: 0;
     visibility: hidden;
-  }
-  
-  
-  .nombre_producto_cesta_menu {
+}
+
+.nombre_producto_cesta_menu {
     color: #2a2b2a;
     font-size: 14px;
     font-weight: 700;
-    line-height: 17px;
-  }
-  
-  .descripcion_producto_cesta_menu {
-    font-size: 11px;
-  }
+    line-height: 18px;
+}
 
-  .border_dashed_cesta_menu {
+.descripcion_producto_cesta_menu {
+    font-size: 11px;
+}
+
+.border_dashed_cesta_menu {
     border-top-style: dashed;
     border-top-width: 1px;
     border-top-color: #d7dbdf;
-  }
-  .border_dashed_cesta_menu_2 {
-    border-left-style: dashed;
-    border-left-width: 1px;
-    border-left-color: #d7dbdf;
-    border-right-style: dashed;
-    border-right-width: 1px;
-    border-right-color: #d7dbdf;
-  }
-
-  .cantidad_producto_cesta_menu {
-    color: #3eb291;
-    font-size: 15px;
-  }
-
-  .precio_producto_cesta_menu {
-    color: #3eb291;
-    font-size: 15px;
-  }
-  
-  
-.input_cantidad_cesta_menu {
-	width: 100%;
-	height: 27.5px;
-    padding: 0 !important;
-}
-.input_cantidad_cesta_menu > input {
-	width: 60%;
-    height: 100%;
-    padding: 0;
-    text-align: center;
-    border: 1px solid rgba(0,0,0,.2) !important;
-    border-left: 1px solid rgba(0,0,0,.1) !important;
-    border-right: 1px solid rgba(0,0,0,.1) !important;
-}
-.input_cantidad_cesta_menu > input:focus {
-    box-shadow: none;
-}
-.input_cantidad_cesta_menu > .sumar_restar_cantidad_producto {
-	width: 20%; 
-	height: 100%;
-    padding-top: 0;
-	text-align: center;
-    border: 1px solid rgba(0,0,0,.2) !important;
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: 700;
-    cursor: pointer;
 }
 
-.input_cantidad_cesta_menu > .sumar_restar_cantidad_producto:hover {
-    color: #ffffff;
-    background-color: #3eb291;
+.cantidad_producto_cesta_menu,
+    .subtotal_producto_cesta_menu {
+    color: #33393f;
+    font-size: 13px;
 }
 
-  
-  .eliminar_producto_cesta_menu {
+
+.eliminar_producto_cesta_menu {
     background: #df3550 !important;
     width: 25px;
     height: 25px;
@@ -481,148 +414,4 @@
     right: -7px;
     cursor: pointer;
     padding-top: 2px;
-  }
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* REALIZAR PEDIDO */
-
-.input_group_cupon {
-    width: 100%;
 }
-.input_cupon {
-    width: 70%;
-    font-size: 14px;
-    border: 1px solid #3eb291;
-    border-radius: 5px 0px 0px 5px;
-}
-.btn_aplicar_cupon_append {
-    text-align: center;
-    width: 30%;
-}
-.btn_aplicar_cupon_append .btn_aplicar_cupon {
-    width: 100%;
-    color: #ffffff;
-    background-color: #3eb291;
-}
-  
-
-
-.content_realizar_pedido_cesta_menu {
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
-}
-
-.content_resumen_pedido_cesta_menu {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-.content_tota_pedido_cesta_menu h5 {
-    color: #3eb291;
-}
-.content_tota_pedido_cesta_menu h4 {
-    color: #3eb291;
-    font-weight: 700;
-}
-
-
-.content_btn_realizar_pedido_cesta_menu {
-    border-top: 1px solid rgba(0,0,0,.1);
-}
-
-.btn_realizar_pedido_cesta_menu {
-    width: 100%;
-    color: #ffffff;
-    background-color: #3eb291;
-    font-size: 20px;
-    border: 0;
-}
-
-.btn_seguir_comprando_cart {
-    width: 100%;
-    color: #ffffff;
-    background-color: #9ca1a0;
-    font-size: 16px;
-    border: 0;
-    border-radius: 0;
-}
-.btn_seguir_comprando_cart:hover,
-.btn_seguir_comprando_cart:focus {
-    color: #ffffff;
-    box-shadow: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cart_tittle_cesta {
-    width: 100%;
-    height: 40px;
-    background-color: #ffffff;
-    text-align: center;
-    border-bottom: 1px solid #7d838a;
-}
-.cart_tittle_cesta p {
-    width: 100%;
-    font-size: 14px;
-    line-height: 15px;
-}
-
-.btn_realizar_pedidos_cesta_menu {
-    width: 100%;
-    height: 40px;
-    color: #ffffff;
-    background-color: #3eb291;
-    line-height: 15px;
-    border-radius: 0;
-}
-
-.btn_realizar_pedidos_cesta_menu:hover,
-.btn_realizar_pedidos_cesta_menu:focus {
-    color: #ffffff;
-    background-color: #3eb291;
-    box-shadow: none;
-}
-
-
-
-
-
-
-
-
-

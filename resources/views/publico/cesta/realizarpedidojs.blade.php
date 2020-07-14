@@ -15,8 +15,14 @@
                 success: function( data ) {
 
                     $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                    GLOBARL_MostrarNotificaciones( data.success, "info" );
-                    mesajeDatosActualizados( ) ;
+                    // GLOBARL_MostrarNotificaciones( data.success, "info" );
+                    // mesajeDatosActualizados( ) ;
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pedido realizado con exito',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
 
                 },
                 error : function ( jqXHR, textStatus, errorThrown ) {

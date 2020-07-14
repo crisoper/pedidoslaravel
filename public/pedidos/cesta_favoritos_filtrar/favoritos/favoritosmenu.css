@@ -253,8 +253,8 @@
   font-size: 30px;
   text-align: center;
   border: 0;
-  background-color: #3eb291;
-  color: #d1f1e8;
+  background-color: #ffffff;
+  color: #777978;
 }
 
 
@@ -264,20 +264,25 @@
   height: 100%;
 }
 
-.cart_tittle_favorites {
+
+
+
+/* IR A LISTA DE FAVORITOS */
+.content_detalle_favoritos_menu {
   width: 100%;
+}
+
+.content_ir_a_favoritos {
   height: 40px;
-  background-color: #3eb291;
   box-shadow: 0 5px 5px -5px #333;
-  text-align: center;
 }
-.cart_tittle_favorites p {
+.content_ir_a_favoritos p {
+  height: 100%;
   width: 100%;
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 16px;
-  padding-top: 5px;
+  font-size: 13px;
 }
+
+
 
 .content_scroll_favoritos {
   height: 95%;
@@ -356,7 +361,7 @@
   color: #2a2b2a;
   font-size: 14px;
   font-weight: 700;
-  line-height: 17px;
+  line-height: 18px;
 }
 .descripcion_producto_favoritos_menu {
   font-size: 11px;
@@ -364,7 +369,7 @@
 .precio_producto_favoritos_menu {
   color: #3eb291;
   font-size: 15px;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .eliminar_producto_favoritos_menu {

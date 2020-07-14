@@ -14,7 +14,7 @@ class ListadeseosController extends Controller
      */
     public function index()
     {
-        return view("publico.listadeseos.index");
+        return view("publico.favoritos.index");
     }
 
     /**

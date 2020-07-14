@@ -14,27 +14,27 @@ $(document).ready(function () {
     cartbtn1.on("click", function () {
         cartOverlay.toggleClass(cartOverlayOn);
         cartWrapper.toggleClass(cartOn);
-        // $("body").css({
-        //     overflow: "hidden",
-        //     height: "100%",
-        // });
+        $("body").css({
+            overflow: "hidden",
+            height: "100%",
+        });
     });
 
     cartOverlay.on("click", function () {
         $(this).removeClass(cartOverlayOn);
         cartWrapper.removeClass(cartOn);
-        // $("body").css({
-        //     overflow: "auto",
-        //     height: "auto",
-        // });
+        $("body").css({
+            overflow: "auto",
+            height: "auto",
+        });
     });
 
     cartbtn2.on("click", function () {
         cartOverlay.removeClass(cartOverlayOn);
         cartWrapper.removeClass(cartOn);
-        // $("body").css({
-        //     overflow: "auto",
-        //     height: "auto",
-        // });
+        $("body").css({
+            overflow: "auto",
+            height: "auto",
+        });
     });
 });

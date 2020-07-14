@@ -50,7 +50,7 @@
 
 
             carHTML = carHTML + `
-                <div class="col-12 mb-3" id="contenido_producto_detalle_pedido">
+                <div class="col-12 mb-3 abrir_modal_productos" id="contenido_producto_detalle_pedido">
                     <div class="row p-2">
                         <div class="col-md-12 col-lg-7 column_detalle_pedido_1">
                             <div class="row">

@@ -226,11 +226,9 @@
 
 
         let delivery = parseFloat($('.delivery_pedido_cart').html());
-        // let descuento = parseFloat($('.descuentoTotal').html());
-
 
         $(".total_pedido_cart").html((sumaTotal + delivery).toFixed(2));
-        // $(".total_pedido_cart").html((sumaTotal).toFixed(2));
+        $(".input_total_pedido_cesta").val((sumaTotal + delivery).toFixed(2));
 
     }
 

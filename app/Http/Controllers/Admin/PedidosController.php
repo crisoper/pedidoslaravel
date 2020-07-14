@@ -46,7 +46,7 @@ class PedidosController extends Controller
         }
 
 
-        $pedido->total = $request->input_total_pedido_cesta_menu;
+        $pedido->total = $request->input_total_pedido_cesta;
         $pedido->save();
 
         
