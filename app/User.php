@@ -51,4 +51,9 @@ class User extends Authenticatable
         ->wherePivot('estado', 1);
     }
     
+    
+    public function persona()
+    {
+        return $this->hasOne('App\Models\Publico\Persona', 'dni', 'dni');
+    }
 }

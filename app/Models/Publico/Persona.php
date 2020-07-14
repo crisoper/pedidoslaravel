@@ -25,4 +25,9 @@ class Persona extends Model
         return $this->hasmay('App\Models\Admin\Empresa', 'presona_id', 'id');
     }
     
+    
+    public function usuario()
+    {
+        return $this->hasOne('App\User', 'dni', 'dni');
+    }
 }
