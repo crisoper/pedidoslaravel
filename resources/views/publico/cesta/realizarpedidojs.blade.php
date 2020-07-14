@@ -5,6 +5,8 @@
         $(".btn_realizar_pedido_cart").on("click", function( e ) {
             e.preventDefault();
 
+            let buttonGuardar = this;
+
             $.ajax({
                 method: "POST",
                 url: $("#formNavDetallePedidoCesta").attr("action"),

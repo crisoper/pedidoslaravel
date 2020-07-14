@@ -51,7 +51,7 @@
                         <div class="row pt-2 pb-3 m-0">
                             <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                             <div class="col-12"><b>Cliente:</b> <span>${ pedidos.cliente }</span></div>
-                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.direccion }</span></div>
+                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.cliente_direccion }</span></div>
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
                             <div class="col-12 mt-2 mb-2">
                                 <table class="table table-sm mb-2">
@@ -82,7 +82,7 @@
             $("#cuerpoPedidosPorConfirmar").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidos, 3000);
+        // setInterval(obtenerPedidos, 3000);
 
 
 

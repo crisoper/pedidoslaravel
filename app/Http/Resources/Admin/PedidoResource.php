@@ -21,9 +21,11 @@ class PedidoResource extends JsonResource
             
             'cliente_id' => $this->cliente ? $this->cliente->id : 0, 
             'cliente' => $this->cliente ? $this->cliente->name : '',
+            'cliente_direccion' => $this->cliente ? ($this->cliente->persona ? $this->cliente->persona->direccion : '') : '',
             
             'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
             'empresa' => $this->empresa ? $this->empresa->nombre : '',
+            'empresa_direccion' => $this->empresa ? $this->empresa->direccion : '',
 
 
             'detalle' => $this->pedidodetalle ? PedidodetalleResource::collection($this->pedidodetalle) : [],

@@ -341,6 +341,8 @@
         $(".btn_realizar_pedido_cesta_menu").on("click", function( e ) {
             e.preventDefault();
 
+            let buttonGuardar = this;
+
             $.ajax({
                 method: "POST",
                 url: $("#formNavDetallePedidoCestaMenu").attr("action"),
