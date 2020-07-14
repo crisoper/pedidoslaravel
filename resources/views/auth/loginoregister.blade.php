@@ -139,6 +139,8 @@
                                         @csrf
                                         <div class="form-group row">
                                             <div class="col-12">
+                                                {{-- ENVIAMOS SESIONSTORAGE --}}
+                                                <input type="hidden" name="sesionStorage" id="sesionStorage" >
                                                 <i class="far fa-envelope"></i>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror  correo"
@@ -419,6 +421,29 @@
              }
         });
         
+        $("#sesionStorage").val( obtenerLocalStorageclienteID() );
+
+        function obtenerLocalStorageclienteID () {
+        if(typeof(Storage) !== "undefined") {
+            if ( !localStorage.LocalStorageclienteID ) {
+                $.ajax({
+                    url: '{{ route("localstorage.index") }}',
+                    method: 'GET',
+                    data: { },
+                    success: function ( data ) {
+                        localStorage.LocalStorageclienteID = data
+                    },
+                    error: function ( jqXHR, textStatus, errorThrown ) {
+                        console.log(jqXHR.responseJSON);
+                    }
+                });
+            }
+            return localStorage.LocalStorageclienteID;
+        } 
+        else {
+            return false;
+        }
+    }
                
     });
     </script>

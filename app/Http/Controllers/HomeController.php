@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Periodo;
-
+use App\Models\Publico\Cesta;
 use Spatie\Permission\Models\Role as Rol;
 use App\User;
 use Illuminate\Support\Facades\Route;
@@ -88,8 +88,22 @@ class HomeController extends Controller
             }
         } else {
             if (auth()->user()->hasRole('web_Comprador')) {
-                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {                    
-                    return view("publico.inicio.index");
+
+                if ( auth()->user()->email_verified_at != '' || auth()->user()->email_verified_at != null )  {
+                    
+                     $sesionStorage = Session::get('storagecliente_id', 0);
+                    //consultamos si tiene pedidos pedientes    
+                    $cesta = Cesta::where('storagecliente_id',  $sesionStorage )
+                    ->where('estado', 0)
+                    ->get();                                   
+                   
+                    if( count( $cesta ) > 0  ){
+                        return redirect()->route('cart.index');
+                        
+                    }else{
+                        return view("publico.inicio.index");
+                    }
+                    // publico.cesta.index
                 }else{
                     return view('publico.mail.confirmarcuentaComprador');
                 }
