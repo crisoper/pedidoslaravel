@@ -94,6 +94,6 @@
 
 
 @section('scripts')
-    @include('publico.cart.indexjs')
-    @include('publico.cart.realizarpedidojs')
+    @include('publico.cesta.indexjs')
+    @include('publico.cesta.realizarpedidojs')
 @endsection

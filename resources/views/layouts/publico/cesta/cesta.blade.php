@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 py-2 text-center content_btn_realizar_pedido_cesta_menu">
-                                            <button class="btn_realizar_pedido_cesta_menu py-1">Realizar Pedido</button>
+                                            <a href="{{route('cart.index')}}" class="py-1">Realizar Pedido</a>
                                             <br>
                                         </div>
                                         <div class="col-12 mb-2 text-center">
