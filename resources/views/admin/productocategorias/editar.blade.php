@@ -1,6 +1,6 @@
 
 @extends('layouts.admin.admin')
-@can('productocategorias.crear')
+@can('productocategorias.editar')
 @section('contenido')
 
 <div class="container">

@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@can('roles.crear')
+@can('tags.listar')
 @section('contenido')
 
 <div class="container">

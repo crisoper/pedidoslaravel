@@ -48,15 +48,11 @@
 
         }
 
-        body {
-            background: linear-gradient(90deg, #108b9e 50%, #F8F9FA 50%);
-            padding: 0;
-            margin: 0;
-        }
+       
     </style>
 </head>
 
-<body cz-shortcut-listen="true">
+<body cz-shortcut-listen="true" class="bg-light">
 
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
@@ -83,18 +79,18 @@
                         @guest
 
                         @else
-                        <a class="nav-link text-light" data-toggle="dropdown" href="#">
+                        <a class="nav-link text-dark" data-toggle="dropdown" href="#">
                             <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
                             Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
                             @else
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
                             @endif
-                            alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+                            alt=" {{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                         </a>
                         @endguest
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">
+                            <span class="dropdown-item dropdown-header ">
                                 @guest
                                 @else
                                 {{ Auth::user()->name }}

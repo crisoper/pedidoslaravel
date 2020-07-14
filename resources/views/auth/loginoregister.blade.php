@@ -73,9 +73,10 @@
          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color: #F8F9FA;
         margin-top: 10rem;
+        font-size: 54px;
     }
     .parrafo>span{
-        font-size: 16px;
+        font-size: 20px;
     }
     img{
         width: 150px;
@@ -93,12 +94,12 @@
             <div id="texto" class=" col-md-5 col-sm-12 d-flex   flex-column  " >
                 {{-- @if( $flag == 'login' ||  $flag == 'register') --}}
                 <div class="titulo" >              
-                    <h1><span class="text-right">Tu confianza es nuestra fortaleza</span></h1>
+                   <span class="text-right"><span class="text-warning">Tu confianza</span> es nuestra fortaleza</span>
                 </div>
-                
+                <br>
                 <div class="parrafo text-light">
                     <span>
-                        Nuestro principal objetivo es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y atender de forma inmediata tus requerimientos. 
+                       <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de forma inmediata</span> tus requerimientos. 
                     </span>
                 </div>
                 <div class="mt-auto p-2" id="apps" > 

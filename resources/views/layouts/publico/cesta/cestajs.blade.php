@@ -348,17 +348,22 @@
                 data: $("#formNavDetallePedidoCestaMenu").serialize() ,
                 success: function( data ) {
 
-                    // $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                    // GLOBARL_MostrarNotificaciones( data.success, "info" );
-                    // mesajeDatosActualizados( ) ;
-                    
-                    Swal.fire({
+                  
+                    if ( data == 'login') {
+                       
+                        window.location =' {{ route("loginOrRegister", 'web_Repartidor') }} ';
+                       
+                    } else {
+                       
+                        Swal.fire({
                         // position: 'top-center',
                         icon: 'success',
                         title: 'Tu pedido fue realizado con exito',
                         showConfirmButton: false,
                         timer: 1500
                     })
+                    }
+                   
 
                 },
                 error : function ( jqXHR, textStatus, errorThrown ) {

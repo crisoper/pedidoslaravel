@@ -39,10 +39,6 @@
 //     });                   
                       
   
-    
-
-    
-    
     $("#enviarFormRegistro").on('click', function(event){
         event.preventDefault();
         $( enviarFormRegistro ).prop( "disabled", true ).find("span").show();

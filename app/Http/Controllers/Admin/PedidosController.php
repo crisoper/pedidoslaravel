@@ -12,57 +12,66 @@ use Illuminate\Support\Facades\Auth;
 
 class PedidosController extends Controller
 {
-    
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
-    public function pedidosstore ( Request $request ) 
+
+    public function pedidosstore(Request $request)
     {
-        $pedido = new Pedido;
-        $pedido->cliente_id = Auth::id();
-        $pedido->created_by = Auth::id();
-        $pedido->total = 0;
-        $pedido->save();
+        if ( isset(Auth()->user) ) {
 
-        $total = 0;
+            $pedido = new Pedido;
+            $pedido->cliente_id = Auth::id();
+            $pedido->created_by = Auth::id();
+            $pedido->total = 0;
+            $pedido->save();
+
+            $total = 0;
 
 
-        foreach ($request->cesta_id as $key => $value) {
+            foreach ($request->cesta_id as $key => $value) {
 
-            $cesta = Cesta::where("id", $request->cesta_id[ $key ])->first();
+                $cesta = Cesta::where("id", $request->cesta_id[$key])->first();
 
-            $pediddetalle = new Pedidodetalle;
-            $pediddetalle->empresa_id = $cesta ? ( $cesta->producto ? $cesta->producto->empresa_id : 0  ) : 0 ;
-            $pediddetalle->producto_id = $cesta ? ( $cesta->producto ? $cesta->producto->id : 0  ) : 0; 
-            $pediddetalle->pedido_id = $pedido->id;
-            $pediddetalle->preciounitario = $request->precio[ $key ];
-            $pediddetalle->cantidad = $request->cantidad[ $key ];
-            $pediddetalle->subtotal = $request->subtotal[ $key ];
-            $pediddetalle->created_by = Auth::id();
-            $pediddetalle->save();
+                $pediddetalle = new Pedidodetalle;
+                $pediddetalle->empresa_id = $cesta ? ($cesta->producto ? $cesta->producto->empresa_id : 0) : 0;
+                $pediddetalle->producto_id = $cesta ? ($cesta->producto ? $cesta->producto->id : 0) : 0;
+                $pediddetalle->pedido_id = $pedido->id;
+                $pediddetalle->preciounitario = $request->precio[$key];
+                $pediddetalle->cantidad = $request->cantidad[$key];
+                $pediddetalle->subtotal = $request->subtotal[$key];
+                $pediddetalle->created_by = Auth::id();
+                $pediddetalle->save();
 
-            // $total = $total  + $pediddetalle->subtotal;
+                // $total = $total  + $pediddetalle->subtotal;
 
-            $pedido->empresa_id = $pediddetalle->empresa_id;
+                $pedido->empresa_id = $pediddetalle->empresa_id;
+            }
 
+
+            $pedido->total = $request->input_total_pedido_cesta_menu;
+            $pedido->save();
+
+
+            $pedidoestado = Pedidoestado::firstOrNew([
+                'empresa_id' => $pedido->empresa_id,
+                'pedido_id' => $pedido->id,
+                'estado' => 'pedido',
+            ], [
+                'created_by' => Auth::id(),
+            ]);
+
+            $pedidoestado->save();
+
+
+            return response()->json(["success" => "Pedido creado correctamente"], 200);
+        } else {
+            $flag = 'login';
+            return response()->json($flag, 200);
+            // return view('auth.loginoregister', compact('flag'));
         }
-
-
-        $pedido->total = $request->input_total_pedido_cesta_menu;
-        $pedido->save();
-
-        
-        $pedidoestado = Pedidoestado::firstOrNew([
-            'empresa_id' => $pedido->empresa_id,
-            'pedido_id' => $pedido->id,
-            'estado' => 'pedido',
-        ],[
-            'created_by' => Auth::id(),
-        ]);
-
-        $pedidoestado ->save();
-
-
-        return response()->json(["success" => "Pedido creado correctamente"], 200);
-
     }
 
 
@@ -83,5 +92,4 @@ class PedidosController extends Controller
     {
         return view('admin.pedidosentregados.index');
     }
-    
 }
