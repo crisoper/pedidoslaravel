@@ -2,60 +2,25 @@
 
 @include('publico.empresa.css')
 <style>
-    .radiocero {
-        border-radius: 0px !important;
-        background-color: blue;
-
-    }
 
 
-
-    .titulos {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 5vw;
-        /* text-align: right; */
-    }
-
-    .titulos>div {
-        display: flex;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: orange;
-        justify-content: center;
-        align-items: center;
-        /* text-align: center; */
-        font-family: Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 2.5rem;
-
-    }
-
-    .titulo_inicial {
-        color: orange;
-        text-align: center;
+    .titulo {
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 36px;
-        /* text-shadow: 1px 1px 1px red; */
-        padding: 10px;
-
-    }
-
-    #container_left {
-        background-color: #F8F9FA;
-        padding-left: 5rem;
-        padding-right: 5rem;
-        height: 100vh;
-
+       
     }
 
     #texto {
-        padding-left: 5rem;
-        padding-right: 5rem;
+        
         text-align: center;
-
+        padding-top: 5em;
+      
     }
-
+    #container_left{
+        background-color: rgb(34, 115, 126);
+        color: white;
+        
+    }
     #contenedor_fijo {
         height: 100vh;
         width: 40%;
@@ -65,82 +30,9 @@
         top: 0
     }
 
-    @media screen and (min-width: 300px) {
-        .titulo {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            color: #F8F9FA;
-            margin-top: 3em;
-            font-size: 2em;
-            line-height: 32px;
-        }
-        span {
-            color: black;
-        }
-        #container_left {
-            background-color: #108B9E;
-            padding-left: 1em;
-            padding-right: 1em;
-            height: 100vh;
-
-        }
-
-    }
-
-    @media screen and (min-width: 768) {
-        .titulo {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            color: #F8F9FA;
-            margin-top: 0.5em;
-            font-size: 2rem;
-        }
-
-        #texto {
-            background-color: #12353a;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        #container_left {
-            background-color: #108B9E;
-            padding-left: 1em;
-            padding-right: 1em;
-            height: 100vh;
-
-        }
-    }
-
-    @media screen and (min-width: 1200) {
-        .titulo {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            color: #F8F9FA;
-            margin-top: 3em;
-            font-size: 5rem;
-        }
-
-        #texto {
-            background-color: #12353a;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        #container_left {
-            background-color: #108B9E;
-            padding-left: 1em;
-            padding-right: 1em;
-            height: 100vh;
-
-        }
-    }
-
-
-  
-
-
-    .parrafo>span {
-        font-size: 16px;
-    }
-
     img {
-        width: 150px;
-        height: 40px;
+        width: 150px !important;
+        height: 40px !important;
     }
 
     #apps {
@@ -151,20 +43,20 @@
 
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-12 d-flex flex-wrap ">
+        <div class="col-12 d-flex flex-wrap bg-light">
 
-            <div id="texto" class="col-md-5 col-sm-12 d-flex flex-column">
+            <div id="texto" class=" col-sm-12 col-md-5 d-flex flex-column">
                 <div class="titulo ">
-                    <span>
+                    <h1 >
                         Registra tu negocio <span class="text-warning">Completamente gratis</span> e incrementa tus
                         ingresos.
-                    </span>
+                    </h1>
                 </div>
 
                 <div class="parrafo mt-2">
-                    <span>
+                    <h4>
                         Hacercate más a la gente y gana mas clientes. Promociona tus productos y vende por internet.
-                    </span>
+                    </h4>
                 </div>
                 <div class="mt-auto p-2" id="apps">
                     <a class="btn btn_app_android p-0" href="#">
@@ -176,7 +68,7 @@
                 </div>
 
             </div>
-            <div id="container_left" class=" col-md-7 col-sm-12 pt-5">
+            <div id="container_left" class="col-sm-12 col-md-7 pt-5">
 
                 <form id="formularioRegistroEmpresa" action="{{route('nuevaEmpresa.store')}}" method="POST"
                     enctype="multipart/form-data">
@@ -329,11 +221,10 @@
                         </div>
                     </div>
 
-                    <div class="form-row justify-content-center ">
+                    <div class="form-row justify-content-center">
                         <div class="col-12">
                             @foreach ($errors as $error)
-
-                            <span class="text-danger">{{ $error}}</span>
+                                <span class="text-danger">{{ $error}}</span>
                             @endforeach
                         </div>
 
@@ -342,7 +233,7 @@
                             @csrf
 
                             <div class="form-group col-6">
-                                <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
+                                <button type="button" class="btn btn-warning btn-block" id="enviarFormRegistro">
                                     <span class="spinner-border spinner-border-sm spinnerr" role="status"
                                         aria-hidden="true" style="display: none"></span>
                                     Guardar
@@ -364,5 +255,6 @@
 
 @section('scripts')
 
+      
 @include('publico.empresa.js')
 @endsection
