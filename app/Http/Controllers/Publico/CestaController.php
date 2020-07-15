@@ -19,6 +19,7 @@ class CestaController extends Controller
     {
         $cestas = Cesta::where("storagecliente_id", $request->storagecliente_id)
         ->where("tipo", $request->tipo)
+        ->where("estado", 0)
         ->orderBy('id', 'desc')
         ->get();
 
@@ -41,7 +42,7 @@ class CestaController extends Controller
         $cesta->cantidad = $request->cantidad;
         $cesta->tipo = $request->tipo;
         $cesta->empresa_id = $request->empresa_id;
-        $cesta->estado = $request->estado;
+        $cesta->estado = intval($request->estado);
         
         if ( Auth::guard('api')->check() ) {
             $cesta->cliente_id = Auth::id();

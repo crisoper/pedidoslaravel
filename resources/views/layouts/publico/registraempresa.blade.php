@@ -35,7 +35,7 @@
                     <li>
                         @guest
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'PedidosApp') }}
+                            {{-- <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp"> --}}
                         </a>
                         @else
                         <small>
@@ -75,9 +75,6 @@
                             @guest
 
                             @else
-                            {{-- <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                class="fas fa-users-cog"></i></i> Mi cuenta</a> --}}
-
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -113,7 +110,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
                     <div class="text-center">
                         <a href="{{ route('inicio.index') }}">
-                            <img src="{{asset('pedidos/image/logo.png')}}" alt="">
+                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" width="150px">
                         </a>
                     </div>
                   

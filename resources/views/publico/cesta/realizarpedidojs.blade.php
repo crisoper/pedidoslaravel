@@ -14,16 +14,21 @@
                 data: $("#formNavDetallePedidoCesta").serialize() ,
                 success: function( data ) {
                     
-                    $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                    // GLOBARL_MostrarNotificaciones( data.success, "info" );
-                    // mesajeDatosActualizados( ) ;
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Pedido realizado con exito',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-
+                    let attr = $("#userId").val();                   
+                    if (typeof attr !== typeof undefined && attr !== false && attr !== '') {
+                        $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
+                        // GLOBARL_MostrarNotificaciones( data.success, "info" );
+                        // mesajeDatosActualizados( ) ;
+                        Swal.fire({
+                            title: '¡Tu pedido se ha registrado!',
+                            text: "En breve nos comunicaremos contigo para detalles de entrega",
+                            icon: 'success',
+                            confirmButtonText: '<a href="{{route('inicio.index')}}" style="color:#fff"> Aceptar </a>'
+                        })
+                    }else{
+                        window.location = "{{route('loginOrRegister', 'login')}}";
+                    }
+                        
                 },
                 error : function ( jqXHR, textStatus, errorThrown ) {
 
