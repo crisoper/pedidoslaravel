@@ -146,7 +146,7 @@
                 {{-- LOGOTIPO --}}
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
                     <a href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/image/logo.png')}}" alt="">
+                        <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                     </a>
                 </div>
                 
@@ -232,7 +232,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
                     <div class="text-center">
                         <a href="{{ route('inicio.index') }}">
-                            <img src="{{asset('pedidos/image/logo.png')}}" alt="">
+                            
+                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                         </a>
                     </div>
                     <div class="text-center">

@@ -1,86 +1,10 @@
 @extends('layouts.publico.registraempresa')
-
-<style>
-    .fa-envelope,
-    .fa-unlock-alt,
-    .fa-map-marker,
-    .fa-phone,
-    .fa-address-card {
-        position: absolute;
-        padding: 10px;
-        pointer-events: none;
-        color: #0aa9c2;
-    }
-
-    #email,
-    #password,
-    #direccion,
-    #telefono,
-    #dni {
-        padding-left: 30px !important;
-
-    }
-
- 
-    #tabs,
-    #tabsContent {
-
-        justify-content: center;
-        border: none;
-
-
-    }
-
-   
-
-    #btn_submit {
-        background-color: #108b9e !important;
-        border-radius: 0px !important;
-        border: 0px;
-    }
-
-    #btn_submit:hover {
-        background-color: #0c7080 !important;
-        box-shadow: 0.5px 0.5px 1px 1.5px #108b9e;
-    }
-
-    .container_left {
-        background-color: #F8F9FA;        
-        height: 100vh;
-       
-        padding-top: 5em;
-     
-    }
-    #tab-content{
-        
-        padding-left: 1em;
-        padding-right: 1em;
-    }
-    #texto{
-        background-color: #22737E;
-        text-align: center;
-        padding-top: 5em;;
-    }
-    .titulo{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        color: #F8F9FA;
-      
-    }
-
-    img{
-        width: 150px;
-        height: 40px;
-    }
-    #apps{
-        margin-bottom: 2rem;
-    }
-  
-</style>
+@include('auth.loginCSS')
 @section('contenido')
 <div class="container-fluid ">
     <div class="row m-0 p-0">
         <div class="d-flex flex-wrap">
-            <div id="texto" class="col-sm-12 col-md-5  d-flex   flex-column " >
+            <div id="texto" class="col-sm-12 col-md-5  d-flex flex-column" >
                 {{-- @if( $flag == 'login' ||  $flag == 'register') --}}
                 <div class="titulo" >              
                    <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
@@ -108,11 +32,11 @@
                 
                     <ul id="tabs" class="nav nav-tab">
                         <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
-                                class="nav-link small text-uppercase @if( $flag == 'login') active  @endif">INICIA
-                                SESIÓN</a></li>
+                                class="nav-link small text-uppercase @if( $flag == 'login') active  @endif text-primary" ><strong>INICIA
+                                    SESIÓN</strong></a></li>
                         <li class="nav-item li_register">
                             <a href="" data-target="#register" data-toggle="tab"
-                                class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif ">REGISTRATE</a>
+                                class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif text-primary"><strong>REGISTRATE</strong></a>
                         </li>
 
                     </ul>
@@ -131,15 +55,17 @@
                                                 {{-- ENVIAMOS SESIONSTORAGE --}}
                                                 <input type="hidden" name="sesionStorage" id="sesionStorage" >
                                                 <i class="far fa-envelope"></i>
-                                                <input id="email" type="email"
+                                                <input id="emailLogin" type="email"
                                                     class="form-control @error('email') is-invalid @enderror  correo"
                                                     name="email" value="{{ old('email') }}" required
                                                     autocomplete="email" autofocus
                                                     placeholder=' Dirección de correo electrónico'>
+                                            
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
+                                               
                                                 @enderror
                                             </div>
                                         </div>
@@ -147,7 +73,7 @@
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <i class="fas fa-unlock-alt"></i>
-                                                <input id="password" type="password"
+                                                <input id="passwordLogin" type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password" required autocomplete="current-password"
                                                     placeholder="Contraseña">
@@ -175,7 +101,7 @@
 
                                         <div class="form-group row mb-0">
                                             <div class="col-12">
-                                                <button id="btn_submit" type="submit" class="btn btn-danger btn-block ">
+                                                <button id="btn_submitLogin" type="submit" class="btn btn-primary btn-block ">
                                                     {{ __('Iniciar sesión') }}
                                                 </button>
 
@@ -377,64 +303,5 @@
     @endsection
 
     @section('scripts')
-    <script>
-        $(document).ready(function(){
-   
-        if ( $("#login").hasClass('active') ) {
-            $(".li_login").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important;');
-        }
-       
-        if ( $("#register").hasClass('active') ) {
-            $(".li_register").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important;');
-        }
-       
-        $(".li_login").on('click', function(){
-            $(".li_login").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important; font: bold !important;');
-            $(".li_register").removeAttr('style');
-        });
-        
-        $(".li_register").on('click', function(){
-            $(".li_register").attr('style','border-bottom:3px solid #0C7080 !important; color: #0C7080 !important; font: bold !important;');
-            $(".li_login").removeAttr('style');         
-
-        })
-      
-  
-        $('#terminosycondiciones').on('change', function() {
-             if( $(this).prop('checked') ) {
-                
-               
-                $("input[type=submit]").removeAttr("disabled");
-             }  else{
-                $("input[type=submit]").attr('disabled','disabled');
-             }
-        });
-        
-        $("#sesionStorage").val( obtenerLocalStorageclienteID() );
-
-        function obtenerLocalStorageclienteID () {
-        if(typeof(Storage) !== "undefined") {
-            if ( !localStorage.LocalStorageclienteID ) {
-                $.ajax({
-                    url: '{{ route("localstorage.index") }}',
-                    method: 'GET',
-                    data: { },
-                    success: function ( data ) {
-                        localStorage.LocalStorageclienteID = data
-                    },
-                    error: function ( jqXHR, textStatus, errorThrown ) {
-                        console.log(jqXHR.responseJSON);
-                    }
-                });
-            }
-            return localStorage.LocalStorageclienteID;
-        } 
-        else {
-            return false;
-        }
-    }
-               
-    });
-    </script>
-
+        @include('auth.loginJS')        
     @endsection

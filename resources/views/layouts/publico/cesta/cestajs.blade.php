@@ -203,7 +203,7 @@
                                     
         let sumaTotalProductos = 0;
         $.each(arrayTotalProductos, function (index, cantidad) {
-            sumaTotalProductos = sumaTotalProductos + parseFloat($(cantidad).html());
+            sumaTotalProductos = sumaTotalProductos + parseInt($(cantidad).html());
         });
         
         if ($(".cantidad_cesta_menu").html() <= 9) {

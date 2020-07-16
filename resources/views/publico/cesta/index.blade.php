@@ -59,7 +59,9 @@
                             </div>
                         </div>
                         <div class="col-12 px-0 py-2 text-center content_btn_realizar_pedido_cart">
-                            <button class="btn_realizar_pedido_cart py-1">Realizar Pedido</button>
+                           
+                            <input type="hidden" id="userId" value="{{( Auth()->user() ) ? Auth()->user()->id : '' }}">
+                            <button class="btn_realizar_pedido_cart py-1" >Realizar Pedido</button>
                             <br>
                         </div>
                         <div class="col-12 mb-2 text-center">

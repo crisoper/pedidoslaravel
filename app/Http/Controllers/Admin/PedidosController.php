@@ -9,6 +9,7 @@ use App\Models\Admin\Pedidos\Pedidoestado;
 use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PedidosController extends Controller
 {
@@ -20,7 +21,7 @@ class PedidosController extends Controller
 
     public function pedidosstore(Request $request)
     {
-        if ( isset(Auth()->user) ) {
+       
 
             $pedido = new Pedido;
             $pedido->cliente_id = Auth::id();
@@ -29,7 +30,6 @@ class PedidosController extends Controller
             $pedido->save();
 
             $total = 0;
-
 
             foreach ($request->cesta_id as $key => $value) {
 
@@ -64,14 +64,18 @@ class PedidosController extends Controller
             ]);
 
             $pedidoestado->save();
-
-
+        
+            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id',0))->get();
+          
+                foreach( $productoscesta as $productocesta){
+                    $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )->first();
+                    $estadocesta->estado = 1;
+                    $estadocesta->save();
+                }
+                
+                Session::forget('storagecliente_id');
             return response()->json(["success" => "Pedido creado correctamente"], 200);
-        } else {
-            $flag = 'login';
-            return response()->json($flag, 200);
-            return view('auth.loginoregister', compact('flag'));
-        }
+      
     }
 
 

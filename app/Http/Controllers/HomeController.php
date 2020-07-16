@@ -103,7 +103,7 @@ class HomeController extends Controller
                     }else{
                         return view("publico.inicio.index");
                     }
-                    // publico.cesta.index
+                    
                 }else{
                     return view('publico.mail.confirmarcuentaComprador');
                 }
