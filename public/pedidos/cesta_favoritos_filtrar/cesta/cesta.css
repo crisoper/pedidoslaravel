@@ -155,9 +155,17 @@
 @media (max-width: 991px) {
     .margin_realizar_pedido_cart {
         padding-left: 0px !important;
+        margin-top: 30px;
     }
 }
 
+
+.sticky-top-2 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px;
+    z-index: 2;
+}
 
 .content_resumen_realizar_pedido {
     background-color: #ffffff;

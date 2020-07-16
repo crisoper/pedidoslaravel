@@ -6,7 +6,6 @@
             e.preventDefault();
 
             let buttonGuardar = this;
-
             $.ajax({
                 method: "POST",
                 url: $("#formNavDetallePedidoCesta").attr("action"),
@@ -24,6 +23,7 @@
                         timer: 2000
                     })
 
+                    console.log(this);
                 },
                 error : function ( jqXHR, textStatus, errorThrown ) {
 

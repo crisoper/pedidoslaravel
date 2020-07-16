@@ -6,13 +6,8 @@
 	<!-- Shopping Cart -->
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="section-title mb-0">
-                    <h2 class="float-left m-0 p-0">Detalle de pedido</h2>
-                </div>
-            </div>
-            <div class="col-12">
-                <hr class="subrayado_productos mt-1">
+            <div class="col-12 section_title p-0 mb-4">
+                <h2 class="my-1">Detalle de pedido</h2>
             </div>
         </div>
     </div>
@@ -28,7 +23,7 @@
                 </div>
     
                 <div class="col-12 col-lg-4 p-0 margin_realizar_pedido_cart">
-                    <div class="row m-0 content_resumen_realizar_pedido">
+                    <div class="row m-0 content_resumen_realizar_pedido sticky-top-2">
                         <div class="col-12 px-0 pt-2 pb-1 text-center content_resumen_pedido_cart">
                             <h5><b>Resumen del pedido</b></h5>
                         </div>

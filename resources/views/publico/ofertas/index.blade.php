@@ -5,18 +5,18 @@
 
 <div class="container-fluid page_section px-2">
     <div class="row">
-        <div class="col-12 section_title mb-2">
+        <div class="col-12 section_title p-0 mb-2">
             <h2 class="my-1">Ofertas</h2>
         </div>
     </div>        
     <div class="row">
-        <div class="col-6 mb-3">
+        <div class="col-9 col-md-6 mb-3">
             <h6><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
         </div>
         {{-- BOTON FILTRAR PRODUCTOS --}}
-        <div class="col-6 mb-3 content_filtrar_productos">
-            <button type="button" class="btn_filtrar_productos">
-                Filtrar Productos
+        <div class="col-3 col-md-6 mb-3 content_filtrar_productos">
+            <button type="button" class="btn_filtrar_productos float-right">
+                <i class="fas fa-filter"></i> <span class="span_filtrar_prod">Filtrar Productos</span>
             </button>
         </div>
     </div>

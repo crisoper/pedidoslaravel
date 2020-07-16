@@ -34,7 +34,7 @@
     {{-- PRODUCTOS INICIO --}}
     <div class="container-fluid page_section px-2 mb-5" id="preductRecomendado">
         <div class="row text-center">
-            <div class="col-12 section_title mb-2">
+            <div class="col-12 section_title p-0 mb-2">
                 <h2 class="float-left py-1 m-0">Recomendados</h2>
                 <a class="float-right py-1 m-0" href="{{route('recomendados.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
@@ -47,7 +47,7 @@
     </div>
     <div class="container-fluid page_section px-2 mb-5" id="productosEnOferta">
         <div class="row text-center">
-            <div class="col-12 section_title mb-2">
+            <div class="col-12 section_title p-0 mb-2">
                 <h2 class="float-left py-1 m-0">Ofertas</h2>
                 <a class="float-right py-1 m-0" href="{{route('ofertas.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
@@ -60,7 +60,7 @@
     </div>
     <div class="container-fluid page_section px-2 mb-5" id="productosNuevos">
         <div class="row text-center">
-            <div class="col-12 section_title mb-2">
+            <div class="col-12 section_title p-0 mb-2">
                 <h2 class="float-left py-1 m-0">Nuevos</h2>
                 <a class="float-right py-1 m-0" href="{{route('nuevos.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
@@ -73,7 +73,7 @@
     </div>
     <div class="container-fluid page_section px-2 mb-5" id="productosMasPedidos">
         <div class="row text-center">
-            <div class="col-12 section_title mb-2">
+            <div class="col-12 section_title p-0 mb-2">
                 <h2 class="float-left py-1 m-0">Mas Pedidos</h2>
                 <a class="float-right py-1 m-0" href="{{route('maspedidos.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>

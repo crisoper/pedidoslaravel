@@ -29,4 +29,9 @@ class Pedidodetalle extends Model
     {
         return  $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
     }
+    
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Admin\Empresa', 'empresa_id', 'id');
+    }
 }

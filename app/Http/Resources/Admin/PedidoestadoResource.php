@@ -17,7 +17,10 @@ class PedidoestadoResource extends JsonResource
         return [
             'id' => $this->id,
             'estado' => $this->estado,
-            'created_by' => $this->created_by,
+
+            // 'created_by' => $this->created_by,
+            'repartidor_id' => $this->repartidor ? $this->repartidor->id : 0,
+            'repartidor' => $this->repartidor ? $this->repartidor->name : 0,
 
             'pedido_id' => $this->pedido ? $this->pedido->id : 0,
         ];

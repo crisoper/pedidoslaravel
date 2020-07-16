@@ -42,6 +42,10 @@
                             <td>S/ ${ pedidosdetalle.preciounitario }</td>
                             <td>${ pedidosdetalle.cantidad }</td>
                             <td>S/ ${ pedidosdetalle.subtotal }</td>
+                            <td class="td_pedido_direccion_local">
+                                <h6 class="my-0">${ pedidosdetalle.empresa }</h6>
+                                <p class="my-0">${ pedidosdetalle.empresa_direccion }</p>
+                            </td>
                         </tr>
                     `;
                 })
@@ -53,7 +57,7 @@
 
                     if (pedidosestado.estado == "despachado") {
                         pedidoestadoHTML = pedidoestadoHTML + `
-                            <span>${ pedidosestado.created_by }</span>
+                            <span>${ pedidosestado.repartidor }</span>
                         `;
                     }
                 })
@@ -63,9 +67,9 @@
                         <div class="row pt-2 pb-3 m-0">
                             <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                             <div class="col-12"><b>Cliente:</b> <span>${ pedidos.cliente }</span></div>
-                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.direccion }</span></div>
+                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.cliente_direccion }</span></div>
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
-                            <div class="col-12"><b>Despachador:</b> ${ pedidoestadoHTML } </div>
+                            <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> ${ pedidoestadoHTML } </div>
                             <div class="col-12 mt-2 mb-2">
                                 <table class="table table-sm mb-2">
                                     <thead>
@@ -74,6 +78,7 @@
                                             <th class="prod_unit">Precio</th>
                                             <th class="prod_cant">Cantidad</th>
                                             <th class="prod_subtotal">Subtotal</th>
+                                            <th class="direccion_empresa">Local</th>
                                         </tr>
                                     </thead>
                                     <tbody>

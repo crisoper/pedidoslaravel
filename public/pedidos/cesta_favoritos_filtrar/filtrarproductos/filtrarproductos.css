@@ -1,14 +1,7 @@
 /* Header cart top */
 
-.content_filtrar_productos {
-    text-align: right;
-}
 
-@media (max-width: 768px) {
-    .content_filtrar_productos {
-        text-align: center;
-    }    
-}
+
 
 .btn_filtrar_productos {
     width: auto !important;

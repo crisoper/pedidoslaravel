@@ -70,7 +70,7 @@ class PedidosController extends Controller
         } else {
             $flag = 'login';
             return response()->json($flag, 200);
-            // return view('auth.loginoregister', compact('flag'));
+            return view('auth.loginoregister', compact('flag'));
         }
     }
 
