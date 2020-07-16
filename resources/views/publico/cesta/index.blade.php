@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="section-title mb-0">
                     <h2 class="float-left m-0 p-0">Detalle de pedido</h2>
-                   
+                }
                 </div>
             </div>
             <div class="col-12">

@@ -10,6 +10,7 @@ use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Mockery\Undefined;
 
 class PedidosController extends Controller
 {
@@ -21,8 +22,12 @@ class PedidosController extends Controller
 
     public function pedidosstore(Request $request)
     {
+
        
 
+        if (Auth::check()) {
+ 
+           
             $pedido = new Pedido;
             $pedido->cliente_id = Auth::id();
             $pedido->created_by = Auth::id();
@@ -75,6 +80,15 @@ class PedidosController extends Controller
                 
                 Session::forget('storagecliente_id');
             return response()->json(["success" => "Pedido creado correctamente"], 200);
+       
+            
+        }
+        else
+        {
+            return response()->json('error', 422); 
+
+        
+        }
       
     }
 

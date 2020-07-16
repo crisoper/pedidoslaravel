@@ -4,7 +4,7 @@
 .header_top_secondary {
     width: 100% !important;
     height: 50px;
-    background-color: #3eb291;
+    background-color: #ffffff;
 	box-shadow: 0 5px 5px -5px #333;
 	z-index: 5;
 }
@@ -50,7 +50,7 @@
 	font-size: 17px;
 	border: 0;
 	text-transform: uppercase;
-	background-color: #37a183;
+	background-color: #fcfcfc;
 }
 
 .header_menu_categorias > .header_categorias {
