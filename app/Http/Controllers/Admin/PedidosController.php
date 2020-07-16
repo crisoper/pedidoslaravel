@@ -23,58 +23,54 @@ class PedidosController extends Controller
     {
        
 
-            $pedido = new Pedido;
-            $pedido->cliente_id = Auth::id();
-            $pedido->created_by = Auth::id();
-            $pedido->total = 0;
-            $pedido->save();
+        $pedido = new Pedido;
+        $pedido->cliente_id = Auth::id();
+        $pedido->created_by = Auth::id();
+        $pedido->total = 0;
+        $pedido->save();
 
-            $total = 0;
+        foreach ($request->cesta_id as $key => $value) {
 
-            foreach ($request->cesta_id as $key => $value) {
+            $cesta = Cesta::where("id", $request->cesta_id[$key])->first();
 
-                $cesta = Cesta::where("id", $request->cesta_id[$key])->first();
+            $pediddetalle = new Pedidodetalle;
+            $pediddetalle->empresa_id = $cesta ? ($cesta->producto ? $cesta->producto->empresa_id : 0) : 0;
+            $pediddetalle->producto_id = $cesta ? ($cesta->producto ? $cesta->producto->id : 0) : 0;
+            $pediddetalle->pedido_id = $pedido->id;
+            $pediddetalle->preciounitario = $request->precio[$key];
+            $pediddetalle->cantidad = $request->cantidad[$key];
+            $pediddetalle->subtotal = $request->subtotal[$key];
+            $pediddetalle->created_by = Auth::id();
+            $pediddetalle->save();
 
-                $pediddetalle = new Pedidodetalle;
-                $pediddetalle->empresa_id = $cesta ? ($cesta->producto ? $cesta->producto->empresa_id : 0) : 0;
-                $pediddetalle->producto_id = $cesta ? ($cesta->producto ? $cesta->producto->id : 0) : 0;
-                $pediddetalle->pedido_id = $pedido->id;
-                $pediddetalle->preciounitario = $request->precio[$key];
-                $pediddetalle->cantidad = $request->cantidad[$key];
-                $pediddetalle->subtotal = $request->subtotal[$key];
-                $pediddetalle->created_by = Auth::id();
-                $pediddetalle->save();
-
-                // $total = $total  + $pediddetalle->subtotal;
-
-                $pedido->empresa_id = $pediddetalle->empresa_id;
-            }
+            $pedido->empresa_id = $pediddetalle->empresa_id;
+        }
 
 
         $pedido->total = $request->input_total_pedido_cesta;
         $pedido->save();
 
 
-            $pedidoestado = Pedidoestado::firstOrNew([
-                'empresa_id' => $pedido->empresa_id,
-                'pedido_id' => $pedido->id,
-                'estado' => 'pedido',
-            ], [
-                'created_by' => Auth::id(),
-            ]);
+        $pedidoestado = Pedidoestado::firstOrNew([
+            'empresa_id' => $pedido->empresa_id,
+            'pedido_id' => $pedido->id,
+            'estado' => 'pedido',
+        ], [
+            'created_by' => Auth::id(),
+        ]);
 
-            $pedidoestado->save();
+        $pedidoestado->save();
+    
+        $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))->get();
         
-            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id',0))->get();
-          
-                foreach( $productoscesta as $productocesta){
-                    $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )->first();
-                    $estadocesta->estado = 1;
-                    $estadocesta->save();
-                }
-                
-                Session::forget('storagecliente_id');
-            return response()->json(["success" => "Pedido creado correctamente"], 200);
+        foreach( $productoscesta as $productocesta){
+            $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )->first();
+            $estadocesta->estado = 1;
+            $estadocesta->save();
+        }
+        
+        Session::forget('storagecliente_id');
+        return response()->json(["success" => "Pedido creado correctamente"], 200);
       
     }
 

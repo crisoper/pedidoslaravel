@@ -53,8 +53,8 @@
         $(".responsiveSlickMasPedidosInicio").slick({
             dots: false,
             arrows: true,
-            slidesToShow: 5,
-            slidesToScroll: 5,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             infinite: true,
             speed: 800,
             autoplay: true,

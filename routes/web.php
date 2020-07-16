@@ -114,6 +114,13 @@ Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 ->name("ajax.locales.pedidosstore");
 
+//SEGUIMIENTO DE PEDIDO
+Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")
+->name("seguimientodepedido.index");
+Route::get("ajax/seguimientodepedido", "Publico\SeguimientopedidoController@seguimientodepedido")
+->name("ajax.seguimientodepedido");
+
+
 
 
 

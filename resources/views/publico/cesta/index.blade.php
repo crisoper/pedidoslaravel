@@ -3,7 +3,6 @@
 @section('contenido')
 
 
-	<!-- Shopping Cart -->
     <div class="container">
         <div class="row">
             <div class="col-12 section_title p-0 mb-4">
@@ -72,7 +71,6 @@
             </div>
         </form>
     </div>
-
 
 
 @endsection
