@@ -6,7 +6,6 @@
             e.preventDefault();
 
             let buttonGuardar = this;
-
             $.ajax({
                 method: "POST",
                 url: $("#formNavDetallePedidoCesta").attr("action"),

@@ -23,11 +23,12 @@
     width: 100%;
 }
 .tr_tittle_x_confirmar .prod_name {
-    width: 55%;
+    width: 40%;
 }
 .tr_tittle_x_confirmar .prod_unit, 
 .tr_tittle_x_confirmar .prod_cant, 
-.tr_tittle_x_confirmar .prod_subtotal {
+.tr_tittle_x_confirmar .prod_subtotal,
+.tr_tittle_x_confirmar .direccion_empresa {
     width: 15%;
 }
 
@@ -37,12 +38,21 @@
     padding: 5px !important;
 }
 
+.td_pedido_direccion_local h6 {
+    font-size: 13px;
+}
+.td_pedido_direccion_local p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3cd4a9;
+}
+
 .total_pedido {
     color: #3cd4a9;
-    font-size: 17px;
+    font-size: 19px;
 }
 .pedido_total_span {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
 }
 
@@ -55,7 +65,9 @@
     border: 0;
 }
 
-
+.repartidor_pedidos {
+    color: #0063d1;
+}
 
 
 

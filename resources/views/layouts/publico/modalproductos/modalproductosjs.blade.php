@@ -30,35 +30,35 @@
 
             // console.log(data);
 
-            let enlistadeseos = '';
-            if (data.data.enlistadeseos == false) {
-                enlistadeseos = enlistadeseos + `
-                    <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                        <i class="fa fa-heart"></i>
-                    </button>`;
-            } else {
-                enlistadeseos = enlistadeseos + `
-                    <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                        <i class="fa fa-heart"></i>
-                    </button>`;
-            }
+            // let enlistadeseos = '';
+            // if (data.data.enlistadeseos == false) {
+            //     enlistadeseos = enlistadeseos + `
+            //         <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+            //             <i class="fa fa-heart"></i>
+            //         </button>`;
+            // } else {
+            //     enlistadeseos = enlistadeseos + `
+            //         <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+            //             <i class="fa fa-heart"></i>
+            //         </button>`;
+            // }
 
-            let encarrito = '';
-            if (data.data.encarrito == false) {
-                encarrito = encarrito + `
-                    <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                        <span>Agregar</span>
-                        <i class="fas fa-shopping-basket"></i>
-                    </button>
-                `;
-            } else {
-                encarrito = encarrito + `
-                    <button class="product_aggregate_cesta text-center hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                        <span>Agregado</span>
-                        <i class="fas fa-check-circle"></i>
-                    </button>
-                `;
-            }
+            // let encarrito = '';
+            // if (data.data.encarrito == false) {
+            //     encarrito = encarrito + `
+            //         <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+            //             <span>Agregar</span>
+            //             <i class="fas fa-shopping-basket"></i>
+            //         </button>
+            //     `;
+            // } else {
+            //     encarrito = encarrito + `
+            //         <button class="product_aggregate_cesta text-center hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+            //             <span>Agregado</span>
+            //             <i class="fas fa-check-circle"></i>
+            //         </button>
+            //     `;
+            // }
 
             let productoModalHTML = "";
             productoModalHTML = productoModalHTML + `
@@ -87,10 +87,15 @@
                             </p>
                         </div>
                         <div class="col-5 py-0 px-3 content_btn_cesta_modal">
-                            ${ encarrito }
+                            <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                                <span>Agregar</span>
+                                <i class="fas fa-shopping-basket"></i>
+                            </button>
                         </div>
                         <div class="col-2 p-0 pr-2 content_btn_favoritos_modal">
-                            ${ enlistadeseos }
+                            <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                                <i class="fa fa-heart"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,10 @@ class PedidodetalleResource extends JsonResource
             'producto' => $this->producto ? $this->producto->nombre : '',
             
             'pedido_id' => $this->pedido ? $this->pedido->id : 0,
+            
+            'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
+            'empresa' => $this->empresa ? $this->empresa->nombre : '',
+            'empresa_direccion' => $this->empresa ? $this->empresa->direccion : '',
         ];
     }
 }

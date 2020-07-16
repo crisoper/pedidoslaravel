@@ -63,22 +63,22 @@ ol {
 }
 
 .section_title {
-	background-color: #0071bc !important;
-	border-radius: 5px;
+	border-bottom: 1px solid #535a5e !important;
+	/* border-radius: 5px; */
 }
 
 .section_title h2 {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
+    color: #000000;
+    font-size: 25px;
+    /* font-weight: 700; */
+    /* text-transform: uppercase; */
 }
 .section_title a {
-	color: #b8dcf3;
+	color: #535a5e;
 }
 .section_title a:hover, 
 .section_title a:focus {
-    color: #ffffff;
+    color: #3eb291;
 	text-decoration: underline;
 }
 

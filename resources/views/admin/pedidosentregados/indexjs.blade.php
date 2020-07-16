@@ -42,17 +42,33 @@
                             <td>S/ ${ pedidosdetalle.preciounitario }</td>
                             <td>${ pedidosdetalle.cantidad }</td>
                             <td>S/ ${ pedidosdetalle.subtotal }</td>
+                            <td class="td_pedido_direccion_local">
+                                <h6 class="my-0">${ pedidosdetalle.empresa }</h6>
+                                <p class="my-0">${ pedidosdetalle.empresa_direccion }</p>
+                            </td>
                         </tr>
                     `;
                 })
                 
+                let pedidoestadoHTML = '';
+
+                $.each( pedidos.estado, function( key, pedidosestado ) {
+
+                    if (pedidosestado.estado == "entregado") {
+                        pedidoestadoHTML = pedidoestadoHTML + `
+                            <span>${ pedidosestado.repartidor }</span>
+                        `;
+                    }
+                })
+
                 pedidosHTML = pedidosHTML + `
                     <div class="col-12 mb-4 content_pedidos_x_confirmar">
                         <div class="row pt-2 pb-3 m-0">
                             <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                             <div class="col-12"><b>Cliente:</b> <span>${ pedidos.cliente }</span></div>
-                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.direccion }</span></div>
+                            <div class="col-12"><b>Dirección:</b> <span>${ pedidos.cliente_direccion }</span></div>
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
+                            <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> ${ pedidoestadoHTML } </div>
                             <div class="col-12 mt-2 mb-2">
                                 <table class="table table-sm mb-2">
                                     <thead>
@@ -61,6 +77,7 @@
                                             <th class="prod_unit">Precio</th>
                                             <th class="prod_cant">Cantidad</th>
                                             <th class="prod_subtotal">Subtotal</th>
+                                            <th class="direccion_empresa">Local</th>
                                         </tr>
                                     </thead>
                                     <tbody>

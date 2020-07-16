@@ -22,4 +22,9 @@ class Pedidoestado extends Model
     {
         return  $this->belongsTo('App\Models\Admin\Pedidos\Pedido', 'pedido_id');
     }
+    
+    public function repartidor()
+    {
+        return  $this->belongsTo('App\User', 'created_by', 'id');
+    }
 }
