@@ -88,12 +88,8 @@ class PedidosController extends Controller
             return response()->json(["success" => "Pedido creado correctamente"], 200);
        
             
-        }
-        else
-        {
+        } else{
             return response()->json('error', 422); 
-
-        
         }
       
     }
