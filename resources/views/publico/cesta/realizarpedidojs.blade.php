@@ -12,9 +12,7 @@
                 dataType: "json",
                 data: $("#formNavDetallePedidoCesta").serialize() ,
                 success: function( data ) {
-                    
-                    let attr = $("#userId").val();                   
-                    if (typeof attr !== typeof undefined && attr !== false && attr !== '') {
+               
                         $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
                         // GLOBARL_MostrarNotificaciones( data.success, "info" );
                         // mesajeDatosActualizados( ) ;
@@ -23,16 +21,22 @@
                             text: "En breve nos comunicaremos contigo para detalles de entrega",
                             icon: 'success',
                             confirmButtonText: '<a href="{{route('inicio.index')}}" style="color:#fff"> Aceptar </a>'
-                        })
-                    }else{
+                          })
+                    },
+                    error : function ( jqXHR, textStatus, errorThrown ) {
+                    
+                    if( jqXHR.status == 404 ) 
+                    {
+                        
+                    }
+                    else if( jqXHR.status == 422 ) 
+                    {
                         window.location = "{{route('loginOrRegister', 'login')}}";
                     }
-                        
-                },
-                error : function ( jqXHR, textStatus, errorThrown ) {
+
 
                     $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                    GLOBARL_MostrarNotificaciones( "Error, actualice la pagina y vuelva a intentarlo", "error" );
+                    // GLOBARL_MostrarNotificaciones( "Error, actualice la pagina y vuelva a intentarlo", "error" );
                     console.log( jqXHR );
                 }
             });

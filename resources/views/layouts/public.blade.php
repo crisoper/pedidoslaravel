@@ -13,15 +13,18 @@
 
     @include('layouts.publico.styles')
 
+ 
+
 </head>
+
 <body class="contenidoPrincipalPagina m-0 p-0">
-    
+
     <!-- Page Preloder -->
     {{-- <div id="preloder">
         <div class="loader"></div>
     </div> --}}
-    
-    
+
+
     <!-- MENU WEB 1 -->
     <header class="container-fluid header__top mx-0 px-0 bg-dark">
         <div class="container">
@@ -29,7 +32,8 @@
                 {{-- SERVICIO AL CLIENTE --}}
                 <div class="col-6 col-sm-6 col-md-3 col-lg-2 p-0" id="header_top_client">
                     <div class="header_top_options">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Servicio al cliente <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown_options p-0">
@@ -42,17 +46,19 @@
                         </div>
                     </div>
                 </div>
-    
+
                 {{-- AFILIAR RESTAURANTE --}}
                 <div class="col-6 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
-                  
-                    <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }}">Afilia a tu restaurante</a>
+
+                    <a class="btn btn_recommended d-flex justify-content-around text-light"
+                        href="{{ route('registernewempresa') }} ">Afilia a tu restaurante</a>
                 </div>
-                
+
                 {{-- APPS --}}
                 <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0" id="header_top_apps">
                     <div class="header_top_options">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Apps <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0">
@@ -65,27 +71,30 @@
                         </div>
                     </div>
                 </div>
-    
+
                 {{-- LOGIN --}}
                 <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
 
-                  @if ( Auth::user() == '' || Auth::user() == null )
-                    
+                    @if ( Auth::user() == '' || Auth::user() == null )
+
                     <div class="header_top_options">
-                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Mi cuenta <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0 pb-2">
                             @php
-                                $flagLogin = "login";
-                                $flagRegister = "register"
+                            $flagLogin = "login";
+                            $flagRegister = "register"
                             @endphp
 
-                            <a class="btn btn_login" href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
-                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
+                            <a class="btn btn_login"
+                                href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
+                            <a class="btn btn_register"
+                                href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
                         </div>
-                        
-                    </div>    
+
+                    </div>
                     @else
                     <div class="header_top_options">
                         <ul class="navbar-nav ml-auto">
@@ -93,30 +102,34 @@
                                 {{-- <a class="nav-link" data-toggle="dropdown" href="#">
                                     <img width="25px" height="25px" 
                                         @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
-                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
-                                        @else 
-                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
-                                        @endif
-                                        src="{{Storage::url('usuarios/default.png')}}"
-                                        
-                                    alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
-                                    
+                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
+                                @else
+                                src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
+                                @endif
+                                src="{{Storage::url('usuarios/default.png')}}"
+
+                                alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+
                                 </a> --}}
-                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     {{ auth()->user()->name }} <i class="fas fa-angle-down"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                     @guest
                                     @else
-                                        <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                                        <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                                    <div class="dropdown-divider"></div>
 
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </a>
                                     @endguest
                                 </div>
                             </li>
@@ -142,14 +155,14 @@
                         </div>
                     </button>
                 </div>
-    
+
                 {{-- LOGOTIPO --}}
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
                     <a href="{{ route('inicio.index') }}">
                         <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                     </a>
                 </div>
-                
+
                 {{-- MENU CATEGORIAS --}}
                 <div class="col-0 col-sm-0 col-md-0 col-lg-2 px-0" id="menu_categorias">
                     <div class="header_menu_categorias">
@@ -161,23 +174,27 @@
                             <li><a class="dropdown-item" href="{{ route('ofertas.index') }}">Ofertas</a></li>
                             <li><a class="dropdown-item" href="{{ route('nuevos.index') }}">Nuevos</a></li>
                             <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los Productos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los
+                                    Productos</a></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item submenu_categorias" href="#">Categorías <i class="fas fa-angle-right float-right pt-1"></i></a>
+                                <a class="dropdown-item submenu_categorias" href="#">Categorías <i
+                                        class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
-                                    
+
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
-    
+
                 {{-- BUSCADOR WEB --}}
                 <div class="col-4 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
                             <div class="input-group input_group_search">
-                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar" placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar" autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
+                                <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar"
+                                    placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar"
+                                    autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
                                     <a href="#" class="btn btn_buscar_productos">
@@ -198,7 +215,7 @@
                         <h6 class="cantidad_favoritos_menu m-0">0</h6>
                     </button>
                 </div>
-                
+
                 {{-- CESTA --}}
                 <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 p-0" id="menu_cesta">
                     <button type="button" class="btn btn_modal_cesta row m-0" id="mostrar_cesta_menu">
@@ -214,7 +231,7 @@
     </div>
 
 
-       
+
 
     {{-- CONTENIDO INICIO --}}
     <section style="margin-top: 30px;">
@@ -232,7 +249,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
                     <div class="text-center">
                         <a href="{{ route('inicio.index') }}">
-                            
+
                             <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                         </a>
                     </div>
@@ -279,7 +296,7 @@
 </body>
 
 
-    
+
 
 
 @include('layouts.publico.scripts')
@@ -294,6 +311,8 @@
 @include('layouts.publico.favoritos.favoritosjs')
 @include('layouts.publico.modalproductos.modalproductos')
 @include('layouts.publico.modalproductos.modalproductosjs')
+
+
 
 
 <script>

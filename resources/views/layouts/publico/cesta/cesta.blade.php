@@ -10,9 +10,7 @@
             <div class="content_detalle_pedido_cesta_menu text-center">
                 <div class="row m-0">
                     <div class="col-12 content_ir_a_pedido">
-                        @php
-                            
-                        @endphp
+                     
                         <a class="btn btn_ir_a_pedido" href="{{route('cart.index')}}" class="py-1">Realizar Pedido</a>
                     </div>
                     <div class="col-7">
