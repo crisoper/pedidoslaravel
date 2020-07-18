@@ -28,14 +28,14 @@
 
 <body cz-shortcut-listen="true" class="bg-light">
 
-    <header>
+    {{-- <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
             <div class="container">
                 <ul class="navbar-nav">
                     <li>
                         @guest
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            {{-- <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp"> --}}
+                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp">
                         </a>
                         @else
                         <small>
@@ -92,7 +92,7 @@
                 </ul>
             </div>
         </nav>
-    </header>
+    </header> --}}
 
     <main role="main">
 

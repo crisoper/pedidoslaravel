@@ -46,6 +46,7 @@
 
                         @else
                         @if ( Auth::check())
+                     
                         <a class="nav-link text-dark" data-toggle="dropdown" href="#">
                             <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
                             Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )

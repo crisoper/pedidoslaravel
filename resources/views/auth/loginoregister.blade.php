@@ -2,10 +2,10 @@
 @include('auth.loginCSS')
 @section('contenido')
 <div class="container-fluid ">
-    <div class="row m-0 p-0">
+    <div class="row m-0 p-0">   
         <div class="d-flex flex-wrap">
             <div id="texto" class="col-sm-12 col-md-5  d-flex flex-column" >
-                {{-- @if( $flag == 'login' ||  $flag == 'register') --}}
+             
                 <div class="titulo" >              
                    <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
                 </div>
@@ -15,6 +15,7 @@
                        <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de forma inmediata</span> tus requerimientos. 
                     </h4>
                 </div>
+             
                 <div class="mt-auto p-2" id="apps" > 
                     <a class="btn btn_app_android p-0" href="#">
                         <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="">
@@ -23,12 +24,16 @@
                         <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="">
                     </a>
                 </div>
-                {{-- @else
-
-                @endif --}}
+            
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 container_left ">
-
+                <div class="row">
+                    <div class="col-12 text-center logo">
+                        <a href="{{ route('inicio.index') }}">
+                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp"  >
+                        </a>   
+                    </div>
+                </div>
                 
                     <ul id="tabs" class="nav nav-tab">
                         <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
@@ -101,7 +106,7 @@
 
                                         <div class="form-group row mb-0">
                                             <div class="col-12">
-                                                <button id="btn_submitLogin" type="submit" class="btn btn-primary btn-block ">
+                                                <button id="btn_submitLogin" type="submit" class="btn btn-primary btn-block btn_submit">
                                                     {{ __('Iniciar sesión') }}
                                                 </button>
 
@@ -282,7 +287,7 @@
                                         </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12 ">
-                                                <input id="btn_submit" type="submit" class="btn btn-primary btn-block  "
+                                                <input id="btn_submit" type="submit" class="btn btn-primary btn-block  btn_submit"
                                                     value="{{ __('Registrar') }}" disabled>
 
 
