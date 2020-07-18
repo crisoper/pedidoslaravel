@@ -39,7 +39,7 @@
                         <div class="dropdown-menu dropdown_options p-0">
                             <a class="btn btn_top_client hr_options" href="#">Escribenos</a>
                             <div class="hr_options py-2">
-                                <p class="mb-0 number_phone">+51 976301482</p>
+                                <p class="mb-0 number_phone">+51 976830280</p>
                                 <p class="my-0 suport"><small>Soporte 24/7</small></p>
                             </div>
                             <a class="btn btn_top_client" href="#">Preguntas frecuentes</a>
@@ -118,9 +118,16 @@
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                     @guest
                                     @else
+                                    @if ( Auth()->user()->hasRole('web_Comprador'))
+                                    <a class="dropdown-item" href="{{ route('loginOrRegister.editar.comprador') }}"><i
+                                        class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                                    @else
                                     <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                                    <div class="dropdown-divider"></div>
+                                        class="fas fa-users-cog"></i></i> Mi cuenta</a>    
+                                    @endif
+                                    
+                                    
+                                        <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

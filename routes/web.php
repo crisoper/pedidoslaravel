@@ -37,6 +37,7 @@ Route::get("administracion/login", "Auth\LoginController@showLoginForm")
 ->name("admin.login");
 Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
 Route::get('registernewempresa' ,'Auth\loginorregisterController@registernewempresa')->name('registernewempresa');
+Route::get('loginOrRegister.editcomprador' ,'Auth\loginorregisterController@editarcomprador')->name('loginOrRegister.editar.comprador');
 
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");

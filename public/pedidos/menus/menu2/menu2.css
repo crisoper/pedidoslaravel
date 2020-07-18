@@ -65,7 +65,7 @@
 .header_menu_categorias > .header_categorias > li > a:focus {
 	font-weight: 700;
 	background-color: #ffffff;
-	border-left: 8px solid #3eb291;
+	border-left: 8px solid #fd0606;
 }
 
 
@@ -88,7 +88,7 @@
 }
 .dropdown-submenu > #menuCategorias > li > a:hover,
 .dropdown-submenu > #menuCategorias > li > a:focus {
-	color: #3eb291;
+	color: #fd0606;
 	border: 0;
 }
 
