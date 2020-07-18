@@ -49,11 +49,29 @@ $(document).ready(  function () {
                 `;
             })
 
+            
             let pedidoestadoHTML = '';
+            let contadorpedidoestado = 0;
             $.each( pedidos.estado, function( key, pedidosestado ) {
-                pedidoestadoHTML = pedidoestadoHTML + `
-                    <span>${ pedidosestado.estado }</span>
-                `;
+                // console.log(pedidosestado);
+                
+                contadorpedidoestado++;
+                if (contadorpedidoestado == 1) {
+                    if (pedidosestado.estado == "pedido") {
+                        pedidoestadoHTML = pedidoestadoHTML + `
+                            <span class="span_estado_pedido">Pedido Sin Confirmar</span>
+                        `;
+                    }else if (pedidosestado.estado == "despachado") {
+                        pedidoestadoHTML = pedidoestadoHTML + `
+                            <span class="span_estado_pedido">Pedido Confirmado</span>
+                        `;
+                    }else if (pedidosestado.estado == "entregado") {
+                        pedidoestadoHTML = pedidoestadoHTML + `
+                            <span class="span_estado_pedido">Pedido Recibido</span>
+                        `;
+                    }
+                }
+
             })
             
             pedidosHTML = pedidosHTML + `
@@ -62,7 +80,7 @@ $(document).ready(  function () {
                         <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                         <div class="col-12"><b>Dirección de entrega:</b> <span>${ pedidos.cliente_direccion }</span></div>
                         <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
-                        <div class="col-12"><b>Estado de pedido:</b> ${ pedidoestadoHTML } </div>
+                        <div class="col-12 estado_pedido_cliente"><b>Estado de pedido:</b> ${ pedidoestadoHTML } </div>
                         <div class="col-12 mt-2 mb-2">
                             <table class="table table-responsive table-sm mb-2">
                                 <thead>
@@ -83,7 +101,7 @@ $(document).ready(  function () {
                             <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                         </div>
                         <div class="col-sm-5 col-md-4 text-right">
-                            <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Calificar Pedido</button>
+                            <button class="btn_calificar_pedido" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Calificar Pedido</button>
                         </div>
                     </div>
                 </div>
@@ -91,9 +109,17 @@ $(document).ready(  function () {
         });
 
         $("#cuerpo_seguimiento_pedidos").html( pedidosHTML);
+        activar_desativar_btn_Calificar_pedido();
     }
 
-    // setInterval(obtener_productos_pedido_seguimiento, 3000);
+    setInterval(obtener_productos_pedido_seguimiento, 3000);
+
+    function activar_desativar_btn_Calificar_pedido() {
+        $('.btn_calificar_pedido').hide();
+        if ($('.span_estado_pedido').html() == 'Pedido Recibido') {
+            $('.btn_calificar_pedido').show();
+        }
+    }
 
 });
 

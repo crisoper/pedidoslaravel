@@ -22,6 +22,9 @@ class SeguimientopedidoController extends Controller
     }
 
 
+
+
+    
     public function seguimientodepedido()
     {
         $pedidos = Pedido::orderBy("id", "desc")
@@ -32,7 +35,7 @@ class SeguimientopedidoController extends Controller
             'cliente',
             'pedidodetalle',
             'pedidoestado'=> function ($query){
-                $query->orderBy("id", "desc")->limit(1);
+                $query->orderBy("id", "desc");
             }
         ])
         ->get();

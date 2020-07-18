@@ -44,10 +44,7 @@ class CestaController extends Controller
         $cesta->empresa_id = $request->empresa_id;
         $cesta->estado = intval($request->estado);
         
-        if ( Auth::guard('api')->check() ) {
-            $cesta->cliente_id = Auth::id();
-        }
-        else {
+        if ( Auth::check() ) {
             $cesta->cliente_id = Auth::id();
         }
 
@@ -73,12 +70,9 @@ class CestaController extends Controller
         $cesta->cantidad = $request->cantidad;
         $cesta->tipo = $request->tipo;
         $cesta->empresa_id = $request->empresa_id;
-        $cesta->estado = $request->estado;
+        $cesta->estado = intval($request->estado);
         
-        if ( Auth::guard('api')->check() ) {
-            $cesta->cliente_id = Auth::id();
-        }
-        else {
+        if ( Auth::check() ) {
             $cesta->cliente_id = Auth::id();
         }
 
