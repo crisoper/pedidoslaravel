@@ -108,12 +108,35 @@ Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 
 
 
+//CESTA MENU
+Route::get("cesta/index", "Publico\CestaController@index")
+->name("cesta.index");
+Route::post("cesta/store", "Publico\CestaController@store")
+->name("cesta.store");
+Route::put("cesta/update", "Publico\CestaController@update")
+->name("cesta.update");
+Route::delete("cesta/delete", "Publico\CestaController@delete")
+->name("cesta.delete");
+//LISTA DESEOS MENU
+Route::get("listadeseo/index", "Publico\ListadeseosMenuController@index")
+->name("listadeseo.index");
+Route::post("listadeseo/store", "Publico\ListadeseosMenuController@store")
+->name("listadeseo.store");
+Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
+->name("listadeseo.delete");
 
 
 
 //REALIZAR PEDIDO
 Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 ->name("ajax.locales.pedidosstore");
+
+//SEGUIMIENTO DE PEDIDO
+Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")
+->name("seguimientodepedido.index");
+Route::get("ajax/seguimientodepedido", "Publico\SeguimientopedidoController@seguimientodepedido")
+->name("ajax.seguimientodepedido");
+
 
 
 

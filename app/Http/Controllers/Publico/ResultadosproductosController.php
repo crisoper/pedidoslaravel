@@ -35,7 +35,7 @@ class ResultadosproductosController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosresultados = Producto::whereDate( "created_at", "<", now()  );
+        $productosresultados = Producto::query();
 
         if( $request->has('buscarproductos')  and $request->buscarproductos != "" ) {
             $productosresultados = $productosresultados->where('nombre', 'like', '%'.$request->buscarproductos.'%');

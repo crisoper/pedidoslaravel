@@ -12,10 +12,18 @@ use Illuminate\Support\Facades\Auth;
 class PedidosdespachadosAjaxController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $pedidos = Pedido::orderBy("id", "desc")
         ->whereHas('pedidoestado', function (){}, '=', 2)
+        ->whereHas('pedidoestado', function ($query){
+            $query->where('created_by', '=', auth()->user()->id)->where('estado', 'despachado');
+        })
         ->with([
             'empresa',
             'cliente',

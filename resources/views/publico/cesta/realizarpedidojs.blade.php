@@ -20,7 +20,7 @@
                             title: '¡Tu pedido se ha registrado!',
                             text: "En breve nos comunicaremos contigo para detalles de entrega",
                             icon: 'success',
-                            confirmButtonText: '<a href="{{route('inicio.index')}}" style="color:#fff"> Aceptar </a>'
+                            confirmButtonText: '<a href="{{route('seguimientodepedido.index')}}" style="color:#fff"> Aceptar </a>'
                           })
                     },
                     error : function ( jqXHR, textStatus, errorThrown ) {

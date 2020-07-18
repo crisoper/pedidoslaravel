@@ -14,16 +14,14 @@ use Mockery\Undefined;
 
 class PedidosController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
     public function pedidosstore(Request $request)
     {
-
-       
 
         if (Auth::check()) {
  
@@ -50,14 +48,12 @@ class PedidosController extends Controller
                 $pediddetalle->created_by = Auth::id();
                 $pediddetalle->save();
 
-                // $total = $total  + $pediddetalle->subtotal;
-
                 $pedido->empresa_id = $pediddetalle->empresa_id;
             }
 
 
-        $pedido->total = $request->input_total_pedido_cesta;
-        $pedido->save();
+            $pedido->total = $request->input_total_pedido_cesta;
+            $pedido->save();
 
 
             $pedidoestado = Pedidoestado::firstOrNew([
@@ -70,24 +66,22 @@ class PedidosController extends Controller
 
             $pedidoestado->save();
         
-            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id',0))->get();
-          
-                foreach( $productoscesta as $productocesta){
-                    $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )->first();
-                    $estadocesta->estado = 1;
-                    $estadocesta->save();
-                }
-                
-                Session::forget('storagecliente_id');
-            return response()->json(["success" => "Pedido creado correctamente"], 200);
-       
+            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))->get();
             
-        }
-        else
-        {
-            return response()->json('error', 422); 
-
+            foreach( $productoscesta as $productocesta){
+                $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )
+                                ->where('producto_id', $productocesta->producto_id)
+                                ->first();
+                $estadocesta->estado = 1;
+                $estadocesta->save();
+            }
         
+
+            Session::forget('storagecliente_id');
+            return response()->json(["success" => "Pedido creado correctamente"], 200);
+            
+        } else{
+            return response()->json('error', 422); 
         }
       
     }

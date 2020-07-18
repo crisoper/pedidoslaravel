@@ -20,7 +20,7 @@
             });
 
             maspedidosHTML = maspedidosHTML + `
-                <div class="single_product_wrapper abrir_modal_productos mx-2 mb-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ maspedidos.id }">
+                <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ maspedidos.id }">
 
                     <div class="product-img">
                         
@@ -53,8 +53,8 @@
         $(".responsiveSlickMasPedidosInicio").slick({
             dots: false,
             arrows: true,
-            slidesToShow: 5,
-            slidesToScroll: 5,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             infinite: true,
             speed: 800,
             autoplay: true,

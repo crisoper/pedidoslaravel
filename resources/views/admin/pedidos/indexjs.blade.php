@@ -77,7 +77,7 @@
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                             </div>
                             <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Confirmar Pedido</button>
+                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Tomar Pedido</button>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
             $("#cuerpoPedidosPorConfirmar").html( pedidosHTML);
         }
 
-        // setInterval(obtenerPedidos, 3000);
+        setInterval(obtenerPedidos, 3000);
 
 
 

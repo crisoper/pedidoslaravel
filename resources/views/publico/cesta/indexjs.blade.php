@@ -137,7 +137,7 @@
         let empresa_id = $(btnAgregarCar).attr('idempresa');
 
         if( obtenerLocalStorageclienteID () != false ) {
-            actualizar_producto_cesta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id );
+            actualizar_producto_cesta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id, "0" );
         }
     })
 
@@ -151,11 +151,11 @@
         let empresa_id = $(btnAgregarCar).attr('idempresa');
 
         if( obtenerLocalStorageclienteID () != false ) {
-            actualizar_producto_cesta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id );
+            actualizar_producto_cesta( producto_id, cantidad, obtenerLocalStorageclienteID (), "cesta", empresa_id, "0" );
         }
     })
 
-    function actualizar_producto_cesta( producto_id, cantidad, storagecliente_id, tipo, empresa_id, btnAgregarCar) {
+    function actualizar_producto_cesta( producto_id, cantidad, storagecliente_id, tipo, empresa_id, estado, btnAgregarCar) {
 
         $.ajax({
             url: "{{ route('cesta.update') }}",
@@ -167,6 +167,7 @@
                 producto_id: producto_id,
                 cantidad: cantidad,
                 empresa_id: empresa_id,
+                estado: estado,
             },
             success: function ( data ) {
                 obtenerProductosCesta( );

@@ -38,8 +38,10 @@
 
     {{-- EMPRESAS --}}
     <link rel="stylesheet" href="{{asset('pedidos/empresas/empresas.css')}}">
-    
+        
 
+    {{-- SEGUIMIENTO DE PEDIDO --}}
+    <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/confirmarpedido.css')}}">
 
 
 
