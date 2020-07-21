@@ -79,7 +79,7 @@
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Inicia Sesion <i class="fas fa-angle-down"></i>
+                            Iniciar Sesión <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0 pb-2">
                             @php
@@ -87,8 +87,8 @@
                             $flagRegister = "register"
                             @endphp
 
-                            <a class="btn btn_login" href="{{ route('loginOrRegister', $flagLogin) }}">Identifícate</a>
-                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
+                            <a class="btn btn_login" href="{{ route('loginOrRegister', $flagLogin) }}">Ingresar</a>
+                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Registrarse</a>
                         </div>
 
                     </div>
@@ -288,9 +288,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Afilia a tu restaurante</a></p>
-                    <p class="my-1"><a href="#">Pedir delivery</a></p>
+                    <p class="my-1"><a href="#">Delivery</a></p>
                     <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
+                    <p class="my-1"><a href="#">Publicación de productos</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Políticas y condiciones</b></h5>
@@ -320,7 +320,6 @@
 @include('includes.ajaxsetup')
 @include('publico.inicio.categoriasjs')
 
-@include('layouts.publico.menumovil')
 
 @include('layouts.publico.cesta.cesta')
 @include('layouts.publico.cesta.cestajs')
@@ -329,7 +328,9 @@
 @include('layouts.publico.modalproductos.modalproductos')
 @include('layouts.publico.modalproductos.modalproductosjs')
 @include('layouts.publico.buscarproductos.buscarproductosjs')
-@include('layouts.publico.buscarproductos.buscarproductosmovil')
+
+@include('layouts.publico.movil.menumovil')
+@include('layouts.publico.movil.buscarproductosmovil')
 
 
 
