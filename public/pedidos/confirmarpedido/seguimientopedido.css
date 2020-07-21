@@ -1,0 +1,133 @@
+
+
+
+
+/* PEDIDOS POR CONFIRMAR */
+.content_pedidos_x_confirmar {
+    color: #4f5052;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #c6cfd6;
+}
+
+.table thead th {
+    text-align: center;
+    vertical-align: bottom;
+    border: 1px solid #dedfe2;
+    background-color: #f1f2f5;
+    padding: 5px !important;
+}
+
+.tr_tittle_x_confirmar {
+    width: 100%;
+}
+.tr_tittle_x_confirmar .prod_name {
+    width: 40%;
+}
+.tr_tittle_x_confirmar .prod_unit, 
+.tr_tittle_x_confirmar .prod_cant, 
+.tr_tittle_x_confirmar .prod_subtotal,
+.tr_tittle_x_confirmar .direccion_empresa {
+    width: 15%;
+}
+
+.content_pedidos_x_confirmar td {
+    text-align: center;
+    border: 1px solid #dedfe2;
+    padding: 5px !important;
+}
+
+.td_pedido_direccion_local h6 {
+    font-size: 13px;
+}
+.td_pedido_direccion_local p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3cd4a9;
+}
+
+.total_pedido {
+    color: #ffffff;
+    font-size: 19px;
+}
+.pedido_total_span {
+    color: #3cd4a9;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.btn_x_confirmar {
+    color: #ffffff;
+    background: #3eb291 !important;
+    padding: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 0;
+}
+
+.repartidor_pedidos {
+    color: #0063d1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content_productos_seguimiento {
+    border: 1px solid #5b5f68;
+    border-radius: 5px;
+}
+
+.bg_pedido_sin_confirmar {
+    background-color: #6c757d;
+}
+
+.bg_pedido_confirmado {
+    background-color: #17a2b8;
+}
+
+.bg_pedido_entregado {
+    background-color: #28a745;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* CALIFICAR PEDIDO */
+
+.btn_calificar_pedido {
+    color: #ffffff;
+    background: #3eb291 !important;
+    padding: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 0;
+}
+.estado_pedido_cliente {
+    color: #0063d1;
+}
+

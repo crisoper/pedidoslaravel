@@ -80,7 +80,7 @@
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Mi cuenta <i class="fas fa-angle-down"></i>
+                            Inicia Sesion <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0 pb-2">
                             @php
@@ -88,10 +88,8 @@
                             $flagRegister = "register"
                             @endphp
 
-                            <a class="btn btn_login"
-                                href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
-                            <a class="btn btn_register"
-                                href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
+                            <a class="btn btn_login" href="{{ route('loginOrRegister', $flagLogin) }}">Identifícate</a>
+                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
                         </div>
 
                     </div>
@@ -111,18 +109,23 @@
                                 alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
 
                                 </a> --}}
-                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    {{ auth()->user()->name }} <i class="fas fa-angle-down"></i>
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Mi cuenta <i class="fas fa-angle-down"></i>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <div class="dropdown-menu dropdown-menu-right dropdown_options">
                                     @guest
                                     @else
-                                    <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                                    <div class="dropdown-divider"></div>
+                                    <p class="nombre_cuenta_publica hr_options my-0 pt-1 pb-2">
+                                        {{ auth()->user()->name }}
+                                    </p>
+                                    
+                                    <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
+                                        <i class="fas fa-users-cog"></i></i> Mi Perfil
+                                    </a>
+                                    
+                                    <hr class="hr_options m-0 p-0">
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item btn btn_cerrar_sesion_cuenta_publica pt-2" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

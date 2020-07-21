@@ -28,3 +28,4 @@
 @section('scripts')
     @include('publico.seguimientopedido.indexjs')
 @endsection
+

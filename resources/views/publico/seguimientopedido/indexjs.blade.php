@@ -101,7 +101,15 @@ $(document).ready(  function () {
                             <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                         </div>
                         <div class="col-sm-5 col-md-4 text-right">
-                            <button class="btn_calificar_pedido" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Calificar Pedido</button>
+
+                            <div id="star-rating" class="star_rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">
+                                <input type="radio" name="calificacion" class="rating" value="1">
+                                <input type="radio" name="calificacion" class="rating" value="2">
+                                <input type="radio" name="calificacion" class="rating" value="3">
+                                <input type="radio" name="calificacion" class="rating" value="4">
+                                <input type="radio" name="calificacion" class="rating" value="5">
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -110,9 +118,49 @@ $(document).ready(  function () {
 
         $("#cuerpo_seguimiento_pedidos").html( pedidosHTML);
         activar_desativar_btn_Calificar_pedido();
+        star_rating();
     }
 
     setInterval(obtener_productos_pedido_seguimiento, 3000);
+
+
+    function star_rating() {
+        $('#star-rating').rating();
+    }
+
+    
+    $("#cuerpo_seguimiento_pedidos").on("click", ".fullStar", function() {
+        let btnDespachar = $( this );
+        let empresa_id = $(btnDespachar).closest('.star_rating').attr('idempresa');
+        let pedido_id = $( btnDespachar).closest('.star_rating').attr("idpedido");
+        
+        let calificacion = $('.rating').val();
+
+        console.log(calificacion);
+
+        agregarProducto_Canasta( empresa_id, pedido_id, calificacion, "calificado" );
+    })
+
+    function agregarProducto_Canasta( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
+
+        $.ajax({
+            url: "{{ route('ajax.seguimientodepedido.store') }}",
+            method: 'POST',
+            data: {
+                empresa_id: empresa_id,
+                pedido_id: pedido_id,
+                estado: estado,
+                calificacion: calificacion,
+            },
+            success: function ( data ) {
+                obtener_productos_pedido_seguimiento( );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR.responseJSON);
+            }
+        });
+    }
+
 
     function activar_desativar_btn_Calificar_pedido() {
         $('.btn_calificar_pedido').hide();

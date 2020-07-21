@@ -41,7 +41,11 @@
         
 
     {{-- SEGUIMIENTO DE PEDIDO --}}
-    <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/confirmarpedido.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/seguimientopedido.css')}}">
+
+    {{-- STAR RATING --}}
+    <link rel="stylesheet" href="{{asset('pedidos/star_rating/min/rating.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/star_rating_svg/src/css/star-rating-svg.css')}}">
 
 
 

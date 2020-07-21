@@ -61,9 +61,36 @@
     font-size: 12px;
     font-weight: 0px;
 }
-.header_top_options .dropdown_options hr {
-    background-color: #525252;
+.header_top_options .dropdown_options .nombre_cuenta_publica {
+    color: #f5f5f5;
+    font-size: 12px;
+    font-weight: 0px;
 }
+
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica {
+    color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+}
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica:hover,
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica:focus {
+    color: #3eb291;
+    background-color: #343a40;
+    box-shadow: none;
+}
+
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica {
+    color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+}
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica:hover,
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica:focus {
+    color: #df3550;
+    background-color: #343a40;
+    box-shadow: none;
+}
+
 
 
 /* ------- AFILIAR RESTAURANTE -------*/
@@ -163,9 +190,6 @@
     #header_top_client {
         display: none;
     }
-    /* #header_top_login {
-        display: none;
-    } */
 }
 
 
