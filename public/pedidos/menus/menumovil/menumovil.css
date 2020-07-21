@@ -162,12 +162,11 @@
 }
 
 
+/* MODAL APPS MOVIL */
 @media (min-width: 576px) {
-    
     #open_apps_movil {
         display: none;
     }
-
 }
 
 #open_apps_movil {
@@ -175,8 +174,6 @@
 }
 #open_apps_movil > .modal-dialog {
     height: 97.5% !important;
-    /* margin-top: 0 !important;
-    margin-left: 0 !important; */
 }
 #open_apps_movil > .modal-dialog > .modal-content {
     height: 100% !important;
