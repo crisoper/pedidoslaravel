@@ -114,15 +114,15 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown_options">
                                     @guest
                                     @else
-                                        <p class="m-0 nombre_cuenta_publica hr_options pt-1 pb-2">{{ auth()->user()->name }}</p>
+                                        <p class="m-0 nombre_cuenta_publica hr_options pt-1 pb-2 text-uppercase">{{ auth()->user()->name }}</p>
 
                                         @if ( Auth()->user()->hasRole('web_Comprador'))
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
-                                                <i class="fas fa-users-cog"></i></i> Mi cuenta
+                                                <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
                                         @else
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
-                                                <i class="fas fa-users-cog"></i></i> Mi cuenta
+                                                <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>    
                                         @endif
                                         

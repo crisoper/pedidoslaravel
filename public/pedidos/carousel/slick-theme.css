@@ -109,7 +109,7 @@
     transition: all 0.4s ease;
     border: none;
     font-size: 22px;
-    padding: 5px 5.5px;
+    padding: 10px 5px;
 
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -122,9 +122,19 @@
     background: rgba(0,0,0,.4);
 }
 .slick-prev {
-    left: 0px;
+    left: 5px;
 }
 
 .slick-next {
-    right: -2px;
+    right: 3.5px;
+}
+
+@media (max-width: 576px) {
+    .slick-prev {
+        left: 5px;
+    }
+    
+    .slick-next {
+        right: 5px;
+    }
 }
