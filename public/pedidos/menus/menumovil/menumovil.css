@@ -1,26 +1,5 @@
 
 
-@media (min-width: 992px) {
-	#humberger__open {
-		display: none;
-	}
-}
-
-.open_menu_movil {
-    width: 45px;
-    height: 40px;
-    color: #ffffff;
-    background-color: #3eb291;
-    border: 1px solid #ffffff;
-    margin-top: 2px;
-}
-
-.open_menu_movil:hover,
-.open_menu_movil:focus {
-    box-shadow: none;
-}
-
-
 
 
 

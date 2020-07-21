@@ -110,7 +110,6 @@
     color: #3eb291;
 }
 
-
 /* ------- APPS -------*/
 .btn_app_android {
     width: 80% !important;
@@ -167,6 +166,12 @@
 #header_top_apps,
 #header_top_login {
     border-left: 1px solid #5b646d;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    #header_top_apps {
+        display: none;
+    } 
 }
 
 

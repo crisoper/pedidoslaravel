@@ -48,10 +48,9 @@
                 </div>
 
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-6 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
-
+                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around text-light"
-                        href="{{ route('registernewempresa') }} ">Afilia a tu restaurante</a>
+                        href="{{ route('registernewempresa') }} ">Publica tus productos</a>
                 </div>
 
                 {{-- APPS --}}
@@ -73,7 +72,7 @@
                 </div>
 
                 {{-- LOGIN --}}
-                <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
+                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
 
                     @if ( Auth::user() == '' || Auth::user() == null )
 
@@ -118,11 +117,13 @@
                                         <p class="m-0 nombre_cuenta_publica hr_options pt-1 pb-2">{{ auth()->user()->name }}</p>
 
                                         @if ( Auth()->user()->hasRole('web_Comprador'))
-                                        <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}"><i
-                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
+                                                <i class="fas fa-users-cog"></i></i> Mi cuenta
+                                            </a>
                                         @else
-                                        <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}"><i
-                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>    
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
+                                                <i class="fas fa-users-cog"></i></i> Mi cuenta
+                                            </a>    
                                         @endif
                                         
                                         <hr class="hr_options m-0">
@@ -145,6 +146,8 @@
             </div>
         </div>
     </header>
+
+
     <!-- MENU WEB 2 -->
     <div class="container-fluid header_top_secondary mx-0 px-0 sticky-top">
         <div class="container">
@@ -162,8 +165,8 @@
                 </div>
 
                 {{-- LOGOTIPO --}}
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
-                    <a href="{{ route('inicio.index') }}">
+                <div class="col-4 col-sm-2 col-md-2 col-lg-2 px-0" id="header__logo">
+                    <a class="btn btn_logotipo_app pl-2 pr-1 py-1" href="{{ route('inicio.index') }}">
                         <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                     </a>
                 </div>
@@ -193,12 +196,12 @@
                 </div>
 
                 {{-- BUSCADOR WEB --}}
-                <div class="col-4 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
+                <div class="col-0 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="">
                             <div class="input-group input_group_search">
                                 <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar"
-                                    placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar"
+                                    placeholder="Buscar Productos" aria-label="Buscar"
                                     autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
@@ -209,6 +212,15 @@
                             </div>
                         </form>
                     </div>
+                </div>
+
+                {{-- BUSCADOR MOVIL --}}
+                <div class="col-2 col-sm-0 col-md-1 col-lg-1 px-0" id="search_movil">
+                    <button type="button" class="btn btn_open_search_movil row m-0">
+                        <h4 class="icon_favoritos_menu m-0">
+                            <i class="fas fa-search"></i>
+                        </h4>
+                    </button>
                 </div>
 
                 {{-- FAVORITOS --}}
