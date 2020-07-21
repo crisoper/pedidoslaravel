@@ -115,16 +115,17 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown_options">
                                     @guest
                                     @else
+                                        <p class="m-0 nombre_cuenta_publica hr_options pt-1 pb-2">{{ auth()->user()->name }}</p>
+
                                         @if ( Auth()->user()->hasRole('web_Comprador'))
-                                        <a class="dropdown-item" href="{{ route('loginOrRegister.editar.comprador') }}"><i
+                                        <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}"><i
                                             class="fas fa-users-cog"></i></i> Mi cuenta</a>
                                         @else
-                                        <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                                        <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}"><i
                                             class="fas fa-users-cog"></i></i> Mi cuenta</a>    
                                         @endif
                                         
-                                        
-                                            <div class="dropdown-divider"></div>
+                                        <hr class="hr_options m-0">
 
                                         <a class="dropdown-item btn btn_cerrar_sesion_cuenta_publica pt-2" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
