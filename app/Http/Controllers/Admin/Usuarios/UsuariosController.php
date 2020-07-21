@@ -55,10 +55,10 @@ class UsuariosController extends Controller
             } else if (auth()->user()->hasRole('menu_Administrador empresa')) {
 
                 $usuarios = User::whereHas('empresas', function ($query) {
-                    $query->where( 'id', '=', $this->empresaId() );
+                    $query->where('id', '=', $this->empresaId());
                 })
-                ->paginate(10);
-    
+                    ->paginate(10);
+
                 return view('admin.usuarios.usuarios.index', compact('usuarios'));
             }
         }
@@ -179,12 +179,10 @@ class UsuariosController extends Controller
 
         if (!empty($request->input("password"))) {
             $usuario->password = Hash::make($request->input('password'));
-
             $this->enviarCorreoCambioClave($usuario, $request->input('password'));
         }
 
         $usuario->save();
-
         return redirect()->route('usuarios.index')->with('info', 'Registro actualizado');
     }
 
@@ -209,7 +207,6 @@ class UsuariosController extends Controller
         $usuario = User::findOrFail($id);
         $roles = Rol::where('guard_name', 'web')->get();
         $rolesmenus = Rol::where('guard_name', 'menu')->get();
-
         return view('admin.usuarios.usuarios.roles', compact('usuario', 'roles', 'rolesmenus'));
     }
 

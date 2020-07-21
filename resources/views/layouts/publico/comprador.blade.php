@@ -28,22 +28,14 @@
 
 <body cz-shortcut-listen="true" class="bg-light">
 
-    {{-- <header>
+    <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
             <div class="container">
                 <ul class="navbar-nav">
                     <li>
-                        @guest
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp">
+                        <a href="{{ route('inicio.index') }}">
+                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" width="150px">
                         </a>
-                        @else
-                        <small>
-                            @if ( Session::has( 'empresadescripcion') )
-                            {{ Session::get( 'empresadescripcion') }}
-                            @endif
-                        </small>
-                        @endguest
                     </li>
                 </ul>
 
@@ -53,6 +45,8 @@
                         @guest
 
                         @else
+                        @if ( Auth::check())
+                     
                         <a class="nav-link text-dark" data-toggle="dropdown" href="#">
                             <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
                             Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
@@ -62,6 +56,9 @@
                             @endif
                             alt=" {{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                         </a>
+                        
+                        @endif
+                       
                         @endguest
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-item dropdown-header ">
@@ -92,7 +89,7 @@
                 </ul>
             </div>
         </nav>
-    </header> --}}
+    </header>
 
     <main role="main">
 
@@ -139,7 +136,7 @@
         <div class="row bg-dark p-2 pb-0 text-center ">
             <div class="col-lg-12">
                 <span class="text-center p-0">
-                    Copyright &copy;2020 - Derechos Reservados | <b>Delivery.com</b>
+                    Copyright &copy;2020 - Derechos Reservados | <b><a href="www.pedidosapp.com">PedidosApp.com</a></b>
                 </span>
             </div>
         </div>
@@ -150,3 +147,85 @@
 @yield("scripts")
 
 </html>
+
+
+@section('scriptspersonalizados')
+
+    <script>
+        (function($) {
+
+            if ( $("#cambiarMiClave").is(':checked') )
+            {
+                $(".toggleChangePassword").css("display", "block");
+            }
+            else
+            {
+                $(".toggleChangePassword").css("display", "none");
+            }
+
+            $("#cambiarMiClave").on("change", function() {
+                if ( $("#cambiarMiClave").is(':checked') )
+                {
+                    $(".toggleChangePassword").css("display", "block");
+                }
+                else
+                {
+                    $(".toggleChangePassword").css("display", "none");
+                }
+            });
+
+
+
+            $('#openImageDialog').on('click', function() {
+                $('#file-input').trigger('click');
+            });
+
+            $("#file-input").on("change", function() {
+
+                var formData = new FormData();
+                var files = $('#file-input')[0].files[0];
+                formData.append('foto',files);
+
+                $.ajax({
+                    method: "POST",
+                    url: "{{ route('ajax.miperfilsubirfoto') }}",
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,                    
+                    success:function( data ){
+                        // $('#logoPerfilForm').html('<img src="data:image/png;base64,' + data.imagen  + '" />');
+                        $('.logoPerfilForm').attr('src', 'data:image/png;base64,' + data.imagen);
+                        MostrarNotificaciones( "Operacion realizada con exito", 'success' );
+                        // console.log(data);
+                    },
+                    error: function( jqXHR, textStatus, errorThrown ) {
+                        if( jqXHR.status == 404 ) 
+                        {
+                            // console.log(jqXHR);
+                            MostrarNotificaciones( "Pagina no encontrada, contacte al administrador del sistema", 'error' );
+                        }
+                        else if( jqXHR.status == 422) {
+                            $.each( jqXHR.responseJSON.errors.foto, function( key, value ) {
+                                MostrarNotificaciones( value, 'error' );
+                            });
+
+                        }
+                        else if( jqXHR.status == 500 ) {
+                            // console.log(jqXHR);
+                            MostrarNotificaciones( "Se ha producido un error, contacte al administrador del sistema", 'error' );
+                        }
+                        else if( jqXHR.status == 403 ) {
+                            // console.log(jqXHR);
+                            MostrarNotificaciones( "Usted no tiene permiso para realizar esta accion, contacte al administrador del sistema", 'error' );
+                        }
+                    }
+                });
+
+            });
+
+
+        })(jQuery); 
+    </script>
+
+@endsection

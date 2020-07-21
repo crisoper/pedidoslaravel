@@ -39,7 +39,7 @@
                         <div class="dropdown-menu dropdown_options p-0">
                             <a class="btn btn_top_client hr_options" href="#">Escribenos</a>
                             <div class="hr_options py-2">
-                                <p class="mb-0 number_phone">+51 976301482</p>
+                                <p class="mb-0 number_phone">+51 976830280</p>
                                 <p class="my-0 suport"><small>Soporte 24/7</small></p>
                             </div>
                             <a class="btn btn_top_client" href="#">Preguntas frecuentes</a>
@@ -115,24 +115,25 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown_options">
                                     @guest
                                     @else
-                                    <p class="nombre_cuenta_publica hr_options my-0 pt-1 pb-2">
-                                        {{ auth()->user()->name }}
-                                    </p>
-                                    
-                                    <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
-                                        <i class="fas fa-users-cog"></i></i> Mi Perfil
-                                    </a>
-                                    
-                                    <hr class="hr_options m-0 p-0">
+                                        @if ( Auth()->user()->hasRole('web_Comprador'))
+                                        <a class="dropdown-item" href="{{ route('loginOrRegister.editar.comprador') }}"><i
+                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                                        @else
+                                        <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
+                                            class="fas fa-users-cog"></i></i> Mi cuenta</a>    
+                                        @endif
+                                        
+                                        
+                                            <div class="dropdown-divider"></div>
 
-                                    <a class="dropdown-item btn btn_cerrar_sesion_cuenta_publica pt-2" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </a>
+                                        <a class="dropdown-item btn btn_cerrar_sesion_cuenta_publica pt-2" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </a>
                                     @endguest
                                 </div>
                             </li>
