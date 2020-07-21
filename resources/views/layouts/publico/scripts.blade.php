@@ -12,7 +12,7 @@
 
     {{-- MENUS --}}
     <script src="{{asset('pedidos/menus/menu2/menu2.js')}}"></script>
-    <script src="{{asset('pedidos/menus/menu2/buscador.js')}}"></script>
+    <script src="{{asset('pedidos/menus/menu2/buscadormovil.js')}}"></script>
     <script src="{{asset('pedidos/menus/menumovil/menumovil.js')}}"></script>
 
     

@@ -198,16 +198,16 @@
                 {{-- BUSCADOR WEB --}}
                 <div class="col-0 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
                     <div class="header_search_web">
-                        <form id="form_buscar_productos" action="">
+                        <form id="form_buscar_productos" action="{{route('productos.busqueda.index')}}">
                             <div class="input-group input_group_search">
                                 <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar"
                                     placeholder="Buscar Productos" aria-label="Buscar"
                                     autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
-                                    <a href="#" class="btn btn_buscar_productos">
+                                    <button class="btn btn_buscar_productos">
                                         <i class="fas fa-search"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -216,8 +216,8 @@
 
                 {{-- BUSCADOR MOVIL --}}
                 <div class="col-2 col-sm-0 col-md-1 col-lg-1 px-0" id="search_movil">
-                    <button type="button" class="btn btn_open_search_movil row m-0">
-                        <h4 class="icon_favoritos_menu m-0">
+                    <button type="button" class="btn btn_open_search_movil row m-0" id="mostrar_search_movil_menu">
+                        <h4 class="icon_search_movil_menu m-0">
                             <i class="fas fa-search"></i>
                         </h4>
                     </button>
@@ -328,6 +328,8 @@
 @include('layouts.publico.favoritos.favoritosjs')
 @include('layouts.publico.modalproductos.modalproductos')
 @include('layouts.publico.modalproductos.modalproductosjs')
+@include('layouts.publico.buscarproductos.buscarproductosjs')
+@include('layouts.publico.buscarproductos.buscarproductosmovil')
 
 
 

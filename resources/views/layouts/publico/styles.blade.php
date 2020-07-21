@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu1/menu1.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/menu2.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/buscador.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/buscadormovil.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/menumovil.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/loginmovil.css')}}">
 

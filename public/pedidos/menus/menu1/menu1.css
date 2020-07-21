@@ -97,7 +97,7 @@
 
 .btn_recommended {
     width: auto;
-    color: #3eb291;
+    color: #3eb291 !important;
     text-align: center;
     padding: 3px 10px !important;
     border-radius: 0;
