@@ -73,7 +73,7 @@ class PedidosController extends Controller
             }
         
 
-            Session::forget('storagecliente_id');
+            // Session::forget('storagecliente_id');
             return response()->json(["success" => "Pedido creado correctamente"], 200);
             
         } else{
