@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-<div class="container" style="margin-top: 6rem;">
+<div class="container" style="margin-top: 1em;">
     <div class="row ">
         <div class="col ">
             <div class="card">
@@ -15,23 +15,22 @@
                     <p class="card-text">
                         <h3>Accede a tu correo electrónico para validar tu cuenta.</h3>
                     </p>
-                    {{-- <button type="button" class="btn text-primary" name="mostraremail" id="mostraremail">Cambiar mi
-                        dirección de correo electrónico.</button> --}}
-                        {{-- <div  class=' 
+                    <button type="button" class="btn text-primary" name="mostraremail" id="mostraremail">Cambiar mi
+                        dirección de correo electrónico.</button>
+                        <div  class=' 
                         @if ( $errors->has("email"))
                             "alert alert-danger"    
                         @endif'
                         role="alert"
                         >
                             <span id="error" class="text-danger">{{ $errors->first('email') }}</span>
-                        </div> --}}
+                        </div>
 
-                        {{-- @php
-                       
-                       $userid = Auth()->user()->id; 
-                    @endphp --}}
+                        @php                       
+                             $userid = Auth()->user()->id; 
+                        @endphp
 
-                    {{-- <div class="row pt-5 d-flex justify-content-center">
+                    <div class="row pt-5 d-flex justify-content-center">
                         <div class="col-md-6 col-sm-12" id="cambiarcorreoUsuario" style="display: none;">
                             <form action="{{ route('cambiaremailusuario.update',$userid)  }}" method="POST">
                              
@@ -49,7 +48,7 @@
                                 <span><small>Enviaremos un mensaje al  correo electrónico que estas registrado para valizadar tu cuenta. </small></span>
                             </form>
                         </div>
-                    </div> --}}
+                    </div>
 
                 </div>
 

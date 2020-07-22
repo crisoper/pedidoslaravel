@@ -361,8 +361,8 @@ class EmpresasController extends Controller
         // ProcesssendmailJob::dispatch( $user );
         ProcesssendmailJob::dispatchNow($user);
         // $this->enviarCorreoActivarCuentaEmpresa( $user ); 
-
-        return back()->withErrors(['email' => 'Ingresa correo'])->withInput(request('email'));
+        return redirect()->back()->with('info', 'Verifica tu correo para validar tu cuenta');
+        // return redirect()->back()->withErrors(['email' => 'Ingresa correo'])->withInput(request('email'));
     }
 
     private function enviarCorreoActivarCuentaEmpresa($user)

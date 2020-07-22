@@ -215,4 +215,39 @@
         width: 200px;
     }
 
+
+    .titulo {
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       
+    }
+
+    #texto {
+        
+        text-align: center;
+        padding-top: 5em;
+      
+    }
+    #container_left{
+        background-color: rgb(34, 115, 126);
+        color: white;
+        
+    }
+    #contenedor_fijo {
+        height: 100vh;
+        width: 40%;
+        margin: auto;
+        position: fixed;
+        left: 0;
+        top: 0
+    }
+
+    img {
+        width: 150px !important;
+        height: 40px !important;
+    }
+
+    #apps {
+        margin-bottom: 1rem;
+    }
     </style>

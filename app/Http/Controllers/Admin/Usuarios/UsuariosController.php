@@ -18,7 +18,7 @@ use App\Models\Publico\Persona;
 use Spatie\Permission\Models\Role as Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;    
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
@@ -142,8 +142,8 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        $usuario = User::findOrFail($id);
-        $persona = Persona::findOrFail($usuario->persona_id);
+        $usuario = User::findOrFail(Auth::id());
+        $persona = Persona::where( 'dni' , $usuario->dni)->first();
         return view('admin.usuarios.usuarios.edit', compact('usuario', 'persona'));
     }
 
@@ -161,11 +161,11 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsuarioUpdateRequest $request, $id)
+    public function update(UsuarioUpdateRequest $request)
     {
-        $usuario = User::findOrFail($id);
+        $usuario = User::findOrFail(Auth::id());
 
-        $persona = Persona::where('correo', $usuario->email);
+        $persona = Persona::where('dni', $usuario->dni)->first();
         $persona->nombre = $request->nombre;
         $persona->paterno = $request->paterno;
         $persona->materno = $request->materno;
@@ -173,17 +173,20 @@ class UsuariosController extends Controller
         $persona->direccion = $request->direccion;
         $persona->telefono = $request->telefono;
         $persona->updated_by = auth()->user()->id;
+        $persona->save();
 
 
         $usuario->name = $request->nombre . ' ' . $request->paterno . ' ' . $request->materno;
+        $usuario->dni = $request->dni;
 
-        if (!empty($request->input("password"))) {
-            $usuario->password = Hash::make($request->input('password'));
-            $this->enviarCorreoCambioClave($usuario, $request->input('password'));
-        }
+        // if (!empty($request->input("password"))) {
+        //     $usuario->password = Hash::make($request->input('password'));
+        //     $this->enviarCorreoCambioClave($usuario, $request->input('password'));
+        // }
 
         $usuario->save();
-        return redirect()->route('usuarios.index')->with('info', 'Registro actualizado');
+        // return redirect()->route('usuarios.index')->with('info', 'Registro actualizado');
+        return redirect()->back()->with('info', 'Registro actualizado');
     }
 
     /**
@@ -242,7 +245,9 @@ class UsuariosController extends Controller
 
     public function miperfil()
     {
-        return view('admin.usuarios.usuarios.miperfil');
+        $persona = Persona::where( 'dni', Auth()->user()->dni )->first();
+       
+        return view('admin.usuarios.usuarios.miperfil', compact('persona'));
     }
 
 
@@ -250,20 +255,40 @@ class UsuariosController extends Controller
     {
         $usuario = User::where('name', '=', $request->input('name'))->where('email', '=', $request->input('email'))->first();
 
-        if (!empty($usuario)) {
+        if (!empty($request->input("password"))) {
             $usuario->password = Hash::make($request->input('password'));
+            $this->enviarCorreoCambioClave($usuario, $request->input('password'));
             $usuario->save();
-            return redirect()->back()->with('info', 'Clave actualizada correctamente');
-        } else {
-            abort(404);
+            return redirect()->back()->with('info', 'Contraseña  actualizada');
+        }else{
+            // abort(404);
+            return redirect()->back()->with('error','Se requiere una contraseña');
         }
+
+
+        // if (!empty($usuario)) {
+        //     $usuario->password = Hash::make($request->input('password'));
+        //     $usuario->save();
+        //     return redirect()->back()->with('info', 'Clave actualizada correctamente');
+        // } else {
+        //     abort(404);
+        // }
     }
 
-
+    // public function cambiarClaveAdministrador( UserChangePasswordRequest $request  ){
+       
+    //     $usuario = User::findOrFail( Auth()->user()->id );        
+    //     if (!empty($request->input("password"))) {
+    //         $usuario->password = Hash::make($request->input('password'));
+    //         $this->enviarCorreoCambioClave($usuario, $request->input('password'));
+    //     }
+    //     $usuario->save();
+    //     return redirect()->back()->with('info', 'Contraseña  actualizada');
+    // }
 
     public function miperfilsubirfoto(UsuarioSubirfotoRequest $request)
     {
-
+       
         if (Auth::check()) {
             $usuario = User::findOrFail(Auth::id());
             $image = $request->file('foto');
@@ -278,7 +303,9 @@ class UsuariosController extends Controller
             $usuario->avatar =  $input['imagename'];
             $usuario->save();
 
-            return response()->json(['imagen' => base64_encode(\Storage::disk('usuarios')->get('usuarios/' . $input['imagename']))], 200);
+            return \Storage::disk('usuarios')->get('usuarios/' . $input['imagename']);
+            // return response()->json(['imagen' => base64_encode(\Storage::disk('usuarios')->url('usuarios/'. $input['imagename']))], 200);
+            // return response()->json(['imagen' =>   $usuario->avatar], 200);
         }
     }
 }

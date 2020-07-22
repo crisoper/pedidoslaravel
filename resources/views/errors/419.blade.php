@@ -29,7 +29,7 @@
                     <span class="display-4">¡Sessión expirada!</span>
                 </div>
                 <div class="col-12">
-                <p > Posiblemente su sesión ha caducado, regrese a la <a href="{{ route('inicio.index')}}">página principal</a> o vuelva a iniciar sesión con tu cuenta.  </p>
+                <p > Posiblemente su sesión ha caducado, regrese a la <a href="{{ route('inicio.index')}}">página principal</a> o vuelva a iniciar sesión con su cuenta.  </p>
                 </div>
                 <div class="col-21">
                     <a href="{{ route('loginOrRegister','login') }}" class="btn btn-danger btn-lg">Acceda con su cuenta</a>

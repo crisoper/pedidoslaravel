@@ -30,8 +30,10 @@ class UsuarioUpdateRequest extends FormRequest
             'materno' => ['required'],
             'dni' => ['required','numeric', 'digits:8', 'unique:personas,dni,'.$this->personaid],
             'telefono' => ['required' , 'digits:9' ],
-            'email' => ['required','unique:users,email,'.$this->route('usuario')],
-            'password' => 'confirmed',
+            'direccion' => ['required'],
+            
+            // 'email' => ['required','unique:users,email,'.$this->route('usuario')],
+            // 'password' => 'confirmed',
 
                         
         ];

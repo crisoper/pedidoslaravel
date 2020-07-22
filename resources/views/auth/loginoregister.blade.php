@@ -2,53 +2,49 @@
 @include('auth.loginCSS')
 @section('contenido')
 <div class="container-fluid ">
-    <div class="row m-0 p-0">   
+    <div class="row m-0 p-0">
         <div class="d-flex flex-wrap">
-            <div id="texto" class="col-sm-12 col-md-5  d-flex flex-column" >
-             
-                <div class="titulo" >              
-                   <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
+            <div id="texto" class="col-sm-12 col-md-5  d-flex flex-column">
+
+                <div class="titulo">
+                    <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
                 </div>
                 <br>
-                <div class= text-light">
+                <div class=text-light">
                     <h4 class="text-light">
-                       <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de forma inmediata</span> tus requerimientos. 
+                        <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
+                        todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de
+                            forma inmediata</span> tus requerimientos.
                     </h4>
                 </div>
-             
-                <div class="mt-auto p-2" id="apps" > 
-                    <a class="btn btn_app_android p-0" href="#">
-                        <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="">
+
+                <div class="mt-auto p-2" id="apps">
+                    <a class="btn  p-0 logosapps" href="#">
+                        <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="" width="120">
                     </a>
-                    <a class="btn btn_app_ios p-0" href="#">
-                        <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="">
+                    <a class="btn  p-0 logosapps" href="#">
+                        <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="" width="120">
                     </a>
                 </div>
-            
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 container_left ">
-                <div class="row">
-                    <div class="col-12 text-center logo">
-                        <a href="{{ route('inicio.index') }}">
-                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp"  >
-                        </a>   
-                    </div>
-                </div>
-                
-                    <ul id="tabs" class="nav nav-tab">
-                        <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
-                                class="nav-link small text-uppercase @if( $flag == 'login') active  @endif text-primary" ><strong>INICIA
-                                    SESIÓN</strong></a></li>
-                        <li class="nav-item li_register">
-                            <a href="" data-target="#register" data-toggle="tab"
-                                class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif text-primary"><strong>REGISTRATE</strong></a>
-                        </li>
 
-                    </ul>
-               
+
+                <ul id="tabs" class="nav nav-tab">
+                    <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
+                            class="nav-link small text-uppercase @if( $flag == 'login') active  @endif text-primary"><strong>INICIA
+                                SESIÓN</strong></a></li>
+                    <li class="nav-item li_register">
+                        <a href="" data-target="#register" data-toggle="tab"
+                            class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif text-primary"><strong>REGISTRATE</strong></a>
+                    </li>
+
+                </ul>
+
 
                 <div id="tab-content" class="tab-content">
-                    <div id="login" class="pt-5 tab-pane fade @if( $flag == 'login') active show @endif"
+                    <div id="login" class="pt-4 tab-pane fade @if( $flag == 'login') active show @endif"
                         style="border: none; ">
                         <div class="row ">
                             <div class="col-md-12">
@@ -58,19 +54,19 @@
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 {{-- ENVIAMOS SESIONSTORAGE --}}
-                                                <input type="hidden" name="sesionStorage" id="sesionStorage" >
+                                                <input type="hidden" name="sesionStorage" id="sesionStorage">
                                                 <i class="far fa-envelope"></i>
                                                 <input id="emailLogin" type="email"
                                                     class="form-control @error('email') is-invalid @enderror  correo"
                                                     name="email" value="{{ old('email') }}" required
                                                     autocomplete="email" autofocus
                                                     placeholder=' Dirección de correo electrónico'>
-                                            
+
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                               
+
                                                 @enderror
                                             </div>
                                         </div>
@@ -106,7 +102,8 @@
 
                                         <div class="form-group row mb-0">
                                             <div class="col-12">
-                                                <button id="btn_submitLogin" type="submit" class="btn btn-primary btn-block btn_submit">
+                                                <button id="btn_submitLogin" type="submit"
+                                                    class="btn btn-primary btn-block btn_submit">
                                                     {{ __('Iniciar sesión') }}
                                                 </button>
 
@@ -287,7 +284,8 @@
                                         </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12 ">
-                                                <input id="btn_submit" type="submit" class="btn btn-primary btn-block  btn_submit"
+                                                <input id="btn_submit" type="submit"
+                                                    class="btn btn-primary btn-block  btn_submit"
                                                     value="{{ __('Registrar') }}" disabled>
 
 
@@ -305,8 +303,8 @@
         </div>
     </div>
 </div>
-    @endsection
 
-    @section('scripts')
-        @include('auth.loginJS')        
-    @endsection
+@endsection
+@section('scripts')
+    @include('auth.loginJS')
+@endsection

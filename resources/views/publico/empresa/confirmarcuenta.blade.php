@@ -16,8 +16,7 @@
                         <h3>Accede a tu correo electrónico para validar tu cuenta.</h3>
                     </p>
 {{-- BOTON PARA CAMBIAR CORREO ELECTRONICO --}}
-                    {{-- <button type="button" class="btn text-primary" name="mostraremail" id="mostraremail">Cambiar mi
-                        dirección de correo electrónico.</button> --}}
+                 
                         <div  class=' 
                         @if ( $errors->has("email"))
                             "alert alert-danger"    

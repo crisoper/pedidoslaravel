@@ -87,7 +87,7 @@
                                                 <strong>Dirección</strong>
                                             </div>
                                             <div class="col-xs-12 col-sm-12">
-                                                {{ auth()->user()->persona->direccion }}
+                                                {{ $persona->direccion }}
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                                                 <strong>Dni</strong>
                                             </div>
                                             <div class="col-xs-12 col-sm-12">
-                                                {{ auth()->user()->persona->dni }}
+                                                {{ $persona->dni }}
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                                 <strong>Teléfono</strong>
                                             </div>
                                             <div class="col-xs-12 col-sm-12">
-                                                {{ auth()->user()->persona->telefono }}
+                                                {{ $persona->telefono }}
                                             </div>
                                         </div>
                                     </div>
@@ -165,40 +165,40 @@
                                 <div class="form-row">
                                     <div class="form-group col-xs-12 col-sm-12">
                                         <label for="nombre">Nombre</label>
-                                        <input type="hidden" name="personaid" value="{{ Auth()->user()->persona->id }}">
+                                        <input type="hidden" name="personaid" value="{{ $persona->id }}">
                                         <input autofocus type="text" name="nombre" id="nombre" placeholder="Nombre"
-                                            value="{{ Auth()->user()->persona->nombre }}" class="form-control">
+                                            value="{{ $persona->nombre }}" class="form-control">
                                         <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-6">
                                         <label for="paterno">Apellido Paterno</label>
                                         <input autofocus type="text" name="paterno" id="paterno" placeholder="Paterno"
-                                            value="{{ Auth()->user()->persona->paterno }}" class="form-control">
+                                            value="{{ $persona->paterno }}" class="form-control">
                                         <span class="text-danger">{{ $errors->first('paterno') }}</span>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-6">
                                         <label for="materno">Apellido Materno</label>
                                         <input autofocus type="text" name="materno" id="materno" placeholder="Materno"
-                                            value="{{ Auth()->user()->persona->materno }}" class="form-control">
+                                            value="{{ $persona->materno }}" class="form-control">
                                         <span class="text-danger">{{ $errors->first('materno') }}</span>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-3">
                                         <label for="dni">Num. DNI</label>
                                         <input autofocus type="text" maxlength="8" name="dni" id="dni" placeholder="DNI"
-                                            value="{{ Auth()->user()->persona->dni }}" class="form-control">
+                                            value="{{ $persona->dni }}" class="form-control">
                                         <span class="text-danger">{{ $errors->first('dni') }}</span>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-3">
                                         <label for="telefono">Teléfono</label>
                                         <input autofocus type="text" maxlength="9" name="telefono" id="telefono"
-                                            placeholder="Teléfono" value="{{ Auth()->user()->persona->telefono }}"
+                                            placeholder="Teléfono" value="{{ $persona->telefono }}"
                                             class="form-control">
                                         <span class="text-danger">{{ $errors->first('telefono') }}</span>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-6">
                                         <label for="direccion">Dirección</label>
                                         <input autofocus type="text" name="direccion" id="direccion"
-                                            placeholder="Dirección" value="{{ Auth()->user()->persona->direccion }}"
+                                            placeholder="Dirección" value="{{ $persona->direccion }}"
                                             class="form-control">
                                         <span class="text-danger">{{ $errors->first('direccion') }}</span>
                                     </div>
