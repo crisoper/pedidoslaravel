@@ -17,6 +17,7 @@ class PedidosController extends Controller
  
     public function pedidosstore(Request $request)
     {
+        
 
         if (Auth::check()) {
  
