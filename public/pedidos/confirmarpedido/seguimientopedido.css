@@ -119,14 +119,6 @@
 
 /* CALIFICAR PEDIDO */
 
-.btn_calificar_pedido {
-    color: #ffffff;
-    background: #3eb291 !important;
-    padding: 5px;
-    font-size: 15px;
-    text-transform: uppercase;
-    border: 0;
-}
 .estado_pedido_cliente {
     color: #0063d1;
 }
