@@ -100,7 +100,7 @@ $(document).ready(  function () {
                         <div class="col-sm-7 col-md-8 text-right">
                             <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                         </div>
-                        <div class="col-sm-5 col-md-4 text-right">
+                        <div class="col-sm-5 col-md-4 text-right btn_calificar_pedido">
                             <span class="my-rating-9" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                             <span class="live-rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                         </div>
