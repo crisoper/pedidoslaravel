@@ -34,7 +34,6 @@
     <script src="{{asset('pedidos/empresas/empresas.js')}}"></script>
 
     {{-- STAR RATING --}}
-    <script src="{{asset('pedidos/star_rating/min/rating.js')}}"></script>
     <script src="{{asset('pedidos/star_rating_svg/src/jquery.star-rating-svg.js')}}"></script>
 
     

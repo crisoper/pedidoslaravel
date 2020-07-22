@@ -14,10 +14,10 @@ use Mockery\Undefined;
 
 class PedidosController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
     public function pedidosstore(Request $request)

@@ -101,15 +101,8 @@ $(document).ready(  function () {
                             <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                         </div>
                         <div class="col-sm-5 col-md-4 text-right">
-
-                            <div id="star-rating" class="star_rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">
-                                <input type="radio" name="calificacion" class="rating" value="1">
-                                <input type="radio" name="calificacion" class="rating" value="2">
-                                <input type="radio" name="calificacion" class="rating" value="3">
-                                <input type="radio" name="calificacion" class="rating" value="4">
-                                <input type="radio" name="calificacion" class="rating" value="5">
-                            </div>
-
+                            <span class="my-rating-9" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
+                            <span class="live-rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                         </div>
                     </div>
                 </div>
@@ -125,23 +118,21 @@ $(document).ready(  function () {
 
 
     function star_rating() {
-        $('#star-rating').rating();
+        $(".my-rating-9").starRating({
+            initialRating: 0,
+            disableAfterRate: false,
+            callback: function(currentRating, $el){
+
+                let empresa_id = $($el).attr('idempresa');
+                let pedido_id = $($el).attr("idpedido");
+                let calificacion = currentRating;
+
+                agregar_estado_calificado( empresa_id, pedido_id, calificacion, "calificado" );
+            }
+        });
     }
 
-    
-    $("#cuerpo_seguimiento_pedidos").on("click", ".fullStar", function() {
-        let btnDespachar = $( this );
-        let empresa_id = $(btnDespachar).closest('.star_rating').attr('idempresa');
-        let pedido_id = $( btnDespachar).closest('.star_rating').attr("idpedido");
-        
-        let calificacion = $('.rating').val();
-
-        console.log(calificacion);
-
-        agregarProducto_Canasta( empresa_id, pedido_id, calificacion, "calificado" );
-    })
-
-    function agregarProducto_Canasta( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
+    function agregar_estado_calificado( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
 
         $.ajax({
             url: "{{ route('ajax.seguimientodepedido.store') }}",
