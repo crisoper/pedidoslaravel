@@ -27,15 +27,17 @@ class loginorregisterController extends Controller
     }
 
     public function editarcomprador(Request $request){
+        $user = Auth()->user();
+        $persona = Persona::where('dni', auth()->user()->dni)->first();
        
-        return view('admin.usuarios.comprador.editar');
+        return view('admin.usuarios.comprador.editar', compact( 'persona' ));
         
     }
 
     public function actualizarDatosComprador( Request $request ){
         $usuario = User::findOrFail(Auth()->user()->id);
 
-        $persona = Persona::where('correo', $usuario->email);
+        $persona = Persona::where('dni', $usuario->dni);
         $persona->nombre = $request->nombre;
         $persona->paterno = $request->paterno;
         $persona->materno = $request->materno;

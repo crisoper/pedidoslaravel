@@ -155,10 +155,9 @@ class RegisterController extends Controller
         return "El token enviado no es valido";
 
     }
-    public function nuevaEmpresa(Request $request)
+    public function nuevaEmpresa(EmpresaCreateRequest $request)
     {
-        // EmpresaCreateRequest
-               
+                      
         $user = User::firstOrNew([
             'name' => $request->name_representante . " " . $request->paterno . " " . $request->materno,
             'email' => $request->email,
@@ -166,7 +165,6 @@ class RegisterController extends Controller
         ]);
         $user->remember_token = Hash::make(time());
         $user->save();
-
 
         $persona = Persona::firstOrNew(
             [
@@ -224,13 +222,13 @@ class RegisterController extends Controller
         $userperiodo->save();
 
 
-        $rol = rol::where('name', 'menu_Administrador empresa')->first();
+        //Asiganos roles a usuario
+       
+        $roles = Rol::where("name", "like", "%_Administrador empresa")->get();
+        foreach( $roles as $rol ) {
+            $user->assignRole( $rol );
+        }
 
-        Modelhasrole::create([
-            'role_id' => $rol->id,
-            'model_type' => 'App\User',
-            'model_id' => $user->id,
-        ]);
         $this->guard()->login($user);
         //Enviamos correo para activar cuenta
         $this->enviarCorreoActivarCuentaEmpresa($user);

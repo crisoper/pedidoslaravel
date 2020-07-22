@@ -27,7 +27,7 @@ class EmpresaCreateRequest extends FormRequest
         return [
             "rubro_id" => ["required"],
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
-            "nombre" => ["required"],
+            "nombreempresa" => ["required"],
             "direccion" => ["required"],
             // "paginaweb" => ["nullable"],
             // 'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],

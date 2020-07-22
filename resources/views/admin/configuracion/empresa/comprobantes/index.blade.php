@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@can('empresas.listar')
+@can('empresacomprabantetipos.listar')
 
 @section('contenido')
 
