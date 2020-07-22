@@ -73,7 +73,6 @@
             sliderRecomendadosInicio();
         }
 
-        
 
         function sliderRecomendadosInicio() {
             $(".responsiveSlickRecomendadosInicio").slick({

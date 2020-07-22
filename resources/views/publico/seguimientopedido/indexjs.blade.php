@@ -101,7 +101,8 @@ $(document).ready(  function () {
                             <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                         </div>
                         <div class="col-sm-5 col-md-4 text-right">
-                            <button class="btn_calificar_pedido" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Calificar Pedido</button>
+                            <span class="my-rating-9" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
+                            <span class="live-rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                         </div>
                     </div>
                 </div>
@@ -110,9 +111,47 @@ $(document).ready(  function () {
 
         $("#cuerpo_seguimiento_pedidos").html( pedidosHTML);
         activar_desativar_btn_Calificar_pedido();
+        star_rating();
     }
 
     setInterval(obtener_productos_pedido_seguimiento, 3000);
+
+
+    function star_rating() {
+        $(".my-rating-9").starRating({
+            initialRating: 0,
+            disableAfterRate: false,
+            callback: function(currentRating, $el){
+
+                let empresa_id = $($el).attr('idempresa');
+                let pedido_id = $($el).attr("idpedido");
+                let calificacion = currentRating;
+
+                agregar_estado_calificado( empresa_id, pedido_id, calificacion, "calificado" );
+            }
+        });
+    }
+
+    function agregar_estado_calificado( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
+
+        $.ajax({
+            url: "{{ route('ajax.seguimientodepedido.store') }}",
+            method: 'POST',
+            data: {
+                empresa_id: empresa_id,
+                pedido_id: pedido_id,
+                estado: estado,
+                calificacion: calificacion,
+            },
+            success: function ( data ) {
+                obtener_productos_pedido_seguimiento( );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR.responseJSON);
+            }
+        });
+    }
+
 
     function activar_desativar_btn_Calificar_pedido() {
         $('.btn_calificar_pedido').hide();

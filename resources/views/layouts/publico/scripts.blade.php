@@ -12,7 +12,7 @@
 
     {{-- MENUS --}}
     <script src="{{asset('pedidos/menus/menu2/menu2.js')}}"></script>
-    <script src="{{asset('pedidos/menus/menu2/buscador.js')}}"></script>
+    <script src="{{asset('pedidos/menus/menu2/buscadormovil.js')}}"></script>
     <script src="{{asset('pedidos/menus/menumovil/menumovil.js')}}"></script>
 
     
@@ -32,6 +32,9 @@
 
     {{-- EMPRESAS --}}
     <script src="{{asset('pedidos/empresas/empresas.js')}}"></script>
+
+    {{-- STAR RATING --}}
+    <script src="{{asset('pedidos/star_rating_svg/src/jquery.star-rating-svg.js')}}"></script>
 
     
 

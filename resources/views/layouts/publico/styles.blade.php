@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu1/menu1.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/menu2.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/buscador.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/menus/menu2/buscadormovil.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/menumovil.css')}}">
     <link rel="stylesheet" href="{{asset('pedidos/menus/menumovil/loginmovil.css')}}">
 
@@ -41,7 +42,10 @@
         
 
     {{-- SEGUIMIENTO DE PEDIDO --}}
-    <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/confirmarpedido.css')}}">
+    <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/seguimientopedido.css')}}">
+
+    {{-- STAR RATING --}}
+    <link rel="stylesheet" href="{{asset('pedidos/star_rating_svg/src/css/star-rating-svg.css')}}">
 
 
 

@@ -48,10 +48,9 @@
                 </div>
 
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-6 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
-
+                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around text-light"
-                        href="{{ route('registernewempresa') }} ">Afilia a tu restaurante</a>
+                        href="{{ route('registernewempresa') }} ">Publica tus productos</a>
                 </div>
 
                 {{-- APPS --}}
@@ -73,14 +72,14 @@
                 </div>
 
                 {{-- LOGIN --}}
-                <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
+                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
 
                     @if ( Auth::user() == '' || Auth::user() == null )
 
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Mi cuenta <i class="fas fa-angle-down"></i>
+                            Iniciar Sesión <i class="fas fa-angle-down"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown_options p-0 pb-2">
                             @php
@@ -88,10 +87,8 @@
                             $flagRegister = "register"
                             @endphp
 
-                            <a class="btn btn_login"
-                                href="{{ route('loginOrRegister',   $flagLogin) }}">Identifícate</a>
-                            <a class="btn btn_register"
-                                href="{{ route('loginOrRegister', $flagRegister) }}">Regístrate</a>
+                            <a class="btn btn_login" href="{{ route('loginOrRegister', $flagLogin) }}">Ingresar</a>
+                            <a class="btn btn_register" href="{{ route('loginOrRegister', $flagRegister) }}">Registrarse</a>
                         </div>
 
                     </div>
@@ -111,32 +108,34 @@
                                 alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
 
                                 </a> --}}
-                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    {{ auth()->user()->name }} <i class="fas fa-angle-down"></i>
+                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Mi cuenta <i class="fas fa-angle-down"></i>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <div class="dropdown-menu dropdown-menu-right dropdown_options">
                                     @guest
                                     @else
-                                    @if ( Auth()->user()->hasRole('web_Comprador'))
-                                    <a class="dropdown-item" href="{{ route('loginOrRegister.editar.comprador') }}"><i
-                                        class="fas fa-users-cog"></i></i> Mi cuenta</a>
-                                    @else
-                                    <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i
-                                        class="fas fa-users-cog"></i></i> Mi cuenta</a>    
-                                    @endif
-                                    
-                                    
-                                        <div class="dropdown-divider"></div>
+                                        <p class="m-0 nombre_cuenta_publica hr_options pt-1 pb-2 text-uppercase">{{ auth()->user()->name }}</p>
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </a>
+                                        @if ( Auth()->user()->hasRole('web_Comprador'))
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
+                                                <i class="fas fa-users-cog"></i></i> Mi perfil
+                                            </a>
+                                        @else
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
+                                                <i class="fas fa-users-cog"></i></i> Mi perfil
+                                            </a>    
+                                        @endif
+                                        
+                                        <hr class="hr_options m-0">
+
+                                        <a class="dropdown-item btn btn_cerrar_sesion_cuenta_publica pt-2" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </a>
                                     @endguest
                                 </div>
                             </li>
@@ -147,6 +146,8 @@
             </div>
         </div>
     </header>
+
+
     <!-- MENU WEB 2 -->
     <div class="container-fluid header_top_secondary mx-0 px-0 sticky-top">
         <div class="container">
@@ -164,8 +165,8 @@
                 </div>
 
                 {{-- LOGOTIPO --}}
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 px-0 d-flex justify-content-around" id="header__logo">
-                    <a href="{{ route('inicio.index') }}">
+                <div class="col-4 col-sm-2 col-md-2 col-lg-2 px-0" id="header__logo">
+                    <a class="btn btn_logotipo_app pl-2 pr-1 py-1" href="{{ route('inicio.index') }}">
                         <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
                     </a>
                 </div>
@@ -195,22 +196,31 @@
                 </div>
 
                 {{-- BUSCADOR WEB --}}
-                <div class="col-4 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
+                <div class="col-0 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
                     <div class="header_search_web">
-                        <form id="form_buscar_productos" action="">
+                        <form id="form_buscar_productos" action="{{route('productos.busqueda.index')}}">
                             <div class="input-group input_group_search">
                                 <input id="txtBuscarTextoGeneral" type="text" class="form-control input_buscar"
-                                    placeholder="Buscar en Ogani: Productos, Restaurantes, Lugares" aria-label="Buscar"
+                                    placeholder="Buscar Productos" aria-label="Buscar"
                                     autofocus name="buscarproductos" value="{{request()->query('buscarproductos')}}">
 
                                 <div class="input-group-append">
-                                    <a href="#" class="btn btn_buscar_productos">
+                                    <button class="btn btn_buscar_productos">
                                         <i class="fas fa-search"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
+
+                {{-- BUSCADOR MOVIL --}}
+                <div class="col-2 col-sm-0 col-md-1 col-lg-1 px-0" id="search_movil">
+                    <button type="button" class="btn btn_open_search_movil row m-0" id="mostrar_search_movil_menu">
+                        <h4 class="icon_search_movil_menu m-0">
+                            <i class="fas fa-search"></i>
+                        </h4>
+                    </button>
                 </div>
 
                 {{-- FAVORITOS --}}
@@ -278,9 +288,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Afilia a tu restaurante</a></p>
-                    <p class="my-1"><a href="#">Pedir delivery</a></p>
+                    <p class="my-1"><a href="#">Delivery</a></p>
                     <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
+                    <p class="my-1"><a href="#">Publicación de productos</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Políticas y condiciones</b></h5>
@@ -310,7 +320,6 @@
 @include('includes.ajaxsetup')
 @include('publico.inicio.categoriasjs')
 
-@include('layouts.publico.menumovil')
 
 @include('layouts.publico.cesta.cesta')
 @include('layouts.publico.cesta.cestajs')
@@ -318,6 +327,10 @@
 @include('layouts.publico.favoritos.favoritosjs')
 @include('layouts.publico.modalproductos.modalproductos')
 @include('layouts.publico.modalproductos.modalproductosjs')
+@include('layouts.publico.buscarproductos.buscarproductosjs')
+
+@include('layouts.publico.movil.menumovil')
+@include('layouts.publico.movil.buscarproductosmovil')
 
 
 

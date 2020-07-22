@@ -95,4 +95,5 @@
     @include('publico.inicio.maspedidosjs')
     @include('publico.inicio.recomendadosjs')
 
+    @include('layouts.publico.movil.modalappmovil')
 @endsection

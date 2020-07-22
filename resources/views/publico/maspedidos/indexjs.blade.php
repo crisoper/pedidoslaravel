@@ -16,13 +16,6 @@
         });
 
 
-        $(".btn_buscar_productos").on("click", function( e ) {
-            e.preventDefault();
-
-            obtenerProductosMasPedidos();
-        });
-
-
         //Obtenemos los productos en maspedidoss
         obtenerProductosMasPedidos( );
     

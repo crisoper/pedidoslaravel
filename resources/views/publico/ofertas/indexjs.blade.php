@@ -16,14 +16,6 @@
         });
 
 
-        $(".btn_buscar_productos").on("click", function( e ) {
-            e.preventDefault();
-
-            obtenerProductosOfertados();
-        });
-
-
-
         //OBTENER LOS PRODUCTOS RECOMENDADOS
         obtenerProductosOfertados( );
     
