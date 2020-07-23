@@ -34,11 +34,8 @@ class PedidosController extends Controller
             foreach ($request->cesta_id as $key => $value) {
 
                 $cesta = Cesta::where("id", $value)->first();
-
                 $cesta->estado = 1;
                 $cesta->save();
-
-                // Log::info($cesta->id);
 
                 $pediddetalle = new Pedidodetalle;
                 $pediddetalle->empresa_id = $cesta ? ($cesta->empresa_id) : 0;
@@ -52,8 +49,6 @@ class PedidosController extends Controller
 
                 $pedido->empresa_id = $pediddetalle->empresa_id;
             }
-
-
             $pedido->total = $request->input_total_pedido_cesta;
             $pedido->save();
 
@@ -67,21 +62,6 @@ class PedidosController extends Controller
             ]);
 
             $pedidoestado->save();
-        
-
-            
-            // $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))
-            //                     ->where('tipo', 'cesta')
-            //                     ->get();
-            
-            // foreach( $productoscesta as $productocesta){
-            //     $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )
-            //                     ->where('producto_id', $productocesta->producto_id)
-            //                     ->where('tipo', 'cesta')
-            //                     ->first();
-            //     $estadocesta->estado = 1;
-            //     $estadocesta->save();
-            // }
         
 
             // Session::forget('storagecliente_id');
