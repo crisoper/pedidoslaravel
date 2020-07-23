@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Usuarios;
 
+
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -152,7 +154,6 @@ class UsuariosController extends Controller
     {
         Mail::to($usuario->email)->send(new Enviarclaveausuario($usuario, $clave));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -308,4 +309,43 @@ class UsuariosController extends Controller
             // return response()->json(['imagen' =>   $usuario->avatar], 200);
         }
     }
+
+
+    public function editarcomprador(Request $request){
+        $user = Auth()->user();
+        $persona = Persona::where('dni', auth()->user()->dni)->first();
+       
+        return view('admin.usuarios.comprador.editar', compact( 'persona' ));
+        
+    }
+    
+    public function actualizarDatosComprador( Request $request ){
+        $usuario = User::findOrFail(Auth()->user()->id);
+
+        $persona = Persona::where('dni', $usuario->dni);
+        $persona->nombre = $request->nombre;
+        $persona->paterno = $request->paterno;
+        $persona->materno = $request->materno;
+        $persona->dni = $request->dni;
+        $persona->direccion = $request->direccion;
+        $persona->telefono = $request->telefono;
+        $persona->updated_by = auth()->user()->id;
+
+        $usuario->name = $request->nombre . ' ' . $request->paterno . ' ' . $request->materno;
+
+        $usuario->save();
+        return redirect()->route('loginOrRegister.editar.comprador')->with('info', 'Registro actualizado');
+    }
+    public function cambiarcontraseñaComprador( Request $request  ){
+       
+        $usuario = User::findOrFail( Auth()->user()->id );        
+        if (!empty($request->input("password"))) {
+            $usuario->password = Hash::make($request->input('password'));
+            $this->enviarCorreoCambioClave($usuario, $request->input('password'));
+        }
+        $usuario->save();
+        return redirect()->route('loginOrRegister.editar.comprador')->with('info', 'Contraseña  actualizada');
+    }
+    
+ 
 }

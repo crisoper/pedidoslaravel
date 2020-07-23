@@ -1,8 +1,8 @@
 {{-- @extends('layouts.admin.admin') --}}
-@extends('layouts.publico.registraempresa')
-@section('contenido')
+@extends('layouts.app')
+@section('content')
 
-<div class="container" style="margin-top: 5rem;">
+<div class="container" style="margin-top: 3rem;">
     <div class="row">
         <div class="col ">
             <div class="card">
@@ -12,7 +12,7 @@
                 <div class="card-body text-center ">
                     <span class="display-4">¡Listo! </span>
                     <p class="card-text">
-                    <h2>Has terminado, a partir de ahora podrás publicar y vender tus productos en {{  config('app.name') }}. 
+                    <h2>Has terminado, a partir de ahora podrás realizar tus pedidos en {{  config('app.name') }}. 
                     
                     </h2>                                                                                                                                   
                     </p>

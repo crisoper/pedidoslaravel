@@ -29,6 +29,7 @@ class EmpresaCreateRequest extends FormRequest
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombreempresa" => ["required"],
             "direccion" => ["required"],
+            'dni_representante' => ['required','unique:personas,dni'],
             // "paginaweb" => ["nullable"],
             // 'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             // "provinciaid" => ["nullable"],

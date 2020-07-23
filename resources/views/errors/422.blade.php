@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sesión expirada</title>
+    <title>Error|422</title>
     @include('layouts.publico.styles')
 </head>
 <body>
@@ -20,16 +20,16 @@
                 <img src="{{ asset('pedidos/image/pedidosapp.png') }}" alt="Logo pedidosApp " width="200" >
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <span class="display-3">419</span>
+                <span class="display-3">422</span>
             </div>
             <div class="col-8 text-rigth ">
                 
               <div class="border-left border-danger pl-5">
                 <div class="col-12">
-                    <span class="display-4">¡Sessión expirada!</span>
+                    <span class="display-4">¡Token inválido!</span>
                 </div>
                 <div class="col-12">
-                <p > Posiblemente su sesión ha caducado, regrese a la <a href="{{ route('inicio.index')}}">página principal</a> o volver a iniciar sesión con su cuenta.  </p>
+                <p> El token enviado no es válido, probablemente la cuenta ya ha sido activada. Para continuar navegando puedes regresar a la <a href="{{ route('inicio.index')}}">página principal</a> o vuelva a iniciar sesión con su cuenta.  </p>
                 </div>
                 <div class="col-21">
                     <a href="{{ route('loginOrRegister','login') }}" class="btn btn-danger btn-lg">Acceda con su cuenta</a>

@@ -41,6 +41,7 @@ class EmpresasController extends Controller
 
 
 
+
     /**
      * Display a listing of the resource.
      *
@@ -52,9 +53,15 @@ class EmpresasController extends Controller
         $this->middleware('auth');
     }
 
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+    
 
-    private function empresaId() {
-        return Session::get( 'empresaactual', 0 );
+    private function empresaId()
+    {
+        return Session::get('empresaactual', 0);
     }
 
 
@@ -87,16 +94,16 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
 
-    
+
+
     /**
      * Display the specified resource.
      *
@@ -117,19 +124,19 @@ class EmpresasController extends Controller
     public function edit($id)
     {
         $empresarubros = Empresarubro::get();
-        $empresa = Empresa::findOrFail( $this->empresaId());
+        $empresa = Empresa::findOrFail($this->empresaId());
         $departamentos = Departamento::get();
         $provincias = Provincia::get();
         $distritos = Distrito::get();
         $empresarubros = Empresarubro::get();
         $diahorario = Horario::where('empresa_id', $empresa->id)->get();
-        $diasenhorario=[];
-        foreach( $diahorario as $dia ){
-            array_push($diasenhorario , $dia->dia);          
+        $diasenhorario = [];
+        foreach ($diahorario as $dia) {
+            array_push($diasenhorario, $dia->dia);
         }
-      
+
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        
+
         return view('admin.empresas.edit', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
         // return view('publico.empresa.editar', compact('empresa', 'empresarubros', 'departamentos', 'provincias', 'distritos', 'dias', 'diasenhorario', 'empresarubros', 'diahorario'));
     }
@@ -145,7 +152,7 @@ class EmpresasController extends Controller
     public function update(EmpresaUpdateRequest $request)
     {
 
-       
+
         $empresa = Empresa::findOrFail($request->empresaid);
         $empresa->rubro_id = $request->rubro_id;
         $empresa->ruc = $request->ruc;
@@ -157,30 +164,27 @@ class EmpresasController extends Controller
         $empresa->distrito_id = $request->distritoid;
         $empresa->updated_by = Auth()->user()->id;
         $empresa->save();
-        
-                // if ($request->hasFile('logo')) {
-                //     $nombreOriginalLogo = $request->file('logo');
-                //     $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
-                //     $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
-                //     \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-        
-                //     $dimensionLogo = Image::make($nombreOriginalLogo->path());
-                //     $dimensionLogo->fit(300, 200, function ($constraint) {
-                //         $constraint->upsize();
-                //     });
-                //     $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
-                //     $empresa->logo = $nuevoNombreLogo;
-                // }
 
-     
-        return response()->json('success',200);
+        // if ($request->hasFile('logo')) {
+        //     $nombreOriginalLogo = $request->file('logo');
+        //     $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
+        //     $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+        //     \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
 
+        //     $dimensionLogo = Image::make($nombreOriginalLogo->path());
+        //     $dimensionLogo->fit(300, 200, function ($constraint) {
+        //         $constraint->upsize();
+        //     });
+        //     $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
+        //     $empresa->logo = $nuevoNombreLogo;
+        // }
+
+
+        return response()->json('success', 200);
     }
 
     public function tuempresaUpdate(Request $request)
     {
-    
-
     }
 
     /**
@@ -227,129 +231,8 @@ class EmpresasController extends Controller
         } else {
             return redirect()->route('config.comprobantes.index');
         }
-       
     }
 
-
-
-    //REGISTRA TU EMPRESA
-    // public function registrartuempresa()
-    // {
-    //     $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-    //     $empresarubros  = Empresarubro::get();
-    //     $departamentos = Departamento::get();
-    //     $provincias = Provincia::get();
-    //     $distritos = Distrito::get();
-
-    //     return view('publico.empresa.create', compact('empresarubros', 'departamentos', 'provincias', 'distritos', 'dias'));
-    // }
-
-    protected function guard()
-    {
-        return Auth::guard();
-    }
-    // CreatuempresaCreateRequest
-    public function tuempresastore(CreatuempresaCreateRequest  $request)
-    {
-
-     
-
-        $user = User::firstOrNew([
-            'name' => $request->name . " " . $request->paterno . " " . $request->materno,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-        $user->remember_token = Hash::make(time());
-        $user->save();
-
-
-        $persona = Persona::firstOrNew(
-            [
-                'nombre' => $request->name,
-                'paterno' => $request->paterno,
-                'materno' => $request->materno,
-                'dni' => $request->dni,
-                'telefono' => $request->telefono,
-                'correo' => $request->email,
-
-            ],
-            [
-                'created_by' => $user->id,
-            ]
-        );
-        $persona->save();
-
-        $empresa = new Empresa();
-        $empresa->rubro_id = $request->rubro_id;
-        $empresa->ruc = $request->ruc;
-        $empresa->nombre = $request->nombre;
-        $empresa->direccion = $request->direccion;
-        $empresa->paginaweb = $request->facebook;
-        $empresa->nombrecomercial = $request->nombrecomercial;
-        $empresa->departamento_id = $request->departamentoid;
-        $empresa->provincia_id = $request->provinciaid;
-        $empresa->distrito_id = $request->distritoid;
-        $empresa->persona_id = $persona->id;
-
-        if ($request->hasFile('logo')) {
-            $nombreOriginalLogo = $request->file('logo');
-            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension());
-            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName());
-            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-
-            $dimensionLogo = Image::make($nombreOriginalLogo->path());
-            $dimensionLogo->fit(300, 200, function ($constraint) {
-                $constraint->upsize();
-            });
-            $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
-            $empresa->logo = $nuevoNombreLogo;
-        }
-        $empresa->created_by = $user->id;
-
-        $empresa->save();
-
-        Userempresa::create([
-            'user_id' => $user->id,
-            'empresa_id' => $empresa->id,
-            'estado' => 1,
-        ]);
-
-        $periodo = new Periodo();
-        $periodo->empresa_id = $empresa->id;
-        $periodo->nombre = 'demo';
-        $fechaActual = date('Y-m-d');
-        $fechaFin = strtotime('+12 month', strtotime($fechaActual));
-        $fechaFin = date('Y-m-d', $fechaFin);
-        $periodo->inicio = date('Y-m-d');
-        $periodo->fin = $fechaFin;
-        $periodo->estado = 1;
-        $periodo->created_by = $user->id;
-        $periodo->save();
-
-        $userperiodo = new Userperiodo();
-        $userperiodo->user_id =  $user->id;
-        $userperiodo->periodo_id = $periodo->id;
-        $userperiodo->created_at = $user->id;
-        $userperiodo->save();
-
-
-        $rol = rol::where('name', 'web_Administrador empresa')->first();
-
-        Modelhasrole::create([
-            'role_id' => $rol->id,
-            'model_type' => 'App\User',
-            'model_id' => $user->id,
-        ]);
-
-      
-
-        $this->guard()->login($user);
-        //Enviamos correo para activar cuenta
-        $this->enviarCorreoActivarCuentaEmpresa($user);
-        Session::put('empresadescripcion',  $empresa->nombre);
-
-        return \Response::json($user);
-    }
 
     public function cambiaremailusuarios(CambiaremailCreateRequest $request, $user_id)
     {
@@ -379,35 +262,11 @@ class EmpresasController extends Controller
 
     public function confirmarcuenta()
     {
-
         return view('publico.empresa.confirmarcuenta');
     }
 
 
-    public function activarcuentatoken(Request $request)
-    {
 
-        if ($request->has("tokenactivation")) {
-
-            $usuario = User::where("remember_token", $request->tokenactivation)->first();
-
-            if ($usuario) {
-                $usuario->email_verified_at = now();
-                $usuario->save();
-
-                $this->guard()->login($usuario);
-
-                if ($usuario->hasRole('web_Comprador')) {
-                    return view('publico.mail.cuentaactivadaComprador');
-                } else {
-
-                    return view('publico.empresa.cuentaactivada');
-                }
-            }
-        }
-
-        return "El token enviado no es valido";
-    }
 
     public function vistaprevia()
     {
@@ -415,6 +274,4 @@ class EmpresasController extends Controller
 
         return view('publico.empresa.preview');
     }
-
-   
 }

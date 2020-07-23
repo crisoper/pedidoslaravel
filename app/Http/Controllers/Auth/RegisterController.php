@@ -161,6 +161,7 @@ class RegisterController extends Controller
         $user = User::firstOrNew([
             'name' => $request->name_representante . " " . $request->paterno . " " . $request->materno,
             'email' => $request->email,
+            'dni' => $request->dni_representante,
             'password' => Hash::make($request->password),
         ]);
         $user->remember_token = Hash::make(time());
@@ -171,7 +172,7 @@ class RegisterController extends Controller
                 'nombre' => $request->name_representante,
                 'paterno' => $request->paterno,
                 'materno' => $request->materno,
-                'dni' => $request->dni,
+                'dni' => $request->dni_representante,
                 'telefono' => $request->telefono,
                 'correo' => $request->email,
 
@@ -207,7 +208,7 @@ class RegisterController extends Controller
         $periodo->empresa_id = $empresa->id;
         $periodo->nombre = 'demo';
         $fechaActual = date('Y-m-d');
-        $fechaFin = strtotime('+12 month', strtotime($fechaActual));
+        $fechaFin = strtotime('+24 month', strtotime($fechaActual));
         $fechaFin = date('Y-m-d', $fechaFin);
         $periodo->inicio = date('Y-m-d');
         $periodo->fin = $fechaFin;
@@ -234,7 +235,7 @@ class RegisterController extends Controller
         $this->enviarCorreoActivarCuentaEmpresa($user);
         Session::put('empresadescripcion',  $empresa->nombre);
 
-        return response()->json($user);
+        return response()->json($user,200);
 
             // return redirect()->route('empresas.index')->with("info", "Registro creado");
     }

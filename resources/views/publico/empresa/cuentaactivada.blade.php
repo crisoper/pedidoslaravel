@@ -1,11 +1,10 @@
-{{-- @extends('layouts.admin.admin') --}}
-@extends('layouts.admin.admin')
+@extends('layouts.publico.registraempresa')
 
 @section('contenido')
 
 <div class="container">
     <div class="row">
-        <div class="col ">
+        <div class="col-12  pt-5">
             <div class="card">
                 <div class="card-header bg-info mb-0 pb-0 text-center">
                     <img src="{{asset('img/emailconfirmado.png')}}" alt="">

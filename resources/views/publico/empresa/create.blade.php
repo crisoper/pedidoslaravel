@@ -6,7 +6,7 @@
 
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-12 d-flex flex-wrap bg-light">
+        <div class="col-12 d-flex flex-wrap">
 
             <div id="texto" class=" col-sm-12 col-md-5 d-flex flex-column">
                 <div class="titulo ">
@@ -17,8 +17,11 @@
                 </div>
 
                 <div class="parrafo mt-2">
+                    <h4 class="text-warning">
+                        Para empezar a publicar tus productos es necesario que registres tu empresa. 
+                    </h4>
                     <h4>
-                        Hacercate más a la gente y gana mas clientes. Promociona tus productos y vende por internet.
+                        Hacercate más a la gente y gana mas clientes, promociona tus productos y vende por internet.
                     </h4>
                 </div>
                 <div class="mt-auto p-2" id="apps">
@@ -31,7 +34,7 @@
                 </div>
 
             </div>
-            <div id="container_left" class="col-sm-12 col-md-7 pt-5">
+            <div id="container_left" class="col-sm-12 col-md-7 ">
 
                 <form id="formularioRegistroEmpresa" action="{{route('nuevaEmpresa.store')}}" method="POST"
                     enctype="multipart/form-data">
@@ -99,7 +102,19 @@
 
                         <div class="col-md-12 col-sm-12  mx-auto ">
                             <div class="d-flex flex-wrap">
-                                <div class="form-group col-sm-12 col-md-12">
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <input id="dni_representante" maxlength="8" type="text"
+                                        class="form-control  @error('dni_representante') is-invalid @enderror"
+                                        name="dni_representante" value="{{ old('dni_representante') }}" required
+                                        autocomplete="dni_representante" placeholder="DNI">
+
+                                    @error('name_representante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-sm-12 col-md-8">
                                     <input id="name_representante" type="text"
                                         class="form-control  @error('name_representante') is-invalid @enderror"
                                         name="name_representante" value="{{ old('name_representante') }}" required
@@ -196,7 +211,7 @@
                             @csrf
 
                             <div class="form-group col-6">
-                                <button type="button" class="btn btn-warning btn-block" id="enviarFormRegistro">
+                                <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
                                     <span class="spinner-border spinner-border-sm spinnerr" role="status"
                                         aria-hidden="true" style="display: none"></span>
                                     Guardar
