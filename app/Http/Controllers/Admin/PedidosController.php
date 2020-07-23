@@ -18,6 +18,7 @@ class PedidosController extends Controller
     public function pedidosstore(Request $request)
     {
         
+        // return Session::get('storagecliente_id', 0);
 
         if (Auth::check()) {
  
@@ -62,6 +63,8 @@ class PedidosController extends Controller
 
             $pedidoestado->save();
         
+
+            
             $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))->get();
             
             foreach( $productoscesta as $productocesta){
