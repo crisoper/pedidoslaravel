@@ -17,7 +17,7 @@ class PedidosController extends Controller
  
     public function pedidosstore(Request $request)
     {
-        
+        // return $request;
         // return Session::get('storagecliente_id', 0);
 
         if (Auth::check()) {
@@ -33,11 +33,16 @@ class PedidosController extends Controller
 
             foreach ($request->cesta_id as $key => $value) {
 
-                $cesta = Cesta::where("id", $request->cesta_id[$key])->first();
+                $cesta = Cesta::where("id", $value)->first();
+
+                $cesta->estado = 1;
+                $cesta->save();
+
+                // Log::info($cesta->id);
 
                 $pediddetalle = new Pedidodetalle;
-                $pediddetalle->empresa_id = $cesta ? ($cesta->producto ? $cesta->producto->empresa_id : 0) : 0;
-                $pediddetalle->producto_id = $cesta ? ($cesta->producto ? $cesta->producto->id : 0) : 0;
+                $pediddetalle->empresa_id = $cesta ? ($cesta->empresa_id) : 0;
+                $pediddetalle->producto_id = $cesta ? ($cesta->producto_id) : 0;
                 $pediddetalle->pedido_id = $pedido->id;
                 $pediddetalle->preciounitario = $request->precio[$key];
                 $pediddetalle->cantidad = $request->cantidad[$key];
@@ -65,15 +70,18 @@ class PedidosController extends Controller
         
 
             
-            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))->get();
+            // $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))
+            //                     ->where('tipo', 'cesta')
+            //                     ->get();
             
-            foreach( $productoscesta as $productocesta){
-                $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )
-                                ->where('producto_id', $productocesta->producto_id)
-                                ->first();
-                $estadocesta->estado = 1;
-                $estadocesta->save();
-            }
+            // foreach( $productoscesta as $productocesta){
+            //     $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )
+            //                     ->where('producto_id', $productocesta->producto_id)
+            //                     ->where('tipo', 'cesta')
+            //                     ->first();
+            //     $estadocesta->estado = 1;
+            //     $estadocesta->save();
+            // }
         
 
             // Session::forget('storagecliente_id');

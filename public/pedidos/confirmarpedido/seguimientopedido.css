@@ -46,14 +46,17 @@
     font-weight: 700;
     color: #3cd4a9;
 }
-
-.total_pedido {
-    color: #ffffff;
-    font-size: 19px;
+.nombre_empresa_seguimiento {
+    font-size: 11px;
 }
-.pedido_total_span {
+
+.total_pedido_seguimiento {
     color: #3cd4a9;
-    font-size: 22px;
+    font-size: 21px;
+}
+.pedido_total_span_seguimiento {
+    color: #3cd4a9;
+    font-size: 25px;
     font-weight: 700;
 }
 
