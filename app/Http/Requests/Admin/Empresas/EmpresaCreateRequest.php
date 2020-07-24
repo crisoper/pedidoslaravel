@@ -29,12 +29,7 @@ class EmpresaCreateRequest extends FormRequest
             "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
             "nombreempresa" => ["required"],
             "direccion" => ["required"],
-            'dni_representante' => ['required','unique:personas,dni'],
-            // "paginaweb" => ["nullable"],
-            // 'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            // "provinciaid" => ["nullable"],
-            // "departamentoid" => ["nullable"],
-            // "distritoid" => ["nullable"],
+            'dni_representante' => ['required','unique:personas,dni'],           
             "telefono" => ["required"],
          
             'name_representante' => ['required', 'string', 'max:255'],
@@ -45,11 +40,11 @@ class EmpresaCreateRequest extends FormRequest
         ];
 
     }
-    public function messages()
-    {
-        return [
-            'ruc.required' => 'El número de ruc ya se encuentra en uso.',
+    // public function messages()
+    // {
+    //     return [
+    //         'ruc.required' => 'El número de ruc ya se encuentra en uso.',
               
-        ];
-    }
+    //     ];
+    // }
 }

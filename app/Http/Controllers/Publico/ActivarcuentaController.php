@@ -11,9 +11,11 @@ class ActivarcuentaController extends Controller
 {
     public function activarcuentatoken(Request $request)
     {
+       
         if ($request->has("tokenactivation")) {
             $usuario = User::where("remember_token", $request->tokenactivation)->first();
-            if ($usuario != "" && $usuario->email_verified_at != "") {
+          
+            if ( $usuario ) {
                 $usuario->email_verified_at = now();
                 $usuario->save();
                 $this->guard()->login($usuario);

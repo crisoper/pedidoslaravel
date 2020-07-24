@@ -29,7 +29,7 @@ H5{
 
 <div class="col-12 d-flex flex-wrap">
     {{-- <div class="col-sm-12 col-md-12 border" style="background-color:#FFFFFF;"> --}}
-        
+      
         <div class="col-sm-3">
 
             <div class="card">

@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get("administracion/login", "Auth\LoginController@showLoginForm")
+Route::get("administracion/login", "Auth\}@showLoginForm")
 ->name("admin.login");
 Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
 Route::get('registernewempresa' ,'Auth\loginorregisterController@registernewempresa')->name('registernewempresa');
@@ -152,7 +152,7 @@ Route::post("ajax/seguimientodepedido/store", "Publico\SeguimientopedidoControll
 // EMPRESAS
 Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 ->name('locales.index');
-Route::post('nuevaEmpresa','Auth\RegisterController@nuevaEmpresa')->name('nuevaEmpresa.store');
+Route::post('nuevaempresa.store','Publico\NuevaempresaController@nuevaempresa')->name('nuevaempresa.store');
 
 Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
 Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');

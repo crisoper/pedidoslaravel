@@ -48,8 +48,8 @@
             method: 'post',
             dataType: 'json',
             data: $("#formularioRegistroEmpresa").serialize(),
-            success: function( user ){
-               
+            success: function(){
+              
                 window.location = '{{route("confirmarcuenta")}}';
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },

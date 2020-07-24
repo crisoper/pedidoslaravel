@@ -36,9 +36,9 @@
             </div>
             <div id="container_left" class="col-sm-12 col-md-7 ">
 
-                <form id="formularioRegistroEmpresa" action="{{route('nuevaEmpresa.store')}}" method="POST"
+                <form id="formularioRegistroEmpresa" action="{{route('nuevaempresa.store')}}" method="POST"
                     enctype="multipart/form-data">
-
+                    @csrf
                     @php
                     $usuario = Auth()->user()
                     @endphp
@@ -208,7 +208,7 @@
 
                         <div class="col-12 d-flex flex-row justify-content-center">
 
-                            @csrf
+                           
 
                             <div class="form-group col-6">
                                 <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
