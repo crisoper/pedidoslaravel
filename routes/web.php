@@ -183,3 +183,9 @@ Route::get("getprovincias/pordepartamento", "Publico\ProvinciasController@getpro
 //Distritos
 Route::get("getdistritos/porprovincia", "Publico\DistritosController@getdistritosByProvinciaId")
 ->name("ajax.getdistritosByProvinciaId");
+
+
+
+//Acerca de pedidosapp
+Route::get("nosotros", "Publico\InformacionDeAplicacionController@nosotros")
+->name("nosotros");
