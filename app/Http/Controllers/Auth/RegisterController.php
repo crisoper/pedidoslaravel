@@ -155,25 +155,24 @@ class RegisterController extends Controller
         return "El token enviado no es valido";
 
     }
-    public function nuevaEmpresa(Request $request)
+    public function nuevaEmpresa(EmpresaCreateRequest $request)
     {
-        // EmpresaCreateRequest
-               
+                      
         $user = User::firstOrNew([
             'name' => $request->name_representante . " " . $request->paterno . " " . $request->materno,
             'email' => $request->email,
+            'dni' => $request->dni_representante,
             'password' => Hash::make($request->password),
         ]);
         $user->remember_token = Hash::make(time());
         $user->save();
-
 
         $persona = Persona::firstOrNew(
             [
                 'nombre' => $request->name_representante,
                 'paterno' => $request->paterno,
                 'materno' => $request->materno,
-                'dni' => $request->dni,
+                'dni' => $request->dni_representante,
                 'telefono' => $request->telefono,
                 'correo' => $request->email,
 
@@ -209,7 +208,7 @@ class RegisterController extends Controller
         $periodo->empresa_id = $empresa->id;
         $periodo->nombre = 'demo';
         $fechaActual = date('Y-m-d');
-        $fechaFin = strtotime('+12 month', strtotime($fechaActual));
+        $fechaFin = strtotime('+24 month', strtotime($fechaActual));
         $fechaFin = date('Y-m-d', $fechaFin);
         $periodo->inicio = date('Y-m-d');
         $periodo->fin = $fechaFin;
@@ -224,19 +223,19 @@ class RegisterController extends Controller
         $userperiodo->save();
 
 
-        $rol = rol::where('name', 'menu_Administrador empresa')->first();
+        //Asiganos roles a usuario
+       
+        $roles = Rol::where("name", "like", "%_Administrador empresa")->get();
+        foreach( $roles as $rol ) {
+            $user->assignRole( $rol );
+        }
 
-        Modelhasrole::create([
-            'role_id' => $rol->id,
-            'model_type' => 'App\User',
-            'model_id' => $user->id,
-        ]);
         $this->guard()->login($user);
         //Enviamos correo para activar cuenta
         $this->enviarCorreoActivarCuentaEmpresa($user);
         Session::put('empresadescripcion',  $empresa->nombre);
 
-        return response()->json($user);
+        return response()->json($user,200);
 
             // return redirect()->route('empresas.index')->with("info", "Registro creado");
     }

@@ -1,152 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Pedidos') }}</title>
-
+    <title>{{ config('app.name', 'PedidosApp') }}</title>
+    
     @include('layouts.admin.styles')
     @include('layouts.admin.scripts')
-
     @include('layouts.admin.messenger')
-    
-    {{-- MENUS --}}
-  
-    <link rel="stylesheet" href="{{asset('pedidos/css/style.css')}}">
-    <style>
-        @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic|Lora:400,700,700italic|Source+Code+Pro:400,700|Abril+Fatface|Montserrat);
 
-      
-       
+    <style>
+        #contenido {
+            height: 100vh;            
+        }
+        #app{
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+        .footer{
+            border-top: 1px solid rgb(158, 158, 158);
+            padding-top: 2px;
+        }
+        .logo{
+            width: 120px !important;
+            height: 40px;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+     
     </style>
 </head>
 
-<body cz-shortcut-listen="true" class="bg-light">
+<body>
+    <div id="contenido" class="d-flex align-content-between flex-wrap">
 
-    {{-- <header>
-        <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm">
-            <div class="container">
-                <ul class="navbar-nav">
-                    <li>
-                        @guest
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp">
-                        </a>
-                        @else
-                        <small>
-                            @if ( Session::has( 'empresadescripcion') )
-                            {{ Session::get( 'empresadescripcion') }}
-                            @endif
-                        </small>
-                        @endguest
-                    </li>
-                </ul>
+        <div id="app">
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <div class="container">
+              
+                    <a href="{{ route('inicio.index') }}">
+                        <img class="logo" src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" >
+                    </a>
+                 
+            </nav>
 
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown ">
-
-                        @guest
-
-                        @else
-                        <a class="nav-link text-dark" data-toggle="dropdown" href="#">
-                            <img width="25px" height="25px" @if ( auth()->user()->avatar != null &&
-                            Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
-                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}"
-                            @else
-                            src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}"
-                            @endif
-                            alt=" {{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
-                        </a>
-                        @endguest
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header ">
-                                @guest
-                                @else
-                                {{ Auth::user()->name }}
-                                @endguest
-                            </span>
-                            <div class="dropdown-divider"></div>
-
-                            @guest
-
-                            @else
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                            </a>
-                            @endguest
-
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header> --}}
-
-    <main role="main">
-
-
-        @yield('contenido')
-
-    </main>
-
-
- 
-    {{-- FOOTER --}}
-    <footer class="container-fluid footer m-0 mt-5">
-        <div class="container">
-            <div class="row footer_info">
-                <div class="col-lg-3 col-md-6 col-sm-6 footer_logo">
-                    <div class="text-center">
-                        <a href="{{ route('inicio.index') }}">
-                            <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" width="150px">
-                        </a>
-                    </div>
-                  
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
-                    <h5><b>Acerca de Pedidos.com</b></h5>
-                    <p class="my-1"><a href="#">Nosotros</a></p>
-                    <p class="my-1"><a href="#">Contáctanos</a></p>
-                    <p class="my-1"><a href="#">Quienes somos</a></p>
-                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
-                    <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Afilia a tu restaurante</a></p>
-                    <p class="my-1"><a href="#">Pedir delivery</a></p>
-                    <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
-                    <h5><b>Políticas y condiciones</b></h5>
-                    <p class="my-1"><a href="#">Políticas de Privacidad</a></p>
-                    <p class="my-1"><a href="#">Términos y Condiciones</a></p>
-                    <p class="my-1"><a href="#">Libro de Reclamaciones</a></p>
-                </div>
-            </div>
+            <main>
+                @yield('contenido')
+            </main>
         </div>
-        <div class="row bg-dark p-2 pb-0 text-center ">
-            <div class="col-lg-12">
-                <span class="text-center p-0">
-                    Copyright &copy;2020 - Derechos Reservados | <b>Delivery.com</b>
-                </span>
+
+        {{-- FOOTER --}}
+        <footer class="container-fluid footer">
+       
+            <div class="row bg-dark p-2 pb-0 text-center text-light ">
+                <div class="col-lg-12">
+                    <span class="text-center p-0 ">
+                        Copyright &copy;2020 - Derechos Reservados | PedidosApp
+                    </span>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
-
-@include('includes.ajaxsetup')
 @yield("scripts")
+{{-- @include('includes.ajaxsetup') --}}
 
 </html>

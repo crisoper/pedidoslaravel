@@ -33,11 +33,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <img width="25px" height="25px" 
-                            {{-- @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
+                            @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
                             @else 
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
-                            @endif --}}
+                            @endif
                         alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -104,9 +104,9 @@
 
 
         <footer class="main-footer layout-footer-fixed py-1">
-            <small>@if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif </small>
+            <small> PedidosApp</small>
             <div class="float-right d-none d-sm-inline-block">
-                <small><strong>Copyright &copy; {{ date('Y') }}</strong></small>
+                <small>Copyright &copy; {{ date('Y') }}</small>
             </div>
         </footer>
         
@@ -116,5 +116,6 @@
 @include('includes.ajaxsetup')
 
 @yield("scripts")
+
 
 </html>

@@ -71,7 +71,7 @@
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
                             <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> ${ pedidoestadoHTML } </div>
                             <div class="col-12 mt-2 mb-2">
-                                <table class="table table-sm mb-2">
+                                <table class="table table-responsive-lg table-sm mb-2">
                                     <thead>
                                         <tr class="tr_tittle_x_confirmar">
                                             <th class="prod_name text-left">Producto</th>

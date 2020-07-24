@@ -49,7 +49,7 @@
             dataType: 'json',
             data: $("#formularioRegistroEmpresa").serialize(),
             success: function( user ){
-                // console.log(user);
+               
                 window.location = '{{route("confirmarcuenta")}}';
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
@@ -63,34 +63,7 @@
 
                     GLOBARL_settearErroresEnCampos( jqXHR, "formularioRegistroEmpresa" );
                 }
-                // else if( jqXHR.status == 429 ) 
-                // {   
-                //     $( enviarFormRegistro ).prop( "disabled", false ).find("span").show();
-                //     $( ".spinnerr" ).hide(); 
-
-                //     let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
-                //     let errorInicio = jqXHR.responseJSON.error.data['inicio'];
-                //     let errorFin = jqXHR.responseJSON.error.data['fin'];
-
-                //     $.each( errorInicio , function( index, diasemana ) {
-                //         $("#horainicio-"+ diasemana ).addClass("is-invalid");
-                //         $("#errorInicio-"+ diasemana ).addClass("is-invalid");
-                       
-                //     });
-                    
-                //     $.each( errorFin , function( index, diasemana ) {
-                //         $("#horafin-"+ diasemana ).addClass("is-invalid");
-                //         $("#errorfin-"+ diasemana ).addClass("is-invalid");
-                       
-                    
-                //     });
-
-                //     setTimeout( function() {
-                //         // $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
-                //         $("#formularioRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
-                //     }, 5000);
-
-                // }  
+          
             }
         });
     });
@@ -121,86 +94,6 @@
     }, 5000);
 
     }
-
-
-
-
-       
-//     for (let i = 1; i < 8; i++) {
-     
-//              let horainicio =   $('input[name="horainicio['+i+']"]').val() ;
-//              let horafinn =  $.trim( $('input[name="horafin['+i+']"]').val() );
-
-//              let indicehorainicio = horainicio.indexOf(":");
-//              let indiceminutosinicio = horainicio.indexOf(" ");
-//              let horainicioextraida = horainicio.substring(0, indicehorainicio);
-//              let minutosinicioextraida = horainicio.substring(indicehorainicio +  1, indiceminutosinicio);
-//              let AmPmhoraninicio =  horainicio.substring(indiceminutosinicio + 1, horainicio.length);
-//                  valorminimo = ( parseInt(horainicioextraida) * 60 ) +  parseInt(minutosinicioextraida) ;
-         
-//                  if (AmPmhoraninicio == 'PM' && horainicio != '12:00 PM' ) {
-//                    valorminimo = valorminimo + 720;
-//                  }else if( horainicio == '12:00 AM'){
-//                   valorminimo = 0;
-//                  }else if(horainicio == '12:00 PM'){
-//                     valorminimo = 720;
-                 
-//                  }else{
-//                     valorminimo = valorminimo;
-//                  }
-
-             
-             
-//              let indicehorafin = horafinn.indexOf(":");
-//              let indiceenpaciofin = horafinn.indexOf(" ");
-//              let horafinextraida = horafinn.substring(0, indicehorafin);
-//              let minutosfinextraida = horafinn.substring(indicehorafin + 1, indiceenpaciofin);
-//              let AmPmhoranfin =  horafinn.substring( indicehorafin + 4 ,  horafinn.length);
-//                  valormaximo = ( parseInt(horafinextraida) * 60 ) +  parseInt(minutosfinextraida) ;
-            
-//              console.log(minutosfinextraida);
-             
-//              if (AmPmhoranfin == 'PM') {
-//               valormaximo = valormaximo + 720;
-//             }else{
-//              valormaximo = valormaximo + 0;
-//             }
-
-//             if( $('input[name="dias['+i+']"]').attr('checked') ) {
-//                 slidertime(valorminimo, valormaximo, i);
-//                 $('div[name="slider-range['+i+']"]').show();
-//             }
-
-// //MOSTRAMOS SLIDER SI ACTIVAMOS DIA
-            
-//              $('input[name="dias['+i+']"]').on('change', function() {
-//                      if( $(this).prop('checked') ) {
-//                         valorminimo = 0;
-//                         valormaximo = 1440;
-
-
-//                           $('input[name="horainicio['+i+']"]').show();
-//                           $('input[name="horafin['+i+']"]').show();
-//                           $('input[name="horainicio['+i+']"]').val('12:00 AM');
-//                           $('input[name="horafin['+i+']"]').val('11:59 PM');                   
-//                           slidertime(valorminimo, valormaximo, i);
-//                           $('div[name="slider-range['+i+']"]').show();
-//                     }else{
-//                          $('div[name="slider-range['+i+']"]').hide();
-//                          $('input[name="horainicio['+i+']"]').hide();
-//                          $('input[name="horafin['+i+']"]').hide();
-//                          $('input[name="horainicio['+i+']"]').val('');
-//                          $('input[name="horafin['+i+']"]').val('');
-//                     }
-//              });
-         
-    
-
-
-    
-//     }
-
-
 
 function slidertime(valorminimo, valormaximo, i){
          $('div[name="slider-range['+i+']"]').slider({

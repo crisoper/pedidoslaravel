@@ -14,14 +14,11 @@ use Mockery\Undefined;
 
 class PedidosController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
+ 
     public function pedidosstore(Request $request)
     {
+        // return $request;
+        // return Session::get('storagecliente_id', 0);
 
         if (Auth::check()) {
  
@@ -36,11 +33,13 @@ class PedidosController extends Controller
 
             foreach ($request->cesta_id as $key => $value) {
 
-                $cesta = Cesta::where("id", $request->cesta_id[$key])->first();
+                $cesta = Cesta::where("id", $value)->first();
+                $cesta->estado = 1;
+                $cesta->save();
 
                 $pediddetalle = new Pedidodetalle;
-                $pediddetalle->empresa_id = $cesta ? ($cesta->producto ? $cesta->producto->empresa_id : 0) : 0;
-                $pediddetalle->producto_id = $cesta ? ($cesta->producto ? $cesta->producto->id : 0) : 0;
+                $pediddetalle->empresa_id = $cesta ? ($cesta->empresa_id) : 0;
+                $pediddetalle->producto_id = $cesta ? ($cesta->producto_id) : 0;
                 $pediddetalle->pedido_id = $pedido->id;
                 $pediddetalle->preciounitario = $request->precio[$key];
                 $pediddetalle->cantidad = $request->cantidad[$key];
@@ -50,8 +49,6 @@ class PedidosController extends Controller
 
                 $pedido->empresa_id = $pediddetalle->empresa_id;
             }
-
-
             $pedido->total = $request->input_total_pedido_cesta;
             $pedido->save();
 
@@ -66,18 +63,8 @@ class PedidosController extends Controller
 
             $pedidoestado->save();
         
-            $productoscesta = Cesta::where('storagecliente_id', Session::get('storagecliente_id', 0))->get();
-            
-            foreach( $productoscesta as $productocesta){
-                $estadocesta = Cesta::where('storagecliente_id', $productocesta->storagecliente_id )
-                                ->where('producto_id', $productocesta->producto_id)
-                                ->first();
-                $estadocesta->estado = 1;
-                $estadocesta->save();
-            }
-        
 
-            Session::forget('storagecliente_id');
+            // Session::forget('storagecliente_id');
             return response()->json(["success" => "Pedido creado correctamente"], 200);
             
         } else{

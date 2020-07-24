@@ -61,16 +61,55 @@
     font-size: 12px;
     font-weight: 0px;
 }
-.header_top_options .dropdown_options hr {
-    background-color: #525252;
+.header_top_options .dropdown_options .nombre_cuenta_publica {
+    color: #f5f5f5;
+    font-size: 12px;
+    font-weight: 0px;
 }
+
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica {
+    color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+}
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica:hover,
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica:focus {
+    color: #3eb291;
+    background-color: #343a40;
+    box-shadow: none;
+}
+
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica_pedidos {
+    color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+}
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica_pedidos:hover,
+.header_top_options .dropdown_options .btn_perfil_cuenta_publica_pedidos:focus {
+    color: #3eb291;
+    background-color: #343a40;
+    box-shadow: none;
+}
+
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica {
+    color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+}
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica:hover,
+.header_top_options .dropdown_options .btn_cerrar_sesion_cuenta_publica:focus {
+    color: #df3550;
+    background-color: #343a40;
+    box-shadow: none;
+}
+
 
 
 /* ------- AFILIAR RESTAURANTE -------*/
 
 .btn_recommended {
     width: auto;
-    color: #3eb291;
+    color: #df3550 !important;
     text-align: center;
     padding: 3px 10px !important;
     border-radius: 0;
@@ -78,10 +117,11 @@
 } 
 .btn_recommended:hover,
 .btn_recommended:focus {
-    outline: none;
-    box-shadow: none;
-    color: #3eb291;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #df3550 !important;
 }
+
 
 
 /* ------- APPS -------*/
@@ -142,6 +182,12 @@
     border-left: 1px solid #5b646d;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    #header_top_apps {
+        display: none;
+    } 
+}
+
 
 @media (min-width: 1200px) {
     .btn_app_android {
@@ -163,9 +209,6 @@
     #header_top_client {
         display: none;
     }
-    /* #header_top_login {
-        display: none;
-    } */
 }
 
 

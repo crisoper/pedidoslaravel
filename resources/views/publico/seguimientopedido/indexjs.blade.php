@@ -38,13 +38,14 @@ $(document).ready(  function () {
             $.each( pedidos.detalle, function( key, pedidosdetalle ) {
                 pedidodetalleHTML = pedidodetalleHTML + `
                     <tr>
-                        <td class="text-left">${ pedidosdetalle.producto }</td>
+                        <td class="text-left">
+                            ${ pedidosdetalle.producto }
+                            <h6 class="m-0 nombre_empresa_seguimiento">${ pedidosdetalle.empresa }
+                        </td>
                         <td>S/ ${ pedidosdetalle.preciounitario }</td>
                         <td>${ pedidosdetalle.cantidad }</td>
                         <td>S/ ${ pedidosdetalle.subtotal }</td>
-                        <td class="td_pedido_direccion_local">
-                            <h6 class="my-0">${ pedidosdetalle.empresa }</h6>
-                        </td>
+                        
                     </tr>
                 `;
             })
@@ -82,14 +83,13 @@ $(document).ready(  function () {
                         <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
                         <div class="col-12 estado_pedido_cliente"><b>Estado de pedido:</b> ${ pedidoestadoHTML } </div>
                         <div class="col-12 mt-2 mb-2">
-                            <table class="table table-responsive table-sm mb-2">
+                            <table class="table table-responsive-lg table-sm mb-2">
                                 <thead>
                                     <tr class="tr_tittle_x_confirmar">
                                         <th class="prod_name text-left">Producto</th>
                                         <th class="prod_unit">Precio</th>
                                         <th class="prod_cant">Cantidad</th>
                                         <th class="prod_subtotal">Subtotal</th>
-                                        <th class="direccion_empresa">Local</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -98,10 +98,12 @@ $(document).ready(  function () {
                             </table>
                         </div>
                         <div class="col-sm-7 col-md-8 text-right">
-                            <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
+                            <h6 class="total_pedido_seguimiento">Total: <span class="pedido_total_span_seguimiento">S/ ${ pedidos.total }</span></h6>
                         </div>
-                        <div class="col-sm-5 col-md-4 text-right">
-                            <button class="btn_calificar_pedido" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Calificar Pedido</button>
+                        <div class="col-sm-5 col-md-4 text-right btn_calificar_pedido">
+                            <p class="m-0">Calificar Pedido:</p>
+                            <span class="my-rating-9" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
+                            <span class="live-rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                         </div>
                     </div>
                 </div>
@@ -110,9 +112,47 @@ $(document).ready(  function () {
 
         $("#cuerpo_seguimiento_pedidos").html( pedidosHTML);
         activar_desativar_btn_Calificar_pedido();
+        star_rating();
     }
 
     setInterval(obtener_productos_pedido_seguimiento, 3000);
+
+
+    function star_rating() {
+        $(".my-rating-9").starRating({
+            initialRating: 0,
+            disableAfterRate: false,
+            callback: function(currentRating, $el){
+
+                let empresa_id = $($el).attr('idempresa');
+                let pedido_id = $($el).attr("idpedido");
+                let calificacion = currentRating;
+
+                agregar_estado_calificado( empresa_id, pedido_id, calificacion, "calificado" );
+            }
+        });
+    }
+
+    function agregar_estado_calificado( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
+
+        $.ajax({
+            url: "{{ route('ajax.seguimientodepedido.store') }}",
+            method: 'POST',
+            data: {
+                empresa_id: empresa_id,
+                pedido_id: pedido_id,
+                estado: estado,
+                calificacion: calificacion,
+            },
+            success: function ( data ) {
+                obtener_productos_pedido_seguimiento( );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR.responseJSON);
+            }
+        });
+    }
+
 
     function activar_desativar_btn_Calificar_pedido() {
         $('.btn_calificar_pedido').hide();

@@ -37,9 +37,9 @@ Route::get("administracion/login", "Auth\LoginController@showLoginForm")
 ->name("admin.login");
 Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
 Route::get('registernewempresa' ,'Auth\loginorregisterController@registernewempresa')->name('registernewempresa');
-Route::get('loginOrRegister.editcomprador' ,'Auth\loginorregisterController@editarcomprador')->name('loginOrRegister.editar.comprador');
-Route::put('loginOrRegister.updatecomprador' ,'Auth\loginorregisterController@actualizarDatosComprador')->name('loginOrRegister.update.comprador');
-Route::put('loginOrRegister.updatecomprador.contraseña' ,'Auth\loginorregisterController@cambiarcontraseñaComprador')->name('loginOrRegister.cambiarcontraseñaComprador');
+Route::get('loginOrRegister.editcomprador' ,'Admin\Usuarios\UsuariosController@editarcomprador')->name('loginOrRegister.editar.comprador');
+Route::put('loginOrRegister.updatecomprador' ,'Admin\Usuarios\UsuariosController@actualizarDatosComprador')->name('loginOrRegister.update.comprador');
+Route::put('loginOrRegister.updatecomprador.contraseña' ,'Admin\Usuarios\UsuariosController@cambiarcontraseñaComprador')->name('loginOrRegister.cambiarcontraseñaComprador');
 
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");
@@ -136,8 +136,14 @@ Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 //SEGUIMIENTO DE PEDIDO
 Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")
 ->name("seguimientodepedido.index");
+
 Route::get("ajax/seguimientodepedido", "Publico\SeguimientopedidoController@seguimientodepedido")
 ->name("ajax.seguimientodepedido");
+Route::post("ajax/seguimientodepedido/store", "Publico\SeguimientopedidoController@store")
+->name("ajax.seguimientodepedido.store");
+
+// Route::post("ajax/pedidos/store", "Admin\PedidosAjaxController@store")
+// ->name("ajax.pedidos.store");
 
 
 
@@ -153,7 +159,7 @@ Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambi
 
 
 // Route::get('activarcuentaempresa/{cuentas}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
-Route::get('activarcuentaempresa','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
+Route::get('activarcuentaempresa','Publico\ActivarcuentaController@activarcuentatoken')->name('empresas.activarcuenta');
 // Route::get('activarcuentaempresa/{token}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');
 
 Route::get('vistaprevia','Admin\EmpresasController@vistaprevia')->name('vistaprevia');

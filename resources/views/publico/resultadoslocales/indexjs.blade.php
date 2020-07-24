@@ -12,7 +12,6 @@
         });
         
 
-        
         $("#filtro_orden_defecto").on("click", function() {
             obtenerLocalesResultados();
         });
@@ -22,12 +21,6 @@
         });
         
         
-
-
-        $(".btn_buscar_productos").on("click", function( e ) {
-            e.preventDefault();
-            obtenerLocalesResultados();
-        });
       
         //Obtenemos los productos en localess
         obtenerLocalesResultados( );
@@ -119,13 +112,11 @@
         }
 
 
-
         function contarLocalesAlFiltrar() {
             let contarProductos = $('.content_empresas').length;
             $(".nro_locales_buscados").html(contarProductos);
         }
 
-        
 
     });
 

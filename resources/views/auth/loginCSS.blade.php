@@ -29,9 +29,7 @@
         justify-content: center;
         border: none;
     }
-   .logo{
-       padding-bottom: 2em;
-   }  
+   
 
     .btn_submit {
         background-color: #ED3237 !important;
@@ -46,7 +44,7 @@
 
     .container_left {
         background-color: #F8F9FA;        
-        padding-top: 3em;     
+        padding-top: 2em;     
     }
     #tab-content{        
         padding-left: 1em;
@@ -56,7 +54,10 @@
         background-color: #22737E;
         text-align: center;
         padding-top: 3em;;
-        height: 100vh;
+        /* height: 100vh; */
+        margin: 0;
+        border-right: 1px solid #941317;
+        
     }
     .titulo{
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -64,8 +65,8 @@
       
     }
 
-    img{
-        width: 180px;
+    .logosapps{
+        width: 120px;
         height: 60px;
     }
     #apps{

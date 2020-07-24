@@ -37,7 +37,7 @@ class ProcesssendmailJob implements ShouldQueue
         
         try {
             Mail::to( $this->user->email )
-            ->cc("crisoper@gmail.com")
+            ->cc("gilbertofores@gmail.com")
             ->send( new  ActivarcuentaempresaMail( $this->user ) );
         } catch (\Exception $e) {
             return null;

@@ -26,7 +26,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha256-sfG8c9ILUB8EXQ5muswfjZsKICbRIJUG/kBogvvV5sY=" crossorigin="anonymous"></script>
 
 <!-- Select2 -->
-{{-- <script src="../../plugins/select2/js/select2.full.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="{{ asset('adminlte301/plugins/messeger/js/messenger-theme-flat.js') }}"></script>
 
@@ -34,20 +33,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
-{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> --}}
-
-
-{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> --}}
-
-
-
-<!-- DataTables -->
-<script src="{{ asset('plugins\datatables\jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('plugins\datatables-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('plugins\datatables-responsive\js\dataTables.responsive.min.js')}}"></script>
-{{-- <script src="{{ asset('plugins\datatables-responsive\js\responsive.bootstrap4.min.js')}}"></script> --}}
 
 <script>
     $.widget.bridge('uibutton', $.ui.button)

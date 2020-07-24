@@ -12,7 +12,7 @@ class PedidosentregadosAjaxController extends Controller
     public function index()
     {
         $pedidos = Pedido::orderBy("id", "desc")
-        ->whereHas('pedidoestado', function (){}, '=', 3)
+        ->whereHas('pedidoestado', function (){}, '>=', 3)
         ->with([
             'empresa',
             'cliente',
