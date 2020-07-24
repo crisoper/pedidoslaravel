@@ -121,10 +121,13 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="#">
+                                                <i class="fas fa-shopping-basket"></i> Mis pedidos
+                                            </a>
                                         @else
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
-                                            </a>    
+                                            </a>
                                         @endif
                                         
                                         <hr class="hr_options m-0">
