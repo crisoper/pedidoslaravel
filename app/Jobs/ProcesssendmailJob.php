@@ -34,7 +34,7 @@ class ProcesssendmailJob implements ShouldQueue
      */
     public function handle()
     {
-        
+       
         try {
             Mail::to( $this->user->email )
             ->cc("gilbertofores@gmail.com")

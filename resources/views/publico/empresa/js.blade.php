@@ -4,6 +4,17 @@
             $("#errorextension").fadeOut(1000);
         }, 5000);
        
+        $('#terminosycondiciones').on('change', function() {
+         if( $(this).prop('checked') ) {
+            
+           
+            $("#enviarFormRegistro").removeAttr("disabled");
+         }  else{
+            $("#enviarFormRegistro").attr('disabled','disabled');
+         }
+    });
+
+
       $("#camara").on("click", function(){
         $("#file").trigger('click');
         $("#errorextension").fadeOut();
@@ -48,9 +59,9 @@
             method: 'post',
             dataType: 'json',
             data: $("#formularioRegistroEmpresa").serialize(),
-            success: function( user ){
-               
-                window.location = '{{route("confirmarcuenta")}}';
+            success: function(){
+              
+                window.location = '{{route("confirmarcuentaRegistrada")}}';
                 $( enviarFormRegistro ).prop( "disabled", false ).find("span").hide();
             },
             error:function( jqXHR, textStatus, errorThrown  ){

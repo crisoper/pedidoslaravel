@@ -284,8 +284,8 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
-                    <h5><b>Acerca de Pedidos.com</b></h5>
-                    <p class="my-1"><a href="#">Nosotros</a></p>
+                    <h5><b>Acerca de PedidosApp</b></h5>
+                    <p class="my-1"><a href="{{ route('nosotros') }}">Nosotros</a></p>
                     <p class="my-1"><a href="#">Contáctanos</a></p>
                     <p class="my-1"><a href="#">Quienes somos</a></p>
                     <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
@@ -307,7 +307,7 @@
         <div class="row bg-dark copyright pt-2 pb-0">
             <div class="col-lg-12">
                 <p class="text-center p-0">
-                    Copyright &copy;2020 - Derechos Reservados | <b>Delivery.com</b>
+                    Copyright &copy;2020 - Derechos Reservados | pedidosapp.pe
                 </p>
             </div>
         </div>

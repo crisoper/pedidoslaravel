@@ -34,12 +34,12 @@ class SendcorreonuevousuarioJob implements ShouldQueue
     public function handle()
     {
         try {
-            Mail::to( $this->user->email )
-            ->cc("gilbertofores@gmail.com")
-            ->send( new  ActivarcuentaempresaMail( $this->user ) );
-        } catch (\Exception $e) {
-            Log::error('message', $e);
+            Mail::to($this->user->email)
+                ->cc("pedidosapp.pe@gmail.com")
+                ->send(new  ActivarcuentaempresaMail($this->user));
+        } catch (\Exception $e) {           
             return null;
         }
+        
     }
 }

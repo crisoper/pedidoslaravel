@@ -36,9 +36,9 @@
             </div>
             <div id="container_left" class="col-sm-12 col-md-7 ">
 
-                <form id="formularioRegistroEmpresa" action="{{route('nuevaEmpresa.store')}}" method="POST"
+                <form id="formularioRegistroEmpresa" action="{{route('nuevaempresa.store')}}" method="POST"
                     enctype="multipart/form-data">
-
+                    @csrf
                     @php
                     $usuario = Auth()->user()
                     @endphp
@@ -198,6 +198,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group row ml-4">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"
+                                id="terminosycondiciones" name="terminosycondiciones" value="">
+                            <i>Acepto haber leido todos los terminos y conciciones <a
+                                    href="#">Aqui...</a> </i>
+                            <span
+                                class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
+                        </label>
+
+                    </div>
 
                     <div class="form-row justify-content-center">
                         <div class="col-12">
@@ -208,10 +219,10 @@
 
                         <div class="col-12 d-flex flex-row justify-content-center">
 
-                            @csrf
+                           
 
                             <div class="form-group col-6">
-                                <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
+                                <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro" disabled>
                                     <span class="spinner-border spinner-border-sm spinnerr" role="status"
                                         aria-hidden="true" style="display: none"></span>
                                     Guardar

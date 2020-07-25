@@ -126,7 +126,7 @@
                         <div class="row ">
                             <div class="col-md-12">
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('register') }}">
+                                    <form id="Form_RegistroComprador" method="POST" action="{{ route('loginorregister.registercomprador') }}">
                                         @csrf
 
                                         <div class="form-group row">
@@ -204,14 +204,12 @@
                                                     class="form-control  @error('name') is-invalid @enderror"
                                                     name="direccion" value="{{ old('direccion') }}" required
                                                     autocomplete="direccion" autofocus placeholder="Dirección">
-
                                                 @error('direccion')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
-
                                             <div class="col-md-4">
                                                 <i class="fa fa-phone" aria-hidden="true"></i>
                                                 <input id="telefono" type="text"
@@ -260,8 +258,6 @@
                                                 </span>
                                                 @enderror
                                             </div>
-
-
                                             <div class="col-md-6">
                                                 {{-- <label for="password-confirm" class=" col-form-label text-md-right">{{ __('Confirmar contraseña') }}</label>
                                                 --}}
@@ -284,9 +280,13 @@
                                         </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12 ">
-                                                <input id="btn_submit" type="submit"
-                                                    class="btn btn-primary btn-block  btn_submit"
-                                                    value="{{ __('Registrar') }}" disabled>
+
+                                                <button id="btn_submit" class="btn btn-primary btn-block  btn_submit"
+                                                    value="" disabled>
+                                                    <span class="spinner-border spinner-border-sm spinnerr"
+                                                        role="status" aria-hidden="true" style="display: none"></span>
+                                                    {{ __('Registrar') }}
+                                                </button>
 
 
                                             </div>
@@ -306,5 +306,5 @@
 
 @endsection
 @section('scripts')
-    @include('auth.loginJS')
+@include('auth.loginJS')
 @endsection
