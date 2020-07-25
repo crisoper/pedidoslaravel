@@ -132,8 +132,9 @@ Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
 
 
 //REALIZAR PEDIDO CLIENTE
-Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
-->name("ajax.locales.pedidosstore");
+Route::post("ajax/realizarpedido", "Admin\Pedidos\RealizarpedidoController@store")
+->name("ajax.realizarpedido");
+
 
 //SEGUIMIENTO DE PEDIDO CLIENTE
 Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")

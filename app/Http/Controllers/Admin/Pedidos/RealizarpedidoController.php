@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Pedidos;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Pedidos\Pedido;
@@ -9,21 +9,21 @@ use App\Models\Admin\Pedidos\Pedidoestado;
 use App\Models\Publico\Cesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Mockery\Undefined;
 
-class PedidosController extends Controller
+class RealizarpedidoController extends Controller
 {
- 
-    public function pedidosstore(Request $request)
+    public function __construct()
     {
-        // return $request;
-        // return Session::get('storagecliente_id', 0);
+        $this->middleware('auth');
+    }
+
+    public function store(Request $request)
+    {
 
         if (Auth::check()) {
  
            
-            $pedido = new Pedido;
+            $pedido = new Pedido();
             $pedido->cliente_id = Auth::id();
             $pedido->created_by = Auth::id();
             $pedido->total = 0;
@@ -37,7 +37,7 @@ class PedidosController extends Controller
                 $cesta->estado = 1;
                 $cesta->save();
 
-                $pediddetalle = new Pedidodetalle;
+                $pediddetalle = new Pedidodetalle();
                 $pediddetalle->empresa_id = $cesta ? ($cesta->empresa_id) : 0;
                 $pediddetalle->producto_id = $cesta ? ($cesta->producto_id) : 0;
                 $pediddetalle->pedido_id = $pedido->id;
@@ -73,22 +73,4 @@ class PedidosController extends Controller
       
     }
 
-
-
-
-
-    public function index()
-    {
-        return view('admin.pedidos.index');
-    }
-
-    public function despachados()
-    {
-        return view('admin.pedidosdespachados.index');
-    }
-
-    public function entregados()
-    {
-        return view('admin.pedidosentregados.index');
-    }
 }

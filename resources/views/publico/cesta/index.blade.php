@@ -12,7 +12,7 @@
     </div>
 
     <div class="container mb-5">
-        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.locales.pedidosstore") }}" method="POST">
+        <form id="formNavDetallePedidoCesta" action="{{ route("ajax.realizarpedido") }}" method="POST">
             <div class="row m-0">
                 <div class="col-12 col-lg-8 pt-4 pl-3 pr-4 card_productos_cart">
                     <div class="row m-0" id="cuerpoRealizarPedidoCart">
