@@ -5,17 +5,17 @@
 $(document).ready(  function () {
         
     //Obtenemos los productos para el seguimiento de pedidos del cliente
-    obtener_productos_pedido_seguimiento( );
+    obtener_productos_pedido_cliente( );
 
-    function obtener_productos_pedido_seguimiento( ) {
+    function obtener_productos_pedido_cliente( ) {
 
         $.ajax({
-            url: "{{ route('ajax.seguimientodepedido') }}",
+            url: "{{ route('ajax.mispedidos') }}",
             method: 'GET',
             data: {},
             success: function ( data ) {
                 // console.log(data);
-                mostrar_productos_pedido_seguimiento( data )
+                mostrar_productos_pedido_cliente( data )
             },
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.responseJSON);
@@ -24,11 +24,11 @@ $(document).ready(  function () {
 
     }
 
-    function mostrar_productos_pedido_seguimiento( datos ) {
+    function mostrar_productos_pedido_cliente( datos ) {
 
         console.log(datos);
 
-        $("#cuerpo_seguimiento_pedidos").html();
+        $("#cuerpo_detalle_pedidos_cliente").html();
 
         let pedidosHTML = "";
 
@@ -58,15 +58,7 @@ $(document).ready(  function () {
                 
                 contadorpedidoestado++;
                 if (contadorpedidoestado == 1) {
-                    if (pedidosestado.estado == "pedido") {
-                        pedidoestadoHTML = pedidoestadoHTML + `
-                            <span class="span_estado_pedido">Pedido Sin Confirmar</span>
-                        `;
-                    }else if (pedidosestado.estado == "despachado") {
-                        pedidoestadoHTML = pedidoestadoHTML + `
-                            <span class="span_estado_pedido">Pedido Confirmado</span>
-                        `;
-                    }else if (pedidosestado.estado == "entregado") {
+                    if (pedidosestado.estado == "calificado") {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span class="span_estado_pedido">Pedido Recibido</span>
                         `;
@@ -81,6 +73,8 @@ $(document).ready(  function () {
                         <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                         <div class="col-12"><b>Dirección de entrega:</b> <span>${ pedidos.cliente_direccion }</span></div>
                         <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
+                        <div class="col-12"><b>Hora de Entrega:</b> <span>${ pedidos.pedidosestado.updated_at }</span></div>
+
                         <div class="col-12 estado_pedido_cliente"><b>Estado de pedido:</b> ${ pedidoestadoHTML } </div>
                         <div class="col-12 mt-2 mb-2">
                             <table class="table table-responsive-lg table-sm mb-2">
@@ -97,69 +91,19 @@ $(document).ready(  function () {
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-sm-7 col-md-8 text-right">
+                        <div class="col-12 text-right">
                             <h6 class="total_pedido_seguimiento">Total: <span class="pedido_total_span_seguimiento">S/ ${ pedidos.total }</span></h6>
-                        </div>
-                        <div class="col-sm-5 col-md-4 text-right btn_calificar_pedido">
-                            <p class="m-0">Calificar Pedido:</p>
-                            <span class="my-rating-9" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
-                            <span class="live-rating" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }"></span>
                         </div>
                     </div>
                 </div>
             `;
         });
 
-        $("#cuerpo_seguimiento_pedidos").html( pedidosHTML);
-        activar_desativar_btn_Calificar_pedido();
-        star_rating();
+        $("#cuerpo_detalle_pedidos_cliente").html( pedidosHTML);
     }
 
-    setInterval(obtener_productos_pedido_seguimiento, 10000);
+    setInterval(obtener_productos_pedido_cliente, 10000);
 
-
-    function star_rating() {
-        $(".my-rating-9").starRating({
-            initialRating: 0,
-            disableAfterRate: false,
-            callback: function(currentRating, $el){
-
-                let empresa_id = $($el).attr('idempresa');
-                let pedido_id = $($el).attr("idpedido");
-                let calificacion = currentRating;
-
-                agregar_estado_calificado( empresa_id, pedido_id, calificacion, "calificado" );
-            }
-        });
-    }
-
-    function agregar_estado_calificado( empresa_id, pedido_id, calificacion, estado, btnDespachar) {
-
-        $.ajax({
-            url: "{{ route('ajax.seguimientodepedido.store') }}",
-            method: 'POST',
-            data: {
-                empresa_id: empresa_id,
-                pedido_id: pedido_id,
-                estado: estado,
-                calificacion: calificacion,
-            },
-            success: function ( data ) {
-                obtener_productos_pedido_seguimiento( );
-            },
-            error: function ( jqXHR, textStatus, errorThrown ) {
-                console.log(jqXHR.responseJSON);
-            }
-        });
-    }
-
-
-    function activar_desativar_btn_Calificar_pedido() {
-        $('.btn_calificar_pedido').hide();
-        if ($('.span_estado_pedido').html() == 'Pedido Recibido') {
-            $('.btn_calificar_pedido').show();
-        }
-    }
 
 });
 

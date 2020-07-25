@@ -129,11 +129,11 @@ Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
 
 
 
-//REALIZAR PEDIDO
+//REALIZAR PEDIDO CLIENTE
 Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
 ->name("ajax.locales.pedidosstore");
 
-//SEGUIMIENTO DE PEDIDO
+//SEGUIMIENTO DE PEDIDO CLIENTE
 Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")
 ->name("seguimientodepedido.index");
 
@@ -142,8 +142,12 @@ Route::get("ajax/seguimientodepedido", "Publico\SeguimientopedidoController@segu
 Route::post("ajax/seguimientodepedido/store", "Publico\SeguimientopedidoController@store")
 ->name("ajax.seguimientodepedido.store");
 
-// Route::post("ajax/pedidos/store", "Admin\PedidosAjaxController@store")
-// ->name("ajax.pedidos.store");
+
+//DETALLE PEDIDOS CLIENTE
+Route::get("mispedidos", "Publico\SeguimientopedidoController@detallepedidos")
+->name("mispedidos");
+Route::get("ajax/mispedidos", "Publico\SeguimientopedidoController@detallepedidosajax")
+->name("ajax.mispedidos");
 
 
 

@@ -121,7 +121,7 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
-                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="#">
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="{{ route('mispedidos') }}">
                                                 <i class="fas fa-shopping-basket"></i> Mis pedidos
                                             </a>
                                         @else
