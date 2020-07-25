@@ -11,10 +11,10 @@ class Persona extends Model
     protected $dates =['deleted_at'];
 
     protected $fillable=[
+        'dni',
         'nombre',
         'paterno',
         'materno',
-        'dni',
         'direccion',
         'telefono',
         'correo',

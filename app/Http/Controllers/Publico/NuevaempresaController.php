@@ -102,7 +102,7 @@ class NuevaempresaController extends Controller
                 $user->assignRole($rol);
             }
 
-            $this->guard()->login($user);
+            // $this->guard()->login($user);
 
             //Enviamos correo para activar cuenta
             $this->enviarCorreoActivarCuentaEmpresa($user);
@@ -124,26 +124,7 @@ class NuevaempresaController extends Controller
         }
     }
 
-    public function activarcuentatoken(Request $request)
-    {
-
-        if ($request->has("tokenactivation")) {
-
-            $usuario = User::where("remember_token", $request->tokenactivation)->first();
-
-            if ($usuario) {
-                $usuario->email_verified_at = now();
-                $usuario->save();
-
-
-
-                return view('publico.empresa.cuentaactivada');
-            }
-        }
-
-        return "El token enviado no es valido";
-    }
-
+   
     protected function guard()
     {
         return Auth::guard();

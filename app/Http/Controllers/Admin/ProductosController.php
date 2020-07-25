@@ -61,12 +61,12 @@ class ProductosController extends Controller
             $productos = Producto::where('nombre', 'like', '%' . request()->buscar . '%')
                 ->where('empresa_id', $this->empresaId())
                 ->orderBy('id', 'desc')
-                ->paginate(10);
+                ->paginate(20);
             return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
         } else {
             $productos = Producto::orderBy('id', 'desc')
                 ->where('empresa_id', $this->empresaId())
-                ->paginate(10);
+                ->paginate(20);
 
 
             return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
@@ -95,6 +95,7 @@ class ProductosController extends Controller
     public function store(ProductosCreateRequest $request)
     {
 
+        return $request;
         $catedoria = Productocategoria::where('id', $request->categoriasId)->first();
         if ($catedoria != null || $catedoria != "") {
             $catedoriaid = $catedoria->id;

@@ -36,6 +36,8 @@ Auth::routes();
 Route::get("administracion/login", "Auth\}@showLoginForm")
 ->name("admin.login");
 Route::get('loginOrRegister/{flag}' ,'Auth\loginorregisterController@loginOrRegister')->name('loginOrRegister');
+Route::post('registercomprador' ,'Auth\loginorregisterController@createComprador')->name('loginorregister.registercomprador');
+Route::get('confirmarcuentaRegistrada' ,'Auth\loginorregisterController@confirmarcuentaRegistrada')->name('confirmarcuentaRegistrada');
 Route::get('registernewempresa' ,'Auth\loginorregisterController@registernewempresa')->name('registernewempresa');
 Route::get('loginOrRegister.editcomprador' ,'Admin\Usuarios\UsuariosController@editarcomprador')->name('loginOrRegister.editar.comprador');
 Route::put('loginOrRegister.updatecomprador' ,'Admin\Usuarios\UsuariosController@actualizarDatosComprador')->name('loginOrRegister.update.comprador');
@@ -155,7 +157,7 @@ Route::get('locales/{idempresa}', 'Publico\LocalesController@index')
 Route::post('nuevaempresa.store','Publico\NuevaempresaController@nuevaempresa')->name('nuevaempresa.store');
 
 Route::get('confirmarcuenta','Admin\EmpresasController@confirmarcuenta')->name('confirmarcuenta');
-Route::PUT('cambiaremailusuario.update/{userid}','Admin\EmpresasController@cambiaremailusuarios')->name('cambiaremailusuario.update');
+Route::PUT('cambiaremailusuario.update/{userid}','Auth\loginorregisterController@cambiaremailusuarios')->name('cambiaremailusuario.update');
 
 
 // Route::get('activarcuentaempresa/{cuentas}','Admin\EmpresasController@activarcuentatoken')->name('empresas.activarcuenta');

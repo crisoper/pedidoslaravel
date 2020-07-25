@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Empresas\EmpresaCreateRequest;
 use App\Models\Admin\Modelhasrole;
 use App\Models\Publico\Persona;
 use App\Providers\RouteServiceProvider;
-use Spatie\Permission\Models\Role as Rol;
+
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -89,50 +89,56 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-     
+    {     
         // return $usuario = User::create([
         //     'name' => $data['name'],
         //     'email' => $data['email'],
         //     'password' => Hash::make($data['password']),
+        // ]);   
+        // Persona::firstOrCreate(
+        //     [
+        //         'dni' => $data['dni'],
+        //         'correo'=> $data['email'],
+        //     ],
+        //     [
+        //         'nombre' => $data['nombres'],
+        //         'paterno' => $data['paterno'],
+        //         'materno'=> $data['materno'],
+        //         'direccion'=> $data['direccion'],
+        //         'telefono'=> $data['telefono'],               
+        //     ]
+        // );
+        
+        // $user = User::create([
+        //         'dni' => $data['dni'],
+        //         'name' => $data['nombres'].' '. $data['paterno'].' '.$data['materno'],
+        //         'email' => $data['email'],
+        //         'password' => Hash::make($data['password']),
+        //         'remember_token' => Hash::make( time() ),
+                
         // ]);
 
-   
-        Persona::firstOrCreate(
-            [
-                'dni' => $data['dni'],
-            ],
-            [
-                'nombre' => $data['nombres'],
-                'paterno' => $data['paterno'],
-                'materno'=> $data['materno'],
-                'direccion'=> $data['direccion'],
-                'telefono'=> $data['telefono'],
-                'correo'=> $data['email'],
-            ]
-        );
-        
-        $user = User::create([
-                'dni' => $data['dni'],
-                'name' => $data['nombres'].' '. $data['paterno'].' '.$data['materno'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'remember_token' => Hash::make( time() ),
-                'cuenta_activada' => '0',
-        ]);
-
-        //Asignamos el rol postulante por defecto
-        $roles = Rol::where("name", "like", "%Comprador")->get();
-        foreach( $roles as $rol ) {
-            $user->assignRole( $rol );
-        }
-
-        //Enviamos correo, mediane un job
-        SendcorreonuevousuarioJob::dispatchNow( $user );
-
-        return $user;
+        // //Asignamos el rol postulante por defecto
+        // $roles = Rol::where("name", "like", "%Comprador")->get();
+        // foreach( $roles as $rol ) {
+        //     $user->assignRole( $rol );
+        // }
+        // //Enviamos correo, mediane un job        
+        // SendcorreonuevousuarioJob::dispatch($user);
+        // return $user;
         
      
+    }
+
+    private function enviarCorreoActivarCuentaEmpresa($user)
+    {
+        try {
+            Mail::to($user->email)
+                ->cc("pedidosapp.pe@gmail.com")
+                ->send(new  ActivarcuentaempresaMail($user));
+        } catch (\Exception $e) {           
+            return null;
+        }
     }
 
     protected function registered(Request $request, $user)
