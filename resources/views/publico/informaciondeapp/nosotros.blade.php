@@ -15,9 +15,10 @@
     <div class="row">
         <div class="col-12">
            
-            Pedidosapp es una aplicación que nace ante la necesidad de la gente para hacer un requerimiento via digital, 
-            es asi que el cliente hará los pedidos y las empresas de comida tendrán que atender de una forma ordenanda y
-            personalizada.
+                Pedidosapp es una aplicación que nace ante la necesidad de las personas para hacer un requerimiento en línea, 
+            hoy en día el cliente hace los pedidos desde equipos digitales y la tendencia es incremetar cada vez más esta forma 
+            de atención por internet, las empresas además de atender las necesidades,
+            promocionan sus productos de una forma ordenanda y personalizada.
 
         </div>
     </div>

@@ -189,3 +189,9 @@ Route::get("getdistritos/porprovincia", "Publico\DistritosController@getdistrito
 //Acerca de pedidosapp
 Route::get("nosotros", "Publico\InformacionDeAplicacionController@nosotros")
 ->name("nosotros");
+
+Route::get("contactanos", "Publico\InformacionDeAplicacionController@contactanos")
+->name("contactanos");
+
+Route::get("quienessomos", "Publico\InformacionDeAplicacionController@quienessomos")
+->name("quienessomos");

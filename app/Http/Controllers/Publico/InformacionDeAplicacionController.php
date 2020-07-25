@@ -11,4 +11,16 @@ class InformacionDeAplicacionController extends Controller
     {
         return view("publico.informaciondeapp.nosotros");
     }
+
+    public function contactanos()
+    {
+            return view("publico.informaciondeapp.contactanos");
+    }
+
+    public function quienessomos()
+    {
+            return view("publico.informaciondeapp.quienessomos");
+    }
+
+
 }
