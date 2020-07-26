@@ -171,7 +171,7 @@
                 {{-- LOGOTIPO --}}
                 <div class="col-4 col-sm-3 col-md-2 col-lg-2 p-0" id="header__logo">
                     <a class="btn btn_logotipo_app pl-2 pr-1 py-1" href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
+                        <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="" width="120">
                     </a>
                 </div>
 

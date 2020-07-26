@@ -112,7 +112,8 @@
                                                 <figcaption class="text-danger"><small><i>Tamaño recomendado: 200 x
                                                     200px</i></small> </figcaption>
 
-                                            <input type="file" name="fotoproducto[]" maxlength="200" id="fotoproducto" multiple>                                 </div>
+                                            <input type="file" name="fotoproducto[]" id="fotoproducto" multiple>                                 </div>
+                                            <input type="file" name="fotos[]" id="fotos" multiple >
                                     </div>
                                     <div class="col-12 text-center mt-3">
                                         @csrf

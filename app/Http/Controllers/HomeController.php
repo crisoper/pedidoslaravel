@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
       
         $empresasUser = Auth()->user()->empresas;
-
+        
         $empresas = $empresasUser;
         $empresa = $empresasUser->first();
         
