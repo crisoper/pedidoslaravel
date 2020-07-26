@@ -43,6 +43,11 @@ Route::get('loginOrRegister.editcomprador' ,'Admin\Usuarios\UsuariosController@e
 Route::put('loginOrRegister.updatecomprador' ,'Admin\Usuarios\UsuariosController@actualizarDatosComprador')->name('loginOrRegister.update.comprador');
 Route::put('loginOrRegister.updatecomprador.contraseña' ,'Admin\Usuarios\UsuariosController@cambiarcontraseñaComprador')->name('loginOrRegister.cambiarcontraseñaComprador');
 
+
+Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
+
+
+
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");
 

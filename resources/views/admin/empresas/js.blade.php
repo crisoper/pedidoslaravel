@@ -3,13 +3,18 @@
         
 //EDITAMOS EMPRESA REGISTRADA
 
-    $("#enviarFormActualizandoDatos").on('click', function(){
+    $("#enviarFormActualizandoDatos").on('click', function(e){
+        e.preventDefault();
+
         $( enviarFormActualizandoDatos ).prop( "disabled", false ).find("span").show();
-        $.ajax({
-            url: "{{ route('empresas.update') }}",
-            method: "post",
-            dataType: "json",
-            data: $("#form_UpdateRegistroEmpresa").serialize(),
+        var formData = new FormData(document.getElementById("form_UpdateRegistroEmpresa"));            
+            $.ajax({            
+                url:  "{{ route('empresas.update')}}",
+                type: "post",
+                data: formData,
+                cache: false,
+                contentType: false,
+	            processData: false,
             success: function( data){
                 window.location= "{{ route('configuracionempresa.index') }}"
                 $( enviarFormActualizandoDatos ).prop( "disabled", false ).find("span").hide();
@@ -29,23 +34,6 @@
                     $( enviarFormActualizandoDatos ).prop( "disabled", false ).find("span").show();
                     $( ".spinnerr" ).hide(); 
 
-                    let dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo'];
-                    let errorInicio = jqXHR.responseJSON.error.data['inicio'];
-                    let errorFin = jqXHR.responseJSON.error.data['fin'];
-
-                    $.each( errorInicio , function( index, diasemana ) {
-                        $("#horainicio-"+ diasemana ).addClass("is-invalid");
-                        $("#errorInicio-"+ diasemana ).addClass("is-invalid");
-                       
-                    });
-                    
-                    $.each( errorFin , function( index, diasemana ) {
-                        $("#horafin-"+ diasemana ).addClass("is-invalid");
-                        $("#errorfin-"+ diasemana ).addClass("is-invalid");
-                       
-                    
-                    });
-
                     setTimeout( function() {
                         // $( enviarFormActualizandoDatos ).prop( "disabled", false ).find("span").hide();
                         $("#form_UpdateRegistroEmpresa" ).find(".is-invalid").removeClass("is-invalid");
@@ -56,6 +44,42 @@
         })
     });
 
+    $("#btn_postnewbusiness").on('click', function(event){
+    event.preventDefault();           
+            var formData = new FormData(document.getElementById("form_nuewbusiness"));            
+            $.ajax({            
+                url:  "{{ route('empresa.store')}}",
+                type: "post",
+                data: formData,
+                cache: false,
+                contentType: false,
+	            processData: false,
+            success: function(data){
+                window.location="{{route('empresas.index')}}";
+                $('#form_nuewbusiness')[0].reset();
+            },
+            error: function(jqXHR, textStatus, errorThrown ){
+                if( jqXHR.status == 404 ) {}                
+                else if( jqXHR.status == 422 ) 
+                {     
+                    $( btn_postnewbusiness ).prop( "disabled", false ).find("span").show(); 
+                    $( ".spinnerr" ).hide(); 
+                    GLOBARL_settearErroresEnCampos( jqXHR, "form_nuewbusiness");
+                }
+                else if( jqXHR.status == 429 ) 
+                {   
+                    $( btn_postnewbusiness ).prop( "disabled", false ).find("span").show();
+                    $( ".spinnerr" ).hide(); 
+
+                    setTimeout( function() {
+                        $("#form_nuewbusiness" ).find(".is-invalid").removeClass("is-invalid");
+                    }, 1000);
+                }  
+            }
+        });
+    });
+
+  
     $('#departamentoid').select2({
             placeholder: "Departamento"
     });

@@ -79,7 +79,7 @@
                         </a>
                     </div>
                     <div class=" col-md-3 col-sm-12">
-                        <a href="{{route('empresas.edit', $empresaid)}}">
+                        <a href="{{route('empresa.editar', $empresaid)}}">
                             <div class=" box">
                                 <div class="card-header text-center" >
                                     <img src="https://img.icons8.com/nolan/96/registry-editor.png"/>

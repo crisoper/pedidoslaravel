@@ -121,14 +121,14 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
+        
         $empresarubros = Empresarubro::get();
-        $empresa = Empresa::findOrFail($this->empresaId());
+        $empresa = Empresa::findOrFail($id);
         $departamentos = Departamento::get();
         $provincias = Provincia::get();
         $distritos = Distrito::get();
-        $empresarubros = Empresarubro::get();
         $diahorario = Horario::where('empresa_id', $empresa->id)->get();
         $diasenhorario = [];
         foreach ($diahorario as $dia) {
@@ -149,6 +149,22 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     // EmpresaUpdateRequest
+   
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            "rubro_id" => ["required"],
+            "ruc" => ["required", 'max:11', 'unique:empresas,ruc,'.request()->get("ruc")],
+            "razonsocial" => ["required"],
+            "direccion" => ["required"],
+            "telefono" => ["required"],
+            "departamentoid" => ["required"],
+            "provinciaid" => ["required"],
+            "distritoid" => ["required"],
+        ]);
+    }
+
+
     public function update(EmpresaUpdateRequest $request)
     {
 
@@ -163,28 +179,75 @@ class EmpresasController extends Controller
         $empresa->provincia_id = $request->provinciaid;
         $empresa->distrito_id = $request->distritoid;
         $empresa->updated_by = Auth()->user()->id;
+       
+
+        if ($request->hasFile('logo')) {
+            $nombreOriginalLogo = $request->file('logo');
+            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
+            // $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+            $nuevoNombreLogo = "img".'_'.uniqid();
+            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
+
+            $dimensionLogo = Image::make($nombreOriginalLogo->path());
+            $dimensionLogo->fit(300, 200, function ($constraint) {
+                $constraint->upsize();
+            });
+            $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
+            $empresa->logo = $nuevoNombreLogo;
+        }
         $empresa->save();
-
-        // if ($request->hasFile('logo')) {
-        //     $nombreOriginalLogo = $request->file('logo');
-        //     $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
-        //     $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
-        //     \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
-
-        //     $dimensionLogo = Image::make($nombreOriginalLogo->path());
-        //     $dimensionLogo->fit(300, 200, function ($constraint) {
-        //         $constraint->upsize();
-        //     });
-        //     $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
-        //     $empresa->logo = $nuevoNombreLogo;
-        // }
-
 
         return response()->json('success', 200);
     }
 
-    public function tuempresaUpdate(Request $request)
-    {
+    public function create(){
+        $empresarubros = Empresarubro::get();
+        $departamentos = Departamento::get();
+        $provincias = Provincia::get();
+        $distritos = Distrito::get();
+        return view('admin.empresas.create', compact('empresarubros', 'empresa','departamentos','provincias','distritos'));
+    }
+
+    public function store(Request $request){
+     
+       
+        $this->validator($request->all())->validate();
+        $empresa = new Empresa();
+        
+        $empresa->rubro_id = $request->rubro_id;
+        $empresa->ruc = $request->ruc;
+        $empresa->nombre = $request->razonsocial;
+        $empresa->telefono = $request->telefono;
+        $empresa->direccion = $request->direccion;
+        $empresa->nombrecomercial = $request->nombrecomercial;
+        $empresa->departamento_id = $request->departamentoid;
+        $empresa->provincia_id = $request->provinciaid;
+        $empresa->distrito_id = $request->distritoid;
+        $empresa->created_by = Auth()->user()->id;
+        
+
+         if ($request->hasFile('logo')) {
+            $nombreOriginalLogo = $request->file('logo');
+            $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
+            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+            \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
+
+            $dimensionLogo = Image::make($nombreOriginalLogo->path());
+            $dimensionLogo->fit(300, 200, function ($constraint) {
+                $constraint->upsize();
+            });
+            $dimensionLogo->save(storage_path('app/public/empresaslogos') . '/' . $nuevoNombreLogo);
+            $empresa->logo = $nuevoNombreLogo;
+        }
+        $empresa->save();
+        Userempresa::create([
+            'user_id' => Auth::id(),
+            'empresa_id' => $empresa->id,
+            'estado' => 1,
+        ]);
+
+        return response()->json('success', 200);
+        // return redirect()->route('empresas.index')->with('info', 'Información guardada satisfactoriamente');
     }
 
     /**

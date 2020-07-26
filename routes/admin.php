@@ -27,6 +27,8 @@ function () {
 
     //EMPRESAS
     Route::resource('empresas', 'Admin\EmpresasController');
+    Route::post('empresas.store', 'Admin\EmpresasController@store')->name('empresa.store');
+    Route::get('empresas.editar/{empresaid}', 'Admin\EmpresasController@editar')->name('empresa.editar');
     Route::post('empresas.update','Admin\EmpresasController@Update')->name('empresas.update');
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
