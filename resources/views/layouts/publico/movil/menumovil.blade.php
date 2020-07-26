@@ -46,7 +46,7 @@
 
         <div class="content_menumovil">
             <div class="logo_menumovil">
-                <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="{{asset('pedidos/image/pedidosapp.png')}}">
+                <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="{{asset('pedidos/image/pedidosapp.png')}}">
             </div>
 
             <div class="content_scroll_menumovil">
