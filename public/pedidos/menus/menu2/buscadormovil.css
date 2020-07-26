@@ -4,7 +4,7 @@
 
 /* BUSCADOR MOVIL */
 
-@media (min-width: 577px) {
+@media (min-width: 769px) {
     
     #search_movil {
         display: none;
@@ -17,10 +17,9 @@
 }
 .btn_open_search_movil {
     position: relative;
-    width: 100%;
+    width: 50px;
     height: 100%;
-    color: #17a2b8 !important;
-    background-color: #ffffff;
+    background-color: #dc3545;
     border: none;
     border-radius: 0;
   }
@@ -29,15 +28,14 @@
   }
   
   .btn_open_search_movil .icon_search_movil_menu {
-    width: 38px;
+    width: 40px;
     height: 35px;
     top: 8px;
-    left: 27.5%;
+    left: 0%;
     position: absolute;
-    border-radius: 50%;
-    border: 1px solid #17a2b8;
-    padding-top: 1px;
+    padding-top: 3px;
     z-index: 4;
+    color: #ffffff;
   }
   
   
@@ -134,7 +132,7 @@
     height: 72.5px;
     top: 0;
     right: -100%;
-    background-color: #ffffff;
+    background-color: #dc3545;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
     -webkit-transition-duration: 400ms;
     transition-duration: 400ms;
@@ -153,7 +151,7 @@
     font-size: 30px;
     text-align: center;
     border: 0;
-    background-color: #ffffff;
+    background-color: #dc3545;
     color: #777978;
 }
 

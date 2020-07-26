@@ -3,8 +3,8 @@
 .btn_filtrar_productos {
     width: auto !important;
     height: 40px;
-    color: #44484b !important;
-    background-color: #adb8c4;
+    color: #ffffff !important;
+    background-color: #6c757d;
     padding: 0px 10px !important;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@
     width: 100%;
     border: 0;
     border-radius: 0;
-    color: #3586bb;
+    color: #dc3545;
     text-align: left;
     font-weight: 700;
 }
@@ -92,7 +92,7 @@
     padding-top: 5px;
 }
 .cart_content_filtrar > .accordion .form-check-input {
-    color: #3586bb;
+    color: #dc3545;
 }
 
 
@@ -106,11 +106,11 @@
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     input[type="checkbox"],
     input[type="radio"] {
-        --active: #3586bb;
+        --active: #dc3545;
         --active-inner: #fff;
         --focus: 2px rgba(39, 94, 254, 0.3);
         --border: #9799a3;
-        --border-hover: #3586bb;
+        --border-hover: #dc3545;
         --background: #fff;
         --disabled: #f6f8ff;
         --disabled-inner: #e1e6f9;
