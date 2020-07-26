@@ -26,7 +26,7 @@
 
 
     <!-- MENU WEB 1 -->
-    <header class="container-fluid header__top mx-0 px-0 bg-dark">
+    <header class="container-fluid header__top mx-0 px-0">
         <div class="container">
             <div class="row m-0">
                 {{-- SERVICIO AL CLIENTE --}}

@@ -58,7 +58,7 @@
 
             
             favoritosHTML = favoritosHTML + `
-                <div class="col-12 mb-3">
+                <div class="col-12 mb-4">
                     <div class="card border_producto_favoritos_menu abrir_modal_productos" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ deseos.producto.id }">
                         <div class="card-header p-0">
                             <p class="nombre_empresa_favoritos_menu text-truncate text-center my-0">

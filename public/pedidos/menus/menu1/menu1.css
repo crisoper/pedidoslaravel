@@ -6,7 +6,8 @@
 .header__top {
     width: 100% !important;
 	margin-top: -1px;
-	background: #f5f5f5;
+	background: #343a40;
+	/* background: #ffffff; */
     height: 30px;
     z-index: 10;
 }
@@ -19,7 +20,8 @@
 
 .header_top_options button {
     width: 100%;
-    color: #ffffff;
+    color: #fceeee;
+    /* color: #343a40; */
     padding: 3px 0px !important;
     border-radius: 0;
     border: 0;
@@ -28,7 +30,7 @@
 .header_top_options button:focus {
     outline: none;
     box-shadow: none;
-    color: #3eb291;
+    color: #dc3545;
 }
 .header_top_options .dropdown_options {
     margin-top: -1px;
@@ -49,7 +51,7 @@
 }
 .header_top_options .dropdown_options .btn_top_client:hover,
 .header_top_options .dropdown_options .btn_top_client:focus {
-    color: #3eb291;
+    color: #dc3545;
 }
 .header_top_options .dropdown_options .number_phone {
     color: #f5f5f5;
@@ -74,7 +76,7 @@
 }
 .header_top_options .dropdown_options .btn_perfil_cuenta_publica:hover,
 .header_top_options .dropdown_options .btn_perfil_cuenta_publica:focus {
-    color: #3eb291;
+    color: #dc3545;
     background-color: #343a40;
     box-shadow: none;
 }
@@ -86,7 +88,7 @@
 }
 .header_top_options .dropdown_options .btn_perfil_cuenta_publica_pedidos:hover,
 .header_top_options .dropdown_options .btn_perfil_cuenta_publica_pedidos:focus {
-    color: #3eb291;
+    color: #dc3545;
     background-color: #343a40;
     box-shadow: none;
 }
@@ -144,7 +146,7 @@
 
 .btn_login {
     color: #ffffff;
-    background: #3eb291;
+    background: #dc3545;
     padding: 8px 10px;
     border-radius: 0px;
     text-transform: uppercase;
@@ -171,7 +173,7 @@
 .btn_register:hover,
 .btn_register:focus {
     color: #ffffff !important;
-    background: #3eb291 !important;
+    background: #dc3545 !important;
 }
 
 #header_top_client {
