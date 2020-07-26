@@ -26,7 +26,7 @@
 
 
     <!-- MENU WEB 1 -->
-    <header class="container-fluid header__top mx-0 px-0 bg-dark">
+    <header class="container-fluid header__top mx-0 px-0">
         <div class="container">
             <div class="row m-0">
                 {{-- SERVICIO AL CLIENTE --}}
@@ -121,7 +121,7 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
-                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="#">
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="{{ route('mispedidos') }}">
                                                 <i class="fas fa-shopping-basket"></i> Mis pedidos
                                             </a>
                                         @else
@@ -171,7 +171,7 @@
                 {{-- LOGOTIPO --}}
                 <div class="col-4 col-sm-2 col-md-2 col-lg-2 px-0" id="header__logo">
                     <a class="btn btn_logotipo_app pl-2 pr-1 py-1" href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
+                        <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="" width="120">
                     </a>
                 </div>
 

@@ -155,31 +155,30 @@ function() {
     Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
 
 
-    // PEDIDOS
-    Route::get('pedidos', 'Admin\PedidosController@index')->name("pedidos.index");
 
-    Route::get("ajax/pedidos/index", "Admin\PedidosAjaxController@index")
-    ->name("ajax.pedidos.index");
-    Route::post("ajax/pedidos/store", "Admin\PedidosAjaxController@store")
-    ->name("ajax.pedidos.store");
 
-    
-    // PEDIDOS DESPACHADOS
-    Route::get('pedidos/despachados', 'Admin\PedidosController@despachados')->name("pedidos.despachados");
 
-    Route::get("ajax/pedidos/despachados/index", "Admin\PedidosdespachadosAjaxController@index")
-    ->name("ajax.pedidos.despachados.index");
-    Route::post("ajax/pedidos/despachados/store", "Admin\PedidosdespachadosAjaxController@store")
-    ->name("ajax.pedidos.despachados.store");
-    
 
-    // PEDIDOS DESPACHADOS
-    Route::get('pedidos/entregados', 'Admin\PedidosController@entregados')->name("pedidos.entregados");
+    // PEDIDOS INGRESADOS
+    Route::get('pedidos/ingresados', 'Admin\Pedidos\PedidosIngresadosController@index')->name("pedidos.ingresados");
+    Route::get("ajax/pedidosingresados/index", "Admin\Pedidos\PedidosIngresadosController@ingresados")->name("ajax.pedidosingresados.index");
+    Route::post("ajax/pedidosingresados/store", "Admin\Pedidos\PedidosIngresadosController@store")->name("ajax.pedidosingresados.store");
 
-    Route::get("ajax/pedidos/entregados/index", "Admin\PedidosentregadosAjaxController@index")
-    ->name("ajax.pedidos.entregados.index");
-    Route::post("ajax/pedidos/entregados/store", "Admin\PedidosentregadosAjaxController@store")
-    ->name("ajax.pedidos.entregados.store");
+
+    // PEDIDOS POR ENTREGAR
+    Route::get('pedidos/porentregar', 'Admin\Pedidos\PedidosPorentregarController@index')->name("pedidos.porentregar");
+    Route::get("ajax/pedidosporentregar/index", "Admin\Pedidos\PedidosPorentregarController@porentregar")->name("ajax.pedidosporentregar.index");
+    Route::post("ajax/pedidosporentregar/store", "Admin\Pedidos\PedidosPorentregarController@store")->name("ajax.pedidosporentregar.store");
+
+
+    // PEDIDOS ENTREGADOS
+    Route::get('pedidos/entregados', 'Admin\Pedidos\PedidosEntregadosController@index')->name("pedidos.entregados");
+    Route::get("ajax/pedidosentregados/index", "Admin\Pedidos\PedidosEntregadosController@entregados")->name("ajax.pedidosentregados.index");
+
+
+    // PEDIDOS ENTREGADOS
+    Route::get('pedidos/calificados', 'Admin\Pedidos\PedidosCalificadosController@index')->name("pedidos.calificados");
+    Route::get("ajax/pedidoscalificados/index", "Admin\Pedidos\PedidosCalificadosController@calificados")->name("ajax.pedidoscalificados.index");
 
     
 });

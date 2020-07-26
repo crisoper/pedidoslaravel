@@ -4,16 +4,16 @@
     $(document).ready(  function () {
         
         //Obtenemos los productos en pedidoss
-        obtenerPedidosDespachados( );
+        obtener_pedidos_entregados( );
     
-        function obtenerPedidosDespachados( ) {
+        function obtener_pedidos_entregados( ) {
     
             $.ajax({
-                url: "{{ route('ajax.pedidos.despachados.index') }}",
+                url: "{{ route('ajax.pedidosentregados.index') }}",
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarPedidosDespachados( data )
+                    mostrar_pedidos_entregados( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -22,11 +22,11 @@
     
         }
     
-        function mostrarPedidosDespachados( datos ) {
+        function mostrar_pedidos_entregados( datos ) {
 
-            console.log(datos);
+            // console.log(datos);
 
-            $("#cuerpoPedidosDespachados").html();
+            $("#cuerpo_pedidos_entregados").html();
     
             let pedidosHTML = "";
     
@@ -49,19 +49,19 @@
                         </tr>
                     `;
                 })
-
-
+                
                 let pedidoestadoHTML = '';
 
                 $.each( pedidos.estado, function( key, pedidosestado ) {
 
-                    if (pedidosestado.estado == "despachado") {
+                    if (pedidosestado.estado == "entregado") {
                         pedidoestadoHTML = pedidoestadoHTML + `
-                            <span>${ pedidosestado.repartidor }</span>
+                            <div class="col-12"><b>Hora de entrega:</b> <span>${ pedidosestado.created_at }</span></div>
+                            <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> <span>${ pedidosestado.repartidor }</span></div>
                         `;
                     }
                 })
-                
+
                 pedidosHTML = pedidosHTML + `
                     <div class="col-12 mb-4 content_pedidos_x_confirmar">
                         <div class="row pt-2 pb-3 m-0">
@@ -69,7 +69,8 @@
                             <div class="col-12"><b>Cliente:</b> <span>${ pedidos.cliente }</span></div>
                             <div class="col-12"><b>Dirección:</b> <span>${ pedidos.cliente_direccion }</span></div>
                             <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
-                            <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> ${ pedidoestadoHTML } </div>
+                            ${ pedidoestadoHTML }
+
                             <div class="col-12 mt-2 mb-2">
                                 <table class="table table-responsive-lg table-sm mb-2">
                                     <thead>
@@ -86,52 +87,20 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-sm-7 col-md-8 text-right">
+                            <div class="col-sm-12 col-md-12 text-right">
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
-                            </div>
-                            <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button>
                             </div>
                         </div>
                     </div>
                 `;
             });
     
-            $("#cuerpoPedidosDespachados").html( pedidosHTML);
+            $("#cuerpo_pedidos_entregados").html( pedidosHTML);
         }
 
-        // setInterval(obtenerPedidosDespachados, 3000);
+        setInterval(obtener_pedidos_entregados, 10000);
 
 
-
-                
-        $("#cuerpoPedidosDespachados").on("click", ".btn_x_confirmar", function() {
-            let btnDespachar = $( this );
-            let empresa_id = $(btnDespachar).attr('idempresa');
-            let pedido_id = $( btnDespachar).attr("idpedido");
-
-            agregarProducto_Canasta( empresa_id, pedido_id, "entregado" );
-        })
-
-        function agregarProducto_Canasta( empresa_id, pedido_id, estado, btnDespachar) {
-
-            $.ajax({
-                url: "{{ route('ajax.pedidos.despachados.store') }}",
-                method: 'POST',
-                data: {
-                    empresa_id: empresa_id,
-                    pedido_id: pedido_id,
-                    estado: estado,
-                },
-                success: function ( data ) {
-                    obtenerPedidosDespachados( );
-                },
-                error: function ( jqXHR, textStatus, errorThrown ) {
-                    console.log(jqXHR.responseJSON);
-                }
-            });
-
-        }
     });
 
 

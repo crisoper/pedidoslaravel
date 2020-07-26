@@ -4,16 +4,16 @@
     $(document).ready(  function () {
         
         //Obtenemos los productos en pedidoss
-        obtenerPedidosEntregados( );
+        obtener_pedidos_por_entregar( );
     
-        function obtenerPedidosEntregados( ) {
+        function obtener_pedidos_por_entregar( ) {
     
             $.ajax({
-                url: "{{ route('ajax.pedidos.entregados.index') }}",
+                url: "{{ route('ajax.pedidosporentregar.index') }}",
                 method: 'GET',
                 data: {},
                 success: function ( data ) {
-                    mostrarPedidosEntregados( data )
+                    mostrar_pedidos_por_entregar( data )
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -22,11 +22,11 @@
     
         }
     
-        function mostrarPedidosEntregados( datos ) {
+        function mostrar_pedidos_por_entregar( datos ) {
 
             console.log(datos);
 
-            $("#cuerpoPedidosEntregados").html();
+            $("#cuerpo_pedidos_por_entregar").html();
     
             let pedidosHTML = "";
     
@@ -49,18 +49,19 @@
                         </tr>
                     `;
                 })
-                
+
+
                 let pedidoestadoHTML = '';
 
                 $.each( pedidos.estado, function( key, pedidosestado ) {
 
-                    if (pedidosestado.estado == "entregado") {
+                    if (pedidosestado.estado == "porentregar") {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span>${ pedidosestado.repartidor }</span>
                         `;
                     }
                 })
-
+                
                 pedidosHTML = pedidosHTML + `
                     <div class="col-12 mb-4 content_pedidos_x_confirmar">
                         <div class="row pt-2 pb-3 m-0">
@@ -85,34 +86,37 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-sm-12 col-md-12 text-right">
+                            <div class="col-sm-7 col-md-8 text-right">
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
+                            </div>
+                            <div class="col-sm-5 col-md-4 text-right">
+                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button>
                             </div>
                         </div>
                     </div>
                 `;
             });
     
-            $("#cuerpoPedidosEntregados").html( pedidosHTML);
+            $("#cuerpo_pedidos_por_entregar").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidosEntregados, 3000);
+        setInterval(obtener_pedidos_por_entregar, 10000);
 
 
 
                 
-        $("#cuerpoPedidosEntregados").on("click", ".btn_x_confirmar", function() {
+        $("#cuerpo_pedidos_por_entregar").on("click", ".btn_x_confirmar", function() {
             let btnDespachar = $( this );
             let empresa_id = $(btnDespachar).attr('idempresa');
             let pedido_id = $( btnDespachar).attr("idpedido");
 
-            agregarProducto_Canasta( empresa_id, pedido_id, "entregado" );
+            confirmar_pedido_entregado( empresa_id, pedido_id, "entregado" );
         })
 
-        function agregarProducto_Canasta( empresa_id, pedido_id, estado, btnDespachar) {
+        function confirmar_pedido_entregado( empresa_id, pedido_id, estado, btnDespachar) {
 
             $.ajax({
-                url: "{{ route('ajax.pedidos.entregados.store') }}",
+                url: "{{ route('ajax.pedidosporentregar.store') }}",
                 method: 'POST',
                 data: {
                     empresa_id: empresa_id,
@@ -120,7 +124,7 @@
                     estado: estado,
                 },
                 success: function ( data ) {
-                    obtenerPedidosEntregados( );
+                    obtener_pedidos_por_entregar( );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

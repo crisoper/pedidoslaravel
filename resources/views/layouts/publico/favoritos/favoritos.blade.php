@@ -2,14 +2,18 @@
     {{-- FAVORITOS --}}
     <div class="content_modal"></div>
     <div class="sideban_modal_right">
-        <button class="p-0" id="close_sidebar">
-            <i class="fas fa-times"></i>
-        </button>
 
         <div class="cart_content">
             <div class="content_detalle_favoritos_menu">
-                <div class="col-12 content_ir_a_favoritos">
-                    <p class="pt-2 text-center">Lista de productos seleccionados como Favoritos</p>
+                <div class="row m-0 content_ir_a_favoritos">
+                    <div class="col-2 p-0">
+                        <button class="p-0" id="close_sidebar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-10 p-0">
+                        <p class="text-center">Lista de productos seleccionados como Favoritos</p>
+                    </div>
                 </div>
             </div>
             

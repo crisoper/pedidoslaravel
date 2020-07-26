@@ -4,7 +4,7 @@
 
 
     {{-- RESTAURANTES RECOMENDADOS --}}
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row">
             <div class="col-12 mb-5 m-0 p-0 slickCustomEmpresas">
                 <div class="m-0 p-0 slickempresas" id="empresasRecomendadas">
@@ -14,20 +14,15 @@
                     <img src="{{asset('pedidos/image/banners/bannerempresa4.jpg')}}" alt="">
                 </div>
             </div>
-            <div class="col-12 mb-3">
+            {{-- <div class="col-12 mb-3">
                 <div class="row text-center">
                     <div class="col-12 col-sm-6">
                         <p class="mt-0">
-                            <i class="fas fa-check-circle"></i> Pedidos directos a restaurante
-                        </p>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <p class="mt-0">
-                            <i class="fas fa-motorcycle"></i> Seguimiento de delivery
+                            <i class="fas fa-motorcycle"></i> Seguimiento de delivery en todo moment0
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

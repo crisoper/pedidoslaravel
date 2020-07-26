@@ -33,9 +33,16 @@
 {{-- FILTRAR PRODUCTOS --}}
 <div class="content_modal_filtrar"></div>
 <div class="sideban_modal_filtrar_right">
-    <button class="p-0" id="close_sidebar_filtrar">
-        <i class="fas fa-times"></i>
-    </button>
+    <div class="row m-0 content_info_filtrar_productos">
+        <div class="col-2 p-0">
+            <button class="p-0" id="close_sidebar_filtrar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="col-10 p-0">
+            <p class="text-center mt-2 mb-0">Ordenar o filtrar productos</p>
+        </div>
+    </div>
 
     <div class="cart_content_filtrar">
         <div class="accordion" id="accordionExample">

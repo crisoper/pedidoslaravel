@@ -64,4 +64,39 @@ class SeguimientopedidoController extends Controller
         return response()->json(['success' => "Operacion realizada con exito"], 200);
     }
 
+
+
+
+
+    public function detallepedidos()
+    {
+        return view("publico.seguimientopedido.detallepedidos", compact('pedidos'));
+    }
+
+
+    public function detallepedidosajax()
+    {
+        $pedidos = Pedido::orderBy("id", "desc")
+        ->where('cliente_id', '=', auth()->user()->id)
+        ->whereHas('pedidoestado', function (){}, '=', 3)
+        ->orWhereHas('pedidoestado', function (){}, '=', 4)
+        ->with([
+            'empresa',
+            'cliente',
+            'pedidodetalle',
+            'pedidoestado'=> function ($query){
+                $query->orderBy("id", "desc");
+            }
+        ])
+        ->get();
+
+        return PedidoResource::collection( $pedidos );
+    }
+
+
+
+
+
+
+
 }

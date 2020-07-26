@@ -62,7 +62,7 @@ $(document).ready(  function () {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span class="span_estado_pedido">Pedido Sin Confirmar</span>
                         `;
-                    }else if (pedidosestado.estado == "despachado") {
+                    }else if (pedidosestado.estado == "porentregar") {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span class="span_estado_pedido">Pedido Confirmado</span>
                         `;
@@ -115,7 +115,7 @@ $(document).ready(  function () {
         star_rating();
     }
 
-    setInterval(obtener_productos_pedido_seguimiento, 3000);
+    setInterval(obtener_productos_pedido_seguimiento, 10000);
 
 
     function star_rating() {
