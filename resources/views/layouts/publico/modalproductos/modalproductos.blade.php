@@ -5,12 +5,14 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light row m-0 py-2">
-                <div class="col-12 mx-auto">
+                <div class="col-11 p-0 mx-auto">
                     <p class="text-center mb-0" id="nombre_empresa_modal"> </p>
                 </div>
-                <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="col-1 p-0">
+                    <button type="button" class="close_modal_inicio" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-body row m-0">
                 <div class="col-12 col-lg-6 p-0">

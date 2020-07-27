@@ -11,8 +11,10 @@
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                    <div class="col-10 p-0">
-                        <a class="btn btn_ir_a_pedido" href="{{route('cart.index')}}" class="py-1">Realizar Pedido</a>
+                    <div class="col-9 p-0 pt-2">
+                        <a class="btn btn_ir_a_pedido" href="{{route('cart.index')}}">
+                            Realizar Pedido
+                        </a>
                     </div>
                 </div>
                 <div class="row m-0 content_info_cesta_menu">

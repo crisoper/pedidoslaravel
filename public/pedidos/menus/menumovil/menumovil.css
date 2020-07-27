@@ -44,8 +44,8 @@
     font-size: 30px;
     text-align: center;
     border: 0;
-    background-color: #ffffff;
-    /* color: #343a40; */
+    background-color: transparent;
+    color: #ffffff !important;
 }
 
 .sidebar_modal_menumovil_left .content_menumovil {
@@ -58,9 +58,10 @@
 .logo_menumovil {
     width: 100%;
     height: 50px;
-    background-color: #ffffff;
+    background-color: #dc3545;
     text-align: center;
     border-bottom: 1px solid #7d838a;
+    box-shadow: 0 0 5px #333;
 }
 .logo_menumovil img {
     width: auto;
@@ -99,12 +100,12 @@
     border-radius: 0;
 }
 .btn_serviciocliente_menumovil:focus {
-    color: #3eb291;
+    color: #dc3545;
     box-shadow: none;
 }
 .dropdown_serviciocliente {
     width: auto;
-    margin-top: -0.5px;
+    margin-top: 0px;
     border-radius: 0px 0px 5px 5px;
 }
 .dropdown_serviciocliente a {
@@ -144,12 +145,12 @@
     border-radius: 0;
 }
 .btn_apps_menumovil:focus {
-    color: #3eb291;
+    color: #dc3545;
     box-shadow: none;
 }
 .dropdown_apps_movil {
     width: auto;
-    margin-top: -0.5px;
+    margin-top: 0px;
     border-radius: 0px 0px 5px 5px;
 }
 .dropdown_apps_movil a {
