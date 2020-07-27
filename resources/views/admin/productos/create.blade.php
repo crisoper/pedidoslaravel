@@ -103,7 +103,7 @@
 
                             <div class="col-12 col-lg-5 mx-auto" id="products_border">
                                 <div class="form-row">
-                                    <div class="form-group col-12 col-md-11 mb-3 mx-auto d-flex flex-column">
+                                    {{-- <div class="form-group col-12 col-md-11 mb-3 mx-auto d-flex flex-column">
                                         <div class="d-flex flex-column">
 
 
@@ -113,8 +113,23 @@
                                                     200px</i></small> </figcaption>
 
                                             <input type="file" name="fotoproducto[]" id="fotoproducto" multiple>                                 </div>
-                                            <input type="file" name="fotos[]" id="fotos" multiple >
-                                    </div>
+                                            
+                                    </div> --}}
+                                     <div class="form-row">
+                                            <div class="form-group col-12">
+                                                <div class="cajaInputAgregarLogo text-center">
+                                                    <label for="logo">
+                                                        <div class="cajaNombreLogo"   name="cargarfoto" id="cargarfoto"  data-text="">Seleccionar
+                                                            Logo
+                                                        </div>
+                                                    </label>
+                                                    <input type="file" name="fotoproducto[]" id="fotoproducto" data-initial-preview="#"
+                                                        accept="image/*">
+                                                    </div>
+                                                 
+                                                <span class="text-danger">{{ $errors->first('logo') }}</span>
+                                            </div>
+                                        </div>
                                     <div class="col-12 text-center mt-3">
                                         @csrf
                                         <button type="submit" class="btn btn-primary">Guardar</button>

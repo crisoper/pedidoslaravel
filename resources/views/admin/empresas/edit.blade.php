@@ -90,7 +90,7 @@
 
                                             </div>
                                             <div class="form-group col-md-4 col-sm-12">
-                                                <label for="provinciaid">Departamento</label>
+                                                <label for="provinciaid">Provincia</label>
                                                 <select name="provinciaid" id="provinciaid" class="form-control select2"
                                                     autofocus>
                                                     <option value="">Provincia</option>
@@ -106,7 +106,7 @@
                                                 <span class="text-danger">{{ $errors->first('provinciaid') }}</span>
                                             </div>
                                             <div class="form-group col-md-4 col-sm-12">
-                                                <label for="distritoid">Departamento</label>
+                                                <label for="distritoid">Distrito</label>
                                                 <select name="distritoid" id="distritoid" class="form-control "
                                                     autofocus>
                                                     <option value="">Distrito</option>

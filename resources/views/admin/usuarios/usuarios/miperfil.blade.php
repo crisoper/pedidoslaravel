@@ -14,7 +14,7 @@
         <div class="col-sm-10 col-md-8 mx-auto">
             <div class="row text-center">
                <div class="col-12">
-                <h3>Configuración de cuenta</h3>
+                <h3>Mi cuenta</h3>
                </div>
             </div>
             <nav>
@@ -60,10 +60,40 @@
                             <div class="form-group col-xs-12 col-sm-6">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
-                                        <strong>Correo</strong>
+                                        <strong>Usuario</strong>
                                     </div>
                                     <div class="col-xs-12 col-sm-12">
                                         {{ auth()->user()->email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>DNI</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $persona->dni }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>Teléfono</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $persona->telefono }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>Dirección</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $persona->direccion }}
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +129,7 @@
                             <div class="form-group col-xs-12 col-sm-12">
                                 <a class="text-danger pl-0" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </a>
@@ -109,13 +139,13 @@
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     {{-- <form action="{{ route('loginOrRegister.update.comprador')}}" method="POST"> --}}
-                    <form action="{{ route('actualizar.datos.administrador')}}" method="POST">
+                    <form action="{{ route('actualizar.datos.perfil')}}" method="POST">
                         @csrf
                         {!! method_field('PUT') !!}
                         <div class="form-row">
                             <div class="form-group col-xs-12 col-sm-12">
                                 <label for="nombre">Nombre</label>
-                                <input type="hidden" name="personaid" value="{{ $persona->id }}">
+                                <input type="hidden" name="usuarioid" value="{{ Auth()->user()->id }}">
                                 <input autofocus type="text" name="nombre" id="nombre" placeholder="Nombre"
                                     value="{{ $persona->nombre }}" class="form-control">
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
@@ -262,8 +292,7 @@
                     contentType: false,
                     processData: false,                    
                     success:function( data ){
-                      console.log( data );
-                        
+                                              
                         $('.logoPerfilForm').html(' <img width="100px" height="100px" src="{{ asset( Storage::disk("usuarios")->url("usuarios/'+data.imagen+'") )  }}"  alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">');
                         // $('.logoPerfilForm').attr('src', 'data:image/png;base64,'+ data.imagen );
                         MostrarNotificaciones( "Operacion realizada con exito", 'success' );

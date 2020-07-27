@@ -20,7 +20,7 @@ use App\Models\Publico\Persona;
 use Spatie\Permission\Models\Role as Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;    
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
@@ -107,6 +107,7 @@ class UsuariosController extends Controller
             [
                 'persona_id' => $persona->id,
                 'name' => $request->nombre . ' ' . $request->paterno . ' ' . $request->materno,
+                'dni' => $request->dni,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ],
@@ -121,6 +122,14 @@ class UsuariosController extends Controller
             'empresa_id' => $this->empresaId(),
             'estado' => 1,
         ]);
+
+        //Asignamos el rol postulante por defecto
+        if (auth()->user()->hasRole('SuperAdministrador')) {
+            $roles = Rol::where("name", "like", "%Repartidor")->get();
+            foreach ($roles as $rol) {
+                $usuario->assignRole($rol);
+            }
+        }
 
         return redirect()->route('usuarios.index')->with('info', 'Registro creado');
     }
@@ -144,8 +153,9 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        $usuario = User::findOrFail(Auth::id());
-        $persona = Persona::where( 'dni' , $usuario->dni)->first();
+        $usuario = User::findOrFail($id);
+
+        $persona = Persona::where('dni', $usuario->dni)->first();
         return view('admin.usuarios.usuarios.edit', compact('usuario', 'persona'));
     }
 
@@ -164,8 +174,9 @@ class UsuariosController extends Controller
      */
     public function update(UsuarioUpdateRequest $request)
     {
-        $usuario = User::findOrFail(Auth::id());
-
+       
+        $usuario = User::findOrFail($request->usuarioid);
+       
         $persona = Persona::where('dni', $usuario->dni)->first();
         $persona->nombre = $request->nombre;
         $persona->paterno = $request->paterno;
@@ -186,8 +197,14 @@ class UsuariosController extends Controller
         // }
 
         $usuario->save();
-        // return redirect()->route('usuarios.index')->with('info', 'Registro actualizado');
-        return redirect()->back()->with('info', 'Registro actualizado');
+       
+        if (auth()->user()->hasRole('web_Repartidor')) {
+            return redirect()->back()->with('info', 'Registro actualizado');
+        } elseif(auth()->user()->hasRole('web_Administrador empresa')){
+            return redirect()->back()->with('info', 'Registro actualizado');
+        }else{
+            return redirect()->route('usuarios.index')->with('info', 'Registro actualizado');
+        }
     }
 
     /**
@@ -246,8 +263,8 @@ class UsuariosController extends Controller
 
     public function miperfil()
     {
-        $persona = Persona::where( 'dni', Auth()->user()->dni )->first();
-       
+        $persona = Persona::where('dni', Auth()->user()->dni)->first();
+
         return view('admin.usuarios.usuarios.miperfil', compact('persona'));
     }
 
@@ -261,9 +278,9 @@ class UsuariosController extends Controller
             $this->enviarCorreoCambioClave($usuario, $request->input('password'));
             $usuario->save();
             return redirect()->back()->with('info', 'Contraseña  actualizada');
-        }else{
+        } else {
             // abort(404);
-            return redirect()->back()->with('error','Se requiere una contraseña');
+            return redirect()->back()->with('error', 'Se requiere una contraseña');
         }
 
 
@@ -277,7 +294,7 @@ class UsuariosController extends Controller
     }
 
     // public function cambiarClaveAdministrador( UserChangePasswordRequest $request  ){
-       
+
     //     $usuario = User::findOrFail( Auth()->user()->id );        
     //     if (!empty($request->input("password"))) {
     //         $usuario->password = Hash::make($request->input('password'));
@@ -289,7 +306,7 @@ class UsuariosController extends Controller
 
     public function miperfilsubirfoto(UsuarioSubirfotoRequest $request)
     {
-       
+
         if (Auth::check()) {
             $usuario = User::findOrFail(Auth::id());
             $image = $request->file('foto');
@@ -311,18 +328,19 @@ class UsuariosController extends Controller
     }
 
 
-    public function editarcomprador(Request $request){
+    public function editarcomprador(Request $request)
+    {
         $user = Auth()->user();
-        $persona = Persona::where('dni', auth()->user()->dni)->first();
-       
-        return view('admin.usuarios.comprador.editar', compact( 'persona' ));
-        
-    }
-    
-    public function actualizarDatosComprador( Request $request ){
-        $usuario = User::findOrFail(Auth()->user()->id);
+        $persona = Persona::where('dni', $user->dni)->first();
 
-        $persona = Persona::where('dni', $usuario->dni);
+        return view('admin.usuarios.comprador.editar', compact('user','persona'));
+    }
+
+    public function actualizarDatosComprador(Request $request)
+    {
+        $usuario = User::findOrFail( auth()->user()->id );
+
+        $persona = Persona::where('dni', $usuario->dni)->first();
         $persona->nombre = $request->nombre;
         $persona->paterno = $request->paterno;
         $persona->materno = $request->materno;
@@ -330,15 +348,17 @@ class UsuariosController extends Controller
         $persona->direccion = $request->direccion;
         $persona->telefono = $request->telefono;
         $persona->updated_by = auth()->user()->id;
-
+        $persona->save();
         $usuario->name = $request->nombre . ' ' . $request->paterno . ' ' . $request->materno;
-
+        $usuario->dni = $request->dni;        
         $usuario->save();
+
         return redirect()->route('loginOrRegister.editar.comprador')->with('info', 'Registro actualizado');
     }
-    public function cambiarcontraseñaComprador( Request $request  ){
-       
-        $usuario = User::findOrFail( Auth()->user()->id );        
+    public function cambiarcontraseñaComprador(Request $request)
+    {
+
+        $usuario = User::findOrFail(Auth()->user()->id);
         if (!empty($request->input("password"))) {
             $usuario->password = Hash::make($request->input('password'));
             $this->enviarCorreoCambioClave($usuario, $request->input('password'));
@@ -346,6 +366,4 @@ class UsuariosController extends Controller
         $usuario->save();
         return redirect()->route('loginOrRegister.editar.comprador')->with('info', 'Contraseña  actualizada');
     }
-    
- 
 }

@@ -92,6 +92,7 @@
                                              <div class="form-group mx-auto col-12" >
                                                  <div class="d-flex justify-content-center" id="preview">
                                                      @foreach ($producto->fotos as $foto)
+                                                     {{Storage::url('img_productos/'.$foto->nombre.'')}}
                                                          @if ( $imgproducto != null && $exists != null )
                                                              <img class="img-thumbnail border" src="{{Storage::url('img_productos/'.$foto->nombre.'')}}" width="90px" height="80px" id="iconoimagen">
                                                          @endif

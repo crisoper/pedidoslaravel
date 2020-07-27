@@ -80,7 +80,7 @@ function() {
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
     Route::post('usuariosdistribuidor', 'Admin\Usuarios\UsuariosController@usuariosdistribuidor')->name('usuarios.distribuidor.create');
-    Route::put('actualizar.datos.administrador', 'Admin\Usuarios\UsuariosController@update')->name('actualizar.datos.administrador');
+    Route::put('actualizar.datos.perfil', 'Admin\Usuarios\UsuariosController@update')->name('actualizar.datos.perfil');
     // Route::put('cambiar.clave.administrador', 'Admin\Usuarios\UsuariosController@cambiarmiclave')->name('cambiar.clave.administrador');
     
     

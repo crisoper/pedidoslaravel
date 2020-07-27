@@ -20,16 +20,19 @@
                             <div class="card-header d-flex flex-nowrap justify-content-around pr-5">
                                 <div class="form-group col-12">
                                     <input type="hidden" name="empresaid" value="{{ $empresaid }}">
-                                    Seleccione los días y horas de atención
+                                    <p class="card-text"><small>Espesifica los dias y horas de atención.</small></p>
+                                 
                                 </div>
                                 <div>
-                                <a href="{{route('configuracionempresa.index')}}"><h4> <i class="fa fa-reply-all" aria-hidden="true"></i></h4></a>
+                                    <a href="{{route('configuracionempresa.index')}}">
+                                        <h4> <i class="fa fa-reply-all" aria-hidden="true"></i></h4>
+                                    </a>
                                 </div>
                             </div>
                             <div>
                                 <div class="card-body ">
-                                    <table class="table table-striped  border">
-                                        <thead class="bg-info ">
+                                    <table class="table">
+                                        <thead class="">
                                             <tr>
                                                 <th>
                                                     <div class="col-12 text-center">
@@ -114,15 +117,15 @@
                 <div class="form-row justify-content-center ">
                     <div class="col-12">
                         @foreach ($errors as $error)
-        
+
                         <span class="text-danger">{{ $error}}</span>
                         @endforeach
                     </div>
-        
+
                     <div class="col-12 d-flex flex-row justify-content-center">
-        
+
                         @csrf
-        
+
                         <div class="form-group col-6">
                             <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro">
                                 <span class="spinner-border spinner-border-sm spinnerr" role="status" aria-hidden="true"
@@ -131,9 +134,10 @@
                             </button>
                         </div>
                         <div class="form-group col-6">
-                            <a href="{{route('configuracionempresa.index')}}" class="btn btn-danger btn-block">Cancelar</a>
+                            <a href="{{route('configuracionempresa.index')}}"
+                                class="btn btn-danger btn-block">Cancelar</a>
                         </div>
-        
+
                     </div>
                 </div>
             </form>

@@ -50,7 +50,7 @@
                 {{-- AFILIAR RESTAURANTE --}}
                 <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }} ">
-                        Publica tus productos
+                        <strong>Regístrate aquí y publica tus productos </strong>
                     </a>
                 </div>
 

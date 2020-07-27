@@ -95,7 +95,7 @@ class ProductosController extends Controller
     public function store(ProductosCreateRequest $request)
     {
 
-        return $request;
+     
         $catedoria = Productocategoria::where('id', $request->categoriasId)->first();
         if ($catedoria != null || $catedoria != "") {
             $catedoriaid = $catedoria->id;
@@ -150,18 +150,12 @@ class ProductosController extends Controller
         ]);
         $productotag->save();
 
-
         $files = $request->file('fotoproducto');
         if (isset($files)) {
             foreach ($files as $file) {
-
-                //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
-
                 $input['fotoproducto'] = strtolower(uniqid() . '.' . $file->getClientOriginalExtension());
                 $destinationPath = public_path('/images');
                 $file->move($destinationPath, $input['fotoproducto']);
-
-                //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
 
                 $fotoproducto = Productofoto::firstOrNew(
                     [
@@ -176,7 +170,7 @@ class ProductosController extends Controller
                 );
                 $fotoproducto->save();
 
-                ProcessimageJob::dispatch($fotoproducto);
+                ProcessimageJob::dispatchNow($fotoproducto);
             }
         }
         //    
@@ -269,10 +263,7 @@ class ProductosController extends Controller
         
         $files = $request->file('fotoproducto');
         if (isset($files)) {
-            //    $fotos = Productofoto::where("producto_id", $producto->id )->get();
-            //         foreach ($fotos as $foto) {
-            //             $foto->delete();
-            //         }
+         
             Productofoto::where("producto_id", $producto->id)->delete();
 
             foreach ($files as $file) {
@@ -292,7 +283,7 @@ class ProductosController extends Controller
                     ]
                 );
                 $fotoproducto->save();
-                ProcessimageJob::dispatch($fotoproducto);
+                ProcessimageJob::dispatchNow($fotoproducto);
             }
         }
            

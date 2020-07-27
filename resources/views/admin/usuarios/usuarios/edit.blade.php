@@ -21,7 +21,7 @@
                             <div class="form-row">
                                 <div class="form-group col-xs-12 col-sm-4">
                                     <label for="nombre">Nombre</label>
-                                    <input type="hidden" name="personaid" value="{{ $persona->id }}">
+                                    <input type="hidden" name="usuarioid" value="{{$usuario->id}}">
                                     <input autofocus type="text" name="nombre" id="nombre" placeholder="Nombre" value="{{ $persona->nombre }}" class="form-control">
                                     <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                 </div>

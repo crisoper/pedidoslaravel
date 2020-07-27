@@ -30,6 +30,7 @@ class HorariosController extends Controller
     {
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
         $empresaid = $this->empresaId();
+        
         return view('admin.configuracion.empresa.horarios.index', compact('empresaid','dias'));
     }
     
