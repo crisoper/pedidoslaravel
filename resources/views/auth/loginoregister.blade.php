@@ -4,40 +4,50 @@
 <div class="container-fluid ">
     <div class="row m-0 p-0">
         <div class="d-flex flex-wrap">
-            <div id="texto" class="col-sm-12 col-md-5  d-flex flex-column">
 
-                <div class="titulo">
-                    <h1><span class="text-warning">Tu confianza</span> es nuestra fortaleza</h1>
-                </div>
-                <br>
-                <div class=text-light">
-                    <h4 class="text-light">
-                        <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
-                        todos con los protocolos de salubridad establecidos y <span class="text-warning">atender de
-                            forma inmediata</span> tus requerimientos.
-                    </h4>
+            <div id="texto" class="col-xs-12 col-sm-12 col-md-7 ">
+                <div class="row mt-3">
+                    <div class="titulo col-12">
+                        <span class="text-warning">Tu confianza</span> es nuestra fortaleza
+                    </div>
                 </div>
 
-                <div class="mt-auto p-2" id="apps">
-                    <a class="btn  p-0 logosapps" href="#">
-                        <img src="{{asset('pedidos/image/appmovil/googleplay.png')}}" alt="" width="120">
-                    </a>
-                    <a class="btn  p-0 logosapps" href="#">
-                        <img src="{{asset('pedidos/image/appmovil/appstore.png')}}" alt="" width="120">
-                    </a>
+                <div class="col-12 d-flex flex-wrap align-items-center mt-5">
+                <div class="col-4">
+                    <img src="{{asset('img/logotienda.png')}}" width="100" height="80px" alt="">
+                    <p>
+                        PedidosApp tu tienda en linea donde encotrarás lo que estas buscando.
+                    </p>
                 </div>
+
+                <div class="col-4">
+                    <img src="https://img.icons8.com/bubbles/100/000000/hand-wash.png" />
+                    <p> <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
+                        todos con los protocolos de salubridad <span class="text-warning">atenderemos de
+                            forma inmediata</span> tus requerimientos.</p>
+                </div>
+
+                <div class="col-4">
+
+                    <img src="https://img.icons8.com/color/96/000000/motorcycle-delivery-multiple-boxes.png" />
+                    <p>
+                        Todo lo que pidas te lo llevaremos hasta el lugar donde te encuentres.
+                    </p>
+                </div>
+            </div>
+
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 container_left ">
+            <div class="col-xs-12 col-sm-12 col-md-5 container_left ">
 
 
                 <ul id="tabs" class="nav nav-tab">
                     <li class="nav-item li_login"><a href="" data-target="#login" data-toggle="tab"
-                            class="nav-link small text-uppercase @if( $flag == 'login') active  @endif text-primary"><strong>INICIA
+                            class="nav-link  text-dark text-uppercase @if( $flag == 'login') active  @endif "><strong>INICIA
                                 SESIÓN</strong></a></li>
                     <li class="nav-item li_register">
                         <a href="" data-target="#register" data-toggle="tab"
-                            class="nav-link small text-uppercase  @if( $flag == 'register')active  @endif text-primary"><strong>REGISTRATE</strong></a>
+                            class="nav-link text-dark text-uppercase  @if( $flag == 'register')active  @endif"><strong>REGISTRATE</strong></a>
                     </li>
 
                 </ul>
@@ -126,7 +136,8 @@
                         <div class="row ">
                             <div class="col-md-12">
                                 <div class="card-body">
-                                    <form id="Form_RegistroComprador" method="POST" action="{{ route('loginorregister.registercomprador') }}">
+                                    <form id="Form_RegistroComprador" method="POST"
+                                        action="{{ route('loginorregister.registercomprador') }}">
                                         @csrf
 
                                         <div class="form-group row">

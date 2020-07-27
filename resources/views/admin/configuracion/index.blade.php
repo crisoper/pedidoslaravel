@@ -157,8 +157,7 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <div class="cajaInputAgregarLogo text-center">                                    
-                                    <input type="file" name="logo" id="logo" data-initial-preview="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}"
-                                           accept="image/*">
+                                    <img class="img-fluid" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" width="250px" height="250px" alt="Logo de empresa">
                                 </div>
 
                             </div>

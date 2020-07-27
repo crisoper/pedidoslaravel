@@ -5,46 +5,41 @@
     
 
     
-        .img img {
-            width: 100%;
-        }
+        
         .color-2 {
       
       background:         linear-gradient(90deg, #f8f8f8 10%, #d8d7d6 90%);
     }
 
 
-    p {
-        font-family: 'Montserrat', Helvetica, sans-serif;
-        font-size: 1.5rem;
-        color: #fff;
-        padding-top: 5px;
-    }
-
-  
-    h4 {
-        font-size: 24px;
-    }
-
-   
-
-
+ 
     .titulo {
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-       
+       font-size: 42px;
+    }
+
+ 
+    @media( max-width:530px  ){
+        .titulo {
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       font-size: 28px;
+    }
     }
 
     #texto {
         
         text-align: center;
-        padding-top: 5em;
-        background-color: rgb(34, 115, 126);
-        color: white;      
+        padding-top: 2em;
+        /* background-color: rgb(34, 115, 126); */
+        color: rgb(0, 0, 0);      
     }
     #container_left{
         padding-left: 2em;
         padding-right: 2em;
+        border-radius: 50px;
+        background-color: #FFC107;
     }
     #contenedor_fijo {
         height: 100vh;
@@ -57,11 +52,13 @@
     input{
         border: 1px solid blue;
     }
-    img {
+    .btn_app_android, .btn_app_ios {
         width: 150px !important;
         height: 40px !important;
     }
-
+    .img img {
+            width: 100%;
+        }
     #apps {
         margin-bottom: 1rem;
     }

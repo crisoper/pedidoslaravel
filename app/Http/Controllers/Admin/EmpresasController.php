@@ -185,7 +185,7 @@ class EmpresasController extends Controller
             $nombreOriginalLogo = $request->file('logo');
             $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
             // $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
-            $nuevoNombreLogo = "img".'_'.uniqid();
+            $nuevoNombreLogo = "img".'_'.uniqid().".".$extension;
             \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
 
             $dimensionLogo = Image::make($nombreOriginalLogo->path());
@@ -229,7 +229,8 @@ class EmpresasController extends Controller
          if ($request->hasFile('logo')) {
             $nombreOriginalLogo = $request->file('logo');
             $extension = strtolower($nombreOriginalLogo->getClientOriginalExtension() );
-            $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+            // $nuevoNombreLogo = strtolower($nombreOriginalLogo->getClientOriginalName() );
+            $nuevoNombreLogo = "img".'_'.uniqid().".".$extension;
             \Storage::disk('usuarios')->put($nuevoNombreLogo,  \File::get($nombreOriginalLogo));
 
             $dimensionLogo = Image::make($nombreOriginalLogo->path());
