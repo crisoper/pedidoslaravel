@@ -30,14 +30,10 @@
 
 
     function mostrarProductosPaginaCarrito( cestas ) {
-        // console.log(cestas);
-
-        $("#cuerpoRealizarPedidoCart").html();
 
         let carHTML = "";
 
         $.each( cestas.data, function( key, cesta ) {
-            // console.log(cestas);
             let fotos = '';
 
             let contador = 0; 
@@ -64,11 +60,11 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 col-xl-5 border_productos_cart">
                             <div class="row m-0 text-center">
-                                <div class="col-3 col-sm-4 col-md-3 p-0 precio_producto_Cart">
+                                <div class="col-3 col-sm-4 col-md-4 p-0 precio_producto_Cart">
                                     <h6 class="my-0">Precio</h6>
                                     <p class="my-0">S/ ${ cesta.producto.precio }</p>
                                 </div>
-                                <div class="col-5 col-sm-4 col-md-5 p-0 px-2 cantidad_producto_cart">
+                                <div class="col-5 col-sm-4 col-md-4 p-0 px-2 cantidad_producto_cart">
                                     <h6 class="my-0">Cantidad</h6>
                                     <div class="input-group input_cantidad_producto_cart">
                         
@@ -131,7 +127,6 @@
         let btnAgregarCar = $( this );
         let inputCantidad = $( btnAgregarCar ).closest(".input_cantidad_producto_cart").find(".input_value_producto_cart");
 
-        console.log(inputCantidad);
         let producto_id = $( btnAgregarCar).attr("idproducto");
         let cantidad = $( inputCantidad).val();
         let empresa_id = $(btnAgregarCar).attr('idempresa');
@@ -145,7 +140,6 @@
         let btnAgregarCar = $( this );
         let inputCantidad = $( btnAgregarCar ).closest(".input_cantidad_producto_cart").find(".input_value_producto_cart");
 
-        console.log(inputCantidad);
         let producto_id = $( btnAgregarCar).attr("idproducto");
         let cantidad = $( inputCantidad).val();
         let empresa_id = $(btnAgregarCar).attr('idempresa');
@@ -172,7 +166,6 @@
             success: function ( data ) {
                 obtenerProductosCesta( );
                 obtenerProductosCestaMenu( );
-                // console.log( $( btnAgregarCar ) );
             },
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.responseJSON);

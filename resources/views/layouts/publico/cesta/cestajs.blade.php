@@ -204,7 +204,6 @@
         let sumaTotalProductos = 0;
         $.each(arrayTotalProductos, function (index, cantidadcesta) {
             sumaTotalProductos = sumaTotalProductos + parseInt($(cantidadcesta).html());
-            console.log(sumaTotalProductos);
         });
         
 
@@ -215,12 +214,14 @@
                     Tu cesta está vacía
                 </p>
             `;
+            $("#mostrar_cesta_menu").removeClass("efecto_boton_cesta_menu");
         } else {
             activarbtnHTML = activarbtnHTML + `
                 <a class="btn btn_ir_a_pedido" href="{{route('cart.index')}}">
                     Realizar Pedido
                 </a>
             `;
+            $("#mostrar_cesta_menu").addClass("efecto_boton_cesta_menu");
         }
 
         let activarinfoHTML = "";
