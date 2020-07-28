@@ -25,7 +25,7 @@
                     tipo: tipo,
                 },
                 success: function ( data ) {
-                    mostrarProductosCestaMenu( data )
+                    mostrarProductosCestaMenu( data );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -38,7 +38,7 @@
 
     function mostrarProductosCestaMenu( cestas ) {
 
-        $("#cuerpo_productos_cesta_menu").html();
+        // $("#cuerpo_productos_cesta_menu").html();
 
         let carHTML = "";
 
@@ -202,19 +202,62 @@
         let arrayTotalProductos = $(".border_producto_cesta_menu").find(".span_cantidad_producto_cesta_menu");
                                     
         let sumaTotalProductos = 0;
-        $.each(arrayTotalProductos, function (index, cantidad) {
-            sumaTotalProductos = sumaTotalProductos + parseInt($(cantidad).html());
+        $.each(arrayTotalProductos, function (index, cantidadcesta) {
+            sumaTotalProductos = sumaTotalProductos + parseInt($(cantidadcesta).html());
+            console.log(sumaTotalProductos);
         });
         
-        if ($(".cantidad_cesta_menu").html() <= 9) {
+
+        let activarbtnHTML = "";
+        if (sumaTotalProductos <= 0) {
+            activarbtnHTML = activarbtnHTML + `
+                <p class="btn_cesta_vacia pb-0">
+                    Tu cesta está vacía
+                </p>
+            `;
+        } else {
+            activarbtnHTML = activarbtnHTML + `
+                <a class="btn btn_ir_a_pedido" href="{{route('cart.index')}}">
+                    Realizar Pedido
+                </a>
+            `;
+        }
+
+        let activarinfoHTML = "";
+        if (sumaTotalProductos <= 0) {
+            activarinfoHTML = activarinfoHTML + `
+                <div class="col-12 pt-1">
+                    <p class="info_cesta_vacia">
+                        Aún no has agregado ningún producto
+                    </p>
+                </div>
+            `;
+        } else {
+            activarinfoHTML = activarinfoHTML + `
+                <div class="col-7">
+                    <h6 class="mt-2 mb-0">Estas comprando</h6>
+                    <p class="mt-0 mb-2"><span class="cantidad_pedido_cesta_menu">0</span> Productos</p>
+                </div>
+                <div class="col-5">
+                    <h6 class="mt-2 mb-0">Subtotal</h6>
+                    <p class="mt-0 mb-2">S/ <span class="subtotal_pedido_cesta_menu">0.00</span></p>
+                </div>
+            `;
+        }
+
+
+        $(".span_btn_ir_a_pedido").html( activarbtnHTML);
+        $(".content_info_cesta_menu").html( activarinfoHTML);
+        
+        if (sumaTotalProductos <= 9) {
             $(".cantidad_cesta_menu").html(sumaTotalProductos);
         } else {
             $(".cantidad_cesta_menu").html('9+');
         }
 
         $(".cantidad_pedido_cesta_menu").html(sumaTotalProductos);
-
     }
+
 
 
 

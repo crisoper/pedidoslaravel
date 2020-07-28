@@ -17,6 +17,8 @@ class ListadeseoResource extends JsonResource
         return [
             'id' => $this->id,
             'producto' => new ProductoResource( $this->producto ),
+            'empresa' => new EmpresaResource( $this->empresa ),
+            'cantidad' => $this->cantidad,
             'tipo' => $this->tipo,
             'stock' => $this->stock,
             'fecha' => $this->created_at != null ? date("d/m/Y", strtotime($this->created_at) ) : '',

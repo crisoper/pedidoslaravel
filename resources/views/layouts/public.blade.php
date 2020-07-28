@@ -188,13 +188,13 @@
                             <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
                             <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los
                                     Productos</a></li>
-                            <li class="dropdown-submenu">
+                            {{-- <li class="dropdown-submenu">
                                 <a class="dropdown-item submenu_categorias" href="#">Categorías <i
                                         class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
 
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

@@ -11,8 +11,8 @@
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                    <div class="col-10 p-0">
-                        <p class="text-center">Lista de productos seleccionados como Favoritos</p>
+                    <div class="col-10 p-0 content_info_favoritos_menu">
+                        
                     </div>
                 </div>
             </div>

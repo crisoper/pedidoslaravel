@@ -69,7 +69,7 @@
 }
 
 .header_menu_categorias > .header_categorias {
-	width: 200px !important;
+	width: 210px !important;
 	margin-top: 0;
 	border: 0;
 	border-radius: 0;
@@ -81,6 +81,7 @@
 	font-weight: 700;
 	background-color: #ffffff;
 	border-left: 8px solid #fd0606;
+	transition: 500ms;
 }
 
 
