@@ -33,7 +33,7 @@
                 <h2 class="float-left py-1 m-0">Recomendados</h2>
                 <a class="float-right py-1 m-0" href="{{route('recomendados.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
-            <div class="col-12 slickArrowsRecomendadosInicio">
+            <div class="col-12 slick_arrows slickArrowsRecomendadosInicio">
                 <div class="responsiveSlickRecomendadosInicio" id="cuerpoProductosRecomendadosInicio">
                     
                 </div>
@@ -46,7 +46,7 @@
                 <h2 class="float-left py-1 m-0">Ofertas</h2>
                 <a class="float-right py-1 m-0" href="{{route('ofertas.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
-            <div class="col-12 slickArrowsEnOfertasInicio">
+            <div class="col-12 slick_arrows slickArrowsEnOfertasInicio">
                 <div class="responsiveSlickEnOfertasInicio" id="cuerpoProductosEnOfertaInicio">
                     
                 </div>
@@ -59,7 +59,7 @@
                 <h2 class="float-left py-1 m-0">Nuevos</h2>
                 <a class="float-right py-1 m-0" href="{{route('nuevos.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
-            <div class="col-12 slickArrowsNuevosInicio">
+            <div class="col-12 slick_arrows slickArrowsNuevosInicio">
                 <div class="responsiveSlickNuevosInicio" id="cuerpoProductosNuevosInicio">
                     
                 </div>
@@ -72,7 +72,7 @@
                 <h2 class="float-left py-1 m-0">Mas Pedidos</h2>
                 <a class="float-right py-1 m-0" href="{{route('maspedidos.index')}}">Ver más <i class="fas fa-chevron-right"></i></a>
             </div>
-            <div class="col-12 slickArrowsMasPedidosInicio">
+            <div class="col-12 slick_arrows slickArrowsMasPedidosInicio">
                 <div class="responsiveSlickMasPedidosInicio" id="cuerpoProductosMasPedidosInicio">
                     
                 </div>

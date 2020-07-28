@@ -56,7 +56,7 @@
 
                     if (pedidosestado.estado == "calificado") {
                         pedidoestadoHTML = pedidoestadoHTML + `
-                            <div class="col-12"><b>Hora de entrega:</b> <span>${ pedidosestado.created_at }</span></div>
+                            <div class="col-12"><b>Hora de calificacón:</b> <span>${ pedidosestado.created_at }</span></div>
                             <div class="col-12"><b>Calificación:</b> <span>${ pedidosestado.calificacion }</span></div>
                             <div class="col-12 repartidor_pedidos"><b>Repartidor:</b> <span>${ pedidosestado.repartidor }</span></div>
                         `;
