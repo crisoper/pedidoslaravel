@@ -28,13 +28,9 @@
         background-color: white;
         padding: 5px;
     }
-    .card-body{
-        display: flex;
-        justify-content: center;
-        border: none !important;
-         
+    tr{
+        border: 0px;
     }
-   
 </style>
 @section('contenido')
 
@@ -113,44 +109,45 @@
             <div class="card-body">
                 <div class="form-row">
                     <div class="col-md-12 col-lg-8">
-                        <div class="col-md-12 col-sm-12 d-flex flex-wrap">
-                            <div class="form-group col-md-12 col-sm-12">
-                                <label for="rubro_id">Rubro:</label>
-                                <span>{{ $empresarubros ? $empresarubros->nombre : "----" }}</span>
-                            </div>
-                            <div class="form-group col-md-12 col-sm-12">
-                                <label for="ruc">Ruc:</label>
-                                <Span name="ruc">{{$empresa->ruc}}</Span> 
-                            </div>
-
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="nombre">Nombre o Razón Social:</label><br>
-                                <span>{{$empresa->nombre}}</span>
-                            </div>
-
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="nombrecomercial">Nombre Comercial:</label><br>
-                                <span>{{ $empresa->nombrecomercial }}</span>
-                            </div>
-
-                            <div class="form-group col-md-12 col-sm-12">
-                                <label for="direccion">Dirección:</label><br>
-                                <span>{{ $empresa->direccion }}</span>
-                            </div>
-                        
-                            <div class="form-group col-md-4 col-sm-12">
-                                <label for="departamentoid">Departamento:</label><br>
-                                <span>{{  $departamentos ? $departamentos->nombre : "----" }}</span>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12">
-                                <label for="provinciaid">Provincia:</label><br>
-                                 <span>{{ $provincias ? $provincias->nombre : "----" }}</span>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12">
-                                <label for="distritoid">Distrito:</label><br>
-                                <span>{{ $distritos ? $distritos->nombre: "----" }}</span>
-                            </div>
-                        </div>
+                       
+                            <table class="table table-sm ">
+                                <tbody>
+                                    <tr>
+                                        <td><label for="rubro_id">Rubro:</label></td>
+                                        <td><span>{{ $empresarubros ? $empresarubros->nombre : "----" }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="ruc">Ruc:</label></td>
+                                        <td><Span name="ruc">{{$empresa->ruc}}</Span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <label for="nombre">Nombre o Razón Social:</label></td>
+                                        <td> <span>{{$empresa->nombre}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <label for="nombrecomercial">Nombre Comercial:</label> </td>
+                                        <td>   <span>{{ $empresa->nombrecomercial }}</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>  <label for="direccion">Dirección:</label> </td>
+                                        <td>     <span>{{ $empresa->direccion }}</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>  <label for="departamentoid">Departamento:</label> </td>
+                                        <td>   <span>{{  $departamentos ? $departamentos->nombre : "----" }}</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>    <label for="provinciaid">Provincia:</label> </td>
+                                        <td>   <span>{{ $provincias ? $provincias->nombre : "----" }}</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>  <label for="distritoid">Distrito:</label> </td>
+                                        <td>  <span>{{ $distritos ? $distritos->nombre: "----" }}</span> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  
+                       
                        
                     </div>
                     <div class="col-md-12 col-lg-4 mx-auto">

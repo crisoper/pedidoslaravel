@@ -1,9 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-0">
     <!-- Brand Logo -->
     <a href="{{ route("home") }}" class="brand-link">
-        <img src="{{ asset('adminlte301/img/AdminLTELogo.png') }}" alt="Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ config('app.name', 'Encuestas')  }}</span>
+        <img src="{{ asset('adminlte301/img/AdminLTELogo.png') }}" alt="Logo" class="brand-image img-circle elevation-3 bg-light p-1 "
+            >
+            {{-- <span class="brand-image img-circle elevation-3 bg-light"> <i class="fa fa-home " aria-hidden="true"></i> </span> --}}
+            
+        <span class="brand-text font-weight-light">{{ config('app.name', 'PedidosApp')  }}</span>
     </a>
 
     <!-- Sidebar -->

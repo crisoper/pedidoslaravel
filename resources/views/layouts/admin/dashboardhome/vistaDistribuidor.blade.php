@@ -31,6 +31,7 @@
     .card-body>h5:hover {
         color: blue;
     }
+  
 </style>
 
 <div class="col-12 d-flex flex-wrap">
@@ -99,9 +100,9 @@
 
     <div class="col-sm-12 col-md-5 list-group">
         <div class="col">
-            <div class="card" style="border-radius: 0% !important; padding:0px !important; margin:0px;">
-                <div class="card-header">
-                    <span>Productos más vendidos</span>
+            <div class="card">
+                <div class="card-header grafico_header_productos">
+                    <span>Productos más vendidossss</span>
                 </div>
                 <div class="card-body">
                     <canvas id="ChartProductosMasVendidos"

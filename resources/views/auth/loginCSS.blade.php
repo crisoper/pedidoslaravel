@@ -45,7 +45,7 @@
         background-color: #FFC107;
         padding-top: 2em;
         margin-top: 1em;
-        border-radius: 50px;
+        /* border-radius: 50px; */
        
     }
 
@@ -59,14 +59,13 @@
     #tab-content {
         padding-left: 1em;
         padding-right: 1em;
+        
     }
 
     #texto {
         /* background-color: #22737E; */
         text-align: center;
         padding-top: 1em;
-        ;
-
         margin: 0;
         /* border-right: 1px solid #941317; */
 
