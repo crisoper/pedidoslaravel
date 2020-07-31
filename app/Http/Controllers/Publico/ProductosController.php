@@ -51,8 +51,13 @@ class ProductosController extends Controller
         ->get();
 
 
-        //Productos nuevos
-        $productosnuevos = Producto::whereDate( "created_at", now() )
+        
+        //Productos mas pedidos
+        $hoynuevos =  Carbon::now();
+        $fechainicionuevos = Carbon::now()->subDays( 7 );
+
+        $productosnuevos = Producto::whereDate("created_at", ">=", $fechainicionuevos )
+        ->whereDate("created_at", "<=", $hoynuevos )
         ->whereNotIn("id", $productosrecomendados->pluck("id") )
         ->whereNotIn("id", $productosoferta->pluck("id") )
         ->with([
@@ -67,20 +72,20 @@ class ProductosController extends Controller
         
 
         //Productos mas pedidos
-        $hoy =  Carbon::now();
-        $fechainicio = Carbon::now()->subDays( 30 );
+        $hoymaspedidos =  Carbon::now();
+        $fechainiciomaspedidos = Carbon::now()->subDays( 30 );
 
         $productomaspedidosIds = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
         ->select("productos.id",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
         ->groupBy("productos.id" )
         ->orderBy("cantidad", "desc")
-        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
-        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
+        ->whereDate("pedidodetalles.created_at", ">=", $fechainiciomaspedidos )
+        ->whereDate("pedidodetalles.created_at", "<=", $hoymaspedidos )
         ->limit(10)
         ->pluck("id");
 
 
-        $productosmaspedidos = Producto::where( "stock", "<", 10 )
+        $productosmaspedidos = Producto::where( "stock", ">", 0 )
         ->whereIn("id", $productomaspedidosIds )
         ->with([
             "empresa",
