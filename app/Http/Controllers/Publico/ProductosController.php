@@ -33,22 +33,33 @@ class ProductosController extends Controller
             "tags",
             "categoria",
             "fotos",
+            "oferta",
         ])
         ->limit(10)
         ->get();
 
         
+        
+
+
+
         //Productos en oferta
-        $productosoferta = Producto::where( "stock", ">", 20 )
-        ->whereNotIn("id", $productosrecomendados->pluck("id") )
+        $productosoferta = Producto::whereNotIn("id", $productosrecomendados->pluck("id") )
         ->with([
             "empresa",
             "tags",
             "categoria",
             "fotos",
+            "oferta",
         ])
+        ->whereHas("oferta", function($query){
+            $query->whereDate('diainicio', "<=", now())->whereDate("diafin", ">=", now());
+        })
         ->limit(10)
         ->get();
+
+
+
 
 
         
@@ -65,11 +76,17 @@ class ProductosController extends Controller
             "tags",
             "categoria",
             "fotos",
+            "oferta",
         ])
         ->limit(10)
         ->get();
 
         
+
+
+
+
+
 
         //Productos mas pedidos
         $hoymaspedidos =  Carbon::now();
@@ -92,6 +109,7 @@ class ProductosController extends Controller
             "tags",
             "categoria",
             "fotos",
+            "oferta",
         ])
         ->limit(10)
         ->get();

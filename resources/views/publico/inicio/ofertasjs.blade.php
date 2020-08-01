@@ -2,11 +2,13 @@
 <script>
 
     function mostrarProductosEnOfertaInicio( datos ) {
-        $("#cuerpoProductosEnOfertaInicio").html();
+        // $("#cuerpoProductosEnOfertaInicio").html();
+        console.log(datos);
 
         let ofertasHTML = "";
 
         $.each( datos, function( key, ofertas ) {
+
 
             let fotos = '';
             let contador = 0; 
@@ -19,13 +21,12 @@
                 }
             });
             
+            
             ofertasHTML = ofertasHTML + `
                 <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ ofertas.id }">
 
                     <div class="product-img">
-                        
                         ${ fotos }
-
                     </div>
                     
                     <div class="featured__item__text p-2">

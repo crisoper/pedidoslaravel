@@ -20,4 +20,10 @@ class Productooferta extends Model
         'horafin',
         'created_by',
     ];
+    
+    
+    public function producto()
+    {
+        return  $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
+    }
 }
