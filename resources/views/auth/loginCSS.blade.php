@@ -41,13 +41,20 @@
         box-shadow: 0.5px 0.5px 1px 1.5px #941317;
     }
 
-    .container_left {
-        background-color: #FFC107;
-        padding-top: 2em;
-        margin-top: 1em;
-        /* border-radius: 50px; */
+    #container_left {
+     
+        background-image: url('img/register_img.jpg');
        
     }
+    /* .formlario{
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+   
+   input{
+        border: 0 solid black !important;
+        border-radius: 0px !important;           
+    } */
 
     @media(max-width: 750) {
         .container_left {
