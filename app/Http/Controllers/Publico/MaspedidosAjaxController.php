@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Publico;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\ProductoResource;
+use App\Models\Admin\Pedidos\Pedidodetalle;
 use App\Models\Admin\Producto;
 use App\Models\Publico\Cesta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MaspedidosAjaxController extends Controller
 {
@@ -28,7 +31,24 @@ class MaspedidosAjaxController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosMasPedidos = Producto::where( "stock", "<", 10 );
+
+        
+        //Productos mas pedidos
+        $hoy =  Carbon::now();
+        $fechainicio = Carbon::now()->subDays( 30 );
+
+        $productomaspedidosIds = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
+        ->select("productos.id",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->groupBy("productos.id" )
+        ->orderBy("cantidad", "desc")
+        ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
+        ->whereDate("pedidodetalles.created_at", "<=", $hoy )
+        ->limit(10)
+        ->pluck("id");
+
+
+
+        $productosMasPedidos = Producto::where( "stock", ">", 0 );
 
         if( $request->has('buscar')  and $request->buscar != "" ) {
             $productosMasPedidos = $productosMasPedidos->where('nombre', 'like', '%'.$request->buscar.'%');
@@ -44,7 +64,8 @@ class MaspedidosAjaxController extends Controller
             $productosMasPedidos = $productosMasPedidos->orderBy("precio", "asc");
         }
 
-        $productosMasPedidos = $productosMasPedidos->with([
+        $productosMasPedidos = $productosMasPedidos->whereIn("id", $productomaspedidosIds )
+        ->with([
             "empresa",
             "tags",
             "categoria",
