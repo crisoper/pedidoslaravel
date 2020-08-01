@@ -36,8 +36,15 @@
     #container_left {
         padding-left: 2em;
         padding-right: 2em;
-        background-color: #FFC107;
+        /* background-color:red; */
+        background-image: url('img/register_img.jpg');
     }
+
+    .formlario {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
 
     #contenedor_fijo {
         height: 100vh;
@@ -48,8 +55,12 @@
         top: 0
     }
 
-    input {
-        border: 1px solid blue;
+    input,
+    select {
+        border: 0 solid black !important;
+        border-radius: 0px !important;
+
+
     }
 
     .btn_app_android,
@@ -64,5 +75,9 @@
 
     #apps {
         margin-bottom: 1rem;
+    }
+
+    .text-resaltado {
+        color: red;
     }
 </style>

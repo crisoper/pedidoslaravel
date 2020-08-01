@@ -11,8 +11,8 @@
             <div id="texto" class=" col-sm-12 col-md-7">
                 <div class=" titulo mt-3">
                    
-                        <strong>Registra tu negocio <span class="text-warning ">Completamente gratis</span> e incrementa tus
-                            ingresos.</strong>
+                        <strong>Registra tu negocio <span class="text-resaltado ">Completamente gratis</span> e incrementa tus
+                        ingresos vendiendo en <span class="text-resaltado">{{config('app.name') }}</span></strong>
                    
                 </div>
                 <div class="row mt-5">
@@ -51,8 +51,8 @@
             </div> --}}
 
         </div>
-        <div id="container_left" class="col-sm-12 col-md-5 ">
-
+        <div id="container_left" class="col-sm-12 col-md-5 p-3">
+            <div class="formlario p-3">  
             <form id="formularioRegistroEmpresa" action="{{route('nuevaempresa.store')}}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
@@ -249,6 +249,7 @@
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>

@@ -13,32 +13,32 @@
                 </div>
 
                 <div class="col-12 d-flex flex-wrap align-items-center mt-5">
-                <div class="col-4">
-                    <img src="{{asset('img/logotienda.png')}}" width="100" height="80px" alt="">
-                    <p>
-                        PedidosApp tu tienda en linea donde encotrarás lo que estas buscando.
-                    </p>
+                    <div class="col-4">
+                        <img src="{{asset('img/logotienda.png')}}" width="100" height="80px" alt="">
+                        <p>
+                            PedidosApp tu tienda en linea donde encotrarás lo que estas buscando.
+                        </p>
+                    </div>
+
+                    <div class="col-4">
+                        <img src="https://img.icons8.com/bubbles/100/000000/hand-wash.png" />
+                        <p> <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
+                            todos con los protocolos de salubridad <span class="text-warning">atenderemos de
+                                forma inmediata</span> tus requerimientos.</p>
+                    </div>
+
+                    <div class="col-4">
+
+                        <img src="https://img.icons8.com/color/96/000000/motorcycle-delivery-multiple-boxes.png" />
+                        <p>
+                            Todo lo que pidas te lo llevaremos hasta el lugar donde te encuentres.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col-4">
-                    <img src="https://img.icons8.com/bubbles/100/000000/hand-wash.png" />
-                    <p> <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
-                        todos con los protocolos de salubridad <span class="text-warning">atenderemos de
-                            forma inmediata</span> tus requerimientos.</p>
-                </div>
 
-                <div class="col-4">
-
-                    <img src="https://img.icons8.com/color/96/000000/motorcycle-delivery-multiple-boxes.png" />
-                    <p>
-                        Todo lo que pidas te lo llevaremos hasta el lugar donde te encuentres.
-                    </p>
-                </div>
             </div>
-
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 container_left ">
+            <div id="container_left" class="col-xs-12 col-sm-12 col-md-5 ">
 
 
                 <ul id="tabs" class="nav nav-tab">
@@ -57,8 +57,8 @@
                     <div id="login" class="pt-4 tab-pane fade @if( $flag == 'login') active show @endif"
                         style="border: none; ">
                         <div class="row ">
-                            <div class="col-md-12">
-                                <div class="card-body col-12">
+                            <div class="col-md-12 ">
+                                <div class="card-body col-12 formlario">
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group row">
