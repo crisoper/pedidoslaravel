@@ -14,7 +14,7 @@
     @include('layouts.admin.messenger')
   
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed contenidoPrincipalPaginaAdmin">
     <div class="wrapper" id="app">
   
         <!-- Navbar -->

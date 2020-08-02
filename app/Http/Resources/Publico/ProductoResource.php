@@ -31,7 +31,19 @@ class ProductoResource extends JsonResource
             
             'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
             'empresa' => $this->empresa ? $this->empresa->nombre : '',
-            'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : ''
+            'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : '',
+            
+            'recomendar_id' => $this->recomendar ? $this->recomendar->id : 0, 
+            'recomendar' => $this->recomendar ? $this->recomendar->recomendar : '',
+            'recomendar_diainicio' => $this->recomendar ? $this->recomendar->diainicio : '',
+            'recomendar_diafin' => $this->recomendar ? $this->recomendar->diafin : '',
+
+            'oferta_id' => $this->oferta ? $this->oferta->id : 0, 
+            'oferta' => $this->oferta ? $this->oferta->preciooferta : '',
+            'oferta_diainicio' => $this->oferta ? $this->oferta->diainicio : '',
+            'oferta_diafin' => $this->oferta ? $this->oferta->diafin : '',
+
+            'diaactual' => date('Y-m-d'),
         ];
     }
 }

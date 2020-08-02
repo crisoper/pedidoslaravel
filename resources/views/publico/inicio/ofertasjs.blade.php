@@ -21,28 +21,63 @@
                 }
             });
             
-            
-            ofertasHTML = ofertasHTML + `
-                <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ ofertas.id }">
+            if ( (ofertas.oferta_diainicio <= ofertas.diaactual) && (ofertas.oferta_diafin >= ofertas.diaactual) ) {
+                ofertasHTML = ofertasHTML + `
+                    <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ ofertas.id }">
 
-                    <div class="product-img">
-                        ${ fotos }
-                    </div>
-                    
-                    <div class="featured__item__text p-2">
-                        <div class="row mx-0">
-                            <div class="col-12">
-                                <p class="nombre_producto text-truncate my-0">${ ofertas.nombre }</p>
-                                <p class="nombre_empresa text-truncate my-0">${ ofertas.empresa }</p>
-                                <h4 class="content_precio_producto mt-2">
-                                    S/ <span class="precio_producto">${ ofertas.precio }</span>
-                                </h4>
+                        <div class="product-img">
+                            ${ fotos }
+                        </div>
+                        
+                        <div class="featured__item__text p-2">
+                            <div class="row mx-0">
+                                <div class="col-12">
+                                    <p class="nombre_producto text-truncate my-0">${ ofertas.nombre }</p>
+                                    <p class="nombre_empresa text-truncate my-0">${ ofertas.empresa }</p>
+                                </div>
+                                <div class="col-12 p-0">
+                                    <div class="row mx-0">
+                                        <div class="col-6 p-0 text-center">
+                                            <h5 class="price_product_offer mt-2 pt-1">
+                                                S/ <span class="precio_producto">${ ofertas.precio }</span>
+                                            </h5>
+                                        </div>
+                                        <div class="col-6 p-0 text-center">
+                                            <h4 class="content_precio_producto mt-2">
+                                                S/ <span class="precio_producto">${ ofertas.oferta }</span>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            `;
+                    </div>
+                `;
+            } else {
+                ofertasHTML = ofertasHTML + `
+                    <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ ofertas.id }">
+
+                        <div class="product-img">
+                            ${ fotos }
+                        </div>
+                        
+                        <div class="featured__item__text p-2">
+                            <div class="row mx-0">
+                                <div class="col-12">
+                                    <p class="nombre_producto text-truncate my-0">${ ofertas.nombre }</p>
+                                    <p class="nombre_empresa text-truncate my-0">${ ofertas.empresa }</p>
+                                    <h4 class="content_precio_producto mt-2">
+                                        S/ <span class="precio_producto">${ ofertas.precio }</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }
+
         });
 
         $("#cuerpoProductosEnOfertaInicio").html( ofertasHTML);
