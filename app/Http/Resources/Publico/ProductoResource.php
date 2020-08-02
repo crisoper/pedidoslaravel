@@ -40,8 +40,6 @@ class ProductoResource extends JsonResource
 
             'oferta_id' => $this->oferta ? $this->oferta->id : 0, 
             'oferta' => $this->oferta ? $this->oferta->preciooferta : '',
-            'oferta_diainicio' => $this->oferta ? $this->oferta->diainicio : '',
-            'oferta_diafin' => $this->oferta ? $this->oferta->diafin : '',
 
             'diaactual' => date('Y-m-d'),
         ];
