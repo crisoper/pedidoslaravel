@@ -49,6 +49,11 @@ class Producto extends Model
     {
         return $this->hasOne('App\Models\Admin\Productooferta', 'producto_id');
     }
+    
+    public function recomendar()
+    {
+        return $this->hasOne('App\Models\Admin\Productorecomendar', 'producto_id');
+    }
 
     
 }

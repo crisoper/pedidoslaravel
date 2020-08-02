@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Productooferta extends Model
+class Productorecomendar extends Model
 {
     use  SoftDeletes;
     protected $dates =['deleted_at'];
@@ -13,11 +13,7 @@ class Productooferta extends Model
     protected $fillable =[
         'empresa_id',
         'producto_id',
-        'preciooferta',
-        'diainicio',
-        'horainicio',
-        'diafin',
-        'horafin',
+        'recomendar',
         'created_by',
     ];
     

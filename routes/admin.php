@@ -156,6 +156,20 @@ function() {
 
 
 
+    
+    // RECOMENDAR PRODUCTOS
+    Route::get('productosarecomendar', 'Admin\ProductosarecomendarController@index')
+        ->name('productosarecomendar.index');
+
+    Route::get('productosarecomendar/edit', 'Admin\ProductosarecomendarController@edit')
+        ->name('productosarecomendar.edit');
+        
+    Route::post('productosarecomendar/update', 'Admin\ProductosarecomendarController@update')
+        ->name('productosarecomendar.update');
+
+    Route::delete('productosarecomendar/destroy', 'Admin\ProductosarecomendarController@destroy')
+        ->name('productosarecomendar.destroy');
+
 
 
 

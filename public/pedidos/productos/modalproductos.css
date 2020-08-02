@@ -181,12 +181,11 @@
 #price_product_border{
     border-right: 1px solid rgba(0,0,0,.1);
 }
-.price_product_prev {
-    font-size: 10px;
+.price_product_offer {
+    font-size: 15px;
     font-weight: 700;
-    vertical-align: middle !important;
     text-decoration: line-through;
-    color: #912335 !important;
+    color: #dc3545 !important;
 }
 .content_precio_producto {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
