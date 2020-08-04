@@ -80,31 +80,24 @@ Route::post("administracion/register", "Auth\RegisterController@showRegistration
 
 
 
-
-Route::get('/', 'Publico\ProductosController@index')
+// PRODUCTOS INICIO
+Route::get('/', 'Publico\Productos\ProductosController@index')
 ->name('inicio.index');
-
-// CESTA REALIZAR COMPRA
-Route::get('cart', 'Publico\CartController@index')
-->name('cart.index');
-
-// LISTA DE DESEOS
-Route::get('listadedeseos', 'Publico\ListadeseosController@index')
-->name('listadedeseos.index');
+//PRODUCTOS RECOMENDADOS, OFERTAS, NUEVOS, MAS PEDIDOS INICIO
+Route::get('recomendados', 'Publico\Productos\ProductosrecomendadosController@index')
+->name('recomendados.index');
+Route::get('ofertas', 'Publico\Productos\ProductosofertasController@index')
+->name('ofertas.index');
+Route::get('nuevos', 'Publico\Productos\ProductosnuevosController@index')
+->name('nuevos.index');
+Route::get('maspedidos', 'Publico\Productos\ProductosmaspedidosController@index')
+->name('maspedidos.index');
 
 
 // PRODUCTOS RECOMENDADOS
-Route::get('recomendados', 'Publico\RecomendadosController@index')
-->name('recomendados.index');
 // PRODUCTOS OFERTADOS
-Route::get('ofertas', 'Publico\OfertasController@index')
-->name('ofertas.index');
 // PRODUCTOS NUEVOS
-Route::get('nuevos', 'Publico\NuevosController@index')
-->name('nuevos.index');
 // PRODUCTOS MAS PEDIDOS
-Route::get('maspedidos', 'Publico\MaspedidosController@index')
-->name('maspedidos.index');
 
 
 
@@ -114,8 +107,6 @@ Route::get('productos/busqueda', 'Publico\ResultadosproductosController@index')
 // PRODUCTOS RESULTADOS BUSQUEDA
 Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 ->name('locales.busqueda.index');
-
-
 
 //CESTA MENU
 Route::get("cesta/index", "Publico\CestaController@index")
@@ -133,6 +124,16 @@ Route::post("listadeseo/store", "Publico\ListadeseosMenuController@store")
 ->name("listadeseo.store");
 Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
 ->name("listadeseo.delete");
+
+
+
+// CESTA REALIZAR COMPRA
+Route::get('cart', 'Publico\CartController@index')
+->name('cart.index');
+
+// LISTA DE DESEOS
+Route::get('listadedeseos', 'Publico\ListadeseosController@index')
+->name('listadedeseos.index');
 
 
 
