@@ -22,6 +22,7 @@ class ProductoResource extends JsonResource
             'descripcion' => $this->descripcion,
             'precio' => $this->precio,
             'stock' => $this->stock,
+            'created_at' => date('d-m-Y', strtotime($this->created_at)),
             'tags' => $this->tags,
             'encarrito' => $this->encarrito,
             'enlistadeseos' => $this->enlistadeseos,
@@ -40,8 +41,11 @@ class ProductoResource extends JsonResource
 
             'oferta_id' => $this->oferta ? $this->oferta->id : 0, 
             'oferta' => $this->oferta ? $this->oferta->preciooferta : '',
+            'oferta_diainicio' => $this->oferta ? $this->oferta->diainicio : '',
+            'oferta_diafin' => $this->oferta ? $this->oferta->diafin : '',
+            
 
-            'diaactual' => date('Y-m-d'),
+            'diaactual' => date('d-m-Y'),
         ];
     }
 }

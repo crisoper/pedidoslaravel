@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Publico;
+namespace App\Http\Controllers\Publico\Productos;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Publico\ProductoResource;
+use App\Models\Admin\Pedidos\Pedidodetalle;
+use App\Models\Admin\Producto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Publico\Cesta;
-use App\Models\Admin\Producto;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-
-use App\Models\Publico\Pedidodetalle;
-use App\Http\Resources\Publico\ProductoResource;
 
 class ProductosController extends Controller
 {
@@ -27,14 +25,17 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
-        $productosrecomendados = Producto::whereDate( "created_at", "<", now()  )
-        ->with([
+        $productosrecomendados = Producto::with([
             "empresa",
             "tags",
             "categoria",
             "fotos",
             "oferta",
+            "recomendar",
         ])
+        ->whereHas("recomendar", function($query){
+            $query->whereDate('diainicio', "<=", now())->whereDate("diafin", ">=", now());
+        })
         ->limit(10)
         ->get();
 

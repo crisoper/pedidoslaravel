@@ -26,6 +26,9 @@
                         
                         ${ fotos }
 
+                        <div class="product-badge new-badge">
+                            <span class="py-1 px-2">Nuevo</span>
+                        </div>
                     </div>
                     
                     <div class="featured__item__text p-2">

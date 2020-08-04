@@ -49,16 +49,22 @@
 }
 
 .single_product_wrapper .product-img .product-badge.offer-badge {
-    bottom: 0px;
-    right: 0px;
-    border-radius: 0px;
-    background-color: #d91522;
+    top: 0px !important;
+    left: 0px !important;
+    border-radius: 0px !important;
+    color: #ffffff;
+    background-color: #d91522 !important;
+    position: absolute;
+    z-index: 10;
 }
 .single_product_wrapper .product-img .product-badge.new-badge {
     top: 0px;
     right: 0px;
     border-radius: 0px;
+    color: #ffffff;
     background-color: #087ecc;
+    position: absolute;
+    z-index: 10;
 }
 
 
