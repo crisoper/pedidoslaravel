@@ -25,9 +25,6 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
-        $productoNuevo = array();
-
-
         $productosrecomendados = Producto::with([
             "empresa",
             "tags",
