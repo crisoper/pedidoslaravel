@@ -8,6 +8,7 @@ use App\Models\Admin\Pedidos\Pedido;
 use App\Models\Admin\Pedidos\Pedidoestado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PedidosIngresadosController extends Controller
 {
@@ -30,7 +31,8 @@ class PedidosIngresadosController extends Controller
     
     public function ingresados()
     {
-        $pedidos = Pedido::orderBy("id", "desc")
+        if ( Auth()->user()->hasRole('SuperAdministrador')) {
+            $pedidos = Pedido::orderBy("id", "desc")
         ->whereHas('pedidoestado', function (){}, '=', 1)
         ->with([
             'empresa',
@@ -39,6 +41,20 @@ class PedidosIngresadosController extends Controller
             'pedidoestado',
         ])
         ->get();
+        } else {
+            $pedidos = Pedido::orderBy("id", "desc")
+            ->where('empresa_id', Session::get('empresaactual',0))
+            ->whereHas('pedidoestado', function (){}, '=', 1)
+            ->with([
+                'empresa',
+                'cliente',
+                'pedidodetalle',
+                'pedidoestado',
+            ])
+            ->get();
+        }
+        
+      
 
         return PedidoResource::collection( $pedidos );
     }

@@ -11,6 +11,7 @@ use App\Models\Publico\Pedidodetalle;
 use App\Models\Admin\Productocategoria;
 use App\Models\Publico\Cesta;
 use App\Models\Publico\Persona;
+use App\User;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Contracts\DataTable;
 
@@ -78,22 +79,12 @@ class IncludeshomeController extends Controller
     public function getproductosmaspedidos()
     {        
         $hoy =  Carbon::now();
-        $fechainicio = Carbon::now()->subDays( 7 );
-
-        // $productomaspedidos = Cesta::join("productos", 'cestas.producto_id', '=', 'productos.id')
-        // ->select("productos.nombre", "cestas.created_at", DB::raw('COUNT( cestas.id ) AS cantidad') )
-        // ->groupBy("productos.nombre", "cestas.created_at")
-        // ->orderBy("cantidad", "desc")
-        // ->whereDate("cestas.created_at", ">=", $fechainicio )
-        // ->whereDate("cestas.created_at", "<=", $hoy )
-        // ->limit(5)
-        // ->get();
-       
+        $fechainicio = Carbon::now()->subDays( 15 );
 
          $productomaspedidos = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
-        ->select("pedidodetalles.empresa_id","productos.nombre",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->select("pedidodetalles.empresa_id","productos.codigo", "productos.nombre",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
         ->where('pedidodetalles.empresa_id', $this->empresaId())
-        ->groupBy("productos.nombre" ,"pedidodetalles.empresa_id" )
+        ->groupBy("productos.codigo" ,"pedidodetalles.empresa_id" )
         ->orderBy("cantidad", "desc")
         ->whereDate("pedidodetalles.created_at", ">=", $fechainicio )
         ->whereDate("pedidodetalles.created_at", "<=", $hoy )
@@ -108,7 +99,7 @@ class IncludeshomeController extends Controller
         $fechainicio = Carbon::now()->subDays( 7 );
 
         $productomaspedidos = Pedidodetalle::join("productos", 'pedidodetalles.producto_id', '=', 'productos.id')
-        ->select("pedidodetalles.empresa_id", "productos.nombre",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
+        ->select("pedidodetalles.empresa_id", "productos.codigo",  DB::raw('COUNT( pedidodetalles.id ) AS cantidad') )
         ->where('pedidodetalles.empresa_id', $this->empresaId())
         ->groupBy("productos.nombre", "pedidodetalles.empresa_id"   )
         ->orderBy("cantidad", "desc")
@@ -119,7 +110,7 @@ class IncludeshomeController extends Controller
     }
     public function totalderegistros(){
         $totalempresas = Empresa::all()->count();
-        $totalusuarios = Persona::all()->count();
+        $totalusuarios = User::all()->count();
         $totalpedidos = Pedidodetalle::all()->count();
         return  response()->json([$totalempresas, $totalusuarios, $totalpedidos], 200);
     }

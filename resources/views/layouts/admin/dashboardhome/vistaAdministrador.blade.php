@@ -4,12 +4,13 @@
         color: rgb(255, 255, 255);
     }
 
-    H5 {
-        color: rgb(0, 0, 0);
-    }
+
 
     .pedidos {
-        background-color: #FCE0A2;
+        background-color:  rgb(219, 14, 14);
+    }
+    .card-title{
+        color: #ebebeb;
     }
 
     .ventas {
@@ -17,26 +18,24 @@
     }
 
     .productos {
-        background-color: #E6EDB7;
+        background-color: #92df03;
     }
 
     .clientes {
         background-color: rgb(155, 206, 72);
     }
 
-    .card-body:hover {
-        opacity: 0.8;
-    }
-
-    .card-body>h5:hover {
-        color: blue;
-    }
+     
 
     .card {
         border-radius: 0% !important;
         padding: 0px !important;
         margin: 0px;
 
+    }
+    .card:hover{
+        box-shadow: 0 3px 5px #000000;
+      
     }
 
     .grafico_header_productos {
@@ -49,17 +48,18 @@
     {{-- <div class="col-sm-12 col-md-12 border" style="background-color:#FFFFFF;"> --}}
 
     <div class="col-sm-3">
-
+    <a href="{{ route('pedidos.ingresados')}}">
         <div class="card">
             <div class="card-header p-1 text-center ">
                 {{-- <span class="display-3 text-info"><i class="fas fa-users"></i></span> --}}
                 <img src="https://img.icons8.com/bubbles/100/000000/bar-chart.png" />
             </div>
             <div class="card-body p-1 pedidos d-flex justify-content-center">
-                <h5 class="card-title">Lo más pedido <i class="fas fa-arrow-circle-right"></i></h5>
+                <h5 class="card-title">Pedidos ingresados <i class="fas fa-arrow-circle-right"></i></h5>
 
             </div>
         </div>
+    </a>
 
     </div>
 
@@ -71,7 +71,7 @@
                 <img src="https://img.icons8.com/plasticine/100/000000/total-sales.png" />
             </div>
             <div class="card-body p-1 ventas d-flex justify-content-center">
-                <h5 class="card-title">Ventas <i class="fas fa-arrow-circle-right"></i></h5>
+                <h5 class="card-title">Pedidos atendidos <i class="fas fa-arrow-circle-right"></i></h5>
 
             </div>
         </div>
@@ -79,18 +79,18 @@
     </div>
 
     <div class="col-sm-3">
-
+        <a href="{{route('productos.index')}}">
         <div class="card">
             <div class="card-header p-1 text-center ">
                 {{-- <span class="display-3 text-warning"><i class="fas fa-utensils"></i></span> --}}
                 <img src="https://img.icons8.com/bubbles/100/000000/add-shopping-cart.png" />
             </div>
-            <a href="{{route('productos.index')}}">
+           
                 <div class="card-body p-1 productos d-flex justify-content-center">
                     <h5 class="card-title">Productos <i class="fas fa-arrow-circle-right"></i></h5>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
 
     </div>
 
@@ -118,7 +118,7 @@
         <div class="col">
             <div class="col-12 d-flex flex-nowrap mt-1">
                 <div class="col-5">
-                    <span>Ventas </span>
+                    <span>Pedidos atendidos</span>
                 </div>
             </div>
             <canvas id="chartHistoricoVentas"
@@ -195,7 +195,7 @@ function productosMasVendidos(){
               var nombredeproducto =[];
               var cantidadeproducto =[];
               $.each(data, function(index, producto){
-                nombredeproducto.push(producto.nombre);
+                nombredeproducto.push(producto.codigo);
                 cantidadeproducto.push(producto.cantidad);
                 $("#tbl_productosmasvendidos").append(
                         "<tr>"+
@@ -220,7 +220,7 @@ function HistoricoVentas(){
               var nombredeproducto =[];
               var totalvendidos =[];
               $.each(data, function(index, producto){
-                nombredeproducto.push(producto.nombre);
+                nombredeproducto.push(producto.codigo);
                 totalvendidos.push(producto.cantidad);         
              
                 graficoHistoricoVentas(nombredeproducto,totalvendidos);
@@ -244,7 +244,7 @@ function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){
                     data: {
                         labels: nombredeproducto,
                         datasets: [{
-                            label: 'VENTAS REALIZADAS HASTA LA FECHA ACTUAL',
+                            label: 'PRODUCTOS FILTRADOS POR CÓDIGO',
                             data: cantidadeproducto,
                             backgroundColor: colores,
                         }]

@@ -26,9 +26,9 @@ class ProductoofertasUpdateRequest extends FormRequest
         return [
             'preciooferta' =>['required'],
             'diainicio' =>['required'],
-            'horainicio' =>['required'],
+            // 'horainicio' =>['required'],
             'diafin' =>['required'],
-            'horafin' =>['required'],
+            // 'horafin' =>['required'],
         ];
     }
 }

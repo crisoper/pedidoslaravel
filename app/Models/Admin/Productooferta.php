@@ -15,9 +15,9 @@ class Productooferta extends Model
         'producto_id',
         'preciooferta',
         'diainicio',
-        'horainicio',
+        // 'horainicio',
         'diafin',
-        'horafin',
+        // 'horafin',
         'created_by',
     ];
     

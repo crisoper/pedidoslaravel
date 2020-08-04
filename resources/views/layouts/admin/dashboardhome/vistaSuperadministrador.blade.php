@@ -52,7 +52,7 @@
     
             <div class="info-box-content text-center">
               <span class="info-box-number" id="totalReclamos">
-              <h3>20</h3>
+             
               </span>
               <span class="info-box-text">Reclamos</span>
               
@@ -205,6 +205,7 @@
         $("#totalEmpresas").html('<h3>'+ data[0] +'</h3>')
         $("#totalUsuarios").html('<h3>'+ data[1] +'</h3>')
         $("#totalPedidos").html('<h3>'+ data[2] +'</h3>')
+        $("#totalReclamos").html('<h3>'+ 0 +'</h3>')
      
       }
     });

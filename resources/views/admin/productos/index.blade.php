@@ -111,11 +111,11 @@
                                             @if ( in_array( $producto->id, $arrayofertas) )
                                             <button type="button" class="btn badge badge-warning badge-pill"
                                                 data-toggle="modal" data-target="#ModalOfertas" title="Ofertar producto"
-                                                nombreproducto="{{ $producto->nombre }}" idproducto="{{$producto->id}}" value="En Ofertar">En Oferta</button>
+                                               precioactual="{{ $producto->precio }}" nombreproducto="{{ $producto->nombre }}" idproducto="{{$producto->id}}" value="En Ofertar">En Oferta</button>
                                             @else
                                             <button type="button" class="btn badge badge-success badge-pill"
                                                 data-toggle="modal" data-target="#ModalOfertas" title="Ofertar producto"
-                                                nombreproducto="{{ $producto->nombre }}" idproducto="{{$producto->id}}">
+                                              precioactual="{{ $producto->precio }}"  nombreproducto="{{ $producto->nombre }}" idproducto="{{$producto->id}}">
                                                 Ofertar
                                             </button>
 
@@ -150,11 +150,16 @@
             <div class="modal-body">
                 <form action="" method="post" id="formularioProductoOfertas">
                     <div class="form-group">
-                        <label for="nombreproducto">Producto: </label>
-                        <span id="nombreproducto" class="text-primary text-center"></span>
+                        <label for="nombreproducto">Producto: 
+                            <span id="nombreproducto" class="text-primary"></span>
+                        </label><br>
+                        <label for="precioactual">Precio actual: 
+                            <span id="precioactual" class="text-primary"></span>
+                        </label>
                         <input type="hidden" name="idproducto" id="idproducto" value="">
                         <input type="hidden" name="idoferta" id="idoferta" value="">
                     </div>
+                   
                     <div class="form-row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -170,12 +175,14 @@
                         <div class="form-group">
                             <label for="fechainicio">Fecha de inicio: </label><br>
                             <input class="form-control" type="date" name="diainicio" id="diainicio"><br>
-                            <input class="form-control" type="time" name="horainicio" id="horainicio">
+                            {{-- <input class="form-control" type="time" name="horainicio" id="horainicio"> --}}
+                      
+     
                         </div>
                         <div class="form-group">
                             <label for="fechafin">Fecha de fin: </label><br>
                             <input class="form-control" type="date" name="diafin" id="diafin"><br>
-                            <input class="form-control" type="time" name="horafin" id="horafin">
+                            {{-- <input class="form-control" type="time" name="horafin" id="horafin"> --}}
                         </div>
                     </div>
             </div>
@@ -272,7 +279,8 @@
         $('#tablaProductos #btn_ofertarproducto').on('click', 'button', function(){
          
             if ( $(this).attr('value') == 'En Ofertar' ) {
-                    $("#nombreproducto").html( "<h4> "+$(this).attr('nombreproducto')+"</h4>");          
+                    $("#nombreproducto").html( $(this).attr('nombreproducto') );          
+                    $("#precioactual").html( $(this).attr('precioactual') );          
                     $("#idproducto").val( $(this).attr('idproducto'));          
                     $('#ModalOfertas').modal( {backdrop: "static"} );
                     $('#btn_guardaroferta').html('Editar Oferta');
@@ -284,12 +292,10 @@
                 method: 'get',
                 data: {idproducto: $(this).attr('idproducto')},
                 success: function (data) {                 
-
+                    console.log( data);
                     $('#preciooferta').val(data.preciooferta);
                     $('#diainicio').val(data.diainicio);
-                    $('#horainicio').val(data.horainicio);
-                    $('#diafin').val(data.diafin);
-                    $('#horafin').val(data.horafin);
+                    $('#diafin').val(data.diafin);                  
                     $('#idoferta').val(data.id);
                     
                 }
@@ -298,16 +304,18 @@
             } else {
                 $('#btn_guardaroferta').html('Guardar Oferta');
                 $('#btn_guardaroferta').val('Guardar Oferta');
-                $("#nombreproducto").html( "<h4> "+$(this).attr('nombreproducto')+"</h4>");          
+                $("#nombreproducto").html( $(this).attr('nombreproducto') );
+                $("#precioactual").html( $(this).attr('precioactual') );            
+              
                 $("#idproducto").val( $(this).attr('idproducto'));          
                 $('#ModalOfertas').modal( {backdrop: "static"} );
             }
-
         });
 
         $("#btn_guardaroferta").on('click', function(){
  
-            if ( $(this).val() == 'Editar Oferta') {
+            if ( $(this).html() == 'Editar Oferta') {
+               
                     $('#formularioProductoOfertas').on('submit', function (event) {
                     event.preventDefault();
                     
@@ -319,20 +327,25 @@
                            cache: false,
                            processData: false,                        
                            data: new FormData(this),
-                        success: function(){
+                        success: function(){  
                           
                             $('#ModalOfertas').modal('hide');
                             datoguardadocorrectamente();    
                         },
                         error: function( jqXHR, textStatus, errorThrown  ){
+                         
                             if( jqXHR.status == 422 ){
+                              
                                 console.log("No se ha registrado la oferta");
                             }
-                            else if( jqXHR.status == 404 ) {
-                                console.log("Pagina no encontrada");
+                            else if( jqXHR.status == 429 ) {
+                                alert(jqXHR.status); 
+                                $( "#preciooferta" ).addClass("is-invalid");                                       
+                                MostrarNotificaciones(error ,  'error') ;
                             }
+                          
                          }
-                     })
+                     });
                  });
 
              }
@@ -345,14 +358,11 @@
                             dataType: "json",
                             method: "post",
                             contentType: false,
-                                cache: false,
-                                processData: false,
-
+                            cache: false,
+                            processData: false,
                             data: new FormData(this),
                             success: function(){
-                                console.log("Oferta registrada");
                                 $('#ModalOfertas').modal('hide');
-                              
                                 datoguardadocorrectamente();                 
                             },
                                 error:  function( jqXHR, textStatus, errorThrown ) {
@@ -402,19 +412,16 @@
                     //Mostramos errores devueltos desde Backend
                     let errorsRespuesta = jqXHR.responseJSON.errors;
 
-                    $.each( errorsRespuesta, function( idElemento, arrayErrores ) {
-                    
+                    $.each( errorsRespuesta, function( idElemento, arrayErrores ) {                    
                         $( "#" + idElemento ).addClass("is-invalid");
                             arrayErrores.forEach( error => {
-                            MostrarNotificaciones(error ,  'error') ;
-                            
+                            MostrarNotificaciones(error ,  'error') ;                            
                         });
                     
                     });
 
                     //Ocultamos los errores despues de 5 segundos
-                    setTimeout( function() {
-                    
+                    setTimeout( function() {                    
                         $("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
                     }, 5000);
 
