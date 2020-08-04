@@ -34,7 +34,7 @@ class ProductoResource extends JsonResource
             
             'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
             'empresa' => $this->empresa ? $this->empresa->nombre : '',
-            'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : '',
+            // 'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : '',
             
             'recomendar_id' => $this->recomendar ? $this->recomendar->id : 0, 
             'recomendar' => $this->recomendar ? $this->recomendar->recomendar : '',
