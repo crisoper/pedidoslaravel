@@ -78,7 +78,7 @@
                                         </td>
                                         @can('empresas.editar')
                                             <td class="text-center">
-                                                <a href="{{route('empresas.edit',$empresa->id)}}" class="text-primary">
+                                                <a href="{{route('empresa.editar',$empresa->id)}}" class="text-primary">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                             </td>

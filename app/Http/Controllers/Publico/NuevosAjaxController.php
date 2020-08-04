@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Producto;
 use App\Models\Publico\Cesta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NuevosAjaxController extends Controller
@@ -28,7 +29,13 @@ class NuevosAjaxController extends Controller
             ->pluck("producto_id");
         }
         
-        $productosNuevos = Producto::whereDate( "created_at", now() );
+        
+        //Productos mas pedidos
+        $hoy =  Carbon::now();
+        $fechainicio = Carbon::now()->subDays( 7 );
+
+        $productosNuevos = Producto::whereDate("created_at", ">=", $fechainicio )
+        ->whereDate("created_at", "<=", $hoy );
 
         if( $request->has('buscar')  and $request->buscar != "" ) {
             $productosNuevos = $productosNuevos->where('nombre', 'like', '%'.$request->buscar.'%');

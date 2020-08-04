@@ -15,9 +15,15 @@ class Productooferta extends Model
         'producto_id',
         'preciooferta',
         'diainicio',
-        'horainicio',
+        // 'horainicio',
         'diafin',
-        'horafin',
+        // 'horafin',
         'created_by',
     ];
+    
+    
+    public function producto()
+    {
+        return  $this->belongsTo('App\Models\Admin\Producto', 'producto_id');
+    }
 }

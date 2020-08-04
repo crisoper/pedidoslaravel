@@ -17,6 +17,8 @@ class PedidoestadoResource extends JsonResource
         return [
             'id' => $this->id,
             'estado' => $this->estado,
+            'calificacion' => $this->calificacion,
+            'created_at' => $this->created_at->format('d/m/Y - h:i A'),
 
             // 'created_by' => $this->created_by,
             'repartidor_id' => $this->repartidor ? $this->repartidor->id : 0,

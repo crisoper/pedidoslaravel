@@ -14,6 +14,7 @@ use App\Models\Admin\Productofoto;
 use App\Models\Admin\Productooferta;
 use App\Models\Admin\Productotag;
 use App\Models\Admin\Tag;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -61,12 +62,12 @@ class ProductosController extends Controller
             $productos = Producto::where('nombre', 'like', '%' . request()->buscar . '%')
                 ->where('empresa_id', $this->empresaId())
                 ->orderBy('id', 'desc')
-                ->paginate(20);
+                ->paginate(10);
             return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
         } else {
             $productos = Producto::orderBy('id', 'desc')
                 ->where('empresa_id', $this->empresaId())
-                ->paginate(20);
+                ->paginate(10);
 
 
             return view('admin.productos.index', compact('productos', 'categorias', 'arrayofertas'));
@@ -95,7 +96,7 @@ class ProductosController extends Controller
     public function store(ProductosCreateRequest $request)
     {
 
-        return $request;
+
         $catedoria = Productocategoria::where('id', $request->categoriasId)->first();
         if ($catedoria != null || $catedoria != "") {
             $catedoriaid = $catedoria->id;
@@ -150,18 +151,12 @@ class ProductosController extends Controller
         ]);
         $productotag->save();
 
-
         $files = $request->file('fotoproducto');
         if (isset($files)) {
             foreach ($files as $file) {
-
-                //   $filename = strtolower( time().'.'. $file->getClientOriginalExtension());
-
                 $input['fotoproducto'] = strtolower(uniqid() . '.' . $file->getClientOriginalExtension());
                 $destinationPath = public_path('/images');
                 $file->move($destinationPath, $input['fotoproducto']);
-
-                //   \Storage::disk('img_productos')->put($filename,  \File::get($file));
 
                 $fotoproducto = Productofoto::firstOrNew(
                     [
@@ -176,7 +171,7 @@ class ProductosController extends Controller
                 );
                 $fotoproducto->save();
 
-                ProcessimageJob::dispatch($fotoproducto);
+                ProcessimageJob::dispatchNow($fotoproducto);
             }
         }
         //    
@@ -266,13 +261,10 @@ class ProductosController extends Controller
         $productotag->tag_id = $tagid;
         $productotag->save();
 
-        
+
         $files = $request->file('fotoproducto');
         if (isset($files)) {
-            //    $fotos = Productofoto::where("producto_id", $producto->id )->get();
-            //         foreach ($fotos as $foto) {
-            //             $foto->delete();
-            //         }
+
             Productofoto::where("producto_id", $producto->id)->delete();
 
             foreach ($files as $file) {
@@ -292,10 +284,10 @@ class ProductosController extends Controller
                     ]
                 );
                 $fotoproducto->save();
-                ProcessimageJob::dispatch($fotoproducto);
+                ProcessimageJob::dispatchNow($fotoproducto);
             }
         }
-           
+
         return redirect()->route('productos.index')->with('info', 'Datos modificados satisfactoriamente...');
     }
 
@@ -339,31 +331,36 @@ class ProductosController extends Controller
                 return response()->json(["data", $fotosproducto], 200);
             } else {
 
-                return response()->json(["data", "No existe archivo"], 422)->with('error', 'No existe imagen de este producto');
+                return response()->json(["data", "No existe archivo"], 422);
             }
         }
     }
 
     public function productosofertas(ProductoofertasCreateRequest $request)
     {
+        $producto = Producto::findOrFail($request->idproducto);
 
-        $ofertas = Productooferta::firstOrNew(
-            [
-                'empresa_id' => $this->empresaId(),
-                'producto_id' => $request->idproducto,
-            ],
-            [
-                'preciooferta' => $request->preciooferta,
-                'diainicio' => $request->diainicio,
-                'horainicio' => $request->horainicio,
-                'diafin' => $request->diafin,
-                'horafin' => $request->horafin,
-                'created_by',
-            ]
-        );
-        $ofertas->save();
+        if ( $request->preciooferta > 0 and  $request->preciooferta < $producto->precio ) {
 
-        return response()->json('success', 200);
+            $ofertas = Productooferta::firstOrNew(
+                [
+                    'empresa_id' => $this->empresaId(),
+                    'producto_id' => $request->idproducto,
+                    'preciooferta' => $request->preciooferta,
+                    'diainicio' =>  $request->diainicio,
+                    'diafin' =>  $request->diafin,
+                ],
+                [
+                    // 'horainicio' => $request->horainicio,
+                    // 'horafin' => $request->horafin,
+                    'created_by',
+                ]
+            );
+            $ofertas->save();
+            return response()->json('success', 200);
+        }else{
+            return response()->json(['error' => 'Dato invalido!'], 429);
+        }
     }
 
     public function productosofertaseditar(Request $request)
@@ -375,7 +372,7 @@ class ProductosController extends Controller
 
     public function productosofertasupdate(ProductoofertasUpdateRequest $request)
     {
-
+       
         $ofertas = Productooferta::findOrFail($request->idoferta);
         // $ofertas->empresa_id  = $this->empresaId();
         // $ofertas->producto_id  = $request->idproducto;

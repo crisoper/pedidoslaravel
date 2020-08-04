@@ -26,11 +26,11 @@
 
 
     <!-- MENU WEB 1 -->
-    <header class="container-fluid header__top mx-0 px-0 bg-dark">
+    <header class="container-fluid header__top mx-0 px-0">
         <div class="container">
             <div class="row m-0">
                 {{-- SERVICIO AL CLIENTE --}}
-                <div class="col-6 col-sm-6 col-md-3 col-lg-2 p-0" id="header_top_client">
+                <div class="col-0 col-sm-0 col-md-3 col-lg-2 p-0" id="header_top_client">
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -48,14 +48,14 @@
                 </div>
 
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-7 col-sm-4 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
+                <div class="col-7 col-sm-5 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
                     <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }} ">
-                        Publica tus productos
+                        Regístrate aquí y publica tus productos 
                     </a>
                 </div>
 
                 {{-- APPS --}}
-                <div class="col-3 col-sm-4 col-md-2 col-lg-2 p-0" id="header_top_apps">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 p-0" id="header_top_apps">
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -157,7 +157,7 @@
         <div class="container">
             <div class="row m-0">
                 {{-- ABRIR MENU MOVIL --}}
-                <div class="col-2 col-sm-1 col-md-1 px-0" id="humberger__open">
+                <div class="col-2 col-sm-2 col-md-1 p-0" id="humberger__open">
                     <button type="button" class="open_menu_movil p-0" id="mostrar_menumovil">
                         <div id="icon_humberger">
                             <h4><i class="fa fa-bars"></i></h4>
@@ -169,14 +169,14 @@
                 </div>
 
                 {{-- LOGOTIPO --}}
-                <div class="col-4 col-sm-2 col-md-2 col-lg-2 px-0" id="header__logo">
+                <div class="col-4 col-sm-3 col-md-2 col-lg-2 p-0" id="header__logo">
                     <a class="btn btn_logotipo_app pl-2 pr-1 py-1" href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="" width="120">
+                        <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="" width="120">
                     </a>
                 </div>
 
                 {{-- MENU CATEGORIAS --}}
-                <div class="col-0 col-sm-0 col-md-0 col-lg-2 px-0" id="menu_categorias">
+                <div class="col-0 col-sm-0 col-md-0 col-lg-2 p-0" id="menu_categorias">
                     <div class="header_menu_categorias">
                         <button class="btn_menu_categorias" type="button" data-toggle="dropdown">
                             <i class="fas fa-bars"></i> Categorías <i class="fas fa-angle-down ml-3"></i>
@@ -188,19 +188,19 @@
                             <li><a class="dropdown-item" href="{{ route('maspedidos.index') }}">Mas Pedidos</a></li>
                             <li><a class="dropdown-item" href="{{ route('productos.busqueda.index') }}">Todos Los
                                     Productos</a></li>
-                            <li class="dropdown-submenu">
+                            {{-- <li class="dropdown-submenu">
                                 <a class="dropdown-item submenu_categorias" href="#">Categorías <i
                                         class="fas fa-angle-right float-right pt-1"></i></a>
                                 <ul class="dropdown-menu" id="menuCategorias">
 
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
 
                 {{-- BUSCADOR WEB --}}
-                <div class="col-0 col-sm-5 col-md-7 col-lg-6 px-0" id="search_web">
+                <div class="col-0 col-sm-5 col-md-7 col-lg-6 p-0" id="search_web">
                     <div class="header_search_web">
                         <form id="form_buscar_productos" action="{{route('productos.busqueda.index')}}">
                             <div class="input-group input_group_search">
@@ -219,31 +219,31 @@
                 </div>
 
                 {{-- BUSCADOR MOVIL --}}
-                <div class="col-2 col-sm-0 col-md-1 col-lg-1 px-0" id="search_movil">
-                    <button type="button" class="btn btn_open_search_movil row m-0" id="mostrar_search_movil_menu">
-                        <h4 class="icon_search_movil_menu m-0">
+                <div class="col-2 col-sm-0 col-md-1 col-lg-1 p-0" id="search_movil">
+                    <button type="button" class="btn btn_open_search_movil row m-0  float-right" id="mostrar_search_movil_menu">
+                        <h4 class="icon_search_movil_menu">
                             <i class="fas fa-search"></i>
                         </h4>
                     </button>
                 </div>
 
                 {{-- FAVORITOS --}}
-                <div class="col-2 col-sm-2 col-md-1 col-lg-1 px-0" id="menu_favoritos">
-                    <button type="button" class="btn btn_open_favorites row m-0" id="mostrar_favoritos_menu">
-                        <h4 class="icon_favoritos_menu m-0">
-                            <i class="fas fa-heart"></i>
+                <div class="col-2 col-sm-2 col-md-1 col-lg-1 p-0" id="menu_favoritos">
+                    <button type="button" class="btn btn_open_favorites row m-0 float-right" id="mostrar_favoritos_menu">
+                        <h4 class="icon_favoritos_menu">
+                            <i class="far fa-heart"></i>
                         </h4>
-                        <h6 class="cantidad_favoritos_menu m-0">0</h6>
+                        <h6 class="cantidad_favoritos_menu">0</h6>
                     </button>
                 </div>
 
                 {{-- CESTA --}}
                 <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 p-0" id="menu_cesta">
-                    <button type="button" class="btn btn_modal_cesta row m-0" id="mostrar_cesta_menu">
-                        <h4 class="icon_cesta_menu m-0">
+                    <button type="button" class="btn btn_modal_cesta row m-0 float-right" id="mostrar_cesta_menu">
+                        <h4 class="icon_cesta_menu">
                             <i class="fas fa-shopping-basket"></i>
                         </h4>
-                        <h6 class="cantidad_cesta_menu m-0">0</h6>
+                        <h6 class="cantidad_cesta_menu">0</h6>
                     </button>
                 </div>
 

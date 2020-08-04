@@ -43,6 +43,11 @@ Route::get('loginOrRegister.editcomprador' ,'Admin\Usuarios\UsuariosController@e
 Route::put('loginOrRegister.updatecomprador' ,'Admin\Usuarios\UsuariosController@actualizarDatosComprador')->name('loginOrRegister.update.comprador');
 Route::put('loginOrRegister.updatecomprador.contraseña' ,'Admin\Usuarios\UsuariosController@cambiarcontraseñaComprador')->name('loginOrRegister.cambiarcontraseñaComprador');
 
+
+Route::get('registrartuempresa','Admin\EmpresasController@registrartuempresa')->name('registrartuempresa');
+
+
+
 Route::post("administracion/login", "Auth\LoginController@login")
 ->name("admin.login.post");
 
@@ -75,31 +80,24 @@ Route::post("administracion/register", "Auth\RegisterController@showRegistration
 
 
 
-
-Route::get('/', 'Publico\ProductosController@index')
+// PRODUCTOS INICIO
+Route::get('/', 'Publico\Productos\ProductosController@index')
 ->name('inicio.index');
-
-// CESTA REALIZAR COMPRA
-Route::get('cart', 'Publico\CartController@index')
-->name('cart.index');
-
-// LISTA DE DESEOS
-Route::get('listadedeseos', 'Publico\ListadeseosController@index')
-->name('listadedeseos.index');
+//PRODUCTOS RECOMENDADOS, OFERTAS, NUEVOS, MAS PEDIDOS INICIO
+Route::get('recomendados', 'Publico\Productos\ProductosrecomendadosController@index')
+->name('recomendados.index');
+Route::get('ofertas', 'Publico\Productos\ProductosofertasController@index')
+->name('ofertas.index');
+Route::get('nuevos', 'Publico\Productos\ProductosnuevosController@index')
+->name('nuevos.index');
+Route::get('maspedidos', 'Publico\Productos\ProductosmaspedidosController@index')
+->name('maspedidos.index');
 
 
 // PRODUCTOS RECOMENDADOS
-Route::get('recomendados', 'Publico\RecomendadosController@index')
-->name('recomendados.index');
 // PRODUCTOS OFERTADOS
-Route::get('ofertas', 'Publico\OfertasController@index')
-->name('ofertas.index');
 // PRODUCTOS NUEVOS
-Route::get('nuevos', 'Publico\NuevosController@index')
-->name('nuevos.index');
 // PRODUCTOS MAS PEDIDOS
-Route::get('maspedidos', 'Publico\MaspedidosController@index')
-->name('maspedidos.index');
 
 
 
@@ -109,8 +107,6 @@ Route::get('productos/busqueda', 'Publico\ResultadosproductosController@index')
 // PRODUCTOS RESULTADOS BUSQUEDA
 Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 ->name('locales.busqueda.index');
-
-
 
 //CESTA MENU
 Route::get("cesta/index", "Publico\CestaController@index")
@@ -131,9 +127,20 @@ Route::delete("listadeseo/delete", "Publico\ListadeseosMenuController@delete")
 
 
 
+// CESTA REALIZAR COMPRA
+Route::get('cart', 'Publico\CartController@index')
+->name('cart.index');
+
+// LISTA DE DESEOS
+Route::get('listadedeseos', 'Publico\ListadeseosController@index')
+->name('listadedeseos.index');
+
+
+
 //REALIZAR PEDIDO CLIENTE
-Route::post("ajax/locales/pedidosstore", "Admin\PedidosController@pedidosstore")
-->name("ajax.locales.pedidosstore");
+Route::post("ajax/realizarpedido", "Admin\Pedidos\RealizarpedidoController@store")
+->name("ajax.realizarpedido");
+
 
 //SEGUIMIENTO DE PEDIDO CLIENTE
 Route::get("seguimientodepedido", "Publico\SeguimientopedidoController@index")

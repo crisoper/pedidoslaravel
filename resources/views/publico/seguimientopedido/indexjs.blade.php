@@ -62,7 +62,7 @@ $(document).ready(  function () {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span class="span_estado_pedido">Pedido Sin Confirmar</span>
                         `;
-                    }else if (pedidosestado.estado == "despachado") {
+                    }else if (pedidosestado.estado == "porentregar") {
                         pedidoestadoHTML = pedidoestadoHTML + `
                             <span class="span_estado_pedido">Pedido Confirmado</span>
                         `;

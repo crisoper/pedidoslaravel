@@ -27,8 +27,8 @@
                             </div>
                             <div>
                                 <div class="card-body ">
-                                    <table class="table table-striped table-sm border">
-                                        <thead class="bg-primary">
+                                    <table class="table table-striped ">
+                                        <thead class="">
                                             <tr>
                                                 <th>
                                                     <div class="col-12 text-center">

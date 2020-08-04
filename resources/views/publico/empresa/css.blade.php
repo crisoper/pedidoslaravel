@@ -1,51 +1,51 @@
- <style>
-        input {
-            border-radius: 0em;    
-        }
-    
-
-    
-        .img img {
-            width: 100%;
-        }
-        .color-2 {
-      
-      background:         linear-gradient(90deg, #f8f8f8 10%, #d8d7d6 90%);
+<style>
+    input {
+        border-radius: 0em;
     }
 
+    .color-2 {
 
-    p {
-        font-family: 'Montserrat', Helvetica, sans-serif;
-        font-size: 1.5rem;
-        color: #fff;
-        padding-top: 5px;
+        background: linear-gradient(90deg, #f8f8f8 10%, #d8d7d6 90%);
     }
 
-  
-    h4 {
-        font-size: 24px;
-    }
-
-   
 
 
     .titulo {
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-       
+        font-size: 42px;
+    }
+
+
+    @media(max-width:530px) {
+        .titulo {
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 28px;
+        }
     }
 
     #texto {
-        
+
         text-align: center;
-        padding-top: 5em;
-        background-color: rgb(34, 115, 126);
-        color: white;      
+        padding-top: 2em;
+        /* background-color: rgb(34, 115, 126); */
+        color: rgb(0, 0, 0);
     }
-    #container_left{
+
+    #container_left {
         padding-left: 2em;
         padding-right: 2em;
+        /* background-color:red; */
+        background-image: url('img/register_img.jpg');
     }
+
+    .formlario {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+
     #contenedor_fijo {
         height: 100vh;
         width: 40%;
@@ -54,15 +54,30 @@
         left: 0;
         top: 0
     }
-    input{
-        border: 1px solid blue;
+
+    input,
+    select {
+        border: 0 solid black !important;
+        border-radius: 0px !important;
+
+
     }
-    img {
+
+    .btn_app_android,
+    .btn_app_ios {
         width: 150px !important;
         height: 40px !important;
+    }
+
+    .img img {
+        width: 100%;
     }
 
     #apps {
         margin-bottom: 1rem;
     }
-    </style>
+
+    .text-resaltado {
+        color: red;
+    }
+</style>

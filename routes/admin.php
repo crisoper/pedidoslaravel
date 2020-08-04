@@ -27,6 +27,8 @@ function () {
 
     //EMPRESAS
     Route::resource('empresas', 'Admin\EmpresasController');
+    Route::post('empresas.store', 'Admin\EmpresasController@store')->name('empresa.store');
+    Route::get('empresas.editar/{empresaid}', 'Admin\EmpresasController@editar')->name('empresa.editar');
     Route::post('empresas.update','Admin\EmpresasController@Update')->name('empresas.update');
     Route::get("seleccionarempresa", 'Admin\SeleccionarempresaController@seleccionarempresa')->name("config.seleccionar.empresa");
     Route::post("seleccionarempresa", 'Admin\SeleccionarempresaController@establecerempresa')->name("config.establecer.empresa");
@@ -78,7 +80,7 @@ function() {
     Route::get('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@getroles')->name('usuarios.roles');
     Route::put('usuarios/{user}/roles', 'Admin\Usuarios\UsuariosController@storeroles')->name('usuarios.storeroles');
     Route::post('usuariosdistribuidor', 'Admin\Usuarios\UsuariosController@usuariosdistribuidor')->name('usuarios.distribuidor.create');
-    Route::put('actualizar.datos.administrador', 'Admin\Usuarios\UsuariosController@update')->name('actualizar.datos.administrador');
+    Route::put('actualizar.datos.perfil', 'Admin\Usuarios\UsuariosController@update')->name('actualizar.datos.perfil');
     // Route::put('cambiar.clave.administrador', 'Admin\Usuarios\UsuariosController@cambiarmiclave')->name('cambiar.clave.administrador');
     
     
@@ -153,31 +155,44 @@ function() {
     Route::get('tags.getTags', 'Admin\TagsController@getTags')->name('tags.getTags');
 
 
-    // PEDIDOS
-    Route::get('pedidos', 'Admin\PedidosController@index')->name("pedidos.index");
-
-    Route::get("ajax/pedidos/index", "Admin\PedidosAjaxController@index")
-    ->name("ajax.pedidos.index");
-    Route::post("ajax/pedidos/store", "Admin\PedidosAjaxController@store")
-    ->name("ajax.pedidos.store");
 
     
-    // PEDIDOS DESPACHADOS
-    Route::get('pedidos/despachados', 'Admin\PedidosController@despachados')->name("pedidos.despachados");
+    // RECOMENDAR PRODUCTOS
+    Route::get('productosarecomendar', 'Admin\ProductosarecomendarController@index')
+        ->name('productosarecomendar.index');
 
-    Route::get("ajax/pedidos/despachados/index", "Admin\PedidosdespachadosAjaxController@index")
-    ->name("ajax.pedidos.despachados.index");
-    Route::post("ajax/pedidos/despachados/store", "Admin\PedidosdespachadosAjaxController@store")
-    ->name("ajax.pedidos.despachados.store");
-    
+    Route::get('productosarecomendar/edit', 'Admin\ProductosarecomendarController@edit')
+        ->name('productosarecomendar.edit');
+        
+    Route::post('productosarecomendar/update', 'Admin\ProductosarecomendarController@update')
+        ->name('productosarecomendar.update');
 
-    // PEDIDOS DESPACHADOS
-    Route::get('pedidos/entregados', 'Admin\PedidosController@entregados')->name("pedidos.entregados");
+    Route::delete('productosarecomendar/destroy', 'Admin\ProductosarecomendarController@destroy')
+        ->name('productosarecomendar.destroy');
 
-    Route::get("ajax/pedidos/entregados/index", "Admin\PedidosentregadosAjaxController@index")
-    ->name("ajax.pedidos.entregados.index");
-    Route::post("ajax/pedidos/entregados/store", "Admin\PedidosentregadosAjaxController@store")
-    ->name("ajax.pedidos.entregados.store");
+
+
+
+    // PEDIDOS INGRESADOS
+    Route::get('pedidos/ingresados', 'Admin\Pedidos\PedidosIngresadosController@index')->name("pedidos.ingresados");
+    Route::get("ajax/pedidosingresados/index", "Admin\Pedidos\PedidosIngresadosController@ingresados")->name("ajax.pedidosingresados.index");
+    Route::post("ajax/pedidosingresados/store", "Admin\Pedidos\PedidosIngresadosController@store")->name("ajax.pedidosingresados.store");
+
+
+    // PEDIDOS POR ENTREGAR
+    Route::get('pedidos/porentregar', 'Admin\Pedidos\PedidosPorentregarController@index')->name("pedidos.porentregar");
+    Route::get("ajax/pedidosporentregar/index", "Admin\Pedidos\PedidosPorentregarController@porentregar")->name("ajax.pedidosporentregar.index");
+    Route::post("ajax/pedidosporentregar/store", "Admin\Pedidos\PedidosPorentregarController@store")->name("ajax.pedidosporentregar.store");
+
+
+    // PEDIDOS ENTREGADOS
+    Route::get('pedidos/entregados', 'Admin\Pedidos\PedidosEntregadosController@index')->name("pedidos.entregados");
+    Route::get("ajax/pedidosentregados/index", "Admin\Pedidos\PedidosEntregadosController@entregados")->name("ajax.pedidosentregados.index");
+
+
+    // PEDIDOS ENTREGADOS
+    Route::get('pedidos/calificados', 'Admin\Pedidos\PedidosCalificadosController@index')->name("pedidos.calificados");
+    Route::get("ajax/pedidoscalificados/index", "Admin\Pedidos\PedidosCalificadosController@calificados")->name("ajax.pedidoscalificados.index");
 
     
 });

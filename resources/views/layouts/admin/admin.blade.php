@@ -14,22 +14,22 @@
     @include('layouts.admin.messenger')
   
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed contenidoPrincipalPaginaAdmin">
     <div class="wrapper" id="app">
   
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <ul class="navbar-nav">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-danger">
+            <ul class="navbar-nav ">
                 <li class="nav-item">
                     <a class="nav-link showHideSideBar" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li>
-                    <small>@if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif </small><br>
-                    <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small>
+                    <h5>@if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif </h5><br>
+                    {{-- <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small> --}}
                 </li>
             </ul>
             
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto ">
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <img width="25px" height="25px" 

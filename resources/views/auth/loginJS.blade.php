@@ -2,20 +2,20 @@
     $(document).ready(function(){
 
     if ( $("#login").hasClass('active') ) {
-        $(".li_login").attr('style','border-bottom:3px solid #ed3237 !important; ');
+        $(".li_login").attr('style','border-bottom:3px solid #000 !important; ');
     }
    
     if ( $("#register").hasClass('active') ) {
-        $(".li_register").attr('style','border-bottom:3px solid #ed3237 !important; color: #ed3237 !important;');
+        $(".li_register").attr('style','border-bottom:3px solid #000 !important; color: #000 !important;');
     }
    
     $(".li_login").on('click', function(){
-        $(".li_login").attr('style','border-bottom:3px solid #ed3237 !important; color: #ed3237 !important; font: bold !important;')
+        $(".li_login").attr('style','border-bottom:3px solid #000 !important; color: #000 !important; font: bold !important;')
         $(".li_register").removeAttr('style');
     });
     
     $(".li_register").on('click', function(){
-        $(".li_register").attr('style','border-bottom:3px solid #ed3237 !important; color: #ed3237 !important; font: bold !important;');
+        $(".li_register").attr('style','border-bottom:3px solid #000 !important; color: #000 !important; font: bold !important;');
         $(".li_login").removeAttr('style');         
 
     })

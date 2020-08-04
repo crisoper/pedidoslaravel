@@ -179,10 +179,10 @@
 }
 
 .content_tota_pedido_cart h5 {
-    color: #3eb291;
+    color: #dc3545;
 }
 .content_tota_pedido_cart h4 {
-    color: #3eb291;
+    color: #dc3545;
     font-weight: 700;
 }
 
@@ -194,7 +194,7 @@
 .btn_realizar_pedido_cart {
     width: 250px;
     color: #ffffff;
-    background-color: #3eb291;
+    background-color: #dc3545;
     font-size: 20px;
     border: 0;
 }

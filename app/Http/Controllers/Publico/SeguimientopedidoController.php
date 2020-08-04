@@ -78,7 +78,8 @@ class SeguimientopedidoController extends Controller
     {
         $pedidos = Pedido::orderBy("id", "desc")
         ->where('cliente_id', '=', auth()->user()->id)
-        ->whereHas('pedidoestado', function (){}, '=', 4)
+        ->whereHas('pedidoestado', function (){}, '=', 3)
+        ->orWhereHas('pedidoestado', function (){}, '=', 4)
         ->with([
             'empresa',
             'cliente',

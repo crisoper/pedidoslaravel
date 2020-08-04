@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 d-flex flex-wrap ">
       <div class="col-sm-12 col-md-8 d-flex flex-wrap" >
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-warning elevation-1"><img
                 src="https://img.icons8.com/bubbles/100/000000/small-business.png" /></span>
@@ -16,7 +16,7 @@
           </div>
         </div>
     
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><img
                 src="https://img.icons8.com/bubbles/100/000000/add-user-group-man-man.png" /></span>
@@ -30,7 +30,7 @@
           </div>
         </div>
     
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-primary elevation-1"><img
                 src="https://img.icons8.com/color/48/000000/cash-in-hand.png" /></span>
@@ -44,7 +44,7 @@
           </div>
         </div>
   
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="info-box mb-3">
             <span class="info-box-icon elevation-1" style="background: rgb(89, 233, 45);"><img
               <img src="https://img.icons8.com/bubbles/50/000000/bookmark.png"/>
@@ -52,7 +52,7 @@
     
             <div class="info-box-content text-center">
               <span class="info-box-number" id="totalReclamos">
-              <h3>20</h3>
+             
               </span>
               <span class="info-box-text">Reclamos</span>
               
@@ -61,8 +61,8 @@
         </div>
       </div>
   
-      <div class="col sm-6 col-md-4 d-flex flex-nowrap">
-        <div class="col-6">
+      <div class="col sm-6 col-md-4 d-flex flex-wrap">
+        <div class="col-md-12 col-lg-12 col-xl-6">
           <div class="mb-3" style="background: rgb(216, 15, 15); height:100px; color:white;">
              
             <div class="info-box-content d-flex justify-content-between p-2">
@@ -78,7 +78,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 ">
+        <div class="col-md-12 col-lg-12 col-xl-6 ">
           <div class="mb-3 bg-info" style="height:100px; color:white;">
              
             <div class="info-box-content d-flex justify-content-between p-2">
@@ -205,6 +205,7 @@
         $("#totalEmpresas").html('<h3>'+ data[0] +'</h3>')
         $("#totalUsuarios").html('<h3>'+ data[1] +'</h3>')
         $("#totalPedidos").html('<h3>'+ data[2] +'</h3>')
+        $("#totalReclamos").html('<h3>'+ 0 +'</h3>')
      
       }
     });

@@ -32,6 +32,10 @@
 <link rel="stylesheet" href="{{asset('pedidos/confirmarpedido/confirmarpedido.css')}}">
 
 
+{{-- RECOMENDAR PRODUCTOS --}}
+<link rel="stylesheet" href="{{asset('pedidos/recomendar/recomendar.css')}}">
+
+
 
 
 

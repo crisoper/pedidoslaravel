@@ -1,4 +1,3 @@
-
 <style>
     .fa-envelope,
     .fa-unlock-alt,
@@ -20,7 +19,7 @@
     }
 
     #emailLogin,
-    #passwordLogin{
+    #passwordLogin {
         padding-left: 30px !important;
     }
 
@@ -29,48 +28,69 @@
         justify-content: center;
         border: none;
     }
-   
+
 
     .btn_submit {
-        background-color: #ED3237 !important;
+        background-color: #442dc9 !important;
         border-radius: 0px !important;
         border: none;
     }
 
     .btn_submit:hover {
-        background-color: #a50e13 !important;
+        background-color: #2d1d8b !important;
         box-shadow: 0.5px 0.5px 1px 1.5px #941317;
     }
 
-    .container_left {
-        background-color: #F8F9FA;        
-        padding-top: 2em;     
+    #container_left {
+     
+        background-image: url('img/register_img.jpg');
+       
     }
-    #tab-content{        
-        padding-left: 1em;
-        padding-right: 1em;
-    }
-    #texto{
-        background-color: #22737E;
-        text-align: center;
-        padding-top: 3em;;
-        /* height: 100vh; */
-        margin: 0;
-        border-right: 1px solid #941317;
-        
-    }
-    .titulo{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        color: #F8F9FA;
-      
+    /* .formlario{
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+   
+   input{
+        border: 0 solid black !important;
+        border-radius: 0px !important;           
+    } */
+
+    @media(max-width: 750) {
+        .container_left {
+            
+
+        }
     }
 
-    .logosapps{
+    #tab-content {
+        padding-left: 1em;
+        padding-right: 1em;
+        
+    }
+
+    #texto {
+        /* background-color: #22737E; */
+        text-align: center;
+        padding-top: 1em;
+        margin: 0;
+        /* border-right: 1px solid #941317; */
+
+    }
+
+    .titulo {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #212222;
+        font-size: 48px;
+
+    }
+
+    .logosapps {
         width: 120px;
         height: 60px;
     }
-    #apps{
+
+    #apps {
         margin-bottom: 2rem;
     }
-  
 </style>

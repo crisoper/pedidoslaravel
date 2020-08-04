@@ -2,7 +2,7 @@
 
 body {
 	height: 100%;
-	font-family: "Cairo", sans-serif;
+	font-family: "PT Sans", sans-serif, Arial;
 	-webkit-font-smoothing: antialiased;
 	background-color: #f2f2f2;
 }
@@ -78,7 +78,7 @@ ol {
 }
 .section_title a:hover, 
 .section_title a:focus {
-    color: #3eb291;
+    color: #dc3545;
 	text-decoration: underline;
 }
 

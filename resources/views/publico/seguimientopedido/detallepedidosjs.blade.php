@@ -52,17 +52,15 @@ $(document).ready(  function () {
 
             
             let pedidoestadoHTML = '';
-            let contadorpedidoestado = 0;
             $.each( pedidos.estado, function( key, pedidosestado ) {
-                // console.log(pedidosestado);
-                
-                contadorpedidoestado++;
-                if (contadorpedidoestado == 1) {
-                    if (pedidosestado.estado == "calificado") {
-                        pedidoestadoHTML = pedidoestadoHTML + `
-                            <span class="span_estado_pedido">Pedido Recibido</span>
-                        `;
-                    }
+
+                if (pedidosestado.estado == "entregado") {
+                    pedidoestadoHTML = pedidoestadoHTML + `
+                        <div class="col-12"><b>Hora de entrega:</b> <span>${ pedidosestado.created_at }</span></div>
+                        <div class="col-12 estado_pedido_cliente">
+                            <b>Estado de pedido:</b> <span class="span_estado_pedido">Pedido Recibido</span>
+                        </div>
+                    `;
                 }
 
             })
@@ -73,9 +71,9 @@ $(document).ready(  function () {
                         <div class="col-12"><b>Nro. Pedido:</b> <span>${ pedidos.id }</span></div>
                         <div class="col-12"><b>Dirección de entrega:</b> <span>${ pedidos.cliente_direccion }</span></div>
                         <div class="col-12"><b>Hora de pedido:</b> <span>${ pedidos.created_at }</span></div>
-                        <div class="col-12"><b>Hora de Entrega:</b> <span>${ pedidos.pedidosestado.updated_at }</span></div>
+                            ${ pedidoestadoHTML }
+                            
 
-                        <div class="col-12 estado_pedido_cliente"><b>Estado de pedido:</b> ${ pedidoestadoHTML } </div>
                         <div class="col-12 mt-2 mb-2">
                             <table class="table table-responsive-lg table-sm mb-2">
                                 <thead>

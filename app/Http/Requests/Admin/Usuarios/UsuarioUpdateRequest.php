@@ -28,7 +28,7 @@ class UsuarioUpdateRequest extends FormRequest
             'nombre' => ['required'],
             'paterno' => ['required'],
             'materno' => ['required'],
-            'dni' => ['required','numeric', 'digits:8', 'unique:personas,dni,'.$this->personaid],
+            // 'dni' => ['required','numeric', 'digits:8', 'unique:personas,dni,'.$this->personaid],
             'telefono' => ['required' , 'digits:9' ],
             'direccion' => ['required'],
             

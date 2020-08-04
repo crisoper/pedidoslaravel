@@ -1,0 +1,54 @@
+/* ABRIR CESTA MENU */
+.btn_modal_cesta {
+    position: relative;
+    width: 50px;
+    height: 100%;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 0;
+}
+.btn_modal_cesta:focus {
+    box-shadow: none;
+}
+
+
+.close_modal_recomendar {
+    width: 100%;
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    border: 0;
+    background-color: transparent;
+    color: #4f504f;
+}
+
+
+.nombre_empresa_recomendar {
+    color: #191a19 !important;
+}
+
+.content_btn_recomendar_producto_modal {
+    text-align: center;
+}
+.btn_recomendar_producto_modal {
+    color: #ffffff;
+    background-color: #088f1a;
+    border: 0;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+.actualizar_recomendar_producto_modal {
+    color: #ffffff;
+    background-color: #17a2b8;
+    border: 0;
+    font-size: 18px;
+    padding: 5px 7.5px;
+}
+
+.eliminar_recomendacion_producto_modal {
+    color: #ffffff;
+    background-color: #df3550;
+    border: 0;
+    font-size: 18px;
+    padding: 5px 7.5px;
+}

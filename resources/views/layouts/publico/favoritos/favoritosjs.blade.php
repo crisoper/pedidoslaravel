@@ -37,7 +37,7 @@
     function mostrarProductosFavoritosMenu( listadeseos ) {
 
 
-        $("#mostrar_productos_favoritos_menu").html();
+        // $("#mostrar_productos_favoritos_menu").html();
 
         let favoritosHTML = "";
 
@@ -58,14 +58,14 @@
 
             
             favoritosHTML = favoritosHTML + `
-                <div class="col-12 mb-3">
+                <div class="col-12 mb-4">
                     <div class="card border_producto_favoritos_menu abrir_modal_productos" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ deseos.producto.id }">
                         <div class="card-header p-0">
                             <p class="nombre_empresa_favoritos_menu text-truncate text-center my-0">
                                 ${ deseos.producto.empresa }
                             </p>
                         </div>
-                        <div class="card-body p-1">
+                        <div class="card-body p-1 hola_mundo">
                             <div class="row m-0">
                                 <div class="col-3 p-0">
                                     <div class="foto_producto_favoritos_menu">
@@ -78,13 +78,13 @@
                                     <p class="precio_producto_favoritos_menu my-0">
                                         S/ ${ deseos.producto.precio }
                                     </p>
+                                    <input type="hidden" name="" class="input_favoritos_cantidad" value="${ deseos.cantidad }">
                                 </div>
                             </div>
-                        </div>                        
-                        <div class="eliminar_producto_favoritos_menu" producto_id="${ deseos.producto.id }">
-                            <i class="fas fa-trash-alt"></i>
                         </div>
-                        
+                    </div>
+                    <div class="eliminar_producto_favoritos_menu" producto_id="${ deseos.producto.id }">
+                        <i class="fas fa-trash-alt"></i>
                     </div>
                 </div>
             `;
@@ -184,10 +184,32 @@
     // AGREGAR CANTIDAD EN BOTON FAVORITOS
     function sumar_cantidad_boton_favoritos_menu() {
         
-        let productosFavoritosMenu = $("#mostrar_productos_favoritos_menu").find(".border_producto_favoritos_menu").length;
+        let arrayTotalProductosFav = $(".border_producto_favoritos_menu").find(".input_favoritos_cantidad");
+                                    
+        let sumaTotalProductosFav = 0;
+        $.each(arrayTotalProductosFav, function (index, cantidadfav) {
+            sumaTotalProductosFav = sumaTotalProductosFav + parseInt($(cantidadfav).val());
+        });
 
-        if ($(".cantidad_favoritos_menu").html() <= 9) {
-            $(".cantidad_favoritos_menu").html(productosFavoritosMenu);
+        let activarinfoHTML = "";
+        if (sumaTotalProductosFav <= 0) {
+            activarinfoHTML = activarinfoHTML + `
+                <p class="info_cesta_vacia">
+                    Aún no has agregado ningún producto como favorito
+                </p>
+            `;
+        } else {
+            activarinfoHTML = activarinfoHTML + `
+                <p class="text-center">
+                    Lista de productos seleccionados como Favoritos
+                </p>
+            `;
+        }
+        
+        $(".content_info_favoritos_menu").html( activarinfoHTML);
+
+        if (sumaTotalProductosFav <= 9) {
+            $(".cantidad_favoritos_menu").html(sumaTotalProductosFav);
         } else {
             $(".cantidad_favoritos_menu").html('9+');
         }

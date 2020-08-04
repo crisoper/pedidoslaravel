@@ -28,13 +28,14 @@
                     {{-- <form action="{{ route("usuarios.cambiarmiclave") }}" method="POST"> --}}
                         <div class="form-row pb-4">
                             <div class="col text-center" id="imgavatar">
+                            
                                 <img width="100px" height="100px" 
-                                    @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
-                                    src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
+                                    @if ( $user->avatar != null && Storage::disk('usuarios')->exists('usuarios/').$user->avatar )
+                                    src="{{ asset( Storage::disk('usuarios')->url('usuarios/').$user->avatar ) }}" 
                                     @else 
                                     src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
                                     @endif
-                                alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+                                alt="{{ $user->name }}" class="rounded-circle logoPerfilForm">
                                 <br>
                                 <a href="#" id="openImageDialog"><i class="fas fa-camera text-dark"></i></a>
                                 <input id="file-input" type="file" name="name" style="display: none;" />
@@ -51,7 +52,7 @@
                                         <strong>Nombre</strong>
                                     </div>
                                     <div class="col-xs-12 col-sm-12">
-                                        {{ auth()->user()->name }}
+                                        {{ $user->name }}
                                     </div>
                                 </div>
                             </div>
@@ -59,15 +60,48 @@
                             <div class="form-group col-xs-12 col-sm-6">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
-                                        <strong>Correo</strong>
+                                        <strong>Usuario</strong>
                                     </div>
                                     <div class="col-xs-12 col-sm-12">
-                                        {{ auth()->user()->email }}
+                                        {{ $user->email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>DNI</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $user->dni }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>Dirección</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $persona->direccion }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <strong>Teléfono</strong>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12">
+                                        {{ $persona->telefono }}
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="form-group col-xs-12 col-sm-6">
+                            
+                            
+                            
+                            {{-- <div class="form-group col-xs-12 col-sm-6">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
                                         <strong>Roles de permisos</strong>
@@ -78,9 +112,9 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             
-                            <div class="form-group col-xs-12 col-sm-6">
+                            {{-- <div class="form-group col-xs-12 col-sm-6">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
                                         <strong>Roles para menus</strong>
@@ -91,7 +125,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                   
                         <div class="form-row">
@@ -101,7 +135,7 @@
                             <div class="form-group col-xs-12 col-sm-12">
                                 <a class="text-danger pl-0" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar sesion') }}
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </a>
@@ -110,14 +144,14 @@
                     {{-- </form> --}}
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    {{-- <form action="{{ route('loginOrRegister.update.comprador')}}" method="POST"> --}}
-                    <form action="{{ route('actualizar.datos.administrador')}}" method="POST">
+                 
+                    <form action="{{ route('loginOrRegister.update.comprador')}}" method="POST">
                         @csrf
                         {!! method_field('PUT') !!}
                         <div class="form-row">
                             <div class="form-group col-xs-12 col-sm-12">
                                 <label for="nombre">Nombre</label>
-                                <input type="hidden" name="personaid" value="{{ $persona->id }}">
+                              
                                 <input autofocus type="text" name="nombre" id="nombre" placeholder="Nombre"
                                     value="{{ $persona->nombre }}" class="form-control">
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
