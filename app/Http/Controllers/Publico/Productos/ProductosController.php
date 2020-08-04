@@ -25,6 +25,14 @@ class ProductosController extends Controller
 
     public function recomendados(Request $request)
     {
+        // $productoCestaIds = array();
+
+        // if ( $request->has("storagecliente_id") ) {
+        //     $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        //     ->where("tipo", "cesta")
+        //     ->get()
+        //     ->pluck("producto_id");
+
         $productosrecomendados = Producto::with([
             "empresa",
             "tags",

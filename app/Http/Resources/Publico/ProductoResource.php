@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Publico;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductoResource extends JsonResource
@@ -26,6 +27,7 @@ class ProductoResource extends JsonResource
             'tags' => $this->tags,
             'encarrito' => $this->encarrito,
             'enlistadeseos' => $this->enlistadeseos,
+            'nuevo' => $this->created_at >= Carbon::now()->subDays( 7 ) ? "Si" : "No",
             'fotos' => ProductofotoResource::collection( $this->fotos ),
 
             // 'oferta' => ProductoofertaResource::collection( $this->oferta ),
