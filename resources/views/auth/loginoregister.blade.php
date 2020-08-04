@@ -8,7 +8,7 @@
             <div id="texto" class="col-xs-12 col-sm-12 col-md-7 ">
                 <div class="row mt-3">
                     <div class="titulo col-12">
-                        <span class="text-warning">Tu confianza</span> es nuestra fortaleza
+                        <span class="text-danger">Tu confianza</span> es nuestra fortaleza
                     </div>
                 </div>
 
@@ -22,8 +22,8 @@
 
                     <div class="col-4">
                         <img src="https://img.icons8.com/bubbles/100/000000/hand-wash.png" />
-                        <p> <span class="text-warning"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
-                            todos con los protocolos de salubridad <span class="text-warning">atenderemos de
+                        <p> <span class="text-danger"> Nuestro principal objetivo</span> es tu satisfacción, cumpliendo
+                            todos con los protocolos de salubridad <span class="text-danger">atenderemos de
                                 forma inmediata</span> tus requerimientos.</p>
                     </div>
 

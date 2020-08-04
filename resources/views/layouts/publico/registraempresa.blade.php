@@ -45,11 +45,11 @@
     <div id="contenido" class="d-flex align-content-between flex-wrap">
 
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-danger  shadow-sm">
                 <div class="container">
               
                     <a href="{{ route('inicio.index') }}">
-                        <img class="logo" src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" >
+                        <img class="logo" src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="logo pedidosApp" >
                     </a>
                  
             </nav>
