@@ -17,6 +17,13 @@ class PedidosdespachadosAjaxController extends Controller
         $this->middleware('auth');
     }
 
+    private function usuario( ) {
+        return Auth::user()->id;
+    }
+
+
+
+
     public function index()
     {
         $pedidos = Pedido::orderBy("id", "desc")
@@ -40,6 +47,7 @@ class PedidosdespachadosAjaxController extends Controller
     
     public function store(Request $request)
     {
+        
         $pedidodespachado = new Pedidoestado();
         $pedidodespachado->empresa_id = $request->empresa_id;
         $pedidodespachado->pedido_id = $request->pedido_id;
@@ -47,6 +55,7 @@ class PedidosdespachadosAjaxController extends Controller
         $pedidodespachado->created_by = Auth::id();
         
         $pedidodespachado->save();
+        
 
         return response()->json(['success' => "Operacion realizada con exito"], 200);
     }

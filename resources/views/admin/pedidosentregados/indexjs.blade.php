@@ -96,7 +96,7 @@
             $("#cuerpoPedidosEntregados").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidosEntregados, 3000);
+        setInterval(obtenerPedidosEntregados, 5000);
 
 
 

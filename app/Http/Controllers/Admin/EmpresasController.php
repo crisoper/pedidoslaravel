@@ -234,19 +234,7 @@ class EmpresasController extends Controller
     }
 
 
-    public function cambiaremailusuarios( Request $request, $user_id)
-    {
-        // CambiaremailCreateRequest
-        $user = User::findOrFail($user_id);
-        $user->email =  $request->email;
-        $user->save();
-
-      
-        ProcesssendmailJob::dispatchNow($user);
-      
-        return redirect()->back()->with('info', 'Verifica tu correo para validar tu cuenta');
-       
-    }
+    
 
     private function enviarCorreoActivarCuentaEmpresa($user)
     {

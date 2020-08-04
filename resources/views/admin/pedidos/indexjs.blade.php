@@ -87,7 +87,7 @@
             $("#cuerpoPedidosPorConfirmar").html( pedidosHTML);
         }
 
-        setInterval(obtenerPedidos, 3000);
+        setInterval(obtenerPedidos, 5000);
 
 
 

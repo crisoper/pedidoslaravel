@@ -18,6 +18,7 @@ class PedidoResource extends JsonResource
             'id' => $this->id,
             'total' => $this->total,
             'created_at' => $this->created_at->format('d/m/Y - h:i A'),
+            'updated_at' => $this->updated_at->format('d/m/Y - h:i A'),
             
             'cliente_id' => $this->cliente ? $this->cliente->id : 0, 
             'cliente' => $this->cliente ? $this->cliente->name : '',

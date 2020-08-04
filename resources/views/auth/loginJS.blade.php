@@ -25,13 +25,67 @@
          if( $(this).prop('checked') ) {
             
            
-            $("input[type=submit]").removeAttr("disabled");
+            $("#btn_submit").removeAttr("disabled");
          }  else{
-            $("input[type=submit]").attr('disabled','disabled');
+            $("#btn_submit").attr('disabled','disabled');
          }
     });
     
-    $("#sesionStorage").val( obtenerLocalStorageclienteID() );
+    
+    $("#btn_submit").on('click', function(event){
+        event.preventDefault();
+        $( btn_submit ).prop( "disabled", true ).find("span").show();
+
+        $.ajax({
+            url: $("#Form_RegistroComprador").attr('action'),
+            method: 'post',
+            dataType: 'json',
+            data: $("#Form_RegistroComprador").serialize(),
+            success: function(){             
+                window.location = '{{route("confirmarcuentaRegistrada")}}';
+                $( btn_submit ).prop( "disabled", false ).find("span").hide();
+            },
+            error:function( jqXHR, textStatus, errorThrown  ){
+                if( jqXHR.status == 404 ) {}
+                
+                else if( jqXHR.status == 422 ) 
+                {     
+                    $( btn_submit ).prop( "disabled", false ).find("span").show(); 
+                    $( ".spinnerr" ).hide(); 
+
+                    GLOBARL_settearErroresEnCampos( jqXHR, "Form_RegistroComprador" );
+                }
+          
+            }
+        });
+    });
+    function GLOBARL_settearErroresEnCampos( jqXHR, idElementoContenedorCampos ) {
+
+//Mostramos errores devueltos desde Backend
+let errorsRespuesta = jqXHR.responseJSON.errors;
+
+$.each( errorsRespuesta, function( idElemento, arrayErrores ) {
+       
+
+     if( $( "#" + idElemento ).hasClass("select2") ) {
+            $( "#" + idElemento ).parent().find("span.select2-container").addClass("is-invalid");
+            $( "#" + idElemento ).parent().find(".select2-selection").addClass("is-invalid");
+        }      
+        
+    $( "#" + idElemento ).addClass("is-invalid");        
+        arrayErrores.forEach( error => {
+        MostrarNotificaciones( error ,  'error') ;
+    });
+
+});
+
+//Ocultamos los errores despues de 5 segundos
+setTimeout( function() {
+
+$("#" + idElementoContenedorCampos).find(".is-invalid").removeClass("is-invalid");
+}, 5000);
+
+}
 
     function obtenerLocalStorageclienteID () {
     if(typeof(Storage) !== "undefined") {

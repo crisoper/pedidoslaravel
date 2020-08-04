@@ -121,7 +121,7 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('loginOrRegister.editar.comprador') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
-                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="#">
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica_pedidos py-2" href="{{ route('mispedidos') }}">
                                                 <i class="fas fa-shopping-basket"></i> Mis pedidos
                                             </a>
                                         @else
@@ -307,7 +307,7 @@
         <div class="row bg-dark copyright pt-2 pb-0">
             <div class="col-lg-12">
                 <p class="text-center p-0">
-                    Copyright &copy;2020 - Derechos Reservados | <b>Delivery.com</b>
+                    Copyright &copy;2020 - Derechos Reservados | pedidosapp.pe
                 </p>
             </div>
         </div>
