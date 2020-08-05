@@ -23,7 +23,7 @@ class ProductoResource extends JsonResource
             'descripcion' => $this->descripcion,
             'precio' => $this->precio,
             'stock' => $this->stock,
-            'created_at' => date('d-m-Y', strtotime($this->created_at)),
+            // 'created_at' => date('d-m-Y', strtotime($this->created_at)),
             'tags' => $this->tags,
             'encarrito' => $this->encarrito,
             'enlistadeseos' => $this->enlistadeseos,
@@ -34,7 +34,7 @@ class ProductoResource extends JsonResource
             
             'empresa_id' => $this->empresa ? $this->empresa->id : 0, 
             'empresa' => $this->empresa ? $this->empresa->nombre : '',
-            'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : '',
+            // 'empresa_url' => $this->empresa ? url("/").'/locales/'.$this->empresa->id : '',
             
             'recomendar_id' => $this->recomendar ? $this->recomendar->id : 0, 
             'recomendar' => $this->recomendar ? $this->recomendar->recomendar : '',
