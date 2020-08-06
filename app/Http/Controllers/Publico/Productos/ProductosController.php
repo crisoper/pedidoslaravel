@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Publico\Productos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Publico\ProductomodalResource;
 use App\Http\Resources\Publico\ProductoResource;
+use App\Models\Admin\Empresa;
 use App\Models\Admin\Pedidos\Pedidodetalle;
 use App\Models\Admin\Producto;
+use App\Models\Publico\Horario;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -68,7 +71,7 @@ class ProductosController extends Controller
         $hoynuevos =  Carbon::now();
         $fechainicionuevos = Carbon::now()->subDays( 7 );
 
-        $productosnuevos = Producto::whereDate("created_at", ">=", $fechainicionuevos )
+        $productosnuevos = Producto::whereDate("created_at", ">=", $fechainicionuevos )      
         ->whereDate("created_at", "<=", $hoynuevos )
         ->whereNotIn("id", $productosrecomendados->pluck("id") )
         ->whereNotIn("id", $productosoferta->pluck("id") )
@@ -157,15 +160,32 @@ class ProductosController extends Controller
         //     ->get()
         //     ->pluck("producto_id");
         // }
-
+       
+      
+     
         $productoEnModal = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
         ->with([
-            "empresa",
+            "empresa" => function($query){
+                $query->with([
+                    "horarios"=> function($qhorario){
+                        $w_today = date('w', strtotime( Carbon::now() ));
+                        $diassemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado','Domingo'];
+                        for ( $i = 1; $i < count($diassemana) ; $i++) { 
+                            if ( $w_today == $i) {
+                                $dia = $diassemana[$i - 1];
+                            }
+                        }
+                        $qhorario->where( 'dia', $dia );
+                    }
+                ]);
+            },
             "categoria",
             "tags",
             "fotos",
+           
         ])
         ->first();
+        
 
         // foreach ( $productoEnModal as $producto ) {
 
@@ -183,12 +203,15 @@ class ProductosController extends Controller
         //         $producto->enlistadeseos = false;
         //     }
         // }
+        
 
         if ( $productoEnModal != null ) {
-            return new ProductoResource (  $productoEnModal );
+            return new ProductomodalResource (  $productoEnModal );
         }
 
         return "No se enncontro el producto";
+
+
 
     }
 

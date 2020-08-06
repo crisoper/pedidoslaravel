@@ -51,7 +51,7 @@
         sliderNuevosInicio();
     }
 
-    
+
 
     function sliderNuevosInicio() {
         $(".responsiveSlickNuevosInicio").slick({
