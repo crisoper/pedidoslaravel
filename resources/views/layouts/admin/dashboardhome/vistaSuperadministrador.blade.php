@@ -61,7 +61,7 @@
     </div>
 
     <div class="col sm-6 col-md-4 d-flex flex-wrap">
-      <div class="col-md-12 col-lg-12 col-xl-6">
+      {{-- <div class="col-md-12 col-lg-12 col-xl-6">
         <div class="mb-3" style="background: rgb(216, 15, 15); height:100px; color:white;">
 
           <div class="info-box-content d-flex justify-content-between p-2">
@@ -78,23 +78,36 @@
             <span class="badge badge-warning badge-pill"><small><a href="">detalle</a></small></span>
           </div>
         </div>
-      </div>
-      <div class="col-md-12 col-lg-12 col-xl-6 ">
+      </div> --}}
+      <div class="col-md-12 col-lg-12 col-xl-12 ">
         <div class="mb-3 bg-info" style="height:100px; color:white;">
 
-          <div class="info-box-content d-flex justify-content-between p-2">
+          <div class="info-box-content text-center p-2">
             <span>
               <h5><i class="fas fa-book-reader"> </i> Visitas</h5>
             </span>
-            <span class="info-box-number">
-              <h2>80</h2>
-            </span>
+           
+              <script type="text/javascript">
+                var sc_project=12371519; 
+                var sc_invisible=0; 
+                var sc_security="177a659e"; 
+                var sc_https=1; 
+                var scJsHost = "https://";
+                document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+                "statcounter.com/counter/counter.js'></"+"script>");
+                </script>
+                <noscript><img
+                class="statcounter" src="https://c.statcounter.com/12371519/0/177a659e/0/"
+                alt="PedidosApp Counter"></div></noscript>
+                <!-- End of Statcounter Code -->
+              
+           
           </div>
 
-          <div class="d-flex justify-content-between p-2">
+          {{-- <div class="d-flex justify-content-between p-2">
             <span class="info-box-text">Mes anterior</span>
             <span class="badge badge-warning badge-pill"><small><a class="text-light" href="">detalle</a></small></span>
-          </div>
+          </div> --}}
         </div>
       </div>
 
