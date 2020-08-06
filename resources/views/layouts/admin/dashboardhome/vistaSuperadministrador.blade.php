@@ -145,7 +145,7 @@
     </div>
     <div class="col-sm-12 col-md-4 ">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-danger">
           <span><i class="fas fa-building"></i> Empresas</span>
         </div>
         <div class="card-body">
