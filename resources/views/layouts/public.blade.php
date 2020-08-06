@@ -312,11 +312,26 @@
             </div>
         </div>
     </footer>
-
+    
+    <script type="text/javascript">
+        var sc_project=12371519; 
+        var sc_invisible=0; 
+        var sc_security="177a659e"; 
+        var sc_https=1; 
+        var scJsHost = "https://";
+        document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+        <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+        StatCounter" href="https://statcounter.com/" target="_blank"><img
+        class="statcounter" src="https://c.statcounter.com/12371519/0/177a659e/0/"
+        alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+        <!-- End of Statcounter Code -->
 
 </body>
 
-
+<!-- Default Statcounter code for PedidosApp http://206.189.229.33/pedidosapp/
+-->
 
 
 

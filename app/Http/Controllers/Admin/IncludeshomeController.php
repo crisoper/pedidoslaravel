@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\PedidoResource;
 use App\Models\Admin\Empresa;
+use App\Models\Admin\Modelhasrole;
 use App\Models\Admin\Pedidos\Pedido;
 use App\Models\Publico\Pedidodetalle;
 use App\Models\Admin\Productocategoria;
@@ -112,7 +113,7 @@ class IncludeshomeController extends Controller
     }
     public function totalderegistros(){
         $totalempresas = Empresa::all()->count();
-        $totalusuarios = User::all()->count();
+        $totalusuarios = Modelhasrole::where('role_id',3)->count();
         $totalpedidos = Pedidodetalle::all()->count();
         return  response()->json([$totalempresas, $totalusuarios, $totalpedidos], 200);
     }
