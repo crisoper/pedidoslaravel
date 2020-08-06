@@ -9,8 +9,8 @@
         @include('layouts.admin.dashboardhome.vistaSuperadministrador')
     @elseif( auth()->user()->hasRole('menu_Administrador empresa') )
         @include('layouts.admin.dashboardhome.vistaAdministrador')
-    @elseif( auth()->user()->hasRole('menu_Administrador empresa') )
-        @include('layouts.admin.dashboardhome.vistaDistribuidor')
+    @elseif( auth()->user()->hasRole('menu_Repartidor') )
+        @include('admin.pedidos.pedidosingresados.index')
     @endif
 
 

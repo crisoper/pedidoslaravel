@@ -24,7 +24,7 @@
     
         function mostrar_pedidos_ingresados( datos ) {
 
-            console.log(datos);
+            // console.log(datos);
 
             $("#cuerpo_pedidos_ingresados").html();
     
@@ -49,6 +49,11 @@
                         </tr>
                     `;
                 })
+
+                var mostrarboton=""
+                if (  $("#input_user").val() == '' ) {
+                    mostrarboton = `<button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Tomar Pedido</button>`
+                }
                 
                 pedidosHTML = pedidosHTML + `
                     <div class="col-12 mb-4 content_pedidos_x_confirmar">
@@ -75,9 +80,9 @@
                             </div>
                             <div class="col-sm-7 col-md-8 text-right">
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
-                            </div>
-                            <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Tomar Pedido</button>
+                            </div>                            
+                            <div class="col-sm-5 col-md-4 text-right">                                
+                               ${ mostrarboton }
                             </div>
                         </div>
                     </div>

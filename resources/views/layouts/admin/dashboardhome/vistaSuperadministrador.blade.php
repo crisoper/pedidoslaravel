@@ -1,4 +1,3 @@
-
   <div class="row">
     <div class="col-12 d-flex flex-wrap ">
       <div class="col-sm-12 col-md-8 d-flex flex-wrap" >
@@ -105,11 +104,25 @@
     <div class="col-sm-12 col-md-8">
         <div class="card">
           <div class="card-header">
-            Pedidos sin atender
+            Pedidos por atender
           </div>
           <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Content</p>
+            <table class="table table-light table-sm table-striped">
+              <thead class="thead-light">
+                <tr>
+                  <th>Cliente</th>
+                  <th>Dirección</th>
+                  <th>Fecha de pedido</th>
+                  <th>Lugar de Pedido</th>
+                </tr>
+              </thead>
+              <tbody id="tbl_pedidos">
+                
+              </tbody>
+            </table>
+            <div class="col-12">
+              <div class="pagination-page2" ></div>
+          </div>
           </div>
         </div>
     </div>
@@ -122,18 +135,22 @@
           <div class="col-12">
             <div class="table-responsive">
   
-              <table class="table table-bordered table-sm" id="tbl_Empresas">
+              <table class="table table-bordered table-sm">
                 <thead class="bg-warning">
-                  <tr>
-  
+                  <tr>  
                     <th>Ruc</th>
-                    <th>Empresa</th>
-                    <th>Dirección</th>
+                    <th>Empresa</th>                  
   
                   </tr>
                 </thead>
+                <tbody id="tbl_Empresas">
+
+                </tbody>
   
               </table>
+              <div class="col-12">
+                <div class="pagination-tbl_Empresas" ></div>
+            </div>
             </div>
           </div>
         </div>
@@ -170,46 +187,6 @@
   </div>
   <!-- /.col -->
 </div>
-
-
-
 @section('scripts')
-<script>
-  $(document).ready(function(){
-    
-    $.ajax({
-      url: "{{route('empresasRegitradas')}}",
-      method: "get",
-      dataType: "json",
-      success: function(data){
-        console.log( data );
-            $.each(data, function(index, empresa){
-              $("#tbl_Empresas").append( "<tr>"+
-                              "<td>"+ empresa.ruc+ "</td>"+
-                              "<td>"+ empresa.nombre+ "</td>"+
-                              "<td>"+ empresa.direccion+ "</td>"+
-                              "<tr>"
-              )
-            });
-          }
-    });
-
-    // $("#tbl_Empresas").DataTable();
-
-    $.ajax({
-      url: "{{route('totalderegistros')}}",
-      method: "get",
-      dataType: "json",
-      success: function( data ){
-
-        $("#totalEmpresas").html('<h3>'+ data[0] +'</h3>')
-        $("#totalUsuarios").html('<h3>'+ data[1] +'</h3>')
-        $("#totalPedidos").html('<h3>'+ data[2] +'</h3>')
-        $("#totalReclamos").html('<h3>'+ 0 +'</h3>')
-     
-      }
-    });
-   
-  });
-</script>
+  @include('layouts.admin.dashboardhome.superadminJS')
 @endsection

@@ -31,31 +31,28 @@ class PedidosIngresadosController extends Controller
     
     public function ingresados()
     {
-        if ( Auth()->user()->hasRole('SuperAdministrador')) {
+        if ( Auth()->user()->hasRole('SuperAdministrador') || Auth()->user()->hasRole('menu_Repartidor')) {
             $pedidos = Pedido::orderBy("id", "desc")
-        ->whereHas('pedidoestado', function (){}, '=', 1)
-        ->with([
-            'empresa',
-            'cliente',
-            'pedidodetalle',
-            'pedidoestado',
-        ])
-        ->get();
+                ->whereHas('pedidoestado', function (){}, '=', 1)
+                ->with([
+                    'empresa',
+                    'cliente',
+                    'pedidodetalle',
+                    'pedidoestado',
+                ])
+                ->get();
         } else {
-            $pedidos = Pedido::orderBy("id", "desc")
-            ->where('empresa_id', Session::get('empresaactual',0))
-            ->whereHas('pedidoestado', function (){}, '=', 1)
-            ->with([
-                'empresa',
-                'cliente',
-                'pedidodetalle',
-                'pedidoestado',
-            ])
-            ->get();
+                $pedidos = Pedido::orderBy("id", "desc")
+                ->where('empresa_id', Session::get('empresaactual',0))
+                ->whereHas('pedidoestado', function (){}, '=', 1)
+                ->with([
+                    'empresa',
+                    'cliente',
+                    'pedidodetalle',
+                    'pedidoestado',
+                ])
+                ->get();
         }
-        
-      
-
         return PedidoResource::collection( $pedidos );
     }
 

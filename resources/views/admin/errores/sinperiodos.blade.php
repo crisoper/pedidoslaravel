@@ -12,7 +12,8 @@
             <br>
             <span>La empresa no se encuentra activa</span>
             <br>
-            <small>Por favor comuniquese con el administrador <a href="{{ route("periodos.index") }}" >aquí</a></small>
+            <small>Por favor comuniquese con el administrador. </small>
+                {{-- <a href="{{ route("periodos.index") }}" >aquí</a></small> --}}
             {{-- <small>Por favor registre un nuevo periodo <a href="{{ route("periodos.index") }}" >aquí</a></small> --}}
             <br>
             
