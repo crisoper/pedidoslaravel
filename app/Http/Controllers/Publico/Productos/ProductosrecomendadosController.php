@@ -18,8 +18,8 @@ class ProductosrecomendadosController extends Controller
     
     public function recomendados(Request $request)
     {
-        $hoy =  Carbon::now();
-        $fechainicio = Carbon::now()->subDays( 7 );
+        $hoynuevos =  Carbon::now();
+        $fechainicionuevos = Carbon::now()->subDays( 7 );
 
 
         $productosrecomendados = Producto::query();
@@ -29,14 +29,14 @@ class ProductosrecomendadosController extends Controller
         // }
 
         if( $request->has('filtro_nuevos')  and $request->filtro_nuevos == 1 ) {
-            $productosrecomendados = $productosrecomendados->whereDate("created_at", ">=", $fechainicio )
-                ->whereDate("created_at", "<=", $hoy );
+            $productosrecomendados = $productosrecomendados->whereDate("created_at", ">=", $fechainicionuevos )
+                ->whereDate("created_at", "<=", $hoynuevos );
         }
         
         if( $request->has('filtro_ofertas')  and $request->filtro_ofertas == 1 ) {
             $productosrecomendados = $productosrecomendados->whereHas("oferta", function($query){
-                    $query->whereDate('diainicio', "<=", now())->whereDate("diafin", ">=", now());
-                });
+                $query->whereDate('diainicio', "<=", now())->whereDate("diafin", ">=", now());
+            });
         }
 
         

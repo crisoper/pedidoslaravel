@@ -47,6 +47,7 @@
 
     <div class="cart_content_filtrar">
         <div class="accordion" id="accordionExample">
+
             <div class="card">
                 <div class="card-header" id="headingOrdenar">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOrdenar" aria-expanded="false" aria-controls="collapseOrdenar">
@@ -76,6 +77,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFiltrar">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFiltrar" aria-expanded="true" aria-controls="collapseFiltrar">
+                        Filtrar por:
+                    </button>
+                </div>
+                <div id="collapseFiltrar" class="collapse show" aria-labelledby="headingFiltrar" data-parent="#accordionExample">
+                    <div class="card-body pl-0">
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="checkbox" value="filtro_ofertas" id="filtro_ofertas">
+                            <label class="form-check-label" for="filtro_ofertas">
+                                Ofertas
+                            </label>
+                        </div>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="checkbox" value="filtro_nuevos" id="filtro_nuevos">
+                            <label class="form-check-label" for="filtro_nuevos">
+                                Nuevos
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

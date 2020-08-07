@@ -141,14 +141,14 @@
             let btn = $( this );
 
             $.ajax({
-                url: "{{ route('ajax.productos.getdatosxid') }}",
+                url: "{{ route('ajax.productos.getdatosxidrecomendar') }}",
                 method: 'GET',
                 data: {
                     idproducto: $( btn ).attr("idproducto")
                 },
                 success: function ( data ) {
                     llenarDatosModalProductoDetalle( data );
-                    // console.log(data.data);
+                    console.log(data.data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -159,6 +159,8 @@
 
         function llenarDatosModalProductoDetalle( data ) {
             
+            // console.log(data);
+
             let productoModalHTML = "";
             if ( (data.data.recomendar_diainicio <= data.data.diaactual) && (data.data.recomendar_diafin >= data.data.diaactual) ) {
                 productoModalHTML = productoModalHTML + `

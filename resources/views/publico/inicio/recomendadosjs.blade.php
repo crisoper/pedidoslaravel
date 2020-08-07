@@ -46,7 +46,6 @@
                     }
                 });
 
-
                 
                 if ( (recomendados.oferta_diainicio != "") && (recomendados.oferta_diafin != "") ) {
                     if ( recomendados.nuevo == "Si" ) {
@@ -178,6 +177,7 @@
                         </div>
                     `;
                 }
+                
             });
     
             $("#cuerpoProductosRecomendadosInicio").html( recomendadosHTML);

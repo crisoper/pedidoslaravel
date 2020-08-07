@@ -171,6 +171,8 @@ function() {
         ->name('productosarecomendar.destroy');
 
 
+    Route::get("ajax/productos/getdatosxidrecomendar", "Admin\ProductosarecomendarController@getdatosxidrecomendar")
+    ->name("ajax.productos.getdatosxidrecomendar");
 
 
     // PEDIDOS INGRESADOS
