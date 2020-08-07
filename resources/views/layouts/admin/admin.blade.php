@@ -24,8 +24,9 @@
                     <a class="nav-link showHideSideBar" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li>
-                    <h5>@if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif </h5><br>
+                    @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif <br>
                     {{-- <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small> --}}
+                    <small><a href="{{ route('inicio.index')}}">Ir al sitio</a></small>
                 </li>
             </ul>
             
@@ -58,6 +59,7 @@
                         
                         @else
                             <a class="dropdown-item" href="{{ route('usuarios.miperfil') }}"><i class="fas fa-users-cog"></i></i> Mi cuenta</a>
+                            <a class="dropdown-item" href="{{ route('home') }}"><i class="fas fa-users-cog"></i></i>Vista admin</a>
                             {{-- <a class="dropdown-item" href="{{ route('config.seleccionar.periodo') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Cambiar periodo</a> --}}
                             {{-- <a class="dropdown-item" href="{{ route('config.seleccionar.empresa') }}"><i class="fa fa-building" aria-hidden="true"></i> Cambiar empresa</a> --}}
                             

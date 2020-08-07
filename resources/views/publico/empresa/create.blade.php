@@ -215,12 +215,10 @@
                     </div>
                 </div>
                 <div class="form-group row ml-4">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="terminosycondiciones"
-                            name="terminosycondiciones" value="">
-                        <i>Acepto haber leido todos los terminos y conciciones <a href="#">Aqui...</a> </i>
+                    <p><i>Acepto haber leido todos los terminos y conciciones</i> 
+                    <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"><strong>Aqui...</strong></a>
                         <span class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
-                    </label>
+                    </p>
 
                 </div>
 
@@ -254,6 +252,28 @@
     </div>
 </div>
 </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal_terminosycondiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Términos y conduciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          @include('publico.informaciondeapp.terminosycondiciones_empresa')
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="aceptarterminos" data-dismiss="modal">Aceptar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
 

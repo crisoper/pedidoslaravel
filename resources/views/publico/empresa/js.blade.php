@@ -4,14 +4,9 @@
             $("#errorextension").fadeOut(1000);
         }, 5000);
        
-        $('#terminosycondiciones').on('change', function() {
-         if( $(this).prop('checked') ) {
-            
-           
+        $('#aceptarterminos').on('click', function() {
             $("#enviarFormRegistro").removeAttr("disabled");
-         }  else{
-            $("#enviarFormRegistro").attr('disabled','disabled');
-         }
+           
     });
 
 

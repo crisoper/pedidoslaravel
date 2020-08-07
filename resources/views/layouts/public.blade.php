@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Pedidos') }}</title>
+    <title>{{ config('app.name', 'Pedidosapp') }}</title>
 
 
     @include('layouts.publico.styles')
@@ -42,7 +42,7 @@
                                 <p class="mb-0 number_phone">+51 976830280</p>
                                 <p class="my-0 suport"><small>Soporte 24/7</small></p>
                             </div>
-                            <a class="btn btn_top_client" href="#">Preguntas frecuentes</a>
+                            <a class="btn btn_top_client" href="{{ route('preguntasfrecuentes') }}">Preguntas frecuentes</a>
                         </div>
                     </div>
                 </div>
@@ -128,6 +128,7 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('home') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Vista admin</a>
                                         @endif
                                         
                                         <hr class="hr_options m-0">
@@ -284,23 +285,23 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
-                    <h5><b>Acerca de PedidosApp</b></h5>
-                    <p class="my-1"><a href="{{ route('nosotros') }}">Nosotros</a></p>
-                    <p class="my-1"><a href="#">Contáctanos</a></p>
-                    <p class="my-1"><a href="#">Quienes somos</a></p>
-                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
+                    <h5><b>Acerca de Pedidos.com</b></h5>
+                    <p class="my-1"><a href="nosotros">Nosotros</a></p>
+                    <p class="my-1"><a href="contactanos">Contáctanos</a></p>
+                    <p class="my-1"><a href="quienessomos">Quienes somos</a></p>
+                  
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Delivery</a></p>
-                    <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
-                    <p class="my-1"><a href="#">Publicación de productos</a></p>
+                <p class="my-1"><a href="{{ route('preguntasfrecuentes') }}">Preguntas frecuentes</a></p>
+                    <p class="my-1"><a href="{{ route('mispedidos') }}">Seguimiento de delivery</a></p>
+                    <p class="my-1"><a href=" {{ route('registernewempresa') }} ">Regístrate y publica tus productos</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Políticas y condiciones</b></h5>
-                    <p class="my-1"><a href="#">Políticas de Privacidad</a></p>
-                    <p class="my-1"><a href="#">Términos y Condiciones</a></p>
-                    <p class="my-1"><a href="#">Libro de Reclamaciones</a></p>
+                    <p class="my-1"><a href="{{route('politicasdeprivacidad')}}">Políticas de Privacidad</a></p>
+                    <p class="my-1"><a href="{{route('terminosycondiciones')}}">Términos y Condiciones</a></p>
+                    {{-- <p class="my-1"><a href="#">Libro de Reclamaciones</a></p> --}}
                 </div>
             </div>
         </div>
@@ -313,10 +314,12 @@
         </div>
     </footer>
 
+    
 
 </body>
 
-
+<!-- Default Statcounter code for PedidosApp http://206.189.229.33/pedidosapp/
+-->
 
 
 

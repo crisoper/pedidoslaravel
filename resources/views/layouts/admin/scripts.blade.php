@@ -35,9 +35,11 @@
 <script src="{{ asset('adminlte301/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/daterangepicker/moment.min.js') }}"></script>
 
+
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
+<script src="{{ asset('adminlte301/plugins/simplePagination/simplePagination.js') }}"></script>
 
 <script>
     $.widget.bridge('uibutton', $.ui.button)

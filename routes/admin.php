@@ -118,6 +118,7 @@ function() {
     //INCLUDE SUPERADMINISTRADOR  
     Route::get('includeProductos.empresasRegitradas','Admin\IncludeshomeController@empresasRegitradas')->name('empresasRegitradas');
     Route::get('includeProductos.totalderegistros','Admin\IncludeshomeController@totalderegistros')->name('totalderegistros');
+    Route::get('includePedidos.pedidosporentregar','Admin\IncludeshomeController@pedidosPorEntregar')->name('pedidosporentregar');
 
     //Rutas que requieren un periodo para continuar
     Route::group([

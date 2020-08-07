@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Producto;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\PedidoResource;
 use App\Models\Admin\Empresa;
+use App\Models\Admin\Modelhasrole;
+use App\Models\Admin\Pedidos\Pedido;
 use App\Models\Publico\Pedidodetalle;
 use App\Models\Admin\Productocategoria;
 use App\Models\Publico\Cesta;
@@ -110,7 +113,7 @@ class IncludeshomeController extends Controller
     }
     public function totalderegistros(){
         $totalempresas = Empresa::all()->count();
-        $totalusuarios = User::all()->count();
+        $totalusuarios = Modelhasrole::where('role_id',3)->count();
         $totalpedidos = Pedidodetalle::all()->count();
         return  response()->json([$totalempresas, $totalusuarios, $totalpedidos], 200);
     }
@@ -118,9 +121,33 @@ class IncludeshomeController extends Controller
     public function empresasRegitradas(){
         
         $empresa = Empresa::select('ruc', 'nombre', 'direccion')->get();
-        return response()->json($empresa, 200);
-
-        
+        return response()->json($empresa, 200);        
    
     }
+     public function pedidosPorEntregar(){
+
+        if ( Auth()->user()->hasRole('SuperAdministrador') || Auth()->user()->hasRole('menu_Repartidor')) {
+            $pedidos = Pedido::orderBy("id", "desc")
+                ->whereHas('pedidoestado', function (){}, '=', 1)
+                ->with([
+                    'empresa',
+                    'cliente',
+                    'pedidodetalle',
+                    'pedidoestado',
+                ])
+                ->paginate(10);
+        } else {
+                $pedidos = Pedido::orderBy("id", "desc")
+                ->where('empresa_id', Session::get('empresaactual',0))
+                ->whereHas('pedidoestado', function (){}, '=', 1)
+                ->with([
+                    'empresa',
+                    'cliente',
+                    'pedidodetalle',
+                    'pedidoestado',
+                ])
+                ->paginate(10);
+        }
+        return PedidoResource::collection( $pedidos );
+     }
 }

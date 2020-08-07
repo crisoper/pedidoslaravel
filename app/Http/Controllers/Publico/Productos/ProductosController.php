@@ -87,11 +87,6 @@ class ProductosController extends Controller
 
         
 
-
-
-
-
-
         //Productos mas pedidos
         $hoymaspedidos =  Carbon::now();
         $fechainiciomaspedidos = Carbon::now()->subDays( 30 );
@@ -134,15 +129,6 @@ class ProductosController extends Controller
 
     }
 
-    
-
-
-
-
-
-
-
-
 
     public function getdatosxid ( Request $request ) {
         // $productoCestaIds = array();
@@ -181,8 +167,7 @@ class ProductosController extends Controller
             },
             "categoria",
             "tags",
-            "fotos",
-           
+            "fotos",           
         ])
         ->first();
         
@@ -209,7 +194,7 @@ class ProductosController extends Controller
             return new ProductomodalResource (  $productoEnModal );
         }
 
-        return "No se enncontro el producto";
+        return "No se encontro el producto";
 
 
 
