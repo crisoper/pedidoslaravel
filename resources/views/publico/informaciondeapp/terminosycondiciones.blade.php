@@ -16,7 +16,7 @@
         <div class="col-10">
             <div class="col-12 text-center">
                 <p>
-                    <h2>Terminos y conduciones de uso de la publicación web y/o aplicativo {{ config('app.name', 'Pedidos') }}</h2>
+                    <h2>Terminos y conduciones de uso de la aplicación web y/o aplicativo {{ config('app.name', 'Pedidos') }}</h2>
                 </p>
             </div>
             <div class="col-12 bodyTYC">
