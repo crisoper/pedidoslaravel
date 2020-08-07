@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Pedidos') }}</title>
+    <title>{{ config('app.name', 'Pedidosapp') }}</title>
 
 
     @include('layouts.publico.styles')
@@ -128,6 +128,7 @@
                                             <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('usuarios.miperfil') }}">
                                                 <i class="fas fa-users-cog"></i></i> Mi perfil
                                             </a>
+                                            <a class="dropdown-item btn btn_perfil_cuenta_publica py-2" href="{{ route('home') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Vista admin</a>
                                         @endif
                                         
                                         <hr class="hr_options m-0">
@@ -288,18 +289,18 @@
                     <p class="my-1"><a href="nosotros">Nosotros</a></p>
                     <p class="my-1"><a href="contactanos">Contáctanos</a></p>
                     <p class="my-1"><a href="quienessomos">Quienes somos</a></p>
-                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
+                  
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Delivery</a></p>
-                    <p class="my-1"><a href="#">Seguimiento de delivery</a></p>
-                    <p class="my-1"><a href="#">Publicación de productos</a></p>
+                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
+                    <p class="my-1"><a href="{{ route('mispedidos') }}">Seguimiento de delivery</a></p>
+                    <p class="my-1"><a href=" {{ route('registernewempresa') }} ">Publicación de productos</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Políticas y condiciones</b></h5>
                     <p class="my-1"><a href="#">Políticas de Privacidad</a></p>
-                    <p class="my-1"><a href="#">Términos y Condiciones</a></p>
+                    <p class="my-1"><a href="{{route('terminosycondiciones')}}">Términos y Condiciones</a></p>
                     <p class="my-1"><a href="#">Libro de Reclamaciones</a></p>
                 </div>
             </div>

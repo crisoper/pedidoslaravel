@@ -21,6 +21,18 @@ class InformacionDeAplicacionController extends Controller
     {
             return view("publico.informaciondeapp.quienessomos");
     }
+    public function terminosycondiciones()
+    {
+            return view("publico.informaciondeapp.terminosycondiciones");
+    }
+    public function terminosycondiciones_empresa()
+    {
+            return view("publico.informaciondeapp.terminosycondiciones_empresa");
+    }
+    public function terminosycondiciones_consumidor()
+    {
+            return view("publico.informaciondeapp.terminosycondiciones_empresa");
+    }
 
 
 }

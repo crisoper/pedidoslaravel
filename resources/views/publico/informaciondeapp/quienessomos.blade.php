@@ -13,17 +13,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-5">
+            <img src="{{ asset('img/diversos/quienessomos.jpg')}}" alt="Quienes somos">
+        </div>
+        <div class="col-7">
            
-                Somos un grupo de profesionales cajamarquinos con mención en programación de aplicaciones
-            por delivery. 
+                Somos un grupo de profesionales cajamarquinos con mención en programación de aplicaciones web. 
             Nos desénvolvemos con altos estándares de gestión y producción, para competir lealmente.
             Nuestra profesionalización ha permitido que seamos reconocidos como uno de los grupos en programación con  
             importante aceptacion en la región de Cajamarca.
 
             <br>
 
-                Pedidosapp nace en agosto de 2019, con un modelo de trabajo de ganar-ganar donde no concebimos el éxito de
+                Pedidosapp nace en agosto de 2019, con un modelo de trabajo donde no concebimos el éxito de
             nuestro trabajo sin la satisfacción de nuestros clientes.
 
 
