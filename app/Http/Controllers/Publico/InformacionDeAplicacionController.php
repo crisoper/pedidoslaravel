@@ -25,14 +25,15 @@ class InformacionDeAplicacionController extends Controller
     {
             return view("publico.informaciondeapp.terminosycondiciones");
     }
-    public function terminosycondiciones_empresa()
+    
+    public function politicasdeprivacidad()
     {
-            return view("publico.informaciondeapp.terminosycondiciones_empresa");
+            return view("publico.informaciondeapp.politcasdeprivacidad");
     }
-    public function terminosycondiciones_consumidor()
+    public function preguntasfrecuentes()
     {
-            return view("publico.informaciondeapp.terminosycondiciones_empresa");
+            return view("publico.informaciondeapp.preguntasfrecuentes");
     }
-
-
+ 
+    
 }

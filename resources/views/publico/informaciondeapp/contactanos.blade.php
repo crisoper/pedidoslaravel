@@ -12,14 +12,15 @@
 </div>
 
 <div class="container">
+
     <div class="row">
         <div class="col-12">
-           
+
             Los interezados llamar a los siguientes números:
             <br>
-            964268236    Jhony García
+            964268236 Jhony García
             <br>
-            969050774    Percy Crisólogo
+            969050774 Percy Crisólogo
 
         </div>
     </div>
@@ -27,6 +28,3 @@
 
 
 @endsection
-
-
-

@@ -210,7 +210,7 @@ Route::get("quienessomos", "Publico\InformacionDeAplicacionController@quienessom
 ->name("quienessomos");
 Route::get("terminosycondiciones", "Publico\InformacionDeAplicacionController@terminosycondiciones")
 ->name("terminosycondiciones");
-Route::get("terminosycondiciones_empresa", "Publico\InformacionDeAplicacionController@terminosycondiciones_empresa")
-->name("terminosycondiciones_empresa");
-Route::get("terminosycondiciones_consumidor", "Publico\InformacionDeAplicacionController@terminosycondiciones_consumidor")
-->name("terminosycondiciones_consumidor");
+Route::get("politicasdeprivacidad", "Publico\InformacionDeAplicacionController@politicasdeprivacidad")
+->name("politicasdeprivacidad");
+Route::get("preguntasfrecuentes", "Publico\InformacionDeAplicacionController@preguntasfrecuentes")
+->name("preguntasfrecuentes");

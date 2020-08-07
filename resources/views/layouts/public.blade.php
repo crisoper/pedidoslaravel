@@ -42,7 +42,7 @@
                                 <p class="mb-0 number_phone">+51 976830280</p>
                                 <p class="my-0 suport"><small>Soporte 24/7</small></p>
                             </div>
-                            <a class="btn btn_top_client" href="#">Preguntas frecuentes</a>
+                            <a class="btn btn_top_client" href="{{ route('preguntasfrecuentes') }}">Preguntas frecuentes</a>
                         </div>
                     </div>
                 </div>
@@ -293,15 +293,15 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Más información</b></h5>
-                    <p class="my-1"><a href="#">Preguntas frecuentes</a></p>
+                <p class="my-1"><a href="{{ route('preguntasfrecuentes') }}">Preguntas frecuentes</a></p>
                     <p class="my-1"><a href="{{ route('mispedidos') }}">Seguimiento de delivery</a></p>
-                    <p class="my-1"><a href=" {{ route('registernewempresa') }} ">Publicación de productos</a></p>
+                    <p class="my-1"><a href=" {{ route('registernewempresa') }} ">Regístrate y publica tus productos</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Políticas y condiciones</b></h5>
-                    <p class="my-1"><a href="#">Políticas de Privacidad</a></p>
+                    <p class="my-1"><a href="{{route('politicasdeprivacidad')}}">Políticas de Privacidad</a></p>
                     <p class="my-1"><a href="{{route('terminosycondiciones')}}">Términos y Condiciones</a></p>
-                    <p class="my-1"><a href="#">Libro de Reclamaciones</a></p>
+                    {{-- <p class="my-1"><a href="#">Libro de Reclamaciones</a></p> --}}
                 </div>
             </div>
         </div>
