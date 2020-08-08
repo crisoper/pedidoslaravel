@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row m-0">
                 {{-- SERVICIO AL CLIENTE --}}
-                <div class="col-0 col-sm-0 col-md-3 col-lg-2 p-0" id="header_top_client">
+                <div class="col-6 col-sm-7 col-md-3 col-lg-2 p-0" id="header_top_client">
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -48,14 +48,14 @@
                 </div>
 
                 {{-- AFILIAR RESTAURANTE --}}
-                <div class="col-7 col-sm-5 col-md-5 col-lg-6 p-0 " id="header_top_restaurant">
-                    <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }} ">
+                <div class="col-0 col-sm-0 col-md-7 col-lg-8 p-0 " id="header_top_restaurant">
+                    <a class="btn btn_recommended d-flex justify-content-around" href="{{ route('registernewempresa') }}">
                         Regístrate aquí y publica tus productos 
                     </a>
                 </div>
 
                 {{-- APPS --}}
-                <div class="col-3 col-sm-3 col-md-2 col-lg-2 p-0" id="header_top_apps">
+                {{-- <div class="col-3 col-sm-3 col-md-2 col-lg-2 p-0" id="header_top_apps">
                     <div class="header_top_options">
                         <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -70,10 +70,10 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- LOGIN --}}
-                <div class="col-5 col-sm-4 col-md-2 col-lg-2 p-0 " id="header_top_login">
+                <div class="col-6 col-sm-5 col-md-2 col-lg-2 p-0 " id="header_top_login">
 
                     @if ( Auth::user() == '' || Auth::user() == null )
 
@@ -318,14 +318,12 @@
 
 </body>
 
-<!-- Default Statcounter code for PedidosApp http://206.189.229.33/pedidosapp/
--->
 
 
 
 @include('layouts.publico.scripts')
 @include('includes.ajaxsetup')
-@include('publico.inicio.categoriasjs')
+{{-- @include('publico.inicio.categoriasjs') --}}
 
 
 @include('layouts.publico.cesta.cesta')
@@ -333,7 +331,6 @@
 @include('layouts.publico.favoritos.favoritos')
 @include('layouts.publico.favoritos.favoritosjs')
 @include('layouts.publico.modalproductos.modalproductos')
-@include('layouts.publico.modalproductos.modalproductosjs')
 @include('layouts.publico.buscarproductos.buscarproductosjs')
 
 @include('layouts.publico.movil.menumovil')

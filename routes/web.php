@@ -102,7 +102,7 @@ Route::get('maspedidos', 'Publico\Productos\ProductosmaspedidosController@index'
 
 
 // PRODUCTOS RESULTADOS BUSQUEDA
-Route::get('productos/busqueda', 'Publico\ResultadosproductosController@index')
+Route::get('productos/busqueda', 'Publico\Productos\ResultadosproductosController@index')
 ->name('productos.busqueda.index');
 // PRODUCTOS RESULTADOS BUSQUEDA
 Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')

@@ -66,7 +66,7 @@ Route::get("ajax/maspedidos/index", "Publico\Productos\ProductosmaspedidosContro
 
 
 // PRODUCTOS RESULTADOS POR BUSQUEDA
-Route::get("ajax/productos/busqueda/index", "Publico\ResultadosproductosController@productosbusqueda")
+Route::get("ajax/productos/busqueda/index", "Publico\Productos\ResultadosproductosController@productosbusqueda")
 ->name("ajax.productos.busqueda.index");
 // LOCALES RESULTADOS POR BUSQUEDA
 Route::get("ajax/locales/busqueda/index", "Publico\ResultadoslocalesController@localesbusqueda")

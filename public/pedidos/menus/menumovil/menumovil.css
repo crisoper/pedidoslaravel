@@ -19,7 +19,7 @@
 
 .sidebar_modal_menumovil_left {
     position: fixed;
-    width: 300px;
+    width: 280px;
     height: 100%;
     top: 0;
     left: -400px;
@@ -163,6 +163,12 @@
 }
 
 
+
+
+
+
+
+
 /* MODAL APPS MOVIL */
 @media (min-width: 576px) {
     #open_apps_movil {
@@ -181,9 +187,18 @@
     border-radius: 0 !important;
 }
 .btn_seguir_navengado_navegador {
-    color: #fd0606;
-    font-size: 21px;
-    text-decoration: underline;
+    color: #ffffff;
+    background-color: #fd0606;
+    font-size: 16px;
+}
+.btn_registrar_productos_modal {
+    color: #4e4e4e;
+    background-color: #ffe600;
+    font-size: 16px;
+}
+.btn_registrar_productos_menumovil {
+    color: #ffe600;
+    font-size: 14px;
 }
 
 

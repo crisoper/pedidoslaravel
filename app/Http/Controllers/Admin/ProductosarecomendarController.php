@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\ProductorecomendarResource;
 use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Producto;
 use App\Models\Admin\Productocategoria;
@@ -64,7 +65,7 @@ class ProductosarecomendarController extends Controller
         }
     }
 
-    public function getdatosxid ( Request $request ) {
+    public function getdatosxidrecomendar ( Request $request ) {
         $productoEnModal = Producto::where("id", $request->has("idproducto") ? $request->idproducto : 0 )
         ->with([
             "empresa",
@@ -76,7 +77,7 @@ class ProductosarecomendarController extends Controller
         ->first();
 
         if ( $productoEnModal != null ) {
-            return new ProductoResource (  $productoEnModal );
+            return new ProductorecomendarResource (  $productoEnModal );
         }
 
         return "No se enncontro el producto";

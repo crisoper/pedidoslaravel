@@ -19,32 +19,39 @@ class ProductosnuevosController extends Controller
     
     public function nuevos(Request $request)
     {
-        $productoCestaIds = array();
-        $productoDeseoIds = array();
+        // $productoCestaIds = array();
+        // $productoDeseoIds = array();
 
-        if ( $request->has("storagecliente_id") ) {
-            $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "cesta")
-            ->get()
-            ->pluck("producto_id");
+        // if ( $request->has("storagecliente_id") ) {
+        //     $productoCestaIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        //     ->where("tipo", "cesta")
+        //     ->get()
+        //     ->pluck("producto_id");
 
 
-            $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
-            ->where("tipo", "deseos")
-            ->get()
-            ->pluck("producto_id");
-        }
+        //     $productoDeseoIds = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        //     ->where("tipo", "deseos")
+        //     ->get()
+        //     ->pluck("producto_id");
+        // }
         
         
         //Productos mas pedidos
-        $hoy =  Carbon::now();
-        $fechainicio = Carbon::now()->subDays( 7 );
+        $hoynuevos =  Carbon::now();
+        $fechainicionuevos = Carbon::now()->subDays( 7 );
 
-        $productosNuevos = Producto::whereDate("created_at", ">=", $fechainicio )
-        ->whereDate("created_at", "<=", $hoy );
+        $productosNuevos = Producto::whereDate("created_at", ">=", $fechainicionuevos )
+        ->whereDate("created_at", "<=", $hoynuevos );
 
-        if( $request->has('buscar')  and $request->buscar != "" ) {
-            $productosNuevos = $productosNuevos->where('nombre', 'like', '%'.$request->buscar.'%');
+        if( $request->has('filtro_nuevos')  and $request->filtro_nuevos == 1 ) {
+            $productosNuevos = $productosNuevos->whereDate("created_at", ">=", $fechainicionuevos )
+                ->whereDate("created_at", "<=", $hoynuevos );
+        }
+        
+        if( $request->has('filtro_ofertas')  and $request->filtro_ofertas == 1 ) {
+            $productosNuevos = $productosNuevos->whereHas("oferta", function($query){
+                $query->whereDate('diainicio', "<=", now())->whereDate("diafin", ">=", now());
+            });
         }
         
         if ( $request->has('filtro_orden')  and $request->filtro_orden == "ofertas" ) {
@@ -65,23 +72,23 @@ class ProductosnuevosController extends Controller
         ])
         ->get();
 
-        foreach ( $productosNuevos as $producto ) {
+        // foreach ( $productosNuevos as $producto ) {
 
-            if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
-                $producto->encarrito = true;
-            }
-            else {
-                $producto->encarrito = false;
-            }
+        //     if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
+        //         $producto->encarrito = true;
+        //     }
+        //     else {
+        //         $producto->encarrito = false;
+        //     }
             
-            if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
-                $producto->enlistadeseos = true;
-            }
-            else {
-                $producto->enlistadeseos = false;
-            }
+        //     if ( in_array( $producto->id , $productoDeseoIds->toArray() ) ) {
+        //         $producto->enlistadeseos = true;
+        //     }
+        //     else {
+        //         $producto->enlistadeseos = false;
+        //     }
 
-        }
+        // }
 
         return ProductoResource::collection( $productosNuevos );
     }

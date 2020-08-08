@@ -107,6 +107,6 @@
 
 @endsection
 
-{{-- @section('scripts')
+@section('scripts')
     @include('publico.resultadosproductos.indexjs')
-@endsection --}}
+@endsection
