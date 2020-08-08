@@ -34,13 +34,13 @@
     <div id="contenido" class="d-flex align-content-between flex-wrap">
 
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light  bg-danger shadow-sm">
                 <div class="container">
                     {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'PedidosApp') }}
                     </a> --}}
                     <a href="{{ route('inicio.index') }}">
-                        <img src="{{asset('pedidos/image/pedidosapp.png')}}" alt="logo pedidosApp" width="100px">
+                        <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="logo pedidosApp" width="100px">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,11 +59,11 @@
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('loginOrRegister', 'login') }}">{{ __('Iniciar sesión') }}</a>
+                                <a class="nav-link text-light" href="{{ route('loginOrRegister', 'login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('loginOrRegister', 'register') }}">{{ __('Registrate') }}</a>
+                                <a class="nav-link text-light" href="{{ route('loginOrRegister', 'register') }}">{{ __('Registrate') }}</a>
                             </li>
                             @endif
                             @else
