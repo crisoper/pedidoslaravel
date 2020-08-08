@@ -49,7 +49,7 @@
                 },
                 success: function ( data ) {
                     mostrarProductosResultados( data );
-                    console.log(data);
+                    // console.log(data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

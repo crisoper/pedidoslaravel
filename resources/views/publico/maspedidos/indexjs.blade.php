@@ -33,7 +33,7 @@
                 },
                 success: function ( data ) {
                     mostrarProductosMasPedidos( data );
-                    console.log(data);
+                    // console.log(data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

@@ -7,8 +7,14 @@
             <i class="fas fa-times"></i>
         </button>
 
-        <div class="row m-0">
-            <div class="col-7 p-0">
+        <div class="row m-0 bg-dark">
+            <div class="col-12 p-0 text-center">
+                <a class="btn btn_registrar_productos_menumovil py-1" href="{{ route('registernewempresa') }}">
+                    Regístrate aquí y publica tus productos
+                </a>
+            </div>
+
+            {{-- <div class="col-7 p-0">
                 <div class="serviviocliente_menumovil">
                     <button type="button" class="btn btn_serviciocliente_menumovil py-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Servicio al cliente <i class="fas fa-angle-down"></i>
@@ -41,11 +47,11 @@
                         </a>
                     </div>                
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="content_menumovil">
-            <div class="logo_menumovil">
+            <div class="logo_menumovil py-1">
                 <img src="{{asset('pedidos/image/pedidosapp_inicio.png')}}" alt="{{asset('pedidos/image/pedidosapp.png')}}">
             </div>
 
