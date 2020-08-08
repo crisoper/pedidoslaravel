@@ -200,17 +200,18 @@ Route::get("getdistritos/porprovincia", "Publico\DistritosController@getdistrito
 
 
 //Acerca de pedidosapp
-Route::get("nosotros", "Publico\InformacionDeAplicacionController@nosotros")
+Route::get("nosotros", "Publico\InformacionaplicacionController@nosotros")
 ->name("nosotros");
 
-Route::get("contactanos", "Publico\InformacionDeAplicacionController@contactanos")
-->name("contactanos");
+Route::get("contactate", "Publico\InformacionaplicacionController@contactate")
+->name("contactate.send");
+Route::post('contactate.create', 'Publico\InformacionaplicacionController@contactatecreate')->name('contactatecreate');
 
-Route::get("quienessomos", "Publico\InformacionDeAplicacionController@quienessomos")
+Route::get("quienessomos", "Publico\InformacionaplicacionController@quienessomos")
 ->name("quienessomos");
-Route::get("terminosycondiciones", "Publico\InformacionDeAplicacionController@terminosycondiciones")
+Route::get("terminosycondiciones", "Publico\InformacionaplicacionController@terminosycondiciones")
 ->name("terminosycondiciones");
-Route::get("politicasdeprivacidad", "Publico\InformacionDeAplicacionController@politicasdeprivacidad")
+Route::get("politicasdeprivacidad", "Publico\InformacionaplicacionController@politicasdeprivacidad")
 ->name("politicasdeprivacidad");
-Route::get("preguntasfrecuentes", "Publico\InformacionDeAplicacionController@preguntasfrecuentes")
+Route::get("preguntasfrecuentes", "Publico\InformacionaplicacionController@preguntasfrecuentes")
 ->name("preguntasfrecuentes");

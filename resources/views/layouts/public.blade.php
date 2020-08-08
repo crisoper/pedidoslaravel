@@ -287,7 +287,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer_links text-center">
                     <h5><b>Acerca de Pedidos.com</b></h5>
                     <p class="my-1"><a href="nosotros">Nosotros</a></p>
-                    <p class="my-1"><a href="contactanos">Contáctanos</a></p>
+                    <p class="my-1"><a href="{{route('contactate.send')}}">Contáctanos</a></p>
                     <p class="my-1"><a href="quienessomos">Quienes somos</a></p>
                   
                 </div>
