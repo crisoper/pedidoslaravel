@@ -156,9 +156,9 @@ class ProductosController extends Controller
                     "horarios"=> function($qhorario){
                         $w_today = date('w', strtotime( Carbon::now() ));
                         $diassemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado','Domingo'];
-                        for ( $i = 1; $i < count($diassemana) ; $i++) { 
+                        for ( $i = 0; $i < count($diassemana) ; $i++) { 
                             if ( $w_today == $i) {
-                                $dia = $diassemana[$i - 1];
+                                $dia = $diassemana[ $i ];
                             }
                         }
                         $qhorario->where( 'dia', $dia );
