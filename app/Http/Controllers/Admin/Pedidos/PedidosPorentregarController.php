@@ -64,7 +64,7 @@ class PedidosPorentregarController extends Controller
     }
 
 
-    
+
 
     public function eliminar( Request $request )
     {
@@ -78,6 +78,21 @@ class PedidosPorentregarController extends Controller
         
 
         return response()->json(['success' => "Operacion realizada con exito"], 200);
+    }
+
+    public function delete(Request $request) {
+        $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id)
+        ->where( "producto_id", $request->producto_id )
+        ->where( "tipo", $request->tipo )
+        ->first();
+
+        if ( $cesta ) {
+            $cesta->delete();
+            return response()->json(['success' => "Operacion realizada con exito"], 200);
+        }
+        
+        return response()->json(['error' => "No se ha encontrado el recurso"], 404);
+        
     }
 
 }
