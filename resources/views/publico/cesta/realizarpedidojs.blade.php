@@ -12,18 +12,17 @@
                 dataType: "json",
                 data: $("#formNavDetallePedidoCesta").serialize() ,
                 success: function( data ) {
-               
-                        $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
-                        // GLOBARL_MostrarNotificaciones( data.success, "info" );
-                        // mesajeDatosActualizados( ) ;
-                        Swal.fire({
-                            title: '¡Tu pedido se ha registrado!',
-                            text: "En breve nos comunicaremos contigo para detalles de entrega",
-                            icon: 'success',
-                            confirmButtonText: '<a href="{{route('seguimientodepedido.index')}}" style="color:#fff"> Aceptar </a>'
-                          })
-                    },
-                    error : function ( jqXHR, textStatus, errorThrown ) {
+                    $( buttonGuardar ).prop( "disabled", false ).find("span").hide();
+                    // GLOBARL_MostrarNotificaciones( data.success, "info" );
+                    // mesajeDatosActualizados( ) ;
+                    Swal.fire({
+                        title: '¡Tu pedido se ha registrado!',
+                        text: "En breve nos comunicaremos contigo para detalles de entrega",
+                        icon: 'success',
+                        confirmButtonText: '<a href="{{route('seguimientodepedido.index')}}" style="color:#fff"> Aceptar </a>'
+                    });
+                },
+                error : function ( jqXHR, textStatus, errorThrown ) {
                     
                     if( jqXHR.status == 404 ) 
                     {
