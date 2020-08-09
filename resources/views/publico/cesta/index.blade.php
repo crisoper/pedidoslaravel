@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="col-12 px-0 py-2 text-center content_btn_realizar_pedido_cart">
-                           
+                            <p class="m-0 mb-2 p-0 small text-danger">Una vez realizado el pedido no podrá ser cancelado</p>
                             <input type="hidden" id="userId" value="{{( Auth()->user() ) ? Auth()->user()->id : '' }}">
                             <button class="btn_realizar_pedido_cart py-1" >Realizar Pedido</button>
                             <br>
