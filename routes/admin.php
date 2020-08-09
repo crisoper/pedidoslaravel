@@ -188,6 +188,8 @@ function() {
     Route::get("ajax/pedidosporentregar/index", "Admin\Pedidos\PedidosPorentregarController@porentregar")->name("ajax.pedidosporentregar.index");
     Route::post("ajax/pedidosporentregar/store", "Admin\Pedidos\PedidosPorentregarController@store")->name("ajax.pedidosporentregar.store");
 
+    Route::post("ajax/pedidosporentregar/eliminar", "Admin\Pedidos\PedidosPorentregarController@eliminar")->name("ajax.pedidosporentregar.eliminar");
+
 
     // PEDIDOS ENTREGADOS
     Route::get('pedidos/entregados', 'Admin\Pedidos\PedidosEntregadosController@index')->name("pedidos.entregados");

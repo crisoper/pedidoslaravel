@@ -49,9 +49,8 @@ class PedidosPorentregarController extends Controller
 
 
     
-    public function store(Request $request)
+    public function store( Request $request )
     {
-        
         $pedidodespachado = new Pedidoestado();
         $pedidodespachado->empresa_id = $request->empresa_id;
         $pedidodespachado->pedido_id = $request->pedido_id;
@@ -63,4 +62,22 @@ class PedidosPorentregarController extends Controller
 
         return response()->json(['success' => "Operacion realizada con exito"], 200);
     }
+
+
+    
+
+    public function eliminar( Request $request )
+    {
+        $pedidodespachado = new Pedidoestado();
+        $pedidodespachado->empresa_id = $request->empresa_id;
+        $pedidodespachado->pedido_id = $request->pedido_id;
+        $pedidodespachado->estado = $request->estado;
+        $pedidodespachado->created_by = Auth::id();
+        
+        $pedidodespachado->save();
+        
+
+        return response()->json(['success' => "Operacion realizada con exito"], 200);
+    }
+
 }
