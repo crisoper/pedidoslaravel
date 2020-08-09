@@ -53,6 +53,8 @@ class IncludeshomeController extends Controller
         $flag = 'home';
         return view('home', compact('flag'));
     }
+
+
     public function pedidosporEmpresa()
     {
 
@@ -73,7 +75,8 @@ class IncludeshomeController extends Controller
                 ->where('empresa_id', $this->empresaId())
                 ->paginate(10);
 
-            return view('home', compact('flag', 'productos', 'categorias', 'productospedidos'));
+         
+            return view('home', compact('flag', 'productos', 'pedidos', 'productospedidos'));
         }
     }
 
@@ -120,10 +123,30 @@ class IncludeshomeController extends Controller
 
     public function empresasRegitradas(){
         
-        $empresa = Empresa::select('ruc', 'nombre', 'direccion')->get();
+        $empresa = Empresa::select('id','ruc', 'nombre', 'direccion')->orderby('id', 'desc')->get();
         return response()->json($empresa, 200);        
    
     }
+    public function reportedetalledepedidos(){
+        $pedidos = Pedido::orderBy("id", "desc")
+        ->where('empresa_id', Session::get('empresaactual',0))
+        ->whereHas('pedidoestado', function (){}, '=', 1)
+        ->with([
+            'empresa',
+            'cliente',
+            'pedidodetalle' => function($query){ 
+               $query->with([
+                   'producto',
+               ]);
+            },
+            'pedidoestado',
+           
+            ])
+        ->paginate(10);
+
+        return view('admin.pedidos.pedidosporempresa.detallepedidos', compact('pedidos'));
+    }
+    
      public function pedidosPorEntregar(){
 
         if ( Auth()->user()->hasRole('SuperAdministrador') || Auth()->user()->hasRole('menu_Repartidor')) {

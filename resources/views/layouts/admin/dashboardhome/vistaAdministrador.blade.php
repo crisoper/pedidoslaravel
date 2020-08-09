@@ -21,8 +21,8 @@
         background-color: #92df03;
     }
 
-    .clientes {
-        background-color: rgb(155, 206, 72);
+    .configuracion {
+        background-color: rgb(40, 27, 223);
     }
 
      
@@ -64,18 +64,18 @@
     </div>
 
     <div class="col-sm-3">
-
+    <a href="{{route('reportedetalledepedidos')}}">
         <div class="card">
             <div class="card-header p-1 text-center ">
                 {{-- <span class="display-3 iconoventas text-danger"><i class="fas fa-shopping-basket"></i></span> --}}
                 <img src="https://img.icons8.com/plasticine/100/000000/total-sales.png" />
             </div>
             <div class="card-body p-1 ventas d-flex justify-content-center">
-                <h5 class="card-title">Pedidos atendidos <i class="fas fa-arrow-circle-right"></i></h5>
+                <h5 class="card-title">Productos vendidos<i class="fas fa-arrow-circle-right"></i></h5>
 
             </div>
         </div>
-
+    </a>
     </div>
 
     <div class="col-sm-3">
@@ -95,18 +95,18 @@
     </div>
 
     <div class="col-sm-3">
-
+    <a href="{{route('configuracionempresa.index')}}">
         <div class="card">
             <div class="card-header p-1 text-center ">
                 {{-- <span class="display-3 text-success"><i class="fas fa-users"></i></span> --}}
-                <img src="https://img.icons8.com/clouds/100/000000/group.png" />
+                <img src="https://img.icons8.com/color/100/000000/gears.png"/>
             </div>
-            <div class="card-body p-1 clientes d-flex justify-content-center">
-                <h5 class="card-title">Clientes <i class="fas fa-arrow-circle-right"></i></h5>
+            <div class="card-body p-1 configuracion d-flex justify-content-center">
+                <h5 class="card-title">Configuración <i class="fas fa-arrow-circle-right"></i></h5>
 
             </div>
         </div>
-
+    </a>
     </div>
 
 
@@ -142,6 +142,7 @@
                                 <table class="table table-light table-sm table-striped">
                                     <thead class="thead-light ">
                                         <tr>
+                                            <th>Código</th>
                                             <th>Producto</th>
                                             <th>Cantidad</th>
                                         </tr>
@@ -175,9 +176,10 @@
         var ChartProductos;
        
 
-    $(window).on('load', function(){             
+    $(window).on('load', function(){   
         HistoricoVentas();
         productosMasVendidos();
+       
                             
     });
 //FITRAR CAMPOS UNICOS DE UN ARRAY
@@ -191,7 +193,7 @@ function productosMasVendidos(){
             dataType:"json",
             data:{},
             success: function( data ){          
-                console.log(data);
+             
               var nombredeproducto =[];
               var cantidadeproducto =[];
               $.each(data, function(index, producto){
@@ -199,8 +201,9 @@ function productosMasVendidos(){
                 cantidadeproducto.push(producto.cantidad);
                 $("#tbl_productosmasvendidos").append(
                         "<tr>"+
-                            "<td>"+ producto.nombre+" </td>"+
-                             "<td>"+ producto.cantidad +" </td>"+                            
+                            "<td><small>"+ producto.codigo+"</small> </td>"+
+                            "<td><small>"+ producto.nombre+"</small> </td>"+
+                             "<td class='text-center'><small>"+ producto.cantidad +"</small> </td>"+                            
                         "</tr>"
                     );
               })             
@@ -225,11 +228,14 @@ function HistoricoVentas(){
              
                 graficoHistoricoVentas(nombredeproducto,totalvendidos);
             });
+           
             }
         });
+              
 }
+    
 function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){            
-         
+   
             var colores=[];
             $.each( nombredeproducto , function(index, valor){       
                 var colorUno = Math.random() * (255 - 1) + 1;
@@ -237,8 +243,10 @@ function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){
                 var colorTres = Math.random() * (255 - 1) + 1;
                 colores.push('rgba( '+ colorUno +',' +colorDos + ',' + colorTres + ',' + 1 +  ')' );
             });
+     
            
-                var ctx = document.getElementById('chartHistoricoVentas');
+                let ctx = document.getElementById('chartHistoricoVentas');
+              
                 CharthistoticoVentas = new Chart(ctx, {                   
                     type: 'bar' ,                    
                     data: {
@@ -252,6 +260,7 @@ function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){
                     options: {
                         scales: {
                             yAxes: [{
+                                
                                 ticks: {
                                     beginAtZero: true,                                    
                                 }
@@ -262,9 +271,9 @@ function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){
                                 }
                             }]
                         }
-                    }
+                    }     
+            
                 });  
-                      
         }
 //GRAFICO PRINCIPAL
 
@@ -278,7 +287,7 @@ function GraficoProductosmasVendidos(nombredeproducto,cantidadeproducto){
                 colores.push('rgba( '+ colorUno +',' +colorDos + ',' + colorTres + ',' + 1 +  ')' );
             });
            
-                var ctx = document.getElementById('ChartProductosMasVendidos');
+                let ctx = document.getElementById('ChartProductosMasVendidos');
                 ChartProductos = new Chart(ctx, {                   
                     type: 'pie' ,                    
                     data: {
@@ -303,8 +312,9 @@ function GraficoProductosmasVendidos(nombredeproducto,cantidadeproducto){
                             }]
                         }
                     }
+                   
                 });
-                    
+              
         }
 
     
