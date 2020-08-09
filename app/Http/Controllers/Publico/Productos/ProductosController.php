@@ -155,9 +155,9 @@ class ProductosController extends Controller
                 $query->with([
                     "horarios"=> function($qhorario){
                         $w_today = date('w', strtotime( Carbon::now() ));
-                        $diassemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado','Domingo'];
+                        $diassemana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
                         for ( $i = 0; $i < count($diassemana) ; $i++) { 
-                            if ( $w_today == $i) {
+                            if ( $w_today  == $i) {
                                 $dia = $diassemana[ $i ];
                             }
                         }
@@ -189,11 +189,11 @@ class ProductosController extends Controller
         //     }
         // }
         
+        // return $w_today = date('w', strtotime( Carbon::now() ));
 
         if ( $productoEnModal != null ) {
             return new ProductomodalResource (  $productoEnModal );
         }
-
         return "No se encontro el producto";
 
 
