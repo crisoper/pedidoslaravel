@@ -35,6 +35,7 @@
 
 {{-- RECOMENDAR PRODUCTOS --}}
 <link rel="stylesheet" href="{{asset('pedidos/recomendar/recomendar.css')}}">
+<link rel="stylesheet" href="{{asset('pedidos/css/style.css')}}">
 
 
 

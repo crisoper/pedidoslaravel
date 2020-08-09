@@ -31,15 +31,13 @@
 
 
     .btn_submit {
-        background-color: #442dc9 !important;
+        color: #ffffff !important;
+        background-color: #087ecc !important;
         border-radius: 0px !important;
-        border: none;
+        border: 0;
+        font-size: 15px;
     }
 
-    .btn_submit:hover {
-        background-color: #2d1d8b !important;
-        box-shadow: 0.5px 0.5px 1px 1.5px #941317;
-    }
 
     #container_left {
      
