@@ -47,7 +47,7 @@ class ProductoResource extends JsonResource
             'oferta_diafin' => $this->oferta ? $this->oferta->diafin : '',
             
 
-            'diaactual' => date('d-m-Y'),
+            'diaactual' => date('Y-m-d'),
         ];
     }
 }

@@ -162,19 +162,22 @@ function() {
     // RECOMENDAR PRODUCTOS
     Route::get('productosarecomendar', 'Admin\ProductosarecomendarController@index')
         ->name('productosarecomendar.index');
-
-    Route::get('productosarecomendar/edit', 'Admin\ProductosarecomendarController@edit')
-        ->name('productosarecomendar.edit');
-        
     Route::post('productosarecomendar/update', 'Admin\ProductosarecomendarController@update')
         ->name('productosarecomendar.update');
-
     Route::delete('productosarecomendar/destroy', 'Admin\ProductosarecomendarController@destroy')
         ->name('productosarecomendar.destroy');
-
-
     Route::get("ajax/productos/getdatosxidrecomendar", "Admin\ProductosarecomendarController@getdatosxidrecomendar")
     ->name("ajax.productos.getdatosxidrecomendar");
+    
+    // OFERTAR PRODUCTOS
+    Route::get('productosofertar', 'Admin\ProductosofertarController@index')
+        ->name('productosofertar.index');
+    Route::post('productosofertar/update', 'Admin\ProductosofertarController@update')
+        ->name('productosofertar.update');
+    Route::delete('productosofertar/destroy', 'Admin\ProductosofertarController@destroy')
+        ->name('productosofertar.destroy');
+    Route::get("ajax/productos/getdatosxidofertar", "Admin\ProductosofertarController@getdatosxidofertar")
+    ->name("ajax.productos.getdatosxidofertar");
 
 
     // PEDIDOS INGRESADOS
@@ -188,7 +191,7 @@ function() {
     Route::get("ajax/pedidosporentregar/index", "Admin\Pedidos\PedidosPorentregarController@porentregar")->name("ajax.pedidosporentregar.index");
     Route::post("ajax/pedidosporentregar/store", "Admin\Pedidos\PedidosPorentregarController@store")->name("ajax.pedidosporentregar.store");
 
-    Route::post("ajax/pedidosporentregar/eliminar", "Admin\Pedidos\PedidosPorentregarController@eliminar")->name("ajax.pedidosporentregar.eliminar");
+    Route::delete("ajax/pedidosporentregar/eliminar", "Admin\Pedidos\PedidosPorentregarController@eliminar")->name("ajax.pedidosporentregar.eliminar");
 
 
     // PEDIDOS ENTREGADOS

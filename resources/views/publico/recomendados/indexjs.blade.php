@@ -68,7 +68,7 @@
                 });
                 
 
-                if ( (recomendado.oferta_diainicio != "") && (recomendado.oferta_diafin != "") ) {
+                if ( (recomendado.oferta_diainicio <= recomendado.diaactual) && (recomendado.oferta_diafin >= recomendado.diaactual) ) {
                     if ( recomendado.nuevo == "Si" ) {
                         recomendadosHTML = recomendadosHTML + `
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">

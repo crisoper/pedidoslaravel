@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pedidoestado extends Model
 {
-    use  SoftDeletes;
+    // use  SoftDeletes;
     protected $dates =['deleted_at'];
 
     protected $fillable = [

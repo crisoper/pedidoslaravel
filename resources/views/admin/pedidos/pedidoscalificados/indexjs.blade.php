@@ -24,7 +24,7 @@
     
         function mostrar_pedidos_calificados( datos ) {
 
-            console.log(datos);
+            // console.log(datos);
 
             $("#cuerpo_pedidos_calificados").html();
     

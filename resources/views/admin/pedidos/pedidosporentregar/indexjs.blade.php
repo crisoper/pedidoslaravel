@@ -24,7 +24,7 @@
     
         function mostrar_pedidos_por_entregar( datos ) {
 
-            console.log(datos);
+            // console.log(datos);
 
             $("#cuerpo_pedidos_por_entregar").html();
     
@@ -90,7 +90,9 @@
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                             </div>
                             <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button>
+                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button> <br>
+                                
+                                <button class="btn_eliminar_pedido_tomado mt-1" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Cancelar pedido tomado</button>
                             </div>
                         </div>
                     </div>
@@ -132,6 +134,33 @@
             });
 
         }
+
+
+        
+        // ELIMINAR PRODUCTO DE CESTA
+        $("#cuerpo_pedidos_por_entregar").on("click", ".btn_eliminar_pedido_tomado", function() {
+
+            let spanEliminar = $( this );
+
+            $.ajax({
+                url: "{{ route('ajax.pedidosporentregar.eliminar') }}",
+                method: 'POST',
+                data: {
+                    _method:"DELETE",
+                    estado: "porentregar",
+                    empresa_id: $( spanEliminar ).attr("idempresa"),
+                    pedido_id: $( spanEliminar ).attr("idpedido"),
+                },
+                success: function ( data ) {
+                    obtener_pedidos_por_entregar( );
+                },
+                error: function ( jqXHR, textStatus, errorThrown ) {
+                    console.log(jqXHR.responseJSON);
+                }
+            });
+
+        });
+
     });
 
 

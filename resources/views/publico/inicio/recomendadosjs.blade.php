@@ -33,7 +33,7 @@
     
             $.each( datos, function( key, recomendados ) {
 
-                // console.log(recomendados);
+                console.log(recomendados);
 
                 let fotos = '';
                 let contador = 0; 
@@ -47,7 +47,7 @@
                 });
 
                 
-                if ( (recomendados.oferta_diainicio != "") && (recomendados.oferta_diafin != "") ) {
+                if ( (recomendados.oferta_diainicio <= recomendados.diaactual) && (recomendados.oferta_diafin >= recomendados.diaactual) ) {
                     if ( recomendados.nuevo == "Si" ) {
                         recomendadosHTML = recomendadosHTML + `
                             <div class="single_product_wrapper abrir_modal_productos m-3" data-toggle="modal" data-target="#abrir_modal_producto_inicio" idproducto="${ recomendados.id }">

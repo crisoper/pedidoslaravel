@@ -99,4 +99,5 @@ class CestaController extends Controller
         return response()->json(['error' => "No se ha encontrado el recurso"], 404);
         
     }
+    
 }

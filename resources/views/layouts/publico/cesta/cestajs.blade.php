@@ -135,15 +135,13 @@
     $(".contenidoPrincipalPagina").on("click", ".verhorario", function() {
       
         if (  $(this).html() == '<small>Ver horario de atención </small>'  ) {
-          
             $("#tabla").show();
             $(this).html("<small>Ocultar horario de atención</small>") ;
         } else {
             $("#tabla").hide();
             $(this).html('<small>Ver horario de atención </small>');
-        }             
-  
-        
+        }
+
     })
 
     function agregar_producto_a_cesta( producto_id, cantidad, storagecliente_id, tipo, empresa_id, estado, btnAgregarCar) {

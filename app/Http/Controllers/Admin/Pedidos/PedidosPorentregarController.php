@@ -66,28 +66,14 @@ class PedidosPorentregarController extends Controller
 
 
 
-    public function eliminar( Request $request )
-    {
-        $pedidodespachado = new Pedidoestado();
-        $pedidodespachado->empresa_id = $request->empresa_id;
-        $pedidodespachado->pedido_id = $request->pedido_id;
-        $pedidodespachado->estado = $request->estado;
-        $pedidodespachado->created_by = Auth::id();
-        
-        $pedidodespachado->save();
-        
-
-        return response()->json(['success' => "Operacion realizada con exito"], 200);
-    }
-
-    public function delete(Request $request) {
-        $cesta = Cesta::where("storagecliente_id", $request->storagecliente_id)
-        ->where( "producto_id", $request->producto_id )
-        ->where( "tipo", $request->tipo )
+    public function eliminar(Request $request) {
+        $pedidodespachado = Pedidoestado::where( "empresa_id", $request->empresa_id )
+        ->where( "pedido_id", $request->pedido_id )
+        ->where( "estado", $request->estado )
         ->first();
 
-        if ( $cesta ) {
-            $cesta->delete();
+        if ( $pedidodespachado ) {
+            $pedidodespachado->delete();
             return response()->json(['success' => "Operacion realizada con exito"], 200);
         }
         

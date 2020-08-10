@@ -329,6 +329,7 @@
                     _method:"DELETE",
                     recomendar: "recomendado",
                     producto_id: $( spanEliminar ).attr("idproducto"),
+                    empresa_id: $( spanEliminar ).attr("idempresa"),
                 },
                 success: function ( data ) {
                     // obtenerProductosCestaMenu( );

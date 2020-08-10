@@ -28,17 +28,17 @@
 
                 html = html + `
                 <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                    <h5 class="card-title">${ producto.nombre }</h5>
-                    <p class="card-text">${ producto.descripcion }</p>
-                    <a href="${producto.categoria.id}" class="text-info">${ producto.categoria.nombre }</a>
-                    <br>
-                    Etiquetas:
-                    <br>
-                    ${ tags }
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">${ producto.nombre }</h5>
+                        <p class="card-text">${ producto.descripcion }</p>
+                        <a href="${producto.categoria.id}" class="text-info">${ producto.categoria.nombre }</a>
+                        <br>
+                        Etiquetas:
+                        <br>
+                        ${ tags }
+                        </div>
                     </div>
-                </div>
                 </div>`;
             });
 

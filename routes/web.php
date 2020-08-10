@@ -94,12 +94,6 @@ Route::get('maspedidos', 'Publico\Productos\ProductosmaspedidosController@index'
 ->name('maspedidos.index');
 
 
-// PRODUCTOS RECOMENDADOS
-// PRODUCTOS OFERTADOS
-// PRODUCTOS NUEVOS
-// PRODUCTOS MAS PEDIDOS
-
-
 
 // PRODUCTOS RESULTADOS BUSQUEDA
 Route::get('productos/busqueda', 'Publico\Productos\ResultadosproductosController@index')
@@ -107,6 +101,8 @@ Route::get('productos/busqueda', 'Publico\Productos\ResultadosproductosControlle
 // PRODUCTOS RESULTADOS BUSQUEDA
 Route::get('locales/busqueda', 'Publico\ResultadoslocalesController@index')
 ->name('locales.busqueda.index');
+
+
 
 //CESTA MENU
 Route::get("cesta/index", "Publico\CestaController@index")
