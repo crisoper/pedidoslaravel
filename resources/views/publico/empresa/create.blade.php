@@ -244,7 +244,7 @@
 
 
                         <div class="form-group col-6">
-                            <button type="button" class="btn btn-primary btn-block" id="btn_submit" disabled>
+                            <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro" disabled>
                                 <span class="spinner-border spinner-border-sm spinnerr" role="status" aria-hidden="true"
                                     style="display: none"></span>
                                 Guardar
