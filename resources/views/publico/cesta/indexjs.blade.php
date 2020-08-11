@@ -194,6 +194,7 @@
                 },
                 success: function ( data ) {
                     obtenerProductosCesta( );
+                    obtenerProductosCestaMenu( );
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

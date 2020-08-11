@@ -8,6 +8,7 @@ use App\Http\Resources\Publico\ProductoResource;
 use App\Models\Admin\Empresa;
 use App\Models\Admin\Pedidos\Pedidodetalle;
 use App\Models\Admin\Producto;
+use App\Models\Publico\Cesta;
 use App\Models\Publico\Horario;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -167,13 +168,15 @@ class ProductosController extends Controller
             },
             "categoria",
             "tags",
-            "fotos",           
+            "fotos",
+            "cesta",
         ])
         ->first();
         
 
         // foreach ( $productoEnModal as $producto ) {
 
+        //     return $producto;
         //     if ( in_array( $producto->id , $productoCestaIds->toArray() ) ) {
         //         $producto->encarrito = true;
         //     }

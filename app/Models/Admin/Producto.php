@@ -54,6 +54,16 @@ class Producto extends Model
     {
         return $this->hasOne('App\Models\Admin\Productorecomendar', 'producto_id');
     }
+    
+    public function cesta()
+    {
+        return $this->hasOne('App\Models\Publico\Cesta', 'producto_id');
+    }
+    
+    public function favorito()
+    {
+        return $this->hasOne('App\Models\Publico\Favorito', 'producto_id');
+    }
 
     
 }

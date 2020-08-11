@@ -25,8 +25,8 @@ class ProductoResource extends JsonResource
             'stock' => $this->stock,
             // 'created_at' => date('d-m-Y', strtotime($this->created_at)),
             'tags' => $this->tags,
-            'encarrito' => $this->encarrito,
-            'enlistadeseos' => $this->enlistadeseos,
+            // 'encarrito' => $this->encarrito,
+            // 'enlistadeseos' => $this->enlistadeseos,
             'nuevo' => $this->created_at >= Carbon::now()->subDays( 7 ) ? "Si" : "No",
             'fotos' => ProductofotoResource::collection( $this->fotos ),
 

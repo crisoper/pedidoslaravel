@@ -47,13 +47,11 @@ class ProductosarecomendarController extends Controller
 
         if (!empty(request()->buscar)) {
             $productos = Producto::where('nombre', 'like', '%' . request()->buscar . '%')
-                ->where('empresa_id', $this->empresaId())
                 ->orderBy('id', 'desc')
                 ->paginate(10);
             return view('admin.productos.recomendar', compact('productos', 'categorias', 'productosrecomendados', 'arrayrecomendar'));
         } else {
             $productos = Producto::orderBy('id', 'desc')
-                ->where('empresa_id', $this->empresaId())
                 ->paginate(10);
 
 

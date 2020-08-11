@@ -203,7 +203,6 @@ class ProductosController extends Controller
         $tag = $producto->tags->first();
         $fotosproducto = Productofoto::where('producto_id', $producto->id)->get();
         foreach ($fotosproducto as $foto) {
-
             $exists = Storage::disk('img_productos')->exists($foto->nombre);
         }
         return view('admin.productos.editar', compact('producto', 'exists', 'tag'));

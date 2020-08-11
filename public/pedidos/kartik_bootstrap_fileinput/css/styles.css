@@ -1,0 +1,48 @@
+
+.file-preview > .fileinput-remove {
+    display: none !important;
+}
+.file-drop-zone {
+    border: 0 !important;
+    text-align: center !important;
+}
+.fa-plus-circle {
+    display: none !important;
+}
+.file-preview-thumbnails, .file-preview, .file-input {
+    text-align: center !important;
+}
+
+.kv-fileinput-caption {
+    border-color: #ced4da !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* ELEVATE ZOOM */
+
+
+
+#imagen_principal img {
+    border: 1px solid #ced4da;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/*Change the colour*/
+#imagenes_producto_edit img {
+    border: 1px solid #ced4da;
+    padding: 5px;
+    border-radius: 5px;
+}
+.active img {
+    /* border: 2px solid #ced4da !important; */
+    background-color: #b9bec4;
+}

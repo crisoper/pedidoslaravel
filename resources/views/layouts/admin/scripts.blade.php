@@ -18,10 +18,12 @@
 
 
 {{-- Agregar Imagenes --}}
-<script type="text/javascript" src="{{ asset('agregarImagenes/js/fileinput.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('agregarImagenes/js/locales/es.js') }}"></script>
-<script type="text/javascript" src="{{ asset('agregarImagenes/themes/fas/theme.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/agregarImagenes.js') }}"></script>
+<script type="text/javascript" src="{{ asset('pedidos/kartik_bootstrap_fileinput/js/fileinput.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('pedidos/kartik_bootstrap_fileinput/js/locales/es.js') }}"></script>
+<script type="text/javascript" src="{{ asset('pedidos/kartik_bootstrap_fileinput/themes/fas/theme.min.js') }}"></script>
+
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" integrity="sha256-8zyeSXm+yTvzUN1VgAOinFgaVFEFTyYzWShOy9w7WoQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha256-nZaxPHA2uAaquixjSDX19TmIlbRNCOrf5HO1oHl5p70=" crossorigin="anonymous"></script>
@@ -40,6 +42,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
 <script src="{{ asset('adminlte301/plugins/simplePagination/simplePagination.js') }}"></script>
+
+
+
+{{-- ELEVATE ZOOM --}}
+<script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>
+
 
 <script>
     $.widget.bridge('uibutton', $.ui.button)

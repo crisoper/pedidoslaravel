@@ -19,10 +19,16 @@
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/simplePagination/simplePagination.css')}}">
+
+
+
 {{-- Agregar Imagenes --}}
-<link rel="stylesheet" href="{{ asset('css/agregarImagenes.css') }}">
-<link rel="stylesheet" href="{{ asset('agregarImagenes/css/fileinput.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/imagenes.css') }}">
+<link rel="stylesheet" href="{{ asset('pedidos/kartik_bootstrap_fileinput/css/fileinput.min.css') }}">
+<link rel="stylesheet" href="{{ asset('pedidos/kartik_bootstrap_fileinput/css/styles.css') }}">
+
+
+
+
 <link rel="stylesheet" href="{{ asset('Plugins/custom/custom.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
 

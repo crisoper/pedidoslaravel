@@ -85,7 +85,6 @@ function() {
     
     
     Route::resource('productos', 'Admin\ProductosController');
-    Route::post('productos.ofertas', 'Admin\ProductosController@productosofertas')->name('productos.ofertas');
     Route::get('productos.ofertas.editar', 'Admin\ProductosController@productosofertaseditar')->name('productos.ofertas.editar');
     Route::post('productos.ofertas.update', 'Admin\ProductosController@productosofertasupdate')->name('productos.ofertas.update');
     Route::post('productos.ofertas.eliminar', 'Admin\ProductosController@productosofertasdelete')->name('productos.ofertas.eliminar');

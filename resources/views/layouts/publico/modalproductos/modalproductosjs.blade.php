@@ -16,6 +16,7 @@
                 },
                 success: function ( data ) {
                     llenarDatosModalProductoDetalle( data );
+                    console.log(data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -34,35 +35,7 @@
 
             // console.log(data);
 
-            // let enlistadeseos = '';
-            // if (data.data.enlistadeseos == false) {
-            //     enlistadeseos = enlistadeseos + `
-            //         <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-            //             <i class="fa fa-heart"></i>
-            //         </button>`;
-            // } else {
-            //     enlistadeseos = enlistadeseos + `
-            //         <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-            //             <i class="fa fa-heart"></i>
-            //         </button>`;
-            // }
 
-            // let encarrito = '';
-            // if (data.data.encarrito == false) {
-            //     encarrito = encarrito + `
-            //         <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-            //             <span>Agregar</span>
-            //             <i class="fas fa-shopping-basket"></i>
-            //         </button>
-            //     `;
-            // } else {
-            //     encarrito = encarrito + `
-            //         <button class="product_aggregate_cesta text-center hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-            //             <span>Agregado</span>
-            //             <i class="fas fa-check-circle"></i>
-            //         </button>
-            //     `;
-            // }
             let horarioatencion = '<div class="col-12">'+
                                     '<span class="text-danger"> <small>Lo sentimos, el vendedor de este producto no esta atendiendo en este momento.</small></span><br>'+
                                     '<button type="button"  id="" class="btn btn-outline-primary verhorario"><small>Ver horario de atención </small></button>'+
@@ -84,7 +57,8 @@
             if (data.data.puedehacerpedido == "no") {
                 productodisponible = horarioatencion + '</table></div>';
             } else {
-                productodisponible = `<div class="col-4 p-0 pl-3">
+                productodisponible = `
+                    <div class="col-4 p-0 pl-3">
                         <div class="input-group input_group_unit_product">
                                 <button class="input-group-prepend restar sumarRestarProdModal d-flex justify-content-around pt-0">-</button>
                                 <input type="text" class="form-control input_value_cart" value="1">
@@ -93,18 +67,14 @@
                         <p class="import_price text-muted text-center mt-1 mb-0">
                                Importe: <b>S/ <span class="importe_producto_modal">${ data.data.precio }</span></b>
                         </p>
-                        </div>
-                        <div class="col-5 py-0 px-3 content_btn_cesta_modal">
-                            <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                                <span>Agregar</span>
-                                <i class="fas fa-shopping-basket"></i>
-                            </button>
-                        </div>
-                        <div class="col-2 p-0 pr-2 content_btn_favoritos_modal">
-                            <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>`
+                    </div>
+                    <div class="col-5 py-0 px-3 content_btn_cesta_modal">
+                        
+                    </div>
+                    <div class="col-2 p-0 pr-2 content_btn_favoritos_modal">
+                        
+                    </div>
+                `;
             }
 
           
@@ -139,6 +109,50 @@
                 <p class="m-0">${data.data.empresa}</p>
             `;
             $("#nombre_empresa_modal").html( empresaModalHTML );
+
+
+
+            let enCestaModalHTML = '';
+
+            if ( data.data.id == data.data.cesta_producto_id ) {
+                enCestaModalHTML = enCestaModalHTML + `
+                    <button class="product_aggregate_cesta text-center hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <span>Agregado</span>
+                        <i class="fas fa-check-circle"></i>
+                    </button>
+                `;
+            } else {
+                enCestaModalHTML = enCestaModalHTML + `
+                    <button class="agregar_cart text-center hint--top" data-hint="Agregar producto a cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <span>Agregar</span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </button>
+                `;
+            }
+
+            $(".content_btn_cesta_modal").html( enCestaModalHTML );
+
+
+
+            let enFavoritosModal = '';
+            if ( data.data.id == data.data.favorito_producto_id ) {
+                enFavoritosModal = enFavoritosModal + `
+                    <button class="product_agreggate_listadeseos hint--top-left hint--success" data-hint="Agregado a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <i class="fa fa-heart"></i>
+                    </button>
+                `;
+            } else {
+                enFavoritosModal = enFavoritosModal + `
+                    <button class="agregar_lista_deseos  hint--top-left" data-hint="Agregar a lista de deseos" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
+                        <i class="fa fa-heart"></i>
+                    </button>
+                `;
+            }
+
+            $(".content_btn_favoritos_modal").html( enFavoritosModal );
+
+
+
 
             sumarRestarCantidadModal();
         }

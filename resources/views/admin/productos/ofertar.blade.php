@@ -42,7 +42,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Item</th>
-                                        <th>Local</th>
+                                        {{-- <th>Local</th> --}}
                                         <th>Código</th>
                                         <th>Producto</th>
                                         <th class="text-center">Ofertado</th>
@@ -53,7 +53,7 @@
                                     @foreach ($productos as $producto)
                                         <tr>
                                             <td>{{$producto->id}}</td>
-                                            <td>{{$producto->empresa->nombre}}</td>
+                                            {{-- <td>{{$producto->empresa->nombre}}</td> --}}
                                             <td>{{$producto->codigo}}</td>
                                             <td>{{$producto->nombre}}</td>
                                             <td class="text-center">

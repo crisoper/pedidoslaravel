@@ -154,9 +154,16 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <div class="cajaInputAgregarLogo text-center">                                    
-                                    <img class="img-fluid" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" width="250px" height="250px" alt="Logo de empresa">
-                                </div>
+                                    {{-- <img class="img-fluid" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" width="250px" height="250px" alt="Logo de empresa"> --}}
 
+                                    <img width="250px" height="250px" 
+                                        @if ( auth()->user()->avatar != null && Storage::disk('usuarios')->exists('usuarios/').auth()->user()->avatar )
+                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/').auth()->user()->avatar ) }}" 
+                                        @else 
+                                        src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
+                                        @endif
+                                    alt="{{ auth()->user()->name }}">
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -22,14 +22,14 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1050;
 }
 
 /* Cart Area CSS */
 .sideban_modal_filtrar_right {
     position: fixed;
-    width: 300px;
+    width: 250px;
     height: 100%;
     top: 0;
     right: -400px;

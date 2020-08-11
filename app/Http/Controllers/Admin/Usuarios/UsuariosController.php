@@ -321,9 +321,10 @@ class UsuariosController extends Controller
             $usuario->avatar =  $input['imagename'];
             $usuario->save();
 
-            return \Storage::disk('usuarios')->get('usuarios/' . $input['imagename']);
+            // return \Storage::disk('usuarios')->get('usuarios/' . $input['imagename']);
             // return response()->json(['imagen' => base64_encode(\Storage::disk('usuarios')->url('usuarios/'. $input['imagename']))], 200);
             // return response()->json(['imagen' =>   $usuario->avatar], 200);
+            // return redirect()->route('loginOrRegister.editar.comprador')->with('info', 'Registro actualizado');
         }
     }
 

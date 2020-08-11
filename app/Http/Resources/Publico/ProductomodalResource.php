@@ -33,10 +33,16 @@ class ProductomodalResource extends JsonResource
             $horainicio = $this->empresa ? ( $this->empresa->horarios ?($this->empresa->horarios->first()?$this->empresa->horarios->first()->horainicio:'') : '') : '',
             $horafin =  $this->empresa ? ( $this->empresa->horarios ? ($this->empresa->horarios->first()? $this->empresa->horarios->first()->horafin:'')  : '') : '',
             'horario_atencion' => Horario::select('dia', 'horainicio', 'horafin')->where('empresa_id', $this->empresa->id )->get(),
-            'puedehacerpedido' => $this->validaRangoHorario($horainicio, $horafin ),
-
-
-           
+            'puedehacerpedido' => $this->validaRangoHorario($horainicio, $horafin ),        
+            
+            
+            
+            'cesta_id' => $this->cesta ? $this->cesta->id : 0,
+            'cesta_producto_id' => $this->cesta ? $this->cesta->producto_id : '',
+            'favorito_id' => $this->favorito ? $this->favorito->id : 0,
+            'favorito_producto_id' => $this->favorito ? $this->favorito->producto_id : '',
+            // 'encarrito' => $this->encarrito,
+            // 'enlistadeseos' => $this->enlistadeseos,
         ];
 
         

@@ -90,7 +90,7 @@
                                 <h6 class="total_pedido">Total: <span class="pedido_total_span">S/ ${ pedidos.total }</span></h6>
                             </div>
                             <div class="col-sm-5 col-md-4 text-right">
-                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Pedido Entregado</button> <br>
+                                <button class="btn_x_confirmar" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Confirmar entrega de pedido</button> <br>
                                 
                                 <button class="btn_eliminar_pedido_tomado mt-1" idpedido="${ pedidos.id }" idempresa="${ pedidos.empresa_id }">Cancelar pedido tomado</button>
                             </div>

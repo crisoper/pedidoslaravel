@@ -213,6 +213,7 @@
             });
     
             $("#cuerpoProductosRecomendados").html( recomendadosHTML);
+            
             contarProductosAlFiltrar();
         }
 

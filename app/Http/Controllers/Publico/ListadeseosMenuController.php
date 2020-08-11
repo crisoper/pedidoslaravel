@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Publico;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Publico\ListadeseoResource;
-use App\Models\Publico\Cesta;
-// use App\Models\Publico\Listadeseo;
+use App\Models\Publico\Favorito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +12,7 @@ class ListadeseosMenuController extends Controller
 {
     public function index( Request $request )
     {
-        $listadeseos = Cesta::where("storagecliente_id", $request->storagecliente_id)
+        $listadeseos = Favorito::where("storagecliente_id", $request->storagecliente_id)
         ->where("tipo", $request->tipo)
         ->orderBy('id', 'desc')
         ->get();
@@ -26,13 +25,13 @@ class ListadeseosMenuController extends Controller
     public function store(Request $request)
     {
         
-        $listadeseo = Cesta::where("storagecliente_id", $request->storagecliente_id )
+        $listadeseo = Favorito::where("storagecliente_id", $request->storagecliente_id )
         ->where("producto_id", $request->producto_id )
         ->where("tipo", $request->tipo )
         ->first();
 
         if ( !$listadeseo ) {
-            $listadeseo = new Cesta();
+            $listadeseo = new Favorito();
         }
         $listadeseo->storagecliente_id = $request->storagecliente_id;
         $listadeseo->producto_id = $request->producto_id;
@@ -56,7 +55,7 @@ class ListadeseosMenuController extends Controller
     
     public function delete(Request $request)
     {
-        $listadeseo = Cesta::where("storagecliente_id", $request->storagecliente_id)
+        $listadeseo = Favorito::where("storagecliente_id", $request->storagecliente_id)
         ->where( "producto_id", $request->producto_id )
         ->where( "tipo", $request->tipo )
         ->first();

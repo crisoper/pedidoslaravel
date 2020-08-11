@@ -29,7 +29,7 @@ class PedidosCalificadosController extends Controller
     public function calificados()
     {
         $pedidos = Pedido::orderBy("id", "desc")
-        ->whereHas('pedidoestado', function (){}, '>=', 4)
+        ->whereHas('pedidoestado', function (){}, '=', 4)
         ->with([
             'empresa',
             'cliente',

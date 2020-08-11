@@ -293,10 +293,11 @@
                     processData: false,                    
                     success:function( data ){
                                               
-                        $('.logoPerfilForm').html(' <img width="100px" height="100px" src="{{ asset( Storage::disk("usuarios")->url("usuarios/'+data.imagen+'") )  }}"  alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">');
+                        // $('.logoPerfilForm').html(' <img width="100px" height="100px" src="{{ asset( Storage::disk("usuarios")->url("usuarios/'+data.imagen+'") )  }}"  alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">');
                         // $('.logoPerfilForm').attr('src', 'data:image/png;base64,'+ data.imagen );
                         MostrarNotificaciones( "Operacion realizada con exito", 'success' );
                         // console.log(data);
+                        location.reload();
                     },
                     error: function( jqXHR, textStatus, errorThrown ) {
                         if( jqXHR.status == 404 ) 
