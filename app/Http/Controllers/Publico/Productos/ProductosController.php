@@ -189,7 +189,7 @@ class ProductosController extends Controller
         //     }
         // }
         
-        // return $w_today = date('w', strtotime( Carbon::now() ));
+        
 
         if ( $productoEnModal != null ) {
             return new ProductomodalResource (  $productoEnModal );

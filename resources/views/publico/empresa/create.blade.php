@@ -214,11 +214,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row ml-4">
+                <div class="form-inline row ml-4">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"
+                            id="terminosycondiciones" name="terminosycondiciones" value="">
+                        <i><span>Acepto haber leido todos los terminos y conciciones</span> 
+                            <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"><strong>Aqui...</strong></a>
+                        <span
+                            class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
+                    </label>
+
+                    {{-- <input type="checkbox" name="" id="terminosycondiciones">
                     <p><i>Acepto haber leido todos los terminos y conciciones</i> 
                     <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"><strong>Aqui...</strong></a>
                         <span class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
-                    </p>
+                    </p> --}}
 
                 </div>
 
@@ -234,7 +244,7 @@
 
 
                         <div class="form-group col-6">
-                            <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro" disabled>
+                            <button type="button" class="btn btn-primary btn-block" id="btn_submit" disabled>
                                 <span class="spinner-border spinner-border-sm spinnerr" role="status" aria-hidden="true"
                                     style="display: none"></span>
                                 Guardar

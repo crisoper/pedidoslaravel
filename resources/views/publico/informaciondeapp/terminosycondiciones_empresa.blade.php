@@ -13,7 +13,7 @@
         <div class="col-10">
             <div class="col-12 text-center">
                 <p>
-                    <h2><strong>Términos y conduciones dpara el usp de la plicación web y/o aplicativo movil
+                    <h2><strong>Términos y conduciones para el uso de la plicación web y/o aplicativo movil
                         {{ config('app.name', 'Pedidos') }}</strong></h2>
                 </p>
             </div>

@@ -25,15 +25,15 @@
            
     });
 
-    // $('#terminosycondiciones').on('change', function() {
-    //      if( $(this).prop('checked') ) {
+    $('#terminosycondiciones').on('change', function() {
+         if( $(this).prop('checked') ) {
             
            
-    //         $("#btn_submit").removeAttr("disabled");
-    //      }  else{
-    //         $("#btn_submit").attr('disabled','disabled');
-    //      }
-    // });
+            $("#btn_submit").removeAttr("disabled");
+         }  else{
+            $("#btn_submit").attr('disabled','disabled');
+         }
+    });
     
     
     $("#btn_submit").on('click', function(event){
