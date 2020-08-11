@@ -9,6 +9,16 @@
            
     });
 
+     $('#terminosycondiciones').on('change', function() {
+         if( $(this).prop('checked') ) {
+            
+           
+            $("#btn_submit").removeAttr("disabled");
+         }  else{
+            $("#btn_submit").attr('disabled','disabled');
+         }
+    });
+
 
       $("#camara").on("click", function(){
         $("#file").trigger('click');

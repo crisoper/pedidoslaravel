@@ -278,20 +278,20 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row ml-4">
-                                            {{-- <label class="form-check-label">
+                                        <div class="form-inline row ml-4">
+                                            <label class="form-check-label">
                                                 <input class="form-check-input" type="checkbox"
                                                     id="terminosycondiciones" name="terminosycondiciones" value="">
-                                                <i>Acepto haber leido todos los terminos y conciciones <a
-                                                        href="">Aqui...</a> </i>
+                                                    <small>Acepto haber leido todos los terminos y conciciones </small>
+                                                    <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"> <small><strong>Aqui...</strong></small></a>
                                                 <span
                                                     class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
-                                            </label> --}}
-                                            <p>
+                                            </label>
+                                            {{-- <p>
                                                 <small><i>Acepto haber leido todos los términos y conciciones</i> </small>
                                                 <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"><strong>Aqui...</strong></a>
                                                     <span class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
-                                                </p>
+                                            </p> --}}
 
                                         </div>
                                         <div class="form-group row mb-0">
