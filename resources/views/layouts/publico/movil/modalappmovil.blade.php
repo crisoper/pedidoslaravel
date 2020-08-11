@@ -6,14 +6,14 @@
             <div class="modal-body text-center">
                 <div class="row m-0">
                     <div class="col-12">
-                        <h3 class="text-uppercase text-bold">
+                        <h5 class="text-uppercase text-bold">
                             <b>
                                 Registra tus productos <br>
                                 <span style="color: #fd0606">completamente gratis</span> <br>
-                                y comienza a incrementar tus 
+                                y comienza a incrementar tus <br>
                                 <span style="color: #087ecc">ventas por internet</span>
                             </b>
-                        </h3>
+                        </h5>
                     </div>
                     <div class="col-12 mt-4">
                         <a class="btn btn_registrar_productos_modal" href="{{ route('registernewempresa') }}">

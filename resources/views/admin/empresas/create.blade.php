@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="form-group col-md-6 col-sm-12">
                                                 <label for="ruc">Ruc:</label>                                                
-                                                <input type="text" name="ruc" id="ruc" size="11" maxlength="11"
+                                                <input type="text" name="ruc" id="ruc" minlength="11" maxlength="11"
                                                     class="form-control " value="{{old('')}}" placeholder="Ruc">
                                                     <span class="text-danger">{{ $errors->first('ruc') }}</span>
                                             </div>
@@ -57,7 +57,7 @@
                                             <div class="form-group col-md-4 col-sm-12">
                                                 <label for="telefono">Teléfono</label>
                                                 <input type="text" name="telefono" id="telefono" class="form-control"
-                                                    value="{{ old('telefono') }}" placeholder="Teléfono">
+                                                    value="{{ old('telefono') }}" placeholder="Teléfono" minlength="9" maxlength="9">
                                                     <span class="text-danger">{{ $errors->first('telefono') }}</span>
                                             </div>
                                             <div class="form-group col-md-8 col-sm-12">
