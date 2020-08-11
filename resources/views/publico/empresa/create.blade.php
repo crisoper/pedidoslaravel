@@ -218,7 +218,7 @@
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox"
                             id="terminosycondiciones" name="terminosycondiciones" value="">
-                        <i><span>Acepto haber leido todos los terminos y conciciones</span> 
+                        <span>Acepto haber leido todos los terminos y conciciones</span> 
                             <a class="btn mp-0" data-toggle="modal" data-target="#modal_terminosycondiciones"><strong>Aqui...</strong></a>
                         <span
                             class="text-danger">{{$errors->first('terminosCondiciones')}}</span>
@@ -244,7 +244,7 @@
 
 
                         <div class="form-group col-6">
-                            <button type="button" class="btn btn-primary btn-block" id="btn_submit" disabled>
+                            <button type="button" class="btn btn-primary btn-block" id="enviarFormRegistro" disabled>
                                 <span class="spinner-border spinner-border-sm spinnerr" role="status" aria-hidden="true"
                                     style="display: none"></span>
                                 Guardar

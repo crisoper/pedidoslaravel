@@ -13,9 +13,9 @@
          if( $(this).prop('checked') ) {
             
            
-            $("#btn_submit").removeAttr("disabled");
+            $("#enviarFormRegistro").removeAttr("disabled");
          }  else{
-            $("#btn_submit").attr('disabled','disabled');
+            $("#enviarFormRegistro").attr('disabled','disabled');
          }
     });
 
