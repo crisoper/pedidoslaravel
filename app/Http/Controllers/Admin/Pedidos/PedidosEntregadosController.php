@@ -30,7 +30,7 @@ class PedidosEntregadosController extends Controller
     public function entregados()
     {
         $pedidos = Pedido::orderBy("id", "desc")
-        ->whereHas('pedidoestado', function (){}, '=', 3)
+        ->whereHas('pedidoestado', function (){}, '>=', 3)
         ->with([
             'empresa',
             'cliente',

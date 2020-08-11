@@ -16,7 +16,7 @@
                 },
                 success: function ( data ) {
                     llenarDatosModalProductoDetalle( data );
-                    console.log(data);
+                    // console.log(data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -114,7 +114,7 @@
 
             let enCestaModalHTML = '';
 
-            if ( data.data.id == data.data.cesta_producto_id ) {
+            if ( (data.data.id == data.data.cesta_producto_id) && (data.data.cesta_estado == 0) ) {
                 enCestaModalHTML = enCestaModalHTML + `
                     <button class="product_aggregate_cesta text-center hint--top hint--success" data-hint="Producto agregado en cesta" idproducto="${ data.data.id }" idempresa="${ data.data.empresa_id }">
                         <span>Agregado</span>
@@ -238,7 +238,7 @@
                 var valorActual = botonMoreMin.parent().find('input').val();
                 var precio = botonMoreMin.parents('.container_producto_modal').find('#precio_producto_modal').html();
                 
-                console.log(precio);
+                // console.log(precio);
 
                 if (botonMoreMin.hasClass('sumar')) {
                     var nuevoValor = parseFloat(valorActual) + 1;

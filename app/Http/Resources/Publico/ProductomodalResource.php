@@ -39,6 +39,7 @@ class ProductomodalResource extends JsonResource
             
             'cesta_id' => $this->cesta ? $this->cesta->id : 0,
             'cesta_producto_id' => $this->cesta ? $this->cesta->producto_id : '',
+            'cesta_estado' => $this->cesta ? $this->cesta->estado : '',
             'favorito_id' => $this->favorito ? $this->favorito->id : 0,
             'favorito_producto_id' => $this->favorito ? $this->favorito->producto_id : '',
             // 'encarrito' => $this->encarrito,

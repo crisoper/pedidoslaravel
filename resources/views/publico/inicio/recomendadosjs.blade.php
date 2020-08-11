@@ -33,7 +33,7 @@
     
             $.each( datos, function( key, recomendados ) {
 
-                console.log(recomendados);
+                // console.log(recomendados);
 
                 let fotos = '';
                 let contador = 0; 
