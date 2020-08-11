@@ -66,9 +66,8 @@
                                             <td>{{ $empresa->ruc }}</td>
                                             <td>{{ $empresa->nombre }}</td>
                                             <td>{{ $empresa->direccion }}</td>
-                                            <td>
-                                                <img id="empresaLogo" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" alt="{{$empresa->logo}}">
-                                                {{-- <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}"> --}}
+                                            <td class="text-center">
+                                                <img id="empresaLogo" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" alt="{{$empresa->logo}}" width="50">
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Comprobantes</a>
