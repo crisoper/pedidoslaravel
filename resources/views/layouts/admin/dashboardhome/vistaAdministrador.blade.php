@@ -125,7 +125,9 @@
     @endphp
     <input type="hidden" name="" id="hidden_productos"  value='{{ count($productos) }}'>
     <input type="hidden" name="" id="hidden_horarios" value="{{ count($horarios) }}">
-    <input type="hidden" name="" id="hidden_empresa" value="{{ $empresa->departamento_id }}">
+    <input type="hidden" name="" id="empresa_dep" value="{{ $empresa->departamento_id }}">
+    <input type="hidden" name="" id="empresa_dis" value="{{ $empresa->distrito_id }}">
+    <input type="hidden" name="" id="empresa_pro" value="{{ $empresa->provincia_id }}">
     <input type="hidden" name="" id="hidden_idempresa" value=" {{  $empresa->id  }}">
 <input type="hidden" id="hidden_editar" value="{{route('empresa.editar', $empresa->id)}}">
 </div>
@@ -191,18 +193,29 @@
             toastr.info('Registre sus productos para empezar a vender')
         }
         if ( horario == 0   ) {
-            toastr.info('Registre sus horarios de atención.').on('click', function(){
+            toastr.error('Registre sus horarios de atención.').on('click', function(){
                 window.location ="{{ route('horarios.index') }}"
             });
         }
 
-        if ( $("#hidden_empresa").val() == null || $("#hidden_empresa").val() == '' ) {
-            toastr.info('Actualice la información de su empresa.').on('click', function(){
+        
+        if ( $("#empresa_dep").val() == null || $("#empresa_dep").val() == '' ) {
+            toastr.info('Actualice la información de su empresa ingresando su departamento.').on('click', function(){
+               window.location = $("#hidden_editar").val();
+            });
+        }
+        if ( $("#empresa_dis").val() == null || $("#empresa_dis").val() == '' ) {
+            toastr.info('Actualice la información de su empresa ingresando su distrito.').on('click', function(){
+               window.location = $("#hidden_editar").val();
+            });
+        }
+        if ( $("#empresa_pro").val() == null || $("#empresa_pro").val() == '' ) {
+            toastr.info('Actualice la información de su empresa ingresando su provincia.').on('click', function(){
                window.location = $("#hidden_editar").val();
             });
         }
 
-       
+      
 
         var CharthistoticoVentas;
         var ChartProductos;       
