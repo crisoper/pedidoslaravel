@@ -11,8 +11,7 @@
                 <div class="card-header">
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-11">
-                            <h3>Empresas</h3>    
-                           
+                            <h3>Empresas</h3>
                         </div>
                         <div class="mb-3 text-center col-1">
                             <a title="Ir a principal" class="" href="{{Route('home')}}"><h4><i class="fas fa-reply "></i></h4></a>
@@ -34,7 +33,6 @@
                         </form>
                     </div>
                     <div class="col-xs-12 col-sm-3 mb-3 text-right">
-                   
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Operaciones
@@ -62,40 +60,38 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($empresas as $empresa)
-                                   
-                                    <tr>
-                                        <td>{{ $empresa->id }}</td>
-                                        <td>{{ $empresa->rubro->nombre }}</td>
-                                        <td>{{ $empresa->ruc }}</td>
-                                        <td>{{ $empresa->nombre }}</td>
-                                        <td>{{ $empresa->direccion }}</td>
-                                        <td>
-                                            <img id="empresaLogo" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" alt="{{$empresa->logo}}">
-                                            {{-- <img id="empresaLogo" src="{{ Storage::url("empresaslogos/".$empresa->logo)}}" alt="{{$empresa->logo}}"> --}}
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Comprobantes</a>
-                                        </td>
-                                        @can('empresas.editar')
+                                        <tr>
+                                            <td>{{ $empresa->id }}</td>
+                                            <td>{{ $empresa->rubro->nombre }}</td>
+                                            <td>{{ $empresa->ruc }}</td>
+                                            <td>{{ $empresa->nombre }}</td>
+                                            <td>{{ $empresa->direccion }}</td>
                                             <td class="text-center">
-                                                <a href="{{route('empresa.editar',$empresa->id)}}" class="text-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
+                                                <img id="empresaLogo" src="{{ asset( Storage::disk('usuarios')->url('empresaslogos/').$empresa->logo ) }}" alt="{{$empresa->logo}}" width="50">
                                             </td>
-                                        @endcan
-                                        
-                                        <td class="text-center">
-                                            @can('empresas.eliminar')
-                                                <form id="form.empresas.delete.{{$empresa->id}}" action="{{ route('empresas.destroy', $empresa->id) }}" method="POST">
-                                                    {!! method_field('DELETE') !!}
-                                                    {!! csrf_field() !!}
-                                                    <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.empresas.delete.{{$empresa->id}}').submit();">
-                                                        <i class="fas fa-trash-alt"></i>
+                                            <td class="text-center">
+                                                <a class="text-info" href="{{ route('empresas.agregarcomprobantetipos', $empresa->id) }}">Comprobantes</a>
+                                            </td>
+                                            @can('empresas.editar')
+                                                <td class="text-center">
+                                                    <a href="{{route('empresa.editar',$empresa->id)}}" class="text-primary">
+                                                        <i class="fas fa-edit"></i>
                                                     </a>
-                                                </form>
-                                            @endcan    
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            @endcan
+                                            
+                                            <td class="text-center">
+                                                @can('empresas.eliminar')
+                                                    <form id="form.empresas.delete.{{$empresa->id}}" action="{{ route('empresas.destroy', $empresa->id) }}" method="POST">
+                                                        {!! method_field('DELETE') !!}
+                                                        {!! csrf_field() !!}
+                                                        <a class="text-danger" href="#" onclick="event.preventDefault(); document.getElementById('form.empresas.delete.{{$empresa->id}}').submit();">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </a>
+                                                    </form>
+                                                @endcan    
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
