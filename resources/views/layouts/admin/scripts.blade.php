@@ -11,7 +11,7 @@
 
 <script src="{{ asset('adminlte301/plugins/bootbox/bootbox.min.js') }}"></script>
 <script src="{{ asset('adminlte301/plugins/messeger/js/messenger.min.js') }}"></script>
-
+<script src="{{ asset('adminlte301/plugins/toastr/toastr.min.js') }}"></script>
 
 
 

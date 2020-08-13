@@ -7,9 +7,10 @@
 
 
     .pedidos {
-        background-color:  rgb(219, 14, 14);
+        background-color: rgb(219, 14, 14);
     }
-    .card-title{
+
+    .card-title {
         color: #ebebeb;
     }
 
@@ -25,7 +26,7 @@
         background-color: rgb(40, 27, 223);
     }
 
-     
+
 
     .card {
         border-radius: 0% !important;
@@ -33,14 +34,22 @@
         margin: 0px;
 
     }
-    .card:hover{
+
+    .card:hover {
         box-shadow: 0 3px 5px #000000;
-      
+
     }
 
     .grafico_header_productos {
         background-color: rgb(219, 14, 14) !important;
         color: white;
+    }
+
+    .alert {
+        position: absolute;
+        top: 0;
+        left: 0;
+
     }
 </style>
 
@@ -48,44 +57,44 @@
     {{-- <div class="col-sm-12 col-md-12 border" style="background-color:#FFFFFF;"> --}}
 
     <div class="col-sm-3">
-    <a href="{{ route('pedidos.ingresados')}}">
-        <div class="card">
-            <div class="card-header p-1 text-center ">
-                {{-- <span class="display-3 text-info"><i class="fas fa-users"></i></span> --}}
-                <img src="https://img.icons8.com/bubbles/100/000000/bar-chart.png" />
-            </div>
-            <div class="card-body p-1 pedidos d-flex justify-content-center">
-                <h5 class="card-title">Pedidos ingresados <i class="fas fa-arrow-circle-right"></i></h5>
+        <a href="{{ route('pedidos.ingresados')}}">
+            <div class="card">
+                <div class="card-header p-1 text-center ">
+                    {{-- <span class="display-3 text-info"><i class="fas fa-users"></i></span> --}}
+                    <img src="https://img.icons8.com/bubbles/100/000000/bar-chart.png" />
+                </div>
+                <div class="card-body p-1 pedidos d-flex justify-content-center">
+                    <h5 class="card-title">Pedidos ingresados <i class="fas fa-arrow-circle-right"></i></h5>
 
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
 
     </div>
 
     <div class="col-sm-3">
-    <a href="{{route('reportedetalledepedidos')}}">
-        <div class="card">
-            <div class="card-header p-1 text-center ">
-                {{-- <span class="display-3 iconoventas text-danger"><i class="fas fa-shopping-basket"></i></span> --}}
-                <img src="https://img.icons8.com/plasticine/100/000000/total-sales.png" />
-            </div>
-            <div class="card-body p-1 ventas d-flex justify-content-center">
-                <h5 class="card-title">Productos vendidos<i class="fas fa-arrow-circle-right"></i></h5>
+        <a href="{{route('reportedetalledepedidos')}}">
+            <div class="card">
+                <div class="card-header p-1 text-center ">
+                    {{-- <span class="display-3 iconoventas text-danger"><i class="fas fa-shopping-basket"></i></span> --}}
+                    <img src="https://img.icons8.com/plasticine/100/000000/total-sales.png" />
+                </div>
+                <div class="card-body p-1 ventas d-flex justify-content-center">
+                    <h5 class="card-title">Productos vendidos<i class="fas fa-arrow-circle-right"></i></h5>
 
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
     </div>
 
     <div class="col-sm-3">
         <a href="{{route('productos.index')}}">
-        <div class="card">
-            <div class="card-header p-1 text-center ">
-                {{-- <span class="display-3 text-warning"><i class="fas fa-utensils"></i></span> --}}
-                <img src="https://img.icons8.com/bubbles/100/000000/add-shopping-cart.png" />
-            </div>
-           
+            <div class="card">
+                <div class="card-header p-1 text-center ">
+                    {{-- <span class="display-3 text-warning"><i class="fas fa-utensils"></i></span> --}}
+                    <img src="https://img.icons8.com/bubbles/100/000000/add-shopping-cart.png" />
+                </div>
+
                 <div class="card-body p-1 productos d-flex justify-content-center">
                     <h5 class="card-title">Productos <i class="fas fa-arrow-circle-right"></i></h5>
                 </div>
@@ -95,24 +104,31 @@
     </div>
 
     <div class="col-sm-3">
-    <a href="{{route('configuracionempresa.index')}}">
-        <div class="card">
-            <div class="card-header p-1 text-center ">
-                {{-- <span class="display-3 text-success"><i class="fas fa-users"></i></span> --}}
-                <img src="https://img.icons8.com/color/100/000000/gears.png"/>
-            </div>
-            <div class="card-body p-1 configuracion d-flex justify-content-center">
-                <h5 class="card-title">Configuración <i class="fas fa-arrow-circle-right"></i></h5>
+        <a href="{{route('configuracionempresa.index')}}">
+            <div class="card">
+                <div class="card-header p-1 text-center ">
+                    {{-- <span class="display-3 text-success"><i class="fas fa-users"></i></span> --}}
+                    <img src="https://img.icons8.com/color/100/000000/gears.png" />
+                </div>
+                <div class="card-body p-1 configuracion d-flex justify-content-center">
+                    <h5 class="card-title">Configuración <i class="fas fa-arrow-circle-right"></i></h5>
 
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
     </div>
+    @php
 
-
+    $productos = DB::table('productos')->where('empresa_id', Session::get('empresaactual',0))->get();
+    $horarios = DB::table('horarios')->where('empresa_id', Session::get('empresaactual',0))->get();
+    $empresa = DB::table('empresas')->where('id', Session::get('empresaactual',0))->first();
+    @endphp
+    <input type="hidden" name="" id="hidden_productos"  value='{{ count($productos) }}'>
+    <input type="hidden" name="" id="hidden_horarios" value="{{ count($horarios) }}">
+    <input type="hidden" name="" id="hidden_empresa" value="{{ $empresa->departamento_id }}">
+    <input type="hidden" name="" id="hidden_idempresa" value=" {{  $empresa->id  }}">
+<input type="hidden" id="hidden_editar" value="{{route('empresa.editar', $empresa->id)}}">
 </div>
-
-
 <div class="col-12 d-flex flex-wrap mt-3">
     <div class="col-sm-12 col-md-7 border" style="background-color:#FFFFFF;">
         <div class="col">
@@ -148,8 +164,6 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tbl_productosmasvendidos">
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -160,9 +174,6 @@
             </div>
 
         </div>
-
-
-
     </div>
 </div>
 
@@ -172,15 +183,35 @@
 @section('scripts')
 <script>
     $(document).ready(function(){   
-        var CharthistoticoVentas;
-        var ChartProductos;
+        let producto = $("#hidden_productos").val();
+        let horario = $("#hidden_horarios").val();
+      
+       
+        if (  producto == 0 ) {
+            toastr.info('Registre sus productos para empezar a vender')
+        }
+        if ( horario == 0   ) {
+            toastr.info('Registre sus horarios de atención.').on('click', function(){
+                window.location ="{{ route('horarios.index') }}"
+            });
+        }
+
+        if ( $("#hidden_empresa").val() == null || $("#hidden_empresa").val() == '' ) {
+            toastr.info('Actualice la información de su empresa.').on('click', function(){
+               window.location = $("#hidden_editar").val();
+            });
+        }
+
        
 
+        var CharthistoticoVentas;
+        var ChartProductos;       
+
     $(window).on('load', function(){   
+        
+  
         HistoricoVentas();
-        productosMasVendidos();
-       
-                            
+        productosMasVendidos();                           
     });
 //FITRAR CAMPOS UNICOS DE UN ARRAY
     // function onlyUnique(value, index, self) { 
@@ -230,8 +261,7 @@ function HistoricoVentas(){
             });
            
             }
-        });
-              
+        });              
 }
     
 function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){            
@@ -243,10 +273,8 @@ function graficoHistoricoVentas(nombredeproducto,cantidadeproducto){
                 var colorTres = Math.random() * (255 - 1) + 1;
                 colores.push('rgba( '+ colorUno +',' +colorDos + ',' + colorTres + ',' + 1 +  ')' );
             });
-     
-           
-                let ctx = document.getElementById('chartHistoricoVentas');
-              
+               
+                let ctx = document.getElementById('chartHistoricoVentas');              
                 CharthistoticoVentas = new Chart(ctx, {                   
                     type: 'bar' ,                    
                     data: {

@@ -83,6 +83,10 @@ class Empresa extends Model
     {
         return $this->belongsTo('App\Models\Publico\Persona');
     }
+
+    public function productos(){
+        return $this->hasMany('App\Models\Admin\Producto', 'empresa_id', 'id');
+    }
     
     /*
     * Usuario que ha modificado el registro
