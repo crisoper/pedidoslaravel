@@ -43,7 +43,7 @@
 
 <script src="{{ asset('adminlte301/plugins/simplePagination/simplePagination.js') }}"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 {{-- ELEVATE ZOOM --}}
 <script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>

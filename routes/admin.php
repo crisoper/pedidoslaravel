@@ -196,6 +196,9 @@ function() {
     // PEDIDOS ENTREGADOS
     Route::get('pedidos/entregados', 'Admin\Pedidos\PedidosEntregadosController@index')->name("pedidos.entregados");
     Route::get("ajax/pedidosentregados/index", "Admin\Pedidos\PedidosEntregadosController@entregados")->name("ajax.pedidosentregados.index");
+    Route::get("pedidosentregados.repartidor", "Admin\Pedidos\PedidosEntregadosController@pedidosPorRepartidor")->name("pedidosentregados.repartidor");
+    Route::get("ajax.pedidosentregados.repartidor", "Admin\Pedidos\PedidosEntregadosController@ajaxpedidosPorRepartidor")->name("ajax.pedidosentregados.repartidor");
+    Route::get("ajax.ajaxpedidosPorRepartidorTodos", "Admin\Pedidos\PedidosEntregadosController@ajaxpedidosPorRepartidorTodos")->name("ajax.ajaxpedidosPorRepartidorTodos");
 
 
     // PEDIDOS ENTREGADOS

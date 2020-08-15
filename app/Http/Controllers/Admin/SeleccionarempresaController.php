@@ -21,9 +21,10 @@ class SeleccionarempresaController extends Controller
         $empresas = Empresa::get();
 
 
-        if (count($empresas) == 0) {
+        if ( count($empresas) == 0 ) {
             if (auth()->user()->hasRole('SuperAdministrador')) {
-                return redirect()->route('empresas.index')->with('info', 'Por favor active una empresa antes de continuar');
+                return redirect()->route('home');
+                // return redirect()->route('empresas.index')->with('info', 'Por favor active una empresa antes de continuar');
             } else {
                 return view('includes.sinempresas');
             }
@@ -34,15 +35,16 @@ class SeleccionarempresaController extends Controller
                 Session::put('empresaactual', $empresa->id);
                 Session::put('empresadescripcion', $empresa->nombre);
 
-                return redirect()->route('config.seleccionar.periodo');
+                // return redirect()->route('config.seleccionar.periodo');
+                return redirect()->route('home');
             } else {
-                $tempresas = Empresa::whereHas('usuarios', function ($query) {
+                $tiene_empresas = Empresa::whereHas('usuarios', function ($query) {
                     $query->where('user_id', '=', auth()->user()->id);
                 })
                     ->where('id', '=', $empresa->id)
                     ->count();
 
-                if ($tempresas == 0) {
+                if ($tiene_empresas == 0) {
                     return view('includes.sinempresas');
                 } else {
                     Session::put('empresaactual', $empresa->id);
@@ -54,7 +56,8 @@ class SeleccionarempresaController extends Controller
         } else if (count($empresas) > 1) {
 
             if (auth()->user()->hasRole('SuperAdministrador')) {
-                return view('admin.empresas.formseleccionarempresa', compact('empresas'));
+                // return view('admin.empresas.formseleccionarempresa', compact('empresas'));
+                return redirect()->route('home');
             } else {
                 $empresas = Empresa::whereHas('usuarios', function ($query) {
                     $query->where('user_id', '=', auth()->user()->id);

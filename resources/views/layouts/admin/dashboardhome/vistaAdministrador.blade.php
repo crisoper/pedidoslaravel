@@ -185,6 +185,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){   
+
         let producto = $("#hidden_productos").val();
         let horario = $("#hidden_horarios").val();
       
@@ -221,11 +222,10 @@
         var ChartProductos;       
 
     $(window).on('load', function(){   
-        
-  
         HistoricoVentas();
         productosMasVendidos();                           
     });
+    
 //FITRAR CAMPOS UNICOS DE UN ARRAY
     // function onlyUnique(value, index, self) { 
     // return self.indexOf(value) === index;
