@@ -69,9 +69,11 @@ class EmpresasController extends Controller
     {
 
         if (!empty(request()->buscar)) {
-            $empresas = Empresa::whereHas('usuarios', function ($query) {
-                $query->where('user_id', '=', auth()->user()->id);
-            })
+            // $empresas = Empresa::whereHas('usuarios', function ($query) {
+            //     $query->where('user_id', '=', auth()->user()->id);
+            // })
+
+            $empresas = Empresa::orderBy(request('sort', 'id'), 'ASC')
                 ->where('ruc', 'like', '%' . request()->buscar . '%')
                 ->orWhere('nombre', 'like', '%' . request()->buscar . '%')
                 ->orderBy(request('sort', 'id'), 'ASC')
@@ -79,14 +81,18 @@ class EmpresasController extends Controller
             return view('admin.empresas.index', compact('empresas'));
         } else {
 
-            $empresas = Empresa::whereHas('usuarios', function ($query) {
-                $query->where('user_id', '=', auth()->user()->id);
-            })
-                ->orderBy(request('sort', 'id'), 'ASC')
-                ->paginate(10);
+            
 
+                $empresas = Empresa::orderBy(request('sort', 'id'), 'ASC')
+                    ->paginate(10);
             return view('admin.empresas.index', compact('empresas'));
         }
+
+        // $empresas = Empresa::whereHas('usuarios', function ($query) {
+            //     $query->where('user_id', '=', auth()->user()->id);
+            // })
+            //     ->orderBy(request('sort', 'id'), 'ASC')
+            //     ->paginate(10);
     }
 
     /**
