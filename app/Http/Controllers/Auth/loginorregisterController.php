@@ -95,9 +95,16 @@ class loginorregisterController extends Controller
         return view('publico.empresa.confirmarcuenta');
     }
 
+    protected function validatoremail(array $data)
+    {
+        return Validator::make($data, [           
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],          
+        ]);
+    }
     public function cambiaremailusuarios( Request $request, $user_id)
     {
         // CambiaremailCreateRequest
+        $this->validatoremail($request->all())->validate();
         $user = User::findOrFail($user_id);
         $user->email =  $request->email;
         $user->save();

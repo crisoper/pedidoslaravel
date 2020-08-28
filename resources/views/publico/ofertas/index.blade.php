@@ -11,7 +11,7 @@
     </div>        
     <div class="row">
         <div class="col-9 col-md-6 mb-3">
-            <h6><b><span class="nro_productos_buscados">0</span></b> Productos encontrados</h6>
+            <h6><b><span class="nro_productos_buscados">0</span></b> Ofertar Productos</h6>
         </div>
         {{-- BOTON FILTRAR PRODUCTOS --}}
         <div class="col-3 col-md-6 mb-3 content_filtrar_productos">

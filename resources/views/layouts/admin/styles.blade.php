@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 
 <link rel="stylesheet" href="{{ asset('adminlte301/plugins/simplePagination/simplePagination.css')}}">
+<link rel="stylesheet" href="{{ asset('adminlte301/plugins/toastr/toastr.min.css')}}">
 
 
 
