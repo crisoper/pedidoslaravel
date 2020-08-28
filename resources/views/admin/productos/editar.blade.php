@@ -68,7 +68,7 @@
                                             @php
                                             $fotoview=[];
                                                 foreach ($producto->fotos as $foto) {                                        
-                                                    array_push($fotoview , $foto->nombre);  
+                                                    array_push($fotoview , $foto->url);  
                                                 }
                                                 $imgproducto = reset($fotoview);
                                             @endphp
@@ -77,7 +77,7 @@
                                             </div>
                                             <div class="form-group text-center col-12 mt-0 mb-1" id="imagen_principal">
                                                 @if ( $imgproducto != null && $exists != null )
-                                                    <img id="imgdefault" src="{{Storage::url('img_productos/'.$imgproducto.'')}}" data-zoom-image="{{Storage::url('img_productos/'.$imgproducto.'')}}" width='350px' height='300px'/>
+                                                    <img id="imgdefault" src="{{ asset( Storage::disk('img_productos')->url($imgproducto.'' )) }}" data-zoom-image="{{ asset( Storage::disk('img_productos')->url($imgproducto.'' )) }}" width='350px' height='300px'/>
                                                 @else 
                                                     <img id="imgdefault" src="{{Storage::url('imgproducto.jpg')}}" data-zoom-image="{{Storage::url('imgproducto.jpg')}}" width='350px' height='300px'/>
                                                 @endif
@@ -85,8 +85,8 @@
                                             <div class="form-group text-center col-12" id="imagenes_producto_edit">
                                                 @foreach ($producto->fotos as $foto)
                                                     @if ( $imgproducto != null && $exists != null )
-                                                        <a href="#" data-image="{{Storage::url('img_productos/'.$foto->nombre.'')}}" data-zoom-image="{{Storage::url('img_productos/'.$foto->nombre.'')}}">
-                                                            <img id="imgdefault" src="{{Storage::url('img_productos/'.$foto->nombre.'')}}" width="80px" height="70px">
+                                                        <a href="#" data-image="{{ asset( Storage::disk('img_productos')->url($foto->url.'' )) }}" data-zoom-image="{{ asset( Storage::disk('img_productos')->url($foto->url.'' )) }}">
+                                                            <img id="imgdefault" src="{{ asset( Storage::disk('img_productos')->url($foto->url.'' )) }}" width="80px" height="70px">
                                                         </a>
                                                     @endif
                                                 @endforeach

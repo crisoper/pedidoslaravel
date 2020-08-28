@@ -63,8 +63,8 @@ return [
         'img_productos' => [
             'driver' => 'local',
             'root' => storage_path('app/public/img_productos'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
         ],
 
         's3' => [
