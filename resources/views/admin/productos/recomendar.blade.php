@@ -66,9 +66,7 @@
                                                                 Empieza el {{date('d-m-Y', strtotime($recomendado->diainicio))}}
                                                             </p>
                                                         @elseif ( $recomendado->diafin < date('Y-m-d') )
-                                                            <p class="m-0 text-danger">
-                                                                Finalizó el {{date('d-m-Y', strtotime($recomendado->diafin))}}
-                                                            </p>
+                                                            <p class="m-0 text-danger"></p>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -148,7 +146,7 @@
                 },
                 success: function ( data ) {
                     llenarDatosModalProductoDetalle( data );
-                    console.log(data.data);
+                    // console.log(data.data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);
@@ -168,7 +166,7 @@
                         <div class="row container_recomendar_producto_modal">
                             <div class="col-12">
                                 <p class="" id="nombre_recomendar_producto_modal">
-                                    <b>Recomendar Producto:</b> ${data.data.nombre}
+                                    <b>Producto:</b> ${data.data.nombre}
                                 </p>
                             </div>
                             <div class="col-6">
@@ -199,7 +197,7 @@
                         <div class="row container_recomendar_producto_modal">
                             <div class="col-12">
                                 <p class="" id="nombre_recomendar_producto_modal">
-                                    <b>Recomendar Producto:</b> ${data.data.nombre}
+                                    <b>Producto:</b> ${data.data.nombre}
                                 </p>
                             </div>
                             <div class="col-6">
@@ -230,16 +228,16 @@
                         <div class="row container_recomendar_producto_modal">
                             <div class="col-12">
                                 <p class="" id="nombre_recomendar_producto_modal">
-                                    <b>Recomendar Producto:</b> ${data.data.nombre}
+                                    <b>Producto:</b> ${data.data.nombre}
                                 </p>
                             </div>
                             <div class="col-6">
                                 <label for="diainicio">Inicio</label>
-                                <input type="date" name="diainicio" id="diainicio" value="${data.data.recomendar_diainicio}">
+                                <input type="date" name="diainicio" id="diainicio" value="">
                             </div>
                             <div class="col-6">
                                 <label for="diafin">Fín</label>
-                                <input type="date" name="diafin" id="diafin" value="${data.data.recomendar_diafin}" placeholder="${data.data.recomendar_diafin}">
+                                <input type="date" name="diafin" id="diafin" value="">
                             </div>
                             <div class="col-12"><hr class=""></div>
                             <div class="col-12 content_btn_recomendar_producto_modal">

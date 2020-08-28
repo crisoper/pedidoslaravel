@@ -26,7 +26,7 @@
                 <li>
                     @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif <br>
                     {{-- <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small> --}}
-                    <small><a href="{{ route('inicio.index')}}">Ir al sitio</a></small>
+                    {{-- <small><a href="{{ route('inicio.index')}}">Ir al sitio</a></small> --}}
                 </li>
             </ul>
             

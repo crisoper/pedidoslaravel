@@ -66,9 +66,7 @@
                                                                 Empieza el {{date('d-m-Y', strtotime($ofertar->diainicio))}}
                                                             </p>
                                                         @elseif ( $ofertar->diafin < date('Y-m-d') )
-                                                            <p class="m-0 text-danger">
-                                                                Finalizó el {{date('d-m-Y', strtotime($ofertar->diafin))}}
-                                                            </p>
+                                                            <p class="m-0 text-danger"></p>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -148,7 +146,7 @@
                 },
                 success: function ( data ) {
                     llenarDatosModalProductoDetalle( data );
-                    console.log(data.data);
+                    // console.log(data.data);
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     console.log(jqXHR.responseJSON);

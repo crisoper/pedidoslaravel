@@ -33,7 +33,7 @@ class ProductorecomendarResource extends JsonResource
             'recomendar_diainicio' => $this->recomendar ? $this->recomendar->diainicio : '',
             'recomendar_diafin' => $this->recomendar ? $this->recomendar->diafin : '',
             
-            'diaactual' => date('d-m-Y'),
+            'diaactual' => date('Y-m-d'),
         ];
     }
 }
