@@ -68,7 +68,7 @@ class ProductosController extends Controller
 
 
         
-        //Productos mas pedidos
+        //Productos nuevos
         $hoynuevos =  Carbon::now();
         $fechainicionuevos = Carbon::now()->subDays( 7 );
 
@@ -83,6 +83,7 @@ class ProductosController extends Controller
             "fotos",
             "oferta",
         ])
+        ->orderBy("id", "desc")
         ->limit(10)
         ->get();
 
