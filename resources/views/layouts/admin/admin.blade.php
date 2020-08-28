@@ -23,8 +23,8 @@
                 <li class="nav-item">
                     <a class="nav-link showHideSideBar" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <li>
-                    @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif <br>
+                <li class="pt-2">
+                    @if ( Session::has( 'empresadescripcion') ) {{ Session::get( 'empresadescripcion') }} @endif
                     {{-- <small>@if ( Session::has( 'periododescripcion') ) {{ Session::get( 'periododescripcion') }} @endif </small> --}}
                     {{-- <small><a href="{{ route('inicio.index')}}">Ir al sitio</a></small> --}}
                 </li>
@@ -39,7 +39,7 @@
                             @else 
                             src="{{ asset( Storage::disk('usuarios')->url('usuarios/default.png') )  }}" 
                             @endif
-                        alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
+                            alt="{{ auth()->user()->name }}" class="rounded-circle logoPerfilForm">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">

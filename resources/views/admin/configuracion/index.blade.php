@@ -109,28 +109,28 @@
                                 <td><Span name="ruc">{{$empresa->ruc}}</Span></td>
                             </tr>
                             <tr>
-                                <td> <label for="nombre">Nombre o Razón Social:</label></td>
-                                <td> <span>{{$empresa->nombre}}</span></td>
+                                <td><label for="nombre">Nombre o Razón Social:</label></td>
+                                <td><span>{{$empresa->nombre}}</span></td>
                             </tr>
                             <tr>
-                                <td> <label for="nombrecomercial">Nombre Comercial:</label> </td>
-                                <td>   <span>{{ $empresa->nombrecomercial }}</span> </td>
+                                <td><label for="nombrecomercial">Nombre Comercial:</label></td>
+                                <td><span>{{ $empresa->nombrecomercial }}</span></td>
                             </tr>
                             <tr>
-                                <td>  <label for="direccion">Dirección:</label> </td>
-                                <td>     <span>{{ $empresa->direccion }}</span> </td>
+                                <td><label for="direccion">Dirección:</label></td>
+                                <td><span>{{ $empresa->direccion }}</span></td>
                             </tr>
                             <tr>
-                                <td>  <label for="departamentoid">Departamento:</label> </td>
-                                <td>   <span>{{  $departamentos ? $departamentos->nombre : "----" }}</span> </td>
+                                <td><label for="departamentoid">Departamento:</label></td>
+                                <td><span>{{  $departamentos ? $departamentos->nombre : "----" }}</span></td>
                             </tr>
                             <tr>
-                                <td>    <label for="provinciaid">Provincia:</label> </td>
-                                <td>   <span>{{ $provincias ? $provincias->nombre : "----" }}</span> </td>
+                                <td><label for="provinciaid">Provincia:</label></td>
+                                <td><span>{{ $provincias ? $provincias->nombre : "----" }}</span></td>
                             </tr>
                             <tr>
-                                <td>  <label for="distritoid">Distrito:</label> </td>
-                                <td>  <span>{{ $distritos ? $distritos->nombre: "----" }}</span> </td>
+                                <td> <label for="distritoid">Distrito:</label></td>
+                                <td> <span>{{ $distritos ? $distritos->nombre: "----" }}</span></td>
                             </tr>
                         </tbody>
                     </table>
