@@ -107,6 +107,7 @@ class NuevaempresaController extends Controller
             //Enviamos correo para activar cuenta
             $this->enviarCorreoActivarCuentaEmpresa($user);
             Session::put('empresadescripcion',  $empresa->nombre);
+            Session::put('userid',  $user->id);
         });
 
         return response()->json("success", 200);

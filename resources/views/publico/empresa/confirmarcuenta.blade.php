@@ -28,10 +28,15 @@
                             <span id="error" class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
 
+                        @php
+                            $valor_almacenado = session('usuarioactual');
+                           
+                        @endphp
                     <div class="row pt-5 d-flex justify-content-center">
                         <div class="col-md-6 col-sm-12" id="cambiarcorreoUsuario" style="display: none;">
                             <form action="{{ route('cambiaremailusuario.update', Session::get('userid',0) )  }}" method="POST">
-                           
+                              
+                             
                                 <span><small>Si no esta segur@ del correo que ingresó en el fomulario principal puede modificarlo aquí </small></span>
                                 <div class="input-group">
                                     <input type="email" class="form-control" name="email" id="email"
